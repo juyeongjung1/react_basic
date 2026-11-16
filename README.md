@@ -4,17 +4,17 @@
 
 最初に [見本のMarkdown](docs/textbook/chapters/sample/chapter.md) を生成してください。章扉、本文と小見出し、JSX・TSX、コードの読み方、表、スライドの上下配置、図番号を4ページで確認できます。
 
-## はじめにから第1章までを Markdown から組版する
+## 表紙から第1章までを Markdown から組版する
 
-[はじめに・目次の原稿](docs/textbook/chapters/front/chapter.md) と [第1章の原稿](docs/textbook/chapters/01/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
+[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md) と [第1章の原稿](docs/textbook/chapters/01/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
 
 ```powershell
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow
 ```
 
-前付は『Spring Boot 入門』講義テキスト（JAC0177G-T1-04）の7・9〜12ページの書式に合わせています。目次は前付原稿の末尾に追記できます。
+表紙と前付の順序・体裁は『Vue.js 入門』講義テキスト（260901 Ver3）の1〜12ページを参照しています。目次は前付原稿の3・4ページに追記できます。9ページのコースの位置付けは、参照元の図形と同じ配置で SPA 開発入門までを示し、その下に Vue.js と React の講座を並べます。
 
-各節の先頭に `.heading`、その直後に `.slide` を置きます。最初の段落がスライドのタイトルです。ロゴ、外枠、上下の罫線は同テキスト17ページの共通書式に固定しています。ロゴと上罫線は原本に埋め込まれた画像です。`layout="columns"` では、上下の罫線の間に段落を上から並べ、最初の `<br>` で項目名と説明を分けます。説明に画像を1点置けます。インラインコードだけの段落はコマンド欄になります。
+各節の先頭に `.heading`、その直後に `.slide` を置きます。最初の段落がスライドのタイトルです。ロゴ、外枠、上下の罫線はトレノケートの共通書式に固定しています。`layout="columns"` では、上下の罫線の間に段落を上から並べ、最初の `<br>` で項目名と説明を分けます。説明に画像を1点置けます。インラインコードだけの段落はコマンド欄になります。コースの目標・概要と章のまとめは、Vue 版に合わせて白地に文字と記号で組みます。
 
 第1章だけを確認するときは、`.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow` で組版できます。
 

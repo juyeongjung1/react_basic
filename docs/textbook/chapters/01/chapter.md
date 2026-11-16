@@ -422,23 +422,18 @@ export const product: Product = {
 章のまとめ
 :::
 
-::: {#ch01-summary-slide .slide layout="columns"}
+::: {#ch01-summary-slide .slide layout="summary"}
 章のまとめ
 
-開発環境<br>
-Vite でプロジェクトを作ります。
+■ 開発環境の準備とViteによるプロジェクト作成
 
-依存ライブラリ<br>
-章のフォルダで `npm install` を実行します。
+■ 章ごとの依存ライブラリの導入
 
-起動<br>
-`npm run dev` で起動します。
+■ 開発サーバーの起動と動作確認
 
-実行の流れ<br>
-HTML から App までの流れを追います。
+■ フォルダと主要ファイルの役割
 
-データの型<br>
-オブジェクトと配列の型を定義します。
+■ TypeScriptによるデータの型定義
 :::
 
 ::: {#ch01-summary-body .paragraph}

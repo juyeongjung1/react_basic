@@ -309,22 +309,38 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
     heading = inline(nodes[heading_id]['parts'])
     slide = nodes[slide_id]
     title, *rows = slide['rows']
-    columns = slide['attrs'].get('layout') == 'columns'
+    layout = slide['attrs'].get('layout', 'blocks')
     items = []
     for row, command, picture in zip(rows, slide['commands'], slide['pictures']):
         label = 'none'
-        if columns and not command:
+        if layout in ('columns', 'course-path') and not command:
             split = next((i for i, (value, _) in enumerate(row) if value == '\n'), None)
-            if split is None:
+            if split is None and layout == 'columns':
                 raise ValueError(f'スライドの項目名の後に改行を入れてください: {slide_id}')
-            label = f'[{inline(row[:split], typography=False)}]'
-            row = row[split+1:]
+            if split is not None:
+                label = f'[{inline(row[:split], typography=False)}]'
+                row = row[split+1:]
+        if layout in ('bullets', 'summary'):
+            value, style = row[0]
+            if not value.startswith('■'):
+                raise ValueError(f'箇条書きの先頭に■を付けてください: {slide_id}')
+            row = [(value[1:], style), *row[1:]]
         body = inline(typographic_parts(row, keep_lines=True), typography=False, keep_lines=True)
         path = q('/' + (folder / picture).relative_to(ROOT).as_posix()) if picture else 'none'
         items.append(f'(label: {label}, body: [{body}], picture: {path}, command: {str(command).lower()})')
     front_options = ', heading-size: 15.96pt, body-top: 352.31' if folder.name == 'front' else ''
     return (f'#markdown-slide({q(heading_id)}, [{heading}], {q(slide_id)}, '
-            f'[{inline(title, typography=False)}], ({",".join(items)},){front_options})')
+            f'[{inline(title, typography=False)}], ({",".join(items)},), layout: {q(layout)}{front_options})')
+
+
+def paragraph_parts(parts):
+    paragraphs = [[]]
+    for part in parts:
+        if part[0] == '\n\n':
+            paragraphs.append([])
+        else:
+            paragraphs[-1].append(part)
+    return paragraphs
 
 
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
@@ -338,17 +354,23 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
     header_condition = furniture_condition if config.get('running_header', True) else 'false'
+    footer_condition = furniture_condition
     if headerless := config.get('no_running_header_pages'):
         header_condition += ' and not (' + ','.join(str(page) for page in headerless) + ',).contains(here().page())'
+    if footerless := config.get('no_footer_pages'):
+        footer_condition += ' and not (' + ','.join(str(page) for page in footerless) + ',).contains(here().page())'
     header_ascent = ('header-ascent: 9.56pt,' if folder.name != 'front'
                      and any(node['kind'] == 'slide' for node in nodes.values()) else '')
     running_title = next((''.join(run['text'] for run in page['furniture'] if run['bbox'][1] < 80).strip()
                           for page in layout['pages'] if page['entries'] and page['source_page'] not in config.get('native_pages', [])
                           and (not has_cover or page['source_page'] != config['first_page'])
                           and any(run['bbox'][1] < 80 and run['text'].strip() for run in page['furniture'])), '')
+    header_title = q(running_title)
+    for page, title in config.get('running_titles', {}).items():
+        header_title = f'if here().page() == {int(page)} {{ {q(title)} }} else {{ {header_title} }}'
     commands = [f'''#set page(width: 595.32pt, height: 841.92pt, margin: (left: 85.104pt, right: 83.664pt, top: 86pt, bottom: 68pt), {header_ascent}
-header: context if {header_condition} {{stack(spacing: 3pt, align(center, text(font: "Meiryo UI", size: 9.96pt, {q(running_title)})), line(length: 100%, stroke: 0.48pt))}},
-footer: context if {furniture_condition} {{align(center, text(font: "Times New Roman", size: 11.04pt, counter(page).display()))}})
+header: context if {header_condition} {{stack(spacing: 3pt, align(center, text(font: "Meiryo UI", size: 9.96pt, {header_title})), line(length: 100%, stroke: 0.48pt))}},
+footer: context if {footer_condition} {{align(center, text(font: "Times New Roman", size: 11.04pt, counter(page).display()))}})
 #set text(font: "MS PMincho", size: 11.04pt, lang: "ja", cjk-latin-spacing: none, kerning: false, overhang: false, top-edge: "ascender", bottom-edge: "descender")
 #set par(leading: 6.96pt, spacing: 12.96pt)
 #show strong: it => text(font: "MS PGothic", stroke: 0.31543pt, it.body)
@@ -363,6 +385,9 @@ footer: context if {furniture_condition} {{align(center, text(font: "Times New R
         commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},))', '#pagebreak()']
     elif config.get('cover_mode') == 'introduction':
         commands += [f'#introduction-cover({q(cover_nodes[0][1])})', '#pagebreak()']
+    elif config.get('cover_mode') == 'course':
+        title, subtitle = (value for _, value in cover_nodes)
+        commands += [f'#course-cover({q(title)}, {q(subtitle)})', '#pagebreak()']
     elif has_cover:
         p=layout['pages'][0]
         body=[f'#at(0,0,image({q("/"+(folder/p["decoration"]).relative_to(ROOT).as_posix())},width:595.32pt,height:841.92pt))']
@@ -623,6 +648,33 @@ footer: context if {furniture_condition} {{align(center, text(font: "Times New R
             number = f', number: {q(numbered[ident]["number"])}' if ident in numbered else ''
             return f'#illustration({q(ident)}, {q(path)}, {width}, offset: {offset}pt{number})'
         node = nodes[ident]
+        if node['kind'] == 'blank-page':
+            return '#box(height: 1pt)'
+        if node['kind'] == 'introduction-cover':
+            return f'#introduction-cover({q(node["text"])})\n#box(height: 1pt)'
+        if node['kind'] == 'trademarks':
+            title, *notices = paragraph_parts(node['parts'])
+            rows = ','.join(f'[{inline(row)}]' for row in notices)
+            return f'#trademarks([{inline(title)}], ({rows},))'
+        if node['kind'] == 'notation-title':
+            continuation = str(node['attrs'].get('continuation') == 'true').lower()
+            return f'#notation-title({q(ident)}, [{inline(node["parts"])}], continuation: {continuation})'
+        if node['kind'] == 'notation':
+            title, description, label, *examples = paragraph_parts(node['parts'])
+            if not "".join(value for value, _ in title).startswith('■'):
+                raise ValueError(f'表記の見出しの先頭に■を付けてください: {ident}')
+            value, style = title[0]
+            title = [(value[1:], style), *title[1:]]
+            pieces = ', '.join(f'[{inline(row, keep_lines=True)}]' for row in (title, description, label))
+            example_bodies = ', '.join(f'[{inline(row, keep_lines=True)}]' for row in examples)
+            baselines = tuple(map(float, node['attrs']['baselines'].split()))
+            frame_coordinates = list(map(float, node['attrs']['frames'].split()))
+            if len(baselines) != 3 or len(frame_coordinates) != 4 * len(examples):
+                raise ValueError(f'表記例の位置指定が一致しません: {ident}')
+            frames = ', '.join(str(tuple(frame_coordinates[i:i+4])) for i in range(0, len(frame_coordinates), 4))
+            monospace = str(node['attrs'].get('font') == 'mono').lower()
+            return (f'#notation({q(ident)}, {pieces}, ({example_bodies},), {baselines}, ({frames},), '
+                    f'monospace: {monospace})')
         if node['kind'] == 'paragraph':
             keep_lines = node['attrs'].get('keep-lines') == 'true'
             parts = typographic_parts(node['parts'], keep_lines=keep_lines)

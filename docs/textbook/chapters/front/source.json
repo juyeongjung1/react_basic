@@ -2,7 +2,10 @@
   "title": "はじめに",
   "chapter": "front",
   "first_page": 1,
-  "last_page": 6,
-  "cover_mode": "introduction",
-  "no_running_header_pages": [6]
+  "last_page": 12,
+  "cover_mode": "course",
+  "bookmark_page": 5,
+  "no_running_header_pages": [2, 3, 5],
+  "no_footer_pages": [2, 5],
+  "running_titles": {"4": "目次"}
 }

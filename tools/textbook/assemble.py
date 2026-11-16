@@ -145,12 +145,15 @@ def assemble_markdown(out, collection):
             with fitz.open(generated/'chapter-flow.pdf') as part:
                 assert checks['native_text_complete'] and checks['pages']==len(part),chapter
                 pages=append_flow_part(flow,part,[])
-            chapters.append({'chapter':chapter,'title':config['title'],'flow_pages':[pages[0],pages[-1]]})
-            offset=1 if config.get('cover_mode','classic')!='none' else 0
-            footer_pages.extend(pages[offset:])
+            chapters.append({'chapter':chapter,'title':config['title'],'flow_pages':[pages[0],pages[-1]],
+                             'bookmark_page':pages[config.get('bookmark_page',1)-1]})
+            footerless=set(config.get('no_footer_pages', []))
+            if config.get('cover_mode','classic')!='none':
+                footerless.add(1)
+            footer_pages.extend(page for i, page in enumerate(pages, 1) if i not in footerless)
         renumber_footers(flow,footer_pages)
         flow.set_metadata({'title':collection['title']})
-        flow.set_toc([[1,chapter['title'],chapter['flow_pages'][0]] for chapter in chapters])
+        flow.set_toc([[1,chapter['title'],chapter['bookmark_page']] for chapter in chapters])
         flow.subset_fonts()
         flow.save(out/'flow.pdf',garbage=4,deflate=True)
         report={'title':collection['title'],'flow_pages':len(flow),

@@ -65,14 +65,54 @@
 ]
 #let slide-header(height, body) = block(width: 100%, height: height * 1pt,
   breakable: false, above: 0pt, below: 0pt)[#body]
+#let vue-slide-list(items, bullets: false) = {
+  set text(font: "Meiryo UI", size: 14.04pt, fill: rgb("474747"))
+  set par(leading: 0.2pt, spacing: 0pt, first-line-indent: 0pt)
+  stack(spacing: 6.12pt, ..items.map(item => if bullets {
+    grid(columns: (14.04pt, 1fr), move(dy: 2.82pt, text(size: 11.04pt, fill: rgb("5C5C5C"), "■")), item.body)
+  } else { [#box(width: 0pt, height: 0pt)#item.body] }))
+}
+// 4つの共通講座までの図形はVue版9頁から転記し、最下段を2講座へ分岐する。
+#let vue-course-path(items) = [
+  #assert(items.len() == 6, message: "コースの位置付けには6つの講座を記載してください")
+  #at(0, 0, image("/tools/textbook/assets/vue-course-path.svg", width: 369.2pt))
+  #let labels = (
+    (137.41, 153.12, 167.76, 176.18),
+    (137.41, 153.12, 227.13, 227.13),
+    (304.95, 153.13, 227.13, 227.13),
+    (220.44, 153.12, 288.65, 288.65),
+    (137.41, 153.12, 343.13, 353.09),
+    (304.95, 153.13, 343.13, 353.09),
+  )
+  #let centered-label(x, y, width, size, body) = at(x - 113.06, y - 115.82,
+    box(width: width * 1pt)[
+      #set text(font: ("HGPGothicE", "MS PGothic", "Arial"), fill: black, top-edge: 0pt, bottom-edge: 0pt)
+      #context {
+        let natural = measure(text(size: size, body), width: 500pt).width
+        let factor = calc.min(1, (width * 1pt - 0.6pt) / natural)
+        align(center, box(text(size: size * factor, body)))
+      }
+    ])
+  #for (index, ((x, width, title-y, caption-y), item)) in labels.zip(items).enumerate() {
+    let specialization = index >= 4
+    if item.label != none {
+      centered-label(x, title-y, width, if specialization {9.96pt} else {6.96pt}, item.label)
+    }
+    centered-label(x, caption-y, width, if specialization {8.06pt} else {6.96pt}, item.body)
+  }
+]
 // トレノケートの共通枠は『Spring Boot 入門』講義テキスト17頁の座標と図版を使用する。
 #let markdown-slide(heading-id, heading, id, title, items, heading-size: 14.04pt,
-  body-top: 344) = slide-header(body-top)[
-  #at(0, 15.06, [
+  body-top: 344, layout: "blocks") = {
+  let summary = layout == "summary"
+  let vue = ("bullets", "plain", "course-path", "summary").contains(layout)
+  let art-offset = if summary {-0.26} else if vue {-1.9} else {0}
+  slide-header(if summary {332.26} else {body-top})[
+  #at(0, if summary {13.5} else {15.06}, [
     #mark(heading-id, "heading")
     #text(font: "Meiryo UI", size: heading-size, weight: "bold", top-edge: 0pt, bottom-edge: 0pt, heading)
   ])
-  #at(27.956, 29.82, block(width: 369.2pt, height: 275.19pt, inset: 0pt)[
+  #at(27.956, if summary {27.78} else {29.82}, block(width: 369.2pt, height: 275.19pt, inset: 0pt)[
     #let ink = rgb("172D42")
     #let accent = rgb("006974")
     #set text(font: "Meiryo UI", size: 11.5pt, fill: ink)
@@ -80,14 +120,25 @@
     #set par(leading: 3pt, spacing: 0pt, first-line-indent: 0pt)
     #mark(id, "start")
     #at(0.36, 0.36, rect(width: 368.48pt, height: 274.47pt, fill: white, stroke: 0.72pt + black))
-    #at(18.35, 19.11, text(size: 11.04pt, weight: "bold", fill: black,
+    #at(18.35, 19.11 + art-offset, text(size: 11.04pt, weight: "bold", fill: if vue {rgb("262626")} else {black},
       top-edge: 0pt, bottom-edge: 0pt, title))
-    #at(345.07, 4.387, image("/tools/textbook/assets/trainocate-slide-logo.png",
+    #at(345.07, 4.387 + art-offset, image("/tools/textbook/assets/trainocate-slide-logo.png",
       width: 18.111pt, height: 18.111pt))
-    #at(4.685, 23.849, image("/tools/textbook/assets/trainocate-slide-header-rule.png",
+    #at(4.685, 23.849 + art-offset, image("/tools/textbook/assets/trainocate-slide-header-rule.png",
       width: 359.989pt, height: 1.8pt, fit: "stretch"))
-    #at(4.685, 264.83, line(length: 359.989pt, stroke: 0.25pt + rgb(90.2%, 34.1%, 10.2%)))
-    #at(15.725, 31, block(width: 337.75pt, above: 0pt, below: 0pt)[
+    #at(4.685, 264.83 + art-offset, line(length: 359.989pt, stroke: 0.25pt + rgb(90.2%, 34.1%, 10.2%)))
+    #if layout == "course-path" {
+      at(0, 0, vue-course-path(items))
+    } else if vue {
+      at(18.33, 30.95 + art-offset, block(width: 344pt, above: 0pt, below: 0pt)[
+        #let rows = vue-slide-list(items, bullets: layout != "plain")
+        #context {
+          assert(measure(rows, width: 344pt).height <= 226pt,
+            message: "スライド本文が枠に収まりません: " + id)
+          rows
+        }
+      ])
+    } else { at(15.725, 31, block(width: 337.75pt, above: 0pt, below: 0pt)[
       #let rows = stack(spacing: 7pt, ..items.map(item => {
         if item.command {
           block(width: 100%, inset: (x: 10pt, y: 6pt), radius: 3pt, fill: ink)[
@@ -111,11 +162,12 @@
           message: "スライド本文が枠に収まりません: " + id)
         rows
       }
-    ])
+    ]) }
     #at(0, 275.19, mark(id, "end"))
   ])
-  #at(-1.44, 329.99, rect(width: 428.11pt, height: 0.72pt, fill: black, stroke: none))
-]
+  #at(-1.44, if summary {309.93} else {329.99}, rect(width: 428.11pt, height: 0.72pt, fill: black, stroke: none))
+  ]
+}
 #let figure-number(id, number, offset: 0pt) = block(above: 0pt, below: 5pt,
   inset: (left: offset))[
   #set par(first-line-indent: 0pt, leading: 0pt, spacing: 0pt)
@@ -218,12 +270,57 @@
 #let cover(number, title, goal_title, goals) = at(-85.104, -86,
   box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals)])
 #let native-cover(body) = at(-85.104, -86, box(width: 595.32pt, height: 841.92pt)[#body])
+#let course-cover(title, subtitle) = native-cover[
+  #set text(font: "Meiryo UI", weight: "bold", top-edge: 0pt, bottom-edge: 0pt)
+  #at(83.664, 323.21, box(width: 428.11pt, align(center, text(size: 26.04pt, title))))
+  #at(83.664, 340.13, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
+  #at(83.664, 449.47, box(width: 428.11pt, align(center, text(size: 15.96pt, subtitle))))
+]
 #let introduction-cover(title) = native-cover[
   #at(461.38, 0.12, rect(width: 132.26pt, height: 127.7pt, stroke: none, fill: rgb(91.4%, 29.4%, 13.3%)))
   #at(257.93, 322.37, text(font: "Meiryo UI", weight: "bold", size: 24pt,
     top-edge: 0pt, bottom-edge: 0pt, title))
   #at(83.664, 340.01, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
 ]
+#let trademarks(title, notices) = block(height: 625pt, above: 0pt, below: 0pt, breakable: false)[
+  #at(4.796, 352.79, text(font: "Meiryo UI", weight: "bold", size: 15.96pt,
+    top-edge: 0pt, bottom-edge: 0pt, title))
+  #at(25.796, 371.2, block(width: 401pt, above: 0pt, below: 0pt)[
+    #set text(font: "MS PMincho", size: 9pt)
+    #set par(leading: 2pt, spacing: 0pt, first-line-indent: 0pt)
+    #stack(spacing: 5pt, ..notices)
+  ])
+]
+#let notation-title(id, body, continuation: false) = at(if continuation {42} else {0},
+  if continuation {57.78} else {15.06}, [
+    #mark(id, "heading")
+    #text(font: "Meiryo UI", size: if continuation {11.04pt} else {15.96pt},
+      weight: "bold", top-edge: 0pt, bottom-edge: 0pt, body)
+  ])
+#let notation(id, title, description, label, examples, baselines, frames, monospace: false) = {
+  let (heading-y, description-y, label-y) = baselines
+  at(21, heading-y - 86, [#mark(id, "start")#text(top-edge: 0pt, bottom-edge: 0pt)[■]])
+  at(42, heading-y - 86, text(font: "Meiryo UI", weight: "bold", top-edge: 0pt, bottom-edge: 0pt, title))
+  at(42, description-y - 86, box(width: 389pt)[
+    #set text(top-edge: 0pt, bottom-edge: 0pt)
+    #description
+  ])
+  at(42.95, label-y - 86, text(font: "Meiryo UI", top-edge: 0pt, bottom-edge: 0pt, label))
+  for (example, (x0, y0, x1, y1)) in examples.zip(frames) {
+    at(x0 - 85.104 + 0.24, y0 - 86 + 0.24, rect(width: (x1 - x0 - 0.48) * 1pt,
+      height: (y1 - y0 - 0.48) * 1pt, fill: white, stroke: 0.48pt + black))
+    at(x0 - 85.104 + 5.4, y0 - 86 + 12.6, box(width: (x1 - x0 - 10.8) * 1pt)[
+      #set text(font: if monospace {"Courier New"} else {"MS PMincho"}, top-edge: 0pt, bottom-edge: 0pt)
+      #set par(leading: 18pt, first-line-indent: 0pt)
+      #show strong: it => {
+        if monospace {text(weight: "bold", it.body)}
+        else {text(font: "MS PGothic", stroke: 0.31543pt, it.body)}
+      }
+      #example
+    ])
+  }
+  mark(id, "end")
+}
 #let contents-heading(id, body) = block(height: 80pt, above: 0pt, below: 10pt)[
   #at(168.626, 48.3, [
     #mark(id, "heading")
