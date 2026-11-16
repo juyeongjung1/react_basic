@@ -4,15 +4,17 @@
 
 最初に [見本のMarkdown](docs/textbook/chapters/sample/chapter.md) を生成してください。章扉、本文と小見出し、JSX・TSX、コードの読み方、表、スライドの上下配置、図番号を4ページで確認できます。
 
-## 第1章を Markdown から組版する
+## はじめにから第1章までを Markdown から組版する
 
-[第1章の原稿](docs/textbook/chapters/01/chapter.md) は、節頭スライドも含めて Markdown で編集できます。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/chapter-01/chapter-flow.pdf` を生成します。
+[はじめに・目次の原稿](docs/textbook/chapters/front/chapter.md) と [第1章の原稿](docs/textbook/chapters/01/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
 
 ```powershell
-.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow
+.\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow
 ```
 
-各節の先頭に `.heading`、その直後に `.slide` を置きます。スライドの最初の段落がタイトル、以降の段落が内容です。インラインコードだけの段落は黒いコマンド欄になります。`layout="columns"` のスライドでは、段落ごとにカードを作り、最初の `<br>` でカードの見出しと本文を区切ります。カードには Markdown の画像も1点置けます。
+節頭スライドも Markdown で編集できます。各節の先頭に `.heading`、その直後に `.slide` を置きます。最初の段落がスライドのタイトルです。`layout="columns"` では、以降の段落を上から並べ、最初の `<br>` で項目名と説明を分けます。説明に画像を1点置けます。インラインコードだけの段落はコマンド欄になります。
+
+第1章だけを確認するときは、`.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow` で組版できます。
 
 受講者は [第1章の配布サンプル](ch01-setup) を開き、`package.json` があるフォルダで `npm install` と `npm run dev` を実行します。次の章もその章のサンプルフォルダで `npm install` を実行します。
 
@@ -67,7 +69,7 @@ npm.cmd ci --prefix tools/textbook
 
 ## 4. 合冊・印刷・索引
 
-[合冊設定のひな形](docs/textbook/templates/collections.json) を `docs/textbook/collections.json` として置きます。章順、元PDFの目次ページ、索引と印刷位置は実際の教材に合わせます。章の元ページ範囲は、合計で元PDFの全ページを順番に覆うように指定します。
+原本を取り込んだ教材を合冊する場合は、[合冊設定のひな形](docs/textbook/templates/collections.json) をもとに `docs/textbook/collections.json` を設定します。章順、元PDFの目次ページ、索引と印刷位置は実際の教材に合わせます。章の元ページ範囲は、合計で元PDFの全ページを順番に覆うように指定します。
 
 ```powershell
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook

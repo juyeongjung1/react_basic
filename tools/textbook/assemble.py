@@ -119,9 +119,52 @@ def append_flow_part(flow, part, blanks, *, odd_start=False, introduction=None):
     return pages
 
 
+def renumber_footers(flow, pages):
+    footer=fitz.Rect(240,786,355,817)
+    for n in pages:
+        page=flow[n-1]
+        old=page.get_textbox(footer).strip()
+        assert old.isdigit(),(n,old)
+        page=remove_number_text(page,[footer],old)
+        page.insert_font(fontname='book-footer',fontfile='C:/Windows/Fonts/times.ttf')
+        width=fitz.get_text_length(str(n),fontname='tiro',fontsize=11.04)
+        page.insert_text((297.66-width/2,797.04),str(n),fontname='book-footer',fontsize=11.04)
+        value=page.get_textbox(footer).strip()
+        assert value==str(n),(n,value)
+
+
+def assemble_markdown(out, collection):
+    """Markdownで作った前付と章をつなぎ、ページ番号を一冊分に振り直す。"""
+    chapters=[];footer_pages=[]
+    with fitz.open() as flow:
+        for chapter in collection['parts']:
+            config_path=ROOT/'docs/textbook/chapters'/chapter/'source.json'
+            config=json.loads(config_path.read_text(encoding='utf-8'))
+            generated=out.parent/f'chapter-{chapter}'
+            checks=json.loads((generated/'checks.json').read_text(encoding='utf-8'))['flow']
+            with fitz.open(generated/'chapter-flow.pdf') as part:
+                assert checks['native_text_complete'] and checks['pages']==len(part),chapter
+                pages=append_flow_part(flow,part,[])
+            chapters.append({'chapter':chapter,'title':config['title'],'flow_pages':[pages[0],pages[-1]]})
+            offset=1 if config.get('cover_mode','classic')!='none' else 0
+            footer_pages.extend(pages[offset:])
+        renumber_footers(flow,footer_pages)
+        flow.set_metadata({'title':collection['title']})
+        flow.set_toc([[1,chapter['title'],chapter['flow_pages'][0]] for chapter in chapters])
+        flow.subset_fonts()
+        flow.save(out/'flow.pdf',garbage=4,deflate=True)
+        report={'title':collection['title'],'flow_pages':len(flow),
+                'continuous_footer_numbers':True,'chapters':chapters}
+    (out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps(report,ensure_ascii=False))
+    return report
+
+
 def assemble(name, collection):
     out=ROOT/'output/pdf/textbook'/name
     out.mkdir(parents=True,exist_ok=True)
+    if not collection.get('pdf'):
+        return assemble_markdown(out,collection)
     reference=fitz.open();flow=fitz.open();comparison=fitz.open()
     original=fitz.open(ROOT/collection['pdf'])
     coverage=[];chapters=[];footer_pages=[];page_map={};heading_map={}
@@ -204,17 +247,7 @@ def assemble(name, collection):
         flow.insert_pdf(colophon)
         page_map[colophon_source]=len(flow)
     contents=update_contents(original,flow,collection,page_map,heading_map)
-    for n in footer_pages:
-        page=flow[n-1]
-        footer=fitz.Rect(240,786,355,817)
-        old=page.get_textbox(footer).strip()
-        assert old.isdigit(),(n,old)
-        page=remove_number_text(page,[footer],old)
-        font=page.insert_font(fontname='book-footer',fontfile='C:/Windows/Fonts/times.ttf')
-        width=fitz.get_text_length(str(n),fontname='tiro',fontsize=11.04)
-        page.insert_text((297.66-width/2,797.04),str(n),fontname='book-footer',fontsize=11.04)
-        value=page.get_textbox(fitz.Rect(240,786,355,817)).strip()
-        assert value==str(n),(n,value)
+    renumber_footers(flow,footer_pages)
     reference.set_metadata({'title':collection['title']+' 元位置再現版'})
     flow.set_metadata({'title':collection['title']+' 自動組版版'})
     comparison.set_metadata({'title':collection['title']+' 元PDFとの比較'})

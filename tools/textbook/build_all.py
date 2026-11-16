@@ -14,5 +14,6 @@ if __name__=='__main__':
     collections=json.loads((ROOT/'docs/textbook/collections.json').read_text(encoding='utf-8'))
     for name,collection in collections.items():
         if args.collection not in ('all',name):continue
-        for chapter in collection['parts']:build(chapter,args.mode)
+        mode=args.mode if collection.get('pdf') else 'flow'
+        for chapter in collection['parts']:build(chapter,mode)
         assemble(name,collection)

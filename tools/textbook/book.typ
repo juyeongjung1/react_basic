@@ -65,45 +65,44 @@
 ]
 #let slide-header(height, body) = block(width: 100%, height: height * 1pt,
   breakable: false, above: 0pt, below: 0pt)[#body]
-// Vue教材の節頭と同じ4:3の枠、赤橙の帯、本文との間隔で組む。
-#let markdown-slide(heading-id, heading, id, title, items, columns: false) = slide-header(344)[
+// 節頭スライドは見出しと項目名の位置をそろえ、上から順に読めるようにする。
+#let markdown-slide(heading-id, heading, id, title, items) = slide-header(344)[
   #at(0, 0.8, [#mark(heading-id, "heading")#text(font: "Meiryo UI", size: 14.04pt, weight: "bold", heading)])
   #at(28.676, 27.78, block(width: 367.75pt, height: 275.19pt,
-    stroke: 0.72pt + black, inset: 0pt)[
-    #set text(font: "Meiryo UI", size: 12pt, fill: rgb("242424"))
+    fill: white, stroke: 0.75pt + rgb("CCDDE2"), radius: 7pt, clip: true, inset: 0pt)[
+    #let ink = rgb("172D42")
+    #let accent = rgb("006974")
+    #set text(font: "Meiryo UI", size: 11.5pt, fill: ink)
     #show strong: it => text(weight: "bold", it.body)
     #set par(leading: 3pt, spacing: 0pt, first-line-indent: 0pt)
     #mark(id, "start")
-    #at(17.62, 8.5, text(size: 11.04pt, weight: "bold", title))
-    #at(3.97, 23.62, rect(width: 359.98pt, height: 1.8pt, stroke: none,
-      fill: gradient.linear(rgb("E9461E"), rgb("FBB45B"))))
-    #at(3.97, 264.57, line(length: 359.98pt, stroke: 0.48pt + rgb("E6571A")))
-    #at(17.62, 34, block(width: 332.51pt, above: 0pt, below: 0pt)[
-      #if columns {
-        let colors = ((rgb("3674A4"), rgb("E4F0F8")), (rgb("418447"), rgb("E8F4EA")),
-          (rgb("AB5B17"), rgb("FFF0DC")), (rgb("A24540"), rgb("F8E9E8")))
-        grid(columns: (1fr,) * items.len(), column-gutter: 5pt,
-          ..items.enumerate().map(((index, item)) => {
-            let (ink, paper) = colors.at(index)
-            block(width: 100%, height: 204pt, fill: paper, stroke: 0.75pt + ink,
-              radius: 4pt, clip: true, inset: 0pt, above: 0pt, below: 0pt)[
-              #block(width: 100%, height: 44pt, inset: 5pt, fill: ink, below: 0pt)[
-                #align(center + horizon, text(size: 12pt, weight: "bold", fill: white, item.label))
-              ]
-              #block(inset: 8pt, above: 0pt)[
-                #if item.picture != none {
-                  align(center, image(item.picture, width: 100%, height: 49pt, fit: "contain"))
-                  v(7pt)
-                }
-                #text(size: 11pt, fill: ink, item.body)
-              ]
-            ]
-          }))
-      } else {
-        stack(spacing: 12pt, ..items.map(item => if item.command {
-          block(width: 100%, inset: (x: 6pt, y: 4pt), fill: rgb("242424"),
-            text(size: 11.04pt, weight: "bold", fill: white, item.body))
-        } else {item.body}))
+    #at(0, 0, block(width: 367.75pt, height: 47pt, fill: ink, inset: (x: 17pt))[
+      #align(left + horizon, text(size: 16pt, weight: "bold", fill: white, title))
+    ])
+    #at(0, 44, rect(width: 367.75pt, height: 3pt, stroke: none, fill: rgb("36B1AB")))
+    #at(15, 62, block(width: 337.75pt, above: 0pt, below: 0pt)[
+      #let rows = stack(spacing: 7pt, ..items.map(item => {
+        if item.command {
+          block(width: 100%, inset: (x: 10pt, y: 6pt), radius: 3pt, fill: ink)[
+            #text(font: "Courier New", size: 10pt, weight: "bold", fill: white, item.body)
+          ]
+        } else {
+          block(width: 100%, inset: (x: 10pt, y: 9pt), radius: 4pt, fill: rgb("EFF7F8"))[
+            #if item.label == none { item.body } else {
+              let label = text(size: 12pt, weight: "bold", fill: accent, item.label)
+              let key = if item.picture == none { label } else {
+                grid(columns: (29pt, 1fr), column-gutter: 5pt, align: left + horizon,
+                  image(item.picture, width: 29pt, height: 22pt, fit: "contain"), label)
+              }
+              grid(columns: (99pt, 1fr), column-gutter: 9pt, align: left + horizon, key, item.body)
+            }
+          ]
+        }
+      }))
+      #context {
+        assert(measure(rows, width: 337.75pt).height <= 200pt,
+          message: "スライド本文が枠に収まりません: " + id)
+        rows
       }
     ])
     #at(0, 275.19, mark(id, "end"))

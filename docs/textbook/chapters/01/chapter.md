@@ -35,20 +35,14 @@
 ::: {#ch01-spa-slide .slide layout="columns"}
 React と SPA
 
-① React<br>
-ブラウザーで画面を組み立てる<br><br>
-画面の例<br>
-商品一覧・商品詳細
+ブラウザー<br>
+React で商品一覧や商品詳細を表示します。
 
-② REST API<br>
-画面からの要求を受け付け、JSON を返す<br><br>
-通信の例<br>
-商品一覧の取得
+REST API<br>
+画面からの要求を受け付け、商品データを JSON で返します。
 
-③ データベース<br>
-商品や社員の情報を保存する<br><br>
-保存する項目の例<br>
-商品名・価格
+データベース<br>
+商品名や価格、社員情報などを保存します。
 :::
 
 ::: {#ch01-spa-react .heading}
@@ -75,18 +69,20 @@ SPA（Single Page Application）は、最初に読み込んだページの中で
 1.2. 開発環境の準備
 :::
 
-::: {#ch01-tools-slide .slide}
+::: {#ch01-tools-slide .slide layout="columns"}
 開発環境の準備
 
-■ **配布物を展開して作業フォルダを用意する**<br>
-　● 第1章のサンプルは ch01-setup
+作業フォルダ<br>
+配布物を展開します。第1章のサンプルは `ch01-setup` です。
 
-■ **Visual Studio Code（VS Code）を開く**<br>
-　● ファイルの編集とターミナルの操作に使う
+VS Code<br>
+ファイルを編集し、ターミナルを開きます。
 
-■ **Node.js と npm が使えるかを確認する**<br>
-　● Node.js は Vite を実行するために使う<br>
-　● npm は依存ライブラリの導入に使う
+Node.js<br>
+Vite を実行します。`node -v` で確認します。
+
+npm<br>
+ライブラリを導入します。`npm -v` で確認します。
 :::
 
 ::: {#ch01-tools-body-title .heading}
@@ -120,19 +116,19 @@ PowerShell が `npm.ps1` の実行を拒否する場合は、`npm.cmd -v` で確
 1.3. Vite でプロジェクトを作成する
 :::
 
-::: {#ch01-vite-slide .slide}
+::: {#ch01-vite-slide .slide layout="columns"}
 Vite でプロジェクトを作成する
 
-■ **Vite の役割**<br>
-　● プロジェクトのひな形を作る<br>
-　● 開発サーバーの起動と本番用ビルドに使う
+Vite の役割<br>
+ひな形の作成、開発サーバーの起動、本番用ビルドに使います。
 
-■ **React と TypeScript のテンプレートを選ぶ**
+テンプレート<br>
+`react-ts` で React と TypeScript を選びます。
 
 `npm create vite@7.1.3 demo -- --template react-ts`
 
-■ **作成先のフォルダを確認する**<br>
-　● この例では demo に設定ファイルとサンプルが作られる
+作成先<br>
+`demo` に設定ファイルとサンプルが作られます。
 :::
 
 ::: {#ch01-vite-body-title .heading}
@@ -165,20 +161,21 @@ npm create vite@7.1.3 demo -- --template react-ts
 1.4. 依存ライブラリの導入
 :::
 
-::: {#ch01-install-slide .slide}
+::: {#ch01-install-slide .slide layout="columns"}
 依存ライブラリの導入
 
-■ **章ごとに作業するフォルダを確認する**<br>
-　● 第1章は ch01-setup
+作業フォルダ<br>
+使う章のサンプルを開きます。第1章は `ch01-setup` です。
 
 `cd ch01-setup`
 
-■ **そのフォルダで依存ライブラリを導入する**
+依存ライブラリ<br>
+`package.json` がある場所で次のコマンドを実行します。
 
 `npm install`
 
-■ **package.json の依存関係がインストールされる**<br>
-　● ライブラリの実体は node_modules に入る
+完了の目印<br>
+ライブラリが `node_modules` に入ります。
 :::
 
 ::: {#ch01-install-body-title .heading}
@@ -215,17 +212,14 @@ npm install
 ::: {#ch01-start-slide .slide layout="columns"}
 開発サーバーの起動と動作確認
 
-手順① 起動<br>
-![ターミナル](assets/terminal.svg)ch01-setup でコマンドを実行する<br><br>
-`npm run dev`
+起動<br>
+![ターミナル](assets/terminal.svg)`ch01-setup` で **`npm run dev`** を実行します。
 
-手順② 表示<br>
-![ブラウザー](assets/browser.svg)ターミナルに表示された URL をブラウザーで開く<br><br>
-商品管理の画面を確認する
+表示<br>
+![ブラウザー](assets/browser.svg)表示された URL を開き、商品管理の画面を確認します。
 
-手順③ 更新<br>
-![エディター](assets/editor.svg)App.tsx の見出しを変更して保存する<br><br>
-画面に変更が反映される
+更新<br>
+![エディター](assets/editor.svg)`App.tsx` の見出しを変更して保存し、画面への反映を確認します。
 :::
 
 ::: {#ch01-start-body .paragraph}
@@ -259,17 +253,14 @@ npm run dev
 ::: {#ch01-files-slide .slide layout="columns"}
 フォルダと主要ファイルの役割
 
-① index.html<br>
-![ブラウザー](assets/browser.svg)ブラウザーが最初に読む<br><br>
-React が画面を表示する場所を用意する
+index.html<br>
+ブラウザーが最初に読み、画面を表示する場所を用意します。
 
-② main.tsx<br>
-![プログラム](assets/editor.svg)React の入口<br><br>
-App を読み込み、HTML 内の root に表示する
+main.tsx<br>
+`App` を読み込み、HTML 内の `root` に表示します。
 
-③ App.tsx<br>
-![画面](assets/browser.svg)このサンプルの画面<br><br>
-サンプル商品の名前や価格を表示する
+App.tsx<br>
+画面の内容を定義します。このサンプルでは商品名や価格を表示します。
 :::
 
 ::: {#ch01-files-body .paragraph}
@@ -295,20 +286,20 @@ App を読み込み、HTML 内の root に表示する
 1.7. 必要な JavaScript 構文
 :::
 
-::: {#ch01-js-slide .slide}
+::: {#ch01-js-slide .slide layout="columns"}
 必要な JavaScript 構文
 
-■ **変数を宣言する**<br>
-　● const は再代入しない変数に使う
+変数<br>
+`const` は再代入しない変数に使います。
 
-■ **オブジェクトの項目を読む**<br>
-　● product.name は商品の名前を表す
+項目の参照<br>
+`product.name` で商品の名前を参照します。
 
-■ **配列から必要な値を取り出す**<br>
-　● map で要素ごとに処理し、新しい配列を作る
+配列の変換<br>
+`map` で要素ごとに処理し、新しい配列を作ります。
 
-■ **ファイルをまたいで値を使う**<br>
-　● export で公開し、import で読み込む
+ファイル間の連携<br>
+`export` で公開し、`import` で読み込みます。
 :::
 
 ::: {#ch01-js-body-title .heading}
@@ -340,20 +331,20 @@ const names = items.map((item) => item.name)
 1.8. TypeScript の基本型とデータ型
 :::
 
-::: {#ch01-ts-slide .slide}
+::: {#ch01-ts-slide .slide layout="columns"}
 TypeScript の基本型とデータ型
 
-■ **基本型で値の種類を決める**<br>
-　● 商品名は string、価格は number、真偽値は boolean
+基本型<br>
+商品名は `string`、価格は `number`、真偽値は `boolean` です。
 
-■ **項目を集めてオブジェクトの型を作る**<br>
-　● Product 型には id、name、price、category を定義する
+オブジェクト型<br>
+`Product` に `id`、`name`、`price`、`category` を定義します。
 
-■ **同じ形のデータを配列で扱う**<br>
-　● Product[] は Product 型のデータが並ぶ配列
+配列の型<br>
+`Product[]` は `Product` 型のデータが並ぶ配列です。
 
-■ **実行前に型を確認する**<br>
-　● 価格に文字列を指定すると型エラーになる
+型チェック<br>
+価格に文字列を指定すると、実行前に型エラーが分かります。
 :::
 
 ::: {#ch01-ts-body .paragraph}
@@ -386,20 +377,20 @@ export const product: Product = {
 1.9. 演習① 環境確認と社員データの型定義
 :::
 
-::: {#ch01-exercise-slide .slide}
+::: {#ch01-exercise-slide .slide layout="columns"}
 演習① 環境確認と社員データの型定義
 
-■ **第1章のサンプルを起動する**<br>
-　● ブラウザーで「商品管理システム」を確認する
+環境確認<br>
+サンプルを起動して「商品管理システム」を表示します。
 
-■ **src/employee.ts で Employee 型を定義する**<br>
-　● 社員番号、氏名、給与、勤務地を定義する
+社員の型<br>
+`src/employee.ts` に `Employee` 型を定義します。
 
-■ **社員の配列に型を付ける**<br>
-　● employees に Employee[] を指定する
+配列の型<br>
+`employees` に `Employee[]` を指定します。
 
-■ **型チェックの結果を確認する**<br>
-　● npm run build が完了することを確認する
+型チェック<br>
+`npm run build` が成功することを確認します。
 :::
 
 ::: {#ch01-exercise-setup .paragraph}
@@ -431,18 +422,23 @@ export const product: Product = {
 章のまとめ
 :::
 
-::: {#ch01-summary-slide .slide}
+::: {#ch01-summary-slide .slide layout="columns"}
 章のまとめ
 
-■ Vite で React と TypeScript のプロジェクトを作成する
+開発環境<br>
+Vite でプロジェクトを作ります。
 
-■ 各章のサンプルフォルダで npm install を実行する
+依存ライブラリ<br>
+章のフォルダで `npm install` を実行します。
 
-■ npm run dev で起動し、ブラウザーで表示を確認する
+起動<br>
+`npm run dev` で起動します。
 
-■ index.html、main.tsx、App.tsx のつながりを追う
+実行の流れ<br>
+HTML から App までの流れを追います。
 
-■ オブジェクトと配列の型を定義する
+データの型<br>
+オブジェクトと配列の型を定義します。
 :::
 
 ::: {#ch01-summary-body .paragraph}

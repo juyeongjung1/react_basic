@@ -312,19 +312,18 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
     columns = slide['attrs'].get('layout') == 'columns'
     items = []
     for row, command, picture in zip(rows, slide['commands'], slide['pictures']):
-        if columns:
+        label = 'none'
+        if columns and not command:
             split = next((i for i, (value, _) in enumerate(row) if value == '\n'), None)
             if split is None:
-                raise ValueError(f'各列の見出しの後に改行を入れてください: {slide_id}')
-            label = inline(row[:split], typography=False)
-            body = inline(row[split+1:], typography=False, keep_lines=True)
-            path = q('/' + (folder / picture).relative_to(ROOT).as_posix()) if picture else 'none'
-            items.append(f'(label: [{label}], body: [{body}], picture: {path})')
-        else:
-            body = inline(row, typography=False, keep_lines=True)
-            items.append(f'(body: [{body}], command: {str(command).lower()})')
+                raise ValueError(f'スライドの項目名の後に改行を入れてください: {slide_id}')
+            label = f'[{inline(row[:split], typography=False)}]'
+            row = row[split+1:]
+        body = inline(typographic_parts(row, keep_lines=True), typography=False, keep_lines=True)
+        path = q('/' + (folder / picture).relative_to(ROOT).as_posix()) if picture else 'none'
+        items.append(f'(label: {label}, body: [{body}], picture: {path}, command: {str(command).lower()})')
     return (f'#markdown-slide({q(heading_id)}, [{heading}], {q(slide_id)}, '
-            f'[{inline(title, typography=False)}], ({",".join(items)},), columns: {str(columns).lower()})')
+            f'[{inline(title, typography=False)}], ({",".join(items)},))')
 
 
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
@@ -337,13 +336,14 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     numbered = figure_numbers(folder, config, layout, nodes, figures, order)
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
+    header_condition = furniture_condition if config.get('running_header', True) else 'false'
     header_ascent = 'header-ascent: 9.56pt,' if any(node['kind'] == 'slide' for node in nodes.values()) else ''
     running_title = next((''.join(run['text'] for run in page['furniture'] if run['bbox'][1] < 80).strip()
                           for page in layout['pages'] if page['entries'] and page['source_page'] not in config.get('native_pages', [])
                           and (not has_cover or page['source_page'] != config['first_page'])
                           and any(run['bbox'][1] < 80 and run['text'].strip() for run in page['furniture'])), '')
     commands = [f'''#set page(width: 595.32pt, height: 841.92pt, margin: (left: 85.104pt, right: 83.664pt, top: 86pt, bottom: 68pt), {header_ascent}
-header: context if {furniture_condition} {{stack(spacing: 3pt, align(center, text(font: "Meiryo UI", size: 9.96pt, {q(running_title)})), line(length: 100%, stroke: 0.48pt))}},
+header: context if {header_condition} {{stack(spacing: 3pt, align(center, text(font: "Meiryo UI", size: 9.96pt, {q(running_title)})), line(length: 100%, stroke: 0.48pt))}},
 footer: context if {furniture_condition} {{align(center, text(font: "Times New Roman", size: 11.04pt, counter(page).display()))}})
 #set text(font: "MS PMincho", size: 11.04pt, lang: "ja", cjk-latin-spacing: none, kerning: false, overhang: false, top-edge: "ascender", bottom-edge: "descender")
 #set par(leading: 6.96pt, spacing: 12.96pt)
@@ -844,7 +844,8 @@ def markdown_layout(config, order):
              furniture=[dict(text=config['title'], bbox=[0, 61])])
         for page in order
     ]
-    return dict(source_sha256=None, styles={}, pages=pages, blocks={}, figures=[], tables={})
+    styles = {'s001': dict(font='MeiryoUI-Bold', size=22, color='#000000', stroke=0)}
+    return dict(source_sha256=None, styles=styles, pages=pages, blocks={}, figures=[], tables={})
 
 
 def build(chapter="01", mode="all", markdown=None, output=None):
