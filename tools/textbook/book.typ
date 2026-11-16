@@ -65,6 +65,51 @@
 ]
 #let slide-header(height, body) = block(width: 100%, height: height * 1pt,
   breakable: false, above: 0pt, below: 0pt)[#body]
+// Vue教材の節頭と同じ4:3の枠、赤橙の帯、本文との間隔で組む。
+#let markdown-slide(heading-id, heading, id, title, items, columns: false) = slide-header(344)[
+  #at(0, 0.8, [#mark(heading-id, "heading")#text(font: "Meiryo UI", size: 14.04pt, weight: "bold", heading)])
+  #at(28.676, 27.78, block(width: 367.75pt, height: 275.19pt,
+    stroke: 0.72pt + black, inset: 0pt)[
+    #set text(font: "Meiryo UI", size: 12pt, fill: rgb("242424"))
+    #show strong: it => text(weight: "bold", it.body)
+    #set par(leading: 3pt, spacing: 0pt, first-line-indent: 0pt)
+    #mark(id, "start")
+    #at(17.62, 8.5, text(size: 11.04pt, weight: "bold", title))
+    #at(3.97, 23.62, rect(width: 359.98pt, height: 1.8pt, stroke: none,
+      fill: gradient.linear(rgb("E9461E"), rgb("FBB45B"))))
+    #at(3.97, 264.57, line(length: 359.98pt, stroke: 0.48pt + rgb("E6571A")))
+    #at(17.62, 34, block(width: 332.51pt, above: 0pt, below: 0pt)[
+      #if columns {
+        let colors = ((rgb("3674A4"), rgb("E4F0F8")), (rgb("418447"), rgb("E8F4EA")),
+          (rgb("AB5B17"), rgb("FFF0DC")), (rgb("A24540"), rgb("F8E9E8")))
+        grid(columns: (1fr,) * items.len(), column-gutter: 5pt,
+          ..items.enumerate().map(((index, item)) => {
+            let (ink, paper) = colors.at(index)
+            block(width: 100%, height: 204pt, fill: paper, stroke: 0.75pt + ink,
+              radius: 4pt, clip: true, inset: 0pt, above: 0pt, below: 0pt)[
+              #block(width: 100%, height: 44pt, inset: 5pt, fill: ink, below: 0pt)[
+                #align(center + horizon, text(size: 12pt, weight: "bold", fill: white, item.label))
+              ]
+              #block(inset: 8pt, above: 0pt)[
+                #if item.picture != none {
+                  align(center, image(item.picture, width: 100%, height: 49pt, fit: "contain"))
+                  v(7pt)
+                }
+                #text(size: 11pt, fill: ink, item.body)
+              ]
+            ]
+          }))
+      } else {
+        stack(spacing: 12pt, ..items.map(item => if item.command {
+          block(width: 100%, inset: (x: 6pt, y: 4pt), fill: rgb("242424"),
+            text(size: 11.04pt, weight: "bold", fill: white, item.body))
+        } else {item.body}))
+      }
+    ])
+    #at(0, 275.19, mark(id, "end"))
+  ])
+  #at(-1.44, 327.95, rect(width: 428.11pt, height: 0.72pt, fill: black, stroke: none))
+]
 #let figure-number(id, number, offset: 0pt) = block(above: 0pt, below: 5pt,
   inset: (left: offset))[
   #set par(first-line-indent: 0pt, leading: 0pt, spacing: 0pt)

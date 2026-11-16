@@ -4,6 +4,18 @@
 
 最初に [見本のMarkdown](docs/textbook/chapters/sample/chapter.md) を生成してください。章扉、本文と小見出し、JSX・TSX、コードの読み方、表、スライドの上下配置、図番号を4ページで確認できます。
 
+## 第1章を Markdown から組版する
+
+[第1章の原稿](docs/textbook/chapters/01/chapter.md) は、節頭スライドも含めて Markdown で編集できます。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/chapter-01/chapter-flow.pdf` を生成します。
+
+```powershell
+.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow
+```
+
+各節の先頭に `.heading`、その直後に `.slide` を置きます。スライドの最初の段落がタイトル、以降の段落が内容です。インラインコードだけの段落は黒いコマンド欄になります。`layout="columns"` のスライドでは、段落ごとにカードを作り、最初の `<br>` でカードの見出しと本文を区切ります。カードには Markdown の画像も1点置けます。
+
+受講者は [第1章の配布サンプル](ch01-setup) を開き、`package.json` があるフォルダで `npm install` と `npm run dev` を実行します。次の章もその章のサンプルフォルダで `npm install` を実行します。
+
 ## 1. 見本を生成する
 
 WindowsでPython 3.12、Pandoc、Node.js 20以上、Microsoft Edgeを使います。Python 3.12、Pandoc 3.9.0.2、Node.js 24で確認しました。フォントはWindowsのMS P明朝、MS Pゴシック、メイリオなどを使います。
@@ -23,15 +35,15 @@ npm.cmd ci --prefix tools/textbook
 ## 2. React教材の原本を取り込む
 
 1. Word原稿と、同じ原稿をWordから書き出したPDFを用意します。Word内の埋め込みスライドとPDF上の座標を対応させるため、同じ版を使います。
-2. `docs/textbook/chapters/01` など、章単位のフォルダーを作ります。[章設定のひな形](docs/textbook/templates/source.json) を `source.json` として置き、`pdf` と `word` を実際のパスに、`first_page` と `last_page` を元PDFの物理ページに合わせます。章扉、奥付、前付など元位置で維持するページは `cover_mode` と `native_pages` で指定します。`cover_mode` は章扉を原本から再現する `native`、見本と同じ章扉を組む `classic`、章扉のない `none` が使えます。
+2. `docs/textbook/chapters/02` など、取り込み先として未使用のフォルダーを作ります。[章設定のひな形](docs/textbook/templates/source.json) を `source.json` として置き、`pdf` と `word` を実際のパスに、`first_page` と `last_page` を元PDFの物理ページに合わせます。章扉、奥付、前付など元位置で維持するページは `cover_mode` と `native_pages` で指定します。`cover_mode` は章扉を原本から再現する `native`、見本と同じ章扉を組む `classic`、章扉のない `none` が使えます。
 3. 図版・表の候補を抽出し、原本を見て切り出し範囲を確認します。スライドと説明の境界、赤枠・吹き出しの端、スライド上の表と本文表の区別を特に確認します。`slide` に埋め込みファイル名がある図は、表示用SVGと編集用の埋め込みファイルが保存されます。
 4. 確認済みの `source.json` から取り込みます。`chapter.md` が編集用原稿、`baseline.md` が取り込み時の原稿、`source-layout.json` と `assets/` が原本から取得した座標・書式・図版です。
 
 ```powershell
-.\.venv\Scripts\python.exe tools/textbook/discover.py --chapter 01
+.\.venv\Scripts\python.exe tools/textbook/discover.py --chapter 02
 # 図版・表の候補を原本と照合して source.json を確定する
-.\.venv\Scripts\python.exe tools/textbook/import_source.py --chapter 01
-.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode all
+.\.venv\Scripts\python.exe tools/textbook/import_source.py --chapter 02
+.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 02 --mode all
 ```
 
 初回の `--mode all` で元位置再現版、原本と並べた比較版、自動組版版が作られます。文章を直した後は `--mode flow` で自動組版版を更新します。取り込みをやり直す場合は別の章フォルダーで試してください。`--force` は編集済み原稿を取り込み結果で上書きします。

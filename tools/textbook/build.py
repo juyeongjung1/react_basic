@@ -91,6 +91,20 @@ def read_markdown(path):
                 attrs, children = block["c"]
                 if not attrs[0] or attrs[0] in nodes or attrs[0] in figures:
                     raise ValueError(f"ブロックIDの欠落または重複: {attrs[0]}")
+                if attrs[1][0] == 'slide':
+                    if len(children) < 2 or any(child['t'] not in ('Para', 'Plain') for child in children):
+                        raise ValueError(f'スライドにはタイトルと本文の段落を指定してください: {attrs[0]}')
+                    rows = [flatten([part for part in child['c'] if part['t'] != 'Image']) for child in children]
+                    pictures = [next((part['c'][2][0] for part in child['c'] if part['t'] == 'Image'), None)
+                                for child in children[1:]]
+                    nodes[attrs[0]] = {
+                        'kind': 'slide', 'rows': rows, 'attrs': dict(attrs[2]), 'pictures': pictures,
+                        'parts': [part for row in rows for part in [*row, ('\n', None)]],
+                        'text': '\n'.join(''.join(value for value, style in row) for row in rows),
+                        'commands': [len(child['c']) == 1 and child['c'][0]['t'] == 'Code' for child in children[1:]],
+                    }
+                    entries.append(attrs[0])
+                    continue
                 parts = []
                 language = None
                 for child in children:
@@ -132,7 +146,8 @@ def style_header(styles):
     for ident, raw in styles.items():
         s = font_style(raw)
         entries.append(f'{ident}: (font: {q(s["font"])}, size: {s["size"]}, weight: {q(s["weight"])}, slant: {q(s["slant"])}, color: {q(s["color"])}, stroke: {s["stroke"]})')
-    return '#let styles = (' + ',\n'.join(entries) + ',)\n' + (HERE / "book.typ").read_text(encoding="utf-8")
+    dictionary = '(' + ',\n'.join(entries) + ',)' if entries else '(:)'
+    return f'#let styles = {dictionary}\n' + (HERE / "book.typ").read_text(encoding="utf-8")
 
 
 def native_runs(runs):
@@ -290,6 +305,28 @@ def pagination_options(config, layout, nodes, figures, order):
     return continuations, pairs, scales
 
 
+def markdown_slide(folder, heading_id, slide_id, nodes):
+    heading = inline(nodes[heading_id]['parts'])
+    slide = nodes[slide_id]
+    title, *rows = slide['rows']
+    columns = slide['attrs'].get('layout') == 'columns'
+    items = []
+    for row, command, picture in zip(rows, slide['commands'], slide['pictures']):
+        if columns:
+            split = next((i for i, (value, _) in enumerate(row) if value == '\n'), None)
+            if split is None:
+                raise ValueError(f'各列の見出しの後に改行を入れてください: {slide_id}')
+            label = inline(row[:split], typography=False)
+            body = inline(row[split+1:], typography=False, keep_lines=True)
+            path = q('/' + (folder / picture).relative_to(ROOT).as_posix()) if picture else 'none'
+            items.append(f'(label: [{label}], body: [{body}], picture: {path})')
+        else:
+            body = inline(row, typography=False, keep_lines=True)
+            items.append(f'(body: [{body}], command: {str(command).lower()})')
+    return (f'#markdown-slide({q(heading_id)}, [{heading}], {q(slide_id)}, '
+            f'[{inline(title, typography=False)}], ({",".join(items)},), columns: {str(columns).lower()})')
+
+
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     page_continuations, paragraph_pairs, figure_scales = pagination_options(config, layout, nodes, figures, order)
     heading_spacing = config.get('typography', {}).get('minor_heading_extra_space', {})
@@ -300,11 +337,12 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     numbered = figure_numbers(folder, config, layout, nodes, figures, order)
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
+    header_ascent = 'header-ascent: 9.56pt,' if any(node['kind'] == 'slide' for node in nodes.values()) else ''
     running_title = next((''.join(run['text'] for run in page['furniture'] if run['bbox'][1] < 80).strip()
                           for page in layout['pages'] if page['entries'] and page['source_page'] not in config.get('native_pages', [])
                           and (not has_cover or page['source_page'] != config['first_page'])
                           and any(run['bbox'][1] < 80 and run['text'].strip() for run in page['furniture'])), '')
-    commands = [f'''#set page(width: 595.32pt, height: 841.92pt, margin: (left: 85.104pt, right: 83.664pt, top: 86pt, bottom: 68pt),
+    commands = [f'''#set page(width: 595.32pt, height: 841.92pt, margin: (left: 85.104pt, right: 83.664pt, top: 86pt, bottom: 68pt), {header_ascent}
 header: context if {furniture_condition} {{stack(spacing: 3pt, align(center, text(font: "Meiryo UI", size: 9.96pt, {q(running_title)})), line(length: 100%, stroke: 0.48pt))}},
 footer: context if {furniture_condition} {{align(center, text(font: "Times New Roman", size: 11.04pt, counter(page).display()))}})
 #set text(font: "MS PMincho", size: 11.04pt, lang: "ja", cjk-latin-spacing: none, kerning: false, overhang: false, top-edge: "ascender", bottom-edge: "descender")
@@ -409,6 +447,13 @@ footer: context if {furniture_condition} {{align(center, text(font: "Times New R
     slide_consumed = set()
     slide_body_first = set()
     for page in order[1:] if has_cover else order:
+        entries = page['entries']
+        if (len(entries) >= 2 and nodes.get(entries[0], {}).get('kind') == 'heading'
+                and nodes.get(entries[1], {}).get('kind') == 'slide'):
+            slide_headers[page['id']] = markdown_slide(folder, entries[0], entries[1], nodes)
+            slide_consumed.update(entries[:2])
+            slide_body_first.update(entries[2:3])
+            continue
         source = next((p for p in layout['pages'] if p['source_page'] == page['source_page']), None)
         slides = [f for f in layout['figures'] if f.get('slide') and f['page'] == page['source_page']]
         if not source or len(slides) != 1 or page['id'] in native_page_map:
@@ -793,6 +838,15 @@ def pdf_image(page, scale=1.5):
     return Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
 
 
+def markdown_layout(config, order):
+    pages = [
+        dict(source_page=page['source_page'], entries=page['entries'], coverage={},
+             furniture=[dict(text=config['title'], bbox=[0, 61])])
+        for page in order
+    ]
+    return dict(source_sha256=None, styles={}, pages=pages, blocks={}, figures=[], tables={})
+
+
 def build(chapter="01", mode="all", markdown=None, output=None):
     folder = ROOT / "docs/textbook/chapters" / chapter
     work = ROOT / "tmp/textbook" / chapter
@@ -807,10 +861,16 @@ def build(chapter="01", mode="all", markdown=None, output=None):
             shutil.copyfile(Path("C:/Windows/Fonts") / name, dest)
     font_paths = [str(font_dir)]
     config = json.loads((folder / "source.json").read_text(encoding="utf-8"))
-    layout = json.loads((folder / "source-layout.json").read_text(encoding="utf-8"))
     explicit_markdown=markdown is not None
     markdown = Path(markdown) if markdown else folder / "chapter.md"
     nodes, figures, order = read_markdown(markdown)
+    layout_path = folder / 'source-layout.json'
+    if layout_path.is_file() or config.get('pdf'):
+        layout = json.loads(layout_path.read_text(encoding='utf-8'))
+    elif mode == 'flow':
+        layout = markdown_layout(config, order)
+    else:
+        raise ValueError('Markdownで新規作成した章は --mode flow で組版してください')
     reference_markdown=folder/'baseline.md' if not explicit_markdown and (folder/'baseline.md').exists() else markdown
     ref_nodes,ref_figures,_=read_markdown(reference_markdown) if reference_markdown!=markdown else (nodes,figures,order)
     expected_ids = set(layout["blocks"]) | set(layout.get('tables',{}))

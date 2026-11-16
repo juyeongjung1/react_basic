@@ -139,6 +139,8 @@ def _paint(shape):
 
 def code_geometries(folder, layout, nodes):
     """code IDをキーに、原本ページ座標の枠・文字・付属要素を返す。"""
+    if not layout["blocks"]:
+        return {}
     folder = Path(folder)
     pages = {}
     for page in layout["pages"]:

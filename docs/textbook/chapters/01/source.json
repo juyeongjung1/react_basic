@@ -1,0 +1,14 @@
+{
+  "title": "第1章 開発環境とTypeScriptの基礎",
+  "chapter": 1,
+  "first_page": 1,
+  "last_page": 11,
+  "cover_mode": "classic",
+  "illustrations": {
+    "ch01-start-screen": {
+      "caption_id": "ch01-start-caption",
+      "width": 330,
+      "max_height": 125
+    }
+  }
+}

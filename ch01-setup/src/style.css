@@ -1,0 +1,48 @@
+:root {
+  font-family: "Inter", system-ui, "Meiryo", sans-serif;
+  background: #f4f7fb;
+  color: #16243a;
+}
+
+body {
+  margin: 0;
+  padding: 3rem 1rem;
+}
+
+main {
+  max-width: 34rem;
+  margin: auto;
+  padding: 1.75rem;
+  border: 1px solid #d5dfed;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+p {
+  color: #46576e;
+}
+
+dl {
+  margin: 1.5rem 0 0;
+}
+
+dl > div {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid #d5dfed;
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin: 0;
+}
