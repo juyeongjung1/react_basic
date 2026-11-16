@@ -2,7 +2,7 @@
   "title": "はじめに",
   "chapter": "front",
   "first_page": 1,
-  "last_page": 4,
-  "cover_mode": "none",
-  "running_header": false
+  "last_page": 6,
+  "cover_mode": "introduction",
+  "no_running_header_pages": [6]
 }

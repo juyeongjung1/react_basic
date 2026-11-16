@@ -65,22 +65,29 @@
 ]
 #let slide-header(height, body) = block(width: 100%, height: height * 1pt,
   breakable: false, above: 0pt, below: 0pt)[#body]
-// 節頭スライドは見出しと項目名の位置をそろえ、上から順に読めるようにする。
-#let markdown-slide(heading-id, heading, id, title, items) = slide-header(344)[
-  #at(0, 0.8, [#mark(heading-id, "heading")#text(font: "Meiryo UI", size: 14.04pt, weight: "bold", heading)])
-  #at(28.676, 27.78, block(width: 367.75pt, height: 275.19pt,
-    fill: white, stroke: 0.75pt + rgb("CCDDE2"), radius: 7pt, clip: true, inset: 0pt)[
+// トレノケートの共通枠は『Spring Boot 入門』講義テキスト17頁の座標と図版を使用する。
+#let markdown-slide(heading-id, heading, id, title, items, heading-size: 14.04pt,
+  body-top: 344) = slide-header(body-top)[
+  #at(0, 15.06, [
+    #mark(heading-id, "heading")
+    #text(font: "Meiryo UI", size: heading-size, weight: "bold", top-edge: 0pt, bottom-edge: 0pt, heading)
+  ])
+  #at(27.956, 29.82, block(width: 369.2pt, height: 275.19pt, inset: 0pt)[
     #let ink = rgb("172D42")
     #let accent = rgb("006974")
     #set text(font: "Meiryo UI", size: 11.5pt, fill: ink)
     #show strong: it => text(weight: "bold", it.body)
     #set par(leading: 3pt, spacing: 0pt, first-line-indent: 0pt)
     #mark(id, "start")
-    #at(0, 0, block(width: 367.75pt, height: 47pt, fill: ink, inset: (x: 17pt))[
-      #align(left + horizon, text(size: 16pt, weight: "bold", fill: white, title))
-    ])
-    #at(0, 44, rect(width: 367.75pt, height: 3pt, stroke: none, fill: rgb("36B1AB")))
-    #at(15, 62, block(width: 337.75pt, above: 0pt, below: 0pt)[
+    #at(0.36, 0.36, rect(width: 368.48pt, height: 274.47pt, fill: white, stroke: 0.72pt + black))
+    #at(18.35, 19.11, text(size: 11.04pt, weight: "bold", fill: black,
+      top-edge: 0pt, bottom-edge: 0pt, title))
+    #at(345.07, 4.387, image("/tools/textbook/assets/trainocate-slide-logo.png",
+      width: 18.111pt, height: 18.111pt))
+    #at(4.685, 23.849, image("/tools/textbook/assets/trainocate-slide-header-rule.png",
+      width: 359.989pt, height: 1.8pt, fit: "stretch"))
+    #at(4.685, 264.83, line(length: 359.989pt, stroke: 0.25pt + rgb(90.2%, 34.1%, 10.2%)))
+    #at(15.725, 31, block(width: 337.75pt, above: 0pt, below: 0pt)[
       #let rows = stack(spacing: 7pt, ..items.map(item => {
         if item.command {
           block(width: 100%, inset: (x: 10pt, y: 6pt), radius: 3pt, fill: ink)[
@@ -100,14 +107,14 @@
         }
       }))
       #context {
-        assert(measure(rows, width: 337.75pt).height <= 200pt,
+        assert(measure(rows, width: 337.75pt).height <= 224pt,
           message: "スライド本文が枠に収まりません: " + id)
         rows
       }
     ])
     #at(0, 275.19, mark(id, "end"))
   ])
-  #at(-1.44, 327.95, rect(width: 428.11pt, height: 0.72pt, fill: black, stroke: none))
+  #at(-1.44, 329.99, rect(width: 428.11pt, height: 0.72pt, fill: black, stroke: none))
 ]
 #let figure-number(id, number, offset: 0pt) = block(above: 0pt, below: 5pt,
   inset: (left: offset))[
@@ -211,6 +218,19 @@
 #let cover(number, title, goal_title, goals) = at(-85.104, -86,
   box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals)])
 #let native-cover(body) = at(-85.104, -86, box(width: 595.32pt, height: 841.92pt)[#body])
+#let introduction-cover(title) = native-cover[
+  #at(461.38, 0.12, rect(width: 132.26pt, height: 127.7pt, stroke: none, fill: rgb(91.4%, 29.4%, 13.3%)))
+  #at(257.93, 322.37, text(font: "Meiryo UI", weight: "bold", size: 24pt,
+    top-edge: 0pt, bottom-edge: 0pt, title))
+  #at(83.664, 340.01, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
+]
+#let contents-heading(id, body) = block(height: 80pt, above: 0pt, below: 10pt)[
+  #at(168.626, 48.3, [
+    #mark(id, "heading")
+    #text(font: "Meiryo UI", weight: "bold", size: 24pt, tracking: 19.92pt,
+      top-edge: 0pt, bottom-edge: 0pt, body)
+  ])
+]
 #let table-panel(id, rows, widths, has_header, paint: none, width: auto, offset: 0pt,
   source-widths: none, source-heights: none, font-size: none, leading: 4pt, inset: 3pt) = block(
   width: 100%, inset: (left: offset), above: 8pt, below: 12pt, breakable: true)[#layout(size => {

@@ -12,7 +12,9 @@
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow
 ```
 
-節頭スライドも Markdown で編集できます。各節の先頭に `.heading`、その直後に `.slide` を置きます。最初の段落がスライドのタイトルです。`layout="columns"` では、以降の段落を上から並べ、最初の `<br>` で項目名と説明を分けます。説明に画像を1点置けます。インラインコードだけの段落はコマンド欄になります。
+前付は『Spring Boot 入門』講義テキスト（JAC0177G-T1-04）の7・9〜12ページの書式に合わせています。目次は前付原稿の末尾に追記できます。
+
+各節の先頭に `.heading`、その直後に `.slide` を置きます。最初の段落がスライドのタイトルです。ロゴ、外枠、上下の罫線は同テキスト17ページの共通書式に固定しています。ロゴと上罫線は原本に埋め込まれた画像です。`layout="columns"` では、上下の罫線の間に段落を上から並べ、最初の `<br>` で項目名と説明を分けます。説明に画像を1点置けます。インラインコードだけの段落はコマンド欄になります。
 
 第1章だけを確認するときは、`.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow` で組版できます。
 

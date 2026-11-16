@@ -322,8 +322,9 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
         body = inline(typographic_parts(row, keep_lines=True), typography=False, keep_lines=True)
         path = q('/' + (folder / picture).relative_to(ROOT).as_posix()) if picture else 'none'
         items.append(f'(label: {label}, body: [{body}], picture: {path}, command: {str(command).lower()})')
+    front_options = ', heading-size: 15.96pt, body-top: 352.31' if folder.name == 'front' else ''
     return (f'#markdown-slide({q(heading_id)}, [{heading}], {q(slide_id)}, '
-            f'[{inline(title, typography=False)}], ({",".join(items)},))')
+            f'[{inline(title, typography=False)}], ({",".join(items)},){front_options})')
 
 
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
@@ -337,7 +338,10 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
     header_condition = furniture_condition if config.get('running_header', True) else 'false'
-    header_ascent = 'header-ascent: 9.56pt,' if any(node['kind'] == 'slide' for node in nodes.values()) else ''
+    if headerless := config.get('no_running_header_pages'):
+        header_condition += ' and not (' + ','.join(str(page) for page in headerless) + ',).contains(here().page())'
+    header_ascent = ('header-ascent: 9.56pt,' if folder.name != 'front'
+                     and any(node['kind'] == 'slide' for node in nodes.values()) else '')
     running_title = next((''.join(run['text'] for run in page['furniture'] if run['bbox'][1] < 80).strip()
                           for page in layout['pages'] if page['entries'] and page['source_page'] not in config.get('native_pages', [])
                           and (not has_cover or page['source_page'] != config['first_page'])
@@ -357,6 +361,8 @@ footer: context if {furniture_condition} {{align(center, text(font: "Times New R
         goal_title = next(value for _, value in cover_nodes if "目標" in value)
         goals = [value.lstrip("◼■ ") for _, value in cover_nodes if value.startswith("◼")]
         commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},))', '#pagebreak()']
+    elif config.get('cover_mode') == 'introduction':
+        commands += [f'#introduction-cover({q(cover_nodes[0][1])})', '#pagebreak()']
     elif has_cover:
         p=layout['pages'][0]
         body=[f'#at(0,0,image({q("/"+(folder/p["decoration"]).relative_to(ROOT).as_posix())},width:595.32pt,height:841.92pt))']
@@ -684,7 +690,8 @@ footer: context if {furniture_condition} {{align(center, text(font: "Times New R
         if node["kind"] == "code":
             values = ",".join(q(l) for l in node["text"].split("\n"))
             return f'#code-panel({q(ident)}, ({values},), {q(node["language"])})'
-        method = {"heading": "section-heading", "step": "step", "paragraph": "paragraph"}.get(node["kind"])
+        method = {"heading": "section-heading", "contents-heading": "contents-heading",
+                  "step": "step", "paragraph": "paragraph"}.get(node["kind"])
         if method is None:
             raise ValueError(f'未対応のブロック種類: {node["kind"]}')
         options = ', above: 0pt' if method == 'section-heading' and ident in slide_body_first else ''
@@ -844,7 +851,7 @@ def markdown_layout(config, order):
              furniture=[dict(text=config['title'], bbox=[0, 61])])
         for page in order
     ]
-    styles = {'s001': dict(font='MeiryoUI-Bold', size=22, color='#000000', stroke=0)}
+    styles = {'s001': dict(font='MeiryoUI-Bold', size=15.96, color='#000000', stroke=0)}
     return dict(source_sha256=None, styles=styles, pages=pages, blocks={}, figures=[], tables={})
 
 
