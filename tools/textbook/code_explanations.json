@@ -1,0 +1,41 @@
+[
+  {
+    "chapter": "sample",
+    "anchor_id": "sample-explanation",
+    "consume_ids": [
+      "sample-explanation"
+    ],
+    "owner_code_ids": [
+      "sample-jsx"
+    ],
+    "source_texts": {
+      "sample-explanation": "コンポーネントは見出し要素を返します。"
+    },
+    "rows": [
+      {
+        "line_label": "3行目",
+        "code": "  return <h1>こんにちは</h1>;",
+        "meaning": "コンポーネントは見出し要素を返します。",
+        "source_ids": [
+          "sample-explanation"
+        ],
+        "code_line_sources": [
+          {
+            "code_id": "sample-jsx",
+            "line_number": 3,
+            "text": "  return <h1>こんにちは</h1>;"
+          }
+        ],
+        "source_fragments": [
+          {
+            "source_id": "sample-explanation",
+            "start": 0,
+            "end": 19,
+            "role": "meaning",
+            "text": "コンポーネントは見出し要素を返します。"
+          }
+        ]
+      }
+    ]
+  }
+]

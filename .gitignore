@@ -1,0 +1,5 @@
+/.venv/
+/tmp/
+/tools/textbook/node_modules/
+/output/html/textbook/sample.html
+/output/pdf/textbook/chapter-sample/

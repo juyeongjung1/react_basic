@@ -1,0 +1,21 @@
+{
+  "textbook": {
+    "title": "React入門",
+    "pdf": "source/react_basic.pdf",
+    "toc_pages": [
+      3,
+      4
+    ],
+    "parts": [
+      "front",
+      "01",
+      "02",
+      "appendix-b"
+    ],
+    "index": "docs/textbook/index.md",
+    "print_layout": {
+      "introduction": "front:__native-page-7",
+      "colophon": "appendix-b:__native-page-100"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "source_sha256": null,
+  "styles": {
+    "s002": {
+      "font": "MeiryoUI-Bold",
+      "size": 18,
+      "color": "#000000",
+      "flags": 16,
+      "stroke": 0
+    },
+    "s003": {
+      "font": "MS-PGothic",
+      "size": 12,
+      "color": "#000000",
+      "flags": 0,
+      "stroke": 0
+    }
+  },
+  "pages": [
+    {
+      "source_page": 1,
+      "decoration": "assets/blank-decoration.svg",
+      "furniture": [],
+      "entries": [
+        "sample-chapter-number",
+        "sample-chapter-title",
+        "sample-goals-title",
+        "sample-goal"
+      ],
+      "coverage": {}
+    },
+    {
+      "source_page": 2,
+      "decoration": "assets/blank-decoration.svg",
+      "furniture": [
+        {
+          "text": "第1章 組版見本",
+          "bbox": [
+            232,
+            40,
+            365,
+            56
+          ]
+        }
+      ],
+      "entries": [
+        "sample-section",
+        "sample-intro",
+        "sample-minor-heading",
+        "sample-jsx",
+        "sample-explanation",
+        "sample-table"
+      ],
+      "coverage": {}
+    },
+    {
+      "source_page": 3,
+      "decoration": "assets/slide-decoration.svg",
+      "furniture": [
+        {
+          "text": "第1章 組版見本",
+          "bbox": [
+            232,
+            40,
+            365,
+            56
+          ]
+        }
+      ],
+      "entries": [
+        "sample-slide",
+        "sample-slide-body",
+        "sample-bullet",
+        "sample-link"
+      ],
+      "coverage": {}
+    },
+    {
+      "source_page": 4,
+      "decoration": "assets/blank-decoration.svg",
+      "furniture": [
+        {
+          "text": "第1章 組版見本",
+          "bbox": [
+            232,
+            40,
+            365,
+            56
+          ]
+        }
+      ],
+      "entries": [
+        "sample-next-section",
+        "sample-tsx",
+        "sample-diagram",
+        "sample-diagram-body"
+      ],
+      "coverage": {}
+    }
+  ],
+  "blocks": {
+    "sample-slide-body": {
+      "source_page": 3,
+      "role": "paragraph",
+      "lines": [
+        {
+          "text": "スライドの下の罫線に続けて、説明を配置します。図版の位置を固定し、説明はMarkdownから組版します。",
+          "x": 85.104,
+          "runs": [
+            {
+              "bbox": [
+                85.104,
+                429,
+                495,
+                447
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "figures": [
+    {
+      "id": "sample-slide",
+      "page": 3,
+      "box": [
+        113.78,
+        115.82,
+        481.53,
+        391.01
+      ],
+      "slide": true,
+      "path": "assets/slide.svg"
+    },
+    {
+      "id": "sample-diagram",
+      "page": 4,
+      "box": [
+        85.104,
+        0,
+        345.104,
+        70
+      ],
+      "path": "assets/diagram.svg"
+    }
+  ],
+  "tables": {}
+}

@@ -1,0 +1,297 @@
+/* HTMLプレビューと印刷PDFで共通の教材カード。 */
+@page { margin: 0; }
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #202833;
+  font: 10.5pt/1.5 "MS PGothic", "Meiryo", sans-serif;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.card {
+  width: 100%;
+  margin: 0;
+  border: 0.6pt solid #d7dde5;
+  border-radius: 6pt;
+  background: #fff;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 6pt;
+  padding: 8pt 10pt;
+  border-bottom: 0.6pt solid #d7dde5;
+  background: #f2f5f8;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.card-header .badge,
+.card-header .language-badge {
+  flex: 0 1 auto;
+  max-width: 40%;
+  padding: 2pt 5pt;
+  border: 0.6pt solid #d7dde5;
+  border-radius: 3pt;
+  background: #fff;
+  color: #374151;
+  font-size: 9.5pt;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.card-header .filename {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 2pt;
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: right;
+  color: #123d68;
+  font-family: "Meiryo", sans-serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.card-header .file-item {
+  min-width: 0;
+  max-width: 100%;
+  padding: 1pt 4pt;
+  border: 0.6pt solid #adc5dd;
+  border-radius: 3pt;
+  background: #e8f1fb;
+  text-decoration: underline;
+  text-decoration-thickness: 0.8pt;
+  text-underline-offset: 1.5pt;
+}
+
+.card-header .continuation {
+  flex: 0 0 auto;
+  color: #4b5563;
+  font-size: 9.5pt;
+  font-weight: 700;
+}
+
+.continuation:empty,
+.card-footer:empty {
+  display: none;
+}
+
+.card-content {
+  min-width: 0;
+  padding: 8pt 10pt;
+}
+
+.code-card .card-content {
+  padding: 6pt 0;
+}
+
+.code-row {
+  display: grid;
+  grid-template-columns: 34pt minmax(0, 1fr);
+  align-items: start;
+  break-inside: avoid;
+}
+
+.line-number {
+  padding: 0 7pt 0 4pt;
+  border-right: 0.6pt solid #e5e9ef;
+  color: #6b7280;
+  font: 9.5pt/15.5pt Consolas, "MS Gothic", monospace;
+  text-align: right;
+  white-space: nowrap;
+}
+
+pre.source-code {
+  min-width: 0;
+  margin: 0;
+  padding: 0 9pt;
+  color: #202833;
+  font: 10.5pt/15.5pt Consolas, "MS Gothic", monospace;
+  tab-size: 4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.source-code .keyword { color: #6333a6; font-weight: 700; }
+.source-code .string { color: #a33124; }
+.source-code .number { color: #18568b; }
+.source-code .type { color: #176a69; }
+.source-code .function { color: #245b9d; }
+.source-code .annotation { color: #c62828; font-weight: 700; }
+.source-code .element { color: #165dce; }
+.source-code .thymeleaf { color: #7c3aed; font-weight: 700; }
+.source-code .operator,
+.source-code .punctuation { color: #374151; }
+
+.code-card .comment,
+.code-card .comment *,
+.explanation-card .comment,
+.explanation-card .comment * {
+  color: #008000 !important;
+  opacity: 1 !important;
+  font-style: normal !important;
+}
+
+.table-card .card-content,
+.explanation-card .card-content {
+  padding: 0;
+}
+
+.table-card {
+  border: 0;
+  border-radius: 0;
+  padding: 0 0.75pt 0.75pt 0;
+  overflow: visible;
+}
+
+.table-card table {
+  width: 100%;
+  border: 0.9pt solid #879baf;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 10.5pt;
+  line-height: 1.5;
+}
+
+.table-card thead { display: table-header-group; }
+.table-card tbody { display: table-row-group; }
+.table-card tr { break-inside: avoid; }
+
+.table-card th,
+.table-card td {
+  padding: 6pt 6pt;
+  border: 0.6pt solid #bcc8d5;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.table-card th {
+  border-bottom: 1.2pt solid #a9bacb;
+  background: #eaf0f6;
+  color: #334155;
+  font-family: "Meiryo", sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table-card tr > :first-child { border-left-color: #879baf; }
+.table-card tr > :last-child { border-right-color: #879baf; }
+.table-card thead tr:first-child > *,
+.table-card table > colgroup + tbody > tr:first-child > * { border-top-color: #879baf; }
+.table-card tbody tr:last-child > * { border-bottom-color: #879baf; }
+
+.table-card table { font-size: 9.5pt; }
+
+.table-card tbody tr:nth-child(odd) { background: #fff; }
+.table-card tbody tr:nth-child(even) { background: #f7f9fc; }
+
+.comparison-table table { font-size: 10pt; line-height: 1.6; }
+.comparison-table td { padding: 7pt 6pt; }
+.comparison-table tbody td:first-child { background: #f1f5f9; }
+.comparison-table .table-term { white-space: nowrap; }
+.property-table td:first-child { color: #174b70; }
+
+.explanation-card {
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.explanation-card > .card-header {
+  padding: 0 0 7pt;
+  border-bottom: 0;
+  background: #fff;
+}
+
+.explanation-item { margin: 0 0 12pt; }
+.explanation-item:last-child { margin-bottom: 0; }
+
+.explanation-code {
+  margin-bottom: 6pt;
+  border: 0.6pt solid #d7dde5;
+  border-radius: 4pt;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.explanation-code .line-label {
+  padding: 4pt 8pt;
+  border-bottom: 0.6pt solid #e5e9ef;
+  color: #374151;
+  font: 700 9.5pt/1.4 "Meiryo", sans-serif;
+}
+
+.explanation-code pre.source-code { padding: 5pt 8pt; }
+
+.explanation-paragraph {
+  margin: 0 0 6pt;
+  font: 11.04pt/18pt "MS PMincho", serif;
+  text-indent: 1em;
+  overflow-wrap: anywhere;
+}
+
+.explanation-paragraph:last-child { margin-bottom: 0; }
+.explanation-prose-line { margin: 0; text-indent: 0; }
+.explanation-prose-line.paragraph-start { text-indent: 1em; }
+.explanation-prose-line br { display: none; }
+
+/* 通常本文と同じ1字下げ。引数の折返しは値の位置、注記は行頭へそろえる。 */
+.explanation-argument-paragraph { padding-left: 6em; text-indent: -5em; }
+.explanation-argument-paragraph .explanation-prose-line.paragraph-start { text-indent: -5em; }
+.explanation-note-paragraph,
+.explanation-note-paragraph .explanation-prose-line.paragraph-start { text-indent: 0; }
+
+.card td p,
+.card th p {
+  margin: 0 0 5pt;
+}
+
+.card td p:last-child,
+.card th p:last-child { margin-bottom: 0; }
+
+/* プレビューの強調もPDFと同様に、字送りを保った輪郭線で表す。 */
+@media screen {
+  .prose-emphasis { -webkit-text-stroke: 0.02857em currentColor; }
+}
+.card-footer {
+  padding: 7pt 10pt;
+  border-top: 0.6pt solid #d7dde5;
+  background: #fff;
+  color: #374151;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.code-figure {
+  width: max-content;
+  max-width: 100%;
+  margin: 5pt 0 0;
+  border: 0.6pt solid #c5cdd7;
+  background: #fff;
+}
+
+.code-figure-label { padding: 3pt 5pt; font-weight: 700; }
+.code-figure img { display: block; max-width: 100%; }
+
+@media print {
+  .card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
