@@ -45,8 +45,8 @@ React<br>
 2013年に公開<br>データに応じて表示を更新
 :::
 
-::: {#ch01-spa-react .heading}
-**動的な画面更新の必要性と課題**
+::: {#ch01-spa-react .heading level="minor"}
+動的な画面更新の必要性と課題
 :::
 
 ::: {#ch01-spa-body .paragraph}
@@ -76,11 +76,11 @@ Web アプリケーションでは、操作や通信の結果に応じて画面�
 :::: {#page-3 .source-page}
 
 ::: {#ch01-spa-behavior .paragraph}
-14ページの7〜9行目では、画面の要素を取得してクリック処理を登録します。10・11行目で値と表示を更新します。更新箇所が増えるほど、処理と表示の対応を追いにくくなります。
+DOM を直接操作する箇所が増えるほど、処理と表示の対応を追いにくくなります。
 :::
 
-::: {#ch01-spa-frameworks-title .heading}
-**フロントエンドフレームワークの登場**
+::: {#ch01-spa-frameworks-title .heading level="minor"}
+フロントエンドフレームワークの登場
 :::
 
 ::: {#ch01-spa-frameworks-body .paragraph}
@@ -122,8 +122,8 @@ export default function Counter() {
 14ページの `textContent` への代入にあたる表示の更新は、React が行います。
 :::
 
-::: {#ch01-react-history-title .heading}
-**Reactの歴史と進化**
+::: {#ch01-react-history-title .heading level="minor"}
+Reactの歴史と進化
 :::
 
 ::: {#ch01-react-history-release .paragraph}
@@ -155,8 +155,8 @@ Node.js・npm<br>
 バージョンを<br>ターミナルで確認する
 :::
 
-::: {#ch01-tools-body-title .heading}
-**React の環境構築のための準備**
+::: {#ch01-tools-body-title .heading level="minor"}
+React の環境構築のための準備
 :::
 
 ::: {#ch01-tools-body .paragraph}
@@ -328,8 +328,8 @@ VS Code に組み込まれた JavaScript と TypeScript の言語機能
 
 :::: {#page-9 .source-page}
 
-::: {#ch01-terminal-title .heading}
-**Node.js と npm のバージョンを確認する**
+::: {#ch01-terminal-title .heading level="minor"}
+Node.js と npm のバージョンを確認する
 :::
 
 ::: {#ch01-terminal-prompt .paragraph numbered="true"}
@@ -378,8 +378,8 @@ Vite でプロジェクトを作成
 公開用のファイルを<br>まとめる
 :::
 
-::: {#ch01-vite-definition .heading}
-**Vite とは**
+::: {#ch01-vite-definition .heading level="minor"}
+Vite とは
 :::
 
 ::: {#ch01-vite-course .paragraph}
@@ -412,8 +412,8 @@ npm create vite@8.0.0 . -- --template react-ts
 
 :::: {#page-11 .source-page}
 
-::: {#ch01-vite-prompts-title .heading}
-**作成時に表示されるメッセージを確認する**
+::: {#ch01-vite-prompts-title .heading level="minor"}
+作成時に表示されるメッセージを確認する
 :::
 
 ::: {#ch01-vite-pin .paragraph}
@@ -519,8 +519,8 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 取得したライブラリが<br>ここに入る
 :::
 
-::: {#ch01-install-body-title .heading}
-**配布サンプルの依存ライブラリをインストールする**
+::: {#ch01-install-body-title .heading level="minor"}
+配布サンプルの依存ライブラリをインストールする
 :::
 
 ::: {#ch01-install-body .paragraph}
@@ -562,8 +562,8 @@ NPM スクリプト<br>
 URL を開いて<br>商品管理画面を表示する
 :::
 
-::: {#ch01-start-intro-title .heading}
-**React のサンプルを手元の PC で起動する**
+::: {#ch01-start-intro-title .heading level="minor"}
+React のサンプルを手元の PC で起動する
 :::
 
 ::: {#ch01-start-intro .paragraph}
@@ -621,31 +621,40 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 :::: {#page-16 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
-**【作業手順③】　初期表示と保存後の反映を確認する**
+**【作業手順③】　商品データを変更して表示を確認する**
 :::
 
 ::: {#ch01-start-verify .paragraph numbered="true"}
 1．ブラウザーに「商品管理システム」と表示され、商品名が「ノート」、価格が「250 円」であることを確認します。
 :::
 
-![Reactのサンプルをブラウザーで起動した画面](assets/start-screen.png){#ch01-start-screen}
-
-::: {#ch01-start-caption .paragraph}
-ブラウザーに表示された商品管理システムの初期画面
-:::
-
 ::: {#ch01-start-edit .paragraph numbered="true"}
-2．VS Code のエクスプローラーで［src］を展開し、［App.tsx］を開きます。`<h1>` と `</h1>` の間の文字を「商品管理システム（確認）」に変更し、［Ctrl］＋［S］で保存します。
+2．VS Code のエクスプローラーで［src］を展開し、［product.ts］を開きます。商品名を表す **`name`** の値を `'ノート'` から `'ノート１'` に変更し、［Ctrl］＋［S］で保存します。
 :::
 
-![VS CodeでApp.tsxの見出しを変更した画面](assets/vscode-app-edit.png){#ch01-start-edit-screen}
-
-::: {#ch01-start-edit-caption .paragraph}
-編集するのは `<h1>` と `</h1>` で囲まれた見出しの文字列
+::: {#ch01-product-update-code .code filename="ch01-setup/src/product.ts"}
+```typescript
+export const product = {
+  id: 1,
+  name: 'ノート１',
+  price: 250,
+  category: '文具',
+}
+```
 :::
 
 ::: {#ch01-start-check .paragraph numbered="true"}
-3．Vite の開発サーバーは、ファイルの保存を検知するとブラウザーの表示を更新します。ブラウザーに戻り、見出しが変わったことを確かめます。確認後、元の見出しに戻して保存します。
+3．ブラウザーに戻り、「商品名」が **「ノート１」** に変わったことを確認します。Vite の開発サーバーは保存を検知し、ブラウザーに変更を反映します。
+:::
+
+![変更した商品データが商品名欄に反映されたブラウザー画面](assets/product-data-updated.png){#ch01-product-update-screen}
+
+::: {#ch01-product-update-caption .paragraph}
+商品名の欄に、変更後の「ノート１」が表示された画面
+:::
+
+::: {#ch01-product-update-restore .paragraph}
+React の画面を組み立てる `App.tsx` は、`product.name` を読み取って「商品名」の欄に表示します。確認後は、`product.ts` の `name` を `'ノート'` に戻して保存します。
 :::
 
 ::: {#ch01-start-stop .paragraph numbered="true"}
@@ -673,8 +682,8 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 `product.ts` のデータを<br>画面に表示する
 :::
 
-::: {#ch01-index-title .heading}
-**ブラウザーが最初に読み込む index.html**
+::: {#ch01-index-title .heading level="minor"}
+ブラウザーが最初に読み込む index.html
 :::
 
 ::: {#ch01-index-body .paragraph}
@@ -702,8 +711,8 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 :::: {#page-18 .source-page}
 
-::: {#ch01-main-title .heading}
-**画面の表示を始める main.tsx**
+::: {#ch01-main-title .heading level="minor"}
+画面の表示を始める main.tsx
 :::
 
 ::: {#ch01-main-body .paragraph}
@@ -723,8 +732,8 @@ if (root) {
 ```
 :::
 
-::: {#ch01-product-title .heading}
-**商品1件のデータを用意する product.ts**
+::: {#ch01-product-title .heading level="minor"}
+商品1件のデータを用意する product.ts
 :::
 
 ::: {#ch01-product-body .paragraph}
@@ -746,8 +755,8 @@ export const product = {
 
 :::: {#page-19 .source-page}
 
-::: {#ch01-app-title .heading}
-**商品管理の画面を組み立てる App.tsx**
+::: {#ch01-app-title .heading level="minor"}
+商品管理の画面を組み立てる App.tsx
 :::
 
 ::: {#ch01-app-body .paragraph}

@@ -357,6 +357,9 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
         heading_spacing = dict.fromkeys(heading_spacing, 18)
     if any(ident not in nodes or nodes[ident]['kind'] != 'heading' for ident in heading_spacing):
         raise ValueError('小小見出しの余白指定に対応する見出しがありません')
+    minor_headings = {ident for ident, node in nodes.items()
+                      if node['kind'] == 'heading' and node['attrs'].get('level') == 'minor'}
+    heading_spacing = {**heading_spacing, **dict.fromkeys(minor_headings, 26 - 18)}
     numbered = figure_numbers(folder, config, layout, nodes, figures, order)
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
@@ -773,6 +776,8 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         options = ', above: 0pt' if method == 'section-heading' and ident in slide_body_first else ''
         if ident in heading_spacing and ident not in slide_body_first:
             options = f', above: {18 + heading_spacing[ident]}pt'
+        if ident in minor_headings:
+            options += ', minor: true'
         # 見出しに分類された説明文の続き（句点終わり）は、原本の通常書体を保つ。
         heading = node['kind'] == 'heading' and not node['text'].rstrip().endswith('。')
         return f'#{method}({q(ident)}, [{inline(node["parts"], heading=heading)}]{options})'

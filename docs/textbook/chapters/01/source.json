@@ -4,12 +4,6 @@
   "first_page": 1,
   "last_page": 20,
   "cover_mode": "classic",
-  "typography": {
-    "minor_heading_extra_space": {
-      "ch01-spa-frameworks-title": -5,
-      "ch01-react-history-title": -5
-    }
-  },
   "illustrations": {
     "ch01-folder-files": {
       "caption_id": "ch01-folder-files-caption",
@@ -75,17 +69,11 @@
       "max_height": 82,
       "highlights": [[0.017, 0.665, 0.928, 0.301]]
     },
-    "ch01-start-screen": {
-      "caption_id": "ch01-start-caption",
+    "ch01-product-update-screen": {
+      "caption_id": "ch01-product-update-caption",
       "width": 369,
-      "max_height": 184
-    },
-    "ch01-start-edit-screen": {
-      "caption_id": "ch01-start-edit-caption",
-      "file_path": "ch01-setup/src/App.tsx",
-      "width": 355,
-      "max_height": 155,
-      "highlights": [[0.330, 0.778, 0.425, 0.110]]
+      "max_height": 184,
+      "highlights": [[0.2282, 0.4695, 0.0902, 0.0970]]
     }
   }
 }

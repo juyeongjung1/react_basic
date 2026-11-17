@@ -44,8 +44,9 @@
   above: 0pt, below: if continuing {6.96pt} else {12.96pt}, inset: (left: 29.04pt))[
   #mark(id, "start")#body#mark(id, "end")
 ]
-#let section-heading(id, body, above: 18pt) = block(sticky: true, above: above, below: 12pt)[
-  #mark(id, "heading")#body
+#let section-heading(id, body, above: 18pt, minor: false) = block(sticky: true, above: above, below: 12pt)[
+  #mark(id, "heading")
+  #if minor {text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 12pt / 35, body)} else {body}
 ]
 #let step(id, body) = block(sticky: true, above: 8pt, below: 6pt)[
   #mark(id, "heading")#body

@@ -59,7 +59,8 @@ npm.cmd ci --prefix tools/textbook
 | 要素 | 指定と確認 |
 | --- | --- |
 | 本文・強調 | `.paragraph`。通常段落の一字下げは組版側で行います。部分強調は `**太字**`。出典から引き継いだ `.sNNN` は `source-layout.json` の書式を参照します。 |
-| 見出し | `.heading`。見本では節見出しと12ptの小小見出しを別の書式にしています。操作のまとまりが1つの節では、操作名をそのまま見出しにします。元の章・節の開始位置と、次の段落との間隔を比較します。 |
+| 見出し | `.heading`。操作のまとまりが1つの節では、操作名をそのまま見出しにします。元の章・節の開始位置と、次の段落との間隔を比較します。 |
+| 小小見出し | `.heading level="minor"`。Wordと同じMS Pゴシックの12pt・太字で組み、前の段落の下に26ptの余白を取ります。 |
 | コード | `.code filename="ch01-setup/src/App.tsx"` の中に言語付きコードフェンス。JavaScript・JSX・TypeScript・TSX、HTML・CSSなどに対応します。行番号とコメント色を確認し、右上には `react_basic` を起点にした相対パスを表示します。 |
 | コードの読み方 | `tools/textbook/code_explanations.json` に見本の1件があります。対象コードIDと行番号、元の説明段落IDを対応させます。`source_texts` は原稿と同じ文字列、`source_fragments` の `start`・`end` はその文字列中の範囲です。 |
 | 表 | `.table` の中にMarkdownのパイプ表。見出しは中央、データは左に置き、短い表は内容に合わせて幅を絞ります。元の色と強調、外周線とセル罫線をPDFで確認します。 |
