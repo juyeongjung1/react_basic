@@ -156,6 +156,8 @@
           #text(size: 9.8pt, item.body)
         ]))
       ])
+    } else if layout == "illustration" {
+      at(8.8, 32, image(items.first().picture, width: 351.6pt, height: 224pt, fit: "contain"))
     } else if layout == "course-path" {
       at(0, 0, vue-course-path(items))
     } else if vue {

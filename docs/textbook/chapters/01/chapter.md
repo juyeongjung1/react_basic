@@ -29,72 +29,122 @@
 :::: {#page-2 .source-page}
 
 ::: {#ch01-spa-title .heading}
-1.1. React と SPA
+1.1. ReactとSPA
 :::
 
-::: {#ch01-spa-slide .slide layout="diagram" art="assets/slide-react-spa.png"}
-React と SPA
+::: {#ch01-spa-slide .slide layout="illustration"}
+ReactとSPA
 
-JavaScript<br>
-1995年に登場<br>操作や入力に反応する
-
-Ajax<br>
-2000年代に普及<br>ページを開いたまま通信
-
-React<br>
-2013年に公開<br>データに応じて表示を更新
+![同じ数量追加操作を行うJavaScriptとReactの比較](assets/slide-react-spa.png)
 :::
 
-::: {#ch01-spa-react .heading level="minor"}
-動的な画面更新の必要性と課題
+::: {#ch01-spa-background .heading level="minor"}
+Reactが必要になった背景
 :::
 
-::: {#ch01-spa-body .paragraph}
-Web アプリケーションでは、操作や通信の結果に応じて画面を更新します。従来は、JavaScript で **DOM**（ドキュメントオブジェクトモデル）を直接操作して実装していました。次の例では、［カウントアップ］を押すたびに表示する数値を 1 増やします。
+::: {#ch01-spa-interface-update .paragraph}
+Webアプリケーションでは、ボタンのクリックやフォームへの入力など、ユーザーの操作に応じて画面の表示を変更する必要があります。
 :::
 
-::: {#ch01-spa-counter .code filename="ch01-setup/examples/counter.html"}
-```html
-<!doctype html>
-<meta charset="utf-8">
-<h1 id="count">0</h1>
-<button id="btn">カウントアップ</button>
-<script>
-  let count = 0; // 初期値
-  const countEl = document.getElementById("count");
-  const btnEl = document.getElementById("btn");
-  btnEl.addEventListener("click", function () {
-    count++;
-    countEl.textContent = count; // 表示を書き換える
-  });
-</script>
-```
+::: {#ch01-spa-note-example .paragraph}
+例えば、ショッピングサイトで商品の数量を1個から2個に変更すると、合計金額も250円から500円に変わります。このような画面を、従来のJavaScriptで実装する場合を考えてみましょう。
+:::
+
+::: {#ch01-spa-js-process .paragraph}
+従来のJavaScriptでは、主に次の処理をプログラムで記述します。
+:::
+
+::: {#ch01-spa-js-step-1 .paragraph numbered="true"}
+1．HTMLから更新対象の要素を取得する
+:::
+
+::: {#ch01-spa-js-step-2 .paragraph numbered="true"}
+2．ボタンのクリックなどのイベントを登録する
+:::
+
+::: {#ch01-spa-js-step-3 .paragraph numbered="true"}
+3．データ（商品の数量）を変更する
+:::
+
+::: {#ch01-spa-js-step-4 .paragraph numbered="true"}
+4．HTMLの表示内容（数量と合計金額）を書き換える
 :::
 
 ::::
 
 :::: {#page-3 .source-page}
 
-::: {#ch01-spa-behavior .paragraph}
-DOM を直接操作する箇所が増えるほど、処理と表示の対応を追いにくくなります。
+::: {#ch01-spa-js-example .paragraph}
+**従来のJavaScriptによる実装例**
 :::
 
-::: {#ch01-spa-frameworks-title .heading level="minor"}
-フロントエンドフレームワークの登場
+::: {#ch01-spa-counter .code filename="ch01-setup/examples/counter.html"}
+```html
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>商品の数量変更</title>
+</head>
+<body>
+  <h2>商品：ノート（1個250円）</h2>
+  <p>数量：<span id="quantity">1</span>個</p>
+  <p>合計：<span id="total">250</span>円</p>
+  <button id="add">1個追加</button>
+
+  <script>
+    const price = 250
+    let quantity = 1
+    const quantityEl = document.getElementById('quantity')
+    const totalEl = document.getElementById('total')
+
+    document.getElementById('add').addEventListener('click', () => {
+      quantity += 1
+      quantityEl.textContent = String(quantity)
+      totalEl.textContent = String(price * quantity)
+    })
+  </script>
+</body>
+</html>
+```
 :::
 
-::: {#ch01-spa-frameworks-body .paragraph}
-この課題を解決するために、**フロントエンドフレームワーク**が開発されました。代表例には React、Angular、Vue.js があります。これらを使うと、データの変化に応じて表示を更新し、表示と処理を**コンポーネント**（画面の部品）にまとめて再利用できます。この仕組みは、同じページ内で画面を切り替える **SPA** の構築にも使われます。
+![［1個追加］を1回押したときの数量と合計金額](assets/quantity-change.png){#ch01-spa-js-result}
+
+::: {#ch01-spa-js-result-caption .paragraph}
+［1個追加］を1回押したときの数量と合計金額
 :::
 
-::: {#ch01-spa-frameworks .comparison icons="assets/reactive-display.svg assets/application-routing.svg assets/template-binding.svg"}
-| React | Angular | Vue.js |
-| --- | --- | --- |
-| Meta が開発した画面表示用ライブラリです。 | Google が開発し、画面遷移やフォームを扱えます。 | Evan You が開発。HTML に近い記法を使えます。 |
+::: {#ch01-spa-js-code-reading .paragraph}
+このコードでは、`getElementById()` で表示を書き換える場所を取得し、`addEventListener()` でボタンのクリック処理を登録しています。そして、クリックするたびに `quantity` を1増やし、`textContent` を使って数量と合計金額の表示をそれぞれ書き換えています。
 :::
 
-::: {#ch01-react-counter-intro .paragraph}
-次は同じカウンターの React 版です。DOM を直接操作する処理が省けます。
+::::
+
+:::: {#page-4 .source-page}
+
+::: {#ch01-spa-dom-maintenance .paragraph}
+この方法でもWebアプリケーションは開発できます。しかし、商品の小計、送料、在庫数など、画面内で連動する表示が増えるほど、**どのHTML要素を、いつ書き換えるか**を管理する処理が複雑になります。
+:::
+
+::: {#ch01-spa-react .heading level="minor"}
+Reactとは
+:::
+
+::: {#ch01-spa-react-definition .paragraph}
+React（リアクト）は、Webアプリケーションの画面（UI）を効率よく作成するための**JavaScriptライブラリ**です。
+:::
+
+::: {#ch01-spa-react-data .paragraph}
+Reactでは、**画面に表示するデータを管理し、そのデータが変更されたときにReactが必要な画面の更新を行う**という考え方で開発します。
+:::
+
+::: {#ch01-spa-react-example-intro .paragraph}
+先ほどの「ノートの数量を1個増やす」処理を、Reactで記述すると次のようになります。
+:::
+
+::: {#ch01-spa-react-example .paragraph}
+**Reactによる実装例**
 :::
 
 ::: {#ch01-react-counter .code filename="ch01-setup/examples/Counter.tsx"}
@@ -102,41 +152,146 @@ DOM を直接操作する箇所が増えるほど、処理と表示の対応を�
 import { useState } from 'react'
 
 export default function Counter() {
-  const [count, setCount] = useState(0)
+  const price = 250
+  const [quantity, setQuantity] = useState(1)
+
   return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>
-        カウントアップ
+    <main>
+      <h2>商品：ノート（1個250円）</h2>
+      <p>数量：{quantity}個</p>
+      <p>合計：{price * quantity}円</p>
+      <button onClick={() => setQuantity(quantity + 1)}>
+        1個追加
       </button>
-    </>
+    </main>
   )
 }
 ```
 :::
 
-::: {#ch01-react-counter-reading .paragraph keep-lines="true"}
-①　4行目　**`useState(0)`** は、初期値 0 の `count` と更新用の `setCount` を返します。\
-②　8行目　クリックすると **`setCount(count + 1)`** が次の値を React に渡します。\
-③　7行目　React が `Counter` を再実行し、見出しに新しい `count` を表示します。\
-14ページの `textContent` への代入にあたる表示の更新は、React が行います。
-:::
+![［1個追加］を1回押したときの数量と合計金額](assets/quantity-change.png){#ch01-spa-react-result}
 
-::: {#ch01-react-history-title .heading level="minor"}
-Reactの歴史と進化
-:::
-
-::: {#ch01-react-history-release .paragraph}
-2013年に Facebook が React を公開し、2019年の React 16.8 で **Hooks** が加わりました。`useState` も Hooks の一つです。第2章ではフォームの入力値を管理します。
-:::
-
-::: {#ch01-react-history-next .paragraph}
-**Next.js** は React でアプリを作るフレームワークです。URL に応じた画面の切り替えや、サーバー側での表示の組み立てを扱います。
+::: {#ch01-spa-react-result-caption .paragraph}
+［1個追加］を1回押したときの数量と合計金額
 :::
 
 ::::
 
-:::: {#page-4 .source-page}
+:::: {#page-5 .source-page}
+
+::: {#ch01-spa-react-quantity .paragraph}
+このコードでは、`useState(1)` を使って数量の初期値を1にしています。ボタンをクリックすると、`setQuantity(quantity + 1)` が数量を更新します。
+:::
+
+::: {#ch01-spa-react-display .paragraph}
+Reactはデータが更新されたことを受けて、画面に必要な変更を反映します。そのため、JavaScript版で記述していた `getElementById()` や `textContent` による**表示先の取得・書き換えを、自分で記述する必要がありません**。
+:::
+
+::: {#ch01-spa-react-total .paragraph}
+また、合計金額は `{price * quantity}` と書くだけで、最新の数量に応じた値を表示できます。
+:::
+
+::: {#ch01-spa-react-next-chapter .paragraph}
+※ `useState` や `onClick`、HTMLに似た記述方法（JSX）の詳しい書き方は、第2章で学習します。ここでは、**「データが変わると、その結果が画面に反映される」**というReactの考え方を押さえてください。
+:::
+
+::: {#ch01-spa-react-components .paragraph}
+Reactには、画面を「コンポーネント」という部品に分けて作成し、組み合わせたり再利用したりできる特徴もあります。例えば、商品カードや検索フォームを独立した部品として管理できます。この考え方についても、後続の章で扱います。
+:::
+
+::: {#ch01-spa-related-title .paragraph}
+**【参考】フロントエンド開発で使われる主な技術**
+:::
+
+::: {#ch01-spa-related-table .table}
+| 技術 | 概要 |
+| --- | --- |
+| React | Metaが開発している、画面（UI）を構築するためのライブラリ |
+| Vue.js | HTMLに近い書き方を特徴とするフロントエンドフレームワーク |
+| Angular | Googleが開発する、画面開発に必要な機能を幅広く備えたフレームワーク |
+:::
+
+::: {#ch01-spa-react-history .paragraph}
+Reactは2013年に公開され、2019年にはHooksと呼ばれる仕組みが追加されました。今回使った `useState` もHooksの一つです。また、Reactを基盤としたフレームワークにはNext.jsなどがあります。
+:::
+
+::::
+
+:::: {#page-6 .source-page}
+
+::: {#ch01-spa-definition .heading level="minor"}
+SPAとは
+:::
+
+::: {#ch01-spa-spa-definition-body .paragraph}
+SPA（Single Page Application：シングルページアプリケーション）とは、**画面を切り替えるたびにHTMLページ全体を再読み込みするのではなく、必要な部分を更新して表示する**Webアプリケーションの方式です。
+:::
+
+::: {#ch01-spa-product-pages .paragraph}
+例えば、商品管理システムに「商品一覧画面」と「商品詳細画面」があるとします。
+:::
+
+::: {#ch01-spa-traditional-pages .paragraph}
+**従来のWebページの構成**では、商品一覧から商品詳細へ移動するときに、サーバーから別のHTMLページを取得し、ページ全体を読み込み直す方式が一般的でした。
+:::
+
+::: {#ch01-spa-spa-pages .paragraph}
+一方、**SPA**では、最初に読み込んだHTMLを土台として、ヘッダーやメニューなどの共通部分を維持しながら、商品一覧と商品詳細に相当する部分を切り替えることができます。
+:::
+
+![商品一覧から商品詳細への切り替え](assets/spa-navigation-comparison.png){#ch01-spa-routing-figure}
+
+::: {#ch01-spa-routing-figure-caption .paragraph}
+商品一覧から商品詳細への切り替え
+:::
+
+::: {#ch01-spa-spa-communication .paragraph}
+なお、SPAでも、商品情報をサーバーから取得するための通信は行われます。違いは「通信するかどうか」ではなく、**画面を切り替えるときにページ全体を再読み込みするか、必要な表示部分を更新するか**という点です。
+:::
+
+::::
+
+:::: {#page-7 .source-page}
+
+::: {#ch01-spa-react-spa-distinction .paragraph}
+Reactは、このようなSPAの画面を構築するためにも利用できます。ただし、**ReactとSPAは同じ意味ではありません。**
+:::
+
+::: {#ch01-spa-list-1-1 .paragraph}
+● **React**：画面を作成・更新するためのライブラリ
+:::
+
+::: {#ch01-spa-list-1-2 .paragraph}
+● **SPA**：Webアプリケーションの画面切り替えの方式
+:::
+
+::: {#ch01-spa-router-course .paragraph}
+本研修では、Reactによる画面表示や入力処理を学習した後、第3章でReact Routerを使い、URLに応じて画面を切り替えるSPAを実装します。
+:::
+
+::: {#ch01-spa-key-points .heading level="minor"}
+この節のポイント
+:::
+
+::: {#ch01-spa-list-2-1 .paragraph}
+● 従来のJavaScriptでは、表示するデータとHTMLの書き換えを自分で管理する必要がある。
+:::
+
+::: {#ch01-spa-list-2-2 .paragraph}
+● Reactでは、データの変更に合わせて必要な画面の更新をReactが行う。
+:::
+
+::: {#ch01-spa-list-2-3 .paragraph}
+● SPAは、ページ全体を再読み込みせず、必要な部分を更新して画面を切り替える方式である。
+:::
+
+::: {#ch01-spa-list-2-4 .paragraph}
+● Reactはライブラリ、SPAはアプリケーションの構成方式であり、同じ意味ではない。
+:::
+
+::::
+
+:::: {#page-8 .source-page}
 
 ::: {#ch01-tools-title .heading}
 1.2. 開発環境の準備
@@ -181,7 +336,7 @@ React の環境構築のための準備
 
 ::::
 
-:::: {#page-5 .source-page}
+:::: {#page-9 .source-page}
 
 ::: {#ch01-folder-title .heading}
 **【作業手順①】　親フォルダーと章フォルダーを作る**
@@ -222,7 +377,7 @@ React の環境構築のための準備
 
 ::::
 
-:::: {#page-6 .source-page}
+:::: {#page-10 .source-page}
 
 ::: {#ch01-workspace-title .heading}
 **【作業手順②】　VS Code でマルチルート・ワークスペースを作る**
@@ -256,7 +411,7 @@ React の環境構築のための準備
 
 ::::
 
-:::: {#page-7 .source-page}
+:::: {#page-11 .source-page}
 
 ::: {#ch01-workspace-reopen .paragraph numbered="true"}
 4．次回は［ファイル］→［ファイルでワークスペースを開く］で `react-basic.code-workspace` を選びます。VS Code のエクスプローラーに、登録した章フォルダーが並びます。
@@ -296,7 +451,7 @@ VS Code に組み込まれた JavaScript と TypeScript の言語機能
 
 ::::
 
-:::: {#page-8 .source-page}
+:::: {#page-12 .source-page}
 
 ::: {#ch01-node-title .heading}
 **【作業手順④】　Node.js をインストールしてターミナルを開く**
@@ -326,7 +481,7 @@ VS Code に組み込まれた JavaScript と TypeScript の言語機能
 
 ::::
 
-:::: {#page-9 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch01-terminal-title .heading level="minor"}
 Node.js と npm のバージョンを確認する
@@ -359,7 +514,7 @@ PowerShell で `npm.ps1` の実行が制限されている場合は、**`npm.cmd
 
 ::::
 
-:::: {#page-10 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch01-vite-title .heading}
 1.3. Vite でプロジェクトを作成
@@ -410,7 +565,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 ::::
 
-:::: {#page-11 .source-page}
+:::: {#page-15 .source-page}
 
 ::: {#ch01-vite-prompts-title .heading level="minor"}
 作成時に表示されるメッセージを確認する
@@ -474,7 +629,7 @@ Done. Now run:
 
 ::::
 
-:::: {#page-12 .source-page}
+:::: {#page-16 .source-page}
 
 ::: {#ch01-vite-files-title .heading}
 **【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
@@ -500,7 +655,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-17 .source-page}
 
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
@@ -543,7 +698,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-18 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -586,7 +741,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-15 .source-page}
+:::: {#page-19 .source-page}
 
 ::: {#ch01-start-run-title .heading}
 **【作業手順②】　開発サーバーを起動する**
@@ -618,7 +773,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-16 .source-page}
+:::: {#page-20 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
 **【作業手順③】　商品データを変更して表示を確認する**
@@ -663,7 +818,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-17 .source-page}
+:::: {#page-21 .source-page}
 
 ::: {#ch01-files-title .heading}
 1.6. フォルダーと主要ファイルの役割
@@ -709,7 +864,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-22 .source-page}
 
 ::: {#ch01-main-title .heading level="minor"}
 画面の表示を始める main.tsx
@@ -753,7 +908,7 @@ export const product = {
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-23 .source-page}
 
 ::: {#ch01-app-title .heading level="minor"}
 商品管理の画面を組み立てる App.tsx
@@ -794,7 +949,7 @@ export default function App() {
 
 ::::
 
-:::: {#page-20 .source-page}
+:::: {#page-24 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ

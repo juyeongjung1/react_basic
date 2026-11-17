@@ -317,6 +317,8 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
         if not art or len(rows) != 3:
             raise ValueError(f'図解スライドには図版と3つの説明を指定してください: {slide_id}')
         art_option = f', art: {q("/" + (folder / art).relative_to(ROOT).as_posix())}'
+    if layout == 'illustration' and (len(rows) != 1 or rows[0] or not slide['pictures'][0]):
+        raise ValueError(f'図版スライドにはタイトルと図版1点を指定してください: {slide_id}')
     items = []
     for row, command, picture in zip(rows, slide['commands'], slide['pictures']):
         label = 'none'

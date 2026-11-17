@@ -1,13 +1,26 @@
 <!doctype html>
-<meta charset="utf-8">
-<h1 id="count">0</h1>
-<button id="btn">カウントアップ</button>
-<script>
-  let count = 0; // 初期値
-  const countEl = document.getElementById("count");
-  const btnEl = document.getElementById("btn");
-  btnEl.addEventListener("click", function () {
-    count++;
-    countEl.textContent = count; // 表示を書き換える
-  });
-</script>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>商品の数量変更</title>
+</head>
+<body>
+  <h2>商品：ノート（1個250円）</h2>
+  <p>数量：<span id="quantity">1</span>個</p>
+  <p>合計：<span id="total">250</span>円</p>
+  <button id="add">1個追加</button>
+
+  <script>
+    const price = 250
+    let quantity = 1
+    const quantityEl = document.getElementById('quantity')
+    const totalEl = document.getElementById('total')
+
+    document.getElementById('add').addEventListener('click', () => {
+      quantity += 1
+      quantityEl.textContent = String(quantity)
+      totalEl.textContent = String(price * quantity)
+    })
+  </script>
+</body>
+</html>

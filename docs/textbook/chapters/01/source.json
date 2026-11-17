@@ -2,9 +2,24 @@
   "title": "第1章 React の開発環境と動作確認",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 20,
+  "last_page": 24,
   "cover_mode": "classic",
   "illustrations": {
+    "ch01-spa-js-result": {
+      "caption_id": "ch01-spa-js-result-caption",
+      "width": 379,
+      "max_height": 80
+    },
+    "ch01-spa-react-result": {
+      "caption_id": "ch01-spa-react-result-caption",
+      "width": 379,
+      "max_height": 80
+    },
+    "ch01-spa-routing-figure": {
+      "caption_id": "ch01-spa-routing-figure-caption",
+      "width": 379,
+      "max_height": 201
+    },
     "ch01-folder-files": {
       "caption_id": "ch01-folder-files-caption",
       "width": 248,
