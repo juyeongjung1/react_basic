@@ -683,7 +683,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             parts = typographic_parts(node['parts'], keep_lines=keep_lines)
             if node['attrs'].get('numbered') == 'true':
                 first, style = parts[0]
-                number = re.match(r'\d+．', first)
+                number = re.match(r'(?:\d+．|[①-⑳])', first)
                 if not number:
                     raise ValueError(f'作業手順に番号がありません: {ident}')
                 body = [part for part in [(first[number.end():], style), *parts[1:]] if part[0]]
