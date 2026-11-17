@@ -1,8 +1,8 @@
 {
-  "title": "第1章 開発環境とTypeScriptの基礎",
+  "title": "第1章 React の開発環境と動作確認",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 19,
+  "last_page": 20,
   "cover_mode": "classic",
   "illustrations": {
     "ch01-folder-files": {
@@ -39,17 +39,29 @@
       "max_height": 120,
       "highlights": [[0.030, 0.421, 0.224, 0.174], [0.030, 0.783, 0.194, 0.174]]
     },
-    "ch01-vite-result": {
-      "caption_id": "ch01-vite-result-caption",
+    "ch01-vite-tree": {
+      "caption_id": "ch01-vite-tree-caption",
       "width": 232,
-      "max_height": 138,
-      "highlights": [[0.109, 0.015, 0.565, 0.147]]
+      "max_height": 240,
+      "highlights": [[0.060, 0.263, 0.310, 0.074], [0.060, 0.478, 0.530, 0.146], [0.060, 0.762, 0.580, 0.217]]
     },
     "ch01-install-result": {
       "caption_id": "ch01-install-result-caption",
       "width": 339,
       "max_height": 113,
       "highlights": [[0.007, 0.015, 0.976, 0.137]]
+    },
+    "ch01-npm-menu": {
+      "caption_id": "ch01-npm-menu-caption",
+      "width": 304,
+      "max_height": 130,
+      "highlights": [[0.555, 0.024, 0.052, 0.159], [0.571, 0.794, 0.410, 0.156]]
+    },
+    "ch01-npm-dev": {
+      "caption_id": "ch01-npm-dev-caption",
+      "width": 260,
+      "max_height": 140,
+      "highlights": [[0.879, 0.497, 0.086, 0.242]]
     },
     "ch01-start-terminal": {
       "caption_id": "ch01-start-terminal-caption",

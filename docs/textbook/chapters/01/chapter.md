@@ -5,7 +5,7 @@
 :::
 
 ::: {#ch01-title .heading}
-第1章 開発環境とTypeScriptの基礎
+第1章 React の開発環境と動作確認
 :::
 
 ::: {#ch01-goals .heading}
@@ -13,15 +13,15 @@
 :::
 
 ::: {#ch01-goal-setup .paragraph}
-◼ Viteを使い、ReactとTypeScriptのサンプルを起動できる
+◼ React の開発環境を準備し、Vite でひな形を作成できる
 :::
 
 ::: {#ch01-goal-files .paragraph}
-◼ 主要ファイルの役割を説明できる
+◼ VS Code の NPM スクリプトから配布サンプルを起動できる
 :::
 
 ::: {#ch01-goal-types .paragraph}
-◼ TypeScriptでレコードと配列の型を定義できる
+◼ サンプルの主要なファイルのつながりを説明できる
 :::
 
 ::::
@@ -32,20 +32,17 @@
 1.1. React と SPA
 :::
 
-::: {#ch01-spa-slide .slide layout="columns"}
+::: {#ch01-spa-slide .slide layout="diagram" art="assets/slide-react-spa.png"}
 React と SPA
 
-1995年<br>
-JavaScript が登場し、ボタンの操作や入力に応じて画面を変えられるようになりました。
+JavaScript<br>
+1995年に登場<br>操作や入力に反応する
 
-2000年代<br>
-Ajax が広まり、ページを読み込み直さずにサーバーのデータを取得できるようになりました。
+Ajax<br>
+2000年代に普及<br>ページを開いたまま通信
 
-画面更新の課題<br>
-表示する項目が増えると、データが変わるたびにどこを書き換えるかの管理が難しくなります。
-
-2013年以降<br>
-Facebook が React を公開。2019年には Hooks が加わりました。
+React<br>
+2013年に公開<br>データに応じて表示を更新
 :::
 
 ::: {#ch01-spa-react .heading}
@@ -141,20 +138,17 @@ export default function Counter() {
 1.2. 開発環境の準備
 :::
 
-::: {#ch01-tools-slide .slide layout="columns"}
+::: {#ch01-tools-slide .slide layout="diagram" art="assets/slide-environment.png"}
 開発環境の準備
 
 章フォルダー<br>
-配布サンプルを章ごとに配置します。
+配布サンプルを<br>章ごとに置く
 
-ワークスペース<br>
-VS Codeで章フォルダーをまとめて開きます。
-
-言語機能<br>
-組み込みの TypeScript と JavaScript の機能を確認します。
+VS Code<br>
+複数の章フォルダーを<br>まとめて開く
 
 Node.js・npm<br>
-開発ツールを動かす環境を整えます。
+バージョンを<br>ターミナルで確認する
 :::
 
 ::: {#ch01-tools-body-title .heading}
@@ -162,7 +156,7 @@ Node.js・npm<br>
 :::
 
 ::: {#ch01-tools-body .paragraph}
-本章は **Windows** で操作します。React と TypeScript の開発を始める前に、次の準備を行います。
+本章は **Windows** で操作します。React の開発を始める前に、次の準備を行います。
 :::
 
 ::: {#ch01-tools-folders .paragraph numbered="true"}
@@ -174,7 +168,7 @@ Node.js・npm<br>
 :::
 
 ::: {#ch01-tools-language .paragraph numbered="true"}
-③　**言語機能を確認します。** VS Code に組み込まれた TypeScript と JavaScript の機能を確認します。
+③　**言語機能を確認します。** VS Code に組み込まれた入力補完とエラー表示の機能を確認します。
 :::
 
 ::: {#ch01-tools-node .paragraph numbered="true"}
@@ -279,7 +273,7 @@ Node.js・npm<br>
 :::
 
 ::: {#ch01-language-intro .paragraph}
-React と TypeScript を組み合わせた `.tsx` ファイルの入力補完とエラー表示には、VS Code に組み込まれた言語機能を使います。
+React の `.tsx` ファイルを編集するときの入力補完やエラー表示には、VS Code に組み込まれた言語機能を使います。
 :::
 
 ::: {#ch01-language-search .paragraph numbered="true"}
@@ -367,88 +361,158 @@ PowerShell で `npm.ps1` の実行が制限されている場合は、**`npm.cmd
 1.3. Vite でプロジェクトを作成
 :::
 
-::: {#ch01-vite-slide .slide layout="columns"}
+::: {#ch01-vite-slide .slide layout="diagram" art="assets/slide-vite-project.png"}
 Vite でプロジェクトを作成
 
-Vite<br>
-開発サーバーの起動と、配布用のファイルを作るビルドを行うツールです。
+ひな形の作成<br>
+空のフォルダーに<br>初期ファイルを作る
 
-ひな形<br>
-React と TypeScript に必要なファイルや設定をまとめて用意できます。
+開発サーバー<br>
+開発中の画面を<br>ブラウザーで確認する
 
-研修での作業<br>
-設定済みの `ch01-setup` を使います。次の 1.4 節で準備を続けます。
+本番用ビルド<br>
+公開用のファイルを<br>まとめる
+:::
+
+::: {#ch01-vite-definition .heading}
+**Vite とは**
 :::
 
 ::: {#ch01-vite-course .paragraph}
-**Vite**（ヴィート）は、React と TypeScript の開発を支えるツールです。開発中は、**開発サーバー**を起動して、編集中の画面をブラウザーで確認できます。公開時には、アプリに必要なファイルを配布用にまとめる**ビルド**を実行します。
+**Vite**（ヴィート）は、Web アプリケーションの**開発サーバー**と**本番用ビルド**の機能を備えたツールです。新しく開発を始めるときは、Vite のひな形作成ツール **create-vite** で、React の初期ファイルと設定をまとめて用意できます。
 :::
 
-::: {#ch01-vite-template .paragraph}
-プロジェクトを新しく作るときは、React と TypeScript 用のひな形から始められます。ひな形には、最初の画面を表示するコードと、Vite、TypeScript、npm を使うための設定が含まれます。
+::: {#ch01-vite-body-title .heading}
+**【作業手順①】　Vite でプロジェクトを作成する**
 :::
 
-::: {#ch01-vite-next .paragraph}
-研修では、配布済みの `ch01-setup` を使います。ワークスペースの `ch01-setup` を作業場所とし、**1.4 節「依存ライブラリの導入」**へ進んでください。新規作成の手順は次ページに示します。
+::: {#ch01-vite-folder .paragraph}
+`C:\work\react_basic` の下に、空の **`vite-demo`** フォルダーを作ります。VS Code の［ファイル］→［新しいウィンドウ］を選び、そのウィンドウで `vite-demo` を開きます。
+:::
+
+::: {#ch01-vite-action .paragraph numbered="true"}
+1．［ターミナル］→［新しいターミナル］を選び、プロンプトの末尾が `vite-demo>` であることを確認します。次のコマンドを1行で入力して［Enter］を押します。
+:::
+
+::: {#ch01-vite-code .code}
+```powershell
+npm create vite@8.0.0 . -- --template react-ts
+```
+:::
+
+::: {#ch01-vite-command-args .paragraph}
+`.`（ドット）は**現在のフォルダー**、`--template react-ts` は作成する React の**ひな形**を指定します。
 :::
 
 ::::
 
 :::: {#page-11 .source-page}
 
-::: {#ch01-vite-body-title .heading}
-**【参考】　React と TypeScript のプロジェクトを作成する**
+::: {#ch01-vite-prompts-title .heading}
+**作成時に表示されるメッセージを確認する**
 :::
 
-::: {#ch01-vite-action .paragraph numbered="true"}
-1．空の作業フォルダーを用意し、VS Code で開きます。そのフォルダーのターミナルで、次のコマンドを1行で実行します。
+::: {#ch01-vite-pin .paragraph}
+本書では、選択画面と生成されるファイルをそろえるため、ひな形を作成するツールのバージョンを **create-vite 8.0.0** に固定します。
 :::
 
-::: {#ch01-vite-code .code}
-```powershell
-npm create vite@7.1.3 demo -- --template react-ts
+::: {#ch01-vite-confirm .paragraph numbered="true"}
+2．`Ok to proceed? (y)` が表示された場合は、`create-vite@8.0.0` の表示を確認し、**`y`** を入力して［Enter］を押します。
+:::
+
+::: {#ch01-vite-confirm-result .code}
+```text
+Need to install the following packages:
+create-vite@8.0.0
+Ok to proceed? (y)
 ```
 :::
 
-::: {#ch01-vite-command-args .paragraph}
-`demo` は新しく作るフォルダー名です。`--template react-ts` で React と TypeScript のひな形を指定します。
+::: {#ch01-vite-rolldown .paragraph numbered="true"}
+3．`Use rolldown-vite (Experimental)?:` が表示されたら、**`No`** を選んで［Enter］を押します。
 :::
 
-::: {#ch01-vite-check .paragraph numbered="true"}
-2．作成ツールのインストールを確認するメッセージが出た場合は、`y` を入力して［Enter］を押します。`Done` が表示されたら、`demo` の中に `package.json` と `src` ができたことを確認します。
+::: {#ch01-vite-rolldown-result .code}
+```text
+Use rolldown-vite (Experimental)?:
+    Yes
+  > No
+```
 :::
 
-![create-viteの実行が完了したターミナル](assets/vscode-vite-create.png){#ch01-vite-result}
-
-::: {#ch01-vite-result-caption .paragraph}
-ひな形の作成が完了し、次に実行するコマンドが表示された状態
+::: {#ch01-vite-immediate .paragraph numbered="true"}
+4．`Install with npm and start now?` が表示されたら、方向キーで **`No`** を選んで［Enter］を押します。ここではひな形を作成するところまで確認します。
 :::
 
-::: {#ch01-vite-result-action .paragraph numbered="true"}
-3．新規プロジェクトを起動するには、`cd demo` で作業場所を移動します。`npm install` で依存ライブラリを導入し、`npm run dev` で開発サーバーを起動します。
+::: {#ch01-vite-immediate-result .code}
+```text
+Install with npm and start now?
+  Yes / > No
+```
+:::
+
+::: {#ch01-vite-done .paragraph}
+`Done. Now run:` と表示され、プロンプトが戻れば作成は完了です。
+:::
+
+::: {#ch01-vite-done-result .code}
+```text
+Done. Now run:
+
+  npm install
+  npm run dev
+```
+:::
+
+::: {#ch01-vite-not-empty .paragraph}
+※既存ファイルがあるというメッセージが表示された場合は、`Cancel operation` を選び、空の `vite-demo` フォルダーを開いてから実行します。
 :::
 
 ::::
 
 :::: {#page-12 .source-page}
 
+::: {#ch01-vite-files-title .heading}
+**【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
+:::
+
+::: {#ch01-vite-show-files .paragraph numbered="true"}
+1．VS Code 左側の［エクスプローラー］を開きます。`vite-demo` に **`package.json`**、**`index.html`**、**`vite.config.ts`**、`tsconfig.json`、**`src` フォルダー**が表示されることを確かめます。
+:::
+
+![Viteで生成したReactプロジェクトの初期ファイル](assets/vscode-vite-tree.png){#ch01-vite-tree}
+
+::: {#ch01-vite-tree-caption .paragraph}
+VS Code のエクスプローラーで確認する React の初期ファイル
+:::
+
+::: {#ch01-vite-file-roles .paragraph}
+`index.html` はブラウザーが最初に読み込むファイルです。画面のコードは `src` にあり、実行するコマンドや利用するライブラリは `package.json` に記載されています。
+:::
+
+::: {#ch01-vite-back .paragraph numbered="true"}
+2．確認したら、`vite-demo` を開いたウィンドウを閉じ、1.2 節で保存した `react-basic.code-workspace` に戻ります。以降は、配布サンプルの **`ch01-setup`** で商品管理システムを起動します。
+:::
+
+::::
+
+:::: {#page-13 .source-page}
+
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
 :::
 
-::: {#ch01-install-slide .slide layout="columns"}
+::: {#ch01-install-slide .slide layout="diagram" art="assets/slide-npm-install.png"}
 依存ライブラリの導入
 
-作業場所<br>
-使う章の `package.json` があるフォルダーを開きます。
+`package.json`<br>
+必要なライブラリを<br>記載する
 
-インストール<br>
-サンプルに必要なライブラリを導入します。
+`npm install`<br>
+ライブラリを取得する
 
-`npm install`
-
-完了の目印<br>
-ターミナルが入力待ちに戻り、`node_modules` フォルダーができます。
+`node_modules`<br>
+取得したライブラリが<br>ここに入る
 :::
 
 ::: {#ch01-install-body-title .heading}
@@ -475,55 +539,85 @@ npm create vite@7.1.3 demo -- --template react-ts
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
 :::
 
-::: {#ch01-start-slide .slide layout="columns"}
+::: {#ch01-start-slide .slide layout="diagram" art="assets/slide-dev-server.png"}
 開発サーバーの起動と動作確認
 
-起動<br>
-![ターミナル](assets/terminal.svg)`npm run dev` で Vite を起動します。
+NPM スクリプト<br>
+`dev` の実行ボタンを押す
 
-表示<br>
-![ブラウザー](assets/browser.svg)表示された URL を開き、商品管理の画面を確認します。
+開発サーバー<br>
+`Local` の URL を<br>ターミナルで確認する
 
-更新<br>
-![エディター](assets/editor.svg)`App.tsx` の見出しを変更して保存し、画面への反映を確認します。
+ブラウザー<br>
+URL を開いて<br>商品管理画面を表示する
 :::
 
-::: {#ch01-start-body .paragraph numbered="true"}
-1．インストールが完了した `ch01-setup` のターミナルで、次のコマンドを実行します。`package.json` の `dev` に登録されている Vite が起動します。
+::: {#ch01-start-intro-title .heading}
+**React のサンプルを手元の PC で起動する**
 :::
 
-::: {#ch01-start-code .code}
-```powershell
-npm run dev
-```
+::: {#ch01-start-intro .paragraph}
+React の画面を手元の PC で確認するときは、Vite の**開発サーバー**を起動します。VS Code の **［Npm スクリプト］** には、`package.json` に登録された実行コマンドが表示されます。
+:::
+
+::: {#ch01-start-sidebar .heading}
+**【作業手順①】　VS Code で NPM スクリプトを表示する**
+:::
+
+::: {#ch01-start-menu .paragraph numbered="true"}
+1．VS Code の［エクスプローラー］を開き、見出しの右にある **［…］** をクリックします。表示されたメニューで **［Npm スクリプト］** を選び、チェックを付けます。
+:::
+
+![エクスプローラーのメニューでNPMスクリプトを表示する](assets/vscode-npm-panel-menu.png){#ch01-npm-menu}
+
+::: {#ch01-npm-menu-caption .paragraph}
+エクスプローラーの［…］メニューにある［Npm スクリプト］
+:::
+
+::::
+
+:::: {#page-15 .source-page}
+
+::: {#ch01-start-run-title .heading}
+**【作業手順②】　開発サーバーを起動する**
+:::
+
+::: {#ch01-start-run .paragraph numbered="true"}
+1．エクスプローラーの下にある［Npm スクリプト］を開きます。章が並ぶ場合は `ch01-setup` を選び、`package.json` の項目を展開します。`dev` の行にマウスポインターを合わせ、右端の **［▷］（実行）** をクリックします。
+:::
+
+![NPMスクリプトのdev行に表示される実行ボタン](assets/vscode-npm-dev.png){#ch01-npm-dev}
+
+::: {#ch01-npm-dev-caption .paragraph}
+`dev` の行の右端に表示される実行ボタン
+:::
+
+::: {#ch01-start-location .paragraph numbered="true"}
+2．VS Code の画面下部にターミナルが開きます。**`Local` の行に表示された URL** をコピーし、ブラウザーのアドレスバーに貼り付けて［Enter］を押します。
 :::
 
 ![Viteを起動しLocalのURLが表示されたターミナル](assets/vscode-vite-server.png){#ch01-start-terminal}
 
 ::: {#ch01-start-terminal-caption .paragraph}
-`Local` に表示されたアドレスが、開発中の画面を開く URL
-:::
-
-::: {#ch01-start-location .paragraph numbered="true"}
-2．**`Local` の行に表示された URL** をコピーし、ブラウザーのアドレスバーに貼り付けて［Enter］を押します。
+`Local` の行に表示されたアドレスをブラウザーで開く
 :::
 
 ::: {#ch01-start-running .paragraph}
-ブラウザーで確認する間は、Vite を起動した**ターミナルを開いたまま**にします。
+確認中は開発サーバーを動かしておきます。コマンドで操作する場合は、`ch01-setup` のターミナルで `npm run dev` を実行しても同じように起動できます。
 :::
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-16 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
-**【作業手順】　初期表示と保存後の反映を確認する**
+**【作業手順③】　初期表示と保存後の反映を確認する**
 :::
 
 ::: {#ch01-start-verify .paragraph numbered="true"}
@@ -547,136 +641,95 @@ npm run dev
 :::
 
 ::: {#ch01-start-check .paragraph numbered="true"}
-3．ブラウザーに戻ると、保存した見出しが画面に反映されています。確認後、VS Code で見出しを「商品管理システム」に戻し、保存してください。
+3．Vite の開発サーバーは、ファイルの保存を検知するとブラウザーの表示を更新します。ブラウザーに戻り、見出しが変わったことを確かめます。確認後、元の見出しに戻して保存します。
 :::
 
 ::: {#ch01-start-stop .paragraph numbered="true"}
-4．Vite を起動したターミナルをクリックし、［Ctrl］＋［C］を押します。プロンプトが表示されたら、開発サーバーは停止しています。
-:::
-
-::::
-
-:::: {#page-15 .source-page}
-
-::: {#ch01-files-title .heading}
-1.6. フォルダと主要ファイルの役割
-:::
-
-::: {#ch01-files-slide .slide layout="columns"}
-フォルダと主要ファイルの役割
-
-index.html<br>
-ブラウザーが最初に読み、画面を表示する場所を用意します。
-
-main.tsx<br>
-`App` を読み込み、HTML 内の `root` に表示します。
-
-App.tsx<br>
-画面の内容を定義します。このサンプルでは商品名や価格を表示します。
-:::
-
-::: {#ch01-files-body .paragraph}
-VS Code で `index.html` を開き、表示先の `id="root"` と、`src/main.tsx` を読み込む指定を確認します。開発時は Vite が TypeScript を JavaScript に変換し、`main.tsx` の処理が **`App` を `root` に描画**します。
-:::
-
-::: {#ch01-files-check .paragraph}
-次に `src` の `App.tsx` と `product.ts` を開きます。`App.tsx` にある HTML に似た記述は **JSX** です。TypeScript と JSX を含むファイルは拡張子を `.tsx` とします。商品データは `product.ts` に定義されています。
-:::
-
-::: {#ch01-files-table .table}
-| ファイル | 役割 |
-| --- | --- |
-| index.html | HTML の土台。表示場所と入口を指定する |
-| src/main.tsx | App を読み込んでブラウザーに描画する |
-| src/App.tsx | 商品管理の画面を定義する |
-| src/product.ts | 商品の型とデータを定義する |
-| package.json | 依存ライブラリと実行コマンドを指定する |
-| tsconfig.json | TypeScript の型チェックなどを設定する |
-:::
-
-::::
-
-:::: {#page-16 .source-page}
-
-::: {#ch01-js-title .heading}
-1.7. 必要な JavaScript 構文
-:::
-
-::: {#ch01-js-slide .slide layout="columns"}
-必要な JavaScript 構文
-
-変数<br>
-`const` は再代入しない変数に使います。
-
-項目の参照<br>
-`product.name` で商品の名前を参照します。
-
-配列の変換<br>
-`map` で要素ごとに処理し、新しい配列を作ります。
-
-ファイル間の連携<br>
-`export` で公開し、`import` で読み込みます。
-:::
-
-::: {#ch01-js-body-title .heading}
-**商品データを読み込む**
-:::
-
-::: {#ch01-js-body .paragraph}
-`src/product.ts` では `export` を付けて商品データを公開しています。`src/App.tsx` は `import` でそれを読み込み、`product.name` などの式で商品情報にアクセスします。
-:::
-
-::: {#ch01-js-code .code}
-```typescript
-import { product } from './product'
-
-const items = [product]
-const names = items.map((item) => item.name)
-```
-:::
-
-::: {#ch01-js-check .paragraph}
-`items` は、商品データを1件格納した配列です。`map` に渡した関数が各商品の `name` を返すため、`names` には名前だけの配列 `['ノート']` が入ります。第2章では、同じ `map` を使って商品ごとの表示を組み立てます。
+4．Vite を起動したターミナルで［Ctrl］＋［C］を押します。終了の確認が出た場合は `Y` を入力して［Enter］を押します。プロンプトが表示されれば停止しています。
 :::
 
 ::::
 
 :::: {#page-17 .source-page}
 
-::: {#ch01-ts-title .heading}
-1.8. TypeScript の基本型とデータ型
+::: {#ch01-files-title .heading}
+1.6. フォルダーと主要ファイルの役割
 :::
 
-::: {#ch01-ts-slide .slide layout="columns"}
-TypeScript の基本型とデータ型
+::: {#ch01-files-slide .slide layout="diagram" art="assets/slide-source-files.png"}
+フォルダーと主要ファイルの役割
 
-基本型<br>
-商品名は `string`、価格は `number`、真偽値は `boolean` です。
+`index.html`<br>
+画面を表示する<br>場所を用意する
 
-オブジェクト型<br>
-`Product` に `id`、`name`、`price`、`category` を定義します。
+`main.tsx`<br>
+`App` を HTML に<br>描画する
 
-配列の型<br>
-`Product[]` は `Product` 型のデータが並ぶ配列です。
-
-型チェック<br>
-価格に文字列を指定すると、実行前に型エラーが分かります。
+`App.tsx`<br>
+`product.ts` のデータを<br>画面に表示する
 :::
 
-::: {#ch01-ts-body .paragraph}
-`Product` 型では、商品名を文字列、価格を数値として定義します。`product: Product` と型を指定すると、価格に `'250'` のような文字列を設定した場合、`npm run build` の**型チェック**でエラーを検出できます。
+::: {#ch01-index-title .heading}
+**ブラウザーが最初に読み込む index.html**
 :::
 
-::: {#ch01-ts-code .code filename="src/product.ts"}
-```typescript
-export type Product = {
-  id: number
-  name: string
-  price: number
-  category: string
+::: {#ch01-index-body .paragraph}
+配布サンプル `ch01-setup` の `index.html` を開きます。9行目の **`<div id="root">`** は、React の画面を表示する場所です。10行目の `script` 要素で、画面表示を始める **`src/main.tsx`** を読み込みます。
+:::
+
+::: {#ch01-index-code .code filename="index.html"}
+```html
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品管理システム</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+:::
+
+::::
+
+:::: {#page-18 .source-page}
+
+::: {#ch01-main-title .heading}
+**画面の表示を始める main.tsx**
+:::
+
+::: {#ch01-main-body .paragraph}
+`src/main.tsx` の2行目は、画面を組み立てる **`App`** を読み込みます。5行目は `index.html` にある `id="root"` の要素を取得します。7行目の `render(<App />)` で、その場所に `App` の内容を表示します。
+:::
+
+::: {#ch01-main-code .code filename="src/main.tsx"}
+```tsx
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import './style.css'
+
+const root = document.getElementById('root')
+if (root) {
+  createRoot(root).render(<App />)
 }
+```
+:::
 
-export const product: Product = {
+::: {#ch01-product-title .heading}
+**商品1件のデータを用意する product.ts**
+:::
+
+::: {#ch01-product-body .paragraph}
+`src/product.ts` には、商品名、価格、カテゴリなどをまとめた**商品データ**が入っています。`export` を付けた **`product`** は、次ページの `App.tsx` から読み込めます。
+:::
+
+::: {#ch01-product-code .code filename="src/product.ts"}
+```javascript
+export const product = {
   id: 1,
   name: 'ノート',
   price: 250,
@@ -687,54 +740,48 @@ export const product: Product = {
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-19 .source-page}
 
-::: {#ch01-exercise-title .heading}
-1.9. 演習① 環境確認と社員データの型定義
+::: {#ch01-app-title .heading}
+**商品管理の画面を組み立てる App.tsx**
 :::
 
-::: {#ch01-exercise-slide .slide layout="columns"}
-演習① 環境確認と社員データの型定義
-
-環境確認<br>
-サンプルを起動して「商品管理システム」を表示します。
-
-社員の型<br>
-`src/employee.ts` に `Employee` 型を定義します。
-
-配列の型<br>
-`employees` に `Employee[]` を指定します。
-
-型チェック<br>
-`npm run build` が成功することを確認します。
+::: {#ch01-app-body .paragraph}
+`src/App.tsx` の1行目は、`product.ts` の商品データを読み込みます。5行目からの HTML に似た記述を **JSX** と呼びます。6行目がページの見出しです。11行目の **`{product.name}`** により、画面の「商品名」の欄に「ノート」が表示されます。価格とカテゴリも同じ商品データから読み取ります。
 :::
 
-::: {#ch01-exercise-setup .paragraph numbered="true"}
-1．依存ライブラリの導入が済んだ `ch01-setup` で `npm run dev` を実行します。「商品管理システム」が表示されることを確認し、［Ctrl］＋［C］で開発サーバーを停止します。
-:::
+::: {#ch01-app-code .code filename="src/App.tsx"}
+```tsx
+import { product } from './product'
 
-::: {#ch01-exercise-data .paragraph numbered="true"}
-2．`src/employee.ts` を開き、次の表に従って `Employee` 型を定義します。定義済みの **`employees` に `Employee[]` を指定**してください。
-:::
-
-::: {#ch01-exercise-fields .table}
-| 項目名 | 意味 | 型 |
-| --- | --- | --- |
-| id | 社員番号 | number |
-| name | 氏名 | string |
-| salary | 給与 | number |
-| location_name | 勤務地 | string |
-:::
-
-::: {#ch01-exercise-check .paragraph numbered="true" keep-lines="true"}
-3．**`npm run build` が成功すること**を確認します。<br>
-先頭の `id` を文字列 `'1001'` に変え、再度ビルドして型エラーを確認します。<br>
-数値の `1001` に戻し、ビルドが成功すれば完了です。
+export default function App() {
+  return (
+    <main>
+      <h1>商品管理システム</h1>
+      <p>第1章の動作確認</p>
+      <dl aria-label="サンプル商品">
+        <div>
+          <dt>商品名</dt>
+          <dd>{product.name}</dd>
+        </div>
+        <div>
+          <dt>価格</dt>
+          <dd>{product.price.toLocaleString('ja-JP')} 円</dd>
+        </div>
+        <div>
+          <dt>カテゴリ</dt>
+          <dd>{product.category}</dd>
+        </div>
+      </dl>
+    </main>
+  )
+}
+```
 :::
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-20 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ
@@ -747,15 +794,13 @@ export const product: Product = {
 
 ■ 章ごとの依存ライブラリの導入
 
-■ 開発サーバーの起動と動作確認
+■ NPMスクリプトによる開発サーバーの起動と動作確認
 
-■ フォルダと主要ファイルの役割
-
-■ TypeScriptによるデータの型定義
+■ ブラウザーによるファイルの読み込みと商品データの表示
 :::
 
 ::: {#ch01-summary-body .paragraph}
-この章では、開発環境を準備し、React のサンプルを起動しました。商品と社員のデータを例に、TypeScript でデータの形を定義しました。第2章では社員のデータを一覧に表示し、入力値を React の状態として管理します。
+この章では、React の開発環境を準備し、Vite でひな形を作成しました。配布サンプルを VS Code の NPM スクリプトから起動し、商品管理システムが表示されることを確かめました。第2章では、商品を一覧に表示し、フォームの入力値を扱います。
 :::
 
 ::::

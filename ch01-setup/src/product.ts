@@ -1,11 +1,4 @@
-export type Product = {
-  id: number
-  name: string
-  price: number
-  category: string
-}
-
-export const product: Product = {
+export const product = {
   id: 1,
   name: 'ノート',
   price: 250,

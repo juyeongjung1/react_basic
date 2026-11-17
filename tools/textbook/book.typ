@@ -122,7 +122,7 @@
 ]
 // トレノケートの共通枠は『Spring Boot 入門』講義テキスト17頁の座標と図版を使用する。
 #let markdown-slide(heading-id, heading, id, title, items, heading-size: 14.04pt,
-  body-top: 344, layout: "blocks") = {
+  body-top: 344, layout: "blocks", art: none) = {
   let summary = layout == "summary"
   let vue = ("bullets", "plain", "course-path", "summary").contains(layout)
   let art-offset = if summary {-0.26} else if vue {-1.9} else {0}
@@ -146,7 +146,16 @@
     #at(4.685, 23.849 + art-offset, image("/tools/textbook/assets/trainocate-slide-header-rule.png",
       width: 359.989pt, height: 1.8pt, fit: "stretch"))
     #at(4.685, 264.83 + art-offset, line(length: 359.989pt, stroke: 0.25pt + rgb(90.2%, 34.1%, 10.2%)))
-    #if layout == "course-path" {
+    #if layout == "diagram" {
+      at(8.8, 50, image(art, width: 351.6pt, height: 138pt, fit: "cover"))
+      at(8.8, 185, block(width: 351.6pt)[
+        #grid(columns: (1fr, 1fr, 1fr), column-gutter: 7pt, ..items.map(item => align(center)[
+          #text(size: 12pt, weight: "bold", item.label)
+          #v(4.5pt)
+          #text(size: 9.8pt, item.body)
+        ]))
+      ])
+    } else if layout == "course-path" {
       at(0, 0, vue-course-path(items))
     } else if vue {
       at(18.33, 30.95 + art-offset, block(width: 344pt, above: 0pt, below: 0pt)[

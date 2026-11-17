@@ -311,12 +311,18 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
     slide = nodes[slide_id]
     title, *rows = slide['rows']
     layout = slide['attrs'].get('layout', 'blocks')
+    art_option = ''
+    if layout == 'diagram':
+        art = slide['attrs'].get('art')
+        if not art or len(rows) != 3:
+            raise ValueError(f'図解スライドには図版と3つの説明を指定してください: {slide_id}')
+        art_option = f', art: {q("/" + (folder / art).relative_to(ROOT).as_posix())}'
     items = []
     for row, command, picture in zip(rows, slide['commands'], slide['pictures']):
         label = 'none'
-        if layout in ('columns', 'course-path') and not command:
+        if layout in ('columns', 'course-path', 'diagram') and not command:
             split = next((i for i, (value, _) in enumerate(row) if value == '\n'), None)
-            if split is None and layout == 'columns':
+            if split is None and layout in ('columns', 'diagram'):
                 raise ValueError(f'スライドの項目名の後に改行を入れてください: {slide_id}')
             if split is not None:
                 label = f'[{inline(row[:split], typography=False)}]'
@@ -331,7 +337,7 @@ def markdown_slide(folder, heading_id, slide_id, nodes):
         items.append(f'(label: {label}, body: [{body}], picture: {path}, command: {str(command).lower()})')
     front_options = ', heading-size: 15.96pt, body-top: 352.31' if folder.name == 'front' else ''
     return (f'#markdown-slide({q(heading_id)}, [{heading}], {q(slide_id)}, '
-            f'[{inline(title, typography=False)}], ({",".join(items)},), layout: {q(layout)}{front_options})')
+            f'[{inline(title, typography=False)}], ({",".join(items)},), layout: {q(layout)}{art_option}{front_options})')
 
 
 def paragraph_parts(parts):
