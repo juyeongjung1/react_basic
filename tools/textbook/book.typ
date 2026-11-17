@@ -270,10 +270,11 @@
 #let cover(number, title, goal_title, goals) = at(-85.104, -86,
   box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals)])
 #let native-cover(body) = at(-85.104, -86, box(width: 595.32pt, height: 841.92pt)[#body])
-#let course-cover(title, subtitle) = native-cover[
+#let course-cover(title, number, subtitle) = native-cover[
   #set text(font: "Meiryo UI", weight: "bold", top-edge: 0pt, bottom-edge: 0pt)
   #at(83.664, 323.21, box(width: 428.11pt, align(center, text(size: 26.04pt, title))))
   #at(83.664, 340.13, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
+  #at(83.664, 375.29, box(width: 426.84pt, align(right, text(size: 11.04pt, weight: "regular", number))))
   #at(83.664, 449.47, box(width: 428.11pt, align(center, text(size: 15.96pt, subtitle))))
 ]
 #let introduction-cover(title) = native-cover[

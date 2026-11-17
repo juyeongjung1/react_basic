@@ -2,13 +2,48 @@
   "title": "第1章 開発環境とTypeScriptの基礎",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 11,
+  "last_page": 15,
   "cover_mode": "classic",
   "illustrations": {
+    "ch01-folder-menu": {
+      "caption_id": "ch01-folder-menu-caption",
+      "width": 255,
+      "max_height": 145
+    },
+    "ch01-folder-explorer": {
+      "caption_id": "ch01-folder-explorer-caption",
+      "width": 220,
+      "max_height": 180
+    },
+    "ch01-terminal-versions": {
+      "caption_id": "ch01-terminal-versions-caption",
+      "width": 315,
+      "max_height": 140
+    },
+    "ch01-vite-result": {
+      "caption_id": "ch01-vite-result-caption",
+      "width": 330,
+      "max_height": 115
+    },
+    "ch01-install-result": {
+      "caption_id": "ch01-install-result-caption",
+      "width": 375,
+      "max_height": 110
+    },
+    "ch01-start-terminal": {
+      "caption_id": "ch01-start-terminal-caption",
+      "width": 360,
+      "max_height": 90
+    },
     "ch01-start-screen": {
       "caption_id": "ch01-start-caption",
-      "width": 330,
-      "max_height": 125
+      "width": 365,
+      "max_height": 165
+    },
+    "ch01-start-edit-screen": {
+      "caption_id": "ch01-start-edit-caption",
+      "width": 408,
+      "max_height": 145
     }
   }
 }

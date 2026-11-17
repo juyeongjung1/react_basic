@@ -386,8 +386,8 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
     elif config.get('cover_mode') == 'introduction':
         commands += [f'#introduction-cover({q(cover_nodes[0][1])})', '#pagebreak()']
     elif config.get('cover_mode') == 'course':
-        title, subtitle = (value for _, value in cover_nodes)
-        commands += [f'#course-cover({q(title)}, {q(subtitle)})', '#pagebreak()']
+        title, number, subtitle = (value for _, value in cover_nodes)
+        commands += [f'#course-cover({q(title)}, {q(number)}, {q(subtitle)})', '#pagebreak()']
     elif has_cover:
         p=layout['pages'][0]
         body=[f'#at(0,0,image({q("/"+(folder/p["decoration"]).relative_to(ROOT).as_posix())},width:595.32pt,height:841.92pt))']

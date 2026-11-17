@@ -4,8 +4,12 @@
 React 開発入門
 :::
 
+::: {#front-cover-number .paragraph}
+XXXX-T-01
+:::
+
 ::: {#front-cover-subtitle .paragraph}
-～作って理解する SPA（TypeScript 対応）～
+～SPA開発実践(TypeScript対応)~
 :::
 
 ::::
@@ -152,10 +156,6 @@ React 開発入門
 本コースは4日間の講義と実機演習で構成されています。講義では商品管理システムを例に、画面と API の処理を確認します。各章の演習では、学んだ内容を人事管理システムに応用します。
 :::
 
-::: {#front-course-samples .paragraph}
-各章の配布サンプルを使うときは、その章のフォルダを開き、`package.json` がある場所で `npm install` を実行します。
-:::
-
 ::::
 
 :::: {#page-9 .source-page}
@@ -180,7 +180,7 @@ Vue.js 3 フロントエンド開発<br>
 ～SPA構築実践(TypeScript対応)～
 
 React 開発入門<br>
-～SPA構築実践(TypeScript対応)～
+～SPA開発実践(TypeScript対応)~
 :::
 
 ::: {#front-course-audience .paragraph}
@@ -197,6 +197,10 @@ React 開発入門<br>
 
 ::: {#front-prerequisite-js .paragraph}
 ■ JavaScript の基本文法を理解している。
+:::
+
+::: {#front-prerequisite-sql .paragraph}
+■ データベースを操作する**基本的なSQL文**を理解している。
 :::
 
 ::: {#front-prerequisite-note .paragraph}
@@ -267,7 +271,7 @@ $ npm install<br>$ npm run dev
 ::: {#front-notation-emphasis .notation baselines="300.77 327.05 364.73" frames="121.70 379.97 515.73 399.05"}
 ■ 重要な語句や強調
 
-本文中の重要な語句は太字で表記します。
+本文中の重要な語句や説明は MS Pゴシックの太字で表記します。
 
 表記例
 
