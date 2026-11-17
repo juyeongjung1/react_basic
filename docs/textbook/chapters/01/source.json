@@ -2,13 +2,8 @@
   "title": "第1章 開発環境とTypeScriptの基礎",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 15,
+  "last_page": 16,
   "cover_mode": "classic",
-  "typography": {
-    "minor_heading_extra_space": {
-      "ch01-spa-frameworks-title": -10
-    }
-  },
   "illustrations": {
     "ch01-folder-menu": {
       "caption_id": "ch01-folder-menu-caption",

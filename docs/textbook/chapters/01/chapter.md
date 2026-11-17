@@ -49,34 +49,76 @@ Facebook が React を公開。2019年には Hooks が加わりました。
 :::
 
 ::: {#ch01-spa-react .heading}
-**商品検索を例に、画面更新の変化をたどる**
+**動的な画面更新の必要性と課題**
 :::
 
 ::: {#ch01-spa-body .paragraph}
-商品一覧で「ノート」を検索する場面を考えます。初期の Web では、［検索］を押すとサーバーから結果の HTML が返り、ページ全体を読み込み直しました。当時の JavaScript は、入力欄が空かどうかの確認など、ページ内の操作に使われていました。
+Web アプリケーションでは、操作や通信の結果に応じて画面を更新します。従来は、JavaScript で **DOM**（ドキュメントオブジェクトモデル）を直接操作して実装していました。次の例では、［カウントアップ］を押すたびに表示する数値を 1 増やします。
 :::
 
-::: {#ch01-spa-behavior .paragraph}
-**Ajax** の普及で、画面を操作したまま検索結果を待てるようになりました。この**非同期通信**では、応答後に「検索中」を消し、一覧と件数を更新します。**DOM**（ページの構造）を個別に書き換えると、更新漏れが起きやすくなります。
-:::
-
-::: {#ch01-spa-api .paragraph}
-React では一覧や件数を**コンポーネント**（画面の部品）に分け、「検索中はメッセージを、完了後は結果を表示する」と記述します。React が表示内容を計算し（**レンダリング**）、DOM に反映します。同じページ内で画面を切り替える **SPA** も、この仕組みで作れます。
-:::
-
-::: {#ch01-spa-frameworks-title .heading}
-**画面開発に使われるフレームワーク**
-:::
-
-::: {#ch01-spa-frameworks .comparison icons="assets/template-binding.svg assets/reactive-display.svg assets/application-routing.svg"}
-| AngularJS | Vue.js | Next.js |
-| --- | --- | --- |
-| 初期の SPA で使われました。HTML とデータを結び付け、入力値を表示に反映します。 | コンポーネントとテンプレートで画面を作ります。商品一覧など、データの変化を表示に反映できます。 | React を使ってアプリ全体を構成します。URL に応じた画面の切り替えや、サーバーでのレンダリングを扱えます。 |
+::: {#ch01-spa-counter .code filename="counter.html"}
+```html
+<!doctype html>
+<meta charset="utf-8">
+<h1 id="count">0</h1>
+<button id="btn">カウントアップ</button>
+<script>
+  let count = 0; // 初期値
+  const countEl = document.getElementById("count");
+  const btnEl = document.getElementById("btn");
+  btnEl.addEventListener("click", function () {
+    count++;
+    countEl.textContent = count; // 表示を書き換える
+  });
+</script>
+```
 :::
 
 ::::
 
 :::: {#page-3 .source-page}
+
+::: {#ch01-spa-behavior .paragraph}
+前ページの7・8行目では、`getElementById` で見出しとボタンを**読み込み時に一度取得**します。9行目で `addEventListener` を使い、クリック時の処理（イベントリスナー）を登録します。ボタンを押すと10・11行目が実行され、`count` を増やして `textContent` に代入し、見出しの表示を更新します。
+:::
+
+::: {#ch01-spa-maintenance .paragraph}
+例えば、上限に達したときにメッセージを表示してボタンを無効にする場合は、見出しとあわせて三つの要素を更新します。更新する項目や条件が増えると、どの処理がどの要素を書き換えるのかを追いにくくなり、保守が難しくなります。
+:::
+
+::: {#ch01-spa-frameworks-title .heading}
+**フロントエンドフレームワークの登場**
+:::
+
+::: {#ch01-spa-frameworks-body .paragraph}
+この課題に対応するため、**データに応じて表示を更新する仕組み**を持つフロントエンドフレームワークやライブラリが登場しました。カウンターなら、現在の値から数値の表示とボタンの状態を決めます。画面を**コンポーネント**という部品に分けると、表示と処理をまとめて、ほかの画面でも再利用できます。
+:::
+
+::: {#ch01-spa-frameworks .comparison icons="assets/reactive-display.svg assets/application-routing.svg assets/template-binding.svg"}
+| React | Angular | Vue.js |
+| --- | --- | --- |
+| Facebook（現 Meta）が開発した、画面を作るためのライブラリです。 | Google が開発したフレームワークで、フォームや画面遷移の機能を備えています。 | Evan You が個人で開発を始めたフレームワークです。HTML に近い構文で表示を記述します。 |
+:::
+
+::: {#ch01-react-history-title .heading}
+**Reactの歴史と進化**
+:::
+
+::: {#ch01-react-history-release .paragraph}
+2013年に Facebook が React をオープンソースとして公開しました。React は状態から画面に表示する内容を計算し（**レンダリング**）、必要な変更を DOM に反映します。この仕組みで、同じページ内で画面を切り替える **SPA** を作れます。
+:::
+
+::: {#ch01-react-history-hooks .paragraph}
+2019年の React 16.8 では **Hooks** が導入され、関数で書いたコンポーネントでも状態を管理できるようになりました。第2章では `useState` を使い、入力値や表示の状態を扱います。
+:::
+
+::: {#ch01-react-history-next .paragraph}
+**Next.js** は、React を使って Web アプリケーションを作るフレームワークです。URL に応じてページを切り替えたり、サーバー側で表示内容を組み立てたりできます。
+:::
+
+::::
+
+:::: {#page-4 .source-page}
 
 ::: {#ch01-tools-title .heading}
 1.2. 開発環境の準備
@@ -124,7 +166,7 @@ VS Code を開いている場合は、インストール完了後に起動し直
 
 ::::
 
-:::: {#page-4 .source-page}
+:::: {#page-5 .source-page}
 
 ::: {#ch01-folder-title .heading}
 **【作業手順①】　配布サンプルを展開して開く**
@@ -160,7 +202,7 @@ VS Code を開いている場合は、インストール完了後に起動し直
 
 ::::
 
-:::: {#page-5 .source-page}
+:::: {#page-6 .source-page}
 
 ::: {#ch01-terminal-title .heading}
 **【作業手順②】　ターミナルを開いてバージョンを確認する**
@@ -197,7 +239,7 @@ PowerShell で `npm.ps1` の実行が制限されている場合は、**`npm.cmd
 
 ::::
 
-:::: {#page-6 .source-page}
+:::: {#page-7 .source-page}
 
 ::: {#ch01-vite-title .heading}
 1.3. Vite でプロジェクトを作成
@@ -230,7 +272,7 @@ React と TypeScript に必要なファイルや設定をまとめて用意で�
 
 ::::
 
-:::: {#page-7 .source-page}
+:::: {#page-8 .source-page}
 
 ::: {#ch01-vite-body-title .heading}
 **【参考】　React と TypeScript のプロジェクトを作成する**
@@ -266,7 +308,7 @@ npm create vite@7.1.3 demo -- --template react-ts
 
 ::::
 
-:::: {#page-8 .source-page}
+:::: {#page-9 .source-page}
 
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
@@ -311,7 +353,7 @@ npm create vite@7.1.3 demo -- --template react-ts
 
 ::::
 
-:::: {#page-9 .source-page}
+:::: {#page-10 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -356,7 +398,7 @@ npm run dev
 
 ::::
 
-:::: {#page-10 .source-page}
+:::: {#page-11 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
 **【作業手順】　初期表示と保存後の反映を確認する**
@@ -392,7 +434,7 @@ npm run dev
 
 ::::
 
-:::: {#page-11 .source-page}
+:::: {#page-12 .source-page}
 
 ::: {#ch01-files-title .heading}
 1.6. フォルダと主要ファイルの役割
@@ -432,7 +474,7 @@ VS Code で `index.html` を開き、表示先の `id="root"` と、`src/main.ts
 
 ::::
 
-:::: {#page-12 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch01-js-title .heading}
 1.7. 必要な JavaScript 構文
@@ -477,7 +519,7 @@ const names = items.map((item) => item.name)
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch01-ts-title .heading}
 1.8. TypeScript の基本型とデータ型
@@ -523,7 +565,7 @@ export const product: Product = {
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-15 .source-page}
 
 ::: {#ch01-exercise-title .heading}
 1.9. 演習① 環境確認と社員データの型定義
@@ -570,7 +612,7 @@ export const product: Product = {
 
 ::::
 
-:::: {#page-15 .source-page}
+:::: {#page-16 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ
