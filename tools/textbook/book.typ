@@ -217,7 +217,7 @@
     ]
   }
 ]
-#let compact-illustration(id, path, width, height, caption-id, caption, number, highlights: ()) = block(
+#let compact-illustration(id, path, width, height, caption-id, caption, number, highlights: (), file-path: none) = block(
   width: 100%, breakable: false, inset: (left: 31.04pt), above: 8pt, below: 12pt)[
   #mark("instruction-" + id, "start")
   #layout(size => {
@@ -226,7 +226,14 @@
     block(width: frame-width, inset: 6pt, fill: white,
       stroke: 0.65pt + rgb("9AAEBF"), radius: 3pt, above: 0pt, below: 0pt)[
       #mark("figure-frame-" + id, "start")
-      #if number != none {figure-number(id, number)}
+      #if file-path != none {
+        grid(columns: (1fr, auto), column-gutter: 8pt, align: (left + top, right + top),
+          if number != none {figure-number(id, number)} else {[]},
+          box(inset: (x: 4pt, y: 1pt), radius: 3pt, fill: rgb("E8F1FB"), stroke: 0.6pt + rgb("ADC5DD"))[
+            #mark(id, "file-path")
+            #text(font: "Meiryo", size: 10.5pt, weight: "bold", fill: rgb("123D68"))[#underline(file-path)]
+          ])
+      } else if number != none {figure-number(id, number)}
       #block(width: width * 1pt, above: 0pt, below: 6pt)[
         #mark(id, "start")#image(path, width: width * 1pt, height: height * 1pt)
         #for (x, y, w, h) in highlights {

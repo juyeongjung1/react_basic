@@ -1,0 +1,13 @@
+<!doctype html>
+<meta charset="utf-8">
+<h1 id="count">0</h1>
+<button id="btn">カウントアップ</button>
+<script>
+  let count = 0; // 初期値
+  const countEl = document.getElementById("count");
+  const btnEl = document.getElementById("btn");
+  btnEl.addEventListener("click", function () {
+    count++;
+    countEl.textContent = count; // 表示を書き換える
+  });
+</script>

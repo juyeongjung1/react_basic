@@ -4,6 +4,12 @@
   "first_page": 1,
   "last_page": 20,
   "cover_mode": "classic",
+  "typography": {
+    "minor_heading_extra_space": {
+      "ch01-spa-frameworks-title": -5,
+      "ch01-react-history-title": -5
+    }
+  },
   "illustrations": {
     "ch01-folder-files": {
       "caption_id": "ch01-folder-files-caption",
@@ -14,7 +20,7 @@
       "caption_id": "ch01-workspace-menu-caption",
       "width": 290,
       "max_height": 220,
-      "highlights": [[0.029, 0.831, 0.954, 0.163]]
+      "highlights": [[0.029, 0.834, 0.954, 0.073]]
     },
     "ch01-workspace-roots": {
       "caption_id": "ch01-workspace-roots-caption",
@@ -76,6 +82,7 @@
     },
     "ch01-start-edit-screen": {
       "caption_id": "ch01-start-edit-caption",
+      "file_path": "ch01-setup/src/App.tsx",
       "width": 355,
       "max_height": 155,
       "highlights": [[0.330, 0.778, 0.425, 0.110]]

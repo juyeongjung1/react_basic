@@ -53,7 +53,7 @@ React<br>
 Web アプリケーションでは、操作や通信の結果に応じて画面を更新します。従来は、JavaScript で **DOM**（ドキュメントオブジェクトモデル）を直接操作して実装していました。次の例では、［カウントアップ］を押すたびに表示する数値を 1 増やします。
 :::
 
-::: {#ch01-spa-counter .code filename="counter.html"}
+::: {#ch01-spa-counter .code filename="ch01-setup/examples/counter.html"}
 ```html
 <!doctype html>
 <meta charset="utf-8">
@@ -76,7 +76,7 @@ Web アプリケーションでは、操作や通信の結果に応じて画面�
 :::: {#page-3 .source-page}
 
 ::: {#ch01-spa-behavior .paragraph}
-14ページの7・8行目で要素を読み込み時に取得し、9行目でクリック時の処理を登録します。10・11行目で `count` を増やし、`textContent` で見出しを書き換えます。表示する項目が増えるほど、どの処理がどの要素を更新するかを追いにくくなります。
+14ページの7〜9行目では、画面の要素を取得してクリック処理を登録します。10・11行目で値と表示を更新します。更新箇所が増えるほど、処理と表示の対応を追いにくくなります。
 :::
 
 ::: {#ch01-spa-frameworks-title .heading}
@@ -84,16 +84,20 @@ Web アプリケーションでは、操作や通信の結果に応じて画面�
 :::
 
 ::: {#ch01-spa-frameworks-body .paragraph}
-データに応じて表示を更新する仕組みを使うと、表示と処理を**コンポーネント**（画面の部品）にまとめて再利用できます。この仕組みは、同じページ内で画面を切り替える **SPA** の構築にも使われます。
+この課題を解決するために、**フロントエンドフレームワーク**が開発されました。代表例には React、Angular、Vue.js があります。これらを使うと、データの変化に応じて表示を更新し、表示と処理を**コンポーネント**（画面の部品）にまとめて再利用できます。この仕組みは、同じページ内で画面を切り替える **SPA** の構築にも使われます。
 :::
 
 ::: {#ch01-spa-frameworks .comparison icons="assets/reactive-display.svg assets/application-routing.svg assets/template-binding.svg"}
 | React | Angular | Vue.js |
 | --- | --- | --- |
-| Facebook（現 Meta）が開発した、画面を作るためのライブラリです。 | Google が開発し、フォームや画面遷移の機能を備えています。 | Evan You が開発を始め、HTML に近いテンプレートで画面を記述します。 |
+| Meta が開発した画面表示用ライブラリです。 | Google が開発し、画面遷移やフォームを扱えます。 | Evan You が開発。HTML に近い記法を使えます。 |
 :::
 
-::: {#ch01-react-counter .code filename="Counter.tsx"}
+::: {#ch01-react-counter-intro .paragraph}
+次は同じカウンターの React 版です。DOM を直接操作する処理が省けます。
+:::
+
+::: {#ch01-react-counter .code filename="ch01-setup/examples/Counter.tsx"}
 ```tsx
 import { useState } from 'react'
 
@@ -112,9 +116,9 @@ export default function Counter() {
 :::
 
 ::: {#ch01-react-counter-reading .paragraph keep-lines="true"}
-①　4行目　**`useState(0)`** は、初期値 0 の `count` と更新用の `setCount` を返します。<br>
-②　8行目　クリックすると **`setCount(count + 1)`** が次の値を React に渡します。<br>
-③　7行目　React が `Counter` を再実行し、見出しに新しい `count` を表示します。<br>
+①　4行目　**`useState(0)`** は、初期値 0 の `count` と更新用の `setCount` を返します。\
+②　8行目　クリックすると **`setCount(count + 1)`** が次の値を React に渡します。\
+③　7行目　React が `Counter` を再実行し、見出しに新しい `count` を表示します。\
 14ページの `textContent` への代入にあたる表示の更新は、React が行います。
 :::
 
@@ -239,7 +243,7 @@ Node.js・npm<br>
 ![VS Codeのファイルメニューから章フォルダーを追加し、ワークスペースを保存する操作](assets/vscode-workspace-menu.png){#ch01-workspace-menu}
 
 ::: {#ch01-workspace-menu-caption .paragraph}
-章フォルダーの追加とワークスペースの保存に使うメニュー
+章フォルダーをワークスペースへ追加するメニュー
 :::
 
 ::: {#ch01-workspace-save .paragraph numbered="true"}
@@ -516,7 +520,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 :::
 
 ::: {#ch01-install-body-title .heading}
-**【作業手順】　配布サンプルの依存ライブラリをインストールする**
+**配布サンプルの依存ライブラリをインストールする**
 :::
 
 ::: {#ch01-install-body .paragraph}
@@ -677,7 +681,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 配布サンプル `ch01-setup` の `index.html` を開きます。9行目の **`<div id="root">`** は、React の画面を表示する場所です。10行目の `script` 要素で、画面表示を始める **`src/main.tsx`** を読み込みます。
 :::
 
-::: {#ch01-index-code .code filename="index.html"}
+::: {#ch01-index-code .code filename="ch01-setup/index.html"}
 ```html
 <!doctype html>
 <html lang="ja">
@@ -706,7 +710,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 `src/main.tsx` の2行目は、画面を組み立てる **`App`** を読み込みます。5行目は `index.html` にある `id="root"` の要素を取得します。7行目の `render(<App />)` で、その場所に `App` の内容を表示します。
 :::
 
-::: {#ch01-main-code .code filename="src/main.tsx"}
+::: {#ch01-main-code .code filename="ch01-setup/src/main.tsx"}
 ```tsx
 import { createRoot } from 'react-dom/client'
 import App from './App'
@@ -727,7 +731,7 @@ if (root) {
 `src/product.ts` には、商品名、価格、カテゴリなどをまとめた**商品データ**が入っています。`export` を付けた **`product`** は、次ページの `App.tsx` から読み込めます。
 :::
 
-::: {#ch01-product-code .code filename="src/product.ts"}
+::: {#ch01-product-code .code filename="ch01-setup/src/product.ts"}
 ```javascript
 export const product = {
   id: 1,
@@ -750,7 +754,7 @@ export const product = {
 `src/App.tsx` の1行目は、`product.ts` の商品データを読み込みます。5行目からの HTML に似た記述を **JSX** と呼びます。6行目がページの見出しです。11行目の **`{product.name}`** により、画面の「商品名」の欄に「ノート」が表示されます。価格とカテゴリも同じ商品データから読み取ります。
 :::
 
-::: {#ch01-app-code .code filename="src/App.tsx"}
+::: {#ch01-app-code .code filename="ch01-setup/src/App.tsx"}
 ```tsx
 import { product } from './product'
 

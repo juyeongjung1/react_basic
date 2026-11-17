@@ -433,7 +433,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             width *= maximum / height
             height = maximum
         compact_figures[ident] = dict(width=width, height=height, caption_id=caption_id,
-                                      highlights=options.get('highlights', []))
+                                      highlights=options.get('highlights', []), file_path=options.get('file_path'))
         illustration_captions[caption_id] = ident
     code_boxes = code_geometries(folder, layout, nodes)
     code_groups, frame_owners = {}, {}
@@ -648,8 +648,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 caption_id = figure['caption_id']
                 number = q(numbered[ident]['number']) if ident in numbered else 'none'
                 boxes = ''.join(f'{tuple(box)},' for box in figure['highlights'])
+                file_path = f', file-path: {q(figure["file_path"])}' if figure['file_path'] else ''
                 return (f'#compact-illustration({q(ident)}, {q(path)}, {figure["width"]}, {figure["height"]}, '
-                        f'{q(caption_id)}, {q(nodes[caption_id]["text"])}, {number}, highlights: ({boxes}))')
+                        f'{q(caption_id)}, {q(nodes[caption_id]["text"])}, {number}, highlights: ({boxes}){file_path})')
             fig = figure_map.get(ident, {"box": [85.104, 0, 511.776, 0]})
             path = "/" + (folder / figures[ident]).relative_to(ROOT).as_posix()
             width = (fig['box'][2] - fig['box'][0]) * figure_scales.get(ident, 1)
@@ -1030,7 +1031,7 @@ def build(chapter="01", mode="all", markdown=None, output=None):
         for ident in figures:
             if (config.get('cover_mode','classic')!='none' and ident in order[0]['entries']) or any(ident in p['entries'] and p['source_page'] in config.get('native_pages',[]) for p in layout['pages']):
                 continue
-            locations = [m["page"] for m in marks if m["id"] == ident]
+            locations = [m["page"] for m in marks if m["id"] == ident and m["edge"] in ("start", "end")]
             if len(locations) != 2 or locations[0] != locations[1]:
                 split_figures.append(ident)
         for ident, node in nodes.items():
@@ -1070,6 +1071,9 @@ def build(chapter="01", mode="all", markdown=None, output=None):
         expected = Counter(normalized("".join(n["text"] for ident,n in nodes.items() if ident not in modern['consume']) + modern['expected_text']))
         expected += Counter(normalized(''.join(record['number'] for ident, record in numbered.items()
                                                 if ident not in modern['consume'])))
+        illustrations = config.get('illustrations', {})
+        expected += Counter(normalized(''.join(illustrations[mark['id']]['file_path']
+                                                for mark in marks if mark['edge'] == 'file-path')))
         # 新しい設定図のSVGには、輪郭ではなく文字として残したラベルもある。
         svg_text=''.join(''.join(node.itertext()) for ident,path in figures.items() if ident not in modern['consume'] and Path(path).suffix.lower()=='.svg' for node in ET.parse(folder/path).iter('{http://www.w3.org/2000/svg}text'))
         expected += Counter(normalized(svg_text))
