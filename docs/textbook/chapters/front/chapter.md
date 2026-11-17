@@ -200,7 +200,7 @@ React 開発入門<br>
 :::
 
 ::: {#front-prerequisite-sql .paragraph}
-■ データベースを操作する**基本的なSQL文**を理解している。
+■ データベースを操作する基本的なSQL文を理解している。
 :::
 
 ::: {#front-prerequisite-note .paragraph}

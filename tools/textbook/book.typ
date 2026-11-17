@@ -34,6 +34,12 @@
   above: 12.96pt, below: if continuing {6.96pt} else {12.96pt}, inset: (left: 11.04pt))[
   #mark(id, "start")#grid(columns: (12pt, 1fr), column-gutter: 6pt, marker, body)#mark(id, "end")
 ]
+#let numbered-paragraph(id, marker, body) = block(
+  above: 0pt, below: 12.96pt, inset: (left: 11.04pt))[
+  #mark(id, "start")
+  #grid(columns: (17pt, 1fr), column-gutter: 3pt, marker, body)
+  #mark(id, "end")
+]
 #let list-continuation(id, body, continuing: false) = block(
   above: 0pt, below: if continuing {6.96pt} else {12.96pt}, inset: (left: 29.04pt))[
   #mark(id, "start")#body#mark(id, "end")
@@ -62,6 +68,19 @@
 #let reference-panel(body) = block(width: 100%, breakable: true, above: 18pt,
   below: 12pt, inset: 8pt, fill: rgb("F5F8FC"), stroke: 0.65pt + rgb("A6B8CE"), radius: 4pt)[
   #body
+]
+#let comparison-cards(id, cards) = block(width: 100%, above: 0pt, below: 10pt, breakable: false)[
+  #mark(id, "start")
+  #table(columns: (1fr,) * cards.len(), column-gutter: 7pt, inset: (x: 8pt, y: 7pt),
+    fill: rgb("F1F6F7"), stroke: 0.55pt + rgb("B0C3CA"),
+    ..cards.map(((title, detail, icon)) => stack(spacing: 4pt,
+      grid(columns: (18pt, 1fr), column-gutter: 5pt, align: horizon,
+        image(icon, width: 18pt), text(font: "Meiryo UI", weight: "bold", size: 11pt, title)),
+      block(above: 0pt, below: 0pt)[
+        #set par(leading: 4pt, first-line-indent: 0pt)
+        #text(size: 10pt, detail)
+      ])))
+  #mark(id, "end")
 ]
 #let slide-header(height, body) = block(width: 100%, height: height * 1pt,
   breakable: false, above: 0pt, below: 0pt)[#body]
@@ -189,22 +208,31 @@
     ]
   }
 ]
-#let compact-illustration(id, path, width, height, caption-id, caption, number) = block(
-  width: 100%, breakable: false, inset: (left: -6pt), above: 8pt, below: 12pt)[
+#let compact-illustration(id, path, width, height, caption-id, caption, number, highlights: ()) = block(
+  width: 100%, breakable: false, inset: (left: 31.04pt), above: 8pt, below: 12pt)[
   #mark("instruction-" + id, "start")
-  #block(width: 100% + 6pt, inset: 6pt, fill: white,
-    stroke: 0.65pt + rgb("9AAEBF"), radius: 3pt, above: 0pt, below: 0pt)[
-    #mark("figure-frame-" + id, "start")
-    #if number != none {figure-number(id, number)}
-    #block(width: width * 1pt, above: 0pt, below: 6pt)[
-      #mark(id, "start")#image(path, width: width * 1pt, height: height * 1pt)#mark(id, "end")
+  #layout(size => {
+    let caption-text = text(font: "MS PMincho", size: 9.5pt, caption)
+    let frame-width = calc.min(size.width, calc.max(width * 1pt, measure(caption-text).width) + 12pt)
+    block(width: frame-width, inset: 6pt, fill: white,
+      stroke: 0.65pt + rgb("9AAEBF"), radius: 3pt, above: 0pt, below: 0pt)[
+      #mark("figure-frame-" + id, "start")
+      #if number != none {figure-number(id, number)}
+      #block(width: width * 1pt, above: 0pt, below: 6pt)[
+        #mark(id, "start")#image(path, width: width * 1pt, height: height * 1pt)
+        #for (x, y, w, h) in highlights {
+          at(x * width, y * height, rect(width: w * width * 1pt, height: h * height * 1pt,
+            radius: 1pt, stroke: 0.8pt + rgb("E54C30"), fill: none))
+        }
+        #mark(id, "end")
+      ]
+      #block(above: 0pt, below: 0pt)[
+        #set par(first-line-indent: 0pt, leading: 4.5pt, spacing: 0pt)
+        #mark(caption-id, "start")#caption-text#mark(caption-id, "end")
+      ]
+      #mark("figure-frame-" + id, "end")
     ]
-    #block(above: 0pt, below: 0pt)[
-      #set par(first-line-indent: 0pt, leading: 4.5pt, spacing: 0pt)
-      #mark(caption-id, "start")#text(font: "MS PMincho", size: 9.5pt, caption)#mark(caption-id, "end")
-    ]
-    #mark("figure-frame-" + id, "end")
-  ]
+  })
   #mark("instruction-" + id, "end")
 ]
 // 固定ページでは、図本体の座標を保ち、空いている側へ番号タブを付ける。

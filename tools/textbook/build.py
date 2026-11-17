@@ -126,7 +126,8 @@ def read_markdown(path):
                     else:
                         raise ValueError(f"未対応のブロック: {child['t']}")
                 nodes[attrs[0]] = {"kind": attrs[1][0], "parts": parts, "text": "".join(p[0] for p in parts), "language": language, "attrs": dict(attrs[2])}
-                if attrs[1][0]=='table':nodes[attrs[0]].update(rows=rows,has_header=has_header)
+                if attrs[1][0] in ('table', 'comparison'):
+                    nodes[attrs[0]].update(rows=rows, has_header=has_header)
                 entries.append(attrs[0])
             elif block["t"] == "Para" and len(block["c"]) == 1 and block["c"][0]["t"] == "Image":
                 image = block["c"][0]["c"]
@@ -425,7 +426,8 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if height > maximum:
             width *= maximum / height
             height = maximum
-        compact_figures[ident] = dict(width=width, height=height, caption_id=caption_id)
+        compact_figures[ident] = dict(width=width, height=height, caption_id=caption_id,
+                                      highlights=options.get('highlights', []))
         illustration_captions[caption_id] = ident
     code_boxes = code_geometries(folder, layout, nodes)
     code_groups, frame_owners = {}, {}
@@ -639,8 +641,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 path = '/' + (folder / figures[ident]).relative_to(ROOT).as_posix()
                 caption_id = figure['caption_id']
                 number = q(numbered[ident]['number']) if ident in numbered else 'none'
+                boxes = ''.join(f'{tuple(box)},' for box in figure['highlights'])
                 return (f'#compact-illustration({q(ident)}, {q(path)}, {figure["width"]}, {figure["height"]}, '
-                        f'{q(caption_id)}, {q(nodes[caption_id]["text"])}, {number})')
+                        f'{q(caption_id)}, {q(nodes[caption_id]["text"])}, {number}, highlights: ({boxes}))')
             fig = figure_map.get(ident, {"box": [85.104, 0, 511.776, 0]})
             path = "/" + (folder / figures[ident]).relative_to(ROOT).as_posix()
             width = (fig['box'][2] - fig['box'][0]) * figure_scales.get(ident, 1)
@@ -678,6 +681,13 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if node['kind'] == 'paragraph':
             keep_lines = node['attrs'].get('keep-lines') == 'true'
             parts = typographic_parts(node['parts'], keep_lines=keep_lines)
+            if node['attrs'].get('numbered') == 'true':
+                first, style = parts[0]
+                number = re.match(r'\d+．', first)
+                if not number:
+                    raise ValueError(f'作業手順に番号がありません: {ident}')
+                body = [part for part in [(first[number.end():], style), *parts[1:]] if part[0]]
+                return f'#numbered-paragraph({q(ident)}, [{inline([(number[0], style)])}], [{inline(body, keep_lines=keep_lines)}])'
             # 複数の項目をまとめた段落では、明示改行を使ってすべての丸印をそろえる。
             multiple_bullets = keep_lines and sum(value.startswith(('●', '⚫', '•')) for value, _ in parts) > 1
             if parts and parts[0][0][0] in '■●•▪○・◼⚫\uf09f' and not multiple_bullets:
@@ -709,6 +719,13 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 return f'#paragraph({q(ident)}, [{inline(parts)}], indent: {size}pt)'
         if node['kind'] == 'step' and config['chapter'] == 'front':
             return f'#list-item({q(ident)}, [{inline(node["parts"])}])'
+        if node['kind'] == 'comparison':
+            titles, details = node['rows']
+            icons = node['attrs']['icons'].split()
+            cards = ', '.join(
+                f'({q(title)}, {q(detail)}, {q("/" + (folder / icon).relative_to(ROOT).as_posix())})'
+                for title, detail, icon in zip(titles, details, icons, strict=True))
+            return f'#comparison-cards({q(ident)}, ({cards},))'
         if node['kind']=='table':
             info=layout.get('tables',{}).get(ident,{})
             xs=info.get('xs',list(range(len(node['rows'][0])+1)))
