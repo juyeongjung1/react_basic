@@ -671,6 +671,16 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             title, *notices = paragraph_parts(node['parts'])
             rows = ','.join(f'[{inline(row)}]' for row in notices)
             return f'#trademarks([{inline(title)}], ({rows},))'
+        if node['kind'] == 'section-points':
+            title, *items = paragraph_parts(node['parts'])
+            points = []
+            for item in items:
+                value, style = item[0]
+                if not value.startswith('●'):
+                    raise ValueError(f'節のポイントの各項目は●から始めてください: {ident}')
+                body = [(value[1:].lstrip(), style), *item[1:]]
+                points.append(f'[{inline(body)}]')
+            return f'#section-points({q(ident)}, [{inline(title)}], ({", ".join(points)},))'
         if node['kind'] == 'notation-title':
             continuation = str(node['attrs'].get('continuation') == 'true').lower()
             return f'#notation-title({q(ident)}, [{inline(node["parts"])}], continuation: {continuation})'

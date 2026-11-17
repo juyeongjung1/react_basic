@@ -70,6 +70,19 @@
   below: 12pt, inset: 8pt, fill: rgb("F5F8FC"), stroke: 0.65pt + rgb("A6B8CE"), radius: 4pt)[
   #body
 ]
+#let section-points(id, title, points) = block(width: 100%, breakable: false,
+  above: 26pt, below: 12pt, fill: rgb("F1F6F9"), stroke: 0.65pt + rgb("A9BFCE"), radius: 4pt)[
+  #mark(id, "start")
+  #block(width: 100%, above: 0pt, below: 0pt, inset: (x: 12pt, y: 7pt),
+    fill: rgb("173C4C"), radius: (top-left: 4pt, top-right: 4pt))[
+    #text(font: "MS PGothic", size: 12pt, weight: "bold", fill: white, stroke: 0.3pt + white, title)
+  ]
+  #block(width: 100%, above: 0pt, below: 0pt, inset: (x: 12pt, y: 10pt))[
+    #stack(spacing: 6pt, ..points.map(point => grid(columns: (10pt, 1fr), column-gutter: 5pt,
+      text(size: 8pt, fill: rgb("164D5A"), "●"), point)))
+  ]
+  #mark(id, "end")
+]
 #let comparison-cards(id, cards) = block(width: 100%, above: 0pt, below: 10pt, breakable: false)[
   #mark(id, "start")
   #table(columns: (1fr,) * cards.len(), column-gutter: 7pt, inset: (x: 8pt, y: 7pt),

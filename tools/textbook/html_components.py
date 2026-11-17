@@ -109,7 +109,8 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer=''):
+def code_html(rows, lang, filenames, footer='', highlight_lines=''):
+    first, last = map(int, highlight_lines.split('-')) if highlight_lines else (0, -1)
     source = '\n'.join(row['code'] for row in rows)
     tokens = highlighted(source, lang).split('\n')
     cursor, pieces = 0, []
@@ -117,8 +118,16 @@ def code_html(rows, lang, filenames, footer=''):
         count = row['code'].count('\n')+1
         content = '\n'.join(tokens[cursor:cursor+count])
         cursor += count
-        pieces.append('<div class="code-row" data-break-row' + ids_attr(row['ids']) + '>'
-            + f'<div class="line-number">{row["number"]}</div><pre class="source-code" spellcheck="false">{content}</pre></div>')
+        number = row['number']
+        classes = ['code-row']
+        if first <= number <= last:
+            classes.append('code-highlight')
+            if number == first:
+                classes.append('code-highlight-start')
+            if number == last:
+                classes.append('code-highlight-end')
+        pieces.append(f'<div class="{" ".join(classes)}" data-break-row' + ids_attr(row['ids']) + '>'
+            + f'<div class="line-number">{number}</div><pre class="source-code" spellcheck="false">{content}</pre></div>')
     return '<section class="card code-card">'+header(LABELS[lang], filenames)+'<div class="card-content">'+''.join(pieces)+'</div><footer class="card-footer">'+footer+'</footer></section>'
 
 
@@ -387,7 +396,8 @@ def prepare(folder, config, layout, nodes, figures, order):
                 footer += '<figcaption class="code-figure-label">'+escape(number)+'</figcaption>'
             footer += '<img alt="実行結果の例" style="width:'+str(f['box'][2]-f['box'][0])+'pt" src="data:image/svg+xml;base64,'+data+'"></figure>'
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
-        add(ident,ident,consume,code_html(rows,lang,names,footer),width,offset)
+        highlight_lines = nodes[ident].get('attrs', {}).get('highlight-lines', '')
+        add(ident,ident,consume,code_html(rows,lang,names,footer,highlight_lines),width,offset)
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:
             width,_=table_dimensions(layout,ident,node)

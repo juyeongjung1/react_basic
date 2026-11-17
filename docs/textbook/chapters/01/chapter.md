@@ -78,7 +78,7 @@ Webアプリケーションでは、ボタンのクリックやフォームへ�
 **従来のJavaScriptによる実装例**
 :::
 
-::: {#ch01-spa-counter .code filename="ch01-setup/examples/counter.html"}
+::: {#ch01-spa-counter .code filename="ch01-setup/examples/counter.html" highlight-lines="21-22"}
 ```html
 <!doctype html>
 <html lang="ja">
@@ -192,7 +192,7 @@ Reactはデータが更新されたことを受けて、画面に必要な変更
 :::
 
 ::: {#ch01-spa-react-next-chapter .paragraph}
-※ `useState` や `onClick`、HTMLに似た記述方法（JSX）の詳しい書き方は、第2章で学習します。ここでは、**「データが変わると、その結果が画面に反映される」**というReactの考え方を押さえてください。
+※ `useState` や `onClick`、HTMLに似た記述方法（JSX）の詳しい書き方は、第2章で学習します。ここでは、**「データが変わると、その結果が画面に反映される」**というReactの考え方を抑えてください。
 :::
 
 ::: {#ch01-spa-react-components .paragraph}
@@ -203,12 +203,10 @@ Reactには、画面を「コンポーネント」という部品に分けて作
 **【参考】フロントエンド開発で使われる主な技術**
 :::
 
-::: {#ch01-spa-related-table .table}
-| 技術 | 概要 |
-| --- | --- |
-| React | Metaが開発している、画面（UI）を構築するためのライブラリ |
-| Vue.js | HTMLに近い書き方を特徴とするフロントエンドフレームワーク |
-| Angular | Googleが開発する、画面開発に必要な機能を幅広く備えたフレームワーク |
+::: {#ch01-spa-related-table .comparison icons="assets/reactive-display.svg assets/template-binding.svg assets/application-routing.svg"}
+| React | Vue.js | Angular |
+| --- | --- | --- |
+| Metaが開発する画面（UI）用のライブラリ。3つの中で最も多く使われた（Stack Overflow 2026年調査）。 | Evan Youの個人開発から始まったフレームワーク。HTMLに近い書き方で学びやすい。 | Googleが開発するフレームワーク。前身のAngularJSは、初期のフロントエンドフレームワークの一つ。 |
 :::
 
 ::: {#ch01-spa-react-history .paragraph}
@@ -269,23 +267,15 @@ Reactは、このようなSPAの画面を構築するためにも利用できま
 本研修では、Reactによる画面表示や入力処理を学習した後、第3章でReact Routerを使い、URLに応じて画面を切り替えるSPAを実装します。
 :::
 
-::: {#ch01-spa-key-points .heading level="minor"}
+::: {#ch01-spa-key-points .section-points}
 この節のポイント
-:::
 
-::: {#ch01-spa-list-2-1 .paragraph}
 ● 従来のJavaScriptでは、表示するデータとHTMLの書き換えを自分で管理する必要がある。
-:::
 
-::: {#ch01-spa-list-2-2 .paragraph}
 ● Reactでは、データの変更に合わせて必要な画面の更新をReactが行う。
-:::
 
-::: {#ch01-spa-list-2-3 .paragraph}
 ● SPAは、ページ全体を再読み込みせず、必要な部分を更新して画面を切り替える方式である。
-:::
 
-::: {#ch01-spa-list-2-4 .paragraph}
 ● Reactはライブラリ、SPAはアプリケーションの構成方式であり、同じ意味ではない。
 :::
 

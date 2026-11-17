@@ -104,6 +104,19 @@ html, body {
   break-inside: avoid;
 }
 
+.code-highlight { position: relative; }
+
+.code-highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0 5pt 0 38pt;
+  border-inline: 1pt solid #c6292e;
+  pointer-events: none;
+}
+
+.code-highlight-start::after { border-top: 1pt solid #c6292e; }
+.code-highlight-end::after { border-bottom: 1pt solid #c6292e; }
+
 .line-number {
   padding: 0 7pt 0 4pt;
   border-right: 0.6pt solid #e5e9ef;
