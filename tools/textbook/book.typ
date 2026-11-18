@@ -83,6 +83,30 @@
     ])
   #mark(id, "end")
 ]
+#let stage-flow(id, stages) = block(width: 100%, breakable: false, above: 10pt, below: 13pt)[
+  #mark(id, "start")
+  #let cells = stages.enumerate().map(((index, (label, title, body))) => {
+    let current = index == 0
+    let accent = if current {rgb("934317")} else {rgb("264D73")}
+    let card = block(width: 100%, height: 120pt, inset: (x: 7pt, y: 9pt), radius: 4pt,
+      stroke: 0.65pt + (if current {rgb("D8A47E")} else {rgb("B0C3D3")}),
+      fill: if current {rgb("FFF3E9")} else {rgb("F0F5FA")})[
+      #set par(leading: 4pt, first-line-indent: 0pt)
+      #stack(spacing: 6pt,
+        text(font: "MS PGothic", size: 10pt, weight: "bold", fill: accent, label),
+        text(size: 10.5pt, title), body)
+    ]
+    if current {(card,)} else {
+      let arrow = box(width: 13pt, height: 8pt)[
+        #at(0, 3.5, line(length: 9pt, stroke: 1pt + accent))
+        #at(8, 0, polygon((0pt, 0pt), (5pt, 4pt), (0pt, 8pt), fill: accent))
+      ]
+      (align(center + horizon, arrow), card)
+    }
+  }).flatten()
+  #grid(columns: (1fr, 13pt, 1fr, 13pt, 1fr), column-gutter: 4pt, ..cells)
+  #mark(id, "end")
+]
 #let section-points(id, title, points) = block(width: 100%, breakable: false,
   above: 26pt, below: 12pt, fill: rgb("F1F6F9"), stroke: 0.65pt + rgb("A9BFCE"), radius: 4pt)[
   #mark(id, "start")

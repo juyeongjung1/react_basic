@@ -2,7 +2,7 @@
   "title": "第1章 React の開発環境と動作確認",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 27,
+  "last_page": 33,
   "cover_mode": "classic",
   "illustrations": {
     "ch01-spa-js-result": {
@@ -65,11 +65,26 @@
       "max_height": 120,
       "highlights": [[0.030, 0.421, 0.224, 0.174], [0.030, 0.783, 0.194, 0.174]]
     },
+    "ch01-vite-before-after": {
+      "caption_id": "ch01-vite-before-after-caption",
+      "width": 380,
+      "max_height": 155
+    },
+    "ch01-vite-command-callouts": {
+      "caption_id": "ch01-vite-command-callouts-caption",
+      "width": 380,
+      "max_height": 94
+    },
     "ch01-vite-tree": {
       "caption_id": "ch01-vite-tree-caption",
       "width": 232,
       "max_height": 240,
-      "highlights": [[0.060, 0.263, 0.310, 0.074], [0.060, 0.478, 0.530, 0.146], [0.060, 0.762, 0.580, 0.217]]
+      "highlights": [[0.046, 0.275, 0.380, 0.055], [0.046, 0.488, 0.380, 0.055], [0.046, 0.559, 0.380, 0.064], [0.046, 0.772, 0.380, 0.064], [0.046, 0.914, 0.380, 0.064]]
+    },
+    "ch01-vite-file-relations": {
+      "caption_id": "ch01-vite-file-relations-caption",
+      "width": 380,
+      "max_height": 103
     },
     "ch01-install-result": {
       "caption_id": "ch01-install-result-caption",

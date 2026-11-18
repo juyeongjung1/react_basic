@@ -109,10 +109,16 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer='', highlight_lines=''):
+def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text=''):
     first, last = map(int, highlight_lines.split('-')) if highlight_lines else (0, -1)
     source = '\n'.join(row['code'] for row in rows)
-    tokens = highlighted(source, lang).split('\n')
+    markup = highlighted(source, lang)
+    if highlight_text:
+        if lang != 'text' or source.count(highlight_text) != 1:
+            raise ValueError(f'コンソールの強調箇所を特定できません: {highlight_text}')
+        target = escape(highlight_text)
+        markup = markup.replace(target, f'<span class="code-highlight-text">{target}</span>', 1)
+    tokens = markup.split('\n')
     cursor, pieces = 0, []
     for row in rows:
         count = row['code'].count('\n')+1
@@ -144,6 +150,8 @@ def table_measure_font():
 def table_dimensions(layout, ident, node):
     """短い少数列表だけ、字号を変えず内容に応じた幅へ絞る。"""
     full_width = 426.672
+    if columns := node['attrs'].get('column-widths'):
+        return full_width, list(map(float, columns.split()))
     info = layout.get('tables', {}).get(ident)
     widths = [b-a for a,b in zip(info['xs'],info['xs'][1:])] if info else [1]*len(node['rows'][0])
     # 多列表・説明の長い表と、定義表の続きは本文幅を活用する。
@@ -396,8 +404,9 @@ def prepare(folder, config, layout, nodes, figures, order):
                 footer += '<figcaption class="code-figure-label">'+escape(number)+'</figcaption>'
             footer += '<img alt="実行結果の例" style="width:'+str(f['box'][2]-f['box'][0])+'pt" src="data:image/svg+xml;base64,'+data+'"></figure>'
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
-        highlight_lines = nodes[ident].get('attrs', {}).get('highlight-lines', '')
-        add(ident,ident,consume,code_html(rows,lang,names,footer,highlight_lines),width,offset)
+        attrs = nodes[ident]['attrs']
+        code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''))
+        add(ident,ident,consume,code,width,offset)
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:
             width,_=table_dimensions(layout,ident,node)

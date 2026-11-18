@@ -674,6 +674,11 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if node['kind'] == 'training-note':
             title, body = paragraph_parts(node['parts'])
             return f'#training-note({q(ident)}, [{inline(title)}], [{inline(body)}])'
+        if node['kind'] == 'stage-flow':
+            paragraphs = iter(paragraph_parts(node['parts']))
+            stages = (f'([{inline(label)}], [{inline(title, keep_lines=True)}], [{inline(body)}])'
+                      for label, title, body in zip(paragraphs, paragraphs, paragraphs, strict=True))
+            return f'#stage-flow({q(ident)}, ({", ".join(stages)},))'
         if node['kind'] == 'section-points':
             title, *items = paragraph_parts(node['parts'])
             points = []
@@ -682,7 +687,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 if not value.startswith('●'):
                     raise ValueError(f'節のポイントの各項目は●から始めてください: {ident}')
                 body = [(value[1:].lstrip(), style), *item[1:]]
-                points.append(f'[{inline(body)}]')
+                points.append(f'[{inline(body, keep_lines=True)}]')
             return f'#section-points({q(ident)}, [{inline(title)}], ({", ".join(points)},))'
         if node['kind'] == 'notation-title':
             continuation = str(node['attrs'].get('continuation') == 'true').lower()

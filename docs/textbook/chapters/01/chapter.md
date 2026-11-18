@@ -800,40 +800,181 @@ VS Codeでソースコードを作成し、Node.js上で開発ツールを動か
 :::: {#page-17 .source-page}
 
 ::: {#ch01-vite-title .heading}
-1.3. Vite でプロジェクトを作成
+1.3. Viteでプロジェクトを作成
 :::
 
-::: {#ch01-vite-slide .slide layout="diagram" art="assets/slide-vite-project.png"}
-Vite でプロジェクトを作成
+::: {#ch01-vite-slide .slide layout="illustration"}
+Viteでプロジェクトを作成
 
-ひな形の作成<br>
-空のフォルダーに<br>初期ファイルを作る
-
-開発サーバー<br>
-開発中の画面を<br>ブラウザーで確認する
-
-本番用ビルド<br>
-公開用のファイルを<br>まとめる
+![create-viteによるひな形作成、Viteによる開発サーバーと本番用ビルド](assets/slide-vite-roles.png)
 :::
 
 ::: {#ch01-vite-definition .heading level="minor"}
-Vite とは
+Viteとは
 :::
 
-::: {#ch01-vite-course .paragraph}
-**Vite**（ヴィート）は、Web アプリケーションの**開発サーバー**と**本番用ビルド**の機能を備えたツールです。新しく開発を始めるときは、Vite のひな形作成ツール **create-vite** で、React の初期ファイルと設定をまとめて用意できます。
+::: {#ch01-vite-intro-1 .paragraph}
+前節では、Reactの開発に必要なVS CodeやNode.jsなどの環境を準備しました。
 :::
+
+::: {#ch01-vite-intro-2 .paragraph}
+しかし、これだけではReactのアプリケーションを開発することはできません。
+:::
+
+::: {#ch01-vite-intro-3 .paragraph}
+Reactを使って開発を始めるためには、ソースコードを記述するファイルだけでなく、TypeScriptの設定ファイルや、必要なライブラリを管理するファイルなども用意する必要があります。
+:::
+
+::: {#ch01-vite-intro-4 .paragraph}
+これらのファイルを最初からすべて手作業で作成するのは大変です。
+:::
+
+::: {#ch01-vite-intro-5 .paragraph}
+そこで利用するのが、**Vite（ヴィート）**です。
+:::
+
+::: {#ch01-vite-intro-6 .paragraph}
+Viteは、ReactなどのWebアプリケーションを効率よく開発するためのツールです。
+:::
+
+::::
+
+:::: {#page-18 .source-page}
+
+::: {#ch01-vite-roles-intro .paragraph}
+Viteと、ひな形作成ツールである `create-vite` の役割は、次のとおりです。
+:::
+
+::: {#ch01-vite-roles .table highlight-row="1" column-widths="32 68"}
+| 機能 | 説明 |
+| --- | --- |
+| **ひな形作成（create-vite）** | ReactとTypeScriptの開発に必要な初期ファイルや設定をまとめて作成する（Viteに関連する別のツール） |
+| 開発サーバー | 開発中のアプリケーションをブラウザーで確認できる |
+| 本番用ビルド | TypeScriptなどのソースコードを変換し、公開に適したファイルを生成する |
+:::
+
+::: {#ch01-vite-roles-summary-1 .paragraph}
+Viteには `create-vite` というひな形作成ツールが用意されています。
+:::
+
+::: {#ch01-vite-roles-summary-2 .paragraph}
+`create-vite` を使用すると、Reactの開発に必要な初期ファイルや設定を、コマンド1つでまとめて作成できます。
+:::
+
+::: {#ch01-vite-roles-summary-3 .paragraph}
+つまり、開発者が最初からすべてのファイルを用意する必要はなく、**自動生成されたひな形にソースコードを追加・修正することで、Reactの開発を始められる**ということです。
+:::
+
+::: {#ch01-vite-template-title .heading level="minor"}
+Reactプロジェクトのひな形とは
+:::
+
+::: {#ch01-vite-template-1 .paragraph}
+ここでいう「ひな形」とは、Reactアプリケーションを開発するために必要な、基本的なファイルやフォルダーがそろった状態のことです。
+:::
+
+::: {#ch01-vite-template-2 .paragraph}
+例えば、Reactでは、画面を表示するための `App.tsx` や、アプリケーションの起動処理を記述する `main.tsx` などのファイルを使用します。
+:::
+
+::: {#ch01-vite-template-3 .paragraph}
+さらに、TypeScriptの設定ファイルやライブラリの管理ファイルも必要です。
+:::
+
+::: {#ch01-vite-template-4 .paragraph}
+これらを最初から自分で作成する代わりに、`create-vite` を利用すれば、自動的に用意できます。
+:::
+
+![空のvite-demoフォルダーでcreate-viteのコマンドを実行すると、src、index.html、package.jsonなどが作成される](assets/vite-before-after.png){#ch01-vite-before-after}
+
+::: {#ch01-vite-before-after-caption .paragraph}
+ひな形を作成する前と作成した後のvite-demo
+:::
+
+::::
+
+:::: {#page-19 .source-page}
 
 ::: {#ch01-vite-body-title .heading}
-**【作業手順①】　Vite でプロジェクトを作成する**
+**【作業手順①】　ViteでReactプロジェクトを作成する**
 :::
 
-::: {#ch01-vite-folder .paragraph}
-`C:\work\react_basic` の下に、空の **`vite-demo`** フォルダーを作ります。VS Code の［ファイル］→［新しいウィンドウ］を選び、そのウィンドウで `vite-demo` を開きます。
+::: {#ch01-vite-scaffold-intro-1 .paragraph}
+それでは、実際に `create-vite` を使用して、Reactプロジェクトのひな形を作成してみましょう。
 :::
 
-::: {#ch01-vite-action .paragraph numbered="true"}
-1．［ターミナル］→［新しいターミナル］を選び、プロンプトの末尾が `vite-demo>` であることを確認します。次のコマンドを1行で入力して［Enter］を押します。
+::: {#ch01-vite-scaffold-intro-2 .paragraph}
+本研修では、完成済みのサンプルプロジェクトも配布していますが、ここではひな形が生成される仕組みを理解するため、別のフォルダーを使用して作成します。
+:::
+
+::: {#ch01-vite-folder .step}
+**1．空のフォルダーを用意する**
+:::
+
+::: {#ch01-vite-folder-1 .paragraph}
+Windowsのエクスプローラーを開き、次の場所に `vite-demo` という空のフォルダーを作成してください。
+:::
+
+::: {#ch01-vite-folder-path .paragraph keep-lines="true"}
+`C:\work\react_basic\vite-demo`
+:::
+
+::: {#ch01-vite-folder-followup-1 .paragraph}
+このフォルダーに、Reactの初期ファイルを自動生成します。
+:::
+
+::: {#ch01-vite-folder-followup-2 .paragraph}
+※ `ch01-setup` は配布サンプル用のフォルダーなので、ここでは使用しません。
+:::
+
+::: {#ch01-vite-open-folder .step}
+**2．VS Codeでフォルダーを開く**
+:::
+
+::: {#ch01-vite-open-folder-1 .paragraph}
+VS Codeの［ファイル］→［新しいウィンドウ］を選択してください。
+:::
+
+::: {#ch01-vite-open-folder-2 .paragraph}
+新しいウィンドウが開いたら、［ファイル］→［フォルダーを開く］から、先ほど作成した `vite-demo` フォルダーを指定します。
+:::
+
+::: {#ch01-vite-open-folder-3 .paragraph}
+これで、ひな形の作成先となるフォルダーをVS Codeで開けました。
+:::
+
+::: {#ch01-vite-open-terminal .step}
+**3．VS Codeのターミナルを開く**
+:::
+
+::: {#ch01-vite-open-terminal-1 .paragraph}
+［ターミナル］→［新しいターミナル］を選択してください。
+:::
+
+::: {#ch01-vite-open-terminal-2 .paragraph}
+ターミナルの入力待ちの行が、次のようになっていることを確認します。
+:::
+
+::: {#ch01-vite-terminal-path .code}
+```powershell
+PS C:\work\react_basic\vite-demo>
+```
+:::
+
+::: {#ch01-vite-terminal-path-1 .paragraph}
+この部分は、**現在コマンドを実行しようとしているフォルダー**を表しています。
+:::
+
+::: {#ch01-vite-terminal-path-2 .paragraph}
+今回のコマンドでは、この場所にReactプロジェクトのファイルを生成するため、実行するフォルダーを間違えないようにしてください。
+:::
+
+::: {#ch01-vite-scaffold .step}
+**4．Reactプロジェクトのひな形を作成する**
+:::
+
+::: {#ch01-vite-scaffold-run-1 .paragraph}
+ターミナルに、次のコマンドを入力して実行してください。
 :::
 
 ::: {#ch01-vite-code .code}
@@ -842,27 +983,93 @@ npm create vite@8.0.0 . -- --template react-ts
 ```
 :::
 
-::: {#ch01-vite-command-args .paragraph}
-`.`（ドット）は**現在のフォルダー**、`--template react-ts` は作成する React の**ひな形**を指定します。
+::: {#ch01-vite-scaffold-result-1 .paragraph}
+このコマンドを実行すると、ReactとTypeScriptを使用するためのひな形が作成されます。
 :::
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-20 .source-page}
+
+::: {#ch01-vite-command-title .heading level="minor"}
+コマンドの意味
+:::
+
+::: {#ch01-vite-command-explanation-1 .paragraph}
+一見すると複雑なコマンドですが、それぞれの部分には役割があります。
+:::
+
+::: {#ch01-vite-command-args .table}
+| コマンドの部分 | 意味 |
+| --- | --- |
+| `npm create` | プロジェクトのひな形作成ツールを実行する |
+| `vite@8.0.0` | create-viteのバージョン8.0.0を指定する |
+| `.` | 現在開いているフォルダーに作成する |
+| `--` | これ以降のオプションをひな形作成ツールに渡す |
+| `--template react-ts` | ReactとTypeScriptに対応したひな形を選択する |
+:::
+
+::: {#ch01-vite-command-explanation-detail-1 .paragraph}
+特に覚えておきたいのが、**`.`（ドット）と `--template react-ts`** です。
+:::
+
+::: {#ch01-vite-command-explanation-detail-2 .paragraph}
+`.` は、現在のフォルダーを意味します。
+:::
+
+::: {#ch01-vite-command-explanation-detail-3 .paragraph}
+今回は `vite-demo` フォルダーを開いて実行しているため、そのフォルダーの中にファイルが生成されます。
+:::
+
+::: {#ch01-vite-command-explanation-detail-4 .paragraph}
+また、`--template react-ts` は、ReactとTypeScriptに対応したひな形を指定するオプションです。
+:::
+
+::: {#ch01-vite-command-explanation-detail-5 .paragraph}
+例えば、Vue.jsとTypeScriptのプロジェクトを作りたい場合は、`vue-ts` というテンプレートを選択できます。
+:::
+
+::: {#ch01-vite-command-explanation-detail-6 .paragraph}
+なお、今回は教材と同じ環境を再現できるように、ひな形作成ツールのバージョンを `8.0.0` に固定しています。
+:::
+
+::: {#ch01-vite-latest .training-note}
+**補足　最新版の利用**
+
+最新版を使用する場合は `@latest` と指定できますが、生成されるファイルや操作画面が教材と異なる可能性があります。
+:::
+
+![コマンド中のドットと--template react-tsをそれぞれ赤枠で強調し、作成先とひな形の種類を示す](assets/vite-command-callouts.png){#ch01-vite-command-callouts}
+
+::: {#ch01-vite-command-callouts-caption .paragraph}
+実行するフォルダーとReact・TypeScriptのひな形を指定する部分
+:::
+
+::::
+
+:::: {#page-21 .source-page}
 
 ::: {#ch01-vite-prompts-title .heading level="minor"}
 作成時に表示されるメッセージを確認する
 :::
 
-::: {#ch01-vite-pin .paragraph}
-本書では、選択画面と生成されるファイルをそろえるため、ひな形を作成するツールのバージョンを **create-vite 8.0.0** に固定します。
+::: {#ch01-vite-prompts-intro-1 .paragraph}
+コマンドの実行中に、いくつかの確認メッセージが表示される場合があります。
 :::
 
-::: {#ch01-vite-confirm .paragraph numbered="true"}
-2．`Ok to proceed? (y)` が表示された場合は、`create-vite@8.0.0` の表示を確認し、**`y`** を入力して［Enter］を押します。
+::: {#ch01-vite-prompts-intro-2 .paragraph}
+それぞれの意味を確認しながら操作しましょう。
 :::
 
-::: {#ch01-vite-confirm-result .code}
+::: {#ch01-vite-confirm .step}
+**1．インストールの確認**
+:::
+
+::: {#ch01-vite-confirm-1 .paragraph}
+次のようなメッセージが表示された場合は、`y` を入力して［Enter］を押してください。
+:::
+
+::: {#ch01-vite-confirm-result .code highlight-text="(y)"}
 ```text
 Need to install the following packages:
 create-vite@8.0.0
@@ -870,34 +1077,86 @@ Ok to proceed? (y)
 ```
 :::
 
-::: {#ch01-vite-rolldown .paragraph numbered="true"}
-3．`Use rolldown-vite (Experimental)?:` が表示されたら、**`No`** を選んで［Enter］を押します。
+::: {#ch01-vite-confirm-reason-1 .paragraph}
+これは、「create-viteというひな形作成ツールを一時的にインストールしてもよいですか」という確認です。
 :::
 
-::: {#ch01-vite-rolldown-result .code}
+::: {#ch01-vite-confirm-reason-2 .paragraph}
+Reactプロジェクトの作成に必要なツールなので、許可して問題ありません。
+:::
+
+::: {#ch01-vite-rolldown .step}
+**2．Rolldownの使用確認**
+:::
+
+::: {#ch01-vite-rolldown-1 .paragraph}
+次のようなメッセージが表示された場合は、`No` を選択してください。
+:::
+
+::: {#ch01-vite-rolldown-result .code highlight-text="No"}
 ```text
 Use rolldown-vite (Experimental)?:
-    Yes
-  > No
+  Yes
+> No
 ```
 :::
 
-::: {#ch01-vite-immediate .paragraph numbered="true"}
-4．`Install with npm and start now?` が表示されたら、方向キーで **`No`** を選んで［Enter］を押します。ここではひな形を作成するところまで確認します。
+::: {#ch01-vite-rolldown-explanation-1 .paragraph}
+Rolldownは、JavaScriptなどのファイルをまとめる処理に使用されるツールです。
 :::
 
-::: {#ch01-vite-immediate-result .code}
+::: {#ch01-vite-rolldown-explanation-2 .paragraph}
+この選択肢は、指定した `create-vite` のバージョンで実験的な構成を使用するかどうかを尋ねています。
+:::
+
+::: {#ch01-vite-rolldown-explanation-3 .paragraph}
+本研修では教材と同じ構成で学習するため、`No` を選択します。
+:::
+
+::: {#ch01-vite-rolldown-explanation-4 .paragraph}
+※この選択肢の詳しい仕組みを理解する必要はありません。ここでは `No` を選択することだけ確認してください。
+:::
+
+::::
+
+:::: {#page-22 .source-page}
+
+::: {#ch01-vite-immediate .step}
+**3．ライブラリのインストールと起動確認**
+:::
+
+::: {#ch01-vite-immediate-1 .paragraph}
+次のようなメッセージが表示された場合も、`No` を選択してください。
+:::
+
+::: {#ch01-vite-immediate-result .code highlight-text="No"}
 ```text
 Install with npm and start now?
   Yes / > No
 ```
 :::
 
-::: {#ch01-vite-done .paragraph}
-`Done. Now run:` と表示され、プロンプトが戻れば作成は完了です。
+::: {#ch01-vite-immediate-explanation-1 .paragraph}
+これは、「必要なライブラリをインストールして、開発サーバーも起動しますか」という確認です。
 :::
 
-::: {#ch01-vite-done-result .code}
+::: {#ch01-vite-immediate-explanation-2 .paragraph}
+今回は、ひな形を作成するところまでを実施するため、`No` を選択します。
+:::
+
+::: {#ch01-vite-immediate-explanation-3 .paragraph}
+ライブラリのインストールや開発サーバーの起動については、次の節以降で説明します。
+:::
+
+::: {#ch01-vite-done .step}
+**4．作成完了を確認する**
+:::
+
+::: {#ch01-vite-done-1 .paragraph}
+次のようなメッセージが表示されれば、ひな形の作成は完了です。
+:::
+
+::: {#ch01-vite-done-result .code highlight-text="Done. Now run:"}
 ```text
 Done. Now run:
 
@@ -906,39 +1165,193 @@ Done. Now run:
 ```
 :::
 
-::: {#ch01-vite-not-empty .paragraph}
-※既存ファイルがあるというメッセージが表示された場合は、`Cancel operation` を選び、空の `vite-demo` フォルダーを開いてから実行します。
+::: {#ch01-vite-done-explanation-1 .paragraph}
+ここで表示されている2つのコマンドには、次の役割があります。
+:::
+
+::: {#ch01-vite-install-role .paragraph}
+● `npm install`：Reactなど、必要なライブラリをインストールする
+:::
+
+::: {#ch01-vite-dev-role .paragraph}
+● `npm run dev`：開発サーバーを起動し、ブラウザーで画面を確認する
+:::
+
+::: {#ch01-vite-done-followup-1 .paragraph}
+つまり、**ひな形を作成しただけでは、まだReactアプリケーションを起動できる準備がすべて整ったわけではありません。**
+:::
+
+::: {#ch01-vite-done-followup-2 .paragraph}
+この2つのコマンドについては、1.4節と1.5節で詳しく学習します。
+:::
+
+::: {#ch01-vite-done-followup-3 .paragraph}
+※作成先に既存ファイルがあるというメッセージが表示された場合は、勝手に上書きせず、フォルダーが空であることを確認してください。
 :::
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-23 .source-page}
 
 ::: {#ch01-vite-files-title .heading}
 **【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
 :::
 
-::: {#ch01-vite-show-files .paragraph numbered="true"}
-1．VS Code 左側の［エクスプローラー］を開きます。`vite-demo` に **`package.json`**、**`index.html`**、**`vite.config.ts`**、`tsconfig.json`、**`src` フォルダー**が表示されることを確かめます。
+::: {#ch01-vite-files-intro-1 .paragraph}
+Reactプロジェクトのひな形が作成されたら、実際にどのようなファイルが生成されたのか確認してみましょう。
+:::
+
+::: {#ch01-vite-files-intro-2 .paragraph}
+VS Codeの左側にある［エクスプローラー］を開いてください。
+:::
+
+::: {#ch01-vite-files-intro-3 .paragraph}
+先ほどまで空だった `vite-demo` フォルダーの中に、複数のファイルやフォルダーが生成されています。
 :::
 
 ![Viteで生成したReactプロジェクトの初期ファイル](assets/vscode-vite-tree.png){#ch01-vite-tree}
 
 ::: {#ch01-vite-tree-caption .paragraph}
-VS Code のエクスプローラーで確認する React の初期ファイル
+VS Codeのエクスプローラーで確認するReactの初期ファイル
 :::
 
-::: {#ch01-vite-file-roles .paragraph}
-`index.html` はブラウザーが最初に読み込むファイルです。画面のコードは `src` にあり、実行するコマンドや利用するライブラリは `package.json` に記載されています。
-:::
-
-::: {#ch01-vite-back .paragraph numbered="true"}
-2．確認したら、`vite-demo` を開いたウィンドウを閉じ、1.2 節で保存した `react-basic.code-workspace` に戻ります。以降は、配布サンプルの **`ch01-setup`** で商品管理システムを起動します。
+::: {#ch01-vite-node-modules-after-scaffolding .paragraph}
+この時点の `vite-demo` には、`node_modules` フォルダーがありません。
 :::
 
 ::::
 
-:::: {#page-20 .source-page}
+:::: {#page-24 .source-page}
+
+::: {#ch01-vite-file-roles-title .heading level="minor" keep-next="2"}
+主なファイルとフォルダーの役割
+:::
+
+::: {#ch01-vite-file-roles-intro-1 .paragraph}
+生成されたファイルの中でも、次のものは今後のReact開発で頻繁に使用します。
+:::
+
+::: {#ch01-vite-file-roles .table column-widths="30 70"}
+| ファイル・フォルダー | 役割 |
+| --- | --- |
+| `index.html` | Reactの画面を表示するための土台となるHTMLファイル |
+| `src/` | Reactのソースコードを格納するフォルダー |
+| `src/main.tsx` | Reactアプリケーションの起動処理を記述するファイル |
+| `src/App.tsx` | Reactで表示する画面を記述するファイル |
+| `package.json` | プロジェクトで使用するライブラリや実行コマンドなどを管理するファイル |
+| `vite.config.ts` | Viteの動作に関する設定ファイル |
+| `tsconfig.json` | TypeScriptに関する設定ファイル |
+:::
+
+::: {#ch01-vite-file-display-1 .paragraph}
+ここで、HTMLやJavaScriptを学習したときとの違いに注目してください。
+:::
+
+::: {#ch01-vite-file-display-2 .paragraph}
+従来のHTMLの学習では、`index.html` に画面を作成するためのHTMLを直接記述していました。
+:::
+
+::: {#ch01-vite-file-display-3 .paragraph}
+しかし、**Reactでは、基本的に `App.tsx` などのコンポーネントに画面の内容を記述します。**
+:::
+
+::: {#ch01-vite-file-display-4 .paragraph}
+そして、`main.tsx` を通じて、その画面が `index.html` に表示される仕組みになっています。
+:::
+
+![App.tsxの画面をmain.tsxがindex.htmlの表示場所につなぐ](assets/vite-file-relations.png){#ch01-vite-file-relations}
+
+::: {#ch01-vite-file-relations-caption .paragraph}
+Reactの画面表示に関わる3つのファイル
+:::
+
+::::
+
+:::: {#page-25 .source-page}
+
+::: {#ch01-vite-stages-title .heading level="minor"}
+ひな形の作成とライブラリのインストールは別の作業
+:::
+
+::: {#ch01-vite-stages-intro-1 .paragraph}
+ここまでの操作で、React開発に必要な基本ファイルが作成されました。
+:::
+
+::: {#ch01-vite-stages-intro-2 .paragraph}
+しかし、この時点ではReactなどのライブラリ本体がまだインストールされていません。
+:::
+
+::: {#ch01-vite-stages-intro-3 .paragraph}
+なぜなら、先ほどの作成手順で「Install with npm and start now?」に `No` と回答したためです。
+:::
+
+::: {#ch01-vite-stages-lead-1 .paragraph}
+`package.json` には必要なライブラリの情報が記載されていますが、それらを実際に取得するには、`npm install` というコマンドを実行する必要があります。
+:::
+
+::: {#ch01-vite-stages-lead-2 .paragraph}
+つまり、Reactの開発環境を作成する作業は、次のように分けられます。
+:::
+
+::: {#ch01-vite-stages .stage-flow}
+この節で実施
+
+**① create-viteで<br>ひな形を作成する**
+
+必要なファイルや設定を自動生成する。
+
+1.4節
+
+**② npm installで<br>ライブラリを導入する**
+
+ReactやViteなど、プログラムの実行に必要なライブラリを取得する。
+
+1.5節
+
+**③ npm run devで<br>開発サーバーを起動する**
+
+ブラウザーからReactアプリケーションの動作を確認する。
+:::
+
+::: {#ch01-vite-stage-done-1 .paragraph}
+今回は、①の作業を行いました。
+:::
+
+::: {#ch01-vite-back-title .heading level="minor"}
+配布サンプルのプロジェクトに戻る
+:::
+
+::: {#ch01-vite-back-1 .paragraph}
+今回作成した `vite-demo` は、Reactプロジェクトのひな形がどのように生成されるかを確認するためのものです。
+:::
+
+::: {#ch01-vite-back-2 .paragraph}
+以降の学習では、あらかじめ配布されている `ch01-setup` プロジェクトを使用します。
+:::
+
+::: {#ch01-vite-back-3 .paragraph keep-lines="true"}
+`vite-demo` を開いたVS Codeのウィンドウを閉じ、<br>1.2節で作成した `react-basic.code-workspace` に戻ってください。
+:::
+
+::: {#ch01-vite-back-4 .paragraph}
+次の1.4節では、配布サンプルの `package.json` を使用して、必要なライブラリを導入します。
+:::
+
+::: {#ch01-vite-points .section-points}
+この節のポイント
+
+● **Vite**は、ReactなどのWebアプリケーションの開発を支援するツールである。
+
+● **create-vite**を使用すると、React開発に必要なひな形を自動生成できる。
+
+● `--template react-ts` を指定すると、<br>ReactとTypeScriptに対応したプロジェクトを作成できる。
+
+● ひな形の作成とライブラリのインストールは別の作業であり、<br>実行するコマンドも異なる。
+:::
+
+::::
+
+:::: {#page-26 .source-page}
 
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
@@ -981,7 +1394,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 
 ::::
 
-:::: {#page-21 .source-page}
+:::: {#page-27 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -1024,7 +1437,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-22 .source-page}
+:::: {#page-28 .source-page}
 
 ::: {#ch01-start-run-title .heading}
 **【作業手順②】　開発サーバーを起動する**
@@ -1056,7 +1469,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-23 .source-page}
+:::: {#page-29 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
 **【作業手順③】　商品データを変更して表示を確認する**
@@ -1101,7 +1514,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-24 .source-page}
+:::: {#page-30 .source-page}
 
 ::: {#ch01-files-title .heading}
 1.6. フォルダーと主要ファイルの役割
@@ -1147,7 +1560,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-25 .source-page}
+:::: {#page-31 .source-page}
 
 ::: {#ch01-main-title .heading level="minor"}
 画面の表示を始める main.tsx
@@ -1191,7 +1604,7 @@ export const product = {
 
 ::::
 
-:::: {#page-26 .source-page}
+:::: {#page-32 .source-page}
 
 ::: {#ch01-app-title .heading level="minor"}
 商品管理の画面を組み立てる App.tsx
@@ -1232,7 +1645,7 @@ export default function App() {
 
 ::::
 
-:::: {#page-27 .source-page}
+:::: {#page-33 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ

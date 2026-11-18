@@ -117,6 +117,12 @@ html, body {
 .code-highlight-start::after { border-top: 1pt solid #c6292e; }
 .code-highlight-end::after { border-bottom: 1pt solid #c6292e; }
 
+.code-highlight-text {
+  outline: 0.85pt solid #c6292e;
+  outline-offset: 1pt;
+  border-radius: 1pt;
+}
+
 .line-number {
   padding: 0 7pt 0 4pt;
   border-right: 0.6pt solid #e5e9ef;
