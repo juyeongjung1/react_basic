@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="376" height="100" viewBox="0 0 376 100">
+  <rect x="3" y="5" width="180" height="90" rx="6" fill="#e8f4ef" stroke="#a5c8bc" stroke-width="0.8"/>
+  <rect x="193" y="5" width="180" height="90" rx="6" fill="#fff1eb" stroke="#e5b4a4" stroke-width="0.8"/>
+  <text x="14" y="24" font-size="11" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">正しい書き方</text>
+  <text x="204" y="24" font-size="11" fill="#b34129" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">誤った書き方</text>
+  <rect x="12" y="33" width="162" height="27" rx="4" fill="#ffffff" stroke="#bdd7ce" stroke-width="0.8"/>
+  <rect x="202" y="33" width="162" height="27" rx="4" fill="#ffffff" stroke="#e4c2b7" stroke-width="0.8"/>
+  <text x="19" y="50" font-size="12" fill="#22655a" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace">onClick={showMessage}</text>
+  <rect x="327" y="37" width="15" height="18" rx="2" fill="#fff3ed" stroke="#d54a31" stroke-width="1"/>
+  <text x="208" y="50" font-size="12" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace">onClick={showMessage()}</text>
+  <text x="14" y="81" font-size="11" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">クリック時に実行</text>
+  <text x="204" y="81" font-size="11" fill="#b34129" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">画面作成時に実行</text>
+</svg>

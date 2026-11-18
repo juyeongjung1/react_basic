@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="351" height="137" viewBox="0 0 351 137">
+  <rect x="3" y="6" width="345" height="124" rx="7" fill="#ffffff" stroke="#b4c6d5" stroke-width="0.8"/>
+  <rect x="3" y="6" width="345" height="24" rx="6" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="14" y="21" font-size="9.5" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ブラウザー</text>
+  <rect x="80" y="11" width="255" height="14" rx="3" fill="#ffffff" stroke="#c8d7e0" stroke-width="0.8"/>
+  <text x="89" y="21" font-size="8.2" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">localhost:5173</text>
+  <text x="18" y="58" font-size="19" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品の選択</text>
+  <text x="18" y="83" font-size="12.5" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">選択中の商品：未選択</text>
+  <rect x="17" y="96" width="73" height="23" rx="4" fill="#ffffff" stroke="#0d6efd" stroke-width="0.8"/>
+  <text x="53.5" y="111.5" font-size="9.7" fill="#0d6efd" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">ノートを選択</text>
+  <rect x="98" y="96" width="94" height="23" rx="4" fill="#ffffff" stroke="#0d6efd" stroke-width="0.8"/>
+  <text x="145.0" y="111.5" font-size="9.7" fill="#0d6efd" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">ボールペンを選択</text>
+  <rect x="200" y="96" width="73" height="23" rx="4" fill="#6c757d" stroke="#6c757d" stroke-width="0.8"/>
+  <text x="236.5" y="111.5" font-size="9.7" fill="#ffffff" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">選択を解除</text>
+</svg>

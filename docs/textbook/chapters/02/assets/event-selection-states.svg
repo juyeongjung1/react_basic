@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="115" viewBox="0 0 380 115">
+  <text x="60" y="13" font-size="9.1" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">初期状態</text>
+  <rect x="3" y="20" width="116" height="91" rx="6" fill="#ffffff" stroke="#b4c6d5" stroke-width="0.8"/>
+  <rect x="3" y="20" width="116" height="19" rx="5" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="10" y="33" font-size="8.4" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ブラウザー</text>
+  <text x="10" y="55" font-size="10.2" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品の選択</text>
+  <rect x="9" y="63" width="104" height="41" rx="4" fill="#edf3f7" stroke="none" stroke-width="0.8"/>
+  <text x="15" y="78.5" font-size="9" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">選択中の商品</text>
+  <text x="15" y="96" font-size="12.4" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">未選択</text>
+  <path d="M 120 73 L 124.40 73.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 129 73 L 124.40 70.50 L 124.40 75.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="188" y="13" font-size="9.1" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ノートを選択した状態</text>
+  <rect x="131" y="20" width="116" height="91" rx="6" fill="#ffffff" stroke="#b4c6d5" stroke-width="0.8"/>
+  <rect x="131" y="20" width="116" height="19" rx="5" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="138" y="33" font-size="8.4" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ブラウザー</text>
+  <text x="138" y="55" font-size="10.2" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品の選択</text>
+  <rect x="137" y="63" width="104" height="41" rx="4" fill="#e8f4ef" stroke="none" stroke-width="0.8"/>
+  <text x="143" y="78.5" font-size="9" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">選択中の商品</text>
+  <text x="143" y="96" font-size="12.4" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">ノート</text>
+  <path d="M 248 73 L 252.40 73.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 257 73 L 252.40 70.50 L 252.40 75.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="316" y="13" font-size="9.1" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ボールペンを選択した状態</text>
+  <rect x="259" y="20" width="116" height="91" rx="6" fill="#ffffff" stroke="#b4c6d5" stroke-width="0.8"/>
+  <rect x="259" y="20" width="116" height="19" rx="5" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="266" y="33" font-size="8.4" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ブラウザー</text>
+  <text x="266" y="55" font-size="10.2" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品の選択</text>
+  <rect x="265" y="63" width="104" height="41" rx="4" fill="#e8f4ef" stroke="none" stroke-width="0.8"/>
+  <text x="271" y="78.5" font-size="9" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">選択中の商品</text>
+  <text x="271" y="96" font-size="12.4" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">ボールペン</text>
+</svg>

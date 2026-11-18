@@ -1759,3 +1759,819 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::
 
 ::::
+
+:::: {#page-34 .source-page}
+
+::: {#ch02-events-title .heading}
+2.4. イベント処理
+:::
+
+::: {#ch02-events-slide .slide layout="illustration"}
+イベント処理
+
+![操作から画面の更新まで](assets/event-slide.svg)
+:::
+
+::: {#ch02-events-intro .heading level="minor"}
+イベント処理とは
+:::
+
+::: {#ch02-events-intro-p1 .paragraph}
+前節では、`useState()` を使って商品の数量を管理し、ボタンをクリックすると数量が増えるサンプルを作成しました。
+:::
+
+::: {#ch02-events-intro-p2 .paragraph}
+ここで、少し振り返ってみましょう。
+:::
+
+::: {#ch02-events-intro-p3 .paragraph}
+前節のサンプルでは、次のように記述していました。
+:::
+
+::: {#ch02-events-recap-code .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19" highlight-lines="19-19"}
+```tsx
+      <button className="btn btn-primary" onClick={addOne}>
+        1個追加
+      </button>
+```
+:::
+
+::: {#ch02-events-intro-p4 .paragraph}
+この `onClick` は、何を意味しているのでしょうか。
+:::
+
+::::
+
+:::: {#page-35 .source-page}
+
+::: {#ch02-events-intro-p5 .paragraph}
+Webアプリケーションでは、ボタンのクリック、マウスの移動、キーボードからの入力など、ユーザーのさまざまな操作をきっかけに処理を実行することがあります。
+:::
+
+::: {#ch02-events-intro-p6 .paragraph}
+このような操作や出来事を**イベント**と呼びます。
+:::
+
+::: {#ch02-events-intro-p7 .paragraph}
+また、イベントが発生したときに実行する処理を**イベントハンドラー**と呼びます。
+:::
+
+::: {#ch02-events-intro-p8 .paragraph keep-lines="true"}
+Reactでは、JSXに `onClick` などの属性を記述することで、<br>イベントと関数を結びつけることができます。
+:::
+
+::: {#ch02-events-onclick .heading level="minor"}
+onClickによるクリックイベント
+:::
+
+::: {#ch02-events-onclick-p1 .paragraph}
+最も基本的なイベントが、ボタンのクリックです。
+:::
+
+::: {#ch02-events-onclick-p2 .paragraph}
+Reactでは、`onClick` という属性を使って、クリック時に実行する関数を指定します。
+:::
+
+::: {#ch02-events-onclick-syntax .step}
+基本構文
+:::
+
+::: {#ch02-events-onclick-syntax-code .code example="true"}
+```tsx
+<button onClick={関数名}>ボタン</button>
+```
+:::
+
+::: {#ch02-events-onclick-syntax-p1 .paragraph}
+例えば、次のように記述します。
+:::
+
+::: {#ch02-events-onclick-demo .code example="true"}
+```tsx
+const showMessage = () => {
+  alert('ボタンがクリックされました')
+}
+
+return (
+  <button onClick={showMessage}>クリック</button>
+)
+```
+:::
+
+::: {#ch02-events-onclick-syntax-p2 .paragraph}
+`showMessage` は、メッセージを表示するための関数です。
+:::
+
+::: {#ch02-events-onclick-syntax-p3 .paragraph keep-lines="true"}
+`onClick={showMessage}` と指定することで、<br>ボタンをクリックしたときに、この関数が実行されます。
+:::
+
+::::
+
+:::: {#page-36 .source-page}
+
+![onClickに指定した関数でメッセージを表示する](assets/event-click-action.svg){#ch02-events-click-action}
+
+::: {#ch02-events-click-action-caption .caption}
+onClickに指定した関数でメッセージを表示する
+:::
+
+::: {#ch02-events-timing .heading level="minor"}
+関数を指定するときは、()を付けない
+:::
+
+::: {#ch02-events-timing-p1 .paragraph}
+イベント処理で注意したいのが、関数の指定方法です。
+:::
+
+::: {#ch02-events-timing-p2 .paragraph}
+次の2つのコードを比較してください。
+:::
+
+::: {#ch02-events-timing-label-3 .step}
+**正しい書き方**
+:::
+
+::: {#ch02-events-timing-correct-code .code example="true"}
+```tsx
+<button onClick={showMessage}>クリック</button>
+```
+:::
+
+::: {#ch02-events-timing-label-4 .step}
+**誤った書き方**
+:::
+
+::: {#ch02-events-timing-incorrect-code .code example="true"}
+```tsx
+<button onClick={showMessage()}>クリック</button>
+```
+:::
+
+::: {#ch02-events-timing-p5 .paragraph}
+見た目は似ていますが、意味が異なります。
+:::
+
+::: {#ch02-events-timing-p6 .paragraph}
+`onClick={showMessage}` は、クリックされたときに実行する関数を指定しています。
+:::
+
+::: {#ch02-events-timing-p7 .paragraph keep-lines="true"}
+一方、`onClick={showMessage()}` は、<br>画面を作成する処理の途中で関数を呼び出してしまいます。
+:::
+
+::: {#ch02-events-timing-p8 .paragraph}
+そのため、クリックする前に関数が実行されてしまい、意図した動作になりません。
+:::
+
+::: {#ch02-events-timing-p9 .paragraph keep-lines="true"}
+**イベントハンドラーに関数を指定するときは、<br>基本的に関数名だけを記述する**と覚えておきましょう。
+:::
+
+::::
+
+:::: {#page-37 .source-page}
+
+![括弧の有無による関数の実行タイミングの違い](assets/event-handler-compare.svg){#ch02-events-handler-timing}
+
+::: {#ch02-events-handler-timing-caption .caption}
+括弧の有無による関数の実行タイミングの違い
+:::
+
+::: {#ch02-events-arguments .heading level="minor"}
+イベントハンドラーに引数を渡す方法
+:::
+
+::: {#ch02-events-arguments-p1 .paragraph}
+ここまでは、引数のない関数をイベントハンドラーとして指定していました。
+:::
+
+::: {#ch02-events-arguments-p2 .paragraph}
+しかし、実際のアプリケーションでは、**どのボタンがクリックされたのかによって、関数に渡す値を変えたい場合**があります。
+:::
+
+::: {#ch02-events-arguments-p3 .paragraph keep-lines="true"}
+例えば、商品一覧に「ノートを選択」<br>「ボールペンを選択」という2つのボタンがあるとします。
+:::
+
+::: {#ch02-events-arguments-p4 .paragraph keep-lines="true"}
+それぞれ別の関数を作成することもできますが、<br>商品名を引数として渡せば、同じ関数を使い回せます。
+:::
+
+::: {#ch02-events-arguments-p5 .paragraph}
+まずは、次の関数を考えてみましょう。
+:::
+
+::: {#ch02-events-arguments-demo-function .code example="true"}
+```tsx
+const showSelection = (name: string) => {
+  alert(name + 'が選択されました')
+}
+```
+:::
+
+::: {#ch02-events-arguments-p6 .paragraph}
+この関数は、引数として受け取った商品名をメッセージで表示します。
+:::
+
+::: {#ch02-events-arguments-p7 .paragraph}
+では、ボタンをクリックしたときに「ノート」という文字列を渡すには、どのようにすればよいのでしょうか。
+:::
+
+::::
+
+:::: {#page-38 .source-page}
+
+::: {#ch02-events-arguments-syntax .step}
+引数を渡す場合の構文
+:::
+
+::: {#ch02-events-arguments-demo-button .code example="true"}
+```tsx
+<button onClick={() => showSelection('ノート')}>
+  ノートを選択
+</button>
+```
+:::
+
+::: {#ch02-events-arguments-syntax-p1 .paragraph}
+ここでは、`onClick` の中にアロー関数を記述しています。
+:::
+
+::: {#ch02-events-arguments-demo-arrow .code example="true"}
+```tsx
+() => showSelection('ノート')
+```
+:::
+
+::: {#ch02-events-arguments-syntax-p2 .paragraph}
+これは、「クリックされたら、`showSelection('ノート')` を実行する」という意味です。
+:::
+
+::: {#ch02-events-arguments-syntax-p3 .paragraph}
+例えば、2つのボタンに同じ関数を指定する場合は、次のように記述できます。
+:::
+
+::: {#ch02-events-arguments-two-buttons .code example="true"}
+```tsx
+<button onClick={() => showSelection('ノート')}>
+  ノートを選択
+</button>
+
+<button onClick={() => showSelection('ボールペン')}>
+  ボールペンを選択
+</button>
+```
+:::
+
+::: {#ch02-events-arguments-syntax-p4 .paragraph}
+どちらも `showSelection` という同じ関数を使用していますが、渡している引数が異なります。
+:::
+
+::: {#ch02-events-arguments-syntax-p5 .paragraph keep-lines="true"}
+このように、引数を使うことで、ボタンごとに別の関数を作成しなくても、<br>共通の処理を実行できます。
+:::
+
+![ボタンごとに異なる商品名を同じ関数に渡す](assets/event-handler-arguments.svg){#ch02-events-handler-arguments}
+
+::: {#ch02-events-handler-arguments-caption .caption}
+ボタンごとに異なる商品名を同じ関数に渡す
+:::
+
+::::
+
+:::: {#page-39 .source-page}
+
+::: {#ch02-events-typescript-note .training-note}
+【補足】TypeScriptでは引数に型を指定する
+
+今回のサンプルでは、関数の引数を `(name: string)` と記述しています。`string` は、文字列を扱う型です。
+:::
+
+::: {#ch02-events-typescript-example .code example="true"}
+```tsx
+const showSelection = (name: string) => {
+  alert(name + 'が選択されました')
+}
+```
+:::
+
+::: {#ch02-events-typescript-p1 .paragraph}
+JavaScriptでは `name` とだけ記述することもできますが、TypeScriptでは、引数がどのようなデータを受け取るのかを型で表します。
+:::
+
+::: {#ch02-events-typescript-p2 .paragraph}
+このように自分で定義する関数では、TypeScriptが引数の型を推論できない場合があります。今回の研修では、**文字列を受け取る引数には `name: string` のように型を明示する**ことを基本とします。これにより、数値など意図しない型の引数を渡した場合に、開発中にエラーを検出しやすくなります。
+:::
+
+::: {#ch02-events-typescript-p3 .paragraph}
+※TypeScriptの引数すべてに型注釈が必須というわけではありません。文脈から型を推論できる場合もありますが、まずは今回の書き方を覚えましょう。
+:::
+
+::: {#ch02-events-sample .heading level="minor"}
+【サンプル】商品の選択と表示
+:::
+
+::: {#ch02-events-sample-p1 .paragraph}
+それでは、ここまで学習したイベント処理と、前節の `useState` を組み合わせてみましょう。
+:::
+
+::: {#ch02-events-sample-p2 .paragraph}
+今回は、「ノートを選択」「ボールペンを選択」の2つのボタンを用意します。
+:::
+
+::: {#ch02-events-sample-p3 .paragraph}
+ボタンをクリックすると、その商品名を画面に表示します。
+:::
+
+::: {#ch02-events-sample-p4 .paragraph}
+また、「選択を解除」ボタンをクリックすると、表示を「未選択」に戻します。
+:::
+
+::::
+
+:::: {#page-40 .source-page}
+
+::: {#ch02-events-sample-code .code filename="ch02-basic/src/components/Sample2_4.tsx"}
+```tsx
+import { useState } from 'react'
+
+export default function Sample2_4() {
+  const [selectedName, setSelectedName] = useState('未選択')
+
+  const showSelection = (name: string) => {
+    setSelectedName(name)
+  }
+
+  const clearSelection = () => {
+    setSelectedName('未選択')
+  }
+
+  return (
+    <main className="container mt-4">
+      <h1>商品の選択</h1>
+      <p>選択中の商品：{selectedName}</p>
+
+      <button className="btn btn-outline-primary me-2"
+        onClick={() => showSelection('ノート')}>
+        ノートを選択
+      </button>
+      <button className="btn btn-outline-primary me-2"
+        onClick={() => showSelection('ボールペン')}>
+        ボールペンを選択
+      </button>
+      <button className="btn btn-secondary"
+        onClick={clearSelection}>
+        選択を解除
+      </button>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch02-events-bootstrap-note .training-note}
+【補足】BootstrapのCSS
+
+BootstrapのCSSは、これまでの節と同様に読み込み済みとします。
+:::
+
+::::
+
+:::: {#page-41 .source-page}
+
+::: {#ch02-events-sample-check .step}
+動作確認
+:::
+
+::: {#ch02-events-sample-check-p1 .paragraph}
+開発サーバーを起動し、「2.4 イベント処理」の画面を開いてください。
+:::
+
+![商品の選択画面の初期表示](assets/event-selection-browser.svg){#ch02-events-selection-browser}
+
+::: {#ch02-events-selection-browser-caption .caption}
+商品の選択画面の初期表示
+:::
+
+::: {#ch02-events-sample-check-p2 .paragraph}
+それぞれのボタンをクリックすると、次のように表示が変わります。
+:::
+
+::: {#ch02-events-sample-check-table-1 .table}
+| 操作 | 画面に表示される内容 |
+|---|---|
+| 初期状態 | 選択中の商品：未選択 |
+| ノートを選択 | 選択中の商品：ノート |
+| ボールペンを選択 | 選択中の商品：ボールペン |
+| 選択を解除 | 選択中の商品：未選択 |
+:::
+
+![ボタンをクリックすると選択中の商品名が切り替わる](assets/event-selection-states.svg){#ch02-events-selection-states}
+
+::: {#ch02-events-selection-states-caption .caption}
+ボタンをクリックすると選択中の商品名が切り替わる
+:::
+
+::::
+
+:::: {#page-42 .source-page}
+
+::: {#ch02-events-review .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch02-events-review-p1 .paragraph}
+ここからは、サンプルコードの重要な部分を確認します。
+:::
+
+::: {#ch02-events-review-state .step}
+① 選択中の商品名を管理するstate
+:::
+
+::: {#ch02-events-review-state-label-1 .step}
+**4行目**
+:::
+
+::: {#ch02-events-review-state-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="4"}
+```tsx
+  const [selectedName, setSelectedName] = useState('未選択')
+```
+:::
+
+::: {#ch02-events-review-state-p2 .paragraph}
+`selectedName` は、現在選択されている商品名を管理するstateです。
+:::
+
+::: {#ch02-events-review-state-p3 .paragraph}
+初期値は「未選択」としています。
+:::
+
+::: {#ch02-events-review-state-p4 .paragraph}
+`setSelectedName` を使用してstateを更新すると、画面に表示する商品名も更新されます。
+:::
+
+::: {#ch02-events-review-state-p5 .paragraph}
+これは、前節で学習した `useState` の使い方と同じです。
+:::
+
+::: {#ch02-events-review-select .step}
+② 商品名を受け取る関数
+:::
+
+::: {#ch02-events-review-select-label-1 .step}
+**6～8行目**
+:::
+
+::: {#ch02-events-review-select-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="6"}
+```tsx
+  const showSelection = (name: string) => {
+    setSelectedName(name)
+  }
+```
+:::
+
+::: {#ch02-events-review-select-p2 .paragraph}
+この関数は、引数として商品名を受け取ります。
+:::
+
+::: {#ch02-events-review-select-p3 .paragraph}
+6行目の `name: string` は、TypeScriptの型注釈です。
+:::
+
+::: {#ch02-events-review-select-p4 .paragraph}
+受け取った商品名を、7行目の `setSelectedName(name)` でstateに設定しています。
+:::
+
+::: {#ch02-events-review-select-p5 .paragraph keep-lines="true"}
+例えば、`showSelection('ノート')` が実行された場合、<br>`selectedName` の値が「ノート」に変更されます。
+:::
+
+::::
+
+:::: {#page-43 .source-page}
+
+::: {#ch02-events-review-clear .step}
+③ 選択を解除する関数
+:::
+
+::: {#ch02-events-review-clear-label-1 .step}
+**10～12行目**
+:::
+
+::: {#ch02-events-review-clear-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="10"}
+```tsx
+  const clearSelection = () => {
+    setSelectedName('未選択')
+  }
+```
+:::
+
+::: {#ch02-events-review-clear-p2 .paragraph}
+この関数は、選択中の商品名を「未選択」に戻すためのものです。
+:::
+
+::: {#ch02-events-review-clear-p3 .paragraph}
+引数を必要としないため、`()` の中には何も指定していません。
+:::
+
+::: {#ch02-events-review-arguments .step}
+④ 引数を渡して関数を実行する
+:::
+
+::: {#ch02-events-review-arguments-label-1 .step}
+**19～26行目**
+:::
+
+::: {#ch02-events-review-arguments-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="19"}
+```tsx
+      <button className="btn btn-outline-primary me-2"
+        onClick={() => showSelection('ノート')}>
+        ノートを選択
+      </button>
+      <button className="btn btn-outline-primary me-2"
+        onClick={() => showSelection('ボールペン')}>
+        ボールペンを選択
+      </button>
+```
+:::
+
+::: {#ch02-events-review-arguments-p2 .paragraph}
+この2つのボタンは、どちらも `showSelection` 関数を使用しています。
+:::
+
+::: {#ch02-events-review-arguments-p3 .paragraph}
+違いは、関数に渡す引数です。
+:::
+
+::: {#ch02-events-review-arguments-p4 .paragraph keep-lines="true"}
+「ノートを選択」ボタンでは `'ノート'`、<br>「ボールペンを選択」ボタンでは `'ボールペン'` を渡しています。
+:::
+
+::: {#ch02-events-review-arguments-p5 .paragraph}
+`onClick` にアロー関数を指定することで、ボタンがクリックされたタイミングで、引数を付けて関数を実行できます。
+:::
+
+::::
+
+:::: {#page-44 .source-page}
+
+::: {#ch02-events-review-direct .step}
+⑤ 引数を必要としない関数を実行する
+:::
+
+::: {#ch02-events-review-direct-label-1 .step}
+**27～30行目**
+:::
+
+::: {#ch02-events-review-direct-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="27"}
+```tsx
+      <button className="btn btn-secondary"
+        onClick={clearSelection}>
+        選択を解除
+      </button>
+```
+:::
+
+::: {#ch02-events-review-direct-p2 .paragraph}
+こちらは、引数を必要としない `clearSelection` 関数を実行するボタンです。
+:::
+
+::: {#ch02-events-review-direct-p3 .paragraph}
+そのため、`onClick={clearSelection}` と関数名だけを指定しています。
+:::
+
+::: {#ch02-events-review-direct-p4 .paragraph}
+今回のサンプルには、2種類の書き方が登場しました。
+:::
+
+::: {#ch02-events-review-direct-table-1 .table}
+| 書き方 | 主な用途 |
+|---|---|
+| `onClick={clearSelection}` | 引数を指定せず、関数を実行したい場合 |
+| `onClick={() => showSelection('ノート')}` | 引数を渡して関数を実行したい場合 |
+:::
+
+::: {#ch02-events-review-direct-p5 .paragraph}
+実際の開発でも、どちらの書き方も頻繁に使用します。
+:::
+
+![商品を選択してから選択中の商品名が表示されるまでの流れ](assets/event-selection-flow.svg){#ch02-events-selection-flow}
+
+::: {#ch02-events-selection-flow-caption .caption}
+商品を選択してから選択中の商品名が表示されるまでの流れ
+:::
+
+::::
+
+:::: {#page-45 .source-page}
+
+::: {#ch02-events-more-events-note .training-note}
+【補足】その他のイベント
+
+ここまでは、クリックイベントを中心に学習しましたが、Reactで扱えるイベントはほかにもあります。
+:::
+
+::: {#ch02-events-more-events-table-1 .table}
+| イベント名 | 実行されるタイミング |
+|---|---|
+| `onClick` | 要素がクリックされたとき |
+| `onDoubleClick` | 要素がダブルクリックされたとき |
+| `onMouseEnter` | マウスポインターが要素に入ったとき |
+| `onMouseLeave` | マウスポインターが要素から離れたとき |
+| `onChange` | フォームの値が変更されたとき |
+| `onSubmit` | フォームが送信されたとき |
+:::
+
+::: {#ch02-events-more-events-p1 .paragraph}
+例えば、マウスポインターが要素の上に入ったときの処理は、次のように記述できます。
+:::
+
+::: {#ch02-events-more-events-example .code example="true"}
+```tsx
+<button onMouseEnter={showMessage}>
+  マウスを重ねてください
+</button>
+```
+:::
+
+::: {#ch02-events-more-events-p2 .paragraph}
+なお、フォームの入力処理で使用する `onChange` については、2.7節で詳しく説明します。
+:::
+
+::::
+
+:::: {#page-46 .source-page}
+
+::: {#ch02-events-practice .heading level="minor"}
+【確認演習】商品の選択イベントを実装する
+:::
+
+::: {#ch02-events-practice-p1 .paragraph}
+ここまで学習したイベント処理を、実際に記述してみましょう。
+:::
+
+::: {#ch02-events-practice-p2 .paragraph}
+今回は、完成済みのサンプルを参考に、イベントハンドラーの穴埋め問題を行います。
+:::
+
+::: {#ch02-events-practice-target .paragraph}
+**修正対象ファイル**　`ch02-basic-q/src/components/Q2_4.tsx`
+:::
+
+::: {#ch02-events-practice-p3 .paragraph keep-lines="true"}
+このファイルには、画面の基本構成やstateを更新する関数が、<br>あらかじめ用意されています。
+:::
+
+::: {#ch02-events-practice-p4 .paragraph keep-lines="true"}
+受講者は、**①・②で既存コードを確認し、<br>③～⑤のコメントに従って `onClick` 属性を自分で記述**してください。
+:::
+
+::: {#ch02-events-practice-insertion .paragraph}
+受講者は開始タグ内に `onClick` 属性一式を書き足します。
+:::
+
+::: {#ch02-events-practice-source .step}
+演習用のソースコード（配布する未完成版）
+:::
+
+::: {#ch02-events-practice-code-1 .code filename="ch02-basic-q/src/components/Q2_4.tsx"}
+```tsx
+import { useState } from 'react'
+
+export default function Q2_4() {
+  const [selectedName, setSelectedName] = useState('未選択')
+
+  // ① 引数ありのイベントハンドラーを定義する
+  //    コードを確認してください。
+  const showSelection = (name: string) => {
+    setSelectedName(name)
+  }
+
+  // ② 引数なしのイベントハンドラーを定義する
+  //    コードを確認してください。
+  const clearSelection = () => {
+    setSelectedName('未選択')
+  }
+
+  return (
+    <main className="container mt-4">
+      <h1>商品の選択</h1>
+      <p>選択中の商品：{selectedName}</p>
+
+```
+:::
+
+::::
+
+:::: {#page-47 .source-page}
+
+::: {#ch02-events-practice-code-2 .code filename="ch02-basic-q/src/components/Q2_4.tsx" start-line="23"}
+```tsx
+      {/* ③ onClick属性を追加し、showSelectionに
+          'ノート'を渡して呼び出してください。 */}
+      <button className="btn btn-outline-primary me-2"
+      >
+        ノートを選択
+      </button>
+
+      {/* ④ onClick属性を追加し、showSelectionに
+          'ボールペン'を渡して呼び出してください。 */}
+      <button className="btn btn-outline-primary me-2"
+      >
+        ボールペンを選択
+      </button>
+
+      {/* ⑤ onClick属性を追加し、
+          引数なしのclearSelection関数を指定してください。 */}
+      <button className="btn btn-secondary"
+      >
+        選択を解除
+      </button>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch02-events-practice-tasks .step}
+演習内容
+:::
+
+::: {#ch02-events-practice-step-1 .step}
+**① 引数ありのイベントハンドラーを確認する**
+:::
+
+::: {#ch02-events-practice-step-1-p1 .paragraph keep-lines="true"}
+`showSelection(name: string)` の定義を読み、商品名を引数で受け取ること、<br>`setSelectedName(name)` でstateを更新することを確認してください。<br>**この項目ではコードを修正しません。**
+:::
+
+::: {#ch02-events-practice-step-2 .step}
+**② 引数なしのイベントハンドラーを確認する**
+:::
+
+::: {#ch02-events-practice-step-2-p1 .paragraph keep-lines="true"}
+`clearSelection()` の定義を読み、引数がないことと、<br>stateを「未選択」に戻すことを確認してください。<br>**この項目でもコードを修正しません。**
+:::
+
+::::
+
+:::: {#page-48 .source-page}
+
+::: {#ch02-events-practice-step-3 .step}
+**③ ノートを選択する**
+:::
+
+::: {#ch02-events-practice-step-3-p1 .paragraph}
+「ノートを選択」ボタンに `onClick` 属性を追加し、クリック時に `'ノート'` を渡して `showSelection` を呼び出せるようにしてください。
+:::
+
+::: {#ch02-events-practice-step-4 .step}
+**④ ボールペンを選択する**
+:::
+
+::: {#ch02-events-practice-step-4-p1 .paragraph}
+「ボールペンを選択」ボタンに `onClick` 属性を追加し、クリック時に `'ボールペン'` を渡して `showSelection` を呼び出せるようにしてください。
+:::
+
+::: {#ch02-events-practice-step-5 .step}
+**⑤ 選択を解除する**
+:::
+
+::: {#ch02-events-practice-step-5-p1 .paragraph}
+「選択を解除」ボタンに `onClick` 属性を追加してください。引数は不要なため、`clearSelection` 関数を直接指定してください。
+:::
+
+::: {#ch02-events-practice-check .step}
+動作確認
+:::
+
+::: {#ch02-events-practice-check-p1 .paragraph keep-lines="true"}
+`ch02-basic-q` の開発サーバーを起動し、<br>「2.4 イベント処理」の確認演習画面を開いてください。
+:::
+
+::: {#ch02-events-practice-check-p2 .paragraph}
+「ノートを選択」「ボールペンを選択」「選択を解除」の3つのボタンを順番にクリックし、それぞれ正しい商品名、または「未選択」が表示されれば演習完了です。
+:::
+
+::: {#ch02-events-practice-check-p3 .paragraph}
+※完成済みの講義サンプルは `ch02-basic`、穴埋め問題は `ch02-basic-q` を使用します。両者を混同しないようにしてください。
+:::
+
+::: {#ch02-events-points .section-points}
+この節のポイント
+
+● **イベント**とは、クリックやキーボード入力など、ユーザーの操作や出来事のことである。
+
+● **イベントハンドラー**とは、イベントが発生したときに実行する処理のことである。
+
+● Reactでは、**`onClick`** などの属性を使用してイベントハンドラーを指定できる。
+
+● 引数を渡さない場合は、`onClick={関数名}` の形式で記述できる。
+
+● 引数を渡す場合は、`onClick={() => 関数名(引数)}` のようにアロー関数を使用できる。
+
+● イベント処理と `useState` を組み合わせることで、<br>ユーザーの操作に応じて画面を更新できる。
+:::
+
+::::

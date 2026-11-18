@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="376" height="138" viewBox="0 0 376 138">
+  <rect x="4" y="18" width="119" height="30" rx="6" fill="#ffffff" stroke="#0d6efd" stroke-width="0.8"/>
+  <text x="63.5" y="37" font-size="10.4" fill="#0d6efd" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ノートを選択</text>
+  <rect x="4" y="90" width="119" height="30" rx="6" fill="#ffffff" stroke="#0d6efd" stroke-width="0.8"/>
+  <text x="63.5" y="109" font-size="10.4" fill="#0d6efd" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ボールペンを選択</text>
+  <rect x="231" y="44" width="141" height="51" rx="6" fill="#e8f4ef" stroke="#a6c9bd" stroke-width="0.8"/>
+  <text x="301.5" y="64" font-size="11.2" fill="#22655a" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">showSelection(name)</text>
+  <text x="301.5" y="83" font-size="9.6" fill="#22655a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">1つの関数を使い回す</text>
+  <text x="133" y="23" font-size="9.8" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">引数：ノート</text>
+  <text x="133" y="125" font-size="9.8" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">引数：ボールペン</text>
+  <path d="M 125 33 H 184 Q 193 33 193 42 V 54 Q 193 59 199 59 H 218" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 218 59 L 224.40 59.00" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 229 59 L 224.40 56.50 L 224.40 61.50 Z" stroke="#205c84" fill="#205c84" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 125 105 H 184 Q 193 105 193 96 V 84 Q 193 79 199 79 H 218" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 218 79 L 224.40 79.00" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 229 79 L 224.40 76.50 L 224.40 81.50 Z" stroke="#205c84" fill="#205c84" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

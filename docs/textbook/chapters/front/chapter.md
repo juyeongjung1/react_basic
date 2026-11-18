@@ -104,7 +104,7 @@ XXXX-T-01
 2.3. 状態の管理（useState）
 :::
 
-::: {#contents-ch02-section-4 .contents-entry}
+::: {#contents-ch02-section-4 .contents-entry target="02:ch02-events-title"}
 2.4. イベント処理
 :::
 

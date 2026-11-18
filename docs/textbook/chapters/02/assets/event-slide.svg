@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="352" height="218" viewBox="0 0 352 218">
+  <rect x="4" y="18" width="104" height="143" rx="8" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="56" y="41" font-size="9.8" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ユーザーの操作</text>
+  <text x="56" y="125" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ボタンを</text>
+  <text x="56" y="143" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">クリックする</text>
+  <rect x="124" y="18" width="104" height="143" rx="8" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="176" y="41" font-size="9.8" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">イベントハンドラー</text>
+  <text x="176" y="125" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">指定した関数が</text>
+  <text x="176" y="143" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">実行される</text>
+  <rect x="244" y="18" width="104" height="143" rx="8" fill="#e8f4ef" stroke="#b4c6d5" stroke-width="0.8"/>
+  <text x="296" y="41" font-size="9.8" fill="#22655a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">画面の更新</text>
+  <text x="296" y="125" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">stateの変更を</text>
+  <text x="296" y="143" font-size="11" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">画面に反映する</text>
+  <rect x="22" y="67" width="62" height="26" rx="6" fill="#ffffff" stroke="#205c84" stroke-width="1.3"/>
+  <path d="M 61 78 L 82 88 L 73 90 L 75 98 L 70 100 L 66 92 L 61 97 Z" stroke="#205c84" fill="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 58 73 L 54 68 M 64 71 L 65 65 M 55 79 L 49 79" stroke="#205c84" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="146" y="61" width="60" height="42" rx="6" fill="#ffffff" stroke="#205c84" stroke-width="1.3"/>
+  <path d="M 146 72 H 206 M 157 67 H 160 M 164 67 H 167" stroke="#205c84" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 169 80 L 163 86 L 169 92 M 183 80 L 189 86 L 183 92" stroke="#205c84" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="266" y="61" width="60" height="42" rx="6" fill="#ffffff" stroke="#22655a" stroke-width="1.3"/>
+  <path d="M 266 72 H 326 M 274 67 H 278 M 282 67 H 286" stroke="#22655a" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="272" y="79" width="48" height="16" rx="3" fill="#d0ebe1" stroke="none" stroke-width="0.8"/>
+  <path d="M 287 87 L 292 92 L 306 81" stroke="#22655a" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 110 90 L 117.40 90.00" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 122 90 L 117.40 87.50 L 117.40 92.50 Z" stroke="#205c84" fill="#205c84" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 230 90 L 237.40 90.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 242 90 L 237.40 87.50 L 237.40 92.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="4" y="181" width="78" height="24" rx="5" fill="#205c84" stroke="none" stroke-width="0.8"/>
+  <text x="43" y="197" font-size="9.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">クリック</text>
+  <path d="M 83 193 L 85.40 193.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 90 193 L 85.40 190.50 L 85.40 195.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="91" y="181" width="78" height="24" rx="5" fill="#205c84" stroke="none" stroke-width="0.8"/>
+  <text x="130" y="197" font-size="9.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">関数の実行</text>
+  <path d="M 170 193 L 172.40 193.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 177 193 L 172.40 190.50 L 172.40 195.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="178" y="181" width="78" height="24" rx="5" fill="#22655a" stroke="none" stroke-width="0.8"/>
+  <text x="217" y="197" font-size="9.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">stateの更新</text>
+  <path d="M 257 193 L 259.40 193.00" stroke="#22655a" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 264 193 L 259.40 190.50 L 259.40 195.50 Z" stroke="#22655a" fill="#22655a" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="265" y="181" width="78" height="24" rx="5" fill="#22655a" stroke="none" stroke-width="0.8"/>
+  <text x="304" y="197" font-size="9.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">画面の更新</text>
+</svg>
