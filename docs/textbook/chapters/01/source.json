@@ -2,7 +2,7 @@
   "title": "第1章 React の開発環境と動作確認",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 33,
+  "last_page": 37,
   "cover_mode": "classic",
   "illustrations": {
     "ch01-spa-js-result": {
@@ -86,11 +86,28 @@
       "width": 380,
       "max_height": 103
     },
+    "ch01-install-manifest": {
+      "caption_id": "ch01-install-manifest-caption",
+      "width": 380,
+      "max_height": 140,
+      "file_path": "ch01-setup/package.json"
+    },
     "ch01-install-result": {
       "caption_id": "ch01-install-result-caption",
-      "width": 339,
-      "max_height": 113,
-      "highlights": [[0.007, 0.015, 0.976, 0.137]]
+      "width": 380,
+      "max_height": 39,
+      "highlights": [[0.008, 0.12, 0.348, 0.65]]
+    },
+    "ch01-install-modules": {
+      "caption_id": "ch01-install-modules-caption",
+      "width": 280,
+      "max_height": 130,
+      "file_path": "ch01-setup/node_modules"
+    },
+    "ch01-install-bootstrap-result": {
+      "caption_id": "ch01-install-bootstrap-result-caption",
+      "width": 380,
+      "max_height": 215
     },
     "ch01-npm-menu": {
       "caption_id": "ch01-npm-menu-caption",

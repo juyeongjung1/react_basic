@@ -1357,44 +1357,293 @@ ReactやViteなど、プログラムの実行に必要なライブラリを取�
 1.4. 依存ライブラリの導入
 :::
 
-::: {#ch01-install-slide .slide layout="diagram" art="assets/slide-npm-install.png"}
+::: {#ch01-install-slide .slide layout="illustration"}
 依存ライブラリの導入
 
-`package.json`<br>
-必要なライブラリを<br>記載する
-
-`npm install`<br>
-ライブラリを取得する
-
-`node_modules`<br>
-取得したライブラリが<br>ここに入る
+![npmをショッピングサイトに例え、package.jsonの注文書からnpm installで注文し、届いたライブラリをnode_modulesに保管する流れ](assets/slide-dependency-order.png)
 :::
 
-::: {#ch01-install-body-title .heading level="minor"}
-配布サンプルの依存ライブラリをインストールする
+::: {#ch01-install-definition .heading level="minor"}
+依存ライブラリとは
 :::
 
-::: {#ch01-install-body .paragraph}
-`package.json` にはサンプルが使う**依存ライブラリ**が記載されています。npm は `package-lock.json` のバージョン情報を参照し、必要なファイルを取得します。
+::: {#ch01-install-definition-1 .paragraph}
+前節では、`create-vite` を使用して、Reactプロジェクトのひな形を作成しました。
 :::
 
-::: {#ch01-install-action .paragraph numbered="true"}
-1．作業場所が `ch01-setup` であることを確認し、**`npm install`** を実行します。ファイルの取得中は、そのままプロンプトが戻るまで待ちます。
+::: {#ch01-install-definition-2 .paragraph}
+しかし、**ひな形を作成しただけでは、Reactの開発に必要なライブラリがすべてインストールされたわけではありません。**
 :::
 
-![配布サンプルでnpm installを実行したターミナル](assets/vscode-npm-install.png){#ch01-install-result}
-
-::: {#ch01-install-result-caption .paragraph}
-初回の実行例。`added` の行に追加件数が表示され、入力待ちに戻る
+::: {#ch01-install-definition-3 .paragraph}
+Reactの開発には、React本体のほか、TypeScriptやViteなど、さまざまなライブラリや開発ツールが必要です。
 :::
 
-::: {#ch01-install-check .paragraph numbered="true"}
-2．エクスプローラーで **`node_modules`** ができたことを確認します。次の章も、その章の `package.json` があるフォルダーで `npm install` を実行します。
+::: {#ch01-install-definition-4 .paragraph}
+このように、プログラムの開発や動作に必要となる別のライブラリなどを、**依存ライブラリ（依存パッケージ）**と呼びます。
+:::
+
+::: {#ch01-install-definition-5 .paragraph}
+これらを簡単にインストールするために使用するのが、**npm**です。
+:::
+
+::: {#ch01-install-shopping-title .heading level="minor"}
+npmとpackage.jsonの仕組み
+:::
+
+::: {#ch01-install-shopping-1 .paragraph}
+npmは、インターネットからライブラリを取得・管理するためのツールです。
+:::
+
+::: {#ch01-install-shopping-2 .paragraph}
+その仕組みは、**インターネットのショッピングサイトで商品を注文する流れ**に似ています。
+:::
+
+::: {#ch01-install-shopping-3 .paragraph}
+例えば、ショッピングサイトでは、欲しい商品をカートに入れ、注文ボタンを押すと、自宅まで商品が配送されます。
 :::
 
 ::::
 
 :::: {#page-27 .source-page}
+
+::: {#ch01-install-shopping-4 .paragraph}
+npmも、これと似たような仕組みです。
+:::
+
+::: {#ch01-install-order-sheet .paragraph keep-lines="true"}
+● **package.json：注文書**<br>インストールしたいライブラリの名前などが記載されています。
+:::
+
+::: {#ch01-install-order-button .paragraph keep-lines="true"}
+● **npm install：注文ボタン**<br>コマンドを実行すると、必要なライブラリがインターネットからダウンロードされます。
+:::
+
+::: {#ch01-install-order-storage .paragraph keep-lines="true"}
+● **node_modules：商品が届く場所**<br>ダウンロードしたライブラリが、このフォルダーの中に保存されます。
+:::
+
+::: {#ch01-install-manifest-heading .heading level="minor"}
+package.jsonには、すでに必要なライブラリが登録されている
+:::
+
+::: {#ch01-install-manifest-lead-1 .paragraph}
+ところで、前節では、次のコマンドを実行しました。
+:::
+
+::: {#ch01-install-scaffold-command .code}
+```powershell
+npm create vite@8.0.0 . -- --template react-ts
+```
+:::
+
+::: {#ch01-install-manifest-template-1 .paragraph}
+このコマンドでは、ReactとTypeScriptに対応したひな形を指定していました。
+:::
+
+::: {#ch01-install-manifest-vite-demo .paragraph}
+そのため、前節で作成した `vite-demo` の `package.json` には、**ReactやTypeScriptなど、開発に必要なライブラリが最初から登録されています。**
+:::
+
+::: {#ch01-install-manifest-description-1 .paragraph}
+つまり、注文書には、すでに必要な商品が記載されている状態です。
+:::
+
+::: {#ch01-install-manifest-description-2 .paragraph}
+あとは、npmを使って注文するだけです。
+:::
+
+![配布サンプルのpackage.jsonに登録されているreact、react-dom、typescript、vite](assets/vscode-install-manifest.png){#ch01-install-manifest}
+
+::: {#ch01-install-manifest-caption .paragraph}
+配布サンプルの package.json に記載されたライブラリ（画面の一部）
+:::
+
+::::
+
+:::: {#page-28 .source-page}
+
+::: {#ch01-install-first-title .heading}
+**【作業手順①】　npm installを実行する**
+:::
+
+::: {#ch01-install-first-intro-1 .paragraph}
+それでは、必要なライブラリを実際にインストールしてみましょう。
+:::
+
+::: {#ch01-install-first-intro-2 .paragraph}
+本研修では、あらかじめ用意された `ch01-setup` プロジェクトを使用します。
+:::
+
+::: {#ch01-install-terminal-title .step}
+**1．VS Codeでch01-setupのターミナルを開く**
+:::
+
+::: {#ch01-install-terminal-1 .paragraph}
+VS Codeで `react-basic.code-workspace` を開き、`ch01-setup` のターミナルを起動してください。
+:::
+
+::: {#ch01-install-terminal-2 .paragraph}
+次の場所になっていることを確認します。
+:::
+
+::: {#ch01-install-terminal-path .paragraph keep-lines="true"}
+`PS C:\work\react_basic\ch01-setup>`
+:::
+
+::: {#ch01-install-run-title .step}
+**2．npm installを実行する**
+:::
+
+::: {#ch01-install-run-lead-1 .paragraph}
+ターミナルに次のコマンドを入力してください。
+:::
+
+::: {#ch01-install-run-command .code highlight-text="npm install"}
+```powershell
+npm install
+```
+:::
+
+::: {#ch01-install-run-result-1 .paragraph}
+これだけで、`package.json` に記載された必要なライブラリがインストールされます。
+:::
+
+![配布サンプルでnpm installを実行するとaddedの行が表示される](assets/vscode-npm-install-complete.png){#ch01-install-result}
+
+::: {#ch01-install-result-caption .paragraph}
+npm install が完了したときの表示例（先頭行を抜粋）
+:::
+
+::: {#ch01-install-check-title .heading}
+**【作業手順②】　インストール結果を確認する**
+:::
+
+::: {#ch01-install-check-1 .paragraph}
+インストールが完了したら、VS Codeのエクスプローラーを確認してください。
+:::
+
+::: {#ch01-install-check-2 .paragraph}
+`ch01-setup` の中に、**node_modules** というフォルダーが新しく生成されています。
+:::
+
+::: {#ch01-install-check-3 .paragraph}
+このフォルダーの中には、先ほど注文したReactやTypeScriptなどのライブラリが保存されています。
+:::
+
+![VS Codeでch01-setupのnode_modulesを展開し、react、react-dom、typescript、viteを確認](assets/vscode-install-modules.png){#ch01-install-modules}
+
+::: {#ch01-install-modules-caption .paragraph}
+npm install 後の node_modules（確認するフォルダーを抜粋）
+:::
+
+::::
+
+:::: {#page-29 .source-page}
+
+::: {#ch01-install-extra-title .heading level="minor"}
+追加のライブラリをインストールする方法
+:::
+
+::: {#ch01-install-extra-1 .paragraph}
+ここまでは、最初から `package.json` に登録されているライブラリをインストールしました。
+:::
+
+::: {#ch01-install-extra-2 .paragraph}
+しかし、開発中に新しいライブラリが必要になることもあります。
+:::
+
+::: {#ch01-install-extra-3 .paragraph}
+その場合は、`package.json` に必要なライブラリを追加してから `npm install` を実行する方法もありますが、もっと簡単な方法があります。
+:::
+
+::: {#ch01-install-extra-4 .paragraph}
+それが、**npm installの後ろに、インストールしたいライブラリ名を指定する方法**です。
+:::
+
+::: {#ch01-install-extra-5 .paragraph}
+例えば、本研修では、画面のデザインを簡単に整えるために、**Bootstrap（ブートストラップ）**というライブラリを使用します。
+:::
+
+::: {#ch01-install-extra-6 .paragraph}
+Bootstrapは、ボタンや表などの見た目を、あらかじめ用意されたCSSのクラスを使って簡単に整えられるライブラリです。
+:::
+
+::: {#ch01-install-extra-7 .paragraph}
+今回は、このBootstrapを追加でインストールしてみましょう。
+:::
+
+::: {#ch01-install-bootstrap-install-heading .step}
+**1．Bootstrapをインストールする**
+:::
+
+::: {#ch01-install-bootstrap-install-start-1 .paragraph}
+`ch01-setup` のターミナルで、次のコマンドを実行してください。
+:::
+
+::: {#ch01-install-bootstrap-command .code}
+```powershell
+npm install bootstrap
+```
+:::
+
+::: {#ch01-install-bootstrap-install-result-1 .paragraph}
+このコマンドを実行すると、Bootstrapがインターネットからダウンロードされます。
+:::
+
+::: {#ch01-install-bootstrap-install-result-2 .paragraph}
+さらに、**package.jsonにもBootstrapが自動的に追加されます。**
+:::
+
+::: {#ch01-install-bootstrap-install-result-3 .paragraph}
+つまり、ライブラリ名をコマンドで指定すれば、注文書への登録も自動で行われるわけです。
+:::
+
+::::
+
+:::: {#page-30 .source-page}
+
+::: {#ch01-install-bootstrap-check-heading .step}
+**2．インストール結果を確認する**
+:::
+
+::: {#ch01-install-bootstrap-check-intro-1 .paragraph}
+次の2か所を確認してください。
+:::
+
+::: {#ch01-install-bootstrap-check-manifest .paragraph}
+● `package.json` に `bootstrap` が追加されている
+:::
+
+::: {#ch01-install-bootstrap-check-folder .paragraph}
+● `node_modules` の中に `bootstrap` フォルダーが生成されている
+:::
+
+![npm install bootstrapの実行結果、package.jsonに追加されたbootstrap、node_modulesに生成されたbootstrapをVS Codeで確認する](assets/vscode-bootstrap-install.png){#ch01-install-bootstrap-result}
+
+::: {#ch01-install-bootstrap-result-caption .paragraph}
+Bootstrapの追加コマンドと、登録・配置の確認箇所
+:::
+
+::: {#ch01-install-bootstrap-css-1 .paragraph}
+※BootstrapのCSSを実際の画面に適用するには、別途CSSを読み込む必要があります。この節ではインストールまでを扱います。
+:::
+
+::: {#ch01-install-points .section-points}
+この節のポイント
+
+● **npm**は、ライブラリをインターネットから取得・管理するためのツールである。
+
+● **package.json**には、必要なライブラリの情報が記載されている。
+
+● **npm install**を実行すると、必要なライブラリが`node_modules`にインストールされる。
+
+● **npm install ライブラリ名**と指定すると、新しいライブラリを追加できる。
+:::
+
+::::
+
+:::: {#page-31 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -1437,7 +1686,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-28 .source-page}
+:::: {#page-32 .source-page}
 
 ::: {#ch01-start-run-title .heading}
 **【作業手順②】　開発サーバーを起動する**
@@ -1469,7 +1718,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-29 .source-page}
+:::: {#page-33 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
 **【作業手順③】　商品データを変更して表示を確認する**
@@ -1514,7 +1763,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-30 .source-page}
+:::: {#page-34 .source-page}
 
 ::: {#ch01-files-title .heading}
 1.6. フォルダーと主要ファイルの役割
@@ -1560,7 +1809,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-31 .source-page}
+:::: {#page-35 .source-page}
 
 ::: {#ch01-main-title .heading level="minor"}
 画面の表示を始める main.tsx
@@ -1604,7 +1853,7 @@ export const product = {
 
 ::::
 
-:::: {#page-32 .source-page}
+:::: {#page-36 .source-page}
 
 ::: {#ch01-app-title .heading level="minor"}
 商品管理の画面を組み立てる App.tsx
@@ -1645,7 +1894,7 @@ export default function App() {
 
 ::::
 
-:::: {#page-33 .source-page}
+:::: {#page-37 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ
