@@ -287,198 +287,459 @@ Reactは、このようなSPAの画面を構築するためにも利用できま
 1.2. 開発環境の準備
 :::
 
-::: {#ch01-tools-slide .slide layout="diagram" art="assets/slide-environment.png"}
-開発環境の準備
+::: {#ch01-tools-slide .slide layout="illustration"}
+Reactの開発環境の準備
 
-章フォルダー<br>
-配布サンプルを<br>章ごとに置く
-
-VS Code<br>
-複数の章フォルダーを<br>まとめて開く
-
-Node.js・npm<br>
-バージョンを<br>ターミナルで確認する
+![VS Code、Node.js、npm、Webブラウザーの役割](assets/slide-react-environment.png)
 :::
 
 ::: {#ch01-tools-body-title .heading level="minor"}
-React の環境構築のための準備
+Reactの開発に必要なもの
 :::
 
-::: {#ch01-tools-body .paragraph}
-本章は **Windows** で操作します。React の開発を始める前に、次の準備を行います。
+::: {#ch01-tools-intro-1 .paragraph}
+Reactを使用してWebアプリケーションを開発するためには、まず開発環境を準備する必要があります。
 :::
 
-::: {#ch01-tools-folders .paragraph numbered="true"}
-①　**章フォルダーを用意します。** 親フォルダーの下に章ごとのサンプルを置きます。
+::: {#ch01-tools-intro-2 .paragraph}
+これまでのHTMLやJavaScriptの学習では、テキストエディターでソースコードを作成し、HTMLファイルをブラウザーで開くだけでも動作を確認できました。
 :::
 
-::: {#ch01-tools-editor .paragraph numbered="true"}
-②　**VS Code のワークスペースを作ります。** インターネットから Windows 用の Visual Studio Code をダウンロードしてインストールし、章フォルダーを追加します。
+::: {#ch01-tools-intro-3 .paragraph}
+しかし、Reactでは、HTMLに似た**JSX（本研修ではTypeScriptに対応したTSX）**という構文を使用します。
 :::
 
-::: {#ch01-tools-language .paragraph numbered="true"}
-③　**言語機能を確認します。** VS Code に組み込まれた入力補完とエラー表示の機能を確認します。
+::: {#ch01-tools-intro-4 .paragraph}
+ブラウザーはTSXをそのまま実行できないため、開発時にはブラウザーが理解できるJavaScriptへ変換する仕組みが必要です。
 :::
 
-::: {#ch01-tools-node .paragraph numbered="true"}
-④　**Node.js を導入します。** インターネットから Node.js 24 系をダウンロードしてインストールし、Node.js と npm のバージョンを確認します。
+::: {#ch01-tools-intro-5 .paragraph}
+また、Reactでは複数のライブラリを組み合わせて開発するため、それらを簡単にインストール・管理できる仕組みも必要です。
 :::
 
 ::::
 
 :::: {#page-9 .source-page}
 
-::: {#ch01-folder-title .heading}
-**【作業手順①】　親フォルダーと章フォルダーを作る**
+::: {#ch01-tools-intro-6 .paragraph}
+本研修では、こうした作業を効率よく進めるために、次のツールを使用します。
 :::
 
-::: {#ch01-folder-open .paragraph numbered="true"}
-1．Windows の［エクスプローラー］を開き、`C:\` を表示します。
-:::
-
-::: {#ch01-folder-parent .paragraph numbered="true"}
-2．`work` フォルダーがなければ［新規作成］→［フォルダー］で作ります。`work` を開き、その中に `react_basic` を作ります。
-:::
-
-::: {#ch01-folder-path .paragraph keep-lines="true"}
-親フォルダーの例　`C:\work\react_basic`
-:::
-
-::: {#ch01-folder-extract .paragraph numbered="true"}
-3．`react_basic` の下に、章ごとのフォルダーを用意します。第1章は **`ch01-setup`** です。配布物が ZIP 形式の場合は右クリックして［すべて展開］を選び、展開した章フォルダーを親フォルダーの下に置きます。ファイルのみが配布された場合は、`ch01-setup` を作成して、その中にファイルを入れます。
-:::
-
-::: {#ch01-folder-structure .table}
-| 場所 | その直下にあるもの |
+::: {#ch01-tools-roles .table}
+| ツール | 主な役割 |
 | --- | --- |
-| `C:\work\react_basic` | `ch01-setup` |
-| `C:\work\react_basic\ch01-setup` | `package.json`、`package-lock.json`、`src` |
+| Visual Studio Code（VS Code） | Reactのソースコードを作成・編集する |
+| Node.js | Viteなどの開発ツールを動作させる |
+| npm | Reactなどのライブラリをインストール・管理する |
+| Webブラウザー | 作成したReactアプリケーションを表示・確認する |
 :::
 
-![エクスプローラーでch01-setupを開いてsrc、package.json、package-lock.jsonを確かめる画面](assets/explorer-chapter-files.png){#ch01-folder-files}
-
-::: {#ch01-folder-files-caption .paragraph}
-`ch01-setup` の直下にある主なファイルとフォルダー
+::: {#ch01-tools-runtime-1 .paragraph}
+なお、**Reactの画面自体は基本的にブラウザー上で動作します。**
 :::
 
-::: {#ch01-folder-check .paragraph}
-第2章以降も、配布されたフォルダーを同じ親フォルダーの下に置きます。章ごとに分けると、各章のコードと依存ライブラリを別々に管理できます。`C:\work` に作成できない場合は、書き込みができる場所に親フォルダーを用意してください。
+::: {#ch01-tools-runtime-2 .paragraph}
+Node.jsは、Reactの画面を動かすためではなく、ソースコードの変換や開発サーバーの起動など、開発に必要なツールを実行するために使用します。
+:::
+
+::: {#ch01-tools-runtime-3 .paragraph}
+具体的には、次の節で紹介する「Vite」というツールをNode.js上で動作させます。
+:::
+
+::: {#ch01-tools-training .training-note}
+**本研修での扱い**
+
+本研修では、この節で扱う開発環境の準備は事前に完了しています。以下のインストールや設定の手順は、個人でReactの開発環境をゼロから準備する際の参考として確認してください。研修では、各ツールの役割と確認方法を理解して先へ進みましょう。
+:::
+
+![VS CodeでTSXを編集し、Node.js上のViteが変換・配信した画面をブラウザーで表示する。npmはライブラリを管理する。](assets/environment-workflow.png){#ch01-tools-workflow}
+
+::: {#ch01-tools-workflow-caption .paragraph}
+Reactの開発時に使うツールと画面表示までの流れ
 :::
 
 ::::
 
 :::: {#page-10 .source-page}
 
-::: {#ch01-workspace-title .heading}
-**【作業手順②】　VS Code でマルチルート・ワークスペースを作る**
+::: {#ch01-folder-title .heading}
+**【作業手順①】　親フォルダーと章フォルダーを用意する**
 :::
 
-::: {#ch01-workspace-intro .paragraph}
-**マルチルート・ワークスペース**は、複数のフォルダーを一つの VS Code ウィンドウにまとめて開く仕組みです。研修では章ごとのフォルダーを登録します。
+::: {#ch01-folder-intro-1 .paragraph}
+最初に、Reactのソースコードを保存するフォルダーを用意します。
 :::
 
-::: {#ch01-workspace-start .paragraph numbered="true"}
-1．インターネットから Windows 用の **Visual Studio Code（VS Code）** のインストーラーをダウンロードして実行します。インストール済みの場合は VS Code を起動します。
+::: {#ch01-folder-intro-2 .paragraph}
+本研修では、学習する章ごとにReactのプロジェクトを分けて管理します。
 :::
 
-::: {#ch01-workspace-add .paragraph numbered="true"}
-2．［ファイル］→［フォルダーをワークスペースに追加］を選び、`C:\work\react_basic\ch01-setup` を追加します。配布済みの章フォルダーがほかにもある場合は、同じ操作で追加します。
+::: {#ch01-folder-intro-3 .paragraph}
+章ごとにフォルダーを分けることで、学習したソースコードを保存しながら、次の章では別のプロジェクトを使用できます。
 :::
 
-![VS Codeのファイルメニューから章フォルダーを追加し、ワークスペースを保存する操作](assets/vscode-workspace-menu.png){#ch01-workspace-menu}
-
-::: {#ch01-workspace-menu-caption .paragraph}
-章フォルダーをワークスペースへ追加するメニュー
+::: {#ch01-folder-intro-4 .paragraph}
+また、Reactではプロジェクトごとに必要なライブラリを管理するため、他の章の設定やソースコードに影響を与えずに学習できます。
 :::
 
-::: {#ch01-workspace-save .paragraph numbered="true"}
-3．［ファイル］→［名前を付けてワークスペースを保存］を選びます。親フォルダーに **`react-basic.code-workspace`** という名前で保存します。
+::: {#ch01-folder-parent .step}
+**1．親フォルダーを作成する**
 :::
 
-::: {#ch01-workspace-path .paragraph keep-lines="true"}
-保存先の例　`C:\work\react_basic\react-basic.code-workspace`
+::: {#ch01-folder-parent-1 .paragraph}
+Windowsのエクスプローラーを開き、Cドライブの直下に `work` フォルダーを作成します。
+:::
+
+::: {#ch01-folder-parent-2 .paragraph}
+さらに、その中に `react_basic` フォルダーを作成してください。
+:::
+
+::: {#ch01-folder-parent-3 .paragraph keep-lines="true"}
+保存先：`C:\work\react_basic`
+:::
+
+::: {#ch01-folder-chapters .step}
+**2．章フォルダーを配置する**
+:::
+
+::: {#ch01-folder-chapters-1 .paragraph}
+配布されたサンプルファイルを展開し、`react_basic` フォルダーの下に配置します。
+:::
+
+::: {#ch01-folder-chapters-2 .paragraph}
+第1章では、`ch01-setup` というフォルダーを使用します。
+:::
+
+![配布済みのch01-setupと、1.3節でひな形を作るvite-demoのフォルダー構成](assets/development-folders.png){#ch01-folder-files}
+
+::: {#ch01-folder-files-caption .paragraph}
+配布済みのサンプルとViteのひな形を作るフォルダー
+:::
+
+::: {#ch01-folder-state .paragraph}
+`ch01-setup` には、配布時点で `src`、`package.json`、`package-lock.json` があります。1.3節では、別に用意する空の `vite-demo` にひな形を作り、`src` と `package.json` を確認します。新規プロジェクトの `package-lock.json` は、依存ライブラリをインストールすると作成されます。1.4節では、配布済みの `ch01-setup` に戻ります。
+:::
+
+::: {#ch01-folder-location-note .paragraph}
+なお、社内PCなどの制限によって `C:\work` にフォルダーを作成できない場合は、書き込み可能な別の場所を使用してください。
 :::
 
 ::::
 
 :::: {#page-11 .source-page}
 
-::: {#ch01-workspace-reopen .paragraph numbered="true"}
-4．次回は［ファイル］→［ファイルでワークスペースを開く］で `react-basic.code-workspace` を選びます。VS Code のエクスプローラーに、登録した章フォルダーが並びます。
+::: {#ch01-workspace-title .heading}
+**【作業手順②】　VS Codeでワークスペースを作成する**
 :::
 
-![VS Codeで保存したワークスペースを開くと章フォルダーが並んでいる画面](assets/vscode-workspace-roots.png){#ch01-workspace-roots}
-
-::: {#ch01-workspace-roots-caption .paragraph}
-第2章のフォルダーを追加したワークスペースの例
+::: {#ch01-workspace-intro .paragraph}
+次に、Reactのソースコードを編集するためのVS Codeを準備します。
 :::
 
-::: {#ch01-workspace-more .paragraph}
-新しい章のサンプルが配布されたら、同じ親フォルダーに配置し、このワークスペースに追加して保存します。
+::: {#ch01-workspace-editor-title .heading level="minor"}
+VS Codeとは
 :::
 
-::: {#ch01-language-title .heading}
-**【作業手順③】　VS Code の言語機能を確認する**
+::: {#ch01-workspace-editor-1 .paragraph}
+VS Codeは、Microsoftが提供しているソースコードエディターです。
 :::
 
-::: {#ch01-language-intro .paragraph}
-React の `.tsx` ファイルを編集するときの入力補完やエラー表示には、VS Code に組み込まれた言語機能を使います。
+::: {#ch01-workspace-editor-2 .paragraph}
+JavaScriptやTypeScriptなど、さまざまなプログラミング言語に対応しており、入力補完や構文エラーの表示など、開発を支援する機能が用意されています。
 :::
 
-::: {#ch01-language-search .paragraph numbered="true"}
-1．左の［拡張機能］を開き、検索欄に `@builtin typescript` と入力します。
+::: {#ch01-workspace-editor-3 .paragraph}
+本研修では、このVS Codeを使用してReactのソースコードを編集します。
 :::
 
-::: {#ch01-language-check .paragraph numbered="true"}
-2．一覧から **［JavaScript と TypeScript の言語機能］** を開きます。［無効にする］が表示されたら、機能は有効です。
+::: {#ch01-workspace-install .step}
+**1．VS Codeをインストールする**
 :::
 
-![拡張機能の一覧からVS Code組み込みのJavaScriptとTypeScriptの言語機能を確認する画面](assets/vscode-typescript-feature.png){#ch01-typescript-feature}
+::: {#ch01-workspace-install-1 .paragraph}
+まだVS Codeがインストールされていない場合は、公式サイトからWindows用のインストーラーをダウンロードし、インストールしてください。
+:::
 
-::: {#ch01-typescript-feature-caption .paragraph}
-VS Code に組み込まれた JavaScript と TypeScript の言語機能
+::: {#ch01-workspace-install-2 .paragraph keep-lines="true"}
+<https://code.visualstudio.com/>
+:::
+
+::: {#ch01-workspace-install-3 .paragraph}
+インストール済みの場合は、VS Codeを起動してください。
+:::
+
+::: {#ch01-workspace-add .step}
+**2．ワークスペースに章フォルダーを追加する**
+:::
+
+::: {#ch01-workspace-add-1 .paragraph}
+VS Codeには、複数のフォルダーを1つの画面でまとめて管理できる「マルチルート・ワークスペース」という機能があります。
+:::
+
+::: {#ch01-workspace-add-2 .paragraph}
+本研修では、章ごとにプロジェクトを分けるため、この機能を使用します。
 :::
 
 ::::
 
 :::: {#page-12 .source-page}
 
-::: {#ch01-node-title .heading}
-**【作業手順④】　Node.js をインストールしてターミナルを開く**
+::: {#ch01-workspace-add-3 .paragraph}
+VS Codeのメニューから、［ファイル］→［フォルダーをワークスペースに追加］を選択してください。
 :::
 
-::: {#ch01-node-intro .paragraph}
-次の節で使う Vite などの開発ツールは **Node.js** 上で動きます。Node.js をインストールすると、ライブラリの導入に使う **npm** も利用できるようになります。
+::: {#ch01-workspace-add-4 .paragraph}
+続いて、次のフォルダーを指定します。
 :::
 
-::: {#ch01-node-install .paragraph numbered="true"}
-1．インターネットから **Node.js 24 系**の Windows 用インストーラー（`.msi`）をダウンロードします。ダウンロードしたファイルを開き、画面の案内に従ってインストールします。
+::: {#ch01-workspace-add-5 .paragraph keep-lines="true"}
+`C:\work\react_basic\ch01-setup`
 :::
 
-::: {#ch01-terminal-open .paragraph numbered="true"}
-2．VS Code を起動し直し、保存した `react-basic.code-workspace` を開きます。［ターミナル］→［新しいターミナル］を選び、フォルダーの選択が表示されたら **`ch01-setup`** を選びます。
+::: {#ch01-workspace-add-6 .paragraph}
+ほかの章のフォルダーも配布されている場合は、同様に追加してください。
 :::
 
-![新しいターミナルの作業フォルダーからch01-setupを選ぶ画面](assets/vscode-workspace-terminal.png){#ch01-workspace-terminal}
+![VS Codeのファイルメニューで「フォルダーをワークスペースに追加」を選択する画面](assets/vscode-workspace-menu.png){#ch01-workspace-menu}
 
-::: {#ch01-workspace-terminal-caption .paragraph}
-新しいターミナルを開く章フォルダーを選択
+::: {#ch01-workspace-menu-caption .paragraph}
+章フォルダーをワークスペースに追加するメニュー
 :::
 
-::: {#ch01-node-terminal-note .paragraph}
-画面下部の**ターミナル**にコマンドを入力します。コマンドは選んだ章フォルダーで実行されます。ウィンドウの幅が狭い場合、［ターミナル］は［…］の中にあります。
+::: {#ch01-workspace-save .step}
+**3．ワークスペースを保存する**
+:::
+
+::: {#ch01-workspace-save-1 .paragraph}
+［ファイル］→［名前を付けてワークスペースを保存］を選択します。
+:::
+
+::: {#ch01-workspace-save-2 .paragraph}
+次の名前で保存してください。
+:::
+
+::: {#ch01-workspace-save-3 .paragraph keep-lines="true"}
+`C:\work\react_basic\react-basic.code-workspace`
+:::
+
+::: {#ch01-workspace-save-4 .paragraph}
+これで、複数の章フォルダーを1つのVS Code画面で管理できるようになりました。
+:::
+
+::: {#ch01-workspace-save-5 .paragraph}
+次回からは、保存した `react-basic.code-workspace` を開くだけで、登録した章フォルダーをまとめて表示できます。
+:::
+
+![VS Codeでch01-setupを含む複数の章フォルダーが表示された画面](assets/vscode-workspace-roots.png){#ch01-workspace-roots}
+
+::: {#ch01-workspace-roots-caption .paragraph}
+複数の章フォルダーを追加した場合の表示例
 :::
 
 ::::
 
 :::: {#page-13 .source-page}
 
-::: {#ch01-terminal-title .heading level="minor"}
-Node.js と npm のバージョンを確認する
+::: {#ch01-language-title .heading}
+**【作業手順③】　VS Codeの言語機能を確認する**
 :::
 
-::: {#ch01-terminal-prompt .paragraph numbered="true"}
-3．PowerShell のターミナルでは、`PS …>` が入力待ちの**プロンプト**です。`>` の直前のフォルダー名が `ch01-setup` であることを確かめます。次のコマンドを1行ずつ入力して［Enter］を押します。
+::: {#ch01-language-intro-1 .paragraph}
+Reactでは、JavaScriptだけでなくTypeScriptも使用します。
+:::
+
+::: {#ch01-language-intro-2 .paragraph}
+TypeScriptは、JavaScriptに型の仕組みを追加したプログラミング言語です。
+:::
+
+::: {#ch01-language-intro-3 .paragraph}
+例えば、数値を扱う変数に誤って文字列を代入した場合、開発中に型の不一致を検出できます。
+:::
+
+::: {#ch01-language-intro-4 .paragraph}
+VS Codeには、JavaScriptとTypeScriptの入力補完やエラー表示を行うための言語機能が標準で用意されています。
+:::
+
+::: {#ch01-language-intro-5 .paragraph}
+本研修では、まずこの機能が有効になっていることを確認します。
+:::
+
+::: {#ch01-language-open .step}
+**1．拡張機能の画面を開く**
+:::
+
+::: {#ch01-language-open-extensions .paragraph}
+VS Codeの左側にある［拡張機能］をクリックします。
+:::
+
+::: {#ch01-language-search .step}
+**2．言語機能を検索する**
+:::
+
+::: {#ch01-language-search-1 .paragraph}
+検索欄に次の文字列を入力してください。
+:::
+
+::: {#ch01-language-search-2 .paragraph keep-lines="true"}
+`@builtin typescript`
+:::
+
+::: {#ch01-language-search-3 .paragraph}
+検索結果から、［JavaScript と TypeScript の言語機能］を選択します。
+:::
+
+![拡張機能の検索欄に@builtin typescriptを入力し、JavaScriptとTypeScriptの言語機能を選ぶ画面](assets/vscode-typescript-feature.png){#ch01-typescript-feature}
+
+::: {#ch01-typescript-feature-caption .paragraph}
+VS Codeに組み込まれたJavaScriptとTypeScriptの言語機能
+:::
+
+::: {#ch01-language-check .step}
+**3．有効になっていることを確認する**
+:::
+
+::: {#ch01-language-check-1 .paragraph}
+［無効にする］というボタンが表示されていれば、現在その機能が有効になっています。
+:::
+
+::: {#ch01-language-check-2 .paragraph}
+無効になっている場合は、有効にしてください。
+:::
+
+::: {#ch01-language-check-3 .paragraph}
+これにより、後続の章でTSXファイルを編集するときに、入力補完や構文エラーの表示などを利用できます。
+:::
+
+::::
+
+:::: {#page-14 .source-page}
+
+::: {#ch01-node-title .heading}
+**【作業手順④】　Node.jsをインストールする**
+:::
+
+::: {#ch01-node-intro-1 .paragraph}
+ここまでで、ソースコードを編集するためのVS Codeを準備しました。
+:::
+
+::: {#ch01-node-intro-2 .paragraph}
+次に、Reactの開発ツールを動かすためのNode.jsをインストールします。
+:::
+
+::: {#ch01-node-definition-title .heading level="minor"}
+Node.jsとは
+:::
+
+::: {#ch01-node-definition-1 .paragraph}
+Node.js（ノード・ジェイエス）は、JavaScriptをWebブラウザーの外でも実行できるようにする実行環境です。
+:::
+
+::: {#ch01-node-definition-2 .paragraph}
+通常、JavaScriptはWebブラウザーの中で実行される言語として学習します。
+:::
+
+::: {#ch01-node-definition-3 .paragraph}
+しかし、Node.jsを使用すると、自分のPC上でJavaScriptのプログラムを実行できます。
+:::
+
+::: {#ch01-node-definition-4 .paragraph}
+Reactの開発では、このNode.jsを利用して、Viteなどの開発ツールを動かします。
+:::
+
+::: {#ch01-node-definition-5 .paragraph}
+また、Node.jsをインストールすると、**npmというパッケージ管理ツール**も利用できるようになります。
+:::
+
+::: {#ch01-node-definition-6 .paragraph}
+npmは、Reactなどのライブラリをインストールするときに使用します。
+:::
+
+::: {#ch01-node-definition-7 .paragraph}
+※npmを使用したライブラリのインストールについては、1.4節で詳しく説明します。
+:::
+
+::: {#ch01-node-install .step}
+**1．Node.jsをインストールする**
+:::
+
+::: {#ch01-node-install-1 .paragraph}
+Node.jsの公式サイトにアクセスしてください。
+:::
+
+::: {#ch01-node-install-2 .paragraph keep-lines="true"}
+<https://nodejs.org/>
+:::
+
+::: {#ch01-node-install-3 .paragraph}
+本研修では、Node.js 24系を使用します。
+:::
+
+::: {#ch01-node-install-4 .paragraph}
+Windows用のインストーラーをダウンロードし、画面の指示に従ってインストールしてください。
+:::
+
+![Node.js公式サイトでバージョン24系とWindowsインストーラー（.msi）を選ぶ画面](assets/nodejs-windows-installer.png){#ch01-node-installer}
+
+::: {#ch01-node-installer-caption .paragraph}
+Node.js公式サイトで24系のWindowsインストーラー（.msi）を選ぶ画面（画面の一部）
+:::
+
+::::
+
+:::: {#page-15 .source-page}
+
+::: {#ch01-terminal-open .step}
+**2．VS Codeのターミナルを開く**
+:::
+
+::: {#ch01-terminal-open-1 .paragraph}
+インストール後、VS Codeを一度終了してから再起動してください。
+:::
+
+::: {#ch01-terminal-open-2 .paragraph}
+保存したワークスペースを開き、［ターミナル］→［新しいターミナル］を選択します。
+:::
+
+::: {#ch01-terminal-open-3 .paragraph}
+フォルダーの選択画面が表示された場合は、`ch01-setup` を選択してください。
+:::
+
+![VS Codeの新しいターミナルでch01-setupを選ぶ画面](assets/vscode-workspace-terminal.png){#ch01-workspace-terminal}
+
+::: {#ch01-workspace-terminal-caption .paragraph}
+新しいターミナルを開く章フォルダーを選択
+:::
+
+::: {#ch01-terminal-open-4 .paragraph}
+画面下部にターミナルが表示されます。
+:::
+
+::: {#ch01-terminal-definition-title .heading level="minor"}
+ターミナルとは
+:::
+
+::: {#ch01-terminal-definition-1 .paragraph}
+ターミナルとは、文字でコマンドを入力してPCを操作するための画面です。
+:::
+
+::: {#ch01-terminal-definition-2 .paragraph}
+WindowsのコマンドプロンプトやPowerShellと同様の操作が、VS Codeの画面内でできます。
+:::
+
+::: {#ch01-terminal-definition-3 .paragraph}
+Reactの開発では、ライブラリのインストールや開発サーバーの起動などに、このターミナルを使用します。
+:::
+
+::::
+
+:::: {#page-16 .source-page}
+
+::: {#ch01-terminal-version .step}
+**3．Node.jsとnpmのバージョンを確認する**
+:::
+
+::: {#ch01-terminal-version-prompt .paragraph}
+ターミナルに次のコマンドを1行ずつ入力してください。
 :::
 
 ::: {#ch01-tools-code .code}
@@ -488,23 +749,55 @@ npm -v
 ```
 :::
 
-![VS CodeのターミナルでNode.jsとnpmのバージョンを確認した画面](assets/vscode-node-versions.png){#ch01-terminal-versions}
-
-::: {#ch01-terminal-versions-caption .paragraph}
-各コマンドの実行結果としてバージョン番号が表示される
+::: {#ch01-terminal-version-1 .paragraph}
+`node -v` はNode.jsのバージョンを確認するコマンドです。
 :::
 
-::: {#ch01-tools-check .paragraph numbered="true"}
-4．`node -v` の結果が `v24.` で始まり、`npm -v` の結果にバージョン番号が表示されることを確かめます。`node` が認識されない場合は、インストールが完了していることを確かめて VS Code を起動し直します。
+::: {#ch01-terminal-version-2 .paragraph}
+`npm -v` はnpmのバージョンを確認するコマンドです。
+:::
+
+::: {#ch01-terminal-version-3 .paragraph}
+それぞれのコマンドを実行すると、バージョン番号が表示されます。
+:::
+
+::: {#ch01-terminal-version-4 .paragraph}
+Node.jsについては、`v24.` で始まるバージョン番号が表示されることを確認してください。
+:::
+
+::: {#ch01-terminal-version-5 .paragraph}
+npmについても、バージョン番号が表示されれば問題ありません。
+:::
+
+![VS Codeのターミナルにnode -vとnpm -vの実行結果が表示された画面](assets/vscode-node-versions.png){#ch01-terminal-versions}
+
+::: {#ch01-terminal-versions-caption .paragraph}
+Node.jsとnpmのバージョン番号の表示例
 :::
 
 ::: {#ch01-tools-npm-ps .paragraph}
-PowerShell で `npm.ps1` の実行が制限されている場合は、**`npm.cmd -v`** を実行します。同じメッセージが出る場合は、以降もコマンドの先頭の `npm` を `npm.cmd` に置き換えます。
+※PowerShellの設定によっては、`npm.ps1` の実行が制限され、`npm -v` がエラーになる場合があります。その場合は、`npm.cmd -v` を使用して確認してください。
+:::
+
+::: {#ch01-tools-next-title .heading level="minor"}
+開発環境の準備が完了したら
+:::
+
+::: {#ch01-tools-next-1 .paragraph}
+ここまでの作業で、Reactの開発を始めるための基本的な環境が整いました。
+:::
+
+::: {#ch01-tools-next-2 .paragraph}
+VS Codeでソースコードを作成し、Node.js上で開発ツールを動かし、npmを使って必要なライブラリを導入できる状態です。
+:::
+
+::: {#ch01-tools-next-3 .paragraph}
+次の1.3節では、**Viteを使用してReactプロジェクトのひな形を作成する方法**を学習します。
 :::
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-17 .source-page}
 
 ::: {#ch01-vite-title .heading}
 1.3. Vite でプロジェクトを作成
@@ -555,7 +848,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 ::::
 
-:::: {#page-15 .source-page}
+:::: {#page-18 .source-page}
 
 ::: {#ch01-vite-prompts-title .heading level="minor"}
 作成時に表示されるメッセージを確認する
@@ -619,7 +912,7 @@ Done. Now run:
 
 ::::
 
-:::: {#page-16 .source-page}
+:::: {#page-19 .source-page}
 
 ::: {#ch01-vite-files-title .heading}
 **【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
@@ -645,7 +938,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 
 ::::
 
-:::: {#page-17 .source-page}
+:::: {#page-20 .source-page}
 
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
@@ -688,7 +981,7 @@ VS Code のエクスプローラーで確認する React の初期ファイル
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-21 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -731,7 +1024,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-22 .source-page}
 
 ::: {#ch01-start-run-title .heading}
 **【作業手順②】　開発サーバーを起動する**
@@ -763,7 +1056,7 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-20 .source-page}
+:::: {#page-23 .source-page}
 
 ::: {#ch01-start-verify-title .heading}
 **【作業手順③】　商品データを変更して表示を確認する**
@@ -808,7 +1101,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-21 .source-page}
+:::: {#page-24 .source-page}
 
 ::: {#ch01-files-title .heading}
 1.6. フォルダーと主要ファイルの役割
@@ -854,7 +1147,7 @@ React の画面を組み立てる `App.tsx` は、`product.name` を読み取っ
 
 ::::
 
-:::: {#page-22 .source-page}
+:::: {#page-25 .source-page}
 
 ::: {#ch01-main-title .heading level="minor"}
 画面の表示を始める main.tsx
@@ -898,7 +1191,7 @@ export const product = {
 
 ::::
 
-:::: {#page-23 .source-page}
+:::: {#page-26 .source-page}
 
 ::: {#ch01-app-title .heading level="minor"}
 商品管理の画面を組み立てる App.tsx
@@ -939,7 +1232,7 @@ export default function App() {
 
 ::::
 
-:::: {#page-24 .source-page}
+:::: {#page-27 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ

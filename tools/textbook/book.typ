@@ -70,6 +70,19 @@
   below: 12pt, inset: 8pt, fill: rgb("F5F8FC"), stroke: 0.65pt + rgb("A6B8CE"), radius: 4pt)[
   #body
 ]
+#let training-note(id, title, body) = block(width: 100%, breakable: false,
+  above: 18pt, below: 14pt, inset: (x: 12pt, y: 10pt), radius: 3pt,
+  stroke: (left: 3pt + rgb("AD521F"), rest: 0.65pt + rgb("D8A47E")), fill: rgb("FFF4E8"))[
+  #mark(id, "start")
+  #stack(spacing: 7pt,
+    text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 0.3pt + rgb("78370F"),
+      fill: rgb("78370F"), title),
+    block(above: 0pt, below: 0pt)[
+      #set par(first-line-indent: 0pt)
+      #body
+    ])
+  #mark(id, "end")
+]
 #let section-points(id, title, points) = block(width: 100%, breakable: false,
   above: 26pt, below: 12pt, fill: rgb("F1F6F9"), stroke: 0.65pt + rgb("A9BFCE"), radius: 4pt)[
   #mark(id, "start")

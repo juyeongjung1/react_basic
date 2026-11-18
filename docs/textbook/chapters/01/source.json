@@ -2,7 +2,7 @@
   "title": "第1章 React の開発環境と動作確認",
   "chapter": 1,
   "first_page": 1,
-  "last_page": 24,
+  "last_page": 27,
   "cover_mode": "classic",
   "illustrations": {
     "ch01-spa-js-result": {
@@ -20,10 +20,15 @@
       "width": 379,
       "max_height": 201
     },
+    "ch01-tools-workflow": {
+      "caption_id": "ch01-tools-workflow-caption",
+      "width": 380,
+      "max_height": 150
+    },
     "ch01-folder-files": {
       "caption_id": "ch01-folder-files-caption",
-      "width": 248,
-      "max_height": 100
+      "width": 380,
+      "max_height": 202
     },
     "ch01-workspace-menu": {
       "caption_id": "ch01-workspace-menu-caption",
@@ -38,9 +43,15 @@
     },
     "ch01-typescript-feature": {
       "caption_id": "ch01-typescript-feature-caption",
-      "width": 304,
-      "max_height": 130,
-      "highlights": [[0.025, 0.485, 0.960, 0.475]]
+      "width": 342,
+      "max_height": 174,
+      "highlights": [[0.033, 0.235, 0.415, 0.185], [0.025, 0.485, 0.960, 0.475]]
+    },
+    "ch01-node-installer": {
+      "caption_id": "ch01-node-installer-caption",
+      "width": 360,
+      "max_height": 202,
+      "highlights": [[0.2028, 0.3406, 0.2687, 0.1558], [0.0089, 0.8188, 0.4626, 0.1594]]
     },
     "ch01-workspace-terminal": {
       "caption_id": "ch01-workspace-terminal-caption",

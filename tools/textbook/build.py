@@ -671,6 +671,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             title, *notices = paragraph_parts(node['parts'])
             rows = ','.join(f'[{inline(row)}]' for row in notices)
             return f'#trademarks([{inline(title)}], ({rows},))'
+        if node['kind'] == 'training-note':
+            title, body = paragraph_parts(node['parts'])
+            return f'#training-note({q(ident)}, [{inline(title)}], [{inline(body)}])'
         if node['kind'] == 'section-points':
             title, *items = paragraph_parts(node['parts'])
             points = []
