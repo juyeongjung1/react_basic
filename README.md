@@ -4,9 +4,9 @@
 
 最初に [見本のMarkdown](docs/textbook/chapters/sample/chapter.md) を生成してください。章扉、本文と小見出し、JSX・TSX、コードの読み方、表、スライドの上下配置、図番号を4ページで確認できます。
 
-## 表紙から第1章までを Markdown から組版する
+## 表紙から第2章の2.2節までを Markdown から組版する
 
-[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md) と [第1章の原稿](docs/textbook/chapters/01/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
+[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
 
 ```powershell
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow
@@ -18,7 +18,7 @@
 
 第1章だけを確認するときは、`.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow` で組版できます。
 
-受講者は [第1章の配布サンプル](ch01-setup) を開き、`package.json` があるフォルダで `npm install` と `npm run dev` を実行します。次の章もその章のサンプルフォルダで `npm install` を実行します。
+受講者は [第1章の配布サンプル](ch01-setup) と [第2章の配布サンプル](ch02-basic) を使用します。各章の `package.json` があるフォルダーで `npm install` を実行し、VS CodeのNPMスクリプトで `dev` を実行します。ターミナルから起動する場合は `npm run dev` を使います。
 
 ## 1. 見本を生成する
 
@@ -61,11 +61,12 @@ npm.cmd ci --prefix tools/textbook
 | 本文・強調 | `.paragraph`。通常段落の一字下げは組版側で行います。部分強調は `**太字**`。出典から引き継いだ `.sNNN` は `source-layout.json` の書式を参照します。 |
 | 見出し | `.heading`。操作のまとまりが1つの節では、操作名をそのまま見出しにします。元の章・節の開始位置と、次の段落との間隔を比較します。 |
 | 小小見出し | `.heading level="minor"`。Wordと同じMS Pゴシックの12pt・太字で組み、前の段落の下に26ptの余白を取ります。 |
-| コード | `.code filename="ch01-setup/src/App.tsx"` の中に言語付きコードフェンス。JavaScript・JSX・TypeScript・TSX、HTML・CSSなどに対応します。ファイルの一部を抜粋するときは、実ファイルで先頭行を確認し、たとえば `start-line="9"` と指定します。赤枠の `highlight-lines="9-9"` も実際の行番号で指定します。右上には `react_basic` を起点にした相対パスを表示します。 |
+| コード | `.code filename="ch01-setup/src/App.tsx"` の中に言語付きコードフェンス。ファイルの一部を抜粋するときは、最終版の実ファイルと照合し、たとえば `start-line="9"` と指定します。赤枠の `highlight-lines="9-9"` も実際の行番号で指定します。実ファイルに対応しない記述例は `example="true"` と指定し、行番号を省きます。ソースは文字として組版し、右上には `react_basic` を起点にした相対パスを表示します。 |
 | コードの読み方 | `tools/textbook/code_explanations.json` に見本の1件があります。対象コードIDと行番号、元の説明段落IDを対応させます。`source_texts` は原稿と同じ文字列、`source_fragments` の `start`・`end` はその文字列中の範囲です。 |
 | 表 | `.table` の中にMarkdownのパイプ表。見出しは中央、データは左に置き、短い表は内容に合わせて幅を絞ります。元の色と強調、外周線とセル罫線をPDFで確認します。 |
 | この節のポイント | `.section-points` の中に見出し「この節のポイント」と、`●` で始まる項目を空行で区切って書きます。見出しと項目をまとめて、専用の枠に組みます。 |
-| 補足 | `.training-note` の最初の段落を見出しにし、「【補足】　最新版の利用」のように括弧の後に全角スペースを入れます。 |
+| 補足 | `.training-note` の最初の段落を「【補足】localhostとは」の形式で書きます。補足は教材共通の専用枠に組みます。 |
+| ブラウザーの表示結果 | 見出し、余白、背景、アドレスバーなどをHTMLや図形で表現し、表示内容と色を実際の動作と照合します。概念図は図形とベクター文字で組み、スクリーンショットは実画面の提示が必要な場合に使用します。 |
 | スライド・図 | 画像のIDを原本から取り出した図版と対応させます。スライドは上段を固定し、説明文を下へ組みます。独立図には図番号と枠が付きます。PNGの挿絵と説明文を同じ枠に入れる例では、章設定の `illustrations` に図IDと `caption_id` を指定します。ソースコードを示す図には `file_path` で相対パスを指定し、図の右上に表示します。 |
 
 章内の改ページは原本の開始位置を基準にします。このため、原本由来の前付・章扉・PPT・操作画面をそろえるには、**React教材から取り出した** `source-layout.json` と `assets/` が必要です。見本の座標は、見本の4ページを生成するための設定です。

@@ -142,7 +142,8 @@ def link_markdown_contents(flow, entries, destinations):
         label=node['text']
         destination=destinations[node['attrs']['target']]
         lines=[line for block in page.get_text('dict')['blocks'] for line in block.get('lines', [])
-               if normalized(''.join(span['text'] for span in line['spans']))==normalized(label)]
+               if abs(line['bbox'][1]-position['y']) < 5
+               and normalized(''.join(span['text'] for span in line['spans']))==normalized(label)]
         assert len(lines)==1,(label,position)
         line=lines[0]
         span=line['spans'][0]
@@ -178,8 +179,9 @@ def assemble_markdown(out, collection):
                 if mark['edge'] in ANCHOR_EDGES:
                     page=pages[mark['page']-1]
                     destinations.setdefault(f"{chapter}:{mark['id']}", page)
-                    if nodes.get(mark['id'], {}).get('kind')=='contents-entry':
-                        entries.append((nodes[mark['id']], {**mark, 'page':page}))
+                    node=nodes.get(mark['id'], {})
+                    if node.get('kind')=='contents-entry' and node['attrs'].get('target'):
+                        entries.append((node, {**mark, 'page':page}))
             footerless=set(config.get('no_footer_pages', []))
             if config.get('cover_mode','classic')!='none':
                 footerless.add(1)

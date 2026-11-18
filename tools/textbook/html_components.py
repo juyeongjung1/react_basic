@@ -115,7 +115,7 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text=''):
+def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False):
     first, last = map(int, highlight_lines.split('-')) if highlight_lines else (0, -1)
     source = '\n'.join(row['code'] for row in rows)
     markup = highlighted(source, lang)
@@ -132,15 +132,19 @@ def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_te
         cursor += count
         number = row['number']
         classes = ['code-row']
+        if example:
+            classes.append('code-example')
         if first <= number <= last:
             classes.append('code-highlight')
             if number == first:
                 classes.append('code-highlight-start')
             if number == last:
                 classes.append('code-highlight-end')
+        gutter = '' if example else f'<div class="line-number">{number}</div>'
         pieces.append(f'<div class="{" ".join(classes)}" data-break-row' + ids_attr(row['ids']) + '>'
-            + f'<div class="line-number">{number}</div><pre class="source-code" spellcheck="false">{content}</pre></div>')
-    return '<section class="card code-card">'+header(LABELS[lang], filenames)+'<div class="card-content">'+''.join(pieces)+'</div><footer class="card-footer">'+footer+'</footer></section>'
+            + gutter + f'<pre class="source-code" spellcheck="false">{content}</pre></div>')
+    label = LABELS[lang] + ('の記述例' if example else '')
+    return '<section class="card code-card">'+header(label, filenames)+'<div class="card-content">'+''.join(pieces)+'</div><footer class="card-footer">'+footer+'</footer></section>'
 
 
 def table_column_alignments(node):
@@ -411,7 +415,8 @@ def prepare(folder, config, layout, nodes, figures, order):
             footer += '<img alt="実行結果の例" style="width:'+str(f['box'][2]-f['box'][0])+'pt" src="data:image/svg+xml;base64,'+data+'"></figure>'
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
         attrs = nodes[ident]['attrs']
-        code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''))
+        code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''),
+                         example=attrs.get('example') == 'true')
         add(ident,ident,consume,code,width,offset)
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:

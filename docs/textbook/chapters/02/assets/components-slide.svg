@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="352" height="224" viewBox="0 0 352 224">
+<rect x="4" y="23" width="108" height="179" rx="7" fill="#eaf3fc" stroke="#a5c2db" stroke-width="0.9"/>
+<rect x="122" y="23" width="108" height="179" rx="7" fill="#e8f5f0" stroke="#a7cabf" stroke-width="0.9"/>
+<rect x="240" y="23" width="108" height="179" rx="7" fill="#fff2e8" stroke="#e3bd9d" stroke-width="0.9"/>
+<rect x="14" y="43" width="88" height="65" rx="5" fill="#fcfdff" stroke="#bacddb" stroke-width="0.9"/>
+<rect x="15" y="44" width="86" height="21" rx="4" fill="#eaf1f7" stroke="none" stroke-width="0.9"/>
+<path d="M15 65 L101 65" fill="none" stroke="#bacddb" stroke-width="1" stroke-linecap="round"/>
+<rect x="21" y="68" width="74" height="6" rx="1" fill="#72a8cd" stroke="none" stroke-width="0.9"/>
+<rect x="21" y="78" width="20" height="15" rx="1" fill="#79b8a4" stroke="none" stroke-width="0.9"/>
+<rect x="45" y="78" width="50" height="15" rx="1" fill="#a7c6df" stroke="none" stroke-width="0.9"/>
+<rect x="21" y="97" width="74" height="5" rx="1" fill="#dda780" stroke="none" stroke-width="0.9"/>
+<rect x="131" y="49" width="90" height="45" rx="4" fill="#ffffff" stroke="#a7cabf" stroke-width="0.9"/>
+<text x="176" y="69" font-family="MS Gothic" font-size="11" fill="#246a5c" text-anchor="middle" font-weight="700">function App()</text>
+<text x="176" y="85" font-family="MS Gothic" font-size="9" fill="#44627b" text-anchor="middle" font-weight="400">return</text>
+<rect x="250" y="49" width="88" height="45" rx="4" fill="#ffffff" stroke="#e3bd9d" stroke-width="0.9"/>
+<text x="294" y="76" font-family="MS Gothic" font-size="10.3" fill="#98512d" text-anchor="middle" font-weight="700">&lt;h1&gt;見出し&lt;/h1&gt;</text>
+<text x="58" y="130" font-family="Meiryo" font-size="11.3" fill="#245983" text-anchor="middle" font-weight="700">コンポーネント</text>
+<text x="58" y="151" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">画面を部品として</text>
+<text x="58" y="168" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">作成できる</text>
+<text x="176" y="130" font-family="Meiryo" font-size="11.3" fill="#246a5c" text-anchor="middle" font-weight="700">関数で画面を定義</text>
+<text x="176" y="151" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">JavaScriptや</text>
+<text x="176" y="168" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">TypeScriptの関数</text>
+<text x="176" y="185" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">として記述する</text>
+<text x="294" y="130" font-family="Meiryo" font-size="11.3" fill="#98512d" text-anchor="middle" font-weight="700">JSX</text>
+<text x="294" y="151" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">HTMLに似た書き方で</text>
+<text x="294" y="168" font-family="Meiryo" font-size="9.3" fill="#172f44" text-anchor="middle" font-weight="400">画面を作成できる</text>
+</svg>

@@ -394,7 +394,10 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         title = next(value for _, value in cover_nodes if value.startswith("第"))
         goal_title = next(value for _, value in cover_nodes if "目標" in value)
         goals = [value.lstrip("◼■ ") for _, value in cover_nodes if value.startswith("◼")]
-        commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},))', '#pagebreak()']
+        intro = next((value for ident, value in cover_nodes
+                      if nodes[ident]['attrs'].get('cover-role') == 'goal-intro'), None)
+        intro_option = f', intro: {q(intro)}' if intro else ''
+        commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},){intro_option})', '#pagebreak()']
     elif config.get('cover_mode') == 'introduction':
         commands += [f'#introduction-cover({q(cover_nodes[0][1])})', '#pagebreak()']
     elif config.get('cover_mode') == 'course':
@@ -677,8 +680,10 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             rows = ','.join(f'[{inline(row)}]' for row in notices)
             return f'#trademarks([{inline(title)}], ({rows},))'
         if node['kind'] == 'contents-entry':
-            subsection = str(':' in node['attrs']['target']).lower()
-            return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection})'
+            target = node['attrs'].get('target')
+            subsection = str(not target or ':' in target).lower()
+            numbered_entry = str(bool(target)).lower()
+            return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection}, numbered: {numbered_entry})'
         if node['kind'] == 'training-note':
             title, *paragraphs = paragraph_parts(node['parts'])
             body = '#parbreak()'.join(inline(paragraph) for paragraph in paragraphs)
@@ -1108,8 +1113,14 @@ def build(chapter="01", mode="all", markdown=None, output=None):
         illustrations = config.get('illustrations', {})
         expected += Counter(normalized(''.join(illustrations[mark['id']]['file_path']
                                                 for mark in marks if mark['edge'] == 'file-path')))
-        # 新しい設定図のSVGには、輪郭ではなく文字として残したラベルもある。
-        svg_text=''.join(''.join(node.itertext()) for ident,path in figures.items() if ident not in modern['consume'] and Path(path).suffix.lower()=='.svg' for node in ET.parse(folder/path).iter('{http://www.w3.org/2000/svg}text'))
+        # 図とスライドのSVGに含まれる文字もPDFの抽出結果と照合する。
+        vector_paths = [path for ident,path in figures.items() if ident not in modern['consume']]
+        vector_paths.extend(path for node in nodes.values()
+                            if node['kind']=='slide' and node['attrs'].get('layout')=='illustration'
+                            for path in node['pictures'] if path)
+        svg_text = ''.join(''.join(element.itertext()) for path in vector_paths
+                           if Path(path).suffix.lower()=='.svg'
+                           for element in ET.parse(folder/path).iter('{http://www.w3.org/2000/svg}text'))
         expected += Counter(normalized(svg_text))
         native_sources = {int(m['id'].rsplit('-', 1)[1]) for m in marks if m['edge'] == 'native-page'}
         expected += Counter(normalized(''.join(r['text'] for p in layout['pages'] if p['source_page'] in native_sources for r in p['furniture'])))

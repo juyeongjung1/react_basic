@@ -104,6 +104,10 @@ html, body {
   break-inside: avoid;
 }
 
+.code-example {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .code-highlight { position: relative; }
 
 .code-highlight::after {

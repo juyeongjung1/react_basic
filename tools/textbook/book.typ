@@ -354,18 +354,27 @@
     #if tail > 0pt {v(tail)}
   ]
 })]
-#let cover-content(number, title, goal_title, goals) = {
+#let cover-content(number, title, goal_title, goals, intro: none) = {
   at(461.38, 0.12, rect(width: 132.26pt, height: 127.7pt, stroke: none, fill: rgb(91.4%, 29.4%, 13.3%)))
   at(513.7, 88.46, text(font: "Arial", weight: "black", size: 72pt, fill: white, top-edge: 0pt, bottom-edge: 0pt, number))
   at(85.104, 328.25, text(font: "Meiryo UI", weight: "bold", size: 24pt, top-edge: 0pt, bottom-edge: 0pt, title))
   at(83.664, 333.89, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
   at(85.104, 372.17, text(font: "Meiryo UI", weight: "bold", size: 18pt, top-edge: 0pt, bottom-edge: 0pt, goal_title))
-  for (i, goal) in goals.enumerate() {
-    at(96.144, 401.69 + i * 24.01, text(font: "Meiryo UI", weight: "bold", size: 14.04pt, top-edge: 0pt, bottom-edge: 0pt)[■#h(14pt)#goal])
+  if intro == none {
+    for (i, goal) in goals.enumerate() {
+      at(96.144, 401.69 + i * 24.01, text(font: "Meiryo UI", weight: "bold", size: 14.04pt, top-edge: 0pt, bottom-edge: 0pt)[■#h(14pt)#goal])
+    }
+  } else {
+    at(85.104, 398, text(font: "MS PMincho", size: 11.04pt, top-edge: 0pt, bottom-edge: 0pt, intro))
+    at(96.144, 415, block(width: 415pt)[
+      #set text(font: "Meiryo UI", size: 14.04pt, weight: "bold")
+      #set par(leading: 5pt, first-line-indent: 0pt, spacing: 0pt)
+      #stack(spacing: 9pt, ..goals.map(goal => grid(columns: (28pt, 1fr), [■], [#goal])))
+    ])
   }
 }
-#let cover(number, title, goal_title, goals) = at(-85.104, -86,
-  box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals)])
+#let cover(number, title, goal_title, goals, intro: none) = at(-85.104, -86,
+  box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals, intro: intro)])
 #let native-cover(body) = at(-85.104, -86, box(width: 595.32pt, height: 841.92pt)[#body])
 #let course-cover(title, number, subtitle) = native-cover[
   #set text(font: "Meiryo UI", weight: "bold", top-edge: 0pt, bottom-edge: 0pt)
@@ -426,18 +435,20 @@
       top-edge: 0pt, bottom-edge: 0pt, body)
   ])
 ]
-#let contents-entry(id, label, subsection: false) = block(width: 100%,
+#let contents-entry(id, label, subsection: false, numbered: true) = block(width: 100%,
   inset: (left: if subsection {18pt} else {0pt}),
   above: if subsection {8pt} else {18pt}, below: 0pt, breakable: false)[
   #mark(id, "start")
   #set text(font: "MS PGothic", size: if subsection {11.04pt} else {14.04pt},
     weight: if subsection {"regular"} else {"bold"})
-  #grid(columns: (auto, 1fr, 19pt), column-gutter: 4pt,
-    align: (left + bottom, left + bottom, right + bottom),
-    label,
-    block(inset: (bottom: 3pt), line(length: 100%,
-      stroke: (paint: black, thickness: 0.6pt, cap: "round", dash: "dotted"))),
-    [])
+  #if numbered {
+    grid(columns: (auto, 1fr, 19pt), column-gutter: 4pt,
+      align: (left + bottom, left + bottom, right + bottom),
+      label,
+      block(inset: (bottom: 3pt), line(length: 100%,
+        stroke: (paint: black, thickness: 0.6pt, cap: "round", dash: "dotted"))),
+      [])
+  } else { label }
 ]
 #let table-panel(id, rows, widths, has_header, paint: none, width: auto, offset: 0pt,
   source-widths: none, source-heights: none, font-size: none, leading: 4pt, inset: 3pt) = block(
