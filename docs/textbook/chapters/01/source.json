@@ -127,6 +127,12 @@
       "max_height": 82,
       "highlights": [[0.017, 0.665, 0.928, 0.301]]
     },
+    "ch01-initial-screen": {
+      "caption_id": "ch01-initial-screen-caption",
+      "width": 296,
+      "max_height": 178,
+      "numbered": false
+    },
     "ch01-app-variables": {
       "caption_id": "ch01-app-variables-caption",
       "width": 380,

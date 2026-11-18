@@ -96,6 +96,12 @@ def header(label, filenames=()):
 
 def source_rows(node, owner, start=1):
     lines = canonical(node['text']).split('\n')
+    start_line = node.get('attrs', {}).get('start-line')
+    if start_line is not None:
+        if not re.fullmatch(r'[1-9][0-9]*', start_line):
+            raise ValueError(f'抜粋の開始行番号を正の整数で指定してください: {owner}')
+        return [{'number': number, 'code': line, 'ids': [owner]}
+                for number, line in enumerate(lines, start=int(start_line))]
     numbered = any(re.match(r'^\s*\d+:', line) for line in lines)
     rows = []
     for line in lines:

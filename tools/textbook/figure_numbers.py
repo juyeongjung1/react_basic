@@ -37,10 +37,10 @@ def figure_numbers(folder, config, layout, nodes, figures, order):
             if ident not in figures or ident in cover or ident in omitted:
                 continue
             original = originals.get(ident, {})
-            if original.get('slide'):
+            options = compact.get(ident, {})
+            if original.get('slide') or not options.get('numbered', True):
                 continue
             counts[section] += 1
-            options = compact.get(ident, {})
             caption_id = options.get('caption_id')
             kind = ('compact' if ident in compact else
                     'native' if page['source_page'] in config.get('native_pages', []) else

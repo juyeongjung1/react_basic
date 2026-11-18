@@ -1080,7 +1080,7 @@ npm create vite@8.0.0 . -- --template react-ts
 :::
 
 ::: {#ch01-vite-latest .training-note}
-**補足　最新版の利用**
+【補足】　最新版の利用
 
 最新版を使用する場合は `@latest` と指定できますが、生成されるファイルや操作画面が教材と異なる可能性があります。
 :::
@@ -1887,7 +1887,7 @@ Localの行に表示された接続先
 :::: {#page-35 .source-page}
 
 ::: {#ch01-note-localhost .training-note}
-【補足】localhostとは
+【補足】　localhostとは
 
 開発サーバーを起動すると、通常、次のようなURLが表示されます。
 
@@ -1905,7 +1905,7 @@ Viteでは通常5173番が使用されますが、すでに使用されている
 :::
 
 ::: {#ch01-note-dev-command .training-note}
-【補足】コマンドから起動する方法
+【補足】　コマンドから起動する方法
 
 NPMスクリプトの実行ボタンを使用せず、ターミナルに直接 `npm run dev` と入力しても、同じように開発サーバーを起動できます。
 
@@ -1948,10 +1948,10 @@ Microsoft EdgeなどのWebブラウザーを起動してください。
 正常に起動すると、次のような画面が表示されます。
 :::
 
-::: {#ch01-verify-initial-9 .paragraph keep-lines="true"}
-React開発入門<br>
-Reactの動作確認をしています<br>
-現在の学習：第1章
+![ブラウザーに表示される「React開発入門」「Reactの動作確認をしています」「現在の学習：第1章」](assets/vite-app-initial.svg){#ch01-initial-screen}
+
+::: {#ch01-initial-screen-caption .paragraph}
+ブラウザーで開いたReactの初期画面
 :::
 
 ::: {#ch01-verify-initial-11 .paragraph}
@@ -2009,7 +2009,7 @@ export default function App() {
 例えば、次のように変数を定義しています。
 :::
 
-::: {#ch01-app-read-12 .code filename="ch01-setup/src/App.tsx"}
+::: {#ch01-app-read-12 .code filename="ch01-setup/src/App.tsx" start-line="3"}
 ```tsx
 const courseName = 'React開発入門'
 ```
@@ -2019,7 +2019,7 @@ const courseName = 'React開発入門'
 そして、画面を表示する部分には、次のように記述しています。
 :::
 
-::: {#ch01-app-read-16 .code filename="ch01-setup/src/App.tsx"}
+::: {#ch01-app-read-16 .code filename="ch01-setup/src/App.tsx" start-line="9"}
 ```tsx
 <h1>{courseName}</h1>
 ```
@@ -2115,7 +2115,7 @@ Viteの開発サーバーには、ソースコードの変更を検知し、ブ�
 変更前：
 :::
 
-::: {#ch01-edit-text-6 .code filename="ch01-setup/src/App.tsx" highlight-lines="1-1"}
+::: {#ch01-edit-text-6 .code filename="ch01-setup/src/App.tsx" start-line="4" highlight-lines="4-4"}
 ```tsx
 const message = 'Reactの動作確認をしています'
 ```
@@ -2125,7 +2125,7 @@ const message = 'Reactの動作確認をしています'
 変更後：
 :::
 
-::: {#ch01-edit-text-10 .code filename="ch01-setup/src/App.tsx" highlight-lines="1-1"}
+::: {#ch01-edit-text-10 .code filename="ch01-setup/src/App.tsx" start-line="4" highlight-lines="4-4"}
 ```tsx
 const message = 'ソースコードの変更が反映されました！'
 ```
@@ -2139,7 +2139,7 @@ const message = 'ソースコードの変更が反映されました！'
 なお、画面表示部分の次のコードは、変更する必要はありません。
 :::
 
-::: {#ch01-edit-text-15 .code filename="ch01-setup/src/App.tsx"}
+::: {#ch01-edit-text-15 .code filename="ch01-setup/src/App.tsx" start-line="10"}
 ```tsx
 <p>{message}</p>
 ```
@@ -2188,7 +2188,7 @@ messageの値を変更して保存すると、ブラウザーの表示に反映�
 :::
 
 ::: {#ch01-note-hmr .training-note}
-【補足】今回の画面更新について
+【補足】　今回の画面更新について
 
 今回は、**ソースコードを書き換えて保存した際の画面更新**を確認しました。
 
