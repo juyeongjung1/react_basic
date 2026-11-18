@@ -487,16 +487,20 @@ Reactでは、**`class` ではなく `className` を使用する**ことを覚�
 2．　コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-jsx-practice-run .paragraph}
-ファイルを保存します。初めて演習を起動するときは `ch02-basic-q` フォルダーで `npm install` を実行し、1.5節と同じ手順で開発サーバーを起動します。ターミナルに表示されたURLを開きます。
+::: {#ch02-jsx-practice-save .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-jsx-practice-menu .paragraph}
-ブラウザーのメニューで **「2.1 ReactコンポーネントとJSXの基本」** を選択します。
+::: {#ch02-jsx-practice-run .paragraph numbered="true" keep-lines="true"}
+4．　初回は `ch02-basic-q` フォルダーで `npm install` を実行してください。<br>1.5節と同じ手順で開発サーバーを起動し、表示されたURLを開いてください。
 :::
 
-::: {#ch02-jsx-practice-result .paragraph}
-「社員管理システム」の見出しと「社員情報を確認できます。」の案内文が表示されれば完了です。
+::: {#ch02-jsx-practice-menu .paragraph numbered="true"}
+5．　メニューから **「2.1 ReactコンポーネントとJSXの基本」** を選んでください。
+:::
+
+::: {#ch02-jsx-practice-result .paragraph numbered="true"}
+6．　見出しに「社員管理システム」、案内文に「社員情報を確認できます。」が表示されることを確認してください。
 :::
 
 ::: {#ch02-jsx-points .section-points}
@@ -975,16 +979,20 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 2．　コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-values-practice-run .paragraph}
-ファイルを保存し、`ch02-basic-q` の開発サーバーを起動します。すでに起動している場合は、保存するだけで構いません。
+::: {#ch02-values-practice-save .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-values-practice-menu .paragraph}
-ブラウザーのメニューで **「2.2 JSXによるデータ表示と属性の設定」** を選択します。
+::: {#ch02-values-practice-run .paragraph numbered="true"}
+4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-values-practice-result .paragraph}
-ノート画像と商品名「ノート」、単価300円、数量3個が表示され、合計が**青い太字の900円**になれば完了です。
+::: {#ch02-values-practice-menu .paragraph numbered="true"}
+5．　メニューから **「2.2 JSXによるデータ表示と属性の設定」** を選んでください。
+:::
+
+::: {#ch02-values-practice-result .paragraph numbered="true" keep-lines="true"}
+6．　ノートの画像と商品名「ノート」、単価300円、数量3個を確認してください。<br>合計は **青い太字で900円** と表示されます。
 :::
 
 ::: {#ch02-check-11 .paragraph}
@@ -1658,16 +1666,20 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-state-practice-check-1-1 .paragraph numbered="true"}
-3．　ファイルを保存し、`ch02-basic-q` プロジェクトの開発サーバーを起動してください。すでに起動している場合は保存するだけで構いません。
+::: {#ch02-state-practice-save .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-state-practice-check-1-2 .paragraph numbered="true"}
-4．　ブラウザーのメニューから **「2.3 状態の管理（useState）」** を選択してください。
+::: {#ch02-state-practice-run .paragraph numbered="true"}
+4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-state-practice-check-1-3 .paragraph numbered="true" keep-lines="true"}
-5．　「2個追加」ボタンをクリックし、<br>数量と合計金額が次のように変わることを確認してください。
+::: {#ch02-state-practice-menu .paragraph numbered="true"}
+5．　メニューから **「2.3 状態の管理（useState）」** を選んでください。
+:::
+
+::: {#ch02-state-practice-result .paragraph numbered="true" keep-lines="true"}
+6．　「2個追加」ボタンをクリックし、<br>数量と合計金額が次の表のとおり変わることを確認してください。
 :::
 
 ::: {#ch02-state-practice-check-4 .table}
@@ -2367,16 +2379,20 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-events-practice-check .step}
-動作確認
+::: {#ch02-events-practice-save .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-events-practice-check-p1 .paragraph keep-lines="true"}
-`ch02-basic-q` の開発サーバーを起動し、<br>「2.4 イベント処理」の確認演習画面を開いてください。
+::: {#ch02-events-practice-run .paragraph numbered="true"}
+4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-events-practice-check-p2 .paragraph}
-「ノートを選択」「ボールペンを選択」「選択を解除」の3つのボタンを順番にクリックし、それぞれ正しい商品名、または「未選択」が表示されれば演習完了です。
+::: {#ch02-events-practice-menu .paragraph numbered="true"}
+5．　メニューから **「2.4 イベント処理」** を選んでください。
+:::
+
+::: {#ch02-events-practice-result .paragraph numbered="true"}
+6．　「ノートを選択」「ボールペンを選択」「選択を解除」の順にクリックしてください。「選択中の商品」が **未選択 → ノート → ボールペン → 未選択** の順に変わることを確認してください。
 :::
 
 ::: {#ch02-events-practice-check-p3 .paragraph}
