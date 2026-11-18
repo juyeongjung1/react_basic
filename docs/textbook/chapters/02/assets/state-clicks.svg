@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 144" width="380" height="144">
+<text x="60" y="14" fill="#215d89" font-family="Meiryo" font-size="10.5" font-weight="700" text-anchor="middle">初期状態</text>
+<rect x="3" y="22" width="115" height="117" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<rect x="4" y="23" width="113" height="16" rx="4" fill="#edf3f8" stroke="none" stroke-width="0.8"/>
+<polyline points="4,39 117,39" fill="none" stroke="#b9cada" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="10" y="34" fill="#44627b" font-family="Meiryo" font-size="8.4" font-weight="400" text-anchor="start">ブラウザー</text>
+<text x="10" y="54" fill="#172f44" font-family="Meiryo" font-size="9.3" font-weight="700" text-anchor="start">商品購入数の確認</text>
+<text x="10" y="69" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">商品名：ノート</text>
+<text x="10" y="82" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">単価：250円</text>
+<rect x="8" y="87" width="104" height="24" rx="3" fill="#e9f4fb" stroke="none" stroke-width="0.8"/>
+<text x="12" y="97" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">数量：1個</text>
+<text x="12" y="108" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">合計：250円</text>
+<rect x="10" y="115" width="56" height="18" rx="3" fill="#0d6efd" stroke="none" stroke-width="0.8"/>
+<text x="38" y="127.6" fill="#ffffff" font-family="Meiryo" font-size="8.5" font-weight="700" text-anchor="middle">1個追加</text>
+<polyline points="120,92 125,92" fill="none" stroke="#44627b" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M125 89l4 3l-4 3Z" fill="#44627b"/>
+<text x="189" y="14" fill="#215d89" font-family="Meiryo" font-size="10.5" font-weight="700" text-anchor="middle">1回クリック</text>
+<rect x="132" y="22" width="115" height="117" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<rect x="133" y="23" width="113" height="16" rx="4" fill="#edf3f8" stroke="none" stroke-width="0.8"/>
+<polyline points="133,39 246,39" fill="none" stroke="#b9cada" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="139" y="34" fill="#44627b" font-family="Meiryo" font-size="8.4" font-weight="400" text-anchor="start">ブラウザー</text>
+<text x="139" y="54" fill="#172f44" font-family="Meiryo" font-size="9.3" font-weight="700" text-anchor="start">商品購入数の確認</text>
+<text x="139" y="69" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">商品名：ノート</text>
+<text x="139" y="82" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">単価：250円</text>
+<rect x="137" y="87" width="104" height="24" rx="3" fill="#e9f4fb" stroke="none" stroke-width="0.8"/>
+<text x="141" y="97" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">数量：2個</text>
+<text x="141" y="108" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">合計：500円</text>
+<rect x="139" y="115" width="56" height="18" rx="3" fill="#0d6efd" stroke="none" stroke-width="0.8"/>
+<text x="167" y="127.6" fill="#ffffff" font-family="Meiryo" font-size="8.5" font-weight="700" text-anchor="middle">1個追加</text>
+<polyline points="249,92 254,92" fill="none" stroke="#44627b" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M254 89l4 3l-4 3Z" fill="#44627b"/>
+<text x="318" y="14" fill="#215d89" font-family="Meiryo" font-size="10.5" font-weight="700" text-anchor="middle">2回クリック</text>
+<rect x="261" y="22" width="115" height="117" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<rect x="262" y="23" width="113" height="16" rx="4" fill="#edf3f8" stroke="none" stroke-width="0.8"/>
+<polyline points="262,39 375,39" fill="none" stroke="#b9cada" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="268" y="34" fill="#44627b" font-family="Meiryo" font-size="8.4" font-weight="400" text-anchor="start">ブラウザー</text>
+<text x="268" y="54" fill="#172f44" font-family="Meiryo" font-size="9.3" font-weight="700" text-anchor="start">商品購入数の確認</text>
+<text x="268" y="69" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">商品名：ノート</text>
+<text x="268" y="82" fill="#172f44" font-family="Meiryo" font-size="8.6" font-weight="400" text-anchor="start">単価：250円</text>
+<rect x="266" y="87" width="104" height="24" rx="3" fill="#e9f4fb" stroke="none" stroke-width="0.8"/>
+<text x="270" y="97" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">数量：3個</text>
+<text x="270" y="108" fill="#215d89" font-family="Meiryo" font-size="9" font-weight="700" text-anchor="start">合計：750円</text>
+<rect x="268" y="115" width="56" height="18" rx="3" fill="#0d6efd" stroke="none" stroke-width="0.8"/>
+<text x="296" y="127.6" fill="#ffffff" font-family="Meiryo" font-size="8.5" font-weight="700" text-anchor="middle">1個追加</text>
+</svg>

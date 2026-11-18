@@ -100,7 +100,7 @@ XXXX-T-01
 2.2. JSXによるデータ表示と属性の設定
 :::
 
-::: {#contents-ch02-section-3 .contents-entry}
+::: {#contents-ch02-section-3 .contents-entry target="02:ch02-state-title"}
 2.3. 状態の管理（useState）
 :::
 

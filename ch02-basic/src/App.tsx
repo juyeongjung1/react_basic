@@ -1,32 +1,38 @@
-export default function App() {
-  // 商品情報
-  const product = {
-    name: 'ノート',
-    price: 250,
-    imagePath: '/images/notebook.png'
-  }
+import { useState } from 'react'
+import Sample2_1 from './components/Sample2_1'
+import Sample2_2 from './components/Sample2_2'
+import Sample2_3 from './components/Sample2_3'
 
-  // 数量とデザイン
-  const quantity = 2
-  const totalClass = 'text-primary fw-bold'
+const lessons = [
+  { label: '2.1 ReactコンポーネントとJSXの基本', component: Sample2_1 },
+  { label: '2.2 JSXによるデータ表示と属性の設定', component: Sample2_2 },
+  { label: '2.3 状態の管理（useState）', component: Sample2_3 },
+]
+
+export default function App() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const ActiveLesson = lessons[activeIndex].component
 
   return (
-    <main className="container mt-4">
-      <h1>商品情報</h1>
-
-      <img
-        src={product.imagePath}
-        alt={product.name}
-        width={180}
-      />
-
-      <p>商品名：{product.name}</p>
-      <p>単価：{product.price}円</p>
-      <p>数量：{quantity}個</p>
-
-      <p className={totalClass}>
-        合計：{product.price * quantity}円
-      </p>
-    </main>
+    <>
+      <nav className="container mt-3" aria-label="第2章の節を選ぶ">
+        <p className="fw-semibold mb-2">第2章の完成サンプル</p>
+        <ul className="nav nav-pills gap-2 pb-3 border-bottom">
+          {lessons.map((lesson, index) => (
+            <li className="nav-item" key={lesson.label}>
+              <button
+                type="button"
+                className={index === activeIndex ? 'nav-link active' : 'nav-link'}
+                aria-pressed={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+              >
+                {lesson.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <ActiveLesson />
+    </>
   )
 }

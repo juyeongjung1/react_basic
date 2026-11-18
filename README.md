@@ -4,7 +4,7 @@
 
 最初に [見本のMarkdown](docs/textbook/chapters/sample/chapter.md) を生成してください。章扉、本文と小見出し、JSX・TSX、コードの読み方、表、スライドの上下配置、図番号を4ページで確認できます。
 
-## 表紙から第2章の2.2節までを Markdown から組版する
+## 表紙から第2章の2.3節までを Markdown から組版する
 
 [表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
 
@@ -18,7 +18,9 @@
 
 第1章だけを確認するときは、`.\.venv\Scripts\python.exe tools/textbook/build.py --chapter 01 --mode flow` で組版できます。
 
-受講者は [第1章の配布サンプル](ch01-setup) と [第2章の配布サンプル](ch02-basic) を使用します。各章の `package.json` があるフォルダーで `npm install` を実行し、VS CodeのNPMスクリプトで `dev` を実行します。ターミナルから起動する場合は `npm run dev` を使います。
+受講者は [第1章の配布サンプル](ch01-setup)、第2章の [完成サンプル](ch02-basic) と [確認演習の穴埋め版](ch02-basic-q) を使用します。各プロジェクトの `package.json` があるフォルダーで `npm install` を実行し、VS CodeのNPMスクリプトで `dev` を実行します。ターミナルから起動する場合は `npm run dev` を使います。
+
+第2章は、どちらのプロジェクトでもブラウザーのメニューから2.1〜2.3を選択できます。確認演習では、テキストで指定された [穴埋めファイル](ch02-basic-q/src/components) を開き、「確認」の番号では指定されたコードを読み、「実装」の番号では該当箇所を編集します。
 
 ## 1. 見本を生成する
 

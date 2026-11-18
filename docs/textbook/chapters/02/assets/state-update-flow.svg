@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 338 199" width="338" height="199">
+<rect x="3" y="3" width="332" height="27" rx="5" fill="#edf4fa" stroke="#b9cada" stroke-width="0.8"/>
+<text x="16" y="21" fill="#215d89" font-family="Meiryo" font-size="10.8" font-weight="700" text-anchor="start">①</text>
+<text x="39" y="21" fill="#215d89" font-family="Meiryo" font-size="10.7" font-weight="700" text-anchor="start">ボタンをクリックする</text>
+<rect x="252" y="7" width="76" height="19" rx="4" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<text x="290" y="20" fill="#215d89" font-family="Meiryo" font-size="9.7" font-weight="700" text-anchor="middle">19行目</text>
+<polyline points="168,32 168,38" fill="none" stroke="#215d89" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M165 38h6L168 42Z" fill="#215d89"/>
+<rect x="3" y="44" width="332" height="27" rx="5" fill="#edf4fa" stroke="#b9cada" stroke-width="0.8"/>
+<text x="16" y="62" fill="#215d89" font-family="Meiryo" font-size="10.8" font-weight="700" text-anchor="start">②</text>
+<text x="39" y="62" fill="#215d89" font-family="Meiryo" font-size="10.7" font-weight="700" text-anchor="start">addOne 関数が実行される</text>
+<rect x="252" y="48" width="76" height="19" rx="4" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<text x="290" y="61" fill="#215d89" font-family="Meiryo" font-size="9.7" font-weight="700" text-anchor="middle">8行目</text>
+<polyline points="168,73 168,79" fill="none" stroke="#215d89" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M165 79h6L168 83Z" fill="#215d89"/>
+<rect x="3" y="85" width="332" height="27" rx="5" fill="#edf4fa" stroke="#b9cada" stroke-width="0.8"/>
+<text x="16" y="103" fill="#215d89" font-family="Meiryo" font-size="10.8" font-weight="700" text-anchor="start">③</text>
+<text x="39" y="103" fill="#215d89" font-family="Meiryo" font-size="10.7" font-weight="700" text-anchor="start">setQuantity() でstateを更新する</text>
+<rect x="252" y="89" width="76" height="19" rx="4" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<text x="290" y="102" fill="#215d89" font-family="Meiryo" font-size="9.7" font-weight="700" text-anchor="middle">9行目</text>
+<polyline points="168,114 168,120" fill="none" stroke="#215d89" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M165 120h6L168 124Z" fill="#215d89"/>
+<rect x="3" y="126" width="332" height="27" rx="5" fill="#edf4fa" stroke="#b9cada" stroke-width="0.8"/>
+<text x="16" y="144" fill="#215d89" font-family="Meiryo" font-size="10.8" font-weight="700" text-anchor="start">④</text>
+<text x="39" y="144" fill="#215d89" font-family="Meiryo" font-size="10.7" font-weight="700" text-anchor="start">Reactが再レンダリングする</text>
+<polyline points="168,155 168,161" fill="none" stroke="#215d89" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M165 161h6L168 165Z" fill="#215d89"/>
+<rect x="3" y="167" width="332" height="27" rx="5" fill="#e0f1e8" stroke="#b9cada" stroke-width="0.8"/>
+<text x="16" y="185" fill="#21685d" font-family="Meiryo" font-size="10.8" font-weight="700" text-anchor="start">⑤</text>
+<text x="39" y="185" fill="#21685d" font-family="Meiryo" font-size="10.7" font-weight="700" text-anchor="start">数量と合計金額が更新される</text>
+<rect x="252" y="171" width="76" height="19" rx="4" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<text x="290" y="184" fill="#21685d" font-family="Meiryo" font-size="9.7" font-weight="700" text-anchor="middle">17〜18行目</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 153" width="380" height="153">
+<text x="8" y="18" fill="#215d89" font-family="Meiryo" font-size="11.2" font-weight="700" text-anchor="start">通常の変数を使った記述例</text>
+<rect x="5" y="25" width="187" height="87" rx="5" fill="#edf4fa" stroke="#b9cada" stroke-width="0.8"/>
+<text x="15" y="46" fill="#172f44" font-family="MS Gothic" font-size="11" font-weight="400" text-anchor="start">let quantity = 1</text>
+<text x="15" y="66" fill="#44627b" font-family="Meiryo" font-size="9.6" font-weight="700" text-anchor="start">addOne の処理</text>
+<rect x="13" y="74" width="169" height="24" rx="3" fill="#fff7f2" stroke="#b54c29" stroke-width="0.8"/>
+<text x="18" y="90" fill="#172f44" font-family="MS Gothic" font-size="11" font-weight="400" text-anchor="start">quantity = quantity + 1</text>
+<polyline points="198,78 213,78" fill="none" stroke="#44627b" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M213 75l4 3l-4 3Z" fill="#44627b"/>
+<text x="226" y="18" fill="#215d89" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="start">クリック後のブラウザー</text>
+<rect x="224" y="25" width="152" height="123" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
+<rect x="225" y="26" width="150" height="16" rx="4" fill="#edf3f8" stroke="none" stroke-width="0.8"/>
+<polyline points="225,42 375,42" fill="none" stroke="#b9cada" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="231" y="37" fill="#44627b" font-family="Meiryo" font-size="8.4" font-weight="400" text-anchor="start">表示結果</text>
+<text x="234" y="62" fill="#172f44" font-family="Meiryo" font-size="13" font-weight="700" text-anchor="start">商品の数量変更</text>
+<text x="234" y="80" fill="#172f44" font-family="Meiryo" font-size="10.6" font-weight="400" text-anchor="start">数量：1個</text>
+<text x="234" y="96" fill="#172f44" font-family="Meiryo" font-size="10.6" font-weight="400" text-anchor="start">合計：250円</text>
+<rect x="234" y="106" width="62" height="22" rx="3" fill="#f1f3f5" stroke="#87939b" stroke-width="0.8"/>
+<text x="265" y="121" fill="#172f44" font-family="Meiryo" font-size="9.9" font-weight="400" text-anchor="middle">1個追加</text>
+</svg>

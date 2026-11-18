@@ -2,7 +2,7 @@
   "title": "第2章 Reactによる画面表示と入力処理",
   "chapter": 2,
   "first_page": 1,
-  "last_page": 19,
+  "last_page": 33,
   "cover_mode": "classic",
   "cover_wrap_goals": true,
   "illustrations": {
@@ -31,6 +31,28 @@
       "caption_id": "ch02-product-display-caption",
       "width": 300,
       "max_height": 248
+    },
+    "ch02-state-plain-screen": {
+      "caption_id": "ch02-state-plain-screen-caption",
+      "width": 380,
+      "max_height": 154
+    },
+    "ch02-state-pair": {
+      "caption_id": "ch02-state-pair-caption",
+      "width": 375,
+      "max_height": 132,
+      "file_path": "ch02-basic/src/components/Sample2_3.tsx"
+    },
+    "ch02-state-click-states": {
+      "caption_id": "ch02-state-click-states-caption",
+      "width": 380,
+      "max_height": 142
+    },
+    "ch02-state-update-flow": {
+      "caption_id": "ch02-state-update-flow-caption",
+      "width": 338,
+      "max_height": 211,
+      "file_path": "ch02-basic/src/components/Sample2_3.tsx"
     }
   }
 }

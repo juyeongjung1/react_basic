@@ -467,6 +467,50 @@ Reactでは、**`class` ではなく `className` を使用する**ことを覚�
 `className` を使用した画面のデザインについては、次の2.2節で詳しく説明します。
 :::
 
+::::
+
+:::: {#page-11 .source-page}
+
+::: {#ch02-jsx-practice .heading level="minor"}
+【確認演習】変数をJSXに表示する
+:::
+
+::: {#ch02-jsx-practice-intro .paragraph}
+関数コンポーネント内の変数を使って、社員管理システムの見出しと案内文を表示します。
+:::
+
+::: {#ch02-jsx-practice-target .paragraph}
+**修正対象ファイル**　`ch02-basic-q/src/components/Q2_1.tsx`
+:::
+
+::: {#ch02-jsx-practice-sample .paragraph}
+完成見本は `ch02-basic/src/components/Sample2_1.tsx` です。
+:::
+
+::: {#ch02-jsx-practice-step-1 .paragraph numbered="true"}
+①　**確認**　`export default function Q2_1()` と、画面を返す `return (...)` の位置を確認します。
+:::
+
+::: {#ch02-jsx-practice-step-2 .paragraph numbered="true"}
+②　**実装**　`<h1>` の「未設定」を `{systemName}` に置き換えます。
+:::
+
+::: {#ch02-jsx-practice-step-3 .paragraph numbered="true"}
+③　**実装**　`<p>` の「未設定」を `{guideMessage}` に置き換えます。親要素と終了タグはそのまま使います。
+:::
+
+::: {#ch02-jsx-practice-run .paragraph}
+ファイルを保存します。初めて演習を起動するときは `ch02-basic-q` フォルダーで `npm install` を実行し、1.5節と同じ手順で開発サーバーを起動します。ターミナルに表示されたURLを開きます。
+:::
+
+::: {#ch02-jsx-practice-menu .paragraph}
+ブラウザーのメニューで **「2.1 ReactコンポーネントとJSXの基本」** を選択します。
+:::
+
+::: {#ch02-jsx-practice-result .paragraph}
+「社員管理システム」の見出しと「社員情報を確認できます。」の案内文が表示されれば完了です。
+:::
+
 ::: {#ch02-jsx-points .section-points}
 この節のポイント
 
@@ -485,7 +529,7 @@ Reactでは、**`class` ではなく `className` を使用する**ことを覚�
 
 ::::
 
-:::: {#page-11 .source-page}
+:::: {#page-12 .source-page}
 
 ::: {#ch02-values-title .heading}
 2.2. JSXによるデータ表示と属性の設定
@@ -527,7 +571,7 @@ JSXでJavaScriptの値を表示する
 
 ::::
 
-:::: {#page-12 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch02-calculation-1 .paragraph}
 さらに、`{ }` の中では変数だけでなく、計算式やオブジェクトのプロパティなども使用できます。
@@ -579,7 +623,7 @@ const quantity = 2
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch02-object-title .heading level="minor"}
 オブジェクトの値を表示する
@@ -606,7 +650,7 @@ const product = {
 このようなオブジェクトを使用している場合も、JSXの中からプロパティを参照できます。
 :::
 
-::: {#ch02-object-5 .code filename="ch02-basic/src/App.tsx" start-line="23"}
+::: {#ch02-object-5 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="23"}
 ```tsx
       <p>商品名：{product.name}</p>
       <p>単価：{product.price}円</p>
@@ -653,7 +697,7 @@ JSXでHTML属性に変数を設定する
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-15 .source-page}
 
 ::: {#ch02-image-path-5 .paragraph}
 この場合、`src` 属性に画像ファイルの場所を直接指定しています。
@@ -705,7 +749,7 @@ imagePathに入れた画像のパスをsrc属性に設定する流れ
 
 ::::
 
-:::: {#page-15 .source-page}
+:::: {#page-16 .source-page}
 
 ::: {#ch02-class-name .heading level="minor"}
 classNameによるデザインの設定
@@ -769,7 +813,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 ::::
 
-:::: {#page-16 .source-page}
+:::: {#page-17 .source-page}
 
 ::: {#ch02-product-sample .heading level="minor"}
 【サンプル】商品情報を表示する
@@ -784,12 +828,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 :::
 
 ::: {#ch02-sample-start .paragraph}
-配布サンプルの `ch02-basic` フォルダーで `npm install` を実行し、1.5節と同じ手順で開発サーバーを起動してください。
+配布サンプルの `ch02-basic` フォルダーで `npm install` を実行し、1.5節と同じ手順で開発サーバーを起動します。ブラウザーのメニューで「2.2」を選択してください。
 :::
 
-::: {#ch02-product-source .code filename="ch02-basic/src/App.tsx"}
+::: {#ch02-product-source .code filename="ch02-basic/src/components/Sample2_2.tsx"}
 ```tsx
-export default function App() {
+export default function Sample2_2() {
   // 商品情報
   const product = {
     name: 'ノート',
@@ -826,7 +870,7 @@ export default function App() {
 
 ::::
 
-:::: {#page-17 .source-page}
+:::: {#page-18 .source-page}
 
 ::: {#ch02-image-file .training-note}
 【補足】画像ファイルの配置
@@ -834,10 +878,10 @@ export default function App() {
 画像ファイル `notebook.png` は、配布サンプルの `public/images` フォルダーに用意する。
 :::
 
-![配布サンプルを開いたときの商品情報の表示](assets/product-browser.svg){#ch02-product-display}
+![メニューで「2.2」を選んだときの商品情報の表示部分](assets/product-browser.svg){#ch02-product-display}
 
 ::: {#ch02-product-display-caption .paragraph}
-配布サンプルを開いたときの商品情報の表示
+メニューで「2.2」を選んだときの商品情報の表示部分
 :::
 
 ::: {#ch02-sample-explain .heading level="minor"}
@@ -852,7 +896,7 @@ export default function App() {
 **① オブジェクトのプロパティを表示する**
 :::
 
-::: {#ch02-property-display-3 .code filename="ch02-basic/src/App.tsx" start-line="23"}
+::: {#ch02-property-display-3 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="23"}
 ```tsx
       <p>商品名：{product.name}</p>
       <p>単価：{product.price}円</p>
@@ -869,13 +913,13 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-19 .source-page}
 
 ::: {#ch02-product-calculation-label .step}
 **② 計算結果を表示する**
 :::
 
-::: {#ch02-product-explanation-1 .code filename="ch02-basic/src/App.tsx" start-line="25" highlight-lines="28-28"}
+::: {#ch02-product-explanation-1 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="25" highlight-lines="28-28"}
 ```tsx
       <p>数量：{quantity}個</p>
 
@@ -901,7 +945,7 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 **③ 属性に変数を設定する**
 :::
 
-::: {#ch02-product-explanation-6 .code filename="ch02-basic/src/App.tsx" start-line="17" highlight-lines="18-19"}
+::: {#ch02-product-explanation-6 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="17" highlight-lines="18-19"}
 ```tsx
       <img
         src={product.imagePath}
@@ -925,54 +969,54 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-20 .source-page}
 
-::: {#ch02-check-exercise .heading level="minor"}
-【確認演習】値を変更して表示を確認する
+::: {#ch02-values-practice .heading level="minor"}
+【確認演習】商品情報の表示と属性を設定する
 :::
 
-::: {#ch02-check-1 .paragraph}
-ここまでの内容を理解できたら、次の変更を行ってみましょう。
+::: {#ch02-values-practice-intro .paragraph}
+商品データやクラス名の変数を、JSXの本文とHTML属性に設定します。単価300円、数量3個、合計を赤い太字にするクラス名は、あらかじめ定義されています。
 :::
 
-::: {#ch02-check-2-1 .paragraph numbered="true"}
-1．`product.price` の初期値を `300` に変更する。
+::: {#ch02-values-practice-target .paragraph}
+**修正対象ファイル**　`ch02-basic-q/src/components/Q2_2.tsx`
 :::
 
-::: {#ch02-check-2-2 .paragraph numbered="true"}
-2．`quantity` の初期値を `3` に変更する。
+::: {#ch02-values-practice-sample .paragraph}
+値や属性の書き方は、講義サンプル `ch02-basic/src/components/Sample2_2.tsx` を参照します。
 :::
 
-::: {#ch02-check-2-3 .paragraph numbered="true"}
-3．`totalClass` を `'text-danger fw-bold'` に変更する。
+::: {#ch02-values-practice-step-1 .paragraph numbered="true"}
+①　**実装**　`img` の `src` を `{product.imagePath}`、`alt` を `{product.name}` に変更します。
 :::
 
-::: {#ch02-check-5 .paragraph}
-保存後、ブラウザーで次のように表示されることを確認してください。
+::: {#ch02-values-practice-step-2 .paragraph numbered="true"}
+②　**実装**　商品名・単価・数量の「未設定」を、順に `{product.name}`、`{product.price}`、`{quantity}` に置き換えます。
 :::
 
-::: {#ch02-check-6-1 .paragraph}
-● 単価：300円
+::: {#ch02-values-practice-step-3 .paragraph numbered="true"}
+③　**実装**　合計の「未設定」を `{product.price * quantity}` に置き換えます。
 :::
 
-::: {#ch02-check-6-2 .paragraph}
-● 数量：3個
+::: {#ch02-values-practice-step-4 .paragraph numbered="true"}
+④　**実装**　合計を表示する `<p>` の `className="fw-bold"` を `className={totalClass}` に変更します。
 :::
 
-::: {#ch02-check-6-3 .paragraph}
-● 合計：900円
+::: {#ch02-values-practice-run .paragraph}
+ファイルを保存し、`ch02-basic-q` の開発サーバーを起動します。すでに起動している場合は、保存するだけで構いません。
 :::
 
-::: {#ch02-check-6-4 .paragraph}
-● 合計金額の文字色：赤色
+::: {#ch02-values-practice-menu .paragraph}
+ブラウザーのメニューで **「2.2 JSXによるデータ表示と属性の設定」** を選択します。
 :::
 
-::: {#ch02-check-10 .paragraph}
-この演習では、**データやクラス名の値を変更するだけで、JSXの表示内容を変えられる**ことを確認します。
+::: {#ch02-values-practice-result .paragraph}
+ノート画像と商品名「ノート」、単価300円、数量3個が表示され、合計が**赤い太字の900円**になれば完了です。
 :::
 
 ::: {#ch02-check-11 .paragraph}
-なお、今回はソースコードを変更して保存したため、Viteの機能によって画面が更新されています。
+開発サーバーを起動した状態でソースコードを変更して保存すると、Viteの機能によって画面が更新されます。
 :::
 
 ::: {#ch02-check-12 .paragraph}
@@ -995,6 +1039,723 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 ● ReactでCSSのクラスを指定するときは、**`className`** を使用する。
 
 ● Bootstrapのクラスを使うことで、文字色やレイアウトを簡単に設定できる。
+:::
+
+::::
+
+:::: {#page-21 .source-page}
+
+::: {#ch02-state-title .heading}
+2.3. 状態の管理（useState）
+:::
+
+::: {#ch02-state-slide .slide layout="illustration"}
+状態の管理（useState）
+
+![通常の変数とstateの動作の比較](assets/use-state-slide.svg)
+:::
+
+::: {#ch02-state-definition .heading level="minor"}
+状態（state）とは
+:::
+
+::: {#ch02-state-definition-1 .paragraph}
+前節では、JSXを使用して、変数やオブジェクトの値を画面に表示する方法を学習しました。
+:::
+
+::: {#ch02-state-definition-2 .paragraph}
+例えば、次のように変数を定義すると、
+:::
+
+::: {#ch02-state-definition-3 .code example="true"}
+```tsx
+const quantity = 1
+```
+:::
+
+::: {#ch02-state-definition-4 .paragraph}
+JSXの中で `{quantity}` と記述することで、数量を画面に表示できました。
+:::
+
+::: {#ch02-state-definition-5 .paragraph}
+しかし、実際のWebアプリケーションでは、最初に表示したデータをそのまま表示し続けるだけではありません。
+:::
+
+::::
+
+:::: {#page-22 .source-page}
+
+::: {#ch02-state-in-practice-1 .paragraph}
+例えば、ショッピングサイトでは、ユーザーが「1個追加」ボタンをクリックすると、商品の数量が1個から2個に増え、それに合わせて合計金額も変わります。
+:::
+
+::: {#ch02-state-in-practice-2 .paragraph}
+このように、**ユーザーの操作などによって変化し、その変化を画面に反映させたいデータ**を、Reactでは**状態（state：ステート）**として管理します。
+:::
+
+::: {#ch02-state-in-practice-3 .paragraph}
+Reactでは、このstateを管理するために、主に `useState()` という関数を使用します。
+:::
+
+::: {#ch02-state-plain .heading level="minor"}
+なぜ通常の変数ではダメなのか
+:::
+
+::: {#ch02-state-plain-1 .paragraph}
+では、なぜReactでは `useState()` を使用するのでしょうか。
+:::
+
+::: {#ch02-state-plain-2 .paragraph keep-lines="true"}
+まずは、通常のJavaScriptの変数を使って、<br>商品の数量を変更するコードを考えてみましょう。
+:::
+
+::: {#ch02-state-plain-3 .paragraph}
+**通常の変数を使用した比較例**
+:::
+
+::: {#ch02-state-plain-4 .code example="true"}
+```tsx
+export default function App() {
+  let quantity = 1
+  const price = 250
+
+  const addOne = () => {
+    quantity = quantity + 1
+  }
+
+  return (
+    <main>
+      <h1>商品の数量変更</h1>
+      <p>数量：{quantity}個</p>
+      <p>合計：{price * quantity}円</p>
+      <button onClick={addOne}>1個追加</button>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch02-state-plain-5 .paragraph}
+このコードでは、`quantity` という変数を宣言し、初期値として1を代入しています。
+:::
+
+::: {#ch02-state-plain-6 .paragraph keep-lines="true"}
+そして、「1個追加」ボタンをクリックすると、<br>`addOne` という関数が実行されるようになっています。
+:::
+
+::::
+
+:::: {#page-23 .source-page}
+
+::: {#ch02-state-plain-handler-1 .paragraph}
+`addOne` の中では、次の処理を行っています。
+:::
+
+::: {#ch02-state-plain-handler-2 .code example="true"}
+```tsx
+quantity = quantity + 1
+```
+:::
+
+::: {#ch02-state-plain-handler-3 .paragraph}
+つまり、ボタンをクリックすると、変数 `quantity` の値が1増えるはずです。
+:::
+
+::: {#ch02-state-plain-handler-4 .paragraph}
+ところが、実際にボタンをクリックしても、**画面には「数量：1個」「合計：250円」と表示されたままになります。**
+:::
+
+::: {#ch02-state-plain-handler-5 .paragraph}
+なぜでしょうか。
+:::
+
+::: {#ch02-state-plain-handler-6 .paragraph}
+これは、**通常の変数の値を変更しただけでは、Reactが画面を再表示する必要があることを認識できないため**です。
+:::
+
+::: {#ch02-state-plain-handler-7 .paragraph}
+Reactは、コンポーネントの処理を実行して画面を作成しますが、通常の変数を変更しても、それだけではコンポーネントを再実行しません。
+:::
+
+::: {#ch02-state-plain-handler-8 .paragraph}
+さらに、通常のローカル変数はコンポーネントが再実行されたときに改めて初期化されるため、変更後の値を保持する用途にも適していません。
+:::
+
+::: {#ch02-state-plain-handler-9 .paragraph}
+そこで必要になるのが、`useState()` です。
+:::
+
+![通常の変数の値を増やしても、画面の数量と合計は同じままになる](assets/plain-variable.svg){#ch02-state-plain-screen}
+
+::: {#ch02-state-plain-screen-caption .paragraph}
+通常の変数の値を増やしても、画面の数量と合計は同じままになる
+:::
+
+::::
+
+:::: {#page-24 .source-page}
+
+::: {#ch02-state-api .heading level="minor"}
+useState()とは
+:::
+
+::: {#ch02-state-api-1 .paragraph}
+`useState()` は、Reactでstateを管理するための関数です。
+:::
+
+::: {#ch02-state-api-2 .paragraph}
+主に次の2つの役割があります。
+:::
+
+::: {#ch02-state-api-3-1 .paragraph numbered="true" keep-lines="true"}
+1．　**データの値を保持する**：<br>コンポーネントが再レンダリングされても、更新した値を保持する
+:::
+
+::: {#ch02-state-api-3-2 .paragraph numbered="true" keep-lines="true"}
+2．　**データの更新をReactに知らせる**：<br>値を変更した際に、Reactが画面を再表示できるようにする
+:::
+
+::: {#ch02-state-api-5 .paragraph}
+Reactでは、このような特別な関数を**Hooks（フック）**と呼びます。
+:::
+
+::: {#ch02-state-api-6 .paragraph}
+`useState()` はHooksの一つです。
+:::
+
+::: {#ch02-state-api-7 .paragraph}
+まずは、基本構文を確認してみましょう。
+:::
+
+::: {#ch02-state-basic-label .step}
+基本構文
+:::
+
+::: {#ch02-state-syntax .code filename="ch02-basic/src/components/Sample2_3.tsx"}
+```tsx
+1:import { useState } from 'react'
+6:  const [quantity, setQuantity] = useState(1)
+```
+:::
+
+::: {#ch02-state-basic-1 .paragraph}
+`useState()` を使用するためには、最初に `react` からインポートする必要があります。
+:::
+
+::: {#ch02-state-basic-2 .paragraph}
+次の行では、数量を管理するstateを定義しています。
+:::
+
+::: {#ch02-state-basic-3 .paragraph}
+少し複雑な書き方ですが、次のように分解すると理解しやすくなります。
+:::
+
+::: {#ch02-state-basic-4 .table}
+| 記述 | 意味 |
+|---|---|
+| `useState(1)` | stateの初期値を1にする |
+| `quantity` | 現在のstateの値を取得するための変数 |
+| `setQuantity` | stateを更新するための関数 |
+:::
+
+::: {#ch02-state-basic-5 .paragraph}
+`useState()` は、現在の値と更新用の関数をセットにして返します。
+:::
+
+::: {#ch02-state-basic-6 .paragraph}
+それらを `[quantity, setQuantity]` のように受け取っています。
+:::
+
+::: {#ch02-state-basic-7 .paragraph}
+この `[ ]` を使った書き方は、JavaScriptの**分割代入**という構文です。
+:::
+
+::::
+
+:::: {#page-25 .source-page}
+
+![useStateの初期値・現在の値・更新用の関数](assets/state-structure.svg){#ch02-state-pair}
+
+::: {#ch02-state-pair-caption .paragraph}
+useStateの初期値・現在の値・更新用の関数
+:::
+
+::: {#ch02-state-setter .heading level="minor"}
+useState()で値を変更する方法
+:::
+
+::: {#ch02-state-setter-1 .paragraph}
+通常の変数では、値を変更するために次のように記述していました。
+:::
+
+::: {#ch02-state-setter-2 .code example="true"}
+```tsx
+quantity = quantity + 1
+```
+:::
+
+::: {#ch02-state-setter-3 .paragraph}
+しかし、`useState()` で管理しているstateは、この方法で直接変更してはいけません。
+:::
+
+::: {#ch02-state-setter-4 .paragraph}
+代わりに、`useState()` から取得した更新用の関数を使用します。
+:::
+
+::: {#ch02-state-setter-5 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="9" highlight-lines="9-9"}
+```tsx
+    setQuantity(quantity + 1)
+```
+:::
+
+::: {#ch02-state-setter-6 .paragraph}
+これは、現在の `quantity` に1を加えた値を、新しいstateとしてReactに渡すという意味です。
+:::
+
+::: {#ch02-state-setter-7 .paragraph}
+例えば、現在の数量が1であれば、`setQuantity(2)` に相当する処理になります。
+:::
+
+::: {#ch02-state-setter-8 .paragraph keep-lines="true"}
+Reactはstateの更新を受けてコンポーネントを再レンダリングし、<br>新しい値を使って画面を作成します。
+:::
+
+::: {#ch02-state-setter-9 .paragraph}
+その結果、画面の数量も2個に更新されるわけです。
+:::
+
+::::
+
+:::: {#page-26 .source-page}
+
+::: {#ch02-state-initial .training-note}
+【補足】useStateの初期値は毎回適用される？
+
+`useState(1)` と書かれていると、コンポーネントが再実行されるたびに数量が1に戻るように感じるかもしれません。
+
+しかし、引数の1は初回の表示で使用する初期値です。
+
+その後は、Reactが更新後のstateを保持するため、ボタンをクリックするたびに1へ戻ることはありません。
+:::
+
+::: {#ch02-state-example .heading level="minor"}
+【サンプル】useStateで商品の数量を変更する
+:::
+
+::: {#ch02-state-example-1 .paragraph}
+それでは、先ほどのサンプルを `useState()` を使用したコードに修正してみましょう。
+:::
+
+::: {#ch02-state-example-2 .paragraph}
+今回は、商品の数量を増やすと、合計金額も自動的に変更される画面を作成します。
+:::
+
+::: {#ch02-state-sample .code filename="ch02-basic/src/components/Sample2_3.tsx"}
+```tsx
+import { useState } from 'react'
+
+export default function Sample2_3() {
+  const productName = 'ノート'
+  const price = 250
+  const [quantity, setQuantity] = useState(1)
+
+  const addOne = () => {
+    setQuantity(quantity + 1)
+  }
+
+  return (
+    <main className="container mt-4">
+      <h1>商品購入数の確認</h1>
+      <p>商品名：{productName}</p>
+      <p>単価：{price}円</p>
+      <p>数量：{quantity}個</p>
+      <p>合計：{price * quantity}円</p>
+      <button className="btn btn-primary" onClick={addOne}>
+        1個追加
+      </button>
+    </main>
+  )
+}
+```
+:::
+
+::::
+
+:::: {#page-27 .source-page}
+
+::: {#ch02-state-bootstrap .training-note}
+【補足】BootstrapのCSS
+
+BootstrapのCSSは、前節までに `main.tsx` から読み込まれているものとします。
+:::
+
+::: {#ch02-state-check .step}
+動作確認
+:::
+
+::: {#ch02-state-check-1 .paragraph}
+開発サーバーを起動し、ブラウザーで動作を確認してください。`ch02-basic` のメニューで「2.3 状態の管理（useState）」を選択します。
+:::
+
+::: {#ch02-state-check-2 .paragraph}
+初期状態では、次の情報が表示されます。
+:::
+
+::: {#ch02-state-check-3-1 .paragraph}
+● 商品名：ノート
+:::
+
+::: {#ch02-state-check-3-2 .paragraph}
+● 単価：250円
+:::
+
+::: {#ch02-state-check-3-3 .paragraph}
+● 数量：1個
+:::
+
+::: {#ch02-state-check-3-4 .paragraph}
+● 合計：250円
+:::
+
+::: {#ch02-state-check-7 .paragraph}
+「1個追加」ボタンをクリックするたびに、数量と合計金額が変わります。
+:::
+
+::: {#ch02-state-check-8 .table}
+| ボタンの操作 | 数量 | 合計金額 |
+|---|---:|---:|
+| 初期状態 | 1個 | 250円 |
+| 1回クリック | 2個 | 500円 |
+| 2回クリック | 3個 | 750円 |
+:::
+
+![「1個追加」をクリックしたときの数量と合計金額](assets/state-clicks.svg){#ch02-state-click-states}
+
+::: {#ch02-state-click-states-caption .paragraph}
+「1個追加」をクリックしたときの数量と合計金額
+:::
+
+::::
+
+:::: {#page-28 .source-page}
+
+::: {#ch02-state-code-review .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch02-state-code-review-1 .paragraph}
+ここからは、サンプルコードの重要な部分を確認していきます。
+:::
+
+::: {#ch02-state-review-import .step}
+① useStateをインポートする
+:::
+
+::: {#ch02-state-review-import-1 .paragraph}
+**1行目**
+:::
+
+::: {#ch02-state-review-import-2 .code filename="ch02-basic/src/components/Sample2_3.tsx"}
+```tsx
+import { useState } from 'react'
+```
+:::
+
+::: {#ch02-state-review-import-3 .paragraph}
+`useState()` を使用するために、Reactのライブラリからインポートしています。
+:::
+
+::: {#ch02-state-review-import-4 .paragraph}
+Reactでは、必要な機能を `import` で読み込んで使用します。
+:::
+
+::: {#ch02-state-review-definition .step}
+② stateを定義する
+:::
+
+::: {#ch02-state-review-definition-1 .paragraph}
+**6行目**
+:::
+
+::: {#ch02-state-review-definition-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="6"}
+```tsx
+  const [quantity, setQuantity] = useState(1)
+```
+:::
+
+::: {#ch02-state-review-definition-3 .paragraph}
+商品の数量を管理するstateを定義しています。
+:::
+
+::: {#ch02-state-review-definition-4 .paragraph}
+`quantity` には現在の数量が入り、`setQuantity` は数量を更新するための関数です。
+:::
+
+::: {#ch02-state-review-definition-5 .paragraph}
+`useState(1)` の引数には初期値を指定しているので、最初の数量は1個になります。
+:::
+
+::: {#ch02-state-review-definition-6 .paragraph}
+なお、stateを定義する際は、通常、`const` を使用します。
+:::
+
+::: {#ch02-state-review-definition-7 .paragraph keep-lines="true"}
+stateの値を更新する場合は `quantity` に直接代入するのではなく、<br>`setQuantity` を呼び出します。
+:::
+
+::::
+
+:::: {#page-29 .source-page}
+
+::: {#ch02-state-review-handler .step}
+③ ボタンをクリックしたときにstateを更新する
+:::
+
+::: {#ch02-state-review-handler-1 .paragraph}
+**8～10行目**
+:::
+
+::: {#ch02-state-review-handler-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="8" highlight-lines="9-9"}
+```tsx
+  const addOne = () => {
+    setQuantity(quantity + 1)
+  }
+```
+:::
+
+::: {#ch02-state-review-handler-3 .paragraph}
+この部分では、`addOne` という関数を定義しています。
+:::
+
+::: {#ch02-state-review-handler-4 .paragraph keep-lines="true"}
+9行目の `setQuantity(quantity + 1)` によって、<br>現在の数量に1を加えた値をstateに設定します。
+:::
+
+::: {#ch02-state-review-handler-5 .paragraph}
+今回は、ボタンのクリック時にこの関数が実行されるようにしています。
+:::
+
+::: {#ch02-state-review-handler-6 .paragraph keep-lines="true"}
+なお、ボタンのクリックを検知する `onClick` の詳しい書き方については、<br>次の2.4節で学習します。
+:::
+
+::: {#ch02-state-review-display .step}
+④ stateの値を画面に表示する
+:::
+
+::: {#ch02-state-review-display-1 .paragraph}
+**17～18行目**
+:::
+
+::: {#ch02-state-review-display-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="17"}
+```tsx
+      <p>数量：{quantity}個</p>
+      <p>合計：{price * quantity}円</p>
+```
+:::
+
+::: {#ch02-state-review-display-3 .paragraph}
+17行目では、`quantity` の値を画面に表示しています。
+:::
+
+::: {#ch02-state-review-display-4 .paragraph}
+18行目では、商品の単価 `price` と数量 `quantity` を掛け算し、合計金額を表示しています。
+:::
+
+::: {#ch02-state-review-display-5 .paragraph keep-lines="true"}
+ここで重要なのは、**数量が変更されると、<br>合計金額も新しい数量を使って計算される**という点です。
+:::
+
+::: {#ch02-state-review-display-6 .paragraph}
+そのため、合計金額を別のstateで管理する必要はありません。
+:::
+
+::::
+
+:::: {#page-30 .source-page}
+
+::: {#ch02-state-review-click .step}
+⑤ ボタンから関数を呼び出す
+:::
+
+::: {#ch02-state-review-click-1 .paragraph}
+**19～21行目**
+:::
+
+::: {#ch02-state-review-click-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19" highlight-lines="19-19"}
+```tsx
+      <button className="btn btn-primary" onClick={addOne}>
+        1個追加
+      </button>
+```
+:::
+
+::: {#ch02-state-review-click-3 .paragraph}
+`onClick={addOne}` は、ボタンをクリックしたときに `addOne` 関数を呼び出すための記述です。
+:::
+
+::: {#ch02-state-review-click-4 .paragraph}
+関数が実行されると、先ほどの `setQuantity()` によりstateが更新されます。
+:::
+
+::: {#ch02-state-review-click-5 .paragraph}
+その結果、Reactが再レンダリングを行い、画面に新しい数量と合計金額を表示します。
+:::
+
+![ボタンのクリックから表示の更新までの流れ](assets/state-update-flow.svg){#ch02-state-update-flow}
+
+::: {#ch02-state-update-flow-caption .paragraph}
+ボタンのクリックから表示の更新までの流れ
+:::
+
+::::
+
+:::: {#page-31 .source-page}
+
+::: {#ch02-state-or-variable .heading level="minor"}
+通常の変数とstateの使い分け
+:::
+
+::: {#ch02-state-or-variable-1 .paragraph}
+ここまでの説明で、すべての変数を `useState()` で定義する必要があるのか、疑問に思うかもしれません。
+:::
+
+::: {#ch02-state-or-variable-2 .paragraph}
+結論として、**すべての変数をstateとして管理する必要はありません。**
+:::
+
+::: {#ch02-state-or-variable-3 .paragraph}
+今回のサンプルでは、次のように使い分けています。
+:::
+
+::: {#ch02-state-or-variable-4 .table}
+| 変数 | 定義方法 | 理由 |
+|---|---|---|
+| `productName` | `const` | 商品名は変更しないため |
+| `price` | `const` | 単価は変更しないため |
+| `quantity` | `useState()` | ボタン操作で数量が変化し、画面を更新する必要があるため |
+:::
+
+::: {#ch02-state-or-variable-5 .paragraph}
+このように、変更されない固定値は通常の変数として定義し、ユーザーの操作などによって変化して画面に反映させたい値をstateで管理します。
+:::
+
+::: {#ch02-state-or-variable-6 .paragraph}
+また、合計金額のように、既存の値から計算できるものは、必ずしも別のstateとして定義する必要はありません。
+:::
+
+::: {#ch02-state-types .training-note}
+【補足】useStateで管理できるデータ型
+
+`useState()` では、数値だけでなく、文字列や真偽値なども管理できます。
+:::
+
+::: {#ch02-state-types-1 .code example="true"}
+```tsx
+const [count, setCount] = useState(0)
+const [name, setName] = useState('田中')
+const [isActive, setIsActive] = useState(true)
+```
+:::
+
+::: {#ch02-state-types-2 .paragraph}
+TypeScriptでは、これらの初期値から基本的なデータ型が自動的に推論されます。例えば数値を入れるべき `count` に文字列の `'田中'` を設定しようとすると、VS Codeの型チェックなどで型の不一致を確認できます。
+:::
+
+::: {#ch02-state-types-3 .paragraph}
+なお、`useState()` は、コンポーネントの関数内のトップレベルで呼び出します。`if` 文や繰り返し処理の中で呼び出すことはできません。
+:::
+
+::::
+
+:::: {#page-32 .source-page}
+
+::: {#ch02-state-practice .heading level="minor"}
+【確認演習】useStateで商品の数量を2個ずつ増やす
+:::
+
+::: {#ch02-state-practice-open-1 .paragraph}
+ここまで学習した `useState()` の使い方を確認しましょう。今度は、1回クリックすると商品の数量が2個ずつ増えるプログラムを完成させます。
+:::
+
+::: {#ch02-state-practice-open-2 .paragraph}
+**修正対象ファイル：`ch02-basic-q/src/components/Q2_3.tsx`**
+:::
+
+::: {#ch02-state-practice-open-3-1 .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_3.tsx` を開いてください。
+:::
+
+::: {#ch02-state-practice-open-3-2 .paragraph numbered="true"}
+2．　コード内の**①～⑤の番号付きコメント**を確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch02-state-practice-step-1 .paragraph numbered="true"}
+①　**確認**　`useState` が `react` からインポートされていることを確認します。
+:::
+
+::: {#ch02-state-practice-step-2 .paragraph numbered="true"}
+②　**実装**　`useState(0)` の初期値を `1` に変更します。
+:::
+
+::: {#ch02-state-practice-step-3 .paragraph numbered="true"}
+③　**実装**　`addTwo` の中で `setQuantity(quantity + 2)` を実行します。
+:::
+
+::: {#ch02-state-practice-step-4 .paragraph numbered="true" keep-lines="true"}
+④　**実装**　数量と合計の「未設定」を、<br>それぞれ `{quantity}`、`{price * quantity}` に置き換えます。
+:::
+
+::: {#ch02-state-practice-step-5 .paragraph numbered="true"}
+⑤　**実装**　「2個追加」ボタンの `onClick` に `addTwo` を設定します。
+:::
+
+::::
+
+:::: {#page-33 .source-page}
+
+::: {#ch02-state-practice-check-1-1 .paragraph numbered="true"}
+3．　ファイルを保存し、`ch02-basic-q` プロジェクトの開発サーバーを起動してください。すでに起動している場合は保存するだけで構いません。
+:::
+
+::: {#ch02-state-practice-check-1-2 .paragraph numbered="true"}
+4．　ブラウザーのメニューから **「2.3 状態の管理（useState）」** を選択してください。
+:::
+
+::: {#ch02-state-practice-check-1-3 .paragraph numbered="true" keep-lines="true"}
+5．　「2個追加」ボタンをクリックし、<br>数量と合計金額が次のように変わることを確認してください。
+:::
+
+::: {#ch02-state-practice-check-4 .table}
+| 操作 | 数量 | 合計金額 |
+|---|---:|---:|
+| 初期状態 | 1個 | 250円 |
+| 1回クリック | 3個 | 750円 |
+| 2回クリック | 5個 | 1250円 |
+:::
+
+::: {#ch02-state-practice-check-5 .paragraph}
+期待どおりの結果になれば、演習完了です。正しく表示されない場合は、①～⑤のコメントと実装した構文を確認してください。
+:::
+
+::: {#ch02-state-practice-check-6 .paragraph}
+※ この演習では、完成版の `Sample2_3.tsx` を直接編集する必要はありません。問題用の `Q2_3.tsx` に指定された部分だけを記述します。
+:::
+
+::: {#ch02-state-points .section-points}
+この節のポイント
+
+● **state**とは、ユーザーの操作などによって変化し、画面の表示に反映させたいデータのことである。
+
+● Reactでは、**`useState()`** を使用してstateを管理できる。
+
+● `useState()` は、現在のstateの値と、更新用の関数を返す。
+
+● stateを変更するときは、**`setQuantity()`** のような更新用の関数を使用する。
+
+● stateの更新に応じて、Reactがコンポーネントを再レンダリングし、必要な画面の変更を反映する。
+
+● 変更しない固定値や、既存のデータから計算できる値を、<br>すべてstateで管理する必要はない。
 :::
 
 ::::

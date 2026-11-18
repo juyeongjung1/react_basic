@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 128" width="380" height="128">
+<rect x="6" y="9" width="368" height="38" rx="5" fill="#f3f7fb" stroke="#b9cada" stroke-width="0.8"/>
+<text x="27" y="33" fill="#172f44" font-family="MS Gothic" font-size="12.9" font-weight="400" text-anchor="start">const [</text>
+<rect x="70.15" y="19" width="55.6" height="19" rx="3" fill="#d9eafa" stroke="none" stroke-width="0.8"/>
+<text x="72.15" y="33" fill="#215d89" font-family="MS Gothic" font-size="12.9" font-weight="700" text-anchor="start">quantity</text>
+<text x="123.75" y="33" fill="#172f44" font-family="MS Gothic" font-size="12.9" font-weight="400" text-anchor="start">, </text>
+<rect x="134.65" y="19" width="74.95" height="19" rx="3" fill="#d7ede4" stroke="none" stroke-width="0.8"/>
+<text x="136.65" y="33" fill="#21685d" font-family="MS Gothic" font-size="12.9" font-weight="700" text-anchor="start">setQuantity</text>
+<text x="207.6" y="33" fill="#172f44" font-family="MS Gothic" font-size="12.9" font-weight="400" text-anchor="start">] = useState(</text>
+<rect x="289.45" y="19" width="10.45" height="19" rx="3" fill="#fae5d5" stroke="none" stroke-width="0.8"/>
+<text x="291.45" y="33" fill="#b54c29" font-family="MS Gothic" font-size="12.9" font-weight="700" text-anchor="start">1</text>
+<text x="297.9" y="33" fill="#172f44" font-family="MS Gothic" font-size="12.9" font-weight="400" text-anchor="start">)</text>
+<polyline points="97.95,40 97.95,58 61.0,73" fill="none" stroke="#215d89" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="8" y="74" width="106" height="49" rx="4" fill="#d9eafa" stroke="#215d89" stroke-width="0.8"/>
+<text x="61.0" y="94" fill="#215d89" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="middle">現在の値</text>
+<text x="61.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">数量を参照する</text>
+<polyline points="172.12,40 172.12,58 189.0,73" fill="none" stroke="#21685d" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="125" y="74" width="128" height="49" rx="4" fill="#d7ede4" stroke="#21685d" stroke-width="0.8"/>
+<text x="189.0" y="94" fill="#21685d" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="middle">更新用の関数</text>
+<text x="189.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">新しい数量を渡す</text>
+<polyline points="294.68,40 294.68,58 317.0,73" fill="none" stroke="#b54c29" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="263" y="74" width="108" height="49" rx="4" fill="#fae5d5" stroke="#b54c29" stroke-width="0.8"/>
+<text x="317.0" y="94" fill="#b54c29" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="middle">初期値</text>
+<text x="317.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">初回は1個</text>
+</svg>
