@@ -479,24 +479,12 @@ Reactでは、**`class` ではなく `className` を使用する**ことを覚�
 関数コンポーネント内の変数を使って、社員管理システムの見出しと案内文を表示します。
 :::
 
-::: {#ch02-jsx-practice-target .paragraph}
-**修正対象ファイル**　`ch02-basic-q/src/components/Q2_1.tsx`
+::: {#ch02-jsx-practice-open-file .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_1.tsx` を開いてください。
 :::
 
-::: {#ch02-jsx-practice-sample .paragraph}
-完成見本は `ch02-basic/src/components/Sample2_1.tsx` です。
-:::
-
-::: {#ch02-jsx-practice-step-1 .paragraph numbered="true"}
-①　**確認**　`export default function Q2_1()` と、画面を返す `return (...)` の位置を確認します。
-:::
-
-::: {#ch02-jsx-practice-step-2 .paragraph numbered="true"}
-②　**実装**　`<h1>` の「未設定」を `{systemName}` に置き換えます。
-:::
-
-::: {#ch02-jsx-practice-step-3 .paragraph numbered="true"}
-③　**実装**　`<p>` の「未設定」を `{guideMessage}` に置き換えます。親要素と終了タグはそのまま使います。
+::: {#ch02-jsx-practice-follow-comments .paragraph numbered="true"}
+2．　コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch02-jsx-practice-run .paragraph}
@@ -979,28 +967,12 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 商品データやクラス名の変数を、JSXの本文とHTML属性に設定します。単価300円、数量3個、合計を青い太字にするクラス名は、あらかじめ定義されています。
 :::
 
-::: {#ch02-values-practice-target .paragraph}
-**修正対象ファイル**　`ch02-basic-q/src/components/Q2_2.tsx`
+::: {#ch02-values-practice-open-file .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_2.tsx` を開いてください。
 :::
 
-::: {#ch02-values-practice-sample .paragraph}
-値や属性の書き方は、講義サンプル `ch02-basic/src/components/Sample2_2.tsx` を参照します。
-:::
-
-::: {#ch02-values-practice-step-1 .paragraph numbered="true"}
-➀　**実装**　`img` の `src` には `product` の `imagePath`、`alt` には `product` の `name` を指定してください。
-:::
-
-::: {#ch02-values-practice-step-2 .paragraph numbered="true"}
-➁　**実装**　商品名・単価・数量の「未設定」を、順に `{product.name}`、`{product.price}`、`{quantity}` に置き換えてください。
-:::
-
-::: {#ch02-values-practice-step-3 .paragraph numbered="true"}
-➂　**実装**　合計の「未設定」を、`product` の `price` と `quantity` を掛けた結果に置き換えてください。
-:::
-
-::: {#ch02-values-practice-step-4 .paragraph numbered="true"}
-➃　**実装**　合計を表示する `<p>` に、`textClass` で指定したクラスを適用してください。
+::: {#ch02-values-practice-follow-comments .paragraph numbered="true"}
+2．　コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch02-values-practice-run .paragraph}
@@ -1678,41 +1650,13 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 ここまで学習した `useState()` の使い方を確認しましょう。今度は、1回クリックすると商品の数量が2個ずつ増えるプログラムを完成させます。
 :::
 
-::: {#ch02-state-practice-open-2 .paragraph}
-**修正対象ファイル：`ch02-basic-q/src/components/Q2_3.tsx`**
-:::
-
-::: {#ch02-state-practice-open-3-1 .paragraph numbered="true"}
+::: {#ch02-state-practice-open-file .paragraph numbered="true"}
 1．　`ch02-basic-q` プロジェクトの `src/components/Q2_3.tsx` を開いてください。
 :::
 
-::: {#ch02-state-practice-open-3-2 .paragraph numbered="true"}
-2．　コード内の**➀～➄の番号付きコメント**を確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch02-state-practice-follow-comments .paragraph numbered="true"}
+2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
-
-::: {#ch02-state-practice-step-1 .paragraph numbered="true"}
-➀　**確認**　`useState` を `react` からインポートしていることを確認してください。
-:::
-
-::: {#ch02-state-practice-step-2 .paragraph numbered="true"}
-➁　**実装**　`useState` の初期値を `0` から `1` に変更してください。
-:::
-
-::: {#ch02-state-practice-step-3 .paragraph numbered="true"}
-➂　**実装**　`addTwo` の中で、現在の数量を2個増やした値を `setQuantity` に渡してください。
-:::
-
-::: {#ch02-state-practice-step-4 .paragraph numbered="true" keep-lines="true"}
-➃　**実装**　数量欄の `xxx` に `quantity` の値を、<br>合計欄の `yyy` に `price` と `quantity` を掛けた結果を表示してください。
-:::
-
-::: {#ch02-state-practice-step-5 .paragraph numbered="true"}
-➄　**実装**　「2個追加」ボタンの `onClick` に指定されている仮の関数を `addTwo` に置き換えてください。
-:::
-
-::::
-
-:::: {#page-33 .source-page}
 
 ::: {#ch02-state-practice-check-1-1 .paragraph numbered="true"}
 3．　ファイルを保存し、`ch02-basic-q` プロジェクトの開発サーバーを起動してください。すでに起動している場合は保存するだけで構いません。
@@ -1760,7 +1704,7 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 
 ::::
 
-:::: {#page-34 .source-page}
+:::: {#page-33 .source-page}
 
 ::: {#ch02-events-title .heading}
 2.4. イベント処理
@@ -1802,7 +1746,7 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 
 ::::
 
-:::: {#page-35 .source-page}
+:::: {#page-34 .source-page}
 
 ::: {#ch02-events-intro-p5 .paragraph}
 Webアプリケーションでは、ボタンのクリック、マウスの移動、キーボードからの入力など、ユーザーのさまざまな操作をきっかけに処理を実行することがあります。
@@ -1868,7 +1812,7 @@ return (
 
 ::::
 
-:::: {#page-36 .source-page}
+:::: {#page-35 .source-page}
 
 ![onClickに指定した関数でメッセージを表示する](assets/event-click-action.svg){#ch02-events-click-action}
 
@@ -1930,7 +1874,7 @@ onClickに指定した関数でメッセージを表示する
 
 ::::
 
-:::: {#page-37 .source-page}
+:::: {#page-36 .source-page}
 
 ![括弧の有無による関数の実行タイミングの違い](assets/event-handler-compare.svg){#ch02-events-handler-timing}
 
@@ -1980,7 +1924,7 @@ const showSelection = (name: string) => {
 
 ::::
 
-:::: {#page-38 .source-page}
+:::: {#page-37 .source-page}
 
 ::: {#ch02-events-arguments-syntax .step}
 引数を渡す場合の構文
@@ -2040,7 +1984,7 @@ const showSelection = (name: string) => {
 
 ::::
 
-:::: {#page-39 .source-page}
+:::: {#page-38 .source-page}
 
 ::: {#ch02-events-typescript-note .training-note}
 【補足】TypeScriptでは引数に型を指定する
@@ -2090,7 +2034,7 @@ JavaScriptでは `name` とだけ記述することもできますが、TypeScri
 
 ::::
 
-:::: {#page-40 .source-page}
+:::: {#page-39 .source-page}
 
 ::: {#ch02-events-sample-code .code filename="ch02-basic/src/components/Sample2_4.tsx"}
 ```tsx
@@ -2138,7 +2082,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-41 .source-page}
+:::: {#page-40 .source-page}
 
 ::: {#ch02-events-sample-check .step}
 動作確認
@@ -2175,7 +2119,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-42 .source-page}
+:::: {#page-41 .source-page}
 
 ::: {#ch02-events-review .heading level="minor"}
 構文の解説
@@ -2249,7 +2193,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-43 .source-page}
+:::: {#page-42 .source-page}
 
 ::: {#ch02-events-review-clear .step}
 ③ 選択を解除する関数
@@ -2314,7 +2258,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-44 .source-page}
+:::: {#page-43 .source-page}
 
 ::: {#ch02-events-review-direct .step}
 ⑤ 引数を必要としない関数を実行する
@@ -2364,7 +2308,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-45 .source-page}
+:::: {#page-44 .source-page}
 
 ::: {#ch02-events-more-events-note .training-note}
 【補足】その他のイベント
@@ -2401,7 +2345,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-46 .source-page}
+:::: {#page-45 .source-page}
 
 ::: {#ch02-events-practice .heading level="minor"}
 【確認演習】商品の選択イベントを実装する
@@ -2415,131 +2359,12 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 今回は、完成済みのサンプルを参考に、イベントハンドラーの穴埋め問題を行います。
 :::
 
-::: {#ch02-events-practice-target .paragraph}
-**修正対象ファイル**　`ch02-basic-q/src/components/Q2_4.tsx`
+::: {#ch02-events-practice-open-file .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_4.tsx` を開いてください。
 :::
 
-::: {#ch02-events-practice-p3 .paragraph keep-lines="true"}
-このファイルには、画面の基本構成やstateを更新する関数が、<br>あらかじめ用意されています。
-:::
-
-::: {#ch02-events-practice-p4 .paragraph keep-lines="true"}
-受講者は、**➀・➁で既存コードを確認し、<br>➂～➄のコメントに従って `onClick` 属性を自分で記述**してください。
-:::
-
-::: {#ch02-events-practice-insertion .paragraph}
-受講者は開始タグ内に `onClick` 属性一式を書き足します。
-:::
-
-::: {#ch02-events-practice-source .step}
-演習用のソースコード（配布する未完成版）
-:::
-
-::: {#ch02-events-practice-code-1 .code filename="ch02-basic-q/src/components/Q2_4.tsx"}
-```tsx
-import { useState } from 'react'
-
-export default function Q2_4() {
-  const [selectedName, setSelectedName] = useState('未選択')
-
-  // ➀ 確認：引数を受け取るイベントハンドラーの
-  //    定義を確認してください。
-  const showSelection = (name: string) => {
-    setSelectedName(name)
-  }
-
-  // ➁ 確認：引数を受け取らないイベントハンドラーの
-  //    定義を確認してください。
-  const clearSelection = () => {
-    setSelectedName('未選択')
-  }
-
-  return (
-    <main className="container mt-4">
-      <h1>商品の選択</h1>
-      <p>選択中の商品：{selectedName}</p>
-
-```
-:::
-
-::::
-
-:::: {#page-47 .source-page}
-
-::: {#ch02-events-practice-code-2 .code filename="ch02-basic-q/src/components/Q2_4.tsx" start-line="23"}
-```tsx
-      {/* ➂ 実装：開始タグに onClick 属性を追加し、
-          'ノート' を showSelection に渡してください。 */}
-      <button className="btn btn-outline-primary me-2"
-      >
-        ノートを選択
-      </button>
-
-      {/* ➃ 実装：開始タグに onClick 属性を追加し、
-          'ボールペン' を showSelection に渡してください。 */}
-      <button className="btn btn-outline-primary me-2"
-      >
-        ボールペンを選択
-      </button>
-
-      {/* ➄ 実装：開始タグに onClick 属性を追加し、
-          clearSelection をそのまま指定してください。 */}
-      <button className="btn btn-secondary"
-      >
-        選択を解除
-      </button>
-    </main>
-  )
-}
-```
-:::
-
-::: {#ch02-events-practice-tasks .step}
-演習内容
-:::
-
-::: {#ch02-events-practice-step-1 .step}
-**➀ 引数を受け取るイベントハンドラーを確認する**
-:::
-
-::: {#ch02-events-practice-step-1-p1 .paragraph keep-lines="true"}
-`showSelection(name: string)` の定義を読み、商品名を引数で受け取ること、<br>`setSelectedName(name)` でstateを更新することを確認してください。<br>**この項目ではコードを修正しません。**
-:::
-
-::: {#ch02-events-practice-step-2 .step}
-**➁ 引数を受け取らないイベントハンドラーを確認する**
-:::
-
-::: {#ch02-events-practice-step-2-p1 .paragraph keep-lines="true"}
-`clearSelection()` の定義を読み、引数がないことと、<br>stateを「未選択」に戻すことを確認してください。<br>**この項目でもコードを修正しません。**
-:::
-
-::::
-
-:::: {#page-48 .source-page}
-
-::: {#ch02-events-practice-step-3 .step}
-**➂ ノートを選択する**
-:::
-
-::: {#ch02-events-practice-step-3-p1 .paragraph}
-「ノートを選択」ボタンに `onClick` 属性を追加し、クリック時に `'ノート'` を渡して `showSelection` を呼び出せるようにしてください。
-:::
-
-::: {#ch02-events-practice-step-4 .step}
-**➃ ボールペンを選択する**
-:::
-
-::: {#ch02-events-practice-step-4-p1 .paragraph}
-「ボールペンを選択」ボタンに `onClick` 属性を追加し、クリック時に `'ボールペン'` を渡して `showSelection` を呼び出せるようにしてください。
-:::
-
-::: {#ch02-events-practice-step-5 .step}
-**➄ 選択を解除する**
-:::
-
-::: {#ch02-events-practice-step-5-p1 .paragraph}
-「選択を解除」ボタンに `onClick` 属性を追加してください。引数は不要なため、`clearSelection` 関数を直接指定してください。
+::: {#ch02-events-practice-follow-comments .paragraph numbered="true"}
+2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch02-events-practice-check .step}
