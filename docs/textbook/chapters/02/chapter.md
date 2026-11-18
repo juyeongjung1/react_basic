@@ -880,27 +880,33 @@ export default function Sample2_2() {
 サンプルコードの解説
 :::
 
-::: {#ch02-property-display-1 .paragraph}
-今回のサンプルで特に確認したいのは、次の3か所です。
-:::
-
 ::: {#ch02-property-display-2 .step}
 **① オブジェクトのプロパティを表示する**
 :::
 
-::: {#ch02-property-display-3 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="23"}
+::: {#ch02-property-display-3 .code filename="ch02-basic/src/components/Sample2_2.tsx"}
 ```tsx
-      <p>商品名：{product.name}</p>
-      <p>単価：{product.price}円</p>
+2:  // 商品情報
+3:  const product = {
+4:    name: 'ノート',
+5:    price: 250,
+6:    imagePath: '/images/notebook.png'
+7:  }
+23:      <p>商品名：{product.name}</p>
+24:      <p>単価：{product.price}円</p>
 ```
 :::
 
 ::: {#ch02-property-display-4 .paragraph}
-商品情報は、`product` というオブジェクトにまとめています。
+3〜7行目では、商品情報を `product` というオブジェクトにまとめています。`name: 'ノート'` のように、コロン（`:`）の左に**プロパティ名**、右に**値**を書きます。
 :::
 
-::: {#ch02-property-display-5 .paragraph}
-JSX内では、そのプロパティを指定することで、商品名や単価を表示できます。
+::: {#ch02-property-display-5 .paragraph keep-lines="true"}
+値を取り出すときは、**`オブジェクト名.プロパティ名`** と書きます。<br>ドットの左にオブジェクト名、右にプロパティ名を指定します。<br>例えば、`product.name` は `'ノート'`、`product.price` は `250` です。
+:::
+
+::: {#ch02-property-display-6 .paragraph keep-lines="true"}
+23・24行目では、JSXの `{ }` で取り出した値を埋め込みます。<br>画面には「商品名：ノート」と「単価：250円」が表示されます。
 :::
 
 ::::
