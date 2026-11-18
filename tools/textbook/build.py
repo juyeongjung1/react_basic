@@ -725,7 +725,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             parts = typographic_parts(node['parts'], keep_lines=keep_lines)
             if node['attrs'].get('numbered') == 'true':
                 first, style = parts[0]
-                number = re.match(r'(?:\d+．|[①-⑳])', first)
+                number = re.match(r'(?:\d+．|[①-⑳➀-➉])', first)
                 if not number:
                     raise ValueError(f'作業手順に番号がありません: {ident}')
                 body = [part for part in [(first[number.end():], style), *parts[1:]] if part[0]]
@@ -929,7 +929,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             continue
         # 短いコード導入ラベルと、その直後の説明を最初のコード枠に繋げる。
         if (ident in nodes and nodes[ident]['kind'] == 'paragraph'
-                and re.fullmatch(r'[■①-⑳][^\n。]+', plain_symbols(nodes[ident]['text']).strip())):
+                and re.fullmatch(r'[■①-⑳➀-➉][^\n。]+', plain_symbols(nodes[ident]['text']).strip())):
             end = i + 1
             if (end+1 < len(entries) and entries[end] in nodes and nodes[entries[end]]['kind'] == 'paragraph'
                     and entries[end+1] in nodes and nodes[entries[end+1]]['kind'] == 'code'):

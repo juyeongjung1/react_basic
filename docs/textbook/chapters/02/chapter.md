@@ -976,7 +976,7 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 :::
 
 ::: {#ch02-values-practice-intro .paragraph}
-商品データやクラス名の変数を、JSXの本文とHTML属性に設定します。単価300円、数量3個、合計を赤い太字にするクラス名は、あらかじめ定義されています。
+商品データやクラス名の変数を、JSXの本文とHTML属性に設定します。単価300円、数量3個、合計を青い太字にするクラス名は、あらかじめ定義されています。
 :::
 
 ::: {#ch02-values-practice-target .paragraph}
@@ -988,19 +988,19 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 :::
 
 ::: {#ch02-values-practice-step-1 .paragraph numbered="true"}
-①　**実装**　`img` の `src` を `{product.imagePath}`、`alt` を `{product.name}` に変更します。
+➀　**実装**　`img` の `src` には `product` の `imagePath`、`alt` には `product` の `name` を指定してください。
 :::
 
 ::: {#ch02-values-practice-step-2 .paragraph numbered="true"}
-②　**実装**　商品名・単価・数量の「未設定」を、順に `{product.name}`、`{product.price}`、`{quantity}` に置き換えます。
+➁　**実装**　商品名・単価・数量の「未設定」を、順に `{product.name}`、`{product.price}`、`{quantity}` に置き換えてください。
 :::
 
 ::: {#ch02-values-practice-step-3 .paragraph numbered="true"}
-③　**実装**　合計の「未設定」を `{product.price * quantity}` に置き換えます。
+➂　**実装**　合計の「未設定」を、`product` の `price` と `quantity` を掛けた結果に置き換えてください。
 :::
 
 ::: {#ch02-values-practice-step-4 .paragraph numbered="true"}
-④　**実装**　合計を表示する `<p>` の `className="fw-bold"` を `className={totalClass}` に変更します。
+➃　**実装**　合計を表示する `<p>` に、`textClass` で指定したクラスを適用してください。
 :::
 
 ::: {#ch02-values-practice-run .paragraph}
@@ -1012,7 +1012,7 @@ JSX内では、そのプロパティを指定することで、商品名や単�
 :::
 
 ::: {#ch02-values-practice-result .paragraph}
-ノート画像と商品名「ノート」、単価300円、数量3個が表示され、合計が**赤い太字の900円**になれば完了です。
+ノート画像と商品名「ノート」、単価300円、数量3個が表示され、合計が**青い太字の900円**になれば完了です。
 :::
 
 ::: {#ch02-check-11 .paragraph}
@@ -1687,27 +1687,27 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::
 
 ::: {#ch02-state-practice-open-3-2 .paragraph numbered="true"}
-2．　コード内の**①～⑤の番号付きコメント**を確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+2．　コード内の**➀～➄の番号付きコメント**を確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch02-state-practice-step-1 .paragraph numbered="true"}
-①　**確認**　`useState` が `react` からインポートされていることを確認します。
+➀　**確認**　`useState` を `react` からインポートしていることを確認してください。
 :::
 
 ::: {#ch02-state-practice-step-2 .paragraph numbered="true"}
-②　**実装**　`useState(0)` の初期値を `1` に変更します。
+➁　**実装**　`useState` の初期値を `0` から `1` に変更してください。
 :::
 
 ::: {#ch02-state-practice-step-3 .paragraph numbered="true"}
-③　**実装**　`addTwo` の中で `setQuantity(quantity + 2)` を実行します。
+➂　**実装**　`addTwo` の中で、現在の数量を2個増やした値を `setQuantity` に渡してください。
 :::
 
 ::: {#ch02-state-practice-step-4 .paragraph numbered="true" keep-lines="true"}
-④　**実装**　数量と合計の「未設定」を、<br>それぞれ `{quantity}`、`{price * quantity}` に置き換えます。
+➃　**実装**　数量欄の `xxx` に `quantity` の値を、<br>合計欄の `yyy` に `price` と `quantity` を掛けた結果を表示してください。
 :::
 
 ::: {#ch02-state-practice-step-5 .paragraph numbered="true"}
-⑤　**実装**　「2個追加」ボタンの `onClick` に `addTwo` を設定します。
+➄　**実装**　「2個追加」ボタンの `onClick` に指定されている仮の関数を `addTwo` に置き換えてください。
 :::
 
 ::::
@@ -1735,7 +1735,7 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::
 
 ::: {#ch02-state-practice-check-5 .paragraph}
-期待どおりの結果になれば、演習完了です。正しく表示されない場合は、①～⑤のコメントと実装した構文を確認してください。
+期待どおりの結果になれば、演習完了です。正しく表示されない場合は、➀～➄のコメントと実装した構文を確認してください。
 :::
 
 ::: {#ch02-state-practice-check-6 .paragraph}
@@ -2424,7 +2424,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-events-practice-p4 .paragraph keep-lines="true"}
-受講者は、**①・②で既存コードを確認し、<br>③～⑤のコメントに従って `onClick` 属性を自分で記述**してください。
+受講者は、**➀・➁で既存コードを確認し、<br>➂～➄のコメントに従って `onClick` 属性を自分で記述**してください。
 :::
 
 ::: {#ch02-events-practice-insertion .paragraph}
@@ -2442,14 +2442,14 @@ import { useState } from 'react'
 export default function Q2_4() {
   const [selectedName, setSelectedName] = useState('未選択')
 
-  // ① 引数ありのイベントハンドラーを定義する
-  //    コードを確認してください。
+  // ➀ 確認：引数を受け取るイベントハンドラーの
+  //    定義を確認してください。
   const showSelection = (name: string) => {
     setSelectedName(name)
   }
 
-  // ② 引数なしのイベントハンドラーを定義する
-  //    コードを確認してください。
+  // ➁ 確認：引数を受け取らないイベントハンドラーの
+  //    定義を確認してください。
   const clearSelection = () => {
     setSelectedName('未選択')
   }
@@ -2468,22 +2468,22 @@ export default function Q2_4() {
 
 ::: {#ch02-events-practice-code-2 .code filename="ch02-basic-q/src/components/Q2_4.tsx" start-line="23"}
 ```tsx
-      {/* ③ onClick属性を追加し、showSelectionに
-          'ノート'を渡して呼び出してください。 */}
+      {/* ➂ 実装：開始タグに onClick 属性を追加し、
+          'ノート' を showSelection に渡してください。 */}
       <button className="btn btn-outline-primary me-2"
       >
         ノートを選択
       </button>
 
-      {/* ④ onClick属性を追加し、showSelectionに
-          'ボールペン'を渡して呼び出してください。 */}
+      {/* ➃ 実装：開始タグに onClick 属性を追加し、
+          'ボールペン' を showSelection に渡してください。 */}
       <button className="btn btn-outline-primary me-2"
       >
         ボールペンを選択
       </button>
 
-      {/* ⑤ onClick属性を追加し、
-          引数なしのclearSelection関数を指定してください。 */}
+      {/* ➄ 実装：開始タグに onClick 属性を追加し、
+          clearSelection をそのまま指定してください。 */}
       <button className="btn btn-secondary"
       >
         選択を解除
@@ -2499,7 +2499,7 @@ export default function Q2_4() {
 :::
 
 ::: {#ch02-events-practice-step-1 .step}
-**① 引数ありのイベントハンドラーを確認する**
+**➀ 引数を受け取るイベントハンドラーを確認する**
 :::
 
 ::: {#ch02-events-practice-step-1-p1 .paragraph keep-lines="true"}
@@ -2507,7 +2507,7 @@ export default function Q2_4() {
 :::
 
 ::: {#ch02-events-practice-step-2 .step}
-**② 引数なしのイベントハンドラーを確認する**
+**➁ 引数を受け取らないイベントハンドラーを確認する**
 :::
 
 ::: {#ch02-events-practice-step-2-p1 .paragraph keep-lines="true"}
@@ -2519,7 +2519,7 @@ export default function Q2_4() {
 :::: {#page-48 .source-page}
 
 ::: {#ch02-events-practice-step-3 .step}
-**③ ノートを選択する**
+**➂ ノートを選択する**
 :::
 
 ::: {#ch02-events-practice-step-3-p1 .paragraph}
@@ -2527,7 +2527,7 @@ export default function Q2_4() {
 :::
 
 ::: {#ch02-events-practice-step-4 .step}
-**④ ボールペンを選択する**
+**➃ ボールペンを選択する**
 :::
 
 ::: {#ch02-events-practice-step-4-p1 .paragraph}
@@ -2535,7 +2535,7 @@ export default function Q2_4() {
 :::
 
 ::: {#ch02-events-practice-step-5 .step}
-**⑤ 選択を解除する**
+**➄ 選択を解除する**
 :::
 
 ::: {#ch02-events-practice-step-5-p1 .paragraph}
