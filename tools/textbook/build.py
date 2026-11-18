@@ -430,9 +430,14 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             raise ValueError('挿絵とキャプションは同じ自動組版ページへ配置してください: ' + ident)
         if caption_id in illustration_captions:
             raise ValueError('挿絵キャプションの重複: ' + caption_id)
-        with Image.open(folder / figures[ident]) as image:
-            width = min(float(options.get('width', 300)), 426.672)
-            height = width * image.height / image.width
+        path = folder / figures[ident]
+        if path.suffix.lower() == '.svg':
+            _, _, image_width, image_height = map(float, ET.parse(path).getroot().attrib['viewBox'].split())
+        else:
+            with Image.open(path) as image:
+                image_width, image_height = image.size
+        width = min(float(options.get('width', 300)), 426.672)
+        height = width * image_height / image_width
         maximum = float(options.get('max_height', 140))
         if height > maximum:
             width *= maximum / height
@@ -671,9 +676,13 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             title, *notices = paragraph_parts(node['parts'])
             rows = ','.join(f'[{inline(row)}]' for row in notices)
             return f'#trademarks([{inline(title)}], ({rows},))'
+        if node['kind'] == 'contents-entry':
+            subsection = str(':' in node['attrs']['target']).lower()
+            return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection})'
         if node['kind'] == 'training-note':
-            title, body = paragraph_parts(node['parts'])
-            return f'#training-note({q(ident)}, [{inline(title)}], [{inline(body)}])'
+            title, *paragraphs = paragraph_parts(node['parts'])
+            body = '#parbreak()'.join(inline(paragraph) for paragraph in paragraphs)
+            return f'#training-note({q(ident)}, [{inline(title)}], [{body}])'
         if node['kind'] == 'stage-flow':
             paragraphs = iter(paragraph_parts(node['parts']))
             stages = (f'([{inline(label)}], [{inline(title, keep_lines=True)}], [{inline(body)}])'

@@ -133,9 +133,34 @@ def renumber_footers(flow, pages):
         assert value==str(n),(n,value)
 
 
+def link_markdown_contents(flow, entries, destinations):
+    updates=[]
+    font=fitz.Font(fontfile='C:/Windows/Fonts/msgothic.ttc')
+    right=511.656
+    for node, position in entries:
+        page=flow[position['page']-1]
+        label=node['text']
+        destination=destinations[node['attrs']['target']]
+        lines=[line for block in page.get_text('dict')['blocks'] for line in block.get('lines', [])
+               if normalized(''.join(span['text'] for span in line['spans']))==normalized(label)]
+        assert len(lines)==1,(label,position)
+        line=lines[0]
+        span=line['spans'][0]
+        value=str(destination)
+        page.insert_font(fontname='contents-number',fontbuffer=font.buffer)
+        page.insert_text((right-font.text_length(value, fontsize=span['size']),span['origin'][1]),
+                         value,fontname='contents-number',fontsize=span['size'])
+        rect=fitz.Rect(line['bbox'])
+        rect.x1=right
+        page.insert_link({'kind':fitz.LINK_GOTO,'from':rect,'page':destination-1})
+        updates.append({'title':label,'flow_page':destination})
+    return updates
+
+
 def assemble_markdown(out, collection):
     """Markdownで作った前付と章をつなぎ、ページ番号を一冊分に振り直す。"""
     chapters=[];footer_pages=[]
+    entries=[];destinations={}
     with fitz.open() as flow:
         for chapter in collection['parts']:
             config_path=ROOT/'docs/textbook/chapters'/chapter/'source.json'
@@ -147,17 +172,26 @@ def assemble_markdown(out, collection):
                 pages=append_flow_part(flow,part,[])
             chapters.append({'chapter':chapter,'title':config['title'],'flow_pages':[pages[0],pages[-1]],
                              'bookmark_page':pages[config.get('bookmark_page',1)-1]})
+            destinations[chapter]=chapters[-1]['bookmark_page']
+            nodes=read_markdown(config_path.with_name('chapter.md'))[0]
+            for mark in checks['block_positions']:
+                if mark['edge'] in ANCHOR_EDGES:
+                    page=pages[mark['page']-1]
+                    destinations.setdefault(f"{chapter}:{mark['id']}", page)
+                    if nodes.get(mark['id'], {}).get('kind')=='contents-entry':
+                        entries.append((nodes[mark['id']], {**mark, 'page':page}))
             footerless=set(config.get('no_footer_pages', []))
             if config.get('cover_mode','classic')!='none':
                 footerless.add(1)
             footer_pages.extend(page for i, page in enumerate(pages, 1) if i not in footerless)
         renumber_footers(flow,footer_pages)
+        contents=link_markdown_contents(flow,entries,destinations)
         flow.set_metadata({'title':collection['title']})
         flow.set_toc([[1,chapter['title'],chapter['bookmark_page']] for chapter in chapters])
         flow.subset_fonts()
         flow.save(out/'flow.pdf',garbage=4,deflate=True)
         report={'title':collection['title'],'flow_pages':len(flow),
-                'continuous_footer_numbers':True,'chapters':chapters}
+                'continuous_footer_numbers':True,'chapters':chapters,'contents':contents}
     (out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
     return report

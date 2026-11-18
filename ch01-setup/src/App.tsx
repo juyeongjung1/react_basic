@@ -1,24 +1,14 @@
-import { product } from './product'
-
 export default function App() {
+  // 画面に表示するデータ
+  const courseName = 'React開発入門'
+  const message = 'Reactの動作確認をしています'
+  const lessonNumber = 1
+
   return (
     <main>
-      <h1>商品管理システム</h1>
-      <p>第1章の動作確認</p>
-      <dl aria-label="サンプル商品">
-        <div>
-          <dt>商品名</dt>
-          <dd>{product.name}</dd>
-        </div>
-        <div>
-          <dt>価格</dt>
-          <dd>{product.price.toLocaleString('ja-JP')} 円</dd>
-        </div>
-        <div>
-          <dt>カテゴリ</dt>
-          <dd>{product.category}</dd>
-        </div>
-      </dl>
+      <h1>{courseName}</h1>
+      <p>{message}</p>
+      <p>現在の学習：第{lessonNumber}章</p>
     </main>
   )
 }

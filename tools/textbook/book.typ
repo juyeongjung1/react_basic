@@ -426,6 +426,19 @@
       top-edge: 0pt, bottom-edge: 0pt, body)
   ])
 ]
+#let contents-entry(id, label, subsection: false) = block(width: 100%,
+  inset: (left: if subsection {18pt} else {0pt}),
+  above: if subsection {8pt} else {18pt}, below: 0pt, breakable: false)[
+  #mark(id, "start")
+  #set text(font: "MS PGothic", size: if subsection {11.04pt} else {14.04pt},
+    weight: if subsection {"regular"} else {"bold"})
+  #grid(columns: (auto, 1fr, 19pt), column-gutter: 4pt,
+    align: (left + bottom, left + bottom, right + bottom),
+    label,
+    block(inset: (bottom: 3pt), line(length: 100%,
+      stroke: (paint: black, thickness: 0.6pt, cap: "round", dash: "dotted"))),
+    [])
+]
 #let table-panel(id, rows, widths, has_header, paint: none, width: auto, offset: 0pt,
   source-widths: none, source-heights: none, font-size: none, leading: 4pt, inset: 3pt) = block(
   width: 100%, inset: (left: offset), above: 8pt, below: 12pt, breakable: true)[#layout(size => {

@@ -12,21 +12,67 @@
 章の目標
 :::
 
-::: {#ch01-goal-setup .paragraph}
-◼ React の開発環境を準備し、Vite でひな形を作成できる
+::: {#ch01-goal-spa .paragraph}
+◼ ReactとSPAの違いを説明できる
 :::
 
-::: {#ch01-goal-files .paragraph}
-◼ VS Code の NPM スクリプトから配布サンプルを起動できる
+::: {#ch01-goal-tools .paragraph}
+◼ VS Code、Node.js、npmの役割を理解できる
 :::
 
-::: {#ch01-goal-types .paragraph}
-◼ サンプルの主要なファイルのつながりを説明できる
+::: {#ch01-goal-vite .paragraph}
+◼ Viteを利用してReactとTypeScriptのプロジェクトのひな形を作成できる
+:::
+
+::: {#ch01-goal-install .paragraph}
+◼ npmを利用して必要なライブラリをインストールできる
+:::
+
+::: {#ch01-goal-verify .paragraph}
+◼ 開発サーバーを起動し、変数の値を変更して画面への反映を確認できる
 :::
 
 ::::
 
 :::: {#page-2 .source-page}
+
+::: {#ch01-overview-title .heading}
+章の概要
+:::
+
+::: {#ch01-overview-slide .slide layout="summary"}
+章の概要
+
+■ ReactとSPA
+
+■ 開発環境の準備
+
+■ Viteでプロジェクトを作成
+
+■ 依存ライブラリの導入
+
+■ 開発サーバーの起動と動作確認
+:::
+
+::: {#ch01-overview-1 .paragraph}
+この章では、Reactでアプリケーションを開発するための準備から、ブラウザーで画面を表示するまでの流れを学習します。
+:::
+
+::: {#ch01-overview-2 .paragraph}
+最初に、従来のJavaScriptとReactの画面更新の違いや、SPAの特徴を確認します。次に、Reactの開発に使用するVS Code、Node.js、npmの役割を整理します。なお、本研修の開発環境は事前に準備されているため、環境準備の操作手順は、個人でゼロから開発環境を構築するときの参考として確認してください。
+:::
+
+::: {#ch01-overview-3 .paragraph}
+続いて、Viteを使ってReactとTypeScriptに対応したプロジェクトのひな形を作成し、npmで必要なライブラリをインストールします。
+:::
+
+::: {#ch01-overview-4 .paragraph}
+最後に、配布サンプルの開発サーバーを起動して画面を表示します。また、`App.tsx` に定義された変数の値が画面に表示されることを確認し、その値を書き換えて保存すると、ブラウザーにも変更が反映されることを体験します。
+:::
+
+::::
+
+:::: {#page-3 .source-page}
 
 ::: {#ch01-spa-title .heading}
 1.1. ReactとSPA
@@ -72,7 +118,7 @@ Webアプリケーションでは、ボタンのクリックやフォームへ�
 
 ::::
 
-:::: {#page-3 .source-page}
+:::: {#page-4 .source-page}
 
 ::: {#ch01-spa-js-example .paragraph}
 **従来のJavaScriptによる実装例**
@@ -121,7 +167,7 @@ Webアプリケーションでは、ボタンのクリックやフォームへ�
 
 ::::
 
-:::: {#page-4 .source-page}
+:::: {#page-5 .source-page}
 
 ::: {#ch01-spa-dom-maintenance .paragraph}
 この方法でもWebアプリケーションは開発できます。しかし、商品の小計、送料、在庫数など、画面内で連動する表示が増えるほど、**どのHTML要素を、いつ書き換えるか**を管理する処理が複雑になります。
@@ -177,7 +223,7 @@ export default function Counter() {
 
 ::::
 
-:::: {#page-5 .source-page}
+:::: {#page-6 .source-page}
 
 ::: {#ch01-spa-react-quantity .paragraph}
 このコードでは、`useState(1)` を使って数量の初期値を1にしています。ボタンをクリックすると、`setQuantity(quantity + 1)` が数量を更新します。
@@ -215,7 +261,7 @@ Reactは2013年に公開され、2019年にはHooksと呼ばれる仕組みが�
 
 ::::
 
-:::: {#page-6 .source-page}
+:::: {#page-7 .source-page}
 
 ::: {#ch01-spa-definition .heading level="minor"}
 SPAとは
@@ -249,7 +295,7 @@ SPA（Single Page Application：シングルページアプリケーション）
 
 ::::
 
-:::: {#page-7 .source-page}
+:::: {#page-8 .source-page}
 
 ::: {#ch01-spa-react-spa-distinction .paragraph}
 Reactは、このようなSPAの画面を構築するためにも利用できます。ただし、**ReactとSPAは同じ意味ではありません。**
@@ -281,7 +327,7 @@ Reactは、このようなSPAの画面を構築するためにも利用できま
 
 ::::
 
-:::: {#page-8 .source-page}
+:::: {#page-9 .source-page}
 
 ::: {#ch01-tools-title .heading}
 1.2. 開発環境の準備
@@ -319,7 +365,7 @@ Reactを使用してWebアプリケーションを開発するためには、ま
 
 ::::
 
-:::: {#page-9 .source-page}
+:::: {#page-10 .source-page}
 
 ::: {#ch01-tools-intro-6 .paragraph}
 本研修では、こうした作業を効率よく進めるために、次のツールを使用します。
@@ -360,7 +406,7 @@ Reactの開発時に使うツールと画面表示までの流れ
 
 ::::
 
-:::: {#page-10 .source-page}
+:::: {#page-11 .source-page}
 
 ::: {#ch01-folder-title .heading}
 **【作業手順①】　親フォルダーと章フォルダーを用意する**
@@ -426,7 +472,7 @@ Windowsのエクスプローラーを開き、Cドライブの直下に `work` �
 
 ::::
 
-:::: {#page-11 .source-page}
+:::: {#page-12 .source-page}
 
 ::: {#ch01-workspace-title .heading}
 **【作業手順②】　VS Codeでワークスペースを作成する**
@@ -482,7 +528,7 @@ VS Codeには、複数のフォルダーを1つの画面でまとめて管理で
 
 ::::
 
-:::: {#page-12 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch01-workspace-add-3 .paragraph}
 VS Codeのメニューから、［ファイル］→［フォルダーをワークスペースに追加］を選択してください。
@@ -538,7 +584,7 @@ VS Codeのメニューから、［ファイル］→［フォルダーをワー�
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch01-language-title .heading}
 **【作業手順③】　VS Codeの言語機能を確認する**
@@ -612,7 +658,7 @@ VS Codeに組み込まれたJavaScriptとTypeScriptの言語機能
 
 ::::
 
-:::: {#page-14 .source-page}
+:::: {#page-15 .source-page}
 
 ::: {#ch01-node-title .heading}
 **【作業手順④】　Node.jsをインストールする**
@@ -686,7 +732,7 @@ Node.js公式サイトで24系のWindowsインストーラー（.msi）を選ぶ
 
 ::::
 
-:::: {#page-15 .source-page}
+:::: {#page-16 .source-page}
 
 ::: {#ch01-terminal-open .step}
 **2．VS Codeのターミナルを開く**
@@ -732,7 +778,7 @@ Reactの開発では、ライブラリのインストールや開発サーバー
 
 ::::
 
-:::: {#page-16 .source-page}
+:::: {#page-17 .source-page}
 
 ::: {#ch01-terminal-version .step}
 **3．Node.jsとnpmのバージョンを確認する**
@@ -797,7 +843,7 @@ VS Codeでソースコードを作成し、Node.js上で開発ツールを動か
 
 ::::
 
-:::: {#page-17 .source-page}
+:::: {#page-18 .source-page}
 
 ::: {#ch01-vite-title .heading}
 1.3. Viteでプロジェクトを作成
@@ -839,7 +885,7 @@ Viteは、ReactなどのWebアプリケーションを効率よく開発する�
 
 ::::
 
-:::: {#page-18 .source-page}
+:::: {#page-19 .source-page}
 
 ::: {#ch01-vite-roles-intro .paragraph}
 Viteと、ひな形作成ツールである `create-vite` の役割は、次のとおりです。
@@ -893,7 +939,7 @@ Reactプロジェクトのひな形とは
 
 ::::
 
-:::: {#page-19 .source-page}
+:::: {#page-20 .source-page}
 
 ::: {#ch01-vite-body-title .heading}
 **【作業手順①】　ViteでReactプロジェクトを作成する**
@@ -989,7 +1035,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 ::::
 
-:::: {#page-20 .source-page}
+:::: {#page-21 .source-page}
 
 ::: {#ch01-vite-command-title .heading level="minor"}
 コマンドの意味
@@ -1047,7 +1093,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 ::::
 
-:::: {#page-21 .source-page}
+:::: {#page-22 .source-page}
 
 ::: {#ch01-vite-prompts-title .heading level="minor"}
 作成時に表示されるメッセージを確認する
@@ -1119,7 +1165,7 @@ Rolldownは、JavaScriptなどのファイルをまとめる処理に使用さ�
 
 ::::
 
-:::: {#page-22 .source-page}
+:::: {#page-23 .source-page}
 
 ::: {#ch01-vite-immediate .step}
 **3．ライブラリのインストールと起動確認**
@@ -1191,7 +1237,7 @@ Done. Now run:
 
 ::::
 
-:::: {#page-23 .source-page}
+:::: {#page-24 .source-page}
 
 ::: {#ch01-vite-files-title .heading}
 **【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
@@ -1221,7 +1267,7 @@ VS Codeのエクスプローラーで確認するReactの初期ファイル
 
 ::::
 
-:::: {#page-24 .source-page}
+:::: {#page-25 .source-page}
 
 ::: {#ch01-vite-file-roles-title .heading level="minor" keep-next="2"}
 主なファイルとフォルダーの役割
@@ -1267,7 +1313,7 @@ Reactの画面表示に関わる3つのファイル
 
 ::::
 
-:::: {#page-25 .source-page}
+:::: {#page-26 .source-page}
 
 ::: {#ch01-vite-stages-title .heading level="minor"}
 ひな形の作成とライブラリのインストールは別の作業
@@ -1351,7 +1397,7 @@ ReactやViteなど、プログラムの実行に必要なライブラリを取�
 
 ::::
 
-:::: {#page-26 .source-page}
+:::: {#page-27 .source-page}
 
 ::: {#ch01-install-title .heading}
 1.4. 依存ライブラリの導入
@@ -1405,7 +1451,7 @@ npmは、インターネットからライブラリを取得・管理するた�
 
 ::::
 
-:::: {#page-27 .source-page}
+:::: {#page-28 .source-page}
 
 ::: {#ch01-install-shopping-4 .paragraph}
 npmも、これと似たような仕組みです。
@@ -1461,7 +1507,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 ::::
 
-:::: {#page-28 .source-page}
+:::: {#page-29 .source-page}
 
 ::: {#ch01-install-first-title .heading}
 **【作業手順①】　npm installを実行する**
@@ -1539,7 +1585,7 @@ npm install 後の node_modules（確認するフォルダーを抜粋）
 
 ::::
 
-:::: {#page-29 .source-page}
+:::: {#page-30 .source-page}
 
 ::: {#ch01-install-extra-title .heading level="minor"}
 追加のライブラリをインストールする方法
@@ -1601,7 +1647,7 @@ npm install bootstrap
 
 ::::
 
-:::: {#page-30 .source-page}
+:::: {#page-31 .source-page}
 
 ::: {#ch01-install-bootstrap-check-heading .step}
 **2．インストール結果を確認する**
@@ -1643,7 +1689,7 @@ Bootstrapの追加コマンドと、登録・配置の確認箇所
 
 ::::
 
-:::: {#page-31 .source-page}
+:::: {#page-32 .source-page}
 
 ::: {#ch01-start-title .heading}
 1.5. 開発サーバーの起動と動作確認
@@ -1652,33 +1698,115 @@ Bootstrapの追加コマンドと、登録・配置の確認箇所
 ::: {#ch01-start-slide .slide layout="diagram" art="assets/slide-dev-server.png"}
 開発サーバーの起動と動作確認
 
-NPM スクリプト<br>
-`dev` の実行ボタンを押す
+NPMスクリプト<br>
+VS Codeから`dev`を実行
 
 開発サーバー<br>
-`Local` の URL を<br>ターミナルで確認する
+ViteがReactを動かす<br>（Node.js上で動作）
 
-ブラウザー<br>
-URL を開いて<br>商品管理画面を表示する
+Webブラウザー<br>
+URLにアクセスして<br>動作を確認する
 :::
 
 ::: {#ch01-start-intro-title .heading level="minor"}
-React のサンプルを手元の PC で起動する
+開発サーバーとは
 :::
 
-::: {#ch01-start-intro .paragraph}
-React の画面を手元の PC で確認するときは、Vite の**開発サーバー**を起動します。VS Code の **［Npm スクリプト］** には、`package.json` に登録された実行コマンドが表示されます。
+::: {#ch01-start-intro-1 .paragraph}
+前節では、`npm install` を実行し、Reactの開発に必要なライブラリをインストールしました。
 :::
+
+::: {#ch01-start-intro-2 .paragraph}
+これで、Reactアプリケーションを動かすための準備が整いました。
+:::
+
+::: {#ch01-start-intro-3 .paragraph}
+それでは、実際にReactの画面をWebブラウザーで表示してみましょう。
+:::
+
+::: {#ch01-start-intro-4 .paragraph}
+これまでのHTMLの学習では、作成したHTMLファイルをダブルクリックしてブラウザーで開くだけでも、画面を確認できました。
+:::
+
+::: {#ch01-start-intro-5 .paragraph}
+しかし、Reactでは、TypeScriptやTSXという、ブラウザーがそのままでは実行できない構文を使用します。
+:::
+
+::: {#ch01-start-intro-6 .paragraph}
+そのため、開発中はこれらのソースコードをブラウザーが理解できる形に変換し、配信する仕組みが必要になります。
+:::
+
+::: {#ch01-start-intro-7 .paragraph}
+その役割を担当するのが、**開発サーバー**です。
+:::
+
+::: {#ch01-start-intro-8 .paragraph}
+本研修では、1.3節で紹介した**Viteの開発サーバー**を使用します。
+:::
+
+::: {#ch01-start-intro-9 .paragraph}
+Viteの開発サーバーを起動すると、自分のPC上でReactアプリケーションを動かし、ブラウザーから画面を確認できるようになります。
+:::
+
+::::
+
+:::: {#page-33 .source-page}
 
 ::: {#ch01-start-sidebar .heading}
-**【作業手順①】　VS Code で NPM スクリプトを表示する**
+**【作業手順①】　VS CodeでNPMスクリプトを表示する**
 :::
 
-::: {#ch01-start-menu .paragraph numbered="true"}
-1．VS Code の［エクスプローラー］を開き、見出しの右にある **［…］** をクリックします。表示されたメニューで **［Npm スクリプト］** を選び、チェックを付けます。
+::: {#ch01-start-menu-1 .paragraph}
+それでは、開発サーバーを起動してみましょう。
 :::
 
-![エクスプローラーのメニューでNPMスクリプトを表示する](assets/vscode-npm-panel-menu.png){#ch01-npm-menu}
+::: {#ch01-start-menu-2 .paragraph}
+Viteの開発サーバーは、ターミナルで次のコマンドを実行することで起動できます。
+:::
+
+::: {#ch01-start-menu-4 .code}
+```powershell
+npm run dev
+```
+:::
+
+::: {#ch01-start-menu-6 .paragraph}
+このコマンドの `dev` は、`package.json` に登録された開発サーバー起動用のスクリプト名です。
+:::
+
+::: {#ch01-start-menu-7 .paragraph}
+ただし、VS Codeには、このコマンドを毎回入力しなくても、マウス操作で実行できる便利な機能があります。
+:::
+
+::: {#ch01-start-menu-8 .paragraph}
+それが、**NPMスクリプト**です。
+:::
+
+::: {#ch01-start-menu-9 .paragraph}
+本研修では、この機能を利用して開発サーバーを起動します。
+:::
+
+::: {#ch01-start-menu-10 .step}
+**1．配布サンプルを開く**
+:::
+
+::: {#ch01-start-menu-11 .paragraph}
+VS Codeで `react-basic.code-workspace` を開き、`ch01-setup` フォルダーが表示されていることを確認してください。
+:::
+
+::: {#ch01-start-menu-12 .step}
+**2．NPMスクリプトを表示する**
+:::
+
+::: {#ch01-start-menu-13 .paragraph}
+VS Codeの左側にある［エクスプローラー］を開きます。
+:::
+
+::: {#ch01-start-menu-14 .paragraph}
+見出しの右側にある［…］をクリックし、表示されたメニューから［Npm スクリプト］を選択してください。
+:::
+
+![［…］メニューの［Npm スクリプト］](assets/vscode-npm-panel-menu.png){#ch01-npm-menu}
 
 ::: {#ch01-npm-menu-caption .paragraph}
 エクスプローラーの［…］メニューにある［Npm スクリプト］
@@ -1686,215 +1814,440 @@ React の画面を手元の PC で確認するときは、Vite の**開発サー
 
 ::::
 
-:::: {#page-32 .source-page}
+:::: {#page-34 .source-page}
 
 ::: {#ch01-start-run-title .heading}
 **【作業手順②】　開発サーバーを起動する**
 :::
 
-::: {#ch01-start-run .paragraph numbered="true"}
-1．エクスプローラーの下にある［Npm スクリプト］を開きます。章が並ぶ場合は `ch01-setup` を選び、`package.json` の項目を展開します。`dev` の行にマウスポインターを合わせ、右端の **［▷］（実行）** をクリックします。
+::: {#ch01-start-run-1 .step}
+**1．devスクリプトを実行する**
 :::
 
-![NPMスクリプトのdev行に表示される実行ボタン](assets/vscode-npm-dev.png){#ch01-npm-dev}
+::: {#ch01-start-run-2 .paragraph}
+VS Codeのエクスプローラー内に表示された［NPMスクリプト］を開きます。
+:::
+
+::: {#ch01-start-run-3 .paragraph}
+`ch01-setup` の `package.json` を展開すると、次のような項目が表示されます。
+:::
+
+::: {#ch01-start-run-4-1 .paragraph}
+● `dev`：開発サーバーを起動する
+:::
+
+::: {#ch01-start-run-4-2 .paragraph}
+● `build`：本番公開用のファイルを生成する
+:::
+
+::: {#ch01-start-run-4-3 .paragraph}
+● `preview`：ビルドしたファイルをローカルで確認する
+:::
+
+::: {#ch01-start-run-5 .paragraph}
+今回は開発サーバーを起動するため、**`dev` の右側にある［▷］（実行ボタン）をクリック**してください。
+:::
+
+![NPMスクリプトのdev行の実行ボタン](assets/vscode-npm-dev.png){#ch01-npm-dev}
 
 ::: {#ch01-npm-dev-caption .paragraph}
-`dev` の行の右端に表示される実行ボタン
+devの行の右端に表示される実行ボタン（画面の一部）
 :::
 
-::: {#ch01-start-location .paragraph numbered="true"}
-2．VS Code の画面下部にターミナルが開きます。**`Local` の行に表示された URL** をコピーし、ブラウザーのアドレスバーに貼り付けて［Enter］を押します。
+::: {#ch01-start-ready-1 .step}
+**2．開発サーバーが起動したことを確認する**
 :::
 
-![Viteを起動しLocalのURLが表示されたターミナル](assets/vscode-vite-server.png){#ch01-start-terminal}
+::: {#ch01-start-ready-2 .paragraph}
+実行ボタンをクリックすると、VS Codeの画面下部にターミナルが開き、Viteの開発サーバーが起動します。
+:::
+
+::: {#ch01-start-ready-3 .paragraph}
+正常に起動すると、次のようなURLが表示されます。
+:::
+
+::: {#ch01-start-ready-5 .code}
+```text
+Local: http://localhost:5173/
+```
+:::
+
+::: {#ch01-start-ready-7 .paragraph}
+このURLが表示されれば、開発サーバーの起動は完了です。
+:::
+
+![Viteを起動したターミナルに表示されるLocalのURL](assets/vscode-vite-server.png){#ch01-start-terminal}
 
 ::: {#ch01-start-terminal-caption .paragraph}
-`Local` の行に表示されたアドレスをブラウザーで開く
-:::
-
-::: {#ch01-start-running .paragraph}
-確認中は開発サーバーを動かしておきます。コマンドで操作する場合は、`ch01-setup` のターミナルで `npm run dev` を実行しても同じように起動できます。
-:::
-
-::::
-
-:::: {#page-33 .source-page}
-
-::: {#ch01-start-verify-title .heading}
-**【作業手順③】　商品データを変更して表示を確認する**
-:::
-
-::: {#ch01-start-verify .paragraph numbered="true"}
-1．ブラウザーに「商品管理システム」と表示され、商品名が「ノート」、価格が「250 円」であることを確認します。
-:::
-
-::: {#ch01-start-edit .paragraph numbered="true"}
-2．VS Code のエクスプローラーで［src］を展開し、［product.ts］を開きます。商品名を表す **`name`** の値を `'ノート'` から `'ノート１'` に変更し、［Ctrl］＋［S］で保存します。
-:::
-
-::: {#ch01-product-update-code .code filename="ch01-setup/src/product.ts"}
-```typescript
-export const product = {
-  id: 1,
-  name: 'ノート１',
-  price: 250,
-  category: '文具',
-}
-```
-:::
-
-::: {#ch01-start-check .paragraph numbered="true"}
-3．ブラウザーに戻り、「商品名」が **「ノート１」** に変わったことを確認します。Vite の開発サーバーは保存を検知し、ブラウザーに変更を反映します。
-:::
-
-![変更した商品データが商品名欄に反映されたブラウザー画面](assets/product-data-updated.png){#ch01-product-update-screen}
-
-::: {#ch01-product-update-caption .paragraph}
-商品名の欄に、変更後の「ノート１」が表示された画面
-:::
-
-::: {#ch01-product-update-restore .paragraph}
-React の画面を組み立てる `App.tsx` は、`product.name` を読み取って「商品名」の欄に表示します。確認後は、`product.ts` の `name` を `'ノート'` に戻して保存します。
-:::
-
-::: {#ch01-start-stop .paragraph numbered="true"}
-4．Vite を起動したターミナルで［Ctrl］＋［C］を押します。終了の確認が出た場合は `Y` を入力して［Enter］を押します。プロンプトが表示されれば停止しています。
-:::
-
-::::
-
-:::: {#page-34 .source-page}
-
-::: {#ch01-files-title .heading}
-1.6. フォルダーと主要ファイルの役割
-:::
-
-::: {#ch01-files-slide .slide layout="diagram" art="assets/slide-source-files.png"}
-フォルダーと主要ファイルの役割
-
-`index.html`<br>
-画面を表示する<br>場所を用意する
-
-`main.tsx`<br>
-`App` を HTML に<br>描画する
-
-`App.tsx`<br>
-`product.ts` のデータを<br>画面に表示する
-:::
-
-::: {#ch01-index-title .heading level="minor"}
-ブラウザーが最初に読み込む index.html
-:::
-
-::: {#ch01-index-body .paragraph}
-配布サンプル `ch01-setup` の `index.html` を開きます。9行目の **`<div id="root">`** は、React の画面を表示する場所です。10行目の `script` 要素で、画面表示を始める **`src/main.tsx`** を読み込みます。
-:::
-
-::: {#ch01-index-code .code filename="ch01-setup/index.html"}
-```html
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>商品管理システム</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-```
+Localの行に表示された接続先
 :::
 
 ::::
 
 :::: {#page-35 .source-page}
 
-::: {#ch01-main-title .heading level="minor"}
-画面の表示を始める main.tsx
+::: {#ch01-note-localhost .training-note}
+【補足】localhostとは
+
+開発サーバーを起動すると、通常、次のようなURLが表示されます。
+
+`http://localhost:5173/`
+
+ここで、`localhost` は**自分自身のPC**を意味します。
+
+つまり、このURLはインターネット上に公開されたWebサイトではなく、自分のPCで起動している開発サーバーに接続するためのアドレスです。
+
+また、`5173` はポート番号と呼ばれ、PC上で動作しているプログラムの接続先を区別するための番号です。
+
+Viteでは通常5173番が使用されますが、すでに使用されている場合は5174番など、別の番号になることもあります。
+
+そのため、ブラウザーでアクセスするときは、**実際にターミナルに表示されたURLを使用してください。**
 :::
 
-::: {#ch01-main-body .paragraph}
-`src/main.tsx` の2行目は、画面を組み立てる **`App`** を読み込みます。5行目は `index.html` にある `id="root"` の要素を取得します。7行目の `render(<App />)` で、その場所に `App` の内容を表示します。
+::: {#ch01-note-dev-command .training-note}
+【補足】コマンドから起動する方法
+
+NPMスクリプトの実行ボタンを使用せず、ターミナルに直接 `npm run dev` と入力しても、同じように開発サーバーを起動できます。
+
+実際の開発でもよく使うコマンドなので、覚えておきましょう。
 :::
 
-::: {#ch01-main-code .code filename="ch01-setup/src/main.tsx"}
-```tsx
-import { createRoot } from 'react-dom/client'
-import App from './App'
-import './style.css'
-
-const root = document.getElementById('root')
-if (root) {
-  createRoot(root).render(<App />)
-}
-```
+::: {#ch01-start-verify-title .heading}
+**【作業手順③】　ブラウザーで初期画面を確認する**
 :::
 
-::: {#ch01-product-title .heading level="minor"}
-商品1件のデータを用意する product.ts
+::: {#ch01-verify-initial-1 .paragraph}
+開発サーバーが起動したら、実際にReactアプリケーションへアクセスしてみましょう。
 :::
 
-::: {#ch01-product-body .paragraph}
-`src/product.ts` には、商品名、価格、カテゴリなどをまとめた**商品データ**が入っています。`export` を付けた **`product`** は、次ページの `App.tsx` から読み込めます。
+::: {#ch01-verify-initial-2 .step}
+**1．Webブラウザーを開く**
 :::
 
-::: {#ch01-product-code .code filename="ch01-setup/src/product.ts"}
-```javascript
-export const product = {
-  id: 1,
-  name: 'ノート',
-  price: 250,
-  category: '文具',
-}
-```
+::: {#ch01-verify-initial-3 .paragraph}
+Microsoft EdgeなどのWebブラウザーを起動してください。
+:::
+
+::: {#ch01-verify-initial-4 .paragraph}
+先ほどターミナルに表示されたURLを、アドレスバーに入力します。
+:::
+
+::: {#ch01-verify-initial-5 .paragraph}
+例：`http://localhost:5173/`
 :::
 
 ::::
 
 :::: {#page-36 .source-page}
 
-::: {#ch01-app-title .heading level="minor"}
-商品管理の画面を組み立てる App.tsx
+::: {#ch01-verify-initial-6 .step}
+**2．Reactの初期画面を確認する**
 :::
 
-::: {#ch01-app-body .paragraph}
-`src/App.tsx` の1行目は、`product.ts` の商品データを読み込みます。5行目からの HTML に似た記述を **JSX** と呼びます。6行目がページの見出しです。11行目の **`{product.name}`** により、画面の「商品名」の欄に「ノート」が表示されます。価格とカテゴリも同じ商品データから読み取ります。
+::: {#ch01-verify-initial-7 .paragraph}
+正常に起動すると、次のような画面が表示されます。
 :::
 
-::: {#ch01-app-code .code filename="ch01-setup/src/App.tsx"}
+::: {#ch01-verify-initial-9 .paragraph keep-lines="true"}
+React開発入門<br>
+Reactの動作確認をしています<br>
+現在の学習：第1章
+:::
+
+::: {#ch01-verify-initial-11 .paragraph}
+ここで、実際の画面を作成しているソースコードを確認してみましょう。
+:::
+
+::: {#ch01-app-read-1 .step}
+**3．App.tsxのソースコードを確認する**
+:::
+
+::: {#ch01-app-read-2 .paragraph}
+VS Codeのエクスプローラーから、次のファイルを開いてください。
+:::
+
+::: {#ch01-app-read-3 .paragraph}
+`ch01-setup/src/App.tsx`
+:::
+
+::: {#ch01-app-read-4 .paragraph}
+このファイルには、次のようなソースコードが記述されています。
+:::
+
+::: {#ch01-app-read-6 .code filename="ch01-setup/src/App.tsx"}
 ```tsx
-import { product } from './product'
-
 export default function App() {
+  // 画面に表示するデータ
+  const courseName = 'React開発入門'
+  const message = 'Reactの動作確認をしています'
+  const lessonNumber = 1
+
   return (
     <main>
-      <h1>商品管理システム</h1>
-      <p>第1章の動作確認</p>
-      <dl aria-label="サンプル商品">
-        <div>
-          <dt>商品名</dt>
-          <dd>{product.name}</dd>
-        </div>
-        <div>
-          <dt>価格</dt>
-          <dd>{product.price.toLocaleString('ja-JP')} 円</dd>
-        </div>
-        <div>
-          <dt>カテゴリ</dt>
-          <dd>{product.category}</dd>
-        </div>
-      </dl>
+      <h1>{courseName}</h1>
+      <p>{message}</p>
+      <p>現在の学習：第{lessonNumber}章</p>
     </main>
   )
 }
 ```
 :::
 
+::: {#ch01-app-read-8 .paragraph}
+※この段階では、関数や `return` の詳しい意味を理解する必要はありません。
+:::
+
 ::::
 
 :::: {#page-37 .source-page}
+
+::: {#ch01-app-read-9 .paragraph}
+まずは、**上側に書かれた変数の値が、下側のHTMLに似た部分で使用されている**ことに注目してください。
+:::
+
+::: {#ch01-app-read-10 .paragraph}
+例えば、次のように変数を定義しています。
+:::
+
+::: {#ch01-app-read-12 .code filename="ch01-setup/src/App.tsx"}
+```tsx
+const courseName = 'React開発入門'
+```
+:::
+
+::: {#ch01-app-read-14 .paragraph}
+そして、画面を表示する部分には、次のように記述しています。
+:::
+
+::: {#ch01-app-read-16 .code filename="ch01-setup/src/App.tsx"}
+```tsx
+<h1>{courseName}</h1>
+```
+:::
+
+::: {#ch01-app-read-18 .paragraph}
+`{courseName}` と記述すると、変数 `courseName` に格納されている「React開発入門」という文字列が画面に表示されます。
+:::
+
+![App.tsxの3つの変数とWebブラウザーの初期表示](assets/vite-app-variables.svg){#ch01-app-variables}
+
+::: {#ch01-app-variables-caption .paragraph}
+App.tsxの変数とブラウザーの初期表示の対応
+:::
+
+::: {#ch01-app-values-1 .paragraph}
+ほかの変数も同様です。
+:::
+
+::: {#ch01-app-values-2 .table column-widths="22 39 39"}
+| 変数 | 格納されている値 | 画面に表示される内容 |
+| --- | --- | --- |
+| `courseName` | `'React開発入門'` | React開発入門 |
+| `message` | `'Reactの動作確認をしています'` | Reactの動作確認をしています |
+| `lessonNumber` | `1` | 現在の学習：第1章 |
+:::
+
+::::
+
+:::: {#page-38 .source-page}
+
+::: {#ch01-app-values-3 .paragraph}
+このように、**Reactでは、JavaScriptやTypeScriptの変数をHTMLに似た記述の中で使用できます。**
+:::
+
+::: {#ch01-app-values-4 .paragraph}
+Reactで使用する、このHTMLに似た記述方法を**JSX**と呼びます。本研修ではTypeScriptを使用するため、JSXを記述するファイルには `.tsx` という拡張子を使用します。
+:::
+
+::: {#ch01-app-values-5 .paragraph}
+詳しい構文は第2章で学習しますので、ここでは「変数の値が画面の表示に使われている」という関係を理解できれば十分です。
+:::
+
+::: {#ch01-hmr-title .heading level="minor"}
+Viteは、保存した変更を自動的に画面へ反映できる
+:::
+
+::: {#ch01-hmr-1 .paragraph}
+ここまでで、Reactの変数と画面の表示がどのようにつながっているのかを確認しました。
+:::
+
+::: {#ch01-hmr-2 .paragraph}
+では、**ソースコードに書かれた変数の値を変更すると、ブラウザーの画面はどうなるのでしょうか。**
+:::
+
+::: {#ch01-hmr-3 .paragraph}
+Viteの開発サーバーには、ソースコードの変更を検知し、ブラウザーの表示へ素早く反映する機能があります。
+:::
+
+::: {#ch01-hmr-4 .paragraph}
+このような仕組みを**HMR（Hot Module Replacement：ホットモジュールリプレースメント）**と呼びます。
+:::
+
+::: {#ch01-hmr-5 .paragraph}
+開発サーバーを起動していれば、ソースコードを修正して保存するだけで、通常はブラウザーの更新ボタンを押さなくても表示が更新されます。
+:::
+
+::: {#ch01-hmr-6 .paragraph}
+それでは、実際に確認してみましょう。
+:::
+
+::::
+
+:::: {#page-39 .source-page}
+
+::: {#ch01-edit-title .heading}
+**【作業手順④】　変数の値を変更し、画面への反映を確認する**
+:::
+
+::: {#ch01-edit-text-1 .step}
+**1．App.tsxの変数を変更する**
+:::
+
+::: {#ch01-edit-text-2 .paragraph}
+引き続き、`ch01-setup/src/App.tsx` を開いてください。
+:::
+
+::: {#ch01-edit-text-3 .paragraph}
+先ほど確認した、次の変数に注目します。
+:::
+
+::: {#ch01-edit-text-4 .paragraph}
+変更前：
+:::
+
+::: {#ch01-edit-text-6 .code filename="ch01-setup/src/App.tsx" highlight-lines="1-1"}
+```tsx
+const message = 'Reactの動作確認をしています'
+```
+:::
+
+::: {#ch01-edit-text-8 .paragraph}
+変更後：
+:::
+
+::: {#ch01-edit-text-10 .code filename="ch01-setup/src/App.tsx" highlight-lines="1-1"}
+```tsx
+const message = 'ソースコードの変更が反映されました！'
+```
+:::
+
+::: {#ch01-edit-text-12 .paragraph}
+変更できたら、［Ctrl］＋［S］でファイルを保存してください。
+:::
+
+::: {#ch01-edit-text-13 .paragraph}
+なお、画面表示部分の次のコードは、変更する必要はありません。
+:::
+
+::: {#ch01-edit-text-15 .code filename="ch01-setup/src/App.tsx"}
+```tsx
+<p>{message}</p>
+```
+:::
+
+::: {#ch01-edit-result-1 .step}
+**2．ブラウザーで表示を確認する**
+:::
+
+::: {#ch01-edit-result-2 .paragraph}
+ソースコードを保存したら、ブラウザーに戻ってください。
+:::
+
+::: {#ch01-edit-display .table column-widths="50 50"}
+| 変更前： | 変更後： |
+| --- | --- |
+| React開発入門 | React開発入門 |
+| Reactの動作確認をしています | ソースコードの変更が反映されました！ |
+| 現在の学習：第1章 | 現在の学習：第1章 |
+:::
+
+::::
+
+:::: {#page-40 .source-page}
+
+![messageの値を書き換える前後の実画面](assets/vite-app-update.svg){#ch01-app-update}
+
+::: {#ch01-app-update-caption .paragraph}
+messageの値を変更して保存すると、ブラウザーの表示に反映される
+:::
+
+::: {#ch01-edit-result-11 .paragraph}
+このように、変数 `message` の値を書き換えて保存しただけで、画面に表示される文字列も変わりました。
+:::
+
+::: {#ch01-edit-result-12 .paragraph}
+しかも、**`<p>{message}</p>` の部分は、何も修正していません。**
+:::
+
+::: {#ch01-edit-result-13 .paragraph}
+これは、Reactの画面に変数の値を使用しているため、ソースコードの変更後に画面が再表示されると、新しい値が使用されるからです。
+:::
+
+::: {#ch01-edit-result-14 .paragraph}
+そして、ブラウザーの更新操作をしなくても変更を確認できたのは、Viteの開発サーバーがファイルの保存を検知して、表示に反映してくれたためです。
+:::
+
+::: {#ch01-note-hmr .training-note}
+【補足】今回の画面更新について
+
+今回は、**ソースコードを書き換えて保存した際の画面更新**を確認しました。
+
+実際のReactアプリケーションでは、ボタンのクリックなどによって実行中のデータを変更し、画面を更新することもできます。
+
+そのためには、`useState` などのReactの仕組みを使用します。
+
+こちらは、第2章で詳しく学習します。
+:::
+
+::::
+
+:::: {#page-41 .source-page}
+
+::: {#ch01-stop-title .heading}
+**【作業手順⑤】　開発サーバーを停止する**
+:::
+
+::: {#ch01-stop-1 .paragraph}
+最後に、起動した開発サーバーを停止しましょう。使わない開発サーバーを起動したままにすると、複数のサーバーが同時に動作し、PCの負荷が増えたり、使用しているポート番号が分かりにくくなったりする場合があります。
+:::
+
+::: {#ch01-stop-2 .paragraph}
+停止したいサーバーのターミナルを選択し、**［ターミナルの強制終了］（ごみ箱のアイコン）**をクリックしてください。ターミナルが閉じたら、ブラウザーでページを再読み込みし、開発サーバーに接続できなくなったことを確認してください。
+:::
+
+![VS Codeのターミナルを終了するボタン](assets/vscode-stop-server.png){#ch01-stop-terminal}
+
+::: {#ch01-stop-terminal-caption .paragraph}
+開発サーバーを起動したターミナルの終了ボタン
+:::
+
+::: {#ch01-stop-confirm-1 .paragraph}
+なお、**開発サーバーを停止しても、これまでに作成・編集したソースコードが削除されることはありません。**
+:::
+
+::: {#ch01-stop-confirm-2 .paragraph}
+再び動作を確認したい場合は、NPMスクリプトの `dev` を実行すれば、同じように起動できます。
+:::
+
+::: {#ch01-start-points .section-points}
+この節のポイント
+
+● **Viteの開発サーバー**を使用すると、自分のPC上でReactの画面を動かせる。
+
+● **`npm run dev`** またはVS CodeのNPMスクリプトから、開発サーバーを起動できる。
+
+● **`localhost`** は、自分自身のPCを意味する。
+
+● Reactでは、**`{変数名}`** を使用して変数の値を画面に表示できる。
+
+● 開発サーバーの起動中は、ソースコードを保存すると変更がブラウザーへ自動的に反映される。
+
+● **使わない時は、サーバーを停止すること。**
+:::
+
+::::
+
+:::: {#page-42 .source-page}
 
 ::: {#ch01-summary-title .heading}
 章のまとめ
@@ -1903,17 +2256,31 @@ export default function App() {
 ::: {#ch01-summary-slide .slide layout="summary"}
 章のまとめ
 
-■ 開発環境の準備とViteによるプロジェクト作成
+■ ReactとSPAの違い
 
-■ 章ごとの依存ライブラリの導入
+■ VS Code・Node.js・npmの役割
 
-■ NPMスクリプトによる開発サーバーの起動と動作確認
+■ Viteを使ったReactプロジェクトの作成
 
-■ ブラウザーによるファイルの読み込みと商品データの表示
+■ npmによる依存ライブラリの導入
+
+■ 開発サーバーの起動と、変数の変更を画面で確認
 :::
 
-::: {#ch01-summary-body .paragraph}
-この章では、React の開発環境を準備し、Vite でひな形を作成しました。配布サンプルを VS Code の NPM スクリプトから起動し、商品管理システムが表示されることを確かめました。第2章では、商品を一覧に表示し、フォームの入力値を扱います。
+::: {#ch01-summary-1 .paragraph}
+この章では、Reactで開発を始めるための基本的な流れを学習しました。
+:::
+
+::: {#ch01-summary-2 .paragraph}
+まず、従来のJavaScriptとReactの画面更新の違いや、SPAの特徴を確認しました。次に、VS Code、Node.js、npmの役割を理解し、Viteを使ってReactとTypeScriptのプロジェクトのひな形を作成しました。
+:::
+
+::: {#ch01-summary-3 .paragraph}
+さらに、`npm install` を使って必要なライブラリを導入し、Viteの開発サーバーからReactの画面を表示しました。最後に、`App.tsx` の変数の値を変更して保存すると、ブラウザーの表示にも変更が反映されることを確認しました。
+:::
+
+::: {#ch01-summary-4 .paragraph}
+次の第2章では、今回使用した `{変数名}` による画面表示を出発点として、Reactの基本構文と入力処理を学習します。
 :::
 
 ::::
