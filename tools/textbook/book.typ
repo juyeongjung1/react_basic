@@ -354,27 +354,26 @@
     #if tail > 0pt {v(tail)}
   ]
 })]
-#let cover-content(number, title, goal_title, goals, intro: none) = {
+#let cover-content(number, title, goal_title, goals, wrap-goals: false) = {
   at(461.38, 0.12, rect(width: 132.26pt, height: 127.7pt, stroke: none, fill: rgb(91.4%, 29.4%, 13.3%)))
   at(513.7, 88.46, text(font: "Arial", weight: "black", size: 72pt, fill: white, top-edge: 0pt, bottom-edge: 0pt, number))
   at(85.104, 328.25, text(font: "Meiryo UI", weight: "bold", size: 24pt, top-edge: 0pt, bottom-edge: 0pt, title))
   at(83.664, 333.89, rect(width: 428.11pt, height: 0.48pt, fill: black, stroke: none))
   at(85.104, 372.17, text(font: "Meiryo UI", weight: "bold", size: 18pt, top-edge: 0pt, bottom-edge: 0pt, goal_title))
-  if intro == none {
+  if wrap-goals {
+    at(96.144, 389.62, block(width: 415pt)[
+      #set text(font: "Meiryo UI", size: 14.04pt, weight: "bold")
+      #set par(leading: 5pt, first-line-indent: 0pt, spacing: 0pt)
+      #stack(spacing: 9.97pt, ..goals.map(goal => grid(columns: (28.04pt, 1fr), [■], [#goal])))
+    ])
+  } else {
     for (i, goal) in goals.enumerate() {
       at(96.144, 401.69 + i * 24.01, text(font: "Meiryo UI", weight: "bold", size: 14.04pt, top-edge: 0pt, bottom-edge: 0pt)[■#h(14pt)#goal])
     }
-  } else {
-    at(85.104, 398, text(font: "MS PMincho", size: 11.04pt, top-edge: 0pt, bottom-edge: 0pt, intro))
-    at(96.144, 415, block(width: 415pt)[
-      #set text(font: "Meiryo UI", size: 14.04pt, weight: "bold")
-      #set par(leading: 5pt, first-line-indent: 0pt, spacing: 0pt)
-      #stack(spacing: 9pt, ..goals.map(goal => grid(columns: (28pt, 1fr), [■], [#goal])))
-    ])
   }
 }
-#let cover(number, title, goal_title, goals, intro: none) = at(-85.104, -86,
-  box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals, intro: intro)])
+#let cover(number, title, goal_title, goals, wrap-goals: false) = at(-85.104, -86,
+  box(width: 595.32pt, height: 841.92pt)[#cover-content(number, title, goal_title, goals, wrap-goals: wrap-goals)])
 #let native-cover(body) = at(-85.104, -86, box(width: 595.32pt, height: 841.92pt)[#body])
 #let course-cover(title, number, subtitle) = native-cover[
   #set text(font: "Meiryo UI", weight: "bold", top-edge: 0pt, bottom-edge: 0pt)

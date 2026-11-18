@@ -4,6 +4,7 @@
   "first_page": 1,
   "last_page": 19,
   "cover_mode": "classic",
+  "cover_wrap_goals": true,
   "illustrations": {
     "ch02-layout-diagram": {
       "caption_id": "ch02-layout-diagram-caption",

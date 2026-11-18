@@ -394,10 +394,8 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         title = next(value for _, value in cover_nodes if value.startswith("第"))
         goal_title = next(value for _, value in cover_nodes if "目標" in value)
         goals = [value.lstrip("◼■ ") for _, value in cover_nodes if value.startswith("◼")]
-        intro = next((value for ident, value in cover_nodes
-                      if nodes[ident]['attrs'].get('cover-role') == 'goal-intro'), None)
-        intro_option = f', intro: {q(intro)}' if intro else ''
-        commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},){intro_option})', '#pagebreak()']
+        wrap = str(config.get('cover_wrap_goals', False)).lower()
+        commands += [f'#cover({q(number)}, {q(title)}, {q(goal_title)}, ({", ".join(q(v) for v in goals)},), wrap-goals: {wrap})', '#pagebreak()']
     elif config.get('cover_mode') == 'introduction':
         commands += [f'#introduction-cover({q(cover_nodes[0][1])})', '#pagebreak()']
     elif config.get('cover_mode') == 'course':
