@@ -108,7 +108,7 @@ XXXX-T-01
 2.4. イベント処理
 :::
 
-::: {#contents-ch02-section-5 .contents-entry}
+::: {#contents-ch02-section-5 .contents-entry target="02:ch02-stock-title"}
 2.5. 条件に応じた表示
 :::
 
