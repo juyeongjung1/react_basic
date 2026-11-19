@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="398" height="130" viewBox="0 0 398 130">
+  <text x="7" y="14" font-size="10.2" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">取り出した商品</text>
+  <text x="113" y="14" font-size="10.5" fill="#205c84" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">JSX（key={product.id}）</text>
+  <text x="284" y="14" font-size="10.2" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">画面のリスト</text>
+  <rect x="276" y="20" width="118" height="106" rx="5" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <rect x="276" y="20" width="118" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <rect x="282" y="26" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
+  <rect x="288" y="26" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
+  <rect x="298" y="23" width="90" height="10" rx="3" fill="#ffffff" stroke="#c8d6de" stroke-width="0.8"/>
+  <text x="302" y="30.6" font-size="6.8" fill="#415b6c" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">localhost:5173</text>
+  <rect x="4" y="38" width="82" height="20" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="45" y="52" font-size="10.0" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">商品101</text>
+  <path d="M 88 48 L 102.7 48.0" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 107 48 L 102.70 45.60 L 102.70 50.40 Z" fill="#205c84"/>
+  <rect x="109" y="38" width="147" height="20" rx="5" fill="#e7f3ee" stroke="#b3ccbf" stroke-width="0.8"/>
+  <text x="115" y="51.5" font-size="8.4" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">&lt;li&gt;ノート&lt;/li&gt;</text>
+  <rect x="215" y="41" width="36" height="14" rx="3" fill="#ffffff" stroke="#adcabe" stroke-width="0.8"/>
+  <text x="233" y="50.9" font-size="7.1" fill="#22655a" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=101</text>
+  <path d="M 258 48 L 270.7 48.0" stroke="#22655a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 275 48 L 270.70 45.60 L 270.70 50.40 Z" fill="#22655a"/>
+  <rect x="287" y="45.6" width="4" height="4" rx="2" fill="#183449" stroke="none" stroke-width="0.8"/>
+  <text x="297" y="51.6" font-size="10.7" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">ノート</text>
+  <rect x="4" y="67" width="82" height="20" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="45" y="81" font-size="10.0" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">商品102</text>
+  <path d="M 88 77 L 102.7 77.0" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 107 77 L 102.70 74.60 L 102.70 79.40 Z" fill="#205c84"/>
+  <rect x="109" y="67" width="147" height="20" rx="5" fill="#e7f3ee" stroke="#b3ccbf" stroke-width="0.8"/>
+  <text x="115" y="80.5" font-size="8.4" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">&lt;li&gt;ボールペン&lt;/li&gt;</text>
+  <rect x="215" y="70" width="36" height="14" rx="3" fill="#ffffff" stroke="#adcabe" stroke-width="0.8"/>
+  <text x="233" y="79.9" font-size="7.1" fill="#22655a" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=102</text>
+  <path d="M 258 77 L 270.7 77.0" stroke="#22655a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 275 77 L 270.70 74.60 L 270.70 79.40 Z" fill="#22655a"/>
+  <rect x="287" y="74.6" width="4" height="4" rx="2" fill="#183449" stroke="none" stroke-width="0.8"/>
+  <text x="297" y="80.6" font-size="10.7" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">ボールペン</text>
+  <rect x="4" y="96" width="82" height="20" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="45" y="110" font-size="10.0" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">商品103</text>
+  <path d="M 88 106 L 102.7 106.0" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 107 106 L 102.70 103.60 L 102.70 108.40 Z" fill="#205c84"/>
+  <rect x="109" y="96" width="147" height="20" rx="5" fill="#e7f3ee" stroke="#b3ccbf" stroke-width="0.8"/>
+  <text x="115" y="109.5" font-size="8.4" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">&lt;li&gt;消しゴム&lt;/li&gt;</text>
+  <rect x="215" y="99" width="36" height="14" rx="3" fill="#ffffff" stroke="#adcabe" stroke-width="0.8"/>
+  <text x="233" y="108.9" font-size="7.1" fill="#22655a" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=103</text>
+  <path d="M 258 106 L 270.7 106.0" stroke="#22655a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 275 106 L 270.70 103.60 L 270.70 108.40 Z" fill="#22655a"/>
+  <rect x="287" y="103.6" width="4" height="4" rx="2" fill="#183449" stroke="none" stroke-width="0.8"/>
+  <text x="297" y="109.6" font-size="10.7" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">消しゴム</text>
+</svg>

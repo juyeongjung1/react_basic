@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="365" height="164" viewBox="0 0 365 164">
+  <rect x="3" y="2" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="12" y="17" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">① productsから1件目の商品を取り出す</text>
+  <rect x="271" y="5" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="312.5" y="16.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20行目</text>
+  <path d="M 182.5 24 L 182.5 24.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 182.5 29 L 184.90 24.70 L 180.10 24.70 Z" fill="#205c84"/>
+  <rect x="3" y="30" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="12" y="45" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">② productに商品データが入る</text>
+  <rect x="271" y="33" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="312.5" y="44.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20行目</text>
+  <path d="M 182.5 52 L 182.5 52.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 182.5 57 L 184.90 52.70 L 180.10 52.70 Z" fill="#205c84"/>
+  <rect x="3" y="58" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="12" y="73" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">③ trとtdに値を当てはめる</text>
+  <rect x="271" y="61" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="312.5" y="72.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">22〜24行目</text>
+  <path d="M 182.5 80 L 182.5 80.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 182.5 85 L 184.90 80.70 L 180.10 80.70 Z" fill="#205c84"/>
+  <rect x="3" y="86" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="12" y="101" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">④ テーブルに1行追加される</text>
+  <rect x="271" y="89" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="312.5" y="100.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">21〜25行目</text>
+  <path d="M 182.5 108 L 182.5 108.7" stroke="#22655a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 182.5 113 L 184.90 108.70 L 180.10 108.70 Z" fill="#22655a"/>
+  <rect x="3" y="114" width="359" height="22" rx="5" fill="#e7f3ee" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="12" y="129" font-size="10.15" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">⑤ 配列の残りの商品についても同じ処理を繰り返す</text>
+  <rect x="271" y="117" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
+  <text x="312.5" y="128.5" font-size="9.4" fill="#22655a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20〜26行目</text>
+  <rect x="103" y="141" width="159" height="21" rx="4" fill="#22655a" stroke="none" stroke-width="0.8"/>
+  <text x="182.5" y="155.5" font-size="10.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">配列3件 → テーブル3行</text>
+</svg>

@@ -112,7 +112,7 @@ XXXX-T-01
 2.5. 条件に応じた表示
 :::
 
-::: {#contents-ch02-section-6 .contents-entry}
+::: {#contents-ch02-section-6 .contents-entry target="02:ch02-list-title"}
 2.6. 配列データの一覧表示
 :::
 

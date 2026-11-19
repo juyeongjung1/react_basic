@@ -3242,3 +3242,728 @@ export default function Q2_5() {
 :::
 
 ::::
+
+:::: {#page-62 .source-page}
+
+::: {#ch02-list-title .heading}
+2.6. 配列データの一覧表示
+:::
+
+::: {#ch02-list-slide .slide layout="illustration"}
+配列データの一覧表示
+
+![配列から一覧の行を作る流れ](assets/array-list-slide.svg)
+:::
+
+::: {#ch02-list-intro .heading level="minor"}
+複数のデータを画面に表示するには
+:::
+
+::: {#ch02-list-intro-text-1 .paragraph}
+これまでの学習では、商品名や単価などのデータをJSXに埋め込み、画面に表示する方法を学習しました。
+:::
+
+::: {#ch02-list-intro-text-2 .paragraph}
+しかし、実際のWebアプリケーションでは、1件だけではなく、複数のデータをまとめて表示する場面が多くあります。
+:::
+
+::: {#ch02-list-intro-text-3 .paragraph}
+例えば、商品管理システムでは、次のような商品一覧画面が必要になることがあります。
+:::
+
+::: {#ch02-list-intro-table-1 .table}
+| 商品番号 | 商品名 | 単価 |
+|---|---|---:|
+| 101 | ノート | 250円 |
+| 102 | ボールペン | 120円 |
+| 103 | 消しゴム | 100円 |
+:::
+
+::::
+
+:::: {#page-63 .source-page}
+
+::: {#ch02-list-intro-text-4 .paragraph}
+このような画面を通常のHTMLで作成する場合、商品ごとに`<tr>`と`<td>`を記述して、テーブルの行を作成します。
+:::
+
+::: {#ch02-list-intro-text-5 .paragraph}
+例えば、次のようなコードです。
+:::
+
+::: {#ch02-list-html-rows .code example="true"}
+```html
+<tr>
+  <td>101</td>
+  <td>ノート</td>
+  <td>250円</td>
+</tr>
+<tr>
+  <td>102</td>
+  <td>ボールペン</td>
+  <td>120円</td>
+</tr>
+<tr>
+  <td>103</td>
+  <td>消しゴム</td>
+  <td>100円</td>
+</tr>
+```
+:::
+
+::: {#ch02-list-intro-text-6 .paragraph}
+この方法でも商品一覧を表示できますが、商品が100件、1,000件と増えていくと、商品ごとにHTMLを書くのは大変です。
+:::
+
+::: {#ch02-list-intro-text-7 .paragraph}
+また、商品が追加・削除された際にも、それに合わせてHTMLを修正しなければなりません。
+:::
+
+::: {#ch02-list-intro-text-8 .paragraph}
+そこでReactでは、**配列に格納されたデータをもとに、必要な数のHTML要素を自動的に生成する**という方法を使用します。
+:::
+
+::: {#ch02-list-intro-text-9 .paragraph}
+このときに使用するのが、JavaScriptの`map()`というメソッドです。
+:::
+
+::::
+
+:::: {#page-64 .source-page}
+
+::: {#ch02-list-map .heading level="minor"}
+map()とは
+:::
+
+::: {#ch02-list-map-text-1 .paragraph}
+`map()`は、配列の要素を1つずつ取り出して処理し、その結果を新しい配列として返すJavaScriptのメソッドです。
+:::
+
+::: {#ch02-list-map-text-2 .paragraph}
+React独自の関数ではなく、通常のJavaScriptでも使用できます。
+:::
+
+::: {#ch02-list-map-text-3 .paragraph}
+Reactでは、この`map()`を利用して、配列の要素からJSXを繰り返し生成します。
+:::
+
+::: {#ch02-list-map-syntax .step}
+基本構文
+:::
+
+::: {#ch02-list-map-syntax-text-1 .paragraph}
+まずは、次のコードを確認してください。
+:::
+
+::: {#ch02-list-map-array-example .code example="true"}
+```tsx
+const products = [
+  { id: 101, name: 'ノート' },
+  { id: 102, name: 'ボールペン' },
+  { id: 103, name: '消しゴム' }
+]
+```
+:::
+
+::: {#ch02-list-map-syntax-text-2 .paragraph}
+この配列には、3件の商品オブジェクトが格納されています。
+:::
+
+::: {#ch02-list-map-syntax-text-3 .paragraph}
+これらの商品名を繰り返し表示する場合は、次のように記述します。
+:::
+
+::: {#ch02-list-map-list-example .code example="true"}
+```tsx
+<ul>
+  {products.map((product) => (
+    <li key={product.id}>{product.name}</li>
+  ))}
+</ul>
+```
+:::
+
+::: {#ch02-list-map-syntax-text-4 .paragraph}
+このコードを実行すると、画面には次のように表示されます。
+:::
+
+![3件の商品名をリストに表示した画面](assets/array-list-preview.svg){#ch02-list-list-preview}
+
+::: {#ch02-list-list-preview-caption .caption}
+3件の商品名をリストに表示した画面
+:::
+
+::::
+
+:::: {#page-65 .source-page}
+
+::: {#ch02-list-map-syntax-text-5 .paragraph}
+`<li>`要素は1つしか記述していませんが、配列に3件のデータがあるため、3つの`<li>`要素が生成されます。
+:::
+
+::: {#ch02-list-map-breakdown .step}
+map()の構文を分解してみよう
+:::
+
+::: {#ch02-list-map-breakdown-code .code example="true"}
+```tsx
+products.map((product) => (
+  <li key={product.id}>{product.name}</li>
+))
+```
+:::
+
+::: {#ch02-list-map-breakdown-text-1 .paragraph}
+それぞれの意味は、次のとおりです。
+:::
+
+::: {#ch02-list-map-breakdown-table-1 .table}
+| 記述 | 意味 |
+|---|---|
+| `products` | 繰り返し処理する配列 |
+| `.map()` | 配列の要素を順番に処理するメソッド |
+| `product` | 配列から取り出した1件分の商品データ |
+| `=>` | アロー関数を表す記号 |
+| `<li>...</li>` | 商品1件分として生成するJSX |
+:::
+
+::: {#ch02-list-map-breakdown-text-2 .paragraph}
+`map()`は、配列内のデータを1件ずつ`product`という変数に渡し、アロー関数を実行します。
+:::
+
+::: {#ch02-list-map-breakdown-text-3 .paragraph}
+今回は、そのアロー関数が`<li>`要素を返しています。
+:::
+
+::: {#ch02-list-map-breakdown-text-4 .paragraph}
+この処理が配列の要素数だけ繰り返されるため、商品データの数に応じて表示されるHTML要素も増えるわけです。
+:::
+
+![商品1件から1つのリスト要素を生成する](assets/array-map-items.svg){#ch02-list-map-items}
+
+::: {#ch02-list-map-items-caption .caption}
+商品1件から1つのリスト要素を生成する
+:::
+
+::::
+
+:::: {#page-66 .source-page}
+
+::: {#ch02-list-key .heading level="minor"}
+key属性とは
+:::
+
+::: {#ch02-list-key-text-1 .paragraph}
+ところで、先ほどのコードには、まだ説明していない記述がありました。
+:::
+
+::: {#ch02-list-key-list-example .code example="true"}
+```tsx
+<li key={product.id}>{product.name}</li>
+```
+:::
+
+::: {#ch02-list-key-text-2 .paragraph}
+この`key`は、**Reactが繰り返し表示した要素を区別するために使用する特別な属性**です。
+:::
+
+::: {#ch02-list-key-text-3 .paragraph}
+例えば、商品一覧に3つの商品が表示されているとします。
+:::
+
+::: {#ch02-list-key-text-4 .paragraph}
+その後、商品が1件削除されたり、表示する順番が変更されたりする場合があります。
+:::
+
+::: {#ch02-list-key-text-5 .paragraph}
+このとき、Reactがそれぞれの商品を正しく識別するために使用するのが`key`です。
+:::
+
+::: {#ch02-list-key-unique .step}
+keyには一意な値を指定する
+:::
+
+::: {#ch02-list-key-unique-text-1 .paragraph}
+基本的には、商品番号や社員番号など、データを一意に識別できる値を指定します。
+:::
+
+::: {#ch02-list-key-row-example .code example="true"}
+```tsx
+<tr key={product.id}>
+```
+:::
+
+::: {#ch02-list-key-unique-text-2 .paragraph}
+例えば、商品番号が101、102、103であれば、それぞれ異なる`key`が設定されます。
+:::
+
+::: {#ch02-list-key-unique-table-1 .table}
+| 商品名 | keyに指定する値 |
+|---|---|
+| ノート | 101 |
+| ボールペン | 102 |
+| 消しゴム | 103 |
+:::
+
+::: {#ch02-list-key-unique-text-3 .paragraph}
+Reactはこれらの値を利用して、どの商品がどの要素に対応しているかを判断します。
+:::
+
+::: {#ch02-list-key-unique-text-4 .paragraph}
+なお、`key`は画面に表示される属性ではありません。Reactが内部で要素を識別するために使用するものです。
+:::
+
+::::
+
+:::: {#page-67 .source-page}
+
+![商品番号をkeyに使い、Reactが各行を識別する](assets/array-key-rows.svg){#ch02-list-key-rows}
+
+::: {#ch02-list-key-rows-caption .caption}
+商品番号をkeyに使い、Reactが各行を識別する
+:::
+
+::: {#ch02-list-key-note .training-note}
+【補足】keyを省略するとどうなる？
+
+`map()`で複数のJSX要素を生成する際に`key`を指定しないと、Reactから警告が表示されます。
+
+また、配列の順番を表す番号を`key`として使用する方法もありますが、データの追加や削除、並べ替えが発生する場合には問題につながることがあります。
+
+そのため、本研修では、商品番号のように**データごとに決まっている一意な値をkeyに指定する**方法を使用します。
+:::
+
+::: {#ch02-list-sample .heading level="minor"}
+【サンプル】商品データをテーブルで一覧表示する
+:::
+
+::: {#ch02-list-sample-text-1 .paragraph}
+それでは、`map()`を使用して、商品一覧画面を作成してみましょう。
+:::
+
+::: {#ch02-list-sample-text-2 .paragraph keep-lines="true"}
+今回は、3件の商品情報を配列として定義し、<br>Bootstrapのテーブルを使用して一覧表示します。
+:::
+
+::::
+
+:::: {#page-68 .source-page}
+
+::: {#ch02-list-sample-code .code filename="ch02-basic/src/components/Sample2_6.tsx"}
+```tsx
+export default function Sample2_6() {
+  const products = [
+    { id: 101, name: 'ノート', price: 250 },
+    { id: 102, name: 'ボールペン', price: 120 },
+    { id: 103, name: '消しゴム', price: 100 }
+  ]
+
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      <table className="table table-bordered w-auto">
+        <thead className="table-light">
+          <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch02-list-bootstrap-note .training-note}
+【補足】BootstrapのCSS
+
+BootstrapのCSSは、これまでの節と同様に読み込み済みとします。
+:::
+
+::::
+
+:::: {#page-69 .source-page}
+
+::: {#ch02-list-sample-check .step}
+動作確認
+:::
+
+::: {#ch02-list-sample-check-text-1 .paragraph}
+`ch02-basic`の開発サーバーを起動し、メニューから「2.6 配列データの一覧表示」を選択してください。
+:::
+
+::: {#ch02-list-sample-check-text-2 .paragraph}
+次のように、配列に格納した3件の商品がテーブル形式で表示されます。
+:::
+
+::: {#ch02-list-sample-browser-label .step}
+【ブラウザー画面の表示イメージ】
+:::
+
+![配列の3件が一覧画面の3行に対応する](assets/array-table-match.svg){#ch02-list-table-match}
+
+::: {#ch02-list-table-match-caption .caption}
+配列の3件が一覧画面の3行に対応する
+:::
+
+::::
+
+:::: {#page-70 .source-page}
+
+::: {#ch02-list-review .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch02-list-review-text-1 .paragraph}
+ここからは、サンプルコードの重要な部分を確認します。
+:::
+
+::: {#ch02-list-review-array .step}
+① 商品データを配列で定義する
+:::
+
+::: {#ch02-list-review-array-lines .step}
+**2～6行目**
+:::
+
+::: {#ch02-list-review-array-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="2"}
+```tsx
+  const products = [
+    { id: 101, name: 'ノート', price: 250 },
+    { id: 102, name: 'ボールペン', price: 120 },
+    { id: 103, name: '消しゴム', price: 100 }
+  ]
+```
+:::
+
+::: {#ch02-list-review-array-text-1 .paragraph}
+ここでは、`products`という配列に3件の商品データを格納しています。
+:::
+
+::: {#ch02-list-review-array-text-2 .paragraph}
+それぞれの商品は、次の3つのプロパティを持つオブジェクトです。
+:::
+
+::: {#ch02-list-review-array-table-1 .table}
+| プロパティ | 意味 |
+|---|---|
+| `id` | 商品番号 |
+| `name` | 商品名 |
+| `price` | 単価 |
+:::
+
+::: {#ch02-list-review-array-text-3 .paragraph}
+今回は、Reactの中で商品データを直接定義しています。
+:::
+
+::: {#ch02-list-review-array-text-4 .paragraph}
+実際のWebアプリケーションでは、データベースやREST APIから取得した商品データを、同じような配列として扱うこともあります。
+:::
+
+::::
+
+:::: {#page-71 .source-page}
+
+::: {#ch02-list-review-map .step}
+② map()で商品データを繰り返し処理する
+:::
+
+::: {#ch02-list-review-map-lines .step}
+**20～26行目**
+:::
+
+::: {#ch02-list-review-map-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="20"}
+```tsx
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+```
+:::
+
+::: {#ch02-list-review-map-text-1 .paragraph}
+20行目では、`products`配列に対して`map()`を実行しています。
+:::
+
+::: {#ch02-list-review-map-text-2 .paragraph}
+`map()`は、配列から商品データを1件ずつ取り出して、`product`という変数に渡します。
+:::
+
+::: {#ch02-list-review-map-text-3 .paragraph}
+そして、21～25行目の`<tr>`要素を、商品データ1件につき1つ生成します。
+:::
+
+::: {#ch02-list-review-map-text-4 .paragraph}
+今回の配列には3件の商品データがあるため、テーブルには3行のデータが表示されます。
+:::
+
+::: {#ch02-list-review-map-text-5 .paragraph}
+ここでは、`map()`のアロー関数でJSXを返しています。
+:::
+
+::: {#ch02-list-review-map-text-6 .paragraph keep-lines="true"}
+なお、`=> (`のように記述した場合は、<br>`return`を明示的に記述しなくても、括弧内のJSXが返されます。
+:::
+
+::: {#ch02-list-review-key .step}
+③ key属性で各行を識別する
+:::
+
+::: {#ch02-list-review-key-lines .step}
+**21行目**
+:::
+
+::: {#ch02-list-review-key-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="21"}
+```tsx
+            <tr key={product.id}>
+```
+:::
+
+::: {#ch02-list-review-key-text-1 .paragraph}
+`<tr>`要素には、商品番号を使用した`key`属性を設定しています。
+:::
+
+::: {#ch02-list-review-key-text-2 .paragraph}
+この`key`によって、Reactは各行を区別できます。
+:::
+
+::: {#ch02-list-review-key-text-3 .paragraph}
+今回の商品番号は101、102、103なので、それぞれ異なる`key`が割り当てられます。
+:::
+
+::: {#ch02-list-review-key-text-4 .paragraph}
+`map()`で繰り返し生成する要素には、このように適切な`key`を指定してください。
+:::
+
+::::
+
+:::: {#page-72 .source-page}
+
+::: {#ch02-list-review-cell .step}
+④ 商品の各プロパティを表示する
+:::
+
+::: {#ch02-list-review-cell-lines .step}
+**22～24行目**
+:::
+
+::: {#ch02-list-review-cell-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="22"}
+```tsx
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+```
+:::
+
+::: {#ch02-list-review-cell-text-1 .paragraph keep-lines="true"}
+ここでは、`map()`で取り出した商品データの各プロパティを、<br>JSXの`{ }`を使って表示しています。
+:::
+
+::: {#ch02-list-review-cell-text-2 .paragraph}
+例えば、最初の商品では、次のような値が使用されます。
+:::
+
+::: {#ch02-list-review-cell-reading-1 .paragraph}
+● `product.id`：101
+:::
+
+::: {#ch02-list-review-cell-reading-2 .paragraph}
+● `product.name`：ノート
+:::
+
+::: {#ch02-list-review-cell-reading-3 .paragraph}
+● `product.price`：250
+:::
+
+::: {#ch02-list-review-cell-text-3 .paragraph}
+次の商品を処理すると、`product`に格納されるデータも変わるため、2行目にはボールペンの情報が表示されます。
+:::
+
+::: {#ch02-list-review-cell-text-4 .paragraph}
+このように、**同じJSXの記述を使いながら、データに応じて異なる内容を繰り返し表示できる**ことが`map()`の特徴です。
+:::
+
+![配列から一覧の行を生成する流れ](assets/array-table-flow.svg){#ch02-list-table-flow}
+
+::: {#ch02-list-table-flow-caption .caption}
+配列から一覧の行を生成する流れ
+:::
+
+::::
+
+:::: {#page-73 .source-page}
+
+::: {#ch02-list-state-note .training-note}
+【補足】map()とuseState()の違い
+
+ここまでのサンプルでは、`useState()`を使用していません。
+
+なぜなら、今回の商品一覧は、最初に用意した配列データを画面に表示するだけだからです。
+
+`map()`は配列の要素から表示用のJSXを生成するための処理であり、`useState()`は、変化するデータをReactで管理するための仕組みです。
+
+例えば、商品を追加・削除するボタンを用意し、操作に応じて一覧を更新したい場合は、`useState()`などによる状態管理と`map()`を組み合わせることができます。
+
+今回は、まず**配列のデータを繰り返し表示する方法**を理解しましょう。
+:::
+
+::: {#ch02-list-practice .heading level="minor"}
+【確認演習】商品一覧を表示する
+:::
+
+::: {#ch02-list-practice-text-1 .paragraph}
+配列に格納された商品データを、`map()`を使用してテーブル形式で表示する演習です。
+:::
+
+::: {#ch02-list-practice-text-2 .paragraph}
+商品データの配列や、テーブルの見出しはあらかじめ用意されています。
+:::
+
+::: {#ch02-list-practice-text-3 .paragraph keep-lines="true"}
+今回は、**map()による繰り返し処理、key属性、<br>オブジェクトのプロパティの表示**を実装します。
+:::
+
+::: {#ch02-list-practice-source .step}
+**演習用ソースコード**
+:::
+
+::: {#ch02-list-practice-code-1 .code filename="ch02-basic-q/src/components/Q2_6.tsx"}
+```tsx
+export default function Q2_6() {
+  // ➀ 確認：4件の商品データがproducts配列に
+  //    格納されていることを確認してください。
+  const products = [
+    { id: 201, name: 'ファイル', price: 600 },
+    { id: 202, name: 'クリップ', price: 180 },
+    { id: 203, name: '付箋', price: 240 },
+    { id: 204, name: '封筒', price: 100 }
+  ]
+
+```
+:::
+
+::::
+
+:::: {#page-74 .source-page}
+
+::: {#ch02-list-practice-code-2 .code filename="ch02-basic-q/src/components/Q2_6.tsx" start-line="11"}
+```tsx
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      <table className="table table-bordered w-auto">
+        {/* ➁ 確認：商品番号・商品名・単価の
+            見出しを確認してください。 */}
+        <thead className="table-light">
+          <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* ➂ 実装：products配列をmap()で繰り返し、
+              下の<tr>を商品データの件数だけ
+              生成するようにしてください。
+              1件分の変数名はproductとしてください。 */}
+
+          {/* ➃ 実装：繰り返し生成する<tr>に、
+              product.idを使用したkey属性を
+              追加してください。 */}
+
+          {/* ➄ 実装：各<td>の「未設定」を、
+              productのid、name、priceに
+              置き換えて表示してください。 */}
+          <tr>
+            <td>未設定</td>
+            <td>未設定</td>
+            <td>未設定円</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  )
+}
+```
+:::
+
+::::
+
+:::: {#page-75 .source-page}
+
+::: {#ch02-list-practice-steps .step}
+作業手順・動作確認
+:::
+
+::: {#ch02-list-practice-step-1 .paragraph numbered="true"}
+1．　`ch02-basic-q`プロジェクトの`src/components/Q2_6.tsx`を開いてください。
+:::
+
+::: {#ch02-list-practice-step-2 .paragraph numbered="true"}
+2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀と➁は確認、➂～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch02-list-practice-step-3 .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
+:::
+
+::: {#ch02-list-practice-step-4 .paragraph numbered="true"}
+4．　`ch02-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+:::
+
+::: {#ch02-list-practice-step-5 .paragraph numbered="true"}
+5．　メニューから「2.6 配列データの一覧表示」を選んでください。
+:::
+
+::: {#ch02-list-practice-step-6 .paragraph numbered="true"}
+6．　商品データが次のようにテーブル形式で表示されることを確認してください。
+:::
+
+::: {#ch02-list-practice-steps-table-1 .table}
+| 商品番号 | 商品名 | 単価 |
+|---|---|---:|
+| 201 | ファイル | 600円 |
+| 202 | クリップ | 180円 |
+| 203 | 付箋 | 240円 |
+| 204 | 封筒 | 100円 |
+:::
+
+::: {#ch02-list-practice-steps-text-1 .paragraph}
+**4件の商品データが4行に表示されていれば、演習完了です。**
+:::
+
+::: {#ch02-list-practice-steps-text-2 .paragraph keep-lines="true"}
+また、ブラウザーの開発者ツールに<br>`key`に関する警告が表示されていないことも確認してください。
+:::
+
+::: {#ch02-list-points .section-points}
+この節のポイント
+
+● Reactでは、JavaScriptの**`map()`**を使って配列データから複数のJSX要素を生成できる。
+
+● `map()`では、配列の要素を1件ずつ取り出し、同じ処理を繰り返すことができる。
+
+● 配列の要素数に応じて、テーブルの行などを自動的に生成できる。
+
+● **`key`属性**は、Reactが繰り返し生成された要素を区別するために使用する。
+
+● `key`には、商品番号などの一意で安定した値を指定する。
+
+● `map()`とJSXの`{ }`を組み合わせることで、<br>商品一覧や社員一覧などの画面を作成できる。
+:::
+
+::::
