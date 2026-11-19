@@ -120,6 +120,10 @@ XXXX-T-01
 2.7. フォーム入力と状態の連動
 :::
 
+::: {#contents-ch02-summary .contents-entry target="02:ch02-summary-title"}
+章のまとめ
+:::
+
 ::::
 
 :::: {#page-4 .source-page}

@@ -4645,3 +4645,49 @@ export default function Sample2_7() {
 :::
 
 ::::
+
+:::: {#page-88 .source-page}
+
+::: {#ch02-summary-title .heading}
+章のまとめ
+:::
+
+::: {#ch02-summary-slide .slide layout="summary"}
+章のまとめ
+
+■ ReactコンポーネントとJSXの基本
+
+■ JSXによるデータ表示と属性の設定
+
+■ 状態の管理（useState）
+
+■ イベント処理
+
+■ 条件に応じた表示
+
+■ 配列データの一覧表示
+
+■ フォーム入力と状態の連動
+:::
+
+::: {#ch02-summary-1 .paragraph}
+この章では、Reactを使用して画面を作成し、ユーザーの操作に応じて表示を更新するための基本的な方法を学習しました。
+:::
+
+::: {#ch02-summary-2 .paragraph}
+最初に、ReactコンポーネントとJSXの基本を確認し、変数や計算結果を画面に表示する方法や、HTML属性に値を設定する方法を学びました。
+:::
+
+::: {#ch02-summary-3 .paragraph}
+続いて、useStateを使用した状態管理とイベント処理を学習し、ボタン操作による画面の更新や、条件に応じた表示の切り替えを実装しました。また、map()を使用して配列データを一覧表示する方法も確認しました。
+:::
+
+::: {#ch02-summary-4 .paragraph}
+最後に、value属性やonChangeイベント、checked属性を使用し、フォームの入力値とstateを連動させる方法を学習しました。
+:::
+
+::: {#ch02-summary-5 .paragraph}
+次の第3章では、React Routerを使用して、URLに応じた画面の切り替えや画面遷移を実装し、複数の画面を持つSPAの構成を学習します。
+:::
+
+::::
