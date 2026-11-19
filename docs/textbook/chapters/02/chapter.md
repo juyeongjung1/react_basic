@@ -1379,7 +1379,7 @@ BootstrapのCSSは、前節までに `main.tsx` から読み込まれている�
 :::
 
 ::: {#ch02-state-check .step}
-動作確認
+**動作確認**
 :::
 
 ::: {#ch02-state-check-1 .paragraph}
@@ -1437,11 +1437,7 @@ BootstrapのCSSは、前節までに `main.tsx` から読み込まれている�
 :::
 
 ::: {#ch02-state-review-import .step}
-① useStateをインポートする
-:::
-
-::: {#ch02-state-review-import-1 .paragraph}
-**1行目**
+**➀ useStateをインポートする**
 :::
 
 ::: {#ch02-state-review-import-2 .code filename="ch02-basic/src/components/Sample2_3.tsx"}
@@ -1459,11 +1455,7 @@ Reactでは、必要な機能を `import` で読み込んで使用します。
 :::
 
 ::: {#ch02-state-review-definition .step}
-② stateを定義する
-:::
-
-::: {#ch02-state-review-definition-1 .paragraph}
-**6～7行目**
+**➁ stateを定義する**
 :::
 
 ::: {#ch02-state-review-definition-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="6"}
@@ -1498,11 +1490,7 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::: {#page-29 .source-page}
 
 ::: {#ch02-state-review-handler .step}
-③ ボタンをクリックしたときにstateを更新する
-:::
-
-::: {#ch02-state-review-handler-1 .paragraph}
-**9～12行目**
+**➂ ボタンをクリックしたときにstateを更新する**
 :::
 
 ::: {#ch02-state-review-handler-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="9" highlight-lines="11-11"}
@@ -1531,11 +1519,7 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-display .step}
-④ stateの値を画面に表示する
-:::
-
-::: {#ch02-state-review-display-1 .paragraph}
-**19～20行目**
+**➃ stateの値を画面に表示する**
 :::
 
 ::: {#ch02-state-review-display-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19"}
@@ -1566,11 +1550,7 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::: {#page-30 .source-page}
 
 ::: {#ch02-state-review-click .step}
-⑤ ボタンから関数を呼び出す
-:::
-
-::: {#ch02-state-review-click-1 .paragraph}
-**21～23行目**
+**➄ ボタンから関数を呼び出す**
 :::
 
 ::: {#ch02-state-review-click-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="21" highlight-lines="21-21"}
@@ -1662,11 +1642,11 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::: {#page-32 .source-page}
 
 ::: {#ch02-state-practice .heading level="minor"}
-【確認演習】useStateで商品の数量を2個ずつ増やす
+【確認演習】useStateで商品の数量を1個ずつ増やす
 :::
 
 ::: {#ch02-state-practice-open-1 .paragraph}
-ここまで学習した `useState()` の使い方を確認しましょう。今度は、1回クリックすると商品の数量が2個ずつ増えるプログラムを完成させます。
+`useState()` を使って商品の数量を管理します。ボタンをクリックするたびに、数量が1個ずつ増えるようにしてください。
 :::
 
 ::: {#ch02-state-practice-open-file .paragraph numbered="true"}
@@ -1674,7 +1654,7 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::
 
 ::: {#ch02-state-practice-follow-comments .paragraph numbered="true"}
-2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+2．　コード内の➀～➄の番号付きコメントに従ってください。➀・➄は確認、➁～➃は実装です。指定された箇所を編集してください。
 :::
 
 ::: {#ch02-state-practice-save .paragraph numbered="true"}
@@ -1690,15 +1670,15 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 :::
 
 ::: {#ch02-state-practice-result .paragraph numbered="true" keep-lines="true"}
-6．　「2個追加」ボタンをクリックし、<br>数量と合計金額が次の表のとおり変わることを確認してください。
+6．　「1個追加」ボタンをクリックし、<br>数量と合計金額が次の表のとおり変わることを確認してください。
 :::
 
 ::: {#ch02-state-practice-check-4 .table}
 | 操作 | 数量 | 合計金額 |
 |---|---:|---:|
 | 初期状態 | 1個 | 250円 |
-| 1回クリック | 3個 | 750円 |
-| 2回クリック | 5個 | 1250円 |
+| 1回クリック | 2個 | 500円 |
+| 2回クリック | 3個 | 750円 |
 :::
 
 ::: {#ch02-state-practice-check-5 .paragraph}

@@ -4,12 +4,14 @@ import { useState } from 'react'
 export default function Q2_3() {
   const productName = 'ノート'
   const price = 250
-  // ➁ 実装：useState の初期値を 0 から 1 に変更してください。
-  const [quantity, setQuantity] = useState(0)
 
-  const addTwo = () => {
-    // ➂ 実装：現在の数量を 2 個増やした値を setQuantity に渡してください。
-    setQuantity(quantity)
+  // ➁ 実装：次の宣言を、useState で数量を初期化するコードに書き換えてください。
+  let quantity = 1
+
+  const addOne = () => {
+    // ➂ 実装：次の代入を、setQuantity を使って
+    //    quantity + 1 に更新するコードに書き換えてください。
+    quantity = quantity + 1
   }
 
   return (
@@ -21,9 +23,10 @@ export default function Q2_3() {
           合計欄の yyy に price と quantity を掛けた結果を表示してください。 */}
       <p>数量：xxx個</p>
       <p>合計：yyy円</p>
-      {/* ➄ 実装：onClick に指定されている仮の関数を addTwo に置き換えてください。 */}
-      <button className="btn btn-primary" onClick={() => {}}>
-        2個追加
+      {/* ➄ 確認：「1個追加」ボタンをクリックすると、
+          addOne 関数が呼ばれることを確認してください。 */}
+      <button className="btn btn-primary" onClick={addOne}>
+        1個追加
       </button>
     </main>
   )
