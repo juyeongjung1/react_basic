@@ -1214,7 +1214,7 @@ Reactでは、このような特別な関数を**Hooks（フック）**と呼び
 :::
 
 ::: {#ch02-state-basic-label .step}
-基本構文
+**基本構文**
 :::
 
 ::: {#ch02-state-syntax .code filename="ch02-basic/src/components/Sample2_3.tsx"}
@@ -1780,7 +1780,7 @@ Reactでは、`onClick` という属性を使って、クリック時に実行�
 :::
 
 ::: {#ch02-events-onclick-syntax .step}
-基本構文
+**基本構文**
 :::
 
 ::: {#ch02-events-onclick-syntax-code .code example="true"}
@@ -1930,7 +1930,7 @@ const showSelection = (name: string) => {
 :::: {#page-37 .source-page}
 
 ::: {#ch02-events-arguments-syntax .step}
-引数を渡す場合の構文
+**引数を渡す場合の構文**
 :::
 
 ::: {#ch02-events-arguments-demo-button .code example="true"}
@@ -2008,7 +2008,7 @@ JavaScriptでは `name` とだけ記述することもできますが、TypeScri
 :::
 
 ::: {#ch02-events-typescript-p2 .paragraph}
-このように自分で定義する関数では、TypeScriptが引数の型を推論できない場合があります。今回の研修では、**文字列を受け取る引数には `name: string` のように型を明示する**ことを基本とします。これにより、数値など意図しない型の引数を渡した場合に、開発中にエラーを検出しやすくなります。
+このように自分で定義する関数では、TypeScriptが引数の型を推論できない場合があります。今回の研修では、**関数が引数としてデータを受け取る場合は、`name: string` や `id: number` のように型を明示する**ことを基本とします。これにより、指定した型と異なる値を渡した場合に、開発中に型の不一致を検出しやすくなります。
 :::
 
 ::: {#ch02-events-typescript-p3 .paragraph}
@@ -2088,7 +2088,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-40 .source-page}
 
 ::: {#ch02-events-sample-check .step}
-動作確認
+**動作確認**
 :::
 
 ::: {#ch02-events-sample-check-p1 .paragraph}
@@ -2133,11 +2133,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-events-review-state .step}
-① 選択中の商品名を管理するstate
-:::
-
-::: {#ch02-events-review-state-label-1 .step}
-**4行目**
+**① 選択中の商品名を管理するstate**
 :::
 
 ::: {#ch02-events-review-state-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="4"}
@@ -2163,11 +2159,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-events-review-select .step}
-② 商品名を受け取る関数
-:::
-
-::: {#ch02-events-review-select-label-1 .step}
-**6～8行目**
+**② 商品名を受け取る関数**
 :::
 
 ::: {#ch02-events-review-select-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="6"}
@@ -2199,11 +2191,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-42 .source-page}
 
 ::: {#ch02-events-review-clear .step}
-③ 選択を解除する関数
-:::
-
-::: {#ch02-events-review-clear-label-1 .step}
-**10～12行目**
+**③ 選択を解除する関数**
 :::
 
 ::: {#ch02-events-review-clear-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="10"}
@@ -2223,11 +2211,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-events-review-arguments .step}
-④ 引数を渡して関数を実行する
-:::
-
-::: {#ch02-events-review-arguments-label-1 .step}
-**19～26行目**
+**④ 引数を渡して関数を実行する**
 :::
 
 ::: {#ch02-events-review-arguments-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="19"}
@@ -2264,11 +2248,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-43 .source-page}
 
 ::: {#ch02-events-review-direct .step}
-⑤ 引数を必要としない関数を実行する
-:::
-
-::: {#ch02-events-review-direct-label-1 .step}
-**27～30行目**
+**⑤ 引数を必要としない関数を実行する**
 :::
 
 ::: {#ch02-events-review-direct-code .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="27"}
@@ -2570,7 +2550,7 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 :::
 
 ::: {#ch02-stock-ternary-basic .step}
-基本構文
+**基本構文**
 :::
 
 ::: {#ch02-stock-ternary-syntax .code example="true"}
@@ -2622,7 +2602,7 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 :::: {#page-50 .source-page}
 
 ::: {#ch02-stock-attribute .step}
-HTML属性にも三項演算子を使用できる
+**HTML属性にも三項演算子を使用できる**
 :::
 
 ::: {#ch02-stock-attribute-text-1 .paragraph keep-lines="true"}
@@ -2689,7 +2669,7 @@ HTML属性にも三項演算子を使用できる
 :::
 
 ::: {#ch02-stock-and-basic .step}
-基本構文
+**基本構文**
 :::
 
 ::: {#ch02-stock-and-syntax .code example="true"}
@@ -2860,7 +2840,7 @@ BootstrapのCSSは読み込み済みとします。
 :::: {#page-55 .source-page}
 
 ::: {#ch02-stock-sample-check .step}
-動作確認
+**動作確認**
 :::
 
 ::: {#ch02-stock-sample-check-text-1 .paragraph}
@@ -2894,11 +2874,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-state .step}
-① 在庫数をstateで管理する
-:::
-
-::: {#ch02-stock-review-state-lines .step}
-**4行目**
+**① 在庫数をstateで管理する**
 :::
 
 ::: {#ch02-stock-review-state-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="4"}
@@ -2920,11 +2896,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-purchase .step}
-② if文で購入できるか判定する
-:::
-
-::: {#ch02-stock-review-purchase-lines .step}
-**6～10行目**
+**② if文で購入できるか判定する**
 :::
 
 ::: {#ch02-stock-review-purchase-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="6"}
@@ -2954,11 +2926,7 @@ BootstrapのCSSは読み込み済みとします。
 :::: {#page-57 .source-page}
 
 ::: {#ch02-stock-review-message .step}
-③ if / elseで在庫状況の文字列を決定する
-:::
-
-::: {#ch02-stock-review-message-lines .step}
-**12～17行目**
+**③ if / elseで在庫状況の文字列を決定する**
 :::
 
 ::: {#ch02-stock-review-message-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="12"}
@@ -2987,11 +2955,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-ternary .step}
-④ 三項演算子で表示内容と文字色を切り替える
-:::
-
-::: {#ch02-stock-review-ternary-lines .step}
-**26～30行目**
+**④ 三項演算子で表示内容と文字色を切り替える**
 :::
 
 ::: {#ch02-stock-review-ternary-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="26"}
@@ -3021,11 +2985,7 @@ BootstrapのCSSは読み込み済みとします。
 :::: {#page-58 .source-page}
 
 ::: {#ch02-stock-review-and .step}
-⑤ &&で注意メッセージを表示する
-:::
-
-::: {#ch02-stock-review-and-lines .step}
-**32～34行目**
+**⑤ &&で注意メッセージを表示する**
 :::
 
 ::: {#ch02-stock-review-and-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="32"}
@@ -3045,11 +3005,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-disabled .step}
-⑥ 在庫が0個の場合は購入ボタンを無効にする
-:::
-
-::: {#ch02-stock-review-disabled-lines .step}
-**36～42行目**
+**⑥ 在庫が0個の場合は購入ボタンを無効にする**
 :::
 
 ::: {#ch02-stock-review-disabled-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="36" highlight-lines="39-39"}
@@ -3328,7 +3284,7 @@ Reactでは、この`map()`を利用して、配列の要素からJSXを繰り�
 :::
 
 ::: {#ch02-list-map-syntax .step}
-基本構文
+**基本構文**
 :::
 
 ::: {#ch02-list-map-syntax-text-1 .paragraph}
@@ -3382,7 +3338,7 @@ const products = [
 :::
 
 ::: {#ch02-list-map-breakdown .step}
-map()の構文を分解してみよう
+**map()の構文を分解してみよう**
 :::
 
 ::: {#ch02-list-map-breakdown-code .code example="true"}
@@ -3460,7 +3416,7 @@ key属性とは
 :::
 
 ::: {#ch02-list-key-unique .step}
-keyには一意な値を指定する
+**keyには一意な値を指定する**
 :::
 
 ::: {#ch02-list-key-unique-text-1 .paragraph}
@@ -3576,7 +3532,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-69 .source-page}
 
 ::: {#ch02-list-sample-check .step}
-動作確認
+**動作確認**
 :::
 
 ::: {#ch02-list-sample-check-text-1 .paragraph}
@@ -3610,11 +3566,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-list-review-array .step}
-① 商品データを配列で定義する
-:::
-
-::: {#ch02-list-review-array-lines .step}
-**2～6行目**
+**① 商品データを配列で定義する**
 :::
 
 ::: {#ch02-list-review-array-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="2"}
@@ -3656,11 +3608,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-71 .source-page}
 
 ::: {#ch02-list-review-map .step}
-② map()で商品データを繰り返し処理する
-:::
-
-::: {#ch02-list-review-map-lines .step}
-**20～26行目**
+**② map()で商品データを繰り返し処理する**
 :::
 
 ::: {#ch02-list-review-map-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="20"}
@@ -3700,11 +3648,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::
 
 ::: {#ch02-list-review-key .step}
-③ key属性で各行を識別する
-:::
-
-::: {#ch02-list-review-key-lines .step}
-**21行目**
+**③ key属性で各行を識別する**
 :::
 
 ::: {#ch02-list-review-key-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="21"}
@@ -3734,11 +3678,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 :::: {#page-72 .source-page}
 
 ::: {#ch02-list-review-cell .step}
-④ 商品の各プロパティを表示する
-:::
-
-::: {#ch02-list-review-cell-lines .step}
-**22～24行目**
+**④ 商品の各プロパティを表示する**
 :::
 
 ::: {#ch02-list-review-cell-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="22"}
@@ -3886,7 +3826,7 @@ export default function Q2_6() {
 :::: {#page-75 .source-page}
 
 ::: {#ch02-list-practice-steps .step}
-作業手順・動作確認
+**作業手順・動作確認**
 :::
 
 ::: {#ch02-list-practice-step-1 .paragraph numbered="true"}
