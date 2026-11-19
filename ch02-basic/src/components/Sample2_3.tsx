@@ -3,9 +3,11 @@ import { useState } from 'react'
 export default function Sample2_3() {
   const productName = 'ノート'
   const price = 250
+  //let quantity = 1
   const [quantity, setQuantity] = useState(1)
 
   const addOne = () => {
+    //quantity = quantity + 1
     setQuantity(quantity + 1)
   }
 

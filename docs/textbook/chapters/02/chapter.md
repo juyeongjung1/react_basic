@@ -1220,7 +1220,7 @@ Reactでは、このような特別な関数を**Hooks（フック）**と呼び
 ::: {#ch02-state-syntax .code filename="ch02-basic/src/components/Sample2_3.tsx"}
 ```tsx
 1:import { useState } from 'react'
-6:  const [quantity, setQuantity] = useState(1)
+7:  const [quantity, setQuantity] = useState(1)
 ```
 :::
 
@@ -1288,14 +1288,15 @@ quantity = quantity + 1
 代わりに、`useState()` から取得した更新用の関数を使用します。
 :::
 
-::: {#ch02-state-setter-5 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="9" highlight-lines="9-9"}
+::: {#ch02-state-setter-5 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="10" highlight-lines="11-11"}
 ```tsx
+    //quantity = quantity + 1
     setQuantity(quantity + 1)
 ```
 :::
 
 ::: {#ch02-state-setter-6 .paragraph}
-これは、現在の `quantity` に1を加えた値を、新しいstateとしてReactに渡すという意味です。
+10行目は、通常の変数と比較するためのコメントです。11行目では、現在の `quantity` に1を加えた値を、新しいstateとしてReactに渡します。
 :::
 
 ::: {#ch02-state-setter-7 .paragraph}
@@ -1343,9 +1344,11 @@ import { useState } from 'react'
 export default function Sample2_3() {
   const productName = 'ノート'
   const price = 250
+  //let quantity = 1
   const [quantity, setQuantity] = useState(1)
 
   const addOne = () => {
+    //quantity = quantity + 1
     setQuantity(quantity + 1)
   }
 
@@ -1460,17 +1463,18 @@ Reactでは、必要な機能を `import` で読み込んで使用します。
 :::
 
 ::: {#ch02-state-review-definition-1 .paragraph}
-**6行目**
+**6～7行目**
 :::
 
 ::: {#ch02-state-review-definition-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="6"}
 ```tsx
+  //let quantity = 1
   const [quantity, setQuantity] = useState(1)
 ```
 :::
 
 ::: {#ch02-state-review-definition-3 .paragraph}
-商品の数量を管理するstateを定義しています。
+6行目は、通常の変数で試すときに使うコメントです。7行目で、商品の数量を管理するstateを定義しています。
 :::
 
 ::: {#ch02-state-review-definition-4 .paragraph}
@@ -1498,12 +1502,13 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-handler-1 .paragraph}
-**8～10行目**
+**9～12行目**
 :::
 
-::: {#ch02-state-review-handler-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="8" highlight-lines="9-9"}
+::: {#ch02-state-review-handler-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="9" highlight-lines="11-11"}
 ```tsx
   const addOne = () => {
+    //quantity = quantity + 1
     setQuantity(quantity + 1)
   }
 ```
@@ -1514,7 +1519,7 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-handler-4 .paragraph keep-lines="true"}
-9行目の `setQuantity(quantity + 1)` によって、<br>現在の数量に1を加えた値をstateに設定します。
+11行目の `setQuantity(quantity + 1)` によって、<br>現在の数量に1を加えた値をstateに設定します。
 :::
 
 ::: {#ch02-state-review-handler-5 .paragraph}
@@ -1530,10 +1535,10 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-display-1 .paragraph}
-**17～18行目**
+**19～20行目**
 :::
 
-::: {#ch02-state-review-display-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="17"}
+::: {#ch02-state-review-display-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19"}
 ```tsx
       <p>数量：{quantity}個</p>
       <p>合計：{price * quantity}円</p>
@@ -1541,11 +1546,11 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-display-3 .paragraph}
-17行目では、`quantity` の値を画面に表示しています。
+19行目では、`quantity` の値を画面に表示しています。
 :::
 
 ::: {#ch02-state-review-display-4 .paragraph}
-18行目では、商品の単価 `price` と数量 `quantity` を掛け算し、合計金額を表示しています。
+20行目では、商品の単価 `price` と数量 `quantity` を掛け算し、合計金額を表示しています。
 :::
 
 ::: {#ch02-state-review-display-5 .paragraph keep-lines="true"}
@@ -1565,10 +1570,10 @@ stateの値を更新する場合は `quantity` に直接代入するのではな
 :::
 
 ::: {#ch02-state-review-click-1 .paragraph}
-**19～21行目**
+**21～23行目**
 :::
 
-::: {#ch02-state-review-click-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19" highlight-lines="19-19"}
+::: {#ch02-state-review-click-2 .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="21" highlight-lines="21-21"}
 ```tsx
       <button className="btn btn-primary" onClick={addOne}>
         1個追加
@@ -1750,7 +1755,7 @@ TypeScriptでは、これらの初期値から基本的なデータ型が自動�
 前節のサンプルでは、次のように記述していました。
 :::
 
-::: {#ch02-events-recap-code .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19" highlight-lines="19-19"}
+::: {#ch02-events-recap-code .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="21" highlight-lines="21-21"}
 ```tsx
       <button className="btn btn-primary" onClick={addOne}>
         1個追加
