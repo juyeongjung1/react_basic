@@ -1,26 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="380" height="131" viewBox="0 0 380 131">
-  <rect x="6" y="5" width="107" height="30" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="267" y="5" width="107" height="30" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="59.5" y="24.5" font-size="13" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">stock = 2</text>
-  <text x="320.5" y="24.5" font-size="13" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">stock = 0</text>
-  <rect x="122" y="45" width="136" height="31" rx="5" fill="#ffffff" stroke="#7095b1" stroke-width="0.8"/>
-  <text x="190" y="64.5" font-size="13" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">if (stock &gt; 0)</text>
-  <path d="M 59.5 36 V 60 H 113" stroke="#205b84" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 113 60 L 116.70 60.00" stroke="#205b84" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 121 60 L 116.70 57.60 L 116.70 62.40 Z" fill="#205b84"/>
-  <path d="M 320.5 36 V 60 H 267" stroke="#205b84" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 267 60 L 263.30 60.00" stroke="#205b84" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 259 60 L 263.30 62.40 L 263.30 57.60 Z" fill="#205b84"/>
-  <path d="M 154 77 V 89 H 59.5 V 98" stroke="#198754" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 59.5 98 L 59.50 98.70" stroke="#198754" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 59.5 103 L 61.90 98.70 L 57.10 98.70 Z" fill="#198754"/>
-  <path d="M 226 77 V 89 H 320.5 V 98" stroke="#dc3545" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 320.5 98 L 320.50 98.70" stroke="#dc3545" fill="none" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M 320.5 103 L 322.90 98.70 L 318.10 98.70 Z" fill="#dc3545"/>
-  <text x="86" y="84" font-size="10" fill="#198754" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">true</text>
-  <text x="280" y="84" font-size="10" fill="#dc3545" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">false</text>
-  <rect x="6" y="104" width="107" height="24" rx="5" fill="#e8f5ed" stroke="#9cc8b3" stroke-width="0.8"/>
-  <rect x="267" y="104" width="107" height="24" rx="5" fill="#fff1f0" stroke="#e4b3b2" stroke-width="0.8"/>
-  <text x="59.5" y="120" font-size="11" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫あり</text>
-  <text x="320.5" y="120" font-size="11" fill="#b12d35" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫切れ</text>
+  <rect x="131" y="3" width="118" height="21" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="190" y="17.5" font-size="10.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数を確認する</text>
+  <path d="M 190 25 V 31" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 187 31 H 193 L 190 35 Z" fill="#205b84"/>
+  <path d="M 190 35 L 261 54 L 190 73 L 119 54 Z" fill="#ffffff" stroke="#7095b1" stroke-width="1.0"/>
+  <text x="190" y="58" font-size="12.5" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">stock &gt; 0</text>
+  <path d="M 119 54 H 96 V 67 M 96 87 V 94" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 93 94 H 99 L 96 98 Z" fill="#226757"/>
+  <text x="96" y="81" font-size="10.8" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">true（在庫2個）</text>
+  <rect x="5" y="99" width="180" height="30" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="96" y="111.5" font-size="10.7" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">setStock(stock - 1)</text>
+  <text x="96" y="124.6" font-size="9.7" fill="#183449" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数が1個になる</text>
+  <path d="M 261 54 H 284 V 67 M 284 87 V 94" fill="none" stroke="#a1333b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 281 94 H 287 L 284 98 Z" fill="#a1333b"/>
+  <text x="284" y="81" font-size="10.8" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">false（在庫0個）</text>
+  <rect x="195" y="99" width="180" height="30" rx="5" fill="#fff1f0" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="284" y="111.5" font-size="10.7" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">setStock()を実行しない</text>
+  <text x="284" y="124.6" font-size="9.7" fill="#183449" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数は0個のまま</text>
 </svg>

@@ -44,7 +44,7 @@
   <text x="276" y="70" font-size="9.5" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">商品名：ノート</text>
   <text x="276" y="84" font-size="9.5" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">在庫数：0個</text>
   <text x="276" y="98" font-size="9.5" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">在庫状況：在庫切れ</text>
-  <text x="276" y="114" font-size="10.5" fill="#dc3545" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">在庫切れです</text>
-  <rect x="276" y="125" width="63" height="19" rx="4" fill="#639ffe" stroke="none" stroke-width="0.8"/>
-  <text x="307.5" y="138" font-size="9.5" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">1個購入</text>
+  <text x="276" y="114" font-size="10.5" fill="#dc3545" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">購入できません</text>
+  <rect x="276" y="125" width="63" height="19" rx="4" fill="#dbe8f9" stroke="#b5cbe1" stroke-width="0.8"/>
+  <text x="307.5" y="138" font-size="9.5" fill="#536c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">1個購入</text>
 </svg>

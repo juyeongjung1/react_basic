@@ -1,47 +1,45 @@
 import { useState } from 'react'
 
 export default function Q2_5() {
+  // ➀ 確認：在庫数をstockというstateで管理し、
+  //    初期値が2になっていることを確認してください。
   const [stock, setStock] = useState(2)
 
-  // ➀ 確認：在庫がある場合だけ、在庫数を1減らす
-  //    関数になっていることを確認してください。
   const purchaseOne = () => {
-    if (stock > 0) {
-      setStock(stock - 1)
-    }
+    // ➁ 実装：stockが0より大きい場合だけ、
+    //    setStockに現在の在庫数を1減らした値を渡す
+    //    if文を記述してください。
+    //    下の仮の処理を修正してください。
+    setStock(stock)
   }
-
-  let stockMessage = '未設定'
-  // ➁ 実装：stock が0より大きい場合は「在庫あり」、
-  //    それ以外は「在庫切れ」を stockMessage に代入する
-  //    if / else 文をここに記述してください。
 
   return (
     <main className="container mt-4">
       <h1>商品の在庫確認</h1>
       <p>商品名：ノート</p>
       <p>在庫数：{stock}個</p>
-      <p>在庫状況：{stockMessage}</p>
 
-      {/* ➂ 実装：次の「未設定」を三項演算子に置き換えてください。
-          stock が0より大きい場合は「購入できます」、
-          それ以外は「在庫切れです」と表示してください。 */}
-      <p className={stock > 0
-        ? 'text-success fw-bold'
-        : 'text-danger fw-bold'}>
-        未設定
-      </p>
+      {/* ➂ 実装：三項演算子を使用し、在庫状況と
+          購入可否の表示を切り替えてください。
+          stockが0より大きい場合は「在庫あり」
+          「購入できます」、それ以外は「在庫切れ」
+          「購入できません」と表示してください。
+          購入可否のclassNameも、在庫がある場合は
+          text-success fw-bold、ない場合は
+          text-danger fw-boldに切り替えてください。 */}
+      <p>在庫状況：未設定</p>
+      <p className="text-muted fw-bold">未設定</p>
 
-      {/* ➃ 実装：stock が1の場合だけ「残り1個です」と表示する
-          <p> 要素を、&& を使ってこの下に記述してください。
-          className は text-warning fw-bold にしてください。 */}
+      {/* ➃ 実装：stockが1の場合だけ
+          「残り1個です」と表示するp要素を、
+          &&を使用してこの下に記述してください。
+          classNameにはtext-warning fw-boldを
+          指定してください。 */}
+
 
       {/* ➄ 実装：在庫が0個の場合に購入できないよう、
-          次の button 要素に disabled 属性を追加してください。 */}
-      <button
-        className="btn btn-primary"
-        onClick={purchaseOne}
-      >
+          次のbutton要素にdisabled属性を追加してください。 */}
+      <button className="btn btn-primary" onClick={purchaseOne}>
         1個購入
       </button>
     </main>

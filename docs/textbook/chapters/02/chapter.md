@@ -2397,19 +2397,19 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 ::: {#ch02-stock-slide .slide layout="illustration"}
 条件に応じた表示
 
-![条件による表示の3つの方法](assets/stock-conditions-slide.svg)
+![条件分岐の用途と記述箇所を比較する](assets/stock-conditions-slide.svg)
 :::
 
 ::: {#ch02-stock-intro .heading level="minor"}
 Reactで条件に応じた表示を行う
 :::
 
-::: {#ch02-stock-intro-text-1 .paragraph keep-lines="true"}
-Webアプリケーションでは、データの内容によって<br>画面に表示する情報を変更することがあります。
+::: {#ch02-stock-intro-text-1 .paragraph}
+Webアプリケーションでは、データの内容によって画面に表示する情報を変更することがあります。
 :::
 
-::: {#ch02-stock-intro-text-2 .paragraph keep-lines="true"}
-例えば、ショッピングサイトでは、商品の在庫数に応じて<br>次のように表示を切り替えることがあります。
+::: {#ch02-stock-intro-text-2 .paragraph}
+例えば、ショッピングサイトでは、商品の在庫数に応じて次のように表示を切り替えることがあります。
 :::
 
 ::: {#ch02-stock-intro-table-1 .table}
@@ -2425,90 +2425,125 @@ Webアプリケーションでは、データの内容によって<br>画面に�
 :::: {#page-47 .source-page}
 
 ::: {#ch02-stock-intro-text-3 .paragraph}
-これまでの学習では、JSXに変数の値を表示する方法や、`useState()`で値の変更を画面へ反映する方法を学習しました。
+また、在庫がない商品については、購入処理そのものを実行しないようにする必要があります。
 :::
 
 ::: {#ch02-stock-intro-text-4 .paragraph}
-今回は、さらに一歩進んで、**変数の値によって、表示する文字列やHTML要素そのものを切り替える方法**を学習します。
+このように、Webアプリケーションでは、条件によって**画面の表示を切り替える処理**と、**プログラムの処理を分岐させること**の両方が必要になります。
 :::
 
 ::: {#ch02-stock-intro-text-5 .paragraph}
-Reactでは、JavaScriptの条件分岐を利用して、このような処理を実装できます。
+Reactでは、JavaScriptの条件分岐を利用して、これらを実現できます。
+:::
+
+::: {#ch02-stock-intro-text-6 .paragraph}
+今回は、`if`文・三項演算子・論理AND演算子の3つを学習し、それぞれの使い分けを理解していきましょう。
 :::
 
 ::: {#ch02-stock-if .heading level="minor"}
-if文を使用して表示内容を決定する
+if文を使用して処理を分岐する
 :::
 
 ::: {#ch02-stock-if-text-1 .paragraph}
-まずは、JavaScriptで学習した`if`文を使用する方法です。
+まずは、JavaScriptで学習した`if`文です。
 :::
 
 ::: {#ch02-stock-if-text-2 .paragraph}
-例えば、商品に在庫がある場合は「在庫あり」、在庫がない場合は「在庫切れ」と表示したいとします。
+`if`文は、条件によってプログラムの処理を実行したり、実行しなかったりする場合に使用します。
 :::
 
 ::: {#ch02-stock-if-text-3 .paragraph}
+例えば、商品を購入する際に、在庫が残っている場合だけ在庫数を1個減らしたいとします。
+:::
+
+::: {#ch02-stock-if-text-4 .paragraph}
 次のように記述できます。
 :::
 
 ::: {#ch02-stock-if-example .code example="true"}
 ```tsx
-const stock = 2
-let stockMessage = ''
-
-if (stock > 0) {
-  stockMessage = '在庫あり'
-} else {
-  stockMessage = '在庫切れ'
+const purchaseOne = () => {
+  if (stock > 0) {
+    setStock(stock - 1)
+  }
 }
-
-return (
-  <p>在庫状況：{stockMessage}</p>
-)
 ```
 :::
 
-::: {#ch02-stock-if-text-4 .paragraph}
-このコードでは、`stock`という変数に在庫数を格納しています。
-:::
-
 ::: {#ch02-stock-if-text-5 .paragraph}
-そして、`if (stock > 0)`で在庫が1個以上あるかを判定しています。
+このコードでは、`if (stock > 0)`で在庫が1個以上あるかを判定しています。
 :::
 
 ::: {#ch02-stock-if-text-6 .paragraph}
-条件を満たす場合は`stockMessage`に「在庫あり」、条件を満たさない場合は「在庫切れ」を代入します。
+条件がtrueの場合は、`setStock(stock - 1)`が実行され、在庫数が1減ります。
+:::
+
+::: {#ch02-stock-if-text-7 .paragraph}
+一方、条件がfalseの場合は、`setStock()`は実行されません。
+:::
+
+::: {#ch02-stock-if-text-8 .paragraph}
+そのため、在庫数が0個のときに購入処理を実行しても、在庫がマイナスになることを防げます。
+:::
+
+::: {#ch02-stock-if-text-9 .paragraph}
+つまり、ここでの`if`文は、単に文字列の表示を変更しているのではなく、**在庫数を変更する処理を実行するかどうかを判断している**のです。
 :::
 
 ::::
 
 :::: {#page-48 .source-page}
 
-::: {#ch02-stock-if-text-7 .paragraph}
-最後に、JSXの`{stockMessage}`で、決定した文字列を画面に表示しています。
-:::
-
-::: {#ch02-stock-if-text-8 .paragraph}
-つまり、**if文で表示内容を決定してから、その結果をJSXに渡している**ということです。
-:::
-
-![if文で在庫状況を決定してからJSXに渡す](assets/stock-if-flow.svg){#ch02-stock-if-flow}
+![if文で購入処理を実行するか判断する](assets/stock-if-flow.svg){#ch02-stock-if-flow}
 
 ::: {#ch02-stock-if-flow-caption .caption}
-if文で在庫状況を決定してからJSXに渡す
+if文で購入処理を実行するか判断する
 :::
+
+::: {#ch02-stock-if-use .step}
+**if文が適している場面**
+:::
+
+::: {#ch02-stock-if-use-text-1 .paragraph}
+`if`文は、条件に応じて複数の処理をまとめて実行したり、3つ以上の条件に分岐したりする場合にも便利です。
+:::
+
+::: {#ch02-stock-if-use-text-2 .paragraph}
+例えば、在庫数に応じて3種類のメッセージを設定したい場合は、次のように記述できます。
+:::
+
+::: {#ch02-stock-if-use-example .code example="true"}
+```tsx
+let stockMessage = ''
+
+if (stock === 0) {
+  stockMessage = '在庫切れ'
+} else if (stock === 1) {
+  stockMessage = '残りわずか'
+} else {
+  stockMessage = '在庫あり'
+}
+```
+:::
+
+::: {#ch02-stock-if-use-text-3 .paragraph}
+このように複数の条件を順番に判定する処理は、`if / else if / else`を使用すると分かりやすくなります。
+:::
+
+::::
+
+:::: {#page-49 .source-page}
 
 ::: {#ch02-stock-jsx-expression .heading level="minor"}
 JSXの中ではif文を直接記述できない
 :::
 
 ::: {#ch02-stock-jsx-expression-text-1 .paragraph}
-ここで、1つ注意点があります。
+ここで注意したいのは、`if`文を記述する場所です。
 :::
 
-::: {#ch02-stock-jsx-expression-text-2 .paragraph keep-lines="true"}
-JSXでは、`{ }`の中にJavaScriptの式を記述できますが、<br>`if`文をそのまま記述することはできません。
+::: {#ch02-stock-jsx-expression-text-2 .paragraph}
+JSXでは、`{ }`の中にJavaScriptの式を記述できますが、`if`文を直接記述することはできません。
 :::
 
 ::: {#ch02-stock-jsx-expression-text-3 .paragraph}
@@ -2525,17 +2560,17 @@ JSXでは、`{ }`の中にJavaScriptの式を記述できますが、<br>`if`文
 ```
 :::
 
-::: {#ch02-stock-jsx-expression-text-4 .paragraph keep-lines="true"}
-なぜなら、`if`文はJavaScriptの文であり、<br>JSXの`{ }`の中では値を求める式を使用する必要があるためです。
+::: {#ch02-stock-jsx-expression-text-4 .paragraph}
+`if`文はJavaScriptの「文」であり、JSXの`{ }`の中で直接使用することはできないためです。
 :::
 
-::: {#ch02-stock-jsx-expression-text-5 .paragraph keep-lines="true"}
-そこで、先ほどのように`return`の前で`if`文を使用するか、<br>次に紹介する**三項演算子**を使用します。
+::: {#ch02-stock-jsx-expression-text-5 .paragraph}
+そのため、`if`文は、先ほどのようにイベントハンドラーの内部や、JSXを返す`return`より前のJavaScriptの処理部分などで使用します。
 :::
 
-::::
-
-:::: {#page-49 .source-page}
+::: {#ch02-stock-jsx-expression-text-6 .paragraph}
+一方、**JSXの中で条件に応じて表示内容を切り替えたい場合**は、次に紹介する三項演算子や論理AND演算子が便利です。
+:::
 
 ::: {#ch02-stock-ternary .heading level="minor"}
 三項演算子（? :）による表示の切り替え
@@ -2549,6 +2584,10 @@ JSXでは、`{ }`の中にJavaScriptの式を記述できますが、<br>`if`文
 JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく利用します。
 :::
 
+::: {#ch02-stock-ternary-text-3 .paragraph}
+例えば、在庫数が0より大きい場合は「在庫あり」、そうでなければ「在庫切れ」と表示したいとします。
+:::
+
 ::: {#ch02-stock-ternary-basic .step}
 **基本構文**
 :::
@@ -2560,7 +2599,7 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 :::
 
 ::: {#ch02-stock-ternary-basic-text-1 .paragraph}
-例えば、先ほどの在庫状況の表示を、三項演算子で記述すると次のようになります。
+先ほどの在庫状況を三項演算子で記述すると、次のようになります。
 :::
 
 ::: {#ch02-stock-ternary-example .code example="true"}
@@ -2571,24 +2610,36 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 ```
 :::
 
+::::
+
+:::: {#page-50 .source-page}
+
 ::: {#ch02-stock-ternary-basic-text-2 .paragraph}
 このコードは、次のように読みます。
 :::
 
-::: {#ch02-stock-ternary-basic-reading-1 .paragraph}
+::: {#ch02-stock-ternary-basic-bullet-1 .paragraph}
 ● `stock > 0`：在庫が1個以上あるかを判定する
 :::
 
-::: {#ch02-stock-ternary-basic-reading-2 .paragraph}
+::: {#ch02-stock-ternary-basic-bullet-2 .paragraph}
 ● `? '在庫あり'`：条件がtrueの場合に選択する文字列
 :::
 
-::: {#ch02-stock-ternary-basic-reading-3 .paragraph}
+::: {#ch02-stock-ternary-basic-bullet-3 .paragraph}
 ● `: '在庫切れ'`：条件がfalseの場合に選択する文字列
 :::
 
 ::: {#ch02-stock-ternary-basic-text-3 .paragraph}
 つまり、**在庫数が0より大きければ「在庫あり」、そうでなければ「在庫切れ」を表示する**という意味です。
+:::
+
+::: {#ch02-stock-ternary-basic-text-4 .paragraph}
+ここで注目したいのは、三項演算子をJSXの`{ }`に直接記述していることです。
+:::
+
+::: {#ch02-stock-ternary-basic-text-5 .paragraph}
+`if`文を使用する場合とは異なり、表示したい場所にそのまま条件式を記述できます。
 :::
 
 ![条件式の結果によって選ぶ文字列が変わる](assets/stock-ternary.svg){#ch02-stock-ternary-parts}
@@ -2597,20 +2648,16 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 条件式の結果によって選ぶ文字列が変わる
 :::
 
-::::
-
-:::: {#page-50 .source-page}
-
 ::: {#ch02-stock-attribute .step}
 **HTML属性にも三項演算子を使用できる**
 :::
 
-::: {#ch02-stock-attribute-text-1 .paragraph keep-lines="true"}
-三項演算子は、表示する文字列だけでなく、<br>HTML属性の値を切り替える場合にも使用できます。
+::: {#ch02-stock-attribute-text-1 .paragraph}
+三項演算子は、表示する文字列だけでなく、HTML属性の値を切り替える場合にも使用できます。
 :::
 
-::: {#ch02-stock-attribute-text-2 .paragraph keep-lines="true"}
-例えば、在庫がある場合は緑色、在庫がない場合は赤色で<br>メッセージを表示したいとします。
+::: {#ch02-stock-attribute-text-2 .paragraph}
+例えば、在庫がある場合は緑色、在庫がない場合は赤色でメッセージを表示したいとします。
 :::
 
 ::: {#ch02-stock-attribute-text-3 .paragraph}
@@ -2620,13 +2667,17 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 ::: {#ch02-stock-attribute-example .code example="true"}
 ```tsx
 <p className={stock > 0 ? 'text-success' : 'text-danger'}>
-  {stock > 0 ? '購入できます' : '在庫切れです'}
+  {stock > 0 ? '購入できます' : '購入できません'}
 </p>
 ```
 :::
 
-::: {#ch02-stock-attribute-text-4 .paragraph keep-lines="true"}
-ここでは、`className`の値と、`<p>`の中に表示する文字列の両方を<br>条件によって切り替えています。
+::::
+
+:::: {#page-51 .source-page}
+
+::: {#ch02-stock-attribute-text-4 .paragraph}
+ここでは、`className`の値と、`<p>`の中に表示する文字列の両方を条件によって切り替えています。
 :::
 
 ::: {#ch02-stock-attribute-text-5 .paragraph}
@@ -2636,17 +2687,13 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 ::: {#ch02-stock-attribute-table-1 .table}
 | 条件 | 文字色 | 表示する内容 |
 |---|---|---|
-| `stock > 0` がtrue | 緑色 | 購入できます |
-| `stock > 0` がfalse | 赤色 | 在庫切れです |
+| `stock > 0`がtrue | 緑色 | 購入できます |
+| `stock > 0`がfalse | 赤色 | 購入できません |
 :::
 
 ::: {#ch02-stock-attribute-text-6 .paragraph}
 このように、三項演算子を使用すると、**1つのHTML要素の中で表示内容やデザインを切り替えられます。**
 :::
-
-::::
-
-:::: {#page-51 .source-page}
 
 ::: {#ch02-stock-and .heading level="minor"}
 論理AND演算子（&&）による条件付き表示
@@ -2692,6 +2739,10 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 ```
 :::
 
+::::
+
+:::: {#page-52 .source-page}
+
 ::: {#ch02-stock-and-basic-text-2 .paragraph}
 このコードでは、`stock === 1`という条件を判定しています。
 :::
@@ -2704,16 +2755,20 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 一方、条件がfalseの場合は、その`<p>`要素を表示しません。
 :::
 
-::::
-
-:::: {#page-52 .source-page}
-
 ::: {#ch02-stock-and-basic-table-1 .table}
 | 在庫数 | 条件 `stock === 1` | 注意メッセージ |
 |---|---|---|
 | 2個 | false | 表示しない |
 | 1個 | true | 「残り1個です」を表示 |
 | 0個 | false | 表示しない |
+:::
+
+::: {#ch02-stock-and-basic-text-5 .paragraph}
+三項演算子がtrueとfalseの2つの表示を切り替えるのに対し、`&&`は**条件を満たすときだけ要素を表示したい場合**に適しています。
+:::
+
+::: {#ch02-stock-and-basic-text-6 .paragraph}
+また、三項演算子と同様に、JSXの`{ }`へ直接記述できます。
 :::
 
 ![在庫数が1個のときだけ注意メッセージを表示する](assets/stock-and-screens.svg){#ch02-stock-and-warning}
@@ -2723,19 +2778,67 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 :::
 
 ::: {#ch02-stock-comparison .heading level="minor"}
-三項演算子と&&の使い分け
+3つの条件分岐の使い分け
 :::
 
 ::: {#ch02-stock-comparison-text-1 .paragraph}
-ここまでの内容を整理すると、次のようになります。
+ここまでに学習した3つの構文は、すべて条件を扱うものですが、得意とする処理が異なります。
 :::
 
-::: {#ch02-stock-comparison-table-1 .table}
-| 構文 | 主な用途 |
-|---|---|
-| `if / else` | 条件に応じて処理を分岐し、表示内容などを決定する |
-| `? :` | 条件によって2つの表示を切り替える |
-| `&&` | 条件を満たす場合だけ要素を表示する |
+::: {#ch02-stock-comparison-table-1 .table column-widths="26 43 31"}
+| 構文 | 適している場面 | JSXの`{ }`に直接記述 |
+|---|---|---|
+| `if / else` | 条件に応じて処理を実行・分岐させたい | できない |
+| 三項演算子 `? :` | 条件によって2つの表示を切り替えたい | できる |
+| 論理AND演算子 `&&` | 条件を満たすときだけ表示したい | できる |
+:::
+
+::: {#ch02-stock-comparison-text-2 .paragraph}
+例えば、今回の商品管理画面では、次のように使い分けます。
+:::
+
+::::
+
+:::: {#page-53 .source-page}
+
+::: {#ch02-stock-comparison-if .step}
+**① if文：在庫がある場合だけ購入処理を実行する**
+:::
+
+::: {#ch02-stock-comparison-if-example .code example="true"}
+```tsx
+if (stock > 0) {
+  setStock(stock - 1)
+}
+```
+:::
+
+::: {#ch02-stock-comparison-ternary .step}
+**② 三項演算子：在庫状況の表示を切り替える**
+:::
+
+::: {#ch02-stock-comparison-ternary-example .code example="true"}
+```tsx
+{stock > 0 ? '在庫あり' : '在庫切れ'}
+```
+:::
+
+::: {#ch02-stock-comparison-and .step}
+**③ &&：在庫が1個のときだけ注意文を表示する**
+:::
+
+::: {#ch02-stock-comparison-and-example .code example="true"}
+```tsx
+{stock === 1 && <p>残り1個です</p>}
+```
+:::
+
+::: {#ch02-stock-comparison-and-text-1 .paragraph}
+このように、`if`文はプログラムの処理を制御したいとき、三項演算子や`&&`はJSXの中で表示を切り替えたいときに使うと、コードを分かりやすく整理できます。
+:::
+
+::: {#ch02-stock-comparison-and-text-2 .paragraph}
+なお、三項演算子や`&&`もJavaScriptの構文なので、JSX以外の場所で使用できます。ただし、条件によって複数の処理を実行する場合などは、`if`文の方が読みやすくなることが一般的です。
 :::
 
 ::: {#ch02-stock-and-note .training-note}
@@ -2752,7 +2855,7 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 
 ::::
 
-:::: {#page-53 .source-page}
+:::: {#page-54 .source-page}
 
 ::: {#ch02-stock-sample .heading level="minor"}
 【サンプル】商品の在庫状況を表示する
@@ -2770,6 +2873,22 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 「1個購入」ボタンをクリックするたびに在庫数が1個減り、在庫数に応じて画面の表示が切り替わるようにします。
 :::
 
+::: {#ch02-stock-sample-text-4 .paragraph}
+今回のポイントは、次の3つです。
+:::
+
+::: {#ch02-stock-sample-bullet-1 .paragraph}
+● **if文**：在庫がある場合だけ、購入処理を実行する
+:::
+
+::: {#ch02-stock-sample-bullet-2 .paragraph}
+● **三項演算子**：「在庫あり」「在庫切れ」などの表示を切り替える
+:::
+
+::: {#ch02-stock-sample-bullet-3 .paragraph}
+● **&&**：在庫が1個になったときだけ注意メッセージを表示する
+:::
+
 ::: {#ch02-stock-sample-code-p1 .code filename="ch02-basic/src/components/Sample2_5.tsx"}
 ```tsx
 import { useState } from 'react'
@@ -2783,44 +2902,33 @@ export default function Sample2_5() {
     }
   }
 
-  let stockMessage = ''
-  if (stock > 0) {
-    stockMessage = '在庫あり'
-  } else {
-    stockMessage = '在庫切れ'
-  }
-
-```
-:::
-
-::::
-
-:::: {#page-54 .source-page}
-
-::: {#ch02-stock-sample-code-p2 .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="19"}
-```tsx
   return (
     <main className="container mt-4">
       <h1>商品の在庫確認</h1>
       <p>商品名：ノート</p>
       <p>在庫数：{stock}個</p>
-      <p>在庫状況：{stockMessage}</p>
+      <p>在庫状況：{stock > 0 ? '在庫あり' : '在庫切れ'}</p>
 
-      <p className={stock > 0
-        ? 'text-success fw-bold'
+      <p className={stock > 0 ? 'text-success fw-bold'
         : 'text-danger fw-bold'}>
-        {stock > 0 ? '購入できます' : '在庫切れです'}
+        {stock > 0 ? '購入できます' : '購入できません'}
       </p>
 
       {stock === 1 && (
         <p className="text-warning fw-bold">残り1個です</p>
       )}
+```
+:::
 
-      <button
-        className="btn btn-primary"
-        onClick={purchaseOne}
-        disabled={stock === 0}
-      >
+::::
+
+:::: {#page-55 .source-page}
+
+::: {#ch02-stock-sample-code-p2 .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="27"}
+```tsx
+
+      <button className="btn btn-primary" onClick={purchaseOne}
+        disabled={stock === 0}>
         1個購入
       </button>
     </main>
@@ -2835,28 +2943,24 @@ export default function Sample2_5() {
 BootstrapのCSSは読み込み済みとします。
 :::
 
-::::
-
-:::: {#page-55 .source-page}
-
 ::: {#ch02-stock-sample-check .step}
 **動作確認**
 :::
 
 ::: {#ch02-stock-sample-check-text-1 .paragraph}
-`ch02-basic`の開発サーバーを起動し、「2.5 条件に応じた表示」の画面を開いてください。
+`ch02-basic`の開発サーバーを起動し、メニューから「2.5 条件に応じた表示」を選択してください。
 :::
 
 ::: {#ch02-stock-sample-check-text-2 .paragraph}
-次のように、購入ボタンをクリックするたびに画面の状態が変わります。
+購入ボタンをクリックするたびに、次のように画面の状態が変わります。
 :::
 
 ::: {#ch02-stock-sample-check-table-1 .table column-widths="27 16 43 14"}
-| 状態 | 在庫状況 | 購入可否・注意メッセージ | ボタン |
+| 状態 | 在庫状況 | メッセージ | ボタン |
 |---|---|---|---|
 | 初期状態（2個） | 在庫あり | 購入できます | 押せる |
 | 1回クリック（1個） | 在庫あり | 購入できます／残り1個です | 押せる |
-| 2回クリック（0個） | 在庫切れ | 在庫切れです | 押せない |
+| 2回クリック（0個） | 在庫切れ | 購入できません | 押せない |
 :::
 
 ![在庫数が2個、1個、0個と変わったときの表示](assets/stock-purchase-screens.svg){#ch02-stock-purchase-states}
@@ -2871,6 +2975,10 @@ BootstrapのCSSは読み込み済みとします。
 
 ::: {#ch02-stock-review .heading level="minor"}
 構文の解説
+:::
+
+::: {#ch02-stock-review-text-1 .paragraph}
+ここからは、サンプルコードの重要な部分を確認します。
 :::
 
 ::: {#ch02-stock-review-state .step}
@@ -2896,7 +3004,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-purchase .step}
-**② if文で購入できるか判定する**
+**② if文で購入処理を実行するか判断する**
 :::
 
 ::: {#ch02-stock-review-purchase-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="6"}
@@ -2917,8 +3025,12 @@ BootstrapのCSSは読み込み済みとします。
 `if (stock > 0)`で在庫が残っていることを確認してから、在庫数を1減らしています。
 :::
 
-::: {#ch02-stock-review-purchase-text-3 .paragraph keep-lines="true"}
-在庫数が0の場合は、`setStock()`が実行されないため、<br>在庫がマイナスになることを防げます。
+::: {#ch02-stock-review-purchase-text-3 .paragraph}
+在庫数が0の場合は、`setStock()`が実行されないため、在庫がマイナスになることを防げます。
+:::
+
+::: {#ch02-stock-review-purchase-text-4 .paragraph}
+ここでの`if`文は、画面に表示する文字列を選んでいるのではなく、**stateを更新する処理を実行するかどうかを判断しています。**
 :::
 
 ::::
@@ -2926,44 +3038,32 @@ BootstrapのCSSは読み込み済みとします。
 :::: {#page-57 .source-page}
 
 ::: {#ch02-stock-review-message .step}
-**③ if / elseで在庫状況の文字列を決定する**
+**③ 三項演算子で在庫状況を表示する**
 :::
 
-::: {#ch02-stock-review-message-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="12"}
+::: {#ch02-stock-review-message-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="17"}
 ```tsx
-  let stockMessage = ''
-  if (stock > 0) {
-    stockMessage = '在庫あり'
-  } else {
-    stockMessage = '在庫切れ'
-  }
+      <p>在庫状況：{stock > 0 ? '在庫あり' : '在庫切れ'}</p>
 ```
 :::
 
 ::: {#ch02-stock-review-message-text-1 .paragraph}
-在庫数を判定し、画面に表示する文字列を決定しています。
+在庫数が0より大きい場合は「在庫あり」、在庫数が0の場合は「在庫切れ」と表示します。
 :::
 
 ::: {#ch02-stock-review-message-text-2 .paragraph}
-ここで設定した`stockMessage`は、24行目のJSXで使用します。
-:::
-
-::: {#ch02-stock-review-message-display .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="24"}
-```tsx
-      <p>在庫状況：{stockMessage}</p>
-```
+条件によって表示する文字列を2つから選び、JSXの中に直接表示しています。
 :::
 
 ::: {#ch02-stock-review-ternary .step}
 **④ 三項演算子で表示内容と文字色を切り替える**
 :::
 
-::: {#ch02-stock-review-ternary-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="26"}
+::: {#ch02-stock-review-ternary-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="19"}
 ```tsx
-      <p className={stock > 0
-        ? 'text-success fw-bold'
+      <p className={stock > 0 ? 'text-success fw-bold'
         : 'text-danger fw-bold'}>
-        {stock > 0 ? '購入できます' : '在庫切れです'}
+        {stock > 0 ? '購入できます' : '購入できません'}
       </p>
 ```
 :::
@@ -2973,7 +3073,7 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-ternary-text-2 .paragraph}
-在庫数が0の場合は、赤色で「在庫切れです」と表示します。
+在庫数が0の場合は、赤色で「購入できません」と表示します。
 :::
 
 ::: {#ch02-stock-review-ternary-text-3 .paragraph}
@@ -2988,7 +3088,7 @@ BootstrapのCSSは読み込み済みとします。
 **⑤ &&で注意メッセージを表示する**
 :::
 
-::: {#ch02-stock-review-and-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="32"}
+::: {#ch02-stock-review-and-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="24"}
 ```tsx
       {stock === 1 && (
         <p className="text-warning fw-bold">残り1個です</p>
@@ -3008,13 +3108,10 @@ BootstrapのCSSは読み込み済みとします。
 **⑥ 在庫が0個の場合は購入ボタンを無効にする**
 :::
 
-::: {#ch02-stock-review-disabled-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="36" highlight-lines="39-39"}
+::: {#ch02-stock-review-disabled-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="28" highlight-lines="29-29"}
 ```tsx
-      <button
-        className="btn btn-primary"
-        onClick={purchaseOne}
-        disabled={stock === 0}
-      >
+      <button className="btn btn-primary" onClick={purchaseOne}
+        disabled={stock === 0}>
         1個購入
       </button>
 ```
@@ -3029,17 +3126,17 @@ BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-review-disabled-text-3 .paragraph}
-在庫がある場合は、通常どおりボタンをクリックできます。
+ここでは、`disabled`でユーザーの操作を制限するとともに、`purchaseOne`関数内の`if`文でも在庫数が0未満にならないようにしています。
 :::
 
 ::: {#ch02-stock-review-disabled-text-4 .paragraph}
-これにより、**在庫切れの商品は購入できない**という動作を実装しています。
+**disabledはボタンの操作を制御し、if文は実行する処理を制御する**という役割の違いがあります。
 :::
 
-![在庫数の変化に応じて更新される4か所](assets/stock-display-flow.svg){#ch02-stock-display-flow}
+![購入ボタンを押した後、在庫数と画面の表示が更新される流れ](assets/stock-display-flow.svg){#ch02-stock-display-flow}
 
 ::: {#ch02-stock-display-flow-caption .caption}
-在庫数の変化に応じて更新される4か所
+購入ボタンを押した後、在庫数と画面の表示が更新される流れ
 :::
 
 ::::
@@ -3050,12 +3147,16 @@ BootstrapのCSSは読み込み済みとします。
 【確認演習】商品の在庫表示を実装する
 :::
 
-::: {#ch02-stock-practice-text-1 .paragraph keep-lines="true"}
-在庫数に応じて「在庫あり」「在庫切れ」などの<br>メッセージを切り替える画面を作成します。
+::: {#ch02-stock-practice-text-1 .paragraph}
+在庫数に応じて「在庫あり」「在庫切れ」などのメッセージを切り替える画面を作成します。
 :::
 
 ::: {#ch02-stock-practice-text-2 .paragraph}
-在庫数を管理するstateや購入ボタンの基本構成は、あらかじめ用意されています。今回学習したif / else文、三項演算子、論理AND演算子、disabled属性を使って、条件に応じた表示を実装しましょう。
+在庫数を管理するstateや画面の基本構成は、あらかじめ用意されています。
+:::
+
+::: {#ch02-stock-practice-text-3 .paragraph}
+今回は、`if`文で購入処理の実行を制御し、三項演算子・論理AND演算子・`disabled`属性を使用して、在庫数に応じた表示を実装しましょう。
 :::
 
 ::: {#ch02-stock-practice-source .step}
@@ -3067,27 +3168,23 @@ BootstrapのCSSは読み込み済みとします。
 import { useState } from 'react'
 
 export default function Q2_5() {
+  // ➀ 確認：在庫数をstockというstateで管理し、
+  //    初期値が2になっていることを確認してください。
   const [stock, setStock] = useState(2)
 
-  // ➀ 確認：在庫がある場合だけ、在庫数を1減らす
-  //    関数になっていることを確認してください。
   const purchaseOne = () => {
-    if (stock > 0) {
-      setStock(stock - 1)
-    }
+    // ➁ 実装：stockが0より大きい場合だけ、
+    //    setStockに現在の在庫数を1減らした値を渡す
+    //    if文を記述してください。
+    //    下の仮の処理を修正してください。
+    setStock(stock)
   }
-
-  let stockMessage = '未設定'
-  // ➁ 実装：stock が0より大きい場合は「在庫あり」、
-  //    それ以外は「在庫切れ」を stockMessage に代入する
-  //    if / else 文をここに記述してください。
 
   return (
     <main className="container mt-4">
       <h1>商品の在庫確認</h1>
       <p>商品名：ノート</p>
       <p>在庫数：{stock}個</p>
-      <p>在庫状況：{stockMessage}</p>
 
 ```
 :::
@@ -3096,27 +3193,29 @@ export default function Q2_5() {
 
 :::: {#page-60 .source-page}
 
-::: {#ch02-stock-practice-code-p2 .code filename="ch02-basic-q/src/components/Q2_5.tsx" start-line="26"}
+::: {#ch02-stock-practice-code-p2 .code filename="ch02-basic-q/src/components/Q2_5.tsx" start-line="22"}
 ```tsx
-      {/* ➂ 実装：次の「未設定」を三項演算子に置き換えてください。
-          stock が0より大きい場合は「購入できます」、
-          それ以外は「在庫切れです」と表示してください。 */}
-      <p className={stock > 0
-        ? 'text-success fw-bold'
-        : 'text-danger fw-bold'}>
-        未設定
-      </p>
+      {/* ➂ 実装：三項演算子を使用し、在庫状況と
+          購入可否の表示を切り替えてください。
+          stockが0より大きい場合は「在庫あり」
+          「購入できます」、それ以外は「在庫切れ」
+          「購入できません」と表示してください。
+          購入可否のclassNameも、在庫がある場合は
+          text-success fw-bold、ない場合は
+          text-danger fw-boldに切り替えてください。 */}
+      <p>在庫状況：未設定</p>
+      <p className="text-muted fw-bold">未設定</p>
 
-      {/* ➃ 実装：stock が1の場合だけ「残り1個です」と表示する
-          <p> 要素を、&& を使ってこの下に記述してください。
-          className は text-warning fw-bold にしてください。 */}
+      {/* ➃ 実装：stockが1の場合だけ
+          「残り1個です」と表示するp要素を、
+          &&を使用してこの下に記述してください。
+          classNameにはtext-warning fw-boldを
+          指定してください。 */}
+
 
       {/* ➄ 実装：在庫が0個の場合に購入できないよう、
-          次の button 要素に disabled 属性を追加してください。 */}
-      <button
-        className="btn btn-primary"
-        onClick={purchaseOne}
-      >
+          次のbutton要素にdisabled属性を追加してください。 */}
+      <button className="btn btn-primary" onClick={purchaseOne}>
         1個購入
       </button>
     </main>
@@ -3134,11 +3233,11 @@ export default function Q2_5() {
 :::
 
 ::: {#ch02-stock-practice-step-1 .paragraph numbered="true"}
-1．　`ch02-basic-q` プロジェクトの `src/components/Q2_5.tsx` を開いてください。
+1．　`ch02-basic-q`プロジェクトの`src/components/Q2_5.tsx`を開いてください。
 :::
 
 ::: {#ch02-stock-practice-step-2 .paragraph numbered="true"}
-2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀は既存の関数の確認、➁～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀は既存コードの確認、➁～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch02-stock-practice-step-3 .paragraph numbered="true"}
@@ -3146,7 +3245,7 @@ export default function Q2_5() {
 :::
 
 ::: {#ch02-stock-practice-step-4 .paragraph numbered="true"}
-4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+4．　`ch02-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
 ::: {#ch02-stock-practice-step-5 .paragraph numbered="true"}
@@ -3154,27 +3253,29 @@ export default function Q2_5() {
 :::
 
 ::: {#ch02-stock-practice-step-6 .paragraph numbered="true" keep-lines="true"}
-6．　以下の動作を確認してください。<br>● **初期状態**：在庫数2個。「在庫あり」「購入できます」と表示されます。<br>● **1回クリック**：在庫数1個。「在庫あり」「購入できます」に加えて「残り1個です」と表示されます。<br>● **2回クリック**：在庫数0個。「在庫切れ」「在庫切れです」と表示され、「1個購入」ボタンが押せなくなります。
+6．　次の動作を確認してください。<br>● **初期状態**：在庫数2個。「在庫あり」「購入できます」と表示されます。<br>● **1回クリック**：在庫数1個。「在庫あり」「購入できます」に加えて「残り1個です」と表示されます。<br>● **2回クリック**：在庫数0個。「在庫切れ」「購入できません」と表示され、「1個購入」ボタンが押せなくなります。
 :::
 
-::: {#ch02-stock-practice-text-3 .paragraph}
+::: {#ch02-stock-practice-steps-text-1 .paragraph}
 在庫数に応じて表示内容やボタンの状態が正しく切り替われば、演習完了です。
 :::
 
 ::: {#ch02-stock-points .section-points}
 この節のポイント
 
-● Reactでは、JavaScriptの`if`文や条件演算子を使用して、<br>画面の表示を切り替えられる。
+● Reactでは、JavaScriptの条件分岐を使用して、処理や画面の表示を切り替えられる。
 
-● **if / else文**は、条件によって表示内容などを決定するときに使用できる。
+● **if / else文**は、条件に応じて処理を実行・分岐させたい場合に適している。
 
-● **三項演算子（? :）**は、条件に応じて2つの表示を切り替えるときに便利である。
+● **三項演算子（? :）**は、条件に応じて2つの表示を切り替える場合に便利である。
 
-● **論理AND演算子（&&）**は、条件を満たす場合だけ<br>要素を表示するときに便利である。
+● **論理AND演算子（&&）**は、条件を満たした場合だけ要素を表示したいときに便利である。
 
-● `disabled={条件式}`を使用すると、<br>条件によってボタンを操作できない状態にできる。
+● `if`文はJSXの`{ }`内に直接記述できないが、三項演算子と`&&`はJSXの中に記述できる。
 
-● `useState()`と組み合わせることで、<br>データの変化に応じて画面の表示を切り替えられる。
+● `disabled={条件式}`を使用すると、条件によってボタンを操作できない状態にできる。
+
+● `useState()`と組み合わせることで、データの変化に応じて画面の表示を切り替えられる。
 :::
 
 ::::
