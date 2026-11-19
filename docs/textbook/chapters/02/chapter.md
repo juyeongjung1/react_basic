@@ -4244,11 +4244,61 @@ valueとonChangeはセットで使用する
 ::: {#ch02-form-radio-note .training-note}
 【補足】ラジオボタンの場合
 
-ラジオボタンも、`checked`属性を利用して選択状態を管理できます。
+ラジオボタンは、**複数の選択肢から1つを選ぶ**ための入力要素です。ここでは、商品の販売方法を「店頭販売」と「オンライン販売」から選びます。
 
-複数の選択肢から1つを選ぶ場合には、同じstateを使い、それぞれの選択肢が現在の値と一致するかを判定します。
+選択中の値は、`useState('店頭販売')` で用意する `salesMethod` に保存します。初期値が「店頭販売」なので、最初は店頭販売が選択されます。
 
-本研修では、まずテキスト入力・セレクトボックス・チェックボックスの3つを使用して、フォームとstateの連動を確認します。
+同じ `name` で2つのボタンを1つのグループにまとめ、`value` で選択肢を区別します。次のコードは、`useState` をインポートした関数コンポーネントに記述します。
+:::
+
+::: {#ch02-form-radio-example .code example="true"}
+```tsx
+const [salesMethod, setSalesMethod] = useState('店頭販売')
+
+return (
+  <div>
+    <label>
+      <input
+        type="radio"
+        name="salesMethod"
+        value="店頭販売"
+        checked={salesMethod === '店頭販売'}
+        onChange={(e) => setSalesMethod(e.target.value)}
+      />
+      店頭販売
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="salesMethod"
+        value="オンライン販売"
+        checked={salesMethod === 'オンライン販売'}
+        onChange={(e) => setSalesMethod(e.target.value)}
+      />
+      オンライン販売
+    </label>
+
+    <p>選択中の販売方法：{salesMethod}</p>
+  </div>
+)
+```
+:::
+
+::: {#ch02-form-radio-checked .paragraph}
+**`checked` に `true` を指定するとチェックが付き、`false` を指定すると外れます。** `salesMethod` は選択中の文字列なので、`salesMethod === '店頭販売'` のように各ボタンの `value` と比較します。値が一致するボタンの `checked` だけが `true` になります。
+:::
+
+::: {#ch02-form-radio-change .step}
+**「オンライン販売」を選択したときの動作**
+:::
+
+::: {#ch02-form-radio-change-steps .paragraph keep-lines="true"}
+1．「オンライン販売」のボタンで `onChange` イベントが発生します。<br>2．`setSalesMethod('オンライン販売')` に相当する処理を実行します。<br>3．stateが更新され、Reactがコンポーネントを再レンダリングします。<br>4．チェックが移り、下に「選択中の販売方法：オンライン販売」と表示されます。
+:::
+
+::: {#ch02-form-radio-compare .paragraph}
+チェックボックスでは、`e.target.checked` からチェックの有無（`true` または `false`）を取得しました。ここでは、`onChange` の中で `e.target.value` から選択肢の値を文字列として取り出し、`setSalesMethod()` に渡します。
 :::
 
 ::::
