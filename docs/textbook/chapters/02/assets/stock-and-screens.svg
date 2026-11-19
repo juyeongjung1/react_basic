@@ -19,8 +19,8 @@
   <text x="140" y="53" font-size="10.4" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品の在庫確認</text>
   <text x="140" y="70" font-size="9.6" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">在庫数：1個</text>
   <text x="190" y="112" font-size="9.9" fill="#226757" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">true</text>
-  <rect x="138" y="75" width="104" height="15" rx="4" fill="#fff3cd" stroke="#e4c777" stroke-width="0.8"/>
-  <text x="190" y="86.3" font-size="10.1" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">残り1個です</text>
+  <rect x="139" y="74" width="102" height="19" rx="4" fill="#fff3cd" stroke="#ffe69c" stroke-width="0.8"/>
+  <text x="147" y="87.4" font-size="10.1" fill="#664d03" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">残り1個です</text>
   <text x="317" y="13" font-size="10.6" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫0個</text>
   <rect x="258" y="20" width="118" height="76" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
   <rect x="258" y="20" width="118" height="16" rx="5" fill="#ebf2f6" stroke="#aabfcf" stroke-width="0.8"/>

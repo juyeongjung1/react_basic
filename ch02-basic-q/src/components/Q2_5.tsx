@@ -33,7 +33,7 @@ export default function Q2_5() {
       {/* ➃ 実装：stockが1の場合だけ
           「残り1個です」と表示するp要素を、
           &&を使用してこの下に記述してください。
-          classNameにはtext-warning fw-boldを
+          classNameにはalert alert-warningを
           指定してください。 */}
 
 

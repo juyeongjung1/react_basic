@@ -22,7 +22,7 @@ export default function Sample2_5() {
       </p>
 
       {stock === 1 && (
-        <p className="text-warning fw-bold">残り1個です</p>
+        <p className="alert alert-warning">残り1個です</p>
       )}
 
       <button className="btn btn-primary" onClick={purchaseOne}

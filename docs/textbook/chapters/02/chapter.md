@@ -1372,12 +1372,6 @@ export default function Sample2_3() {
 
 :::: {#page-27 .source-page}
 
-::: {#ch02-state-bootstrap .training-note}
-【補足】BootstrapのCSS
-
-BootstrapのCSSは、前節までに `main.tsx` から読み込まれているものとします。
-:::
-
 ::: {#ch02-state-check .step}
 **動作確認**
 :::
@@ -2077,12 +2071,6 @@ export default function Sample2_4() {
 ```
 :::
 
-::: {#ch02-events-bootstrap-note .training-note}
-【補足】BootstrapのCSS
-
-BootstrapのCSSは、これまでの節と同様に読み込み済みとします。
-:::
-
 ::::
 
 :::: {#page-40 .source-page}
@@ -2732,11 +2720,15 @@ JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく�
 ::: {#ch02-stock-and-example .code example="true"}
 ```tsx
 {stock === 1 && (
-  <p className="text-warning fw-bold">
+  <p className="alert alert-warning">
     残り1個です
   </p>
 )}
 ```
+:::
+
+::: {#ch02-stock-and-style .paragraph}
+Bootstrapの `alert` と `alert-warning` を指定すると、注意メッセージを黄色の背景付きで表示できます。
 :::
 
 ::::
@@ -2915,7 +2907,7 @@ export default function Sample2_5() {
       </p>
 
       {stock === 1 && (
-        <p className="text-warning fw-bold">残り1個です</p>
+        <p className="alert alert-warning">残り1個です</p>
       )}
 ```
 :::
@@ -2935,12 +2927,6 @@ export default function Sample2_5() {
   )
 }
 ```
-:::
-
-::: {#ch02-stock-bootstrap-note .training-note}
-【補足】BootstrapのCSS
-
-BootstrapのCSSは読み込み済みとします。
 :::
 
 ::: {#ch02-stock-sample-check .step}
@@ -3091,7 +3077,7 @@ BootstrapのCSSは読み込み済みとします。
 ::: {#ch02-stock-review-and-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="24"}
 ```tsx
       {stock === 1 && (
-        <p className="text-warning fw-bold">残り1個です</p>
+        <p className="alert alert-warning">残り1個です</p>
       )}
 ```
 :::
@@ -3159,75 +3145,6 @@ BootstrapのCSSは読み込み済みとします。
 今回は、`if`文で購入処理の実行を制御し、三項演算子・論理AND演算子・`disabled`属性を使用して、在庫数に応じた表示を実装しましょう。
 :::
 
-::: {#ch02-stock-practice-source .step}
-**演習用ソースコード**
-:::
-
-::: {#ch02-stock-practice-code-p1 .code filename="ch02-basic-q/src/components/Q2_5.tsx"}
-```tsx
-import { useState } from 'react'
-
-export default function Q2_5() {
-  // ➀ 確認：在庫数をstockというstateで管理し、
-  //    初期値が2になっていることを確認してください。
-  const [stock, setStock] = useState(2)
-
-  const purchaseOne = () => {
-    // ➁ 実装：stockが0より大きい場合だけ、
-    //    setStockに現在の在庫数を1減らした値を渡す
-    //    if文を記述してください。
-    //    下の仮の処理を修正してください。
-    setStock(stock)
-  }
-
-  return (
-    <main className="container mt-4">
-      <h1>商品の在庫確認</h1>
-      <p>商品名：ノート</p>
-      <p>在庫数：{stock}個</p>
-
-```
-:::
-
-::::
-
-:::: {#page-60 .source-page}
-
-::: {#ch02-stock-practice-code-p2 .code filename="ch02-basic-q/src/components/Q2_5.tsx" start-line="22"}
-```tsx
-      {/* ➂ 実装：三項演算子を使用し、在庫状況と
-          購入可否の表示を切り替えてください。
-          stockが0より大きい場合は「在庫あり」
-          「購入できます」、それ以外は「在庫切れ」
-          「購入できません」と表示してください。
-          購入可否のclassNameも、在庫がある場合は
-          text-success fw-bold、ない場合は
-          text-danger fw-boldに切り替えてください。 */}
-      <p>在庫状況：未設定</p>
-      <p className="text-muted fw-bold">未設定</p>
-
-      {/* ➃ 実装：stockが1の場合だけ
-          「残り1個です」と表示するp要素を、
-          &&を使用してこの下に記述してください。
-          classNameにはtext-warning fw-boldを
-          指定してください。 */}
-
-
-      {/* ➄ 実装：在庫が0個の場合に購入できないよう、
-          次のbutton要素にdisabled属性を追加してください。 */}
-      <button className="btn btn-primary" onClick={purchaseOne}>
-        1個購入
-      </button>
-    </main>
-  )
-}
-```
-:::
-
-::::
-
-:::: {#page-61 .source-page}
-
 ::: {#ch02-stock-practice-steps .step}
 **作業手順・動作確認**
 :::
@@ -3253,7 +3170,7 @@ export default function Q2_5() {
 :::
 
 ::: {#ch02-stock-practice-step-6 .paragraph numbered="true" keep-lines="true"}
-6．　次の動作を確認してください。<br>● **初期状態**：在庫数2個。「在庫あり」「購入できます」と表示されます。<br>● **1回クリック**：在庫数1個。「在庫あり」「購入できます」に加えて「残り1個です」と表示されます。<br>● **2回クリック**：在庫数0個。「在庫切れ」「購入できません」と表示され、「1個購入」ボタンが押せなくなります。
+6．　次の動作を確認してください。<br>● **初期状態**：在庫数2個。「在庫あり」「購入できます」と表示されます。<br>● **1回クリック**：在庫数1個。「在庫あり」「購入できます」に加えて、黄色の背景付きで「残り1個です」と表示されます。<br>● **2回クリック**：在庫数0個。「在庫切れ」「購入できません」と表示され、「1個購入」ボタンが押せなくなります。
 :::
 
 ::: {#ch02-stock-practice-steps-text-1 .paragraph}
@@ -3280,7 +3197,7 @@ export default function Q2_5() {
 
 ::::
 
-:::: {#page-62 .source-page}
+:::: {#page-60 .source-page}
 
 ::: {#ch02-list-title .heading}
 2.6. 配列データの一覧表示
@@ -3318,7 +3235,7 @@ export default function Q2_5() {
 
 ::::
 
-:::: {#page-63 .source-page}
+:::: {#page-61 .source-page}
 
 ::: {#ch02-list-intro-text-4 .paragraph}
 このような画面を通常のHTMLで作成する場合、商品ごとに`<tr>`と`<td>`を記述して、テーブルの行を作成します。
@@ -3366,7 +3283,7 @@ export default function Q2_5() {
 
 ::::
 
-:::: {#page-64 .source-page}
+:::: {#page-62 .source-page}
 
 ::: {#ch02-list-map .heading level="minor"}
 map()とは
@@ -3432,7 +3349,7 @@ const products = [
 
 ::::
 
-:::: {#page-65 .source-page}
+:::: {#page-63 .source-page}
 
 ::: {#ch02-list-map-syntax-text-5 .paragraph}
 `<li>`要素は1つしか記述していませんが、配列に3件のデータがあるため、3つの`<li>`要素が生成されます。
@@ -3484,7 +3401,7 @@ products.map((product) => (
 
 ::::
 
-:::: {#page-66 .source-page}
+:::: {#page-64 .source-page}
 
 ::: {#ch02-list-key .heading level="minor"}
 key属性とは
@@ -3552,7 +3469,7 @@ Reactはこれらの値を利用して、どの商品がどの要素に対応し
 
 ::::
 
-:::: {#page-67 .source-page}
+:::: {#page-65 .source-page}
 
 ![商品番号をkeyに使い、Reactが各行を識別する](assets/array-key-rows.svg){#ch02-list-key-rows}
 
@@ -3584,7 +3501,7 @@ Reactはこれらの値を利用して、どの商品がどの要素に対応し
 
 ::::
 
-:::: {#page-68 .source-page}
+:::: {#page-66 .source-page}
 
 ::: {#ch02-list-sample-code .code filename="ch02-basic/src/components/Sample2_6.tsx"}
 ```tsx
@@ -3622,15 +3539,9 @@ export default function Sample2_6() {
 ```
 :::
 
-::: {#ch02-list-bootstrap-note .training-note}
-【補足】BootstrapのCSS
-
-BootstrapのCSSは、これまでの節と同様に読み込み済みとします。
-:::
-
 ::::
 
-:::: {#page-69 .source-page}
+:::: {#page-67 .source-page}
 
 ::: {#ch02-list-sample-check .step}
 **動作確認**
@@ -3656,7 +3567,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-70 .source-page}
+:::: {#page-68 .source-page}
 
 ::: {#ch02-list-review .heading level="minor"}
 構文の解説
@@ -3706,7 +3617,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-71 .source-page}
+:::: {#page-69 .source-page}
 
 ::: {#ch02-list-review-map .step}
 **② map()で商品データを繰り返し処理する**
@@ -3776,7 +3687,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-72 .source-page}
+:::: {#page-70 .source-page}
 
 ::: {#ch02-list-review-cell .step}
 **④ 商品の各プロパティを表示する**
@@ -3826,7 +3737,7 @@ BootstrapのCSSは、これまでの節と同様に読み込み済みとしま�
 
 ::::
 
-:::: {#page-73 .source-page}
+:::: {#page-71 .source-page}
 
 ::: {#ch02-list-state-note .training-note}
 【補足】map()とuseState()の違い
@@ -3879,7 +3790,7 @@ export default function Q2_6() {
 
 ::::
 
-:::: {#page-74 .source-page}
+:::: {#page-72 .source-page}
 
 ::: {#ch02-list-practice-code-2 .code filename="ch02-basic-q/src/components/Q2_6.tsx" start-line="11"}
 ```tsx
@@ -3924,7 +3835,7 @@ export default function Q2_6() {
 
 ::::
 
-:::: {#page-75 .source-page}
+:::: {#page-73 .source-page}
 
 ::: {#ch02-list-practice-steps .step}
 **作業手順・動作確認**
