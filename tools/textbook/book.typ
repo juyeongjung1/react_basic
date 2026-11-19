@@ -48,48 +48,6 @@
   #mark(id, "heading")
   #if minor {text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 12pt / 35, body)} else {body}
 ]
-
-#let subheading-style = (
-  color: rgb("173F56"), size: 12pt,
-  icon-color: "#D5712E", icon-size: 13pt, icon-gap: 7pt, icon-stroke: "1.65",
-  rule-color: rgb("B7C9D3"), rule-width: 0.8pt, rule-gap: 7pt,
-  above: 13pt, below: 8pt,
-)
-#let subheading-paths = (
-  diamond: "M8 1.7 14.3 8 8 14.3 1.7 8Z",
-  check: "M2.1 8.2 6.1 12.2 13.9 4.1",
-  braces: "M6.6 2.1H5.5Q4.1 2.1 4.1 3.6V5.8Q4.1 8 1.8 8 4.1 8 4.1 10.2V12.4Q4.1 13.9 5.5 13.9H6.6 M9.4 2.1H10.5Q11.9 2.1 11.9 3.6V5.8Q11.9 8 14.2 8 11.9 8 11.9 10.2V12.4Q11.9 13.9 10.5 13.9H9.4",
-  monitor: "M2.8 2.6H13.2Q14.3 2.6 14.3 3.7V10Q14.3 11.1 13.2 11.1H2.8Q1.7 11.1 1.7 10V3.7Q1.7 2.6 2.8 2.6Z M8 11.1V13.7 M5 13.7H11",
-  pencil: "M3.2 10.1 10.8 2.5Q11.5 1.8 12.3 2.5L13.5 3.7Q14.2 4.5 13.5 5.2L5.9 12.8 2.3 13.7Z M9.8 3.5 12.5 6.2",
-  wrench: "M10.7 2A3.9 3.9 0 0 0 6.2 6.9L2.5 10.6A1.9 1.9 0 0 0 5.2 13.3L8.9 9.6A3.9 3.9 0 0 0 13.8 5.1L11.6 7.3 9.5 6.8 9 4.7Z",
-)
-#let subheading-icon(kind, style) = {
-  let svg = (
-    "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\">"
-    + "<path d=\"" + subheading-paths.at(kind) + "\" fill=\"none\" stroke=\"" + style.icon-color
-    + "\" stroke-width=\"" + style.icon-stroke + "\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
-    + "</svg>"
-  )
-  image(bytes(svg), width: style.icon-size, height: style.icon-size)
-}
-#let subheading(id, body, icon, above: subheading-style.above) = {
-  let style = subheading-style
-  block(width: 100%, sticky: true, breakable: false, above: above, below: style.below)[
-    #mark(id, "heading")
-    #stack(spacing: style.rule-gap,
-      grid(columns: (style.icon-size, 1fr), column-gutter: style.icon-gap, align: left + top,
-        subheading-icon(icon, style),
-        {
-          set par(leading: 4pt, first-line-indent: 0pt)
-          show strong: it => it.body
-          text(font: "MS PGothic", size: style.size, weight: "bold", fill: style.color,
-            stroke: style.size / 35 + style.color)[#box(width: 0pt)#body]
-        },
-      ),
-      line(length: 100%, stroke: style.rule-width + style.rule-color),
-    )
-  ]
-}
 #let step(id, body) = block(sticky: true, above: 8pt, below: 6pt)[
   #mark(id, "heading")#body
 ]

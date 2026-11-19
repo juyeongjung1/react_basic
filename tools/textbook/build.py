@@ -352,41 +352,6 @@ def paragraph_parts(parts):
     return paragraphs
 
 
-def subheading_icons(nodes):
-    """小見出しの階層と役割から、章をまたいで同じアイコンを選ぶ。"""
-    labels = {'動作確認': 'check', '構文の解説': 'braces', 'サンプルコードの解説': 'braces'}
-    icons = {}
-    in_exercise = False
-    for ident, node in nodes.items():
-        kind = node['kind']
-        if kind not in ('heading', 'step'):
-            continue
-        title = node['text'].strip()
-        level = node['attrs'].get('level')
-        if level == 'subminor' or re.match(r'^[①-⑳➀-➉]', title):
-            continue
-        if kind == 'heading':
-            in_exercise = title.startswith('【確認演習】')
-        elif in_exercise:
-            continue
-        if title in ('章の目標', '章の概要', '章のまとめ', 'この節のポイント') or title.startswith('【補足】'):
-            continue
-        if re.match(r'^(?:第\s*\d+\s*章|(?:演習\s*)?\d+\.\d+(?:\.\d+)?(?:[.\s]|$))', title):
-            continue
-        if title in labels:
-            icons[ident] = labels[title]
-        elif kind == 'heading':
-            if title.startswith('【サンプル】'):
-                icons[ident] = 'monitor'
-            elif title.startswith('【確認演習】'):
-                icons[ident] = 'pencil'
-            elif re.match(r'^【作業手順\s*(?:[①-⑳➀-➉]|\d+)?】', title):
-                icons[ident] = 'wrench'
-            elif level == 'minor':
-                icons[ident] = 'diamond'
-    return icons
-
-
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     page_continuations, paragraph_pairs, figure_scales = pagination_options(config, layout, nodes, figures, order)
     heading_spacing = config.get('typography', {}).get('minor_heading_extra_space', {})
@@ -397,7 +362,6 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     minor_headings = {ident for ident, node in nodes.items()
                       if node['kind'] == 'heading' and node['attrs'].get('level') == 'minor'}
     heading_spacing = {**heading_spacing, **dict.fromkeys(minor_headings, 26 - 18)}
-    decorated_headings = subheading_icons(nodes)
     numbered = figure_numbers(folder, config, layout, nodes, figures, order)
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
@@ -837,11 +801,6 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if node["kind"] == "code":
             values = ",".join(q(l) for l in node["text"].split("\n"))
             return f'#code-panel({q(ident)}, ({values},), {q(node["language"])})'
-        if icon := decorated_headings.get(ident):
-            # スライド下の余白はスライド枠の高さに含まれている。
-            above = ', above: 0pt' if ident in slide_body_first else ''
-            body = inline(typographic_parts(node['parts']), typography=False)
-            return f'#subheading({q(ident)}, [{body}], {q(icon)}{above})'
         method = {"heading": "section-heading", "contents-heading": "contents-heading",
                   "step": "step", "paragraph": "paragraph"}.get(node["kind"])
         if method is None:
@@ -880,14 +839,6 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             events = '\n'.join(f'#at({event["x"]}, {event["y"]}, mark({q(event["id"])}, {q(event["edge"])}))' for event in part['events'])
             panels.append(f'#html-panel({q(token)}, {part["width"]}, {part["height"]}, offset: {part["offset"]}pt)[{events}]')
         return '\n'.join(panels)
-
-    def heading_group_above(ident, default):
-        if ident in slide_body_first:
-            return '0pt'
-        if ident in decorated_headings:
-            return 'subheading-style.above'
-        return f'{default + heading_spacing.get(ident, 0)}pt'
-
     while i < len(entries):
         ident = entries[i]
         is_reference = nodes.get(ident, {}).get('attrs', {}).get('reference-group') == 'messages'
@@ -940,8 +891,8 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if keep_next:
             group = entries[i:i + keep_next + 1]
             body = '\n'.join(modern_panel(e) if modern and e in modern['anchors'] else render(e) for e in group)
-            above = heading_group_above(ident, 18)
-            commands.append(f'#instruction({q("instruction-" + ident)}, above: {above})[{body}]')
+            above = 18 + heading_spacing.get(ident, 0)
+            commands.append(f'#instruction({q("instruction-" + ident)}, above: {above}pt)[{body}]')
             i += len(group)
             continue
         if modern and ident in modern['anchors']:
@@ -965,8 +916,10 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             if end < len(entries) and entries[end] in figures and entries[end] not in compact_figures and entries[end] not in code_members and (not modern or entries[end] not in modern['consume']):
                 body = "\n".join(render(e) for e in entries[i:end + 1])
                 # 枠の先頭にある子見出しの上余白は相殺されるため、外側で確保する。
-                above = heading_group_above(ident, 18 if nodes[ident]['kind'] == 'heading' else 8)
-                commands.append(f'#instruction({q("instruction-" + ident)}, above: {above})[{body}]')
+                above = 0 if ident in slide_body_first else (18 if nodes[ident]['kind'] == 'heading' else 8)
+                if ident not in slide_body_first:
+                    above += heading_spacing.get(ident, 0)
+                commands.append(f'#instruction({q("instruction-" + ident)}, above: {above}pt)[{body}]')
                 i = end + 1
                 continue
         if ident in nodes and i+1<len(entries) and entries[i+1] in nodes and nodes[entries[i+1]]['kind']=='code' and re.search(r'[/\\].*\.(?:java|html|css|xml|properties|yml|yaml)\s*$',nodes[ident]['text']):
