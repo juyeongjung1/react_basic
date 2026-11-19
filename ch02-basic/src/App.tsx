@@ -5,6 +5,7 @@ import Sample2_3 from './components/Sample2_3'
 import Sample2_4 from './components/Sample2_4'
 import Sample2_5 from './components/Sample2_5'
 import Sample2_6 from './components/Sample2_6'
+import Sample2_7 from './components/Sample2_7'
 
 const lessons = [
   { label: '2.1 ReactコンポーネントとJSXの基本', component: Sample2_1 },
@@ -13,6 +14,7 @@ const lessons = [
   { label: '2.4 イベント処理', component: Sample2_4 },
   { label: '2.5 条件に応じた表示', component: Sample2_5 },
   { label: '2.6 配列データの一覧表示', component: Sample2_6 },
+  { label: '2.7 フォーム入力と状態の連動', component: Sample2_7 },
 ]
 
 export default function App() {

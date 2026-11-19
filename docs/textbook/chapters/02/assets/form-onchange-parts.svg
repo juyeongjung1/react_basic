@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="142" viewBox="0 0 380 142">
+  <rect x="5" y="6" width="370" height="34" rx="6" fill="#f6f9fb" stroke="#aabfcf" stroke-width="0.8"/>
+  <rect x="42.0" y="11" width="53.2" height="24" rx="3" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
+  <path d="M 68.6 36 V 48 L 63 61" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="6" y="61" width="114" height="28" rx="4" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="63" y="79" font-size="9.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力の変更を検知する</text>
+  <text x="43.0" y="27" font-size="12.8" fill="#205b84" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">onChange</text>
+  <text x="94.2" y="27" font-size="12.8" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace">={(e) =&gt; </text>
+  <rect x="150.8" y="11" width="91.6" height="24" rx="3" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
+  <path d="M 196.6 36 V 48 L 190 61" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="133" y="61" width="114" height="28" rx="4" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="190" y="79" font-size="9.8" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">stateを更新する</text>
+  <text x="151.8" y="27" font-size="12.8" fill="#226757" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">setProductName</text>
+  <text x="241.4" y="27" font-size="12.8" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace">(</text>
+  <rect x="246.8" y="11" width="91.6" height="24" rx="3" fill="#f1edf8" stroke="none" stroke-width="0.8"/>
+  <path d="M 292.6 36 V 48 L 317 61" fill="none" stroke="#55498a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="260" y="61" width="114" height="28" rx="4" fill="#f1edf8" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="317" y="79" font-size="9.8" fill="#55498a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力された値を取得する</text>
+  <text x="247.8" y="27" font-size="12.8" fill="#55498a" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">e.target.value</text>
+  <text x="337.4" y="27" font-size="12.8" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace">)}</text>
+  <rect x="6" y="108" width="83" height="27" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="47.5" y="125.2" font-size="10.6" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力欄</text>
+  <path d="M 90 121.5 L 95.70 121.50" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 100 121.5 L 95.70 119.00 L 95.70 124.00 Z" fill="#205b84"/>
+  <rect x="101" y="108" width="83" height="27" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="142.5" y="125.2" font-size="10.6" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">onChange</text>
+  <path d="M 185 121.5 L 190.70 121.50" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 195 121.5 L 190.70 119.00 L 190.70 124.00 Z" fill="#205b84"/>
+  <rect x="196" y="108" width="83" height="27" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="237.5" y="125.2" font-size="10.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">state更新</text>
+  <path d="M 280 121.5 L 285.70 121.50" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 290 121.5 L 285.70 119.00 L 285.70 124.00 Z" fill="#226757"/>
+  <rect x="291" y="108" width="83" height="27" rx="5" fill="#f1edf8" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="332.5" y="125.2" font-size="10.6" fill="#55498a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">画面の表示</text>
+</svg>

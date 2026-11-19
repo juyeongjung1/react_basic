@@ -116,7 +116,7 @@ XXXX-T-01
 2.6. 配列データの一覧表示
 :::
 
-::: {#contents-ch02-section-7 .contents-entry}
+::: {#contents-ch02-section-7 .contents-entry target="02:ch02-form-title"}
 2.7. フォーム入力と状態の連動
 :::
 

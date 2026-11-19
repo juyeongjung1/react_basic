@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="131" viewBox="0 0 380 131">
+  <text x="89" y="14.5" font-size="10.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">選択前</text>
+  <rect x="7" y="22" width="164" height="101" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
+  <rect x="7" y="22" width="164" height="17" rx="5" fill="#ebf2f6" stroke="#aabfcf" stroke-width="0.8"/>
+  <rect x="14" y="29" width="3" height="3" rx="1.5" fill="#91a9b8" stroke="none" stroke-width="0.8"/>
+  <rect x="20" y="29" width="3" height="3" rx="1.5" fill="#91a9b8" stroke="none" stroke-width="0.8"/>
+  <rect x="30" y="25" width="134" height="11" rx="3" fill="#ffffff" stroke="#c6d4de" stroke-width="0.8"/>
+  <text x="35" y="33.4" font-size="7.6" fill="#425a6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">localhost:5173</text>
+  <text x="17" y="55.5" font-size="10.2" fill="#205b84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">カテゴリ</text>
+  <rect x="17" y="61" width="144" height="24" rx="5" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="25" y="77.0" font-size="11" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">文房具</text>
+  <path d="M 146 71.0 l 3.2 3.2 l 3.2 -3.2" fill="none" stroke="#425a6b" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="17" y="95" width="144" height="20" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
+  <text x="89" y="109" font-size="10.0" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">選択中のカテゴリ：文房具</text>
+  <text x="291" y="14.5" font-size="10.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">「電子機器」を選択した後</text>
+  <rect x="209" y="22" width="164" height="101" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
+  <rect x="209" y="22" width="164" height="17" rx="5" fill="#ebf2f6" stroke="#aabfcf" stroke-width="0.8"/>
+  <rect x="216" y="29" width="3" height="3" rx="1.5" fill="#91a9b8" stroke="none" stroke-width="0.8"/>
+  <rect x="222" y="29" width="3" height="3" rx="1.5" fill="#91a9b8" stroke="none" stroke-width="0.8"/>
+  <rect x="232" y="25" width="134" height="11" rx="3" fill="#ffffff" stroke="#c6d4de" stroke-width="0.8"/>
+  <text x="237" y="33.4" font-size="7.6" fill="#425a6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">localhost:5173</text>
+  <text x="219" y="55.5" font-size="10.2" fill="#205b84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">カテゴリ</text>
+  <rect x="219" y="61" width="144" height="24" rx="5" fill="#ffffff" stroke="#86b7fe" stroke-width="0.8"/>
+  <text x="227" y="77.0" font-size="11" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">電子機器</text>
+  <path d="M 348 71.0 l 3.2 3.2 l 3.2 -3.2" fill="none" stroke="#425a6b" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="219" y="95" width="144" height="20" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
+  <text x="291" y="109" font-size="10.0" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">選択中のカテゴリ：電子機器</text>
+  <path d="M 176 73 L 199.70 73.00" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 204 73 L 199.70 70.50 L 199.70 75.50 Z" fill="#226757"/>
+</svg>
