@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" width="168" height="120" role="img">
+  <title>ボールペン</title>
+  <ellipse cx="80" cy="94" rx="51" ry="5" fill="#22424d" opacity=".11"/>
+  <g transform="rotate(-32 84 58)">
+    <path d="M24 55 9 60l15 5 8-5Z" fill="#cdd8de" stroke="#536c7f" stroke-width="1.1"/>
+    <path d="M9 60H5" stroke="#334653" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="133" y="53" width="17" height="14" rx="4" fill="#8299aa" stroke="#344e61" stroke-width="1.1"/>
+    <rect x="24" y="52" width="115" height="16" rx="7" fill="#285b81" stroke="#233d55" stroke-width="1.4"/>
+    <path d="M30 55h97" stroke="#80b4d6" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M33 65h98" stroke="#1d4568" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="25" y="52" width="32" height="16" rx="6" fill="#263d4d"/>
+    <path d="M32 56v8m5-8v8m5-8v8m5-8v8m5-8v8" stroke="#7595a8" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#556c7d" stroke-width="5" stroke-linecap="round"/>
+    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#e8f0f3" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>

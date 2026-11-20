@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 158" width="400" height="158" font-family="Meiryo, sans-serif">
+  <title>Propsの型、分割代入、親が指定する属性の対応</title>
+  <rect x="4" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
+  <text x="65" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">型の定義</text>
+  <rect x="139" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
+  <text x="200" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">Propsの受け取り</text>
+  <rect x="274" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
+  <text x="335" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">親から渡す値</text>
+  <rect x="8" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
+  <text x="65" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name: string</text>
+  <rect x="143" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
+  <text x="200" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name</text>
+  <rect x="278" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
+  <text x="335" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name="ノート"</text>
+  <path d="M126 43H133" fill="none" stroke="#245b86" stroke-width="1.25"/><path d="m133 40 5 3-5 3Z" fill="#245b86"/>
+  <path d="M261 43H268" fill="none" stroke="#245b86" stroke-width="1.25"/><path d="m268 40 5 3-5 3Z" fill="#245b86"/>
+  <rect x="8" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
+  <text x="65" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price: number</text>
+  <rect x="143" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
+  <text x="200" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price</text>
+  <rect x="278" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
+  <text x="335" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price={250}</text>
+  <path d="M126 73H133" fill="none" stroke="#256453" stroke-width="1.25"/><path d="m133 70 5 3-5 3Z" fill="#256453"/>
+  <path d="M261 73H268" fill="none" stroke="#256453" stroke-width="1.25"/><path d="m268 70 5 3-5 3Z" fill="#256453"/>
+  <rect x="8" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
+  <text x="65" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath: string</text>
+  <rect x="143" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
+  <text x="200" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath</text>
+  <rect x="278" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
+  <text x="335" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath="..."</text>
+  <path d="M126 103H133" fill="none" stroke="#8a4c15" stroke-width="1.25"/><path d="m133 100 5 3-5 3Z" fill="#8a4c15"/>
+  <path d="M261 103H268" fill="none" stroke="#8a4c15" stroke-width="1.25"/><path d="m268 100 5 3-5 3Z" fill="#8a4c15"/>
+  <text x="200" y="150" font-size="11.1" fill="#1b3145" font-weight="700" text-anchor="middle">引数の型には ProductCardProps を指定する</text>
+</svg>
