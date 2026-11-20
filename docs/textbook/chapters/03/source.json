@@ -2,7 +2,7 @@
   "title": "第3章 ルーティングと画面構成",
   "chapter": 3,
   "first_page": 1,
-  "last_page": 4,
+  "last_page": 7,
   "cover_mode": "classic",
   "cover_wrap_goals": true,
   "illustrations": {
@@ -40,6 +40,43 @@
       "caption_id": "ch03-code-flow-caption",
       "width": 380,
       "max_height": 162
+    },
+    "ch03-router-figure-path": {
+      "caption_id": "ch03-router-figure-path-caption",
+      "width": 380,
+      "max_height": 136
+    },
+    "ch03-router-figure-nesting": {
+      "caption_id": "ch03-router-figure-nesting-caption",
+      "width": 380,
+      "max_height": 131
+    },
+    "ch03-router-figure-attributes": {
+      "caption_id": "ch03-router-figure-attributes-caption",
+      "width": 380,
+      "max_height": 145
+    },
+    "ch03-router-figure-home": {
+      "caption_id": "ch03-router-figure-home-caption",
+      "width": 380,
+      "max_height": 77,
+      "numbered": false
+    },
+    "ch03-router-figure-guide": {
+      "caption_id": "ch03-router-figure-guide-caption",
+      "width": 380,
+      "max_height": 77,
+      "numbered": false
+    },
+    "ch03-router-figure-screens": {
+      "caption_id": "ch03-router-figure-screens-caption",
+      "width": 380,
+      "max_height": 161
+    },
+    "ch03-router-figure-flow": {
+      "caption_id": "ch03-router-figure-flow-caption",
+      "width": 380,
+      "max_height": 166
     }
   }
 }

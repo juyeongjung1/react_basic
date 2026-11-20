@@ -136,6 +136,10 @@ XXXX-T-01
 3.1. コンポーネントの分割とProps
 :::
 
+::: {#contents-ch03-section-2 .contents-entry target="03:ch03-router-title"}
+3.2. React Routerによるルーティング
+:::
+
 ::::
 
 :::: {#page-4 .source-page}

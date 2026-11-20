@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="352" height="224" viewBox="0 0 352 224" font-family="Meiryo, sans-serif">
+  <title>React Routerは3つのURLをそれぞれ対応する画面へ結び付ける</title>
+  <text x="52" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">ブラウザーのURL</text>
+  <rect x="111" y="6" width="118" height="177" rx="5" fill="#f2f7fa" stroke="#adbfce" stroke-width=".9"/>
+  <text x="170" y="26" font-size="13.4" fill="#1b3145" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">React Router</text>
+  <text x="296" y="23" font-size="11.4" fill="#23695b" font-weight="700" text-anchor="middle">表示する画面</text>
+  <rect x="4" y="35" width="97" height="38" rx="5" fill="#edf5fa" stroke="#205c84" stroke-width=".9"/>
+  <text x="52.5" y="59" font-size="13.8" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">/</text>
+  <path d="M102 54H116" stroke="#205c84" stroke-width="1.3" fill="none"/><path d="M116 51l5 3-5 3Z" fill="#205c84"/>
+  <rect x="125" y="38" width="90" height="32" rx="5" fill="#fff" stroke="#adbfce" stroke-width=".9"/>
+  <text x="170" y="58" font-size="10.5" fill="#205c84" font-weight="700" text-anchor="middle">パスを照合</text>
+  <path d="M216 54H241" stroke="#205c84" stroke-width="1.3" fill="none"/><path d="M241 51l5 3-5 3Z" fill="#205c84"/>
+  <rect x="250" y="35" width="98" height="38" rx="5" fill="#edf5fa" stroke="#205c84" stroke-width=".9"/>
+  <text x="299" y="50" font-size="11.7" fill="#1b3145" font-weight="700" text-anchor="middle">ホーム</text>
+  <text x="299" y="64" font-size="10.1" fill="#205c84" font-weight="400" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">HomePage</text>
+  <rect x="4" y="81" width="97" height="38" rx="5" fill="#e9f4ef" stroke="#23695b" stroke-width=".9"/>
+  <text x="52.5" y="105" font-size="13.8" fill="#23695b" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">/products</text>
+  <path d="M102 100H116" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M116 97l5 3-5 3Z" fill="#23695b"/>
+  <rect x="125" y="84" width="90" height="32" rx="5" fill="#fff" stroke="#adbfce" stroke-width=".9"/>
+  <text x="170" y="104" font-size="10.5" fill="#23695b" font-weight="700" text-anchor="middle">パスを照合</text>
+  <path d="M216 100H241" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M241 97l5 3-5 3Z" fill="#23695b"/>
+  <rect x="250" y="81" width="98" height="38" rx="5" fill="#e9f4ef" stroke="#23695b" stroke-width=".9"/>
+  <text x="299" y="96" font-size="11.7" fill="#1b3145" font-weight="700" text-anchor="middle">商品一覧</text>
+  <text x="299" y="110" font-size="10.1" fill="#23695b" font-weight="400" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
+  <rect x="4" y="127" width="97" height="38" rx="5" fill="#fff3e6" stroke="#955621" stroke-width=".9"/>
+  <text x="52.5" y="151" font-size="13.8" fill="#955621" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">/guide</text>
+  <path d="M102 146H116" stroke="#955621" stroke-width="1.3" fill="none"/><path d="M116 143l5 3-5 3Z" fill="#955621"/>
+  <rect x="125" y="130" width="90" height="32" rx="5" fill="#fff" stroke="#adbfce" stroke-width=".9"/>
+  <text x="170" y="150" font-size="10.5" fill="#955621" font-weight="700" text-anchor="middle">パスを照合</text>
+  <path d="M216 146H241" stroke="#955621" stroke-width="1.3" fill="none"/><path d="M241 143l5 3-5 3Z" fill="#955621"/>
+  <rect x="250" y="127" width="98" height="38" rx="5" fill="#fff3e6" stroke="#955621" stroke-width=".9"/>
+  <text x="299" y="142" font-size="11.7" fill="#1b3145" font-weight="700" text-anchor="middle">ご利用案内</text>
+  <text x="299" y="156" font-size="10.1" fill="#955621" font-weight="400" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">GuidePage</text>
+  <rect x="4" y="195" width="344" height="24" rx="5" fill="#e9f4ef" stroke="#a6c6b6" stroke-width=".9"/>
+  <text x="176" y="211" font-size="11.8" fill="#23695b" font-weight="700" text-anchor="middle">現在のURLに対応するコンポーネントを表示する</text>
+</svg>

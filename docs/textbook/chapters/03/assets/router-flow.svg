@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="174" viewBox="0 0 400 174" font-family="Meiryo, sans-serif">
+  <title>ブラウザーのパスから画像付き商品カードが表示されるまでの流れ</title>
+  <rect x="5" y="4" width="390" height="25" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
+  <circle cx="19" cy="16.5" r="8" fill="#205c84"/>
+  <text x="19" y="20" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">1</text>
+  <text x="34" y="21" font-size="10.6" fill="#205c84" font-weight="700" text-anchor="start">ブラウザー</text>
+  <text x="144" y="21" font-size="10.3" fill="#1b3145" font-weight="400" text-anchor="start">/productsをアドレスバーに入力する</text>
+  <path d="M200 30V34" stroke="#205c84" stroke-width="1.3" fill="none"/><path d="M197 34l3 5 3-5Z" fill="#205c84"/>
+  <rect x="5" y="39" width="390" height="25" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
+  <circle cx="19" cy="51.5" r="8" fill="#205c84"/>
+  <text x="19" y="55" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">2</text>
+  <text x="34" y="56" font-size="10.6" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">BrowserRouter</text>
+  <text x="144" y="56" font-size="10.3" fill="#1b3145" font-weight="400" text-anchor="start">現在のURLを扱う</text>
+  <path d="M200 65V69" stroke="#205c84" stroke-width="1.3" fill="none"/><path d="M197 69l3 5 3-5Z" fill="#205c84"/>
+  <rect x="5" y="74" width="390" height="25" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
+  <circle cx="19" cy="86.5" r="8" fill="#205c84"/>
+  <text x="19" y="90" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">3</text>
+  <text x="34" y="91" font-size="10.6" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">Routes</text>
+  <text x="144" y="91" font-size="10.3" fill="#1b3145" font-weight="400" text-anchor="start">パスに対応するRouteを選ぶ</text>
+  <path d="M200 100V104" stroke="#205c84" stroke-width="1.3" fill="none"/><path d="M197 104l3 5 3-5Z" fill="#205c84"/>
+  <rect x="5" y="109" width="390" height="25" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
+  <circle cx="19" cy="121.5" r="8" fill="#23695b"/>
+  <text x="19" y="125" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">4</text>
+  <text x="34" y="126" font-size="10.6" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">Route</text>
+  <text x="144" y="126" font-size="10.3" fill="#1b3145" font-weight="400" text-anchor="start">elementのSample3_1を表示する</text>
+  <path d="M200 135V139" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M197 139l3 5 3-5Z" fill="#23695b"/>
+  <rect x="5" y="144" width="390" height="25" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
+  <circle cx="19" cy="156.5" r="8" fill="#23695b"/>
+  <text x="19" y="160" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">5</text>
+  <text x="34" y="161" font-size="10.6" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
+  <text x="144" y="161" font-size="10.3" fill="#1b3145" font-weight="400" text-anchor="start">画像付き商品カードを6枚表示する</text>
+</svg>

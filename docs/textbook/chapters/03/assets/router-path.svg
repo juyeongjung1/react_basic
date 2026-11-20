@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="143" viewBox="0 0 400 143" font-family="Meiryo, sans-serif">
+  <title>URLのパスを取り出して商品一覧画面を決める</title>
+  <text x="8" y="19" font-size="12.5" fill="#205c84" font-weight="700" text-anchor="start">ブラウザーのURL</text>
+  <rect x="6" y="28" width="388" height="44" rx="5" fill="#f4f8fb" stroke="#adbfce" stroke-width=".9"/>
+  <rect x="208" y="36" width="72" height="29" rx="3" fill="#ffece7" stroke="#c33d36" stroke-width=".9"/>
+  <text x="61" y="56" font-size="14.1" fill="#1b3145" font-weight="400" text-anchor="start" font-family="Consolas, MS Gothic, monospace">http://localhost:5173<tspan fill="#952b26" font-weight="700">/products</tspan></text>
+  <path d="M244 72V81" stroke="#ab4037" stroke-width="1.3" fill="none"/><path d="M241 81l3 5 3-5Z" fill="#ab4037"/>
+  <text x="244" y="98" font-size="10.3" fill="#952b26" font-weight="700" text-anchor="middle">この部分がパス</text>
+  <rect x="4" y="108" width="89" height="29" rx="5" fill="#ffece7" stroke="#adbfce" stroke-width=".9"/>
+  <text x="48.5" y="127" font-size="10.8" fill="#952b26" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">/products</text>
+  <path d="M94 122.5H99" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M99 119.5l5 3-5 3Z" fill="#23695b"/>
+  <rect x="105" y="108" width="89" height="29" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
+  <text x="149.5" y="127" font-size="10.8" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">React Router</text>
+  <path d="M195 122.5H200" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M200 119.5l5 3-5 3Z" fill="#23695b"/>
+  <rect x="206" y="108" width="89" height="29" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
+  <text x="250.5" y="127" font-size="10.8" fill="#23695b" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
+  <path d="M296 122.5H301" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M301 119.5l5 3-5 3Z" fill="#23695b"/>
+  <rect x="307" y="108" width="89" height="29" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
+  <text x="351.5" y="127" font-size="10.8" fill="#23695b" font-weight="700" text-anchor="middle">商品一覧画面</text>
+</svg>

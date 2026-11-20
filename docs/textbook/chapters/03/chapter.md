@@ -1025,3 +1025,817 @@ Sample3_1からProductCardへPropsが渡り、カードが表示される流れ
 :::
 
 ::::
+
+:::: {#page-5 .source-page}
+
+::: {#ch03-router-title .heading}
+3.2. React Routerによるルーティング
+:::
+
+::: {#ch03-router-slide .slide layout="illustration"}
+React Routerによるルーティング
+
+![3つのURLと画面の対応](assets/router-slide.svg)
+:::
+
+::: {#ch03-router-screens-heading .heading level="minor"}
+複数の画面を持つアプリケーションを作るには
+:::
+
+::: {#ch03-router-screens-1 .paragraph}
+前節では、商品カードを独立したコンポーネントとして作成し、Propsを使用して商品名・単価・画像を渡す方法を学習しました。
+:::
+
+::: {#ch03-router-screens-2 .paragraph}
+これにより、共通の商品カードを再利用して、6件の商品を一覧表示できるようになりました。
+:::
+
+::: {#ch03-router-screens-3 .paragraph}
+しかし、実際の商品管理システムには、商品一覧以外にもさまざまな画面が必要です。
+:::
+
+::: {#ch03-router-screens-4 .paragraph}
+例えば、次のような画面を考えてみましょう。
+:::
+
+::: {#ch03-router-screens-5-table .table column-widths="31 69"}
+| 画面 | 主な役割 |
+|---|---|
+| ホーム画面 | システムのトップページを表示する |
+| 商品一覧画面 | 登録されている商品を一覧表示する |
+| ご利用案内画面 | システムの使い方などを表示する |
+:::
+
+::: {#ch03-router-screens-6 .paragraph}
+これらの画面は、それぞれ別のReactコンポーネントとして作成できます。
+:::
+
+::: {#ch03-router-screens-7 .paragraph}
+では、どの画面を表示するかは、どのように決めればよいのでしょうか。
+:::
+
+::: {#ch03-router-screens-8 .paragraph}
+例えば、ユーザーが次のURLにアクセスしたとします。
+:::
+
+::: {#ch03-router-screens-9-url .paragraph keep-lines="true"}
+**`http://localhost:5173/products`**
+:::
+
+::: {#ch03-router-screens-10 .paragraph}
+このとき、商品一覧画面を表示するようにしたいわけです。
+:::
+
+::: {#ch03-router-screens-11 .paragraph}
+このように、**URLに応じて表示する画面を決定する仕組み**を、ルーティングと呼びます。
+:::
+
+::: {#ch03-router-screens-12 .paragraph}
+Reactでは、このルーティングを実現するために、React Routerというライブラリを使用できます。
+:::
+
+::: {#ch03-router-library-heading .heading level="minor"}
+React Routerとは
+:::
+
+::: {#ch03-router-library-1 .paragraph}
+React Routerは、ReactアプリケーションでURLと画面を対応付けるためのライブラリです。
+:::
+
+::: {#ch03-router-library-2 .paragraph}
+第1章では、SPA（Single Page Application）について学習しました。
+:::
+
+::: {#ch03-router-library-3 .paragraph}
+SPAでは、画面を切り替えるたびにHTMLページ全体を読み込み直すのではなく、必要な表示部分を更新することで画面を切り替えられます。
+:::
+
+::: {#ch03-router-library-4 .paragraph}
+ただし、Reactは画面を作成・更新するためのライブラリであり、**URLに応じた画面の切り替えを、React単体ですべて自動的に行うわけではありません。**
+:::
+
+::: {#ch03-router-library-5 .paragraph}
+そこで、React Routerを使用します。
+:::
+
+::: {#ch03-router-library-6 .paragraph}
+React Routerを使用すると、例えば次のような対応関係を定義できます。
+:::
+
+::: {#ch03-router-library-7-table .table column-widths="38 62"}
+| URLのパス | 表示するコンポーネント |
+|---|---|
+| `/` | `HomePage` |
+| `/products` | `Sample3_1` |
+| `/guide` | `GuidePage` |
+:::
+
+::: {#ch03-router-library-8 .paragraph}
+ここでいうURLのパスとは、URLの中で画面を区別する部分です。
+:::
+
+::: {#ch03-router-library-9 .paragraph}
+例えば、次のURLを見てください。
+:::
+
+::: {#ch03-router-library-10-url .paragraph keep-lines="true"}
+**`http://localhost:5173/products`**
+:::
+
+::: {#ch03-router-library-11 .paragraph}
+このURLは、次の部分に分けられます。
+:::
+
+::: {#ch03-router-library-12-table .table column-widths="34 27 39"}
+| 部分 | 例 | 意味 |
+|---|---|---|
+| ホスト名とポート番号 | `localhost:5173` | アクセス先の開発サーバー |
+| パス | `/products` | 表示したい画面を表す部分 |
+:::
+
+::: {#ch03-router-library-13 .paragraph}
+React Routerは、このパスを確認して、どのコンポーネントを表示するかを判断します。
+:::
+
+![URLのパスを確認し、商品一覧を表示する](assets/router-path.svg){#ch03-router-figure-path}
+
+::: {#ch03-router-figure-path-caption .caption}
+URLのパスを確認し、商品一覧を表示する
+:::
+
+::: {#ch03-router-install-heading .heading level="minor"}
+React Routerをインストールする
+:::
+
+::: {#ch03-router-install-1 .paragraph}
+React Routerは、Reactとは別のライブラリです。そのため、React Routerを使用するには、プロジェクトにライブラリを導入する必要があります。
+:::
+
+::: {#ch03-router-install-3 .paragraph}
+第1章で学習したnpmを使用し、次のコマンドでインストールできます。
+:::
+
+::: {#ch03-router-install-4-command .code example="true"}
+```console
+npm install react-router
+```
+:::
+
+::: {#ch03-router-install-5 .paragraph}
+このコマンドを実行すると、React Routerがインストールされ、`package.json`にも依存ライブラリとして登録されます。
+:::
+
+::: {#ch03-router-install-6 .paragraph}
+本研修では、React Routerの基本的な画面遷移の仕組みを学ぶため、**Declarative Mode（宣言的なルーティング方式）**を使用します。
+:::
+
+::: {#ch03-router-install-7 .paragraph}
+この方式では、主に次の3つのコンポーネントを使用します。
+:::
+
+::: {#ch03-router-install-8-table .table column-widths="29 71"}
+| コンポーネント | 役割 |
+|---|---|
+| `BrowserRouter` | ブラウザーのURLを利用してルーティングを管理する |
+| `Routes` | URLと画面の対応関係をまとめる |
+| `Route` | 特定のURLに対して、表示するコンポーネントを指定する |
+:::
+
+::: {#ch03-router-install-9 .paragraph}
+まずは、この3つの役割を理解しましょう。
+:::
+
+::: {#ch03-router-browserrouter-heading .heading level="minor"}
+BrowserRouterとは
+:::
+
+::: {#ch03-router-browserrouter-1 .paragraph}
+`BrowserRouter`は、ブラウザーのURLを使用してルーティングを管理するためのコンポーネントです。
+:::
+
+::: {#ch03-router-browserrouter-2 .paragraph}
+React Routerで画面を切り替える仕組みを使用するためには、アプリケーションを`BrowserRouter`で囲みます。
+:::
+
+::: {#ch03-router-browserrouter-3 .paragraph}
+基本的には、次のように記述します。
+:::
+
+::: {#ch03-router-browserrouter-4-code .code filename="ch03-basic/src/main.tsx" start-line="9"}
+```tsx
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+```
+:::
+
+::: {#ch03-router-browserrouter-5 .paragraph}
+ここでは、アプリケーション全体を表す`App`コンポーネントを`BrowserRouter`で囲んでいます。
+:::
+
+::: {#ch03-router-browserrouter-6 .paragraph}
+これにより、`App`の中でReact Routerの機能を利用できるようになります。
+:::
+
+::: {#ch03-router-browserrouter-7 .paragraph}
+通常、`BrowserRouter`はReactアプリケーションの起動処理で設定します。
+:::
+
+::: {#ch03-router-browserrouter-8 .paragraph}
+今回のプロジェクトでは、`main.tsx`で設定します。
+:::
+
+::: {#ch03-router-browserrouter-10-code .code filename="ch03-basic/src/main.tsx"}
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router'
+import App from './App'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+)
+```
+:::
+
+::: {#ch03-router-browserrouter-11 .paragraph}
+このコードで特に注目したいのは、次の部分です。
+:::
+
+::: {#ch03-router-browserrouter-12-code .code filename="ch03-basic/src/main.tsx" start-line="9"}
+```tsx
+<BrowserRouter>
+  <App />
+</BrowserRouter>
+```
+:::
+
+::: {#ch03-router-browserrouter-13 .paragraph}
+アプリケーションを`BrowserRouter`で囲むことで、内部のコンポーネントからURLに応じた画面の切り替えができるようになります。
+:::
+
+::: {#ch03-router-browserrouter-14 .paragraph}
+なお、`BrowserRouter`はアプリケーション全体に対して基本的に1つ設定します。
+:::
+
+![main.tsxでBrowserRouterがアプリケーション全体を囲む](assets/router-nesting.svg){#ch03-router-figure-nesting}
+
+::: {#ch03-router-figure-nesting-caption .caption}
+main.tsxでBrowserRouterがアプリケーション全体を囲む
+:::
+
+::: {#ch03-router-routes-heading .heading level="minor"}
+RoutesとRouteによる画面の設定
+:::
+
+::: {#ch03-router-routes-1 .paragraph}
+続いて、URLとコンポーネントの対応関係を定義します。
+:::
+
+::: {#ch03-router-routes-2 .paragraph}
+このときに使用するのが、`Routes`と`Route`です。
+:::
+
+::: {#ch03-router-routes-3 .paragraph}
+例えば、次のコードを確認してください。
+:::
+
+::: {#ch03-router-routes-4-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="24"}
+```tsx
+<Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/products" element={<Sample3_1 />} />
+  <Route path="/guide" element={<GuidePage />} />
+</Routes>
+```
+:::
+
+::: {#ch03-router-routes-5 .paragraph}
+ここでは、3つのURLに対して、表示するコンポーネントを指定しています。
+:::
+
+::: {#ch03-router-routes-6 .paragraph}
+それぞれの役割を確認しましょう。
+:::
+
+::: {#ch03-router-routes-7-heading .step}
+**Routesの役割**
+:::
+
+::: {#ch03-router-routes-8 .paragraph}
+`Routes`は、複数の`Route`をまとめるためのコンポーネントです。
+:::
+
+::: {#ch03-router-routes-9 .paragraph}
+React Routerは、`Routes`の中に定義された`Route`を確認し、現在のURLに対応するものを選択します。
+:::
+
+::: {#ch03-router-routes-10-heading .step}
+**Routeの役割**
+:::
+
+::: {#ch03-router-routes-11 .paragraph}
+`Route`は、特定のURLに対して表示するコンポーネントを定義するものです。
+:::
+
+::: {#ch03-router-routes-12 .paragraph}
+基本構文は、次のとおりです。
+:::
+
+::: {#ch03-router-routes-13-code .code example="true"}
+```tsx
+<Route path="URLのパス" element={<表示するコンポーネント />} />
+```
+:::
+
+::: {#ch03-router-routes-14 .paragraph}
+`Route`では、主に2つの属性を指定します。
+:::
+
+::: {#ch03-router-routes-15-table .table column-widths="24 76"}
+| 属性 | 意味 |
+|---|---|
+| `path` | どのURLに対応するかを指定する |
+| `element` | そのURLにアクセスしたときに表示するReact要素を指定する |
+:::
+
+::: {#ch03-router-routes-16 .paragraph}
+例えば、次のコードを見てください。
+:::
+
+::: {#ch03-router-routes-17-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="26"}
+```tsx
+<Route path="/products" element={<Sample3_1 />} />
+```
+:::
+
+::: {#ch03-router-routes-18 .paragraph}
+これは、**URLのパスが`/products`の場合に、`Sample3_1`コンポーネントを表示する**という意味です。
+:::
+
+::: {#ch03-router-routes-19 .paragraph}
+前節で作成した`Sample3_1`には、6件の商品をカード形式で表示する処理が記述されています。
+:::
+
+::: {#ch03-router-routes-20 .paragraph}
+そのため、`/products`にアクセスすると、商品カードの一覧画面が表示されます。
+:::
+
+![pathで指定したURLとelementで指定したReact要素の対応](assets/router-attributes.svg){#ch03-router-figure-attributes}
+
+::: {#ch03-router-figure-attributes-caption .caption}
+pathで指定したURLとelementで指定したReact要素の対応
+:::
+
+::: {#ch03-router-multiple-heading .heading level="minor"}
+複数のRouteを定義する
+:::
+
+::: {#ch03-router-multiple-1 .paragraph}
+1つのアプリケーションで複数の画面を扱う場合は、`Route`を複数記述します。
+:::
+
+::: {#ch03-router-multiple-2-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="24"}
+```tsx
+<Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/products" element={<Sample3_1 />} />
+  <Route path="/guide" element={<GuidePage />} />
+</Routes>
+```
+:::
+
+::: {#ch03-router-multiple-3 .paragraph}
+例えば、次のURLにアクセスした場合を考えてみましょう。
+:::
+
+::: {#ch03-router-multiple-4-url .paragraph keep-lines="true"}
+**`http://localhost:5173/`**
+:::
+
+::: {#ch03-router-multiple-5 .paragraph}
+この場合は、`path="/"`に対応する`HomePage`が表示されます。
+:::
+
+::: {#ch03-router-multiple-6 .paragraph}
+一方、次のURLにアクセスすると、
+:::
+
+::: {#ch03-router-multiple-7-url .paragraph keep-lines="true"}
+**`http://localhost:5173/products`**
+:::
+
+::: {#ch03-router-multiple-8 .paragraph}
+`path="/products"`に対応する`Sample3_1`が表示されます。
+:::
+
+::: {#ch03-router-multiple-9 .paragraph}
+このように、`Route`を追加することで、URLごとに異なる画面を表示できます。
+:::
+
+::: {#ch03-router-multiple-10 .paragraph}
+ここで重要なのは、**表示するコンポーネントをURLによって決定している**ということです。
+:::
+
+::: {#ch03-router-multiple-11 .paragraph}
+なお、現時点では画面を切り替えるためのリンクやメニューは、まだ作成していません。
+:::
+
+::: {#ch03-router-multiple-12 .paragraph}
+まずは、URLと表示するコンポーネントの関係を確認します。
+:::
+
+::: {#ch03-router-multiple-13 .paragraph}
+リンクによるSPAの画面遷移は、3.4節で学習します。
+:::
+
+::::
+
+:::: {#page-6 .source-page}
+
+::: {#ch03-router-sample-heading .heading level="minor"}
+【サンプル】URLに応じた画面の切り替え
+:::
+
+::: {#ch03-router-sample-1 .paragraph}
+それでは、React Routerを使用して、URLに応じて画面を切り替えるサンプルを作成してみましょう。
+:::
+
+::: {#ch03-router-sample-2 .paragraph}
+今回は、次の3つの画面を用意します。
+:::
+
+::: {#ch03-router-sample-3-item-1 .paragraph}
+● ホーム画面
+:::
+
+::: {#ch03-router-sample-3-item-2 .paragraph}
+● 商品一覧画面
+:::
+
+::: {#ch03-router-sample-3-item-3 .paragraph}
+● ご利用案内画面
+:::
+
+::: {#ch03-router-sample-4 .paragraph}
+商品一覧画面には、前節で作成した`Sample3_1`を使用します。
+:::
+
+::: {#ch03-router-sample-5 .paragraph}
+このように、すでに作成したコンポーネントを、React Routerで表示する画面として利用できます。
+:::
+
+::: {#ch03-router-sample-6 .paragraph}
+今回のサンプルでは、次のファイルを使用します。
+:::
+
+::: {#ch03-router-sample-7-table .table column-widths="30 70"}
+| ファイル | 役割 |
+|---|---|
+| `main.tsx` | `BrowserRouter`を設定する |
+| `Sample3_2.tsx` | `Routes`と`Route`でURLと画面の対応関係を定義する |
+| `Sample3_1.tsx` | 前節で作成した商品一覧画面を表示する |
+:::
+
+::: {#ch03-router-sample-9-code .code filename="ch03-basic/src/components/Sample3_2.tsx"}
+```tsx
+import { Routes, Route } from 'react-router'
+import Sample3_1 from './Sample3_1'
+
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+
+function GuidePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ご利用案内</h1>
+      <p>このシステムでは商品情報を確認できます。</p>
+    </main>
+  )
+}
+
+export default function Sample3_2() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/products" element={<Sample3_1 />} />
+      <Route path="/guide" element={<GuidePage />} />
+    </Routes>
+  )
+}
+```
+:::
+
+::: {#ch03-router-sample-10 .paragraph}
+`HomePage`と`GuidePage`は、今回のルーティングを確認するために用意した簡単なコンポーネントです。
+:::
+
+::: {#ch03-router-sample-11 .paragraph}
+`Sample3_1`は、前節で作成した商品一覧のコンポーネントです。
+:::
+
+::: {#ch03-router-sample-12 .paragraph}
+`Sample3_2`では、これら3つのコンポーネントを`Route`に指定しています。
+:::
+
+::: {#ch03-router-sample-13 .paragraph}
+このため、アクセスしたURLに応じて、対応する画面が表示されます。
+:::
+
+::: {#ch03-router-check-heading .heading level="minor"}
+動作確認
+:::
+
+::: {#ch03-router-check-1 .paragraph}
+`ch03-basic`の開発サーバーを起動し、React Routerを使用した3.2のサンプルを表示してください。
+:::
+
+::: {#ch03-router-check-2 .paragraph}
+今回は、ブラウザーのアドレスバーへURLを直接入力して、表示される画面を確認します。
+:::
+
+::: {#ch03-router-check-3-heading .step}
+**① ホーム画面を表示する**
+:::
+
+::: {#ch03-router-check-4 .paragraph}
+ブラウザーのアドレスバーに、次のURLを入力してください。
+:::
+
+::: {#ch03-router-check-5-url .paragraph keep-lines="true"}
+**`http://localhost:5173/`**
+:::
+
+::: {#ch03-router-check-6 .paragraph keep-next="1"}
+次の内容が表示されることを確認します。
+:::
+
+![/ にアクセスしたときの表示](assets/router-home.svg){#ch03-router-figure-home}
+
+::: {#ch03-router-figure-home-caption .caption}
+/ にアクセスしたときの表示
+:::
+
+::: {#ch03-router-check-8-heading .step}
+**② 商品一覧画面を表示する**
+:::
+
+::: {#ch03-router-check-9 .paragraph}
+続いて、次のURLにアクセスしてください。
+:::
+
+::: {#ch03-router-check-10-url .paragraph keep-lines="true"}
+**`http://localhost:5173/products`**
+:::
+
+::: {#ch03-router-check-11 .paragraph}
+前節で作成した、6件の商品カードが表示されることを確認します。
+:::
+
+::: {#ch03-router-check-12 .paragraph}
+商品画像と商品名、単価が表示され、PCの画面では3列×2行に並びます。
+:::
+
+::: {#ch03-router-check-13-heading .step}
+**③ ご利用案内画面を表示する**
+:::
+
+::: {#ch03-router-check-14 .paragraph}
+最後に、次のURLにアクセスしてください。
+:::
+
+::: {#ch03-router-check-15-url .paragraph keep-lines="true"}
+**`http://localhost:5173/guide`**
+:::
+
+::: {#ch03-router-check-16 .paragraph keep-next="1"}
+次の内容が表示されることを確認します。
+:::
+
+![/guide にアクセスしたときの表示](assets/router-guide.svg){#ch03-router-figure-guide}
+
+::: {#ch03-router-figure-guide-caption .caption}
+/guide にアクセスしたときの表示
+:::
+
+![3つのURLで表示されるホーム・商品一覧・ご利用案内](assets/router-screens.svg){#ch03-router-figure-screens}
+
+::: {#ch03-router-figure-screens-caption .caption}
+3つのURLで表示されるホーム・商品一覧・ご利用案内
+:::
+
+::: {#ch03-router-check-19-note .training-note}
+【補足】アドレスバーからの移動とSPAの画面遷移
+
+今回は、URLとコンポーネントの対応関係を確認するため、ブラウザーのアドレスバーから直接アクセスしました。
+
+ただし、アドレスバーにURLを入力してEnterキーを押した場合は、ブラウザーがそのURLへ新たにアクセスするため、ページの読み込みが発生します。
+
+SPAの特徴である、**ページ全体を再読み込みせずに画面を切り替える動作**については、3.4節で`Link`や`NavLink`を使用して確認します。
+:::
+
+::: {#ch03-router-syntax-heading .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch03-router-syntax-1 .paragraph}
+ここからは、サンプルコードの重要な部分を確認します。
+:::
+
+::: {#ch03-router-syntax-2-heading .step}
+**① React Routerのコンポーネントを読み込む**
+:::
+
+::: {#ch03-router-syntax-3-code .code filename="ch03-basic/src/components/Sample3_2.tsx"}
+```tsx
+import { Routes, Route } from 'react-router'
+```
+:::
+
+::: {#ch03-router-syntax-4 .paragraph}
+React Routerのライブラリから、`Routes`と`Route`を読み込んでいます。
+:::
+
+::: {#ch03-router-syntax-5 .paragraph}
+これらを使用して、URLと画面の対応関係を定義します。
+:::
+
+::: {#ch03-router-syntax-6 .paragraph}
+なお、`BrowserRouter`は`main.tsx`で読み込んで使用しています。
+:::
+
+::: {#ch03-router-syntax-7-heading .step}
+**② 前節の商品一覧コンポーネントを読み込む**
+:::
+
+::: {#ch03-router-syntax-8-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="2"}
+```tsx
+import Sample3_1 from './Sample3_1'
+```
+:::
+
+::: {#ch03-router-syntax-9 .paragraph}
+3.1節で作成した商品一覧コンポーネントを読み込んでいます。
+:::
+
+::: {#ch03-router-syntax-10 .paragraph}
+これにより、商品一覧画面を新しく作り直すことなく、ルーティングの対象として使用できます。
+:::
+
+::: {#ch03-router-syntax-11-heading .step}
+**③ 画面用のコンポーネントを定義する**
+:::
+
+::: {#ch03-router-syntax-12-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="4"}
+```tsx
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch03-router-syntax-13 .paragraph}
+この部分では、ホーム画面を表示する`HomePage`コンポーネントを定義しています。
+:::
+
+::: {#ch03-router-syntax-14 .paragraph}
+同様に、ご利用案内を表示する`GuidePage`も定義しています。
+:::
+
+::: {#ch03-router-syntax-15 .paragraph}
+これらは通常のReactコンポーネントであり、React Router専用の特別な書き方ではありません。
+:::
+
+::: {#ch03-router-syntax-16-heading .step}
+**④ RoutesでRouteをまとめる**
+:::
+
+::: {#ch03-router-syntax-17-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="24"}
+```tsx
+<Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/products" element={<Sample3_1 />} />
+  <Route path="/guide" element={<GuidePage />} />
+</Routes>
+```
+:::
+
+::: {#ch03-router-syntax-18 .paragraph}
+3つの`Route`を`Routes`の中にまとめています。
+:::
+
+::: {#ch03-router-syntax-19 .paragraph}
+React Routerは、現在のURLに対応する`Route`を選び、指定されたコンポーネントを表示します。
+:::
+
+::: {#ch03-router-syntax-20-heading .step}
+**⑤ pathとelementで表示する画面を指定する**
+:::
+
+::: {#ch03-router-syntax-21-code .code filename="ch03-basic/src/components/Sample3_2.tsx" start-line="26"}
+```tsx
+<Route path="/products" element={<Sample3_1 />} />
+```
+:::
+
+::: {#ch03-router-syntax-22 .paragraph}
+`path`には、対応するURLのパスを指定します。
+:::
+
+::: {#ch03-router-syntax-23 .paragraph}
+`element`には、そのパスにアクセスしたときに表示するReact要素を指定します。
+:::
+
+::: {#ch03-router-syntax-24 .paragraph}
+この例では、`/products`にアクセスしたときに、`Sample3_1`を表示します。
+:::
+
+![/productsへのアクセスから画像付き商品カードが表示されるまでの流れ](assets/router-flow.svg){#ch03-router-figure-flow}
+
+::: {#ch03-router-figure-flow-caption .caption}
+/productsへのアクセスから画像付き商品カードが表示されるまでの流れ
+:::
+
+::::
+
+:::: {#page-7 .source-page}
+
+::: {#ch03-router-practice-heading .heading level="minor"}
+【確認演習】URLに応じて表示する画面を設定する
+:::
+
+::: {#ch03-router-practice-1 .paragraph}
+React Routerを使用して、URLに応じた画面の切り替えを実装します。`BrowserRouter`の設定や、各画面を表示するコンポーネントは、あらかじめ用意されています。今回は、**`Route`の`path`属性と`element`属性を使用し、3つのURLに対応する画面を設定する**演習です。
+:::
+
+::: {#ch03-router-practice-4 .paragraph numbered="true"}
+1．　`ch03-basic-q`プロジェクトの`src/components/Q3_2.tsx`を開いてください。
+:::
+
+::: {#ch03-router-practice-5 .paragraph numbered="true"}
+2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀と➁は既存コードの確認、➂～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-router-practice-6 .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
+:::
+
+::: {#ch03-router-practice-7 .paragraph numbered="true"}
+4．　`ch03-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+:::
+
+::: {#ch03-router-practice-8 .paragraph numbered="true"}
+5．　メニューから「3.2 React Routerによるルーティング」を選んでください。
+:::
+
+::: {#ch03-router-practice-9 .paragraph numbered="true" keep-next="3"}
+6．　ブラウザーのアドレスバーから次のURLにアクセスし、それぞれ正しい画面が表示されることを確認してください。
+:::
+
+::: {#ch03-router-practice-10-table .table column-widths="20 80"}
+| URLのパス | 期待する画面 |
+|---|---|
+| `/` | ホーム画面。「商品管理システムへようこそ。」と表示される |
+| `/products` | 商品一覧画面。6件の画像付き商品カードが表示される |
+| `/guide` | ご利用案内画面。「このシステムでは商品情報を確認できます。」と表示される |
+:::
+
+::: {#ch03-router-practice-reuse .paragraph}
+商品一覧の画像・商品名・単価には、3.1節の確認演習で実装した内容が表示されます。3つのURLで、それぞれ正しい画面が表示されれば演習完了です。
+:::
+
+::: {#ch03-router-points .section-points}
+この節のポイント
+
+● **ルーティング**とは、URLに応じて表示する画面を決定する仕組みである。
+
+● **React Router**を使用すると、ReactアプリケーションでURLとコンポーネントを対応付けられる。
+
+● `BrowserRouter`は、ブラウザーのURLを使用してルーティングを管理する。
+
+● `Routes`は、複数の`Route`をまとめるためのコンポーネントである。
+
+● `Route`の`path`にはURLのパス、`element`には表示するReact要素を指定する。
+
+● 既存のコンポーネントも、`Route`の`element`に指定して画面として利用できる。
+
+● リンクによるSPAの画面遷移については、3.4節で学習する。
+:::
+
+::::

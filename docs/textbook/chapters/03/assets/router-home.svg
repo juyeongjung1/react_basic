@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="77" viewBox="0 0 380 77" font-family="Meiryo, sans-serif">
+  <title>ホーム</title>
+  <rect x="3" y="3" width="374" height="71" rx="5" fill="#fff" stroke="#9cb3c5" stroke-width=".9"/>
+  <rect x="3" y="3" width="374" height="19" rx="5" fill="#eaf1f6" stroke="#9cb3c5" stroke-width=".9"/>
+  <rect x="8" y="7" width="364" height="11" rx="3" fill="#fff" stroke="#c0d0de" stroke-width=".9"/>
+  <text x="11" y="15" font-size="9.3" fill="#445e72" font-weight="400" text-anchor="start">http://localhost:5173/</text>
+  <text x="16" y="44" font-size="15.8" fill="#1b3145" font-weight="700" text-anchor="start">ホーム</text>
+  <text x="16" y="62" font-size="11.1" fill="#1b3145" font-weight="400" text-anchor="start">商品管理システムへようこそ。</text>
+</svg>
