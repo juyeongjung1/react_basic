@@ -70,9 +70,14 @@ export default function Q2_7() {
       </button>
 
       <h2 className="h5">入力内容の確認</h2>
-      <p>商品名：{productName || '未入力'}</p>
-      <p>カテゴリ：{category}</p>
-      <p>販売状態：{isAvailable ? '販売中' : '販売停止'}</p>
+      {/* ➅ 実装：次の3つのp要素に、JSXの {} を使って入力内容を表示してください。
+          商品名にはproductNameの値を表示し、空文字列の場合は「未入力」と表示してください。
+          カテゴリにはcategoryの値を表示してください。
+          販売状態は三項演算子を使い、isAvailableがtrueの場合は「販売中」、
+          falseの場合は「販売停止」と表示してください。 */}
+      <p>商品名：</p>
+      <p>カテゴリ：</p>
+      <p>販売状態：</p>
     </main>
   )
 }
