@@ -6,7 +6,7 @@
 
 ## 正式教材PDFを Markdown から組版する
 
-[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md)、[第3章の原稿](docs/textbook/chapters/03/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
+[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md)、[第3章の原稿](docs/textbook/chapters/03/chapter.md)、[第4章の原稿](docs/textbook/chapters/04/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow 4章.pdf` を生成します。
 
 ```powershell
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow
@@ -23,6 +23,8 @@
 第2章は、どちらのプロジェクトでもブラウザーのメニューから2.1〜2.6を選択できます。確認演習では、テキストで指定された [穴埋めファイル](ch02-basic-q/src/components) を開き、「確認」の番号では指定されたコードを読み、「実装」の番号では該当箇所を編集します。
 
 第3章では [完成サンプル](ch03-basic) と [確認演習の穴埋め版](ch03-basic-q) を使用します。それぞれのプロジェクトで依存ライブラリを導入して起動し、ブラウザーのメニューから3.1〜3.6を選択します。3.2ではアドレスバーから `/`、`/products`、`/guide` を直接開きます。3.3では `/sample-3-3`、`/sample-3-3/products`、`/sample-3-3/guide` を直接開いて共通レイアウトを確認します。3.4では `/sample-3-4` の共通メニューから各画面へ移動します。
+
+第4章では [練習用REST API](ch04-api)、[完成サンプル](ch04-basic)、[確認演習の穴埋め版](ch04-basic-q) を使用します。最初に `ch04-api` で `npm install` と `npm start` を実行します。APIを起動したまま、別のターミナルで使うReactプロジェクトを開き、`npm install` と `npm run dev` を実行してください。
 
 2.5以降の確認演習も、2.4の `onClick` と同様に、その節で学ぶ属性や式を受講者が一式記述する難易度を基本とします。画面構成や学習対象外の処理は実装済みとし、編集箇所は直前の番号付きコメントで示します。「➀ 確認」「➁ 実装」のように区別し、使う値や操作を「～してください」の形で示します。配布時点で起動できる形にします。教材には、対象ファイルを開いて番号付きコメントに沿って進める手順と、動作確認の方法を記載します。
 

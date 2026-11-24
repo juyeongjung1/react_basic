@@ -160,6 +160,8 @@ def link_markdown_contents(flow, entries, destinations):
 
 def assemble_markdown(out, collection):
     """Markdownで作った前付と章をつなぎ、ページ番号を一冊分に振り直す。"""
+    filename = collection.get('flow_filename', 'flow.pdf')
+    checks_name = 'checks.json' if filename == 'flow.pdf' else Path(filename).stem + '.checks.json'
     chapters=[];footer_pages=[]
     entries=[];destinations={}
     with fitz.open() as flow:
@@ -191,10 +193,10 @@ def assemble_markdown(out, collection):
         flow.set_metadata({'title':collection['title']})
         flow.set_toc([[1,chapter['title'],chapter['bookmark_page']] for chapter in chapters])
         flow.subset_fonts()
-        flow.save(out/'flow.pdf',garbage=4,deflate=True)
+        flow.save(out/filename,garbage=4,deflate=True)
         report={'title':collection['title'],'flow_pages':len(flow),
                 'continuous_footer_numbers':True,'chapters':chapters,'contents':contents}
-    (out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    (out/checks_name).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False))
     return report
 

@@ -164,7 +164,16 @@ XXXX-T-01
 
 :::: {#page-4 .source-page}
 
-::: {#front-contents-continuation .blank-page}
+::: {#contents-ch04 .contents-entry target="04"}
+第4章 非同期通信と画面更新
+:::
+
+::: {#contents-ch04-overview .contents-entry target="04:ch04-overview-title"}
+章の概要
+:::
+
+::: {#contents-ch04-section-1 .contents-entry target="04:ch04-axios-title"}
+4.1. AxiosによるHTTP通信
 :::
 
 ::::
@@ -197,7 +206,7 @@ XXXX-T-01
 
 ■ React Routerで画面遷移とURLパラメータを扱える
 
-■ Contextで共通データを参照・更新できる
+■ AxiosとuseEffectでデータを取得し、画面に表示できる
 
 ■ ExpressとデータベースでCRUD APIを作成できる
 
@@ -216,8 +225,8 @@ XXXX-T-01
 ■ React Router で画面遷移と URL パラメータを扱える。
 :::
 
-::: {#front-goal-context .paragraph}
-■ Context を使って、複数の画面から共通データを参照・更新できる。
+::: {#front-goal-async .paragraph}
+■ AxiosとuseEffectを使用して、REST APIからデータを取得し、画面に表示できる。
 :::
 
 ::: {#front-goal-api .paragraph}
@@ -253,7 +262,7 @@ XXXX-T-01
 
 第3章　ルーティングと画面構成
 
-第4章　画面間のデータ共有
+第4章　非同期通信と画面更新
 
 第5章　REST APIとデータベース連携
 

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" width="168" height="120" role="img">
+  <title>クリップ</title>
+  <ellipse cx="84" cy="94" rx="51" ry="5" fill="#294653" opacity=".10"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(6 7) rotate(23 48 56)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#344d63" stroke-width="4.5"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a9bcca" stroke-width="2.3"/>
+    </g>
+    <g transform="translate(39 -3) rotate(-30 48 56)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#366d8d" stroke-width="4.5"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#81b4d2" stroke-width="2.3"/>
+    </g>
+    <g transform="translate(76 12) rotate(42 48 56) scale(.88)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a85937" stroke-width="4.8"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#e5a47b" stroke-width="2.4"/>
+    </g>
+  </g>
+</svg>

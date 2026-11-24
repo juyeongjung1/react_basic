@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="472" viewBox="0 0 460 472" font-family="Meiryo, sans-serif" role="img">
+<title>商品情報の取得結果を確認する</title>
+<text x="230" y="22" font-size="15.2" fill="#18364e" text-anchor="middle" font-weight="700" xml:space="preserve">商品情報の取得結果を確認する</text>
+<rect x="10" y="35" width="440" height="164" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="10.6" y="35.6" width="438.8" height="22" rx="4" fill="#e9f2f8"/>
+<circle cx="17" cy="46" r="1.7" fill="#8ba6ba"/><circle cx="24" cy="46" r="1.7" fill="#8ba6ba"/>
+<rect x="30" y="39" width="414" height="14.9" rx="3" fill="#fff" stroke="#b2c5d3" stroke-width="0.75"/>
+<text x="35" y="49.7" font-size="10.9" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">localhost:5173/sample-4-1</text>
+<text x="22" y="74" font-size="10.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">第4章の完成サンプル</text>
+<rect x="22" y="81" width="148" height="18" rx="3" fill="#0d6efd"/>
+<text x="96.0" y="93.7" font-size="10.8" fill="#fff" text-anchor="middle" font-weight="700" xml:space="preserve">4.1 AxiosによるHTTP通信</text>
+<path d="M22 106H438" stroke="#dce4e9" stroke-width="1"/>
+<text x="22" y="127" font-size="15.4" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品情報の取得</text>
+<text x="22" y="150" font-size="10.7" fill="#18364e" text-anchor="start" xml:space="preserve">取得した商品情報は、ブラウザーのコンソールに表示されます。</text>
+<rect x="22" y="170" width="106" height="18" rx="3" fill="#0d6efd"/>
+<text x="75.0" y="182.7" font-size="10.8" fill="#fff" text-anchor="middle" font-weight="700" xml:space="preserve">商品一覧を取得</text>
+<rect x="20" y="168" width="110" height="22" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<path d="M230 203L230 228M233.00 223.00L230 228L227.00 223.00" fill="none" stroke="#b42331" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="245" y="218" font-size="12.0" fill="#922b35" text-anchor="start" font-weight="700" xml:space="preserve">［商品一覧を取得］をクリック</text>
+<rect x="10" y="235" width="440" height="230" rx="5" fill="#f8fafc" stroke="#a7bdce" stroke-width="1"/>
+<rect x="10.6" y="235.6" width="438.8" height="26" rx="4" fill="#eaf1f6"/>
+<text x="22" y="252.5" font-size="10.4" fill="#496376" text-anchor="start" xml:space="preserve">開発者ツール</text>
+<rect x="110" y="238" width="78" height="21" rx="3" fill="#fff"/>
+<text x="149" y="252.8" font-size="11.4" fill="#18364e" text-anchor="middle" font-weight="700" xml:space="preserve">コンソール</text>
+<path d="M110 259H188" stroke="#0d6efd" stroke-width="2"/>
+<text x="22" y="279" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">▼</text>
+<text x="37" y="279" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">(6) [{…}, {…}, {…}, {…}, {…}, {…}]</text>
+<text x="437" y="278" font-size="10" fill="#20527d" text-anchor="end" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">Sample4_1.tsx:6</text>
+<rect x="35" y="266" width="25" height="17" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="26" y="305" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">▼ 0: {id: 101, name: &#x27;ノート&#x27;, price: 250, …}</text>
+<text x="52" y="323" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">id: 101</text>
+<text x="52" y="339" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">name: &#x27;ノート&#x27;</text>
+<text x="52" y="355" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">price: 250</text>
+<text x="52" y="371" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">imagePath: &#x27;/images/products/notebook.svg&#x27;</text>
+<rect x="22" y="291" width="379" height="86" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="26" y="398" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">▸ 1: {id: 102, name: &#x27;ボールペン&#x27;, …}</text>
+<text x="46" y="416" font-size="11.25" fill="#18364e" text-anchor="start" xml:space="preserve">…</text>
+<text x="40" y="437" font-size="11.25" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">length: 6</text>
+</svg>

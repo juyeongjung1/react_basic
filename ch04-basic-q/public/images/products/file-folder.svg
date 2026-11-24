@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" width="168" height="120" role="img">
+  <title>ファイル</title>
+  <ellipse cx="87" cy="100" rx="55" ry="6" fill="#24473c" opacity=".12"/>
+  <g transform="rotate(-8 84 60)" stroke-linejoin="round">
+    <path d="M31 32a5 5 0 0 1 5-5h32l11 10h51a5 5 0 0 1 5 5v50a5 5 0 0 1-5 5H36a5 5 0 0 1-5-5Z" fill="#4b9589" stroke="#28685e" stroke-width="1.6"/>
+    <path d="M48 41h69l8 10v36H48Z" fill="#dfece9" stroke="#89a9a3" stroke-width="1.2"/>
+    <path d="M42 32h66l12 11v40H42Z" fill="#fffdf5" stroke="#94b5ac" stroke-width="1.4"/>
+    <path d="M108 32v12h12" fill="#d7e9e2" stroke="#94b5ac" stroke-width="1.2"/>
+    <path d="M50 45h39m-39 7h48m-48 7h35" stroke="#bbcfc9" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M35 94 46 57a5 5 0 0 1 4-3h91a4 4 0 0 1 4 5l-11 35a5 5 0 0 1-4 4H39a4 4 0 0 1-4-4Z" fill="#80bbac" stroke="#347d70" stroke-width="1.6"/>
+    <path d="M51 58h88" stroke="#c2e0d8" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="83" y="68" width="39" height="15" rx="2.5" fill="#e8f5f0" stroke="#649789" stroke-width="1"/>
+    <path d="M91 75h22" stroke="#83ac9e" stroke-width="1.25" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" width="168" height="120" role="img">
+  <title>付箋</title>
+  <ellipse cx="86" cy="100" rx="51" ry="6" fill="#6b551d" opacity=".12"/>
+  <g transform="rotate(11 83 61)" stroke-linejoin="round">
+    <rect x="38" y="22" width="91" height="76" rx="3" fill="#dba838" stroke="#a88232" stroke-width="1.4"/>
+    <path d="M40 88h87m-87 4h87m-87 3h87" stroke="#f4d77e" stroke-width="1.2"/>
+    <path d="M37 18h88v52q-10 4-16 18H37Z" fill="#f7d35c" stroke="#ad8939" stroke-width="1.4"/>
+    <path d="M37 17h88v50l-20 20H37Z" fill="#ffdf72" stroke="#ad8939" stroke-width="1.4"/>
+    <path d="M105 87c1-12 5-20 20-20l-20 20Z" fill="#fff1ae" stroke="#c2a14b" stroke-width="1.1"/>
+    <path d="M40 20h81v6H40Z" fill="#f5c950"/>
+    <path d="M49 38h45m-45 9h37m-37 9h31" stroke="#d9a941" stroke-width="1.7" stroke-linecap="round"/>
+  </g>
+</svg>

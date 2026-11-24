@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 120" width="168" height="120" role="img">
+  <title>消しゴム</title>
+  <ellipse cx="84" cy="90" rx="52" ry="7" fill="#4b3931" opacity=".11"/>
+  <g transform="rotate(-14 84 60)">
+    <path d="M39 40h94a5 5 0 0 1 5 5v25l-13 9H30a5 5 0 0 1-5-5V50Z" fill="#d6c9bc" stroke="#9f8b7b" stroke-width="1.4" stroke-linejoin="round"/>
+    <rect x="25" y="40" width="113" height="30" rx="5" fill="#fff4e4" stroke="#9f8b7b" stroke-width="1.4"/>
+    <path d="M49 39h64v31l-12 10H37l12-10Z" fill="#b95346" stroke="#98473b" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M49 39h64v31H49Z" fill="#e78067"/>
+    <path d="M54 41v25m54-25v25" stroke="#f6ac98" stroke-width="1.8"/>
+    <rect x="62" y="48" width="38" height="12" rx="2.5" fill="#ffebd7"/>
+    <path d="M69 54h24" stroke="#bd5f4c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M118 44h13" stroke="#fffdf7" stroke-width="1.9" stroke-linecap="round"/>
+    <path d="M30 73h11m66 2 8-5" stroke="#a88f7e" stroke-width="1.1" stroke-linecap="round"/>
+  </g>
+</svg>
