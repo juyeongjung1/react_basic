@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="780" height="400" viewBox="0 0 780 400">
+<defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
+<text x="390.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">別のフォルダーにあるコンポーネントを読み込む</text>
+<rect x="14" y="55" width="752" height="187" rx="8" fill="#f5f8fa" stroke="#b3c5d2" stroke-width="1.5"/>
+<text x="29" y="84" font-family="Courier New, Meiryo UI, monospace" font-size="22" font-weight="bold" fill="#182f45" text-anchor="start" xml:space="preserve">sample3_2/</text>
+<rect x="27" y="98" width="203" height="131" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="39" y="122" font-family="Courier New, Meiryo UI, monospace" font-size="19" font-weight="bold" fill="#182f45" text-anchor="start" xml:space="preserve">routes/</text>
+<text x="39" y="150" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">AppRoutes.tsx</text>
+<rect x="274" y="98" width="232" height="131" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="286" y="122" font-family="Courier New, Meiryo UI, monospace" font-size="19" font-weight="bold" fill="#182f45" text-anchor="start" xml:space="preserve">pages/</text>
+<text x="286" y="150" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">HomePage.tsx</text>
+<text x="286" y="176" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">ProductListPage.tsx</text>
+<text x="286" y="202" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">GuidePage.tsx</text>
+<rect x="548" y="98" width="205" height="131" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="560" y="122" font-family="Courier New, Meiryo UI, monospace" font-size="19" font-weight="bold" fill="#182f45" text-anchor="start" xml:space="preserve">components/</text>
+<text x="560" y="150" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">ProductCard.tsx</text>
+<polyline points="229,144 272,144" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<polyline points="505,174 521,174 521,144 545,144" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
+<text x="30" y="270" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="bold" fill="#174e78" text-anchor="start" xml:space="preserve">AppRoutes.tsx（2行目）</text>
+<text x="745" y="269" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx</text>
+<rect x="30" y="281" width="215" height="32" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="137.5" y="302.94" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">../</text>
+<text x="137.5" y="336" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#174e78" text-anchor="middle" xml:space="preserve">1つ上のフォルダー</text>
+<rect x="285" y="281" width="215" height="32" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="392.5" y="302.94" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">pages/</text>
+<text x="392.5" y="336" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#174e78" text-anchor="middle" xml:space="preserve">pagesフォルダー</text>
+<rect x="539" y="281" width="215" height="32" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="646.5" y="302.94" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">HomePage</text>
+<text x="646.5" y="336" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#174e78" text-anchor="middle" xml:space="preserve">読み込むファイル</text>
+<polyline points="249,297 280,297" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<polyline points="504,297 534,297" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<text x="30" y="376" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="bold" fill="#1a6657" text-anchor="start" xml:space="preserve">ProductListPage.tsx（1行目）</text>
+<rect x="376" y="350" width="376" height="38" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="564.0" y="374.94" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">../components/ProductCard</text>
+</svg>

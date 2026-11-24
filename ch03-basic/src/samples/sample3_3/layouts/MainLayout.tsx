@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router'
 
-export default function Layout3_3() {
+export default function MainLayout() {
   return (
     <>
       <header className="bg-dark text-white p-3">

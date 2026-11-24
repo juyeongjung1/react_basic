@@ -51,56 +51,63 @@
     },
     "ch03-router-figure-path": {
       "caption_id": "ch03-router-figure-path-caption",
-      "width": 380,
-      "max_height": 145
+      "width": 390,
+      "max_height": 260
     },
-    "ch03-router-figure-product": {
-      "caption_id": "ch03-router-figure-product-caption",
-      "width": 350,
-      "max_height": 267
+    "ch03-router-figure-reuse": {
+      "caption_id": "ch03-router-figure-reuse-caption",
+      "width": 390,
+      "max_height": 190
     },
     "ch03-router-figure-nesting": {
       "caption_id": "ch03-router-figure-nesting-caption",
-      "width": 380,
-      "max_height": 157,
-      "file_path": "ch03-basic/src/main.tsx"
+      "width": 383,
+      "max_height": 170
+    },
+    "ch03-router-figure-imports": {
+      "caption_id": "ch03-router-figure-imports-caption",
+      "width": 383,
+      "max_height": 230
     },
     "ch03-router-figure-attributes": {
       "caption_id": "ch03-router-figure-attributes-caption",
-      "width": 380,
-      "max_height": 117,
-      "file_path": "ch03-basic/src/components/Sample3_2.tsx"
+      "width": 390,
+      "max_height": 160
+    },
+    "ch03-router-figure-relative-path": {
+      "caption_id": "ch03-router-figure-relative-path-caption",
+      "width": 383,
+      "max_height": 180
     },
     "ch03-router-figure-flow": {
       "caption_id": "ch03-router-figure-flow-caption",
-      "width": 380,
-      "max_height": 480,
-      "file_path": "ch03-basic/src/components/Sample3_2.tsx"
+      "width": 390,
+      "max_height": 400
     },
     "ch03-router-figure-screens": {
       "caption_id": "ch03-router-figure-screens-caption",
-      "width": 380,
-      "max_height": 426
+      "width": 390,
+      "max_height": 455
     },
     "ch03-layout-product-screen": {
       "caption_id": "ch03-layout-product-screen-caption",
-      "width": 380,
-      "max_height": 300
+      "width": 390,
+      "max_height": 305
     },
     "ch03-layout-route-flow": {
       "caption_id": "ch03-layout-route-flow-caption",
-      "width": 380,
-      "max_height": 290
+      "width": 383,
+      "max_height": 255
     },
     "ch03-layout-relative-path": {
       "caption_id": "ch03-layout-relative-path-caption",
-      "width": 380,
-      "max_height": 280
+      "width": 383,
+      "max_height": 224
     },
     "ch03-layout-check-browser": {
       "caption_id": "ch03-layout-check-browser-caption",
-      "width": 380,
-      "max_height": 508
+      "width": 390,
+      "max_height": 523
     },
     "ch03-navigation-browser": {
       "caption_id": "ch03-navigation-browser-caption",
@@ -191,7 +198,7 @@
   "pagination": {
     "continue_before": {
       "4": "short-minor-heading",
-      "6": "continued-prose",
+      "6": "short-minor-heading",
       "7": "short-minor-heading",
       "9": "continued-prose",
       "10": "continued-prose",

@@ -1,18 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="270" viewBox="0 0 760 270">
-  <rect x="8" y="44" width="305" height="170" rx="7" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="28" y="81" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">9</text>
-  <text x="43" y="81" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">    &lt;BrowserRouter&gt;</text>
-  <text x="28" y="125" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">10</text>
-  <text x="43" y="125" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">      &lt;App /&gt;</text>
-  <text x="28" y="169" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">11</text>
-  <text x="43" y="169" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">    &lt;/BrowserRouter&gt;</text>
-  <polyline points="321,127 360,127" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-  <polyline points="351,122 360,127 351,132" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="369" y="12" width="383" height="234" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="560" y="50" fill="#205b84" text-anchor="middle" font-size="24" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">BrowserRouter</text>
-  <rect x="386" y="69" width="349" height="122" rx="7" fill="#e9f4ef" stroke="#9ebfad" stroke-width="1.4"/>
-  <text x="560" y="103" fill="#226757" text-anchor="middle" font-size="24" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">App</text>
-  <rect x="398" y="125" width="325" height="49" rx="7" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="560.5" y="155.625" fill="#226757" text-anchor="middle" font-size="17.5" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">各画面のルーティング（Sample3_2）</text>
-  <text x="560" y="222" fill="#205b84" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">React Routerの機能を利用できる範囲</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="306" viewBox="0 0 800 306">
+<defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
+<text x="400.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">BrowserRouterを設定する位置</text>
+<rect x="10" y="75" width="423" height="152" rx="8" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.5"/>
+<rect x="11" y="76" width="421" height="30" rx="7" fill="#f5f8fa" stroke="none" stroke-width="1.5"/>
+<text x="425" y="96" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">ch03-basic/src/main.tsx</text>
+<text x="38" y="127" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">3</text>
+<text x="57" y="127" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">import { BrowserRouter } from</text>
+<text x="68" y="149" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">&#x27;react-router&#x27;</text>
+<rect x="16" y="157" width="411" height="21" rx="3" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
+<text x="38" y="171" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">9</text>
+<text x="57" y="171" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#174e78" text-anchor="start" xml:space="preserve">&lt;BrowserRouter&gt;</text>
+<text x="38" y="193" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">10</text>
+<text x="57" y="193" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">&lt;App /&gt;</text>
+<rect x="16" y="201" width="411" height="21" rx="3" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
+<text x="38" y="215" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">11</text>
+<text x="57" y="215" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#174e78" text-anchor="start" xml:space="preserve">&lt;/BrowserRouter&gt;</text>
+<polyline points="436,151 458,151" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<rect x="462" y="59" width="328" height="200" rx="8" fill="#f5f8fa" stroke="#b3c5d2" stroke-width="1.5"/>
+<text x="476" y="83" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">main.tsx</text>
+<rect x="474" y="95" width="304" height="153" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="488" y="121" font-family="Courier New, Meiryo UI, monospace" font-size="19" font-weight="bold" fill="#174e78" text-anchor="start" xml:space="preserve">BrowserRouter</text>
+<rect x="487" y="133" width="278" height="102" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="500" y="158" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#1a6657" text-anchor="start" xml:space="preserve">App</text>
+<text x="507" y="186" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">教材メニュー</text>
+<text x="507" y="213" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">各節のルーティング（AppRoutes）</text>
+<text x="626" y="288" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">React Routerの機能を利用できる範囲</text>
 </svg>

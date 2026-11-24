@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="208" viewBox="0 0 760 208">
-  <rect x="8" y="19" width="744" height="71" rx="7" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="34" y="61" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">26</text>
-  <rect x="141.8" y="39" width="188.4" height="28" rx="0" fill="none" stroke="#205b84" stroke-width="2.35"/>
-  <rect x="335.6" y="39" width="268.2" height="28" rx="0" fill="none" stroke="#226757" stroke-width="2.35"/>
-  <text x="65" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">&lt;Route </text>
-  <text x="144.8" y="60" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">path=&quot;/products&quot;</text>
-  <text x="327.2" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400"> </text>
-  <text x="338.6" y="60" fill="#226757" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">element={&lt;Sample3_1 /&gt;}</text>
-  <text x="600.8" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400"> /&gt;</text>
-  <polyline points="224.8,69 224.8,116 189,116 189,136" fill="none" stroke="#205b84" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="26" y="139" width="341" height="49" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="196.5" y="170.15" fill="#205b84" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">path：対応するURLのパス</text>
-  <polyline points="438.6,69 438.6,116 556,116 556,136" fill="none" stroke="#226757" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
-  <rect x="393" y="139" width="341" height="49" rx="7" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.4"/>
-  <text x="563.5" y="170.15" fill="#226757" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">element：表示するReact要素</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="740" height="247" viewBox="0 0 740 247">
+<defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
+<text x="370.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">Routeのpath属性とelement属性</text>
+<rect x="13" y="56" width="714" height="67" rx="8" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.5"/>
+<rect x="14" y="57" width="712" height="30" rx="7" fill="#f5f8fa" stroke="none" stroke-width="1.5"/>
+<text x="719" y="77" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx</text>
+<rect x="135.6" y="94" width="162.0" height="23" rx="3" fill="#edf6f0" stroke="none" stroke-width="1.5"/>
+<rect x="308.4" y="94" width="313.2" height="23" rx="3" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
+<text x="41" y="111" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">10</text>
+<text x="60" y="111" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">&lt;Route path=&quot;products&quot; element={&lt;ProductListPage /&gt;} /&gt;</text>
+<rect x="48" y="132" width="267" height="37" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="181.5" y="156.44" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="18" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">URLのパスを指定</text>
+<rect x="374" y="132" width="302" height="37" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="525.0" y="156.44" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">表示するReact要素を指定</text>
+<polyline points="163,175 163,195" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
+<polyline points="524,175 524,195" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<text x="181" y="223" font-family="Courier New, Meiryo UI, monospace" font-size="23" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">/sample-3-2/</text>
+<text x="181" y="223" font-family="Courier New, Meiryo UI, monospace" font-size="23" font-weight="bold" fill="#1a6657" text-anchor="start" xml:space="preserve">products</text>
+<polyline points="322,216 371,216" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
+<text x="524" y="223" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="22" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">商品一覧</text>
 </svg>

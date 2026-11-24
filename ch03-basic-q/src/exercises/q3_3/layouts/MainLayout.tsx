@@ -1,9 +1,9 @@
 // ➀ 実装：react-routerからOutletをインポートしてください。
 
-export default function Layout3_3Q() {
+export default function MainLayout() {
   return (
     <>
-      {/* ➁ 確認：ヘッダー・メニュー・フッターが定義されていることを確認してください。 */}
+      {/* ➁ 確認：ヘッダー・メニュー・フッターが用意されていることを確認してください。 */}
       <header className="bg-dark text-white p-3">
         商品管理システム
       </header>
@@ -15,7 +15,7 @@ export default function Layout3_3Q() {
         <span className="nav-link text-dark">ご利用案内</span>
       </nav>
 
-      {/* ➂ 実装：メニューとフッターの間に、子ルートの画面を表示するOutletを配置してください。 */}
+      {/* ➂ 実装：メニューとフッターの間にOutletを配置してください。 */}
 
       <footer className="bg-light text-center p-3 mt-4">
         商品管理システム
