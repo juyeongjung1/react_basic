@@ -1,19 +1,24 @@
 import { Route, Routes, useMatch } from 'react-router'
 import Sample3_1 from './components/Sample3_1'
 import Sample3_2 from './components/Sample3_2'
+import Sample3_3 from './components/Sample3_3'
 import Sample3_4 from './components/Sample3_4'
 
 const propsPath = '/sample-3-1'
+const layoutPath = '/sample-3-3'
 const navigationPath = '/sample-3-4'
 const lessons = [
   { label: '3.1 コンポーネントの分割とProps', path: propsPath },
   { label: '3.2 React Routerによるルーティング', path: '/' },
+  { label: '3.3 共通レイアウトの作成', path: layoutPath },
   { label: '3.4 SPAの画面遷移（LinkとNavLink）', path: navigationPath },
 ]
 
 export default function App() {
   const defaultPath = useMatch(propsPath) ? propsPath : '/'
-  const activePath = useMatch(navigationPath + '/*') ? navigationPath : defaultPath
+  const layoutMatch = useMatch(layoutPath + '/*')
+  const navigationMatch = useMatch(navigationPath + '/*')
+  const activePath = (layoutMatch && layoutPath) || (navigationMatch && navigationPath) || defaultPath
 
   return (
     <>
@@ -36,6 +41,7 @@ export default function App() {
       </nav>
       <Routes>
         <Route path={propsPath} element={<Sample3_1 />} />
+        <Route path={layoutPath + '/*'} element={<Sample3_3 />} />
         <Route path={navigationPath} element={<Sample3_4 />}>
           <Route index element={
             <main className="container mt-4">

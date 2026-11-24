@@ -140,6 +140,10 @@ XXXX-T-01
 3.2. React Routerによるルーティング
 :::
 
+::: {#contents-ch03-section-3 .contents-entry target="03:ch03-layout-title"}
+3.3. 共通レイアウトの作成
+:::
+
 ::: {#contents-ch03-section-4 .contents-entry target="03:ch03-navigation-title"}
 3.4. SPAの画面遷移（LinkとNavLink）
 :::

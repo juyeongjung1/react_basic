@@ -1826,6 +1826,296 @@ React Routerを使用して、URLに応じた画面の切り替えを実装し�
 
 :::: {#page-8 .source-page}
 
+::: {#ch03-layout-title .heading}
+3.3. 共通レイアウトの作成
+:::
+
+::: {#ch03-layout-slide .slide layout="illustration"}
+共通レイアウトの作成
+
+![共通レイアウトとOutletに表示される画面](assets/layout-slide.svg)
+:::
+
+::: {#ch03-layout-background-heading .heading level="minor"}
+共通レイアウトとは
+:::
+
+::: {#ch03-layout-background-1 .paragraph}
+前節では、React Routerを使用して、URLに応じてホーム画面や商品一覧画面などを表示する方法を学習しました。実際のWebアプリケーションでは、画面が異なっていても、ヘッダーやメニュー、フッターなどは同じデザインで表示されることが一般的です。
+:::
+
+::: {#ch03-layout-background-2 .paragraph}
+これらを各画面のコンポーネントに個別に記述すると、メニューの項目を追加したり、ヘッダーのデザインを変更したりする際に、すべての画面を修正する必要があります。そこで、複数の画面で使用する部分を1つのコンポーネントにまとめます。このような画面の共通構成を、**共通レイアウト**と呼びます。
+:::
+
+::: {#ch03-layout-background-3 .paragraph}
+React Routerでは、共通レイアウトのルートを親ルートとし、その中に各画面のルートを子ルートとして定義できます。そして、共通レイアウトの中に`Outlet`を配置することで、子ルートに対応するコンポーネントを指定した位置に表示できます。
+:::
+
+::::
+
+:::: {#page-9 .source-page}
+
+::: {#ch03-layout-sample-heading .heading level="minor"}
+【サンプル】共通レイアウトを作成する
+:::
+
+::: {#ch03-layout-sample-intro .paragraph}
+前節の商品管理システムに、ヘッダー・メニュー・フッターを追加してみましょう。今回は、次の2つのファイルを使用します。
+:::
+
+::: {#ch03-layout-files .table column-widths="36 64"}
+| ファイル | 役割 |
+|---|---|
+| `Layout3_3.tsx` | 共通レイアウトと、各画面を表示する位置を定義する |
+| `Sample3_3.tsx` | 親ルートと子ルートを定義する |
+:::
+
+::: {#ch03-layout-layout-code .code filename="ch03-basic/src/components/Layout3_3.tsx"}
+```tsx
+import { Outlet } from 'react-router'
+
+export default function Layout3_3() {
+  return (
+    <>
+      <header className="bg-dark text-white p-3">
+        商品管理システム
+      </header>
+
+      <nav className="nav nav-pills bg-light p-3 gap-2"
+           aria-label="商品管理システムのメニュー">
+        <span className="nav-link text-dark">ホーム</span>
+        <span className="nav-link text-dark">商品一覧</span>
+        <span className="nav-link text-dark">ご利用案内</span>
+      </nav>
+
+      <Outlet />
+
+      <footer className="bg-light text-center p-3 mt-4">
+        商品管理システム
+      </footer>
+    </>
+  )
+}
+```
+:::
+
+::::
+
+:::: {#page-10 .source-page}
+
+::: {#ch03-layout-sample-code .code filename="ch03-basic/src/components/Sample3_3.tsx"}
+```tsx
+import { Routes, Route } from 'react-router'
+import Layout3_3 from './Layout3_3'
+import Sample3_1 from './Sample3_1'
+
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+
+function GuidePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ご利用案内</h1>
+      <p>このシステムでは商品情報を確認できます。</p>
+    </main>
+  )
+}
+
+export default function Sample3_3() {
+  return (
+    <Routes>
+      <Route element={<Layout3_3 />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<Sample3_1 />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+    </Routes>
+  )
+}
+```
+:::
+
+::: {#ch03-layout-sample-notes .paragraph}
+今回のサンプルでは、Bootstrapを使用してヘッダーやメニューのデザインを整えています。なお、現時点ではメニューをクリックしても画面は切り替わりません。メニューから画面を切り替える方法については、次の3.4節で学習します。
+:::
+
+::::
+
+:::: {#page-11 .source-page}
+
+::: {#ch03-layout-syntax-heading .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch03-layout-parent-heading .step}
+**① 親ルートと子ルートを定義する**
+:::
+
+::: {#ch03-layout-parent-code .code filename="ch03-basic/src/components/Sample3_3.tsx" start-line="25"}
+```tsx
+<Routes>
+  <Route element={<Layout3_3 />}>
+    <Route index element={<HomePage />} />
+    <Route path="products" element={<Sample3_1 />} />
+    <Route path="guide" element={<GuidePage />} />
+  </Route>
+</Routes>
+```
+:::
+
+::: {#ch03-layout-parent-1 .paragraph}
+前節では、`Routes`の中に複数の`Route`を並べて記述していました。今回は、`Route`の中に、さらに別の`Route`を記述しています。
+:::
+
+::: {#ch03-layout-parent-2 .paragraph}
+外側の`Route`を**親ルート**、内側の`Route`を**子ルート**と呼びます。親ルートには共通レイアウトの`Layout3_3`を指定し、子ルートにはそれぞれの画面を指定しています。このようにルートを階層構造にすることを、ネストされたルーティング（Nested Routing）と呼びます。
+:::
+
+::: {#ch03-layout-parent-3 .paragraph}
+今回の親ルートには`path`属性を指定していません。そのため、親ルートはURLのパスを追加せず、子ルートに共通するレイアウトを提供します。
+:::
+
+::: {#ch03-layout-outlet-heading .step}
+**② Outletで子ルートの画面を表示する**
+:::
+
+::: {#ch03-layout-outlet-import-code .code filename="ch03-basic/src/components/Layout3_3.tsx" start-line="1"}
+```tsx
+import { Outlet } from 'react-router'
+```
+:::
+
+::: {#ch03-layout-outlet-code .code filename="ch03-basic/src/components/Layout3_3.tsx" start-line="17"}
+```tsx
+<Outlet />
+```
+:::
+
+::: {#ch03-layout-outlet-1 .paragraph}
+`Outlet`は、親ルートのコンポーネント内で、**子ルートに対応するコンポーネントを表示する位置を指定するもの**です。今回のサンプルでは、メニューとフッターの間に`Outlet`を配置しています。
+:::
+
+::: {#ch03-layout-outlet-2 .paragraph}
+例えば、商品一覧に対応するURLにアクセスすると、この位置に`Sample3_1`が表示されます。一方、ご利用案内に対応するURLにアクセスすると、同じ位置に`GuidePage`が表示されます。
+:::
+
+::: {#ch03-layout-outlet-3 .paragraph}
+このように、共通部分を個別の画面に記述する必要がなくなります。
+:::
+
+![親ルートと子ルートが表示する位置](assets/layout-route-flow.svg){#ch03-layout-route-flow}
+
+::: {#ch03-layout-route-flow-caption .caption}
+親ルートと子ルートが表示する位置
+:::
+
+::: {#ch03-layout-index-heading .step}
+**③ indexで最初に表示する画面を指定する**
+:::
+
+::: {#ch03-layout-index-code .code filename="ch03-basic/src/components/Sample3_3.tsx" start-line="27"}
+```tsx
+<Route index element={<HomePage />} />
+<Route path="products" element={<Sample3_1 />} />
+<Route path="guide" element={<GuidePage />} />
+```
+:::
+
+::: {#ch03-layout-index-1 .paragraph}
+`index`は、親ルートのURLにアクセスしたときに、最初に表示する子ルートを指定する属性です。また、子ルートの`path`には、先頭に`/`を付けずに`products`や`guide`と記述しています。このように記述すると、親のURLを基準としたパスになります。例えば、3.3のサンプルの入口となるURLのパスが`/sample-3-3`の場合、次のように画面が表示されます。
+:::
+
+::: {#ch03-layout-index-paths .table column-widths="44 56"}
+| URLのパス | Outletに表示するコンポーネント |
+|---|---|
+| `/sample-3-3` | `HomePage` |
+| `/sample-3-3/products` | `Sample3_1` |
+| `/sample-3-3/guide` | `GuidePage` |
+:::
+
+::: {#ch03-layout-index-end .paragraph}
+どのURLにアクセスしても、共通レイアウトが適用されます。なお、3.3のサンプルへアクセスするための入口は、配布プロジェクトのルーティングにあらかじめ設定されています。
+:::
+
+::: {#ch03-layout-practice-heading .heading level="minor"}
+【確認演習】共通レイアウトを作成する
+:::
+
+::: {#ch03-layout-practice-intro .paragraph}
+ヘッダー・メニュー・フッターを持つ共通レイアウトを作成し、URLに応じて各画面が表示されるようにします。共通レイアウトのデザインや、各画面のコンポーネントは、あらかじめ用意されています。今回は、`Outlet`の配置と、既存の子ルートを囲む親ルートを実装しましょう。
+:::
+
+::: {#ch03-layout-practice-step-1 .paragraph numbered="true" keep-lines="true"}
+1．　`ch03-basic-q`プロジェクトの次の2つのファイルを開いてください。<br>● `src/components/Layout3_3Q.tsx`<br>● `src/components/Q3_3.tsx`
+:::
+
+::: {#ch03-layout-practice-step-2 .paragraph numbered="true"}
+2．　2つのファイルに記載された➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-layout-practice-step-3 .paragraph numbered="true"}
+3．　編集したファイルを保存してください。
+:::
+
+::: {#ch03-layout-practice-step-4 .paragraph numbered="true"}
+4．　`ch03-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+:::
+
+::: {#ch03-layout-practice-step-5 .paragraph numbered="true"}
+5．　メニューから「3.3 共通レイアウトの作成」を選んでください。
+:::
+
+::: {#ch03-layout-check-heading .heading level="minor"}
+動作確認
+:::
+
+::: {#ch03-layout-practice-step-6 .paragraph numbered="true"}
+6．　ブラウザーのアドレスバーから、以下のURLにアクセスしてください。
+:::
+
+::: {#ch03-layout-expected .table column-widths="44 56"}
+| URLのパス | 画面の中央に表示される内容 |
+|---|---|
+| `/sample-3-3` | ホーム画面 |
+| `/sample-3-3/products` | 商品一覧画面 |
+| `/sample-3-3/guide` | ご利用案内画面 |
+:::
+
+::: {#ch03-layout-check-result .paragraph}
+どの画面でも同じヘッダー・メニュー・フッターが表示され、中央のコンテンツ部分だけが異なることを確認してください。
+:::
+
+::: {#ch03-layout-reload .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+:::
+
+::: {#ch03-layout-finish .paragraph}
+これで、共通レイアウトを持つアプリケーションを作成できました。次の3.4節では、メニューをクリックすることで、ページ全体を再読み込みせずに画面を切り替える方法を学習します。
+:::
+
+::: {#ch03-layout-points .section-points}
+この節のポイント
+
+● 複数の画面で共通するヘッダーやメニューなどは、共通レイアウトとして管理できる。
+
+● `Route`を階層構造にすることで、親ルートと子ルートを定義できる。
+
+● `Outlet`は、子ルートのコンポーネントを表示する位置を指定する。
+
+● `index`を指定すると、親ルートのURLにアクセスした際の表示画面を設定できる。
+:::
+
+::::
+
+:::: {#page-12 .source-page}
+
 ::: {#ch03-navigation-title .heading}
 3.4. SPAの画面遷移（LinkとNavLink）
 :::
@@ -2039,7 +2329,7 @@ HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link
 
 ::::
 
-:::: {#page-9 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch03-navigation-practice-heading .heading level="minor"}
 【確認演習】共通メニューから画面遷移する

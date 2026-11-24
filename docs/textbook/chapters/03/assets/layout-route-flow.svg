@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="444" height="191" viewBox="0 0 444 191" font-family="Meiryo, sans-serif">
+  <title>親ルートと子ルートが表示する位置</title>
+  <rect x="4" y="5" width="226" height="180" rx="6" fill="#f2f6fa" stroke="#a9bece"/>
+  <rect x="251" y="5" width="188" height="180" rx="6" fill="#fff" stroke="#6c9ab9" stroke-width="1.1"/>
+  <g font-family="Consolas, MS Gothic, monospace" font-size="11" fill="#225572">
+    <text x="15" y="20">ch03-basic/src/components/</text>
+    <text x="15" y="36" font-size="12" font-weight="700">Sample3_3.tsx</text>
+    <text x="263" y="20">ch03-basic/src/components/</text>
+    <text x="263" y="36" font-size="12" font-weight="700">Layout3_3.tsx</text>
+  </g>
+  <rect x="13" y="47" width="207" height="44" rx="4" fill="#e3eef7" stroke="#8eb2cf"/>
+  <text x="23" y="63" font-size="10.8" font-weight="700" fill="#205c84">親ルート</text>
+  <g font-family="Consolas, MS Gothic, monospace" font-size="10.2" fill="#184864">
+    <text x="21" y="80">26</text>
+    <text x="42" y="80">&lt;Route element={&lt;Layout3_3 /&gt;}&gt;</text>
+  </g>
+  <rect x="13" y="107" width="207" height="61" rx="4" fill="#e7f4ef" stroke="#86b5a3"/>
+  <text x="23" y="124" font-size="10.8" font-weight="700" fill="#23695b">子ルート（商品一覧）</text>
+  <g font-family="Consolas, MS Gothic, monospace" font-size="10.2" fill="#185444">
+    <text x="21" y="141">28</text>
+    <text x="42" y="141">&lt;Route path=&quot;products&quot;</text>
+    <text x="42" y="156">　element={&lt;Sample3_1 /&gt;} /&gt;</text>
+  </g>
+  <rect x="263" y="48" width="164" height="28" rx="3" fill="#212529"/>
+  <rect x="263" y="80" width="164" height="23" rx="3" fill="#edf3f6"/>
+  <rect x="263" y="107" width="164" height="47" rx="4" fill="#e7f4ef" stroke="#86b5a3"/>
+  <rect x="263" y="158" width="164" height="21" rx="3" fill="#edf3f6"/>
+  <g text-anchor="middle" font-size="11" fill="#243b4d">
+    <text x="345" y="66" fill="#fff">ヘッダー</text>
+    <text x="345" y="95">メニュー</text>
+    <text x="345" y="172.5">フッター</text>
+    <text x="345" y="127" font-family="Consolas, MS Gothic, monospace" font-weight="700" fill="#185444">17　&lt;Outlet /&gt;</text>
+    <text x="345" y="143.5" fill="#185444">Sample3_1を表示</text>
+  </g>
+  <path d="M220 70h27m-5-3 5 3-5 3" fill="none" stroke="#28618c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M220 137h42m-6-4 6 4-6 4" fill="none" stroke="#23695b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
