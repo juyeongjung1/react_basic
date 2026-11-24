@@ -1,37 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="444" height="191" viewBox="0 0 444 191" font-family="Meiryo, sans-serif">
-  <title>親ルートと子ルートが表示する位置</title>
-  <rect x="4" y="5" width="226" height="180" rx="6" fill="#f2f6fa" stroke="#a9bece"/>
-  <rect x="251" y="5" width="188" height="180" rx="6" fill="#fff" stroke="#6c9ab9" stroke-width="1.1"/>
-  <g font-family="Consolas, MS Gothic, monospace" font-size="11" fill="#225572">
-    <text x="15" y="20">ch03-basic/src/components/</text>
-    <text x="15" y="36" font-size="12" font-weight="700">Sample3_3.tsx</text>
-    <text x="263" y="20">ch03-basic/src/components/</text>
-    <text x="263" y="36" font-size="12" font-weight="700">Layout3_3.tsx</text>
-  </g>
-  <rect x="13" y="47" width="207" height="44" rx="4" fill="#e3eef7" stroke="#8eb2cf"/>
-  <text x="23" y="63" font-size="10.8" font-weight="700" fill="#205c84">親ルート</text>
-  <g font-family="Consolas, MS Gothic, monospace" font-size="10.2" fill="#184864">
-    <text x="21" y="80">26</text>
-    <text x="42" y="80">&lt;Route element={&lt;Layout3_3 /&gt;}&gt;</text>
-  </g>
-  <rect x="13" y="107" width="207" height="61" rx="4" fill="#e7f4ef" stroke="#86b5a3"/>
-  <text x="23" y="124" font-size="10.8" font-weight="700" fill="#23695b">子ルート（商品一覧）</text>
-  <g font-family="Consolas, MS Gothic, monospace" font-size="10.2" fill="#185444">
-    <text x="21" y="141">28</text>
-    <text x="42" y="141">&lt;Route path=&quot;products&quot;</text>
-    <text x="42" y="156">　element={&lt;Sample3_1 /&gt;} /&gt;</text>
-  </g>
-  <rect x="263" y="48" width="164" height="28" rx="3" fill="#212529"/>
-  <rect x="263" y="80" width="164" height="23" rx="3" fill="#edf3f6"/>
-  <rect x="263" y="107" width="164" height="47" rx="4" fill="#e7f4ef" stroke="#86b5a3"/>
-  <rect x="263" y="158" width="164" height="21" rx="3" fill="#edf3f6"/>
-  <g text-anchor="middle" font-size="11" fill="#243b4d">
-    <text x="345" y="66" fill="#fff">ヘッダー</text>
-    <text x="345" y="95">メニュー</text>
-    <text x="345" y="172.5">フッター</text>
-    <text x="345" y="127" font-family="Consolas, MS Gothic, monospace" font-weight="700" fill="#185444">17　&lt;Outlet /&gt;</text>
-    <text x="345" y="143.5" fill="#185444">Sample3_1を表示</text>
-  </g>
-  <path d="M220 70h27m-5-3 5 3-5 3" fill="none" stroke="#28618c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M220 137h42m-6-4 6 4-6 4" fill="none" stroke="#23695b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="563" viewBox="0 0 760 563">
+  <text x="380" y="30" font-family="Meiryo, MS Gothic, sans-serif" font-size="23" fill="#205b84" font-weight="700" text-anchor="middle">親ルート・子ルートとOutletの関係</text>
+  <text x="380" y="61" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#205b84" font-weight="700" text-anchor="middle">/sample-3-3/products にアクセスした場合</text>
+  <rect x="8" y="85" width="390" height="413" rx="6" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <rect x="19" y="95" width="368" height="37" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="203" y="118.75" font-family="Meiryo, MS Gothic, sans-serif" font-size="15" fill="#205b84" font-weight="700" text-anchor="middle">ch03-basic/src/components/Sample3_3.tsx</text>
+  <text x="36" y="154" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#183449" font-weight="400" text-anchor="middle">25</text>
+  <text x="61" y="154" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#183449" font-weight="400" text-anchor="start">&lt;Routes&gt;</text>
+  <rect x="18" y="172" width="370" height="52" rx="0" fill="none" stroke="#205b84" stroke-width="2.25"/>
+  <text x="36" y="192" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#205b84" font-weight="400" text-anchor="middle">26</text>
+  <text x="61" y="192" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#205b84" font-weight="400" text-anchor="start">&lt;Route</text>
+  <text x="74" y="215" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#205b84" font-weight="400" text-anchor="start">element={&lt;Layout3_3 /&gt;}&gt;</text>
+  <text x="36" y="252" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#425a6b" font-weight="400" text-anchor="middle">27</text>
+  <text x="61" y="252" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">&lt;Route index</text>
+  <text x="74" y="275" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">element={&lt;HomePage /&gt;} /&gt;</text>
+  <rect x="18" y="291" width="370" height="52" rx="0" fill="none" stroke="#226757" stroke-width="2.25"/>
+  <text x="36" y="311" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#226757" font-weight="400" text-anchor="middle">28</text>
+  <text x="61" y="311" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#226757" font-weight="400" text-anchor="start">&lt;Route path=&quot;products&quot;</text>
+  <text x="74" y="334" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#226757" font-weight="400" text-anchor="start">element={&lt;Sample3_1 /&gt;} /&gt;</text>
+  <text x="36" y="370" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#425a6b" font-weight="400" text-anchor="middle">29</text>
+  <text x="61" y="370" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">&lt;Route path=&quot;guide&quot;</text>
+  <text x="74" y="393" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">element={&lt;GuidePage /&gt;} /&gt;</text>
+  <text x="36" y="430" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#183449" font-weight="400" text-anchor="middle">30</text>
+  <text x="61" y="430" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#183449" font-weight="400" text-anchor="start">&lt;/Route&gt;</text>
+  <text x="36" y="470" font-family="Courier New, MS Gothic, monospace" font-size="16" fill="#183449" font-weight="400" text-anchor="middle">31</text>
+  <text x="61" y="470" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#183449" font-weight="400" text-anchor="start">&lt;/Routes&gt;</text>
+  <rect x="488" y="85" width="264" height="413" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="620" y="108" font-family="Meiryo, MS Gothic, sans-serif" font-size="14.5" fill="#226757" font-weight="400" text-anchor="middle">ch03-basic/src/components/</text>
+  <text x="620" y="130" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#226757" font-weight="700" text-anchor="middle">Layout3_3.tsx</text>
+  <rect x="497" y="145" width="246" height="51" rx="6" fill="#edf2f7" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="620" y="177.15" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#205b84" font-weight="700" text-anchor="middle">商品管理システム</text>
+  <text x="620" y="222" font-family="Meiryo, MS Gothic, sans-serif" font-size="15" fill="#425a6b" font-weight="400" text-anchor="middle">ホーム　商品一覧　ご利用案内</text>
+  <rect x="497" y="247" width="246" height="168" rx="6" fill="white" stroke="#226757" stroke-width="1.3"/>
+  <text x="620" y="280" font-family="Courier New, MS Gothic, monospace" font-size="21" fill="#226757" font-weight="700" text-anchor="middle">17 &lt;Outlet /&gt;</text>
+  <text x="620" y="310" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#226757" font-weight="700" text-anchor="middle">Sample3_1（商品一覧）</text>
+  <image x="583" y="325" width="73" height="73" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44OO44O844OIPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODUiIGN5PSIxMDIiIHJ4PSI0MyIgcnk9IjYiIGZpbGw9IiMyNDQ1NmIiIG9wYWNpdHk9Ii4xMSIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKC0xMCA4NCA2MCkiPgogICAgPHJlY3QgeD0iNDkiIHk9IjE2IiB3aWR0aD0iNzIiIGhlaWdodD0iOTEiIHJ4PSI3IiBmaWxsPSIjMTczODUzIi8+CiAgICA8cmVjdCB4PSI1MSIgeT0iMTgiIHdpZHRoPSI2OSIgaGVpZ2h0PSI4NSIgcng9IjYiIGZpbGw9IiNmOWY2ZWIiLz4KICAgIDxwYXRoIGQ9Ik01OCA5N2g2MW0tNjEgM2g2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2JjZmNiIiBzdHJva2Utd2lkdGg9IjEuMyIvPgogICAgPHJlY3QgeD0iNDciIHk9IjEzIiB3aWR0aD0iNzMiIGhlaWdodD0iODQiIHJ4PSI3IiBmaWxsPSIjMmE2MDkxIi8+CiAgICA8cGF0aCBkPSJNNTQgMTNoN3Y4NGgtN2E3IDcgMCAwIDEtNy03VjIwYTcgNyAwIDAgMSA3LTdaIiBmaWxsPSIjMWQ0Yjc4Ii8+CiAgICA8cGF0aCBkPSJNNjUgMTZoNDlhMyAzIDAgMCAxIDMgM3Y3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjE5YmMzIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHJlY3QgeD0iNzIiIHk9IjMxIiB3aWR0aD0iMzIiIGhlaWdodD0iMjIiIHJ4PSIzIiBmaWxsPSIjZTdmMWY0Ii8+CiAgICA8cGF0aCBkPSJNNzggMzloMjBtLTIwIDZoMTQiIHN0cm9rZT0iIzY1OTBhZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTc5IDc3aDI3bS0xOCA2aDE4IiBzdHJva2U9IiM1NTkzYmUiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRmMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBkPSJNNTMgMjVjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03bTIgMjFjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+  <rect x="497" y="432" width="246" height="47" rx="6" fill="#edf2f7" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="620" y="461.8" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="400" text-anchor="middle">商品管理システム</text>
+  <text x="440" y="138" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#205b84" font-weight="700" text-anchor="middle">共通レイ</text>
+  <text x="440" y="155.5" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#205b84" font-weight="700" text-anchor="middle">アウトを</text>
+  <text x="440" y="173" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#205b84" font-weight="700" text-anchor="middle">表示</text>
+  <polyline points="402,191 483,191" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="474,186 483,191 474,196" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="443" y="249" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#226757" font-weight="700" text-anchor="middle">選択された</text>
+  <text x="443" y="266.5" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#226757" font-weight="700" text-anchor="middle">子ルートを</text>
+  <text x="443" y="284" font-family="Meiryo, MS Gothic, sans-serif" font-size="14" fill="#226757" font-weight="700" text-anchor="middle">表示</text>
+  <polyline points="402,310 483,310" fill="none" stroke="#226757" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="474,305 483,310 474,315" fill="none" stroke="#226757" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="380" y="538" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">親ルートは共通部分、子ルートはOutletに表示する内容を指定する</text>
 </svg>

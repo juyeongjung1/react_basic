@@ -1,53 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="352" height="224" viewBox="0 0 352 224" font-family="Meiryo, sans-serif">
-  <title>通常のHTMLリンクとReact Routerのリンクによる画面遷移</title>
-  <rect x="3" y="5" width="169" height="214" rx="6" fill="#fcf6ef" stroke="#e4c6a8"/>
-  <rect x="180" y="5" width="169" height="214" rx="6" fill="#f0f7fb" stroke="#b6cfde"/>
-  <g text-anchor="middle">
-    <text x="87.5" y="24" font-size="12" font-weight="700" fill="#754820">従来のHTMLリンク</text>
-    <text x="264.5" y="24" font-size="12" font-weight="700" fill="#174c6a">React Routerのリンク</text>
-    <text x="87.5" y="39" font-size="10.5" fill="#754820">ページ全体を読み込む</text>
-    <text x="264.5" y="39" font-size="10.5" fill="#174c6a">コンテンツ部分を切り替える</text>
-  </g>
-  <g transform="translate(14 48)">
-    <rect width="147" height="60" rx="4" fill="#fff" stroke="#b27949"/>
-    <path d="M1 16h145M1 46h145" stroke="#e4c6a8"/>
-    <g text-anchor="middle" fill="#5b4a3d">
-      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
-      <text x="73.5" y="35" font-size="12" font-weight="700">ホーム</text>
-      <text x="73.5" y="56" font-size="9.6">フッター</text>
-    </g>
-  </g>
-  <path d="M87.5 114v15m-4-4 4 4 4-4" fill="none" stroke="#b27949" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
-  <g transform="translate(14 135)">
-    <rect width="147" height="60" rx="4" fill="#fae9d8" stroke="#b27949"/>
-    <path d="M1 16h145M1 46h145" stroke="#d6ad89"/>
-    <g text-anchor="middle" fill="#754820">
-      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
-      <text x="73.5" y="35" font-size="12" font-weight="700">商品一覧</text>
-      <text x="73.5" y="56" font-size="9.6">フッター</text>
-    </g>
-  </g>
-  <g transform="translate(191 48)">
-    <rect width="147" height="60" rx="4" fill="#dcebf4" stroke="#6f9bb6"/>
-    <rect x="1" y="16" width="145" height="30" fill="#fff" stroke="#b6cfde" stroke-width=".7"/>
-    <g text-anchor="middle" fill="#174c6a">
-      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
-      <text x="73.5" y="35" font-size="12" font-weight="700">ホーム</text>
-      <text x="73.5" y="56" font-size="9.6">フッター</text>
-    </g>
-  </g>
-  <path d="M264.5 114v15m-4-4 4 4 4-4" fill="none" stroke="#3e7fa5" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
-  <g transform="translate(191 135)">
-    <rect width="147" height="60" rx="4" fill="#dcebf4" stroke="#6f9bb6"/>
-    <rect x="1" y="16" width="145" height="30" fill="#fef0dd" stroke="#c68a4f" stroke-width=".9"/>
-    <g text-anchor="middle" fill="#174c6a">
-      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
-      <text x="73.5" y="35" font-size="12" font-weight="700" fill="#754820">商品一覧</text>
-      <text x="73.5" y="56" font-size="9.6">フッター</text>
-    </g>
-  </g>
-  <g text-anchor="middle" font-size="10" font-weight="700">
-    <text x="87.5" y="211" fill="#754820">共通部分も読み込み直す</text>
-    <text x="264.5" y="211" fill="#174c6a">共通部分はそのまま維持</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="439" viewBox="0 0 760 439">
+  <rect x="8" y="10" width="364" height="377" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="190" y="38" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#934317" font-weight="700" text-anchor="middle">通常のHTMLリンクによる画面遷移</text>
+  <rect x="58" y="53" width="264" height="113" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.3"/>
+  <rect x="70" y="62" width="239" height="25" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="80.1" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#934317" font-weight="400" text-anchor="middle">ヘッダー・メニュー</text>
+  <rect x="70" y="94" width="239" height="33" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="117.15" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#934317" font-weight="700" text-anchor="middle">ホーム</text>
+  <rect x="70" y="135" width="239" height="24" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="152.6" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#934317" font-weight="400" text-anchor="middle">フッター</text>
+  <rect x="58" y="258" width="264" height="113" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.3"/>
+  <rect x="70" y="267" width="239" height="25" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="285.1" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#934317" font-weight="400" text-anchor="middle">ヘッダー・メニュー</text>
+  <rect x="70" y="299" width="239" height="33" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="322.15" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#934317" font-weight="700" text-anchor="middle">商品一覧</text>
+  <rect x="70" y="340" width="239" height="24" rx="6" fill="#fff3e9" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="189.5" y="357.6" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#934317" font-weight="400" text-anchor="middle">フッター</text>
+  <polyline points="65,174 65,248" fill="none" stroke="#934317" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="70,239 65,248 60,239" fill="none" stroke="#934317" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="209" y="198" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#934317" font-weight="700" text-anchor="middle">リンクをクリック</text>
+  <text x="209" y="226" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#934317" font-weight="700" text-anchor="middle">ページを読み込む</text>
+  <rect x="388" y="10" width="364" height="377" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="570" y="38" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#205b84" font-weight="700" text-anchor="middle">React Routerによる画面遷移</text>
+  <rect x="438" y="53" width="264" height="113" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.3"/>
+  <rect x="450" y="62" width="239" height="25" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="80.1" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#205b84" font-weight="400" text-anchor="middle">ヘッダー・メニュー</text>
+  <rect x="450" y="94" width="239" height="33" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="117.15" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#226757" font-weight="700" text-anchor="middle">ホーム</text>
+  <rect x="450" y="135" width="239" height="24" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="152.6" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#205b84" font-weight="400" text-anchor="middle">フッター</text>
+  <rect x="438" y="258" width="264" height="113" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.3"/>
+  <rect x="450" y="267" width="239" height="25" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="285.1" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#205b84" font-weight="400" text-anchor="middle">ヘッダー・メニュー</text>
+  <rect x="450" y="299" width="239" height="33" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="322.15" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#226757" font-weight="700" text-anchor="middle">商品一覧</text>
+  <rect x="450" y="340" width="239" height="24" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="569.5" y="357.6" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#205b84" font-weight="400" text-anchor="middle">フッター</text>
+  <polyline points="445,174 445,248" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="450,239 445,248 440,239" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="589" y="198" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="700" text-anchor="middle">リンクをクリック</text>
+  <text x="589" y="226" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="700" text-anchor="middle">URLとコンテンツを更新</text>
+  <rect x="9" y="397" width="742" height="32" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="380" y="420" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#226757" font-weight="700" text-anchor="middle">ページ全体を再読み込みせずに画面を切り替える</text>
 </svg>

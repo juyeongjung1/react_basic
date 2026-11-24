@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="458" viewBox="0 0 760 458">
+  <text x="380" y="30" font-family="Meiryo, MS Gothic, sans-serif" font-size="23" fill="#205b84" font-weight="700" text-anchor="middle">サンプルの入口と子ルートの相対パスの関係</text>
+  <rect x="45" y="47" width="670" height="69" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="380" y="75.45" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#205b84" font-weight="700" text-anchor="middle">配布プロジェクトのルート設定（3.3の入口）</text>
+  <text x="380" y="102.95" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#205b84" font-weight="700" text-anchor="middle">/sample-3-3</text>
+  <polyline points="380,119 380,157" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="385,148 380,157 375,148" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="394" y="146" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="700" text-anchor="start">Sample3_3を表示</text>
+  <rect x="18" y="164" width="724" height="156" rx="6" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="380" y="192" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#205b84" font-weight="700" text-anchor="middle">Sample3_3.tsx</text>
+  <text x="380" y="220" font-family="Courier New, MS Gothic, monospace" font-size="20" fill="#183449" font-weight="400" text-anchor="middle">Route element={&lt;Layout3_3 /&gt;}</text>
+  <text x="380" y="244" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="400" text-anchor="middle">共通レイアウトを適用する（パスは追加しない）</text>
+  <polyline points="380,252 380,263 188,263 188,279" fill="none" stroke="#226757" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="193,270 188,279 183,270" fill="none" stroke="#226757" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="380,263 568,263 568,279" fill="none" stroke="#226757" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="573,270 568,279 563,270" fill="none" stroke="#226757" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="37" y="282" width="306" height="29" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="190" y="303.15" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#226757" font-weight="400" text-anchor="middle">path=&quot;products&quot;</text>
+  <rect x="417" y="282" width="306" height="29" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="570" y="303.15" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#226757" font-weight="400" text-anchor="middle">path=&quot;guide&quot;</text>
+  <rect x="16" y="328" width="166" height="32" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="99" y="350.65" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#205b84" font-weight="400" text-anchor="middle">/sample-3-3</text>
+  <rect x="185" y="328" width="131" height="32" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="250.5" y="350.65" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#226757" font-weight="400" text-anchor="middle">/products</text>
+  <polyline points="331,344 408,344" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="399,339 408,344 399,349" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="429" y="350" font-family="Courier New, MS Gothic, monospace" font-size="20" fill="#205b84" font-weight="400" text-anchor="start">/sample-3-3</text>
+  <text x="561" y="350" font-family="Courier New, MS Gothic, monospace" font-size="20" fill="#226757" font-weight="400" text-anchor="start">/products</text>
+  <rect x="16" y="373" width="166" height="32" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="99" y="395.65" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#205b84" font-weight="400" text-anchor="middle">/sample-3-3</text>
+  <rect x="185" y="373" width="131" height="32" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
+  <text x="250.5" y="395.65" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#226757" font-weight="400" text-anchor="middle">/guide</text>
+  <polyline points="331,389 408,389" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="399,384 408,389 399,394" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="429" y="395" font-family="Courier New, MS Gothic, monospace" font-size="20" fill="#205b84" font-weight="400" text-anchor="start">/sample-3-3</text>
+  <text x="561" y="395" font-family="Courier New, MS Gothic, monospace" font-size="20" fill="#226757" font-weight="400" text-anchor="start">/guide</text>
+  <text x="380" y="440" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#205b84" font-weight="700" text-anchor="middle">入口のパス ＋ 子ルートの相対パス</text>
+</svg>
