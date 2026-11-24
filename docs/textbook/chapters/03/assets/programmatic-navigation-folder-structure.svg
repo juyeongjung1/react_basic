@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="465" viewBox="0 0 760 465" font-family="Meiryo, sans-serif">
+<title>商品登録画面を追加するときに変更するファイル</title>
+<text x="380" y="34" font-size="24" fill="#18364e" text-anchor="middle" font-weight="700">商品登録画面を追加するときに変更するファイル</text>
+<rect x="15" y="55" width="730" height="365" rx="6" fill="#f5f8fa" stroke="#a6bfce" stroke-width="1.5"/>
+<rect x="16" y="56" width="728" height="42" rx="6" fill="#e9f2f8" stroke="none" stroke-width="1.5"/>
+<text x="32" y="83" font-size="20" fill="#18364e" text-anchor="start" font-weight="700" font-family="Courier New, MS Gothic, monospace">src/samples/sample3_6/</text>
+<text x="32" y="127" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">components/</text>
+<text x="204" y="127" font-size="18" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">ProductCard.tsx</text>
+<text x="703" y="127" font-size="17" fill="#18364e" text-anchor="end" font-weight="400">リンク先の節番号のみ変更</text>
+<text x="32" y="165" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">pages/</text>
+<text x="204" y="165" font-size="18" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">HomePage.tsx</text>
+<text x="703" y="165" font-size="17" fill="#18364e" text-anchor="end" font-weight="400">変更なし</text>
+<rect x="190" y="181" width="528" height="31" rx="3" fill="#fff4e8" stroke="#b96620" stroke-width="2"/>
+<text x="32" y="203" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace"></text>
+<text x="204" y="203" font-size="18" fill="#18364e" text-anchor="start" font-weight="700" font-family="Courier New, MS Gothic, monospace">ProductListPage.tsx</text>
+<text x="703" y="203" font-size="17" fill="#18364e" text-anchor="end" font-weight="700">変更</text>
+<text x="32" y="241" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace"></text>
+<text x="204" y="241" font-size="18" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">ProductDetailPage.tsx</text>
+<text x="703" y="241" font-size="17" fill="#18364e" text-anchor="end" font-weight="400">リンク先の節番号のみ変更</text>
+<rect x="190" y="257" width="528" height="31" rx="3" fill="#eaf5fc" stroke="#3679a2" stroke-width="2"/>
+<text x="32" y="279" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace"></text>
+<text x="204" y="279" font-size="18" fill="#18364e" text-anchor="start" font-weight="700" font-family="Courier New, MS Gothic, monospace">ProductRegisterPage.tsx</text>
+<text x="703" y="279" font-size="17" fill="#18364e" text-anchor="end" font-weight="700">新規追加</text>
+<text x="32" y="317" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace"></text>
+<text x="204" y="317" font-size="18" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">GuidePage.tsx</text>
+<text x="703" y="317" font-size="17" fill="#18364e" text-anchor="end" font-weight="400">変更なし</text>
+<text x="32" y="355" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">layouts/</text>
+<text x="204" y="355" font-size="18" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">MainLayout.tsx</text>
+<text x="703" y="355" font-size="17" fill="#18364e" text-anchor="end" font-weight="400">リンク先の節番号のみ変更</text>
+<rect x="190" y="371" width="528" height="31" rx="3" fill="#fff4e8" stroke="#b96620" stroke-width="2"/>
+<text x="32" y="393" font-size="17" fill="#255977" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">routes/</text>
+<text x="204" y="393" font-size="18" fill="#18364e" text-anchor="start" font-weight="700" font-family="Courier New, MS Gothic, monospace">AppRoutes.tsx</text>
+<text x="703" y="393" font-size="17" fill="#18364e" text-anchor="end" font-weight="700">変更</text>
+<text x="380" y="447" font-size="18" fill="#255977" text-anchor="middle" font-weight="400">sample3_5はそのまま残す</text>
+</svg>

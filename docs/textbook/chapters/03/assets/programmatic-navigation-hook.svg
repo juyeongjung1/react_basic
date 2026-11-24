@@ -2,19 +2,19 @@
 <title>useNavigate()とnavigate()の役割</title>
 <text x="230" y="21" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">useNavigate()とnavigate()の役割</text>
 <rect x="9" y="34" width="442" height="107" rx="4" fill="#edf6fa" stroke="#a2becd" stroke-width="1"/>
-<text x="118.00 125.18 132.36 139.54 146.72 153.90 161.08 168.25 175.43 182.61 189.79 196.97 204.15 211.33 218.51 225.69 232.87 240.05 247.23 254.41 261.59 268.76 275.94 283.12 290.30 297.48 304.66 311.84 319.02 326.20" y="62" font-size="13" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">const navigate = useNavigate()</text><rect x="160.08" y="48" width="59.43" height="17.5" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/><rect x="239.05" y="48" width="95.33" height="17.5" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="118.00 125.18 132.36 139.54 146.72 153.90 161.08 168.25 175.43 182.61 189.79 196.97 204.15 211.33 218.51 225.69 232.87 240.05 247.23 254.41 261.59 268.76 275.94 283.12 290.30 297.48 304.66 311.84 319.02 326.20" y="62" font-size="13" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">const navigate = useNavigate()</text><rect x="160.08" y="48" width="59.43" height="17.5" rx="2" fill="none" stroke="#27617c" stroke-width="1.6"/><rect x="239.05" y="48" width="95.33" height="17.5" rx="2" fill="none" stroke="#348060" stroke-width="1.6"/>
 <path d="M291 81L190 81M195.00 84.00L190 81L195.00 78.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="230" y="107" font-size="13" fill="#18364e" text-anchor="middle" font-weight="700">画面遷移用の関数を取得する</text>
-<text x="230" y="126" font-size="11.8" fill="#40596c" text-anchor="middle">まだ画面は切り替わらない</text>
+<text x="330" y="102" font-size="12" fill="#18364e" text-anchor="middle" font-weight="700">画面遷移用の関数を取得</text>
+<text x="230" y="126" font-size="11.8" fill="#40596c" text-anchor="middle">この時点では、画面は切り替わらない</text>
 <path d="M230 143L230 160M233.00 155.00L230 160L227.00 155.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="9" y="163" width="219" height="176" rx="4" fill="#eff7f1" stroke="#aac9b8" stroke-width="1"/>
-<text x="22.00 27.96 33.93 39.89 45.86 51.82 57.79 63.75 69.71 75.68 81.64 87.61 93.57 99.54 105.50 111.46 117.43 123.39 129.36 135.32 141.29 147.25 153.21 159.18 165.14 171.11 177.07 183.04 189.00 194.96 200.93 206.89" y="202" font-size="10.8" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/sample-3-6/products&#x27;)</text><rect x="21.0" y="190.2" width="49.71" height="15.3" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/><rect x="80.64" y="190.2" width="121.29" height="15.3" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="22.00 27.96 33.93 39.89 45.86 51.82 57.79 63.75 69.71 75.68 81.64 87.61 93.57 99.54 105.50 111.46 117.43 123.39 129.36 135.32 141.29 147.25 153.21 159.18 165.14 171.11 177.07 183.04 189.00 194.96 200.93 206.89" y="202" font-size="10.8" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/sample-3-6/products&#x27;)</text><rect x="21.0" y="190.2" width="49.71" height="15.3" rx="2" fill="none" stroke="#27617c" stroke-width="1.6"/><rect x="80.64" y="190.2" width="121.29" height="15.3" rx="2" fill="none" stroke="#b76b2e" stroke-width="1.6"/>
 <path d="M45 212L45 226M48.00 221.00L45 226L42.00 221.00" fill="none" stroke="#b42331" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="21" y="245" font-size="11.8" fill="#922b35" text-anchor="start" font-weight="700">取得した関数を呼び出す</text>
 <path d="M180 212L180 252M183.00 247.00L180 252L177.00 247.00" fill="none" stroke="#b42331" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="21" y="276" font-size="11.8" fill="#922b35" text-anchor="start" font-weight="700">移動先のURLを指定する</text>
+<text x="21" y="276" font-size="11.8" fill="#922b35" text-anchor="start" font-weight="700">移動先のパスを指定する</text>
 <path d="M231 243L246 243M241.00 240.00L246 243L241.00 246.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="350" y="178" font-size="12.5" fill="#285669" text-anchor="middle" font-weight="700">画面が切り替わる</text>
+<text x="350" y="178" font-size="11.5" fill="#285669" text-anchor="middle" font-weight="700">画面が切り替わる（画面の一部）</text>
 <rect x="252" y="186" width="199" height="178" rx="4" fill="#fff"/>
 <rect x="252" y="186" width="199" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="259" cy="196.5" r="1.6" fill="#8ba5b8"/><circle cx="265" cy="196.5" r="1.6" fill="#8ba5b8"/>
@@ -51,4 +51,8 @@
 <text x="299" y="318" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：101</text>
 <text x="299" y="330" font-size="9.5" fill="#18364e" text-anchor="start">単価：250円</text>
 <rect x="407" y="321" width="30" height="13" rx="3" fill="#0d6efd"/><text x="422.0" y="330.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<text x="444" y="44" font-size="9.7" fill="#255977" text-anchor="end" font-weight="400" font-family="Courier New, MS Gothic, monospace">ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx</text>
+<text x="22" y="62" font-size="10" fill="#255977" text-anchor="start" font-weight="400">4行目</text>
+<text x="21" y="181" font-size="10" fill="#255977" text-anchor="start" font-weight="400">8行目</text>
+<text x="108" y="102" font-size="12" fill="#255977" text-anchor="middle" font-weight="700">変数navigateに格納</text>
 </svg>

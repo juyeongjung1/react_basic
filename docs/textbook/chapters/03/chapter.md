@@ -3283,7 +3283,6 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 ::::
 
 :::: {#page-17 .source-page}
-
 ::: {#ch03-programmatic-title .heading}
 3.6. プログラムによる画面遷移
 :::
@@ -3294,112 +3293,155 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 ![プログラムによる画面遷移](assets/programmatic-navigation-slide.svg)
 :::
 
-::: {#ch03-programmatic-background .heading level="minor"}
+::: {#ch03-programmatic-m44 .heading level="minor"}
 プログラムの処理に応じて画面を切り替えるには
 :::
 
-::: {#ch03-programmatic-004 .paragraph}
-3.4節では、`Link` や `NavLink` を使用して、画面遷移を行う方法を学習しました。3.5節では、商品一覧の［詳細］をクリックすると、商品番号を含むURLへ移動するようにしました。
+::: {#ch03-programmatic-m46 .paragraph}
+3.4節では、`Link` や `NavLink` を使用して、ページ全体を再読み込みせずに画面を切り替える方法を学習しました。また、前節では、商品一覧から商品番号を含むURLへ移動し、詳細画面でその商品番号を取得しました。
 :::
 
-::: {#ch03-programmatic-005 .paragraph}
-これらは、リンクをクリックすることで、指定したURLへ移動する仕組みです。
+::: {#ch03-programmatic-m48 .paragraph}
+これらの画面遷移は、リンクをクリックすると、あらかじめ指定した移動先へ画面が切り替わる仕組みです。
 :::
 
-::: {#ch03-programmatic-006 .paragraph}
-しかし、実際のアプリケーションでは、**プログラムで何らかの処理を行った後に、別の画面へ移動したい場合** があります。
+::: {#ch03-programmatic-m50 .paragraph punctuation-font="inherit"}
+しかし、実際のWebアプリケーションでは、**プログラムで何らかの処理を行い、その結果に応じて画面を切り替えたい場合** があります。
 :::
 
-::: {#ch03-programmatic-007 .paragraph}
-例えば、商品登録画面で［登録］ボタンをクリックした場合、一般的に次のような処理を行います。
+::: {#ch03-programmatic-m52 .paragraph}
+例えば、商品管理システムの商品登録画面で［登録］ボタンをクリックした場合を考えてみましょう。一般的には、次のような処理が必要です。
 :::
 
-::: {#ch03-programmatic-008 .paragraph numbered="true"}
-1．入力された商品情報を使用して、商品を登録する。
+::: {#ch03-programmatic-m54-1 .paragraph numbered="true"}
+1\. 入力された商品情報をサーバーへ送信し、商品を登録する。
 :::
 
-::: {#ch03-programmatic-009 .paragraph numbered="true"}
-2．商品が正常に登録されたことを確認する。
+::: {#ch03-programmatic-m54-2 .paragraph numbered="true"}
+2\. 商品が正常に登録されたかどうかを確認する。
 :::
 
-::: {#ch03-programmatic-010 .paragraph numbered="true"}
-3．商品一覧画面へ移動する。
+::: {#ch03-programmatic-m54-3 .paragraph numbered="true"}
+3\. 登録に成功した場合は商品一覧画面へ移動する。失敗した場合は商品登録画面に留まり、エラーメッセージなどを表示する。
 :::
 
-![登録が正常に完了した後で商品一覧画面へ移動する](assets/programmatic-navigation-background.svg){#ch03-programmatic-figure-1}
+![実際の開発では、登録処理の結果に応じて画面遷移を行う](assets/programmatic-navigation-background.svg){#ch03-programmatic-figure-1}
 
 ::: {#ch03-programmatic-figure-1-caption .caption}
-登録が正常に完了した後で商品一覧画面へ移動する
+実際の開発では、登録処理の結果に応じて画面遷移を行う
 :::
 
-::: {#ch03-programmatic-012 .paragraph}
-`Link` を使用すると、リンクのクリックによって移動先の画面が表示されます。しかし、登録処理の結果を確認し、その結果に応じて画面遷移を行うには、プログラムから画面遷移を実行できるようにする必要があります。
+::: {#ch03-programmatic-m68 .paragraph}
+［登録］に通常のリンクを使用すると、リンクのクリックによって指定した画面へ移動します。しかし、登録の結果を確認してから移動先を決定するには、処理を実行するプログラムの中で画面遷移を行えるようにする必要があります。
 :::
 
-::: {#ch03-programmatic-013 .paragraph}
+::: {#ch03-programmatic-m70 .paragraph punctuation-font="inherit"}
 そこで使用するのが、React Routerが提供する **useNavigate()** です。
 :::
 
-::: {#ch03-programmatic-014 .paragraph}
-`useNavigate()` を使用すると、画面遷移を行うための関数を取得できます。この関数をプログラムの任意の処理の中で呼び出すことで、指定したURLへ移動できます。
+::: {#ch03-programmatic-m72 .paragraph}
+`useNavigate()` を使用すると、画面遷移を行うための関数を取得できます。その関数を、画面遷移が必要になったときに呼び出すことで、プログラムから指定した画面へ移動できます。
 :::
 
-::: {#ch03-programmatic-015 .paragraph}
-商品登録処理やREST APIとの連携については後続の章で学習します。この節では、商品登録画面の［登録］ボタンをクリックしたときに、イベントハンドラーから商品一覧画面へ移動する方法を学習します。
+::: {#ch03-programmatic-m74 .paragraph punctuation-font="inherit"}
+商品登録処理やREST APIとの連携は、後続の章で学習します。この節では、登録処理を実装する前の準備として、**ボタンのイベントハンドラーから画面遷移を行う方法** を学習します。
 :::
 
-::: {#ch03-programmatic-sample .heading level="minor"}
+::: {#ch03-programmatic-m76 .heading level="minor"}
 【サンプル】登録ボタンをクリックして商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-017 .paragraph}
-前節の商品管理システムに、商品登録画面を追加します。
+::: {#ch03-programmatic-m78 .paragraph}
+前節の商品管理システムを基に、新たに商品登録画面を追加します。
 :::
 
-::: {#ch03-programmatic-018 .paragraph}
-商品一覧画面の［商品登録］をクリックすると商品登録画面へ移動し、商品登録画面で［登録］ボタンをクリックすると商品一覧画面へ戻ります。
+::: {#ch03-programmatic-m80 .paragraph}
+今回のサンプルでは、次の操作ができるようにします。
 :::
 
-::: {#ch03-programmatic-019 .paragraph}
-また、［キャンセル］をクリックした場合も、商品一覧画面へ戻ります。［キャンセル］では登録処理を行わずに画面を移動するため、これまでに学習した `Link` を使用します。
+::: {#ch03-programmatic-m82-1 .paragraph}
+● 商品一覧画面の［商品登録］をクリックすると、商品登録画面へ移動する。
 :::
 
-::: {#ch03-programmatic-020 .paragraph}
-今回は画面遷移の仕組みに集中するため、商品情報の入力や登録処理は実装しません。
+::: {#ch03-programmatic-m82-2 .paragraph}
+● 商品登録画面の［登録］ボタンをクリックすると、イベントハンドラーから商品一覧画面へ移動する。
 :::
 
-::: {#ch03-programmatic-021 .paragraph}
-使用するファイルは、次のとおりです。
+::: {#ch03-programmatic-m82-3 .paragraph}
+● 商品登録画面の［キャンセル］をクリックすると、商品一覧画面へ戻る。
 :::
 
-::: {#ch03-programmatic-022 .table column-widths="38 62"}
-| ファイル | 役割 |
+::: {#ch03-programmatic-m86 .paragraph}
+今回は画面遷移の仕組みに集中するため、商品の入力フォームや登録処理は実装しません。［登録］ボタンをクリックしても、商品一覧に新しい商品は追加されません。
+:::
+
+::: {#ch03-programmatic-m88 .paragraph punctuation-font="inherit"}
+**前節のフォルダー構成を引き継ぐ**
+:::
+
+::: {#ch03-programmatic-m90 .paragraph}
+前節の `sample3_5` を基に、3.6のサンプルを `ch03-basic/src/samples/sample3_6` に用意しています。
+:::
+
+::: {#ch03-programmatic-m92 .code example="true" code-label="フォルダー構成"}
+~~~text
+src/samples/sample3_6/
+├── components/
+│   └── ProductCard.tsx
+├── pages/
+│   ├── HomePage.tsx
+│   ├── ProductListPage.tsx
+│   ├── ProductDetailPage.tsx
+│   ├── ProductRegisterPage.tsx
+│   └── GuidePage.tsx
+├── layouts/
+│   └── MainLayout.tsx
+└── routes/
+    └── AppRoutes.tsx
+~~~
+:::
+
+::: {#ch03-programmatic-m108 .paragraph}
+前節からの主な変更は、次のとおりです。
+:::
+
+::: {#ch03-programmatic-m110 .table column-widths="43 57"}
+| ファイル | 前節からの変更 |
 |---|---|
-| `ProductRegister3_6.tsx` | 商品登録画面を表示し、登録ボタンのクリック時に画面遷移を行う。 |
-| `Sample3_6.tsx` | 商品登録画面へのリンクとルートを定義する。 |
-| `ProductCard3_6.tsx` | 商品カードを表示する。 |
-| `ProductDetail3_6.tsx` | URLから商品番号を取得し、画面に表示する。 |
-| `products3_6.ts` | 商品一覧で使用する6件の商品データを定義する。 |
-| `Layout3_6.tsx` | ヘッダー・メニュー・フッターなどの共通レイアウトを定義する。 |
+| `pages/ProductRegisterPage.tsx` | 新規作成。商品登録画面を表示し、プログラムから画面遷移を行う。 |
+| `pages/ProductListPage.tsx` | 商品登録画面へ移動するためのリンクを追加する。 |
+| `routes/AppRoutes.tsx` | 商品登録画面をインポートし、対応する子ルートを追加する。 |
+| `components/ProductCard.tsx`、`pages/ProductDetailPage.tsx`、`layouts/MainLayout.tsx` | リンク先のURLを3.6用に変更する。その他の処理は前節と同じ。 |
+| `pages/HomePage.tsx`、`pages/GuidePage.tsx` | 変更なし。 |
 :::
 
-::: {#ch03-programmatic-023 .paragraph}
-商品カード、商品詳細画面、商品データ、共通レイアウトは、前節までと同じ考え方で作成しています。
+![商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル](assets/programmatic-navigation-folder-structure.svg){#ch03-programmatic-folder-structure}
+
+::: {#ch03-programmatic-folder-structure-caption .caption}
+商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル
 :::
 
-::: {#ch03-programmatic-register .step keep-next="2"}
-**① 商品登録画面の作成**
+::: {#ch03-programmatic-m124 .paragraph punctuation-font="inherit"}
+このように、**画面の追加と、その画面へのリンク、ルーティングの設定を、それぞれ役割に応じたファイルで管理できます。**
 :::
 
-::: {#ch03-programmatic-025 .paragraph}
-商品登録画面には、［登録］ボタンと［キャンセル］リンクを配置します。
+::: {#ch03-programmatic-m126 .paragraph}
+今回は新たに作成する商品登録画面と、その画面を表示するためのルーティングを中心に確認します。前節までと同じ処理については、全体ソースコードの掲載を省略します。
 :::
 
-::: {#ch03-programmatic-026 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="1"}
-```tsx
+::: {#ch03-programmatic-m128 .paragraph punctuation-font="inherit"}
+**商品登録画面のソースコード**
+:::
+
+::: {#ch03-programmatic-m130 .paragraph}
+新たに作成する `pages/ProductRegisterPage.tsx` には、画面の表示と［登録］ボタンをクリックしたときの処理を記述します。
+:::
+
+::: {#ch03-programmatic-m133 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="1"}
+~~~tsx
 import { Link, useNavigate } from 'react-router'
 
-export default function ProductRegister3_6() {
+export default function ProductRegisterPage() {
   const navigate = useNavigate()
 
   function handleRegister() {
@@ -3407,11 +3449,6 @@ export default function ProductRegister3_6() {
     navigate('/sample-3-6/products')
   }
 
-```
-:::
-
-::: {#ch03-programmatic-026-continued .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="11"}
-```tsx
   return (
     <main className="container mt-4">
       <h1>商品登録</h1>
@@ -3430,56 +3467,94 @@ export default function ProductRegister3_6() {
     </main>
   )
 }
-```
+~~~
 :::
 
-::: {#ch03-programmatic-list-link .step keep-next="2"}
-**② 商品一覧画面へのリンクの追加**
+::: {#ch03-programmatic-m164 .paragraph}
+今回のサンプルでは、［登録］に `button` 要素を、［キャンセル］に `Link` を使用しています。どちらの操作でも商品一覧画面へ移動しますが、その目的と実装方法が異なります。
 :::
 
-::: {#ch03-programmatic-028 .paragraph}
-`Sample3_6.tsx` の商品一覧画面に、商品登録画面へ移動するための［商品登録］リンクを追加します。
+::: {#ch03-programmatic-m166 .paragraph punctuation-font="inherit"}
+**商品一覧画面へのリンクの追加**
 :::
 
-::: {#ch03-programmatic-029 .code filename="ch03-basic/src/components/Sample3_6.tsx" start-line="29"}
-```tsx
+::: {#ch03-programmatic-m168 .paragraph}
+続いて、`pages/ProductListPage.tsx` を確認します。商品カードや商品データを表示する処理は前節と同じですが、商品登録画面へ移動するための `Link` を追加しています。
+:::
+
+::: {#ch03-programmatic-m171 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="1"}
+~~~tsx
+import { Link } from 'react-router'
+~~~
+:::
+
+::: {#ch03-programmatic-m176 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="16"}
+~~~tsx
       <h1>商品一覧</h1>
       <Link to="/sample-3-6/products/new" className="btn btn-primary mb-3">
         商品登録
       </Link>
-```
+~~~
 :::
 
-::: {#ch03-programmatic-030 .paragraph}
-このリンクのクリックによって、商品登録画面のURLへ移動します。
+::: {#ch03-programmatic-m183 .paragraph}
+この［商品登録］リンクをクリックすると、`/sample-3-6/products/new` へ移動します。
 :::
 
-::: {#ch03-programmatic-route .step keep-next="2"}
-**③ ルーティングの設定**
+::: {#ch03-programmatic-m185 .paragraph punctuation-font="inherit"}
+**ルーティングの設定**
 :::
 
-::: {#ch03-programmatic-032 .paragraph}
-前節までのルートに、商品登録画面のルートを追加します。
+::: {#ch03-programmatic-m187 .paragraph}
+次に、`routes/AppRoutes.tsx` を確認します。前節までのルートの定義に、商品登録画面を表示するためのルートを追加しています。
 :::
 
-::: {#ch03-programmatic-033 .code filename="ch03-basic/src/components/Sample3_6.tsx" start-line="54"}
-```tsx
-        <Route path="products/new" element={<ProductRegister3_6 />} />
-```
+::: {#ch03-programmatic-m190 .code filename="ch03-basic/src/samples/sample3_6/routes/AppRoutes.tsx" start-line="1"}
+~~~tsx
+import { Routes, Route } from 'react-router'
+import HomePage from '../pages/HomePage'
+import ProductListPage from '../pages/ProductListPage'
+import GuidePage from '../pages/GuidePage'
+import MainLayout from '../layouts/MainLayout'
+import ProductDetailPage from '../pages/ProductDetailPage'
+import ProductRegisterPage from '../pages/ProductRegisterPage'
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<ProductListPage />} />
+        <Route path="products/new" element={<ProductRegisterPage />} />
+        <Route path="products/:id" element={<ProductDetailPage />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+    </Routes>
+  )
+}
+~~~
 :::
 
-::: {#ch03-programmatic-034 .paragraph}
-各画面のURLとコンポーネントの対応は、次のとおりです。
+::: {#ch03-programmatic-m214 .paragraph}
+今回は、共通レイアウトの中に次の画面を表示できます。
 :::
 
-::: {#ch03-programmatic-035 .table column-widths="53 47"}
-| URLのパス | 表示される画面 |
-|---|---|
-| `/sample-3-6` | ホーム画面 |
-| `/sample-3-6/products` | 商品一覧画面 |
-| `/sample-3-6/products/new` | 商品登録画面 |
-| `/sample-3-6/products/101` | 商品番号101の詳細画面 |
-| `/sample-3-6/guide` | ご利用案内画面 |
+::: {#ch03-programmatic-m216 .table column-widths="43 34 23"}
+| URLのパス | 表示するコンポーネント | 画面 |
+|---|---|---|
+| `/sample-3-6` | `HomePage` | ホーム |
+| `/sample-3-6/products` | `ProductListPage` | 商品一覧 |
+| `/sample-3-6/products/new` | `ProductRegisterPage` | 商品登録 |
+| `/sample-3-6/products/101` | `ProductDetailPage` | 商品詳細（商品番号101） |
+| `/sample-3-6/guide` | `GuidePage` | ご利用案内 |
+:::
+
+::: {#ch03-programmatic-m224 .paragraph}
+配布サンプルの `ch03-basic` の開発サーバーを起動し、ブラウザーのメニューから「3.6 プログラムによる画面遷移」を選択してください。
+:::
+
+::: {#ch03-programmatic-m226 .paragraph}
+共通メニューの［商品一覧］から［商品登録］をクリックすると、次のように商品登録画面が表示されます。
 :::
 
 ![Linkを使用して商品登録画面へ移動する](assets/programmatic-navigation-listing-to-register.svg){#ch03-programmatic-figure-2}
@@ -3488,40 +3563,97 @@ export default function ProductRegister3_6() {
 Linkを使用して商品登録画面へ移動する
 :::
 
-::: {#ch03-programmatic-syntax .heading level="minor"}
+::: {#ch03-programmatic-m236 .paragraph}
+ここからは、商品登録画面を追加したルートと、［登録］ボタンをクリックしたときにプログラムから画面遷移を行う仕組みを確認しましょう。
+:::
+
+::: {#ch03-programmatic-m238 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-programmatic-hook .step}
-**① useNavigate()で画面遷移用の関数を取得する**
+::: {#ch03-programmatic-m240 .step}
+**① 商品登録画面のルートを追加する**
 :::
 
-::: {#ch03-programmatic-039 .paragraph}
-まず、`react-router` から `useNavigate` をインポートします。
+::: {#ch03-programmatic-m243 .code filename="ch03-basic/src/samples/sample3_6/routes/AppRoutes.tsx" start-line="15"}
+~~~tsx
+        <Route path="products/new" element={<ProductRegisterPage />} />
+        <Route path="products/:id" element={<ProductDetailPage />} />
+~~~
 :::
 
-::: {#ch03-programmatic-040 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="1"}
-```tsx
+::: {#ch03-programmatic-m248 .paragraph}
+商品登録画面へのルートは、3.3節で学習した子ルートと同じように定義しています。`path="products/new"` と指定し、`element` には新たに作成した `ProductRegisterPage` を指定します。
+:::
+
+::: {#ch03-programmatic-m250 .paragraph}
+ここで、前節で学習した商品詳細画面のルート `products/:id` に注目してください。
+:::
+
+::: {#ch03-programmatic-m252 .paragraph}
+`products/:id` は、`products` に続く1つのパスの部分をURLパラメータとして扱う設定です。そのため、`new` という文字列も `id` として取得できるように見えるかもしれません。
+:::
+
+::: {#ch03-programmatic-m254 .paragraph punctuation-font="inherit"}
+React Routerでは、複数のルートが同じURLに一致する場合、より具体的に一致するルートが選択されます。今回のように、**固定のパスである `products/new` と可変部分を持つ `products/:id` の両方に一致する場合は、固定のパスを指定したルートが優先されます。**
+:::
+
+::: {#ch03-programmatic-m256 .paragraph}
+したがって、商品登録画面のURLである `/sample-3-6/products/new` にアクセスすると、商品詳細画面ではなく商品登録画面が表示されます。一方、`/sample-3-6/products/101` にアクセスすると、商品番号101を表示する詳細画面になります。
+:::
+
+![商品登録画面と商品詳細画面をURLのパスによって区別する](assets/programmatic-navigation-route-ranking.svg){#ch03-programmatic-route-ranking}
+
+::: {#ch03-programmatic-route-ranking-caption .caption}
+商品登録画面と商品詳細画面をURLのパスによって区別する
+:::
+
+::: {#ch03-programmatic-m267 .paragraph}
+この例では、コード上で `products/new` を先に記述していますが、React Routerがより具体的なルートを選択するため、この2つのルートの記述順を入れ替えても、選択される画面は同じです。
+:::
+
+::: {#ch03-programmatic-m269 .step}
+**② useNavigate()で画面遷移用の関数を取得する**
+:::
+
+::: {#ch03-programmatic-m271 .paragraph}
+まず、商品登録画面の `pages/ProductRegisterPage.tsx` で、React Routerから `useNavigate` をインポートします。
+:::
+
+::: {#ch03-programmatic-m274 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="1"}
+~~~tsx
 import { Link, useNavigate } from 'react-router'
-```
+~~~
 :::
 
-::: {#ch03-programmatic-041 .paragraph}
-`useNavigate` は、React Routerが提供するHookです。前節で学習した `useParams` と同様に、コンポーネントの関数内で使用します。
+::: {#ch03-programmatic-m278 .paragraph}
+`useNavigate()` は、前節で学習した `useParams()` と同じように、React Routerが提供するHookです。
 :::
 
-::: {#ch03-programmatic-042 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="4"}
-```tsx
+::: {#ch03-programmatic-m280 .paragraph}
+続いて、関数コンポーネントの中で次のように記述します。
+:::
+
+::: {#ch03-programmatic-m283 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="4"}
+~~~tsx
   const navigate = useNavigate()
-```
+~~~
 :::
 
-::: {#ch03-programmatic-043 .paragraph}
-`useNavigate()` を呼び出すと、画面遷移を行うための関数が返されます。今回は、その関数を `navigate` という名前の変数に格納しています。
+::: {#ch03-programmatic-m287 .paragraph}
+`useNavigate()` を呼び出すと、画面遷移を行うための関数が返されます。今回のサンプルでは、その関数を `navigate` という変数に格納しています。
 :::
 
-::: {#ch03-programmatic-044 .paragraph}
-この時点では、まだ画面遷移は行われません。取得した関数を、画面遷移が必要になったときに呼び出します。
+::: {#ch03-programmatic-m289 .paragraph punctuation-font="inherit"}
+ここで注意したいのは、**useNavigate()を呼び出しただけでは、画面遷移は行われない** という点です。実際に画面を切り替えるには、取得した関数を呼び出す必要があります。
+:::
+
+::: {#ch03-programmatic-m291 .table column-widths="45 55"}
+| 記述 | 役割 |
+|---|---|
+| `useNavigate()` | 画面遷移を行うための関数を取得する。 |
+| `navigate` | 取得した関数を格納している変数。 |
+| `navigate('/sample-3-6/products')` | 取得した関数を呼び出し、指定したパスへ移動する。 |
 :::
 
 ![useNavigate()で関数を取得し、navigate()で画面遷移を実行する](assets/programmatic-navigation-hook.svg){#ch03-programmatic-figure-3}
@@ -3530,50 +3662,70 @@ import { Link, useNavigate } from 'react-router'
 useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 :::
 
-::: {#ch03-programmatic-046 .paragraph}
-なお、`navigate` は決められた特別な名前ではありません。`useNavigate()` から返された関数を格納する変数名です。
+::: {#ch03-programmatic-m305 .paragraph}
+なお、`navigate` はReact Routerで決められた特別な名前ではありません。`useNavigate()` から返された関数を格納するために、自分で付けた変数名です。本研修では、画面遷移を行う関数であることが分かりやすいように、この名前を使用します。
 :::
 
-::: {#ch03-programmatic-event .step keep-next="2"}
-**② イベントハンドラーから画面遷移を行う**
+::: {#ch03-programmatic-m307 .step}
+**③ イベントハンドラーから画面遷移を行う**
 :::
 
-::: {#ch03-programmatic-048 .paragraph}
-次に、［登録］ボタンがクリックされたときに実行する関数を確認しましょう。
+::: {#ch03-programmatic-m309 .paragraph}
+取得した `navigate` を使用して、［登録］ボタンがクリックされたときに商品一覧画面へ移動する処理を記述します。
 :::
 
-::: {#ch03-programmatic-049 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="6"}
-```tsx
+::: {#ch03-programmatic-m312 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="6"}
+~~~tsx
   function handleRegister() {
     // 実際の開発では、REST APIで商品を登録し、成功を確認する。
     navigate('/sample-3-6/products')
   }
-```
+~~~
 :::
 
-::: {#ch03-programmatic-050 .paragraph}
-`navigate()` の引数には、移動先のURLを指定します。今回は、商品一覧画面に対応する `/sample-3-6/products` を指定しています。
+::: {#ch03-programmatic-m319 .paragraph}
+`handleRegister` は、［登録］ボタンがクリックされたときに実行する関数です。
 :::
 
-::: {#ch03-programmatic-051 .paragraph}
-そして、この関数を［登録］ボタンの `onClick` に設定します。
+::: {#ch03-programmatic-m321 .paragraph}
+`navigate()` の引数には、移動先のURLのパスを指定します。今回は商品一覧画面へ移動したいため、`'/sample-3-6/products'` を指定しています。
 :::
 
-::: {#ch03-programmatic-052 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="18"}
-```tsx
+::: {#ch03-programmatic-m323 .paragraph}
+次に、この関数をボタンのクリックイベントと結び付けます。
+:::
+
+::: {#ch03-programmatic-m326 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="18"}
+~~~tsx
         <button type="button" className="btn btn-primary"
                 onClick={handleRegister}>
           登録
         </button>
-```
+~~~
 :::
 
-::: {#ch03-programmatic-053 .paragraph}
-これは、2.4節で学習したイベント処理の記述方法と同じです。
+::: {#ch03-programmatic-m333 .paragraph}
+2.4節で学習したように、`onClick` に関数を指定すると、ボタンをクリックしたときにその関数が実行されます。
 :::
 
-::: {#ch03-programmatic-054 .paragraph}
-［登録］ボタンをクリックすると `handleRegister` が実行され、その中で `navigate()` が呼び出されます。React RouterがURLに対応するルートを選択することで、商品一覧画面が表示されます。
+::: {#ch03-programmatic-m335 .paragraph}
+今回のサンプルでは、［登録］ボタンをクリックすると、次のように処理が行われます。
+:::
+
+::: {#ch03-programmatic-m337-1 .paragraph numbered="true"}
+1\. `onClick` に指定した `handleRegister` が実行される。
+:::
+
+::: {#ch03-programmatic-m337-2 .paragraph numbered="true"}
+2\. `handleRegister` の中で `navigate('/sample-3-6/products')` が呼び出される。
+:::
+
+::: {#ch03-programmatic-m337-3 .paragraph numbered="true"}
+3\. React RouterがURLを変更し、そのパスに対応する子ルートを選択する。
+:::
+
+::: {#ch03-programmatic-m337-4 .paragraph numbered="true"}
+4\. 共通レイアウトの `Outlet` の位置に `ProductListPage` が表示される。
 :::
 
 ![イベントハンドラー内でnavigate()を呼び出すと、商品一覧画面へ移動する](assets/programmatic-navigation-register-event.svg){#ch03-programmatic-figure-4}
@@ -3582,122 +3734,144 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 イベントハンドラー内でnavigate()を呼び出すと、商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-056 .paragraph}
-このとき、`Link` を使用した画面遷移と同様に、ページ全体を再読み込みすることなく、表示する画面が切り替わります。
+::: {#ch03-programmatic-m351 .paragraph}
+このように、`Link` による画面遷移と同様に、ページ全体を再読み込みせずに画面を切り替えられます。
 :::
 
-::: {#ch03-programmatic-057 .paragraph}
-**useNavigate()はコンポーネントの関数内で呼び出し、取得したnavigate()は画面遷移を行いたい処理の中で呼び出します。**
+::: {#ch03-programmatic-m353 .paragraph}
+ここで、`useNavigate()` と `navigate()` を記述する場所の違いも確認しておきましょう。
 :::
 
-::: {#ch03-programmatic-comparison .step}
-**③ LinkとuseNavigate()の使い分け**
+::: {#ch03-programmatic-m355-1 .paragraph punctuation-font="inherit"}
+● **useNavigate()**：関数コンポーネントのトップレベルで呼び出す。
 :::
 
-::: {#ch03-programmatic-059 .paragraph}
-今回のサンプルでは、［登録］ボタンと［キャンセル］リンクは、どちらも商品一覧画面へ移動します。しかし、画面遷移の記述方法は異なります。
+::: {#ch03-programmatic-m355-2 .paragraph punctuation-font="inherit"}
+● **navigate()**：取得した関数を、イベントハンドラーなど、画面遷移を行いたい処理の中で呼び出す。
 :::
 
-::: {#ch03-programmatic-060 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="22"}
-```tsx
+::: {#ch03-programmatic-m358 .paragraph}
+`useNavigate()` はHookなので、2.3節で学習した `useState()` と同じように、イベントハンドラーやif文の中では呼び出さないようにしてください。
+:::
+
+::: {#ch03-programmatic-m360 .step}
+**④ LinkとuseNavigate()の使い分け**
+:::
+
+::: {#ch03-programmatic-m362 .paragraph}
+今回の商品登録画面では、［登録］と［キャンセル］のどちらを操作しても、商品一覧画面へ戻ります。
+:::
+
+::: {#ch03-programmatic-m364 .paragraph}
+ただし、［キャンセル］には `navigate()` ではなく、次のように `Link` を使用しています。
+:::
+
+::: {#ch03-programmatic-m367 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="22"}
+~~~tsx
         <Link to="/sample-3-6/products" className="btn btn-secondary">
           キャンセル
         </Link>
-```
+~~~
 :::
 
-::: {#ch03-programmatic-061 .paragraph}
-［キャンセル］では、特別な処理を行わずに商品一覧画面へ移動するため、`Link` を使用しています。
+::: {#ch03-programmatic-m373 .paragraph}
+［キャンセル］の目的は、商品登録を行わずに商品一覧画面へ戻ることです。移動するだけでよいので、これまでに学習した `Link` を使用できます。
 :::
 
-::: {#ch03-programmatic-062 .paragraph}
-一方、［登録］では、実際の開発において商品を登録し、その結果に応じて画面遷移を行う必要があります。そのため、イベントハンドラー内から `navigate()` を呼び出す構成にしています。
+::: {#ch03-programmatic-m375 .paragraph}
+一方、［登録］の目的は、実際の開発では商品を登録することです。登録処理の結果に応じて画面遷移を行う必要があるため、今回はイベントハンドラーの中から `navigate()` を呼び出す構成としています。
 :::
 
-::: {#ch03-programmatic-063 .table column-widths="27 35 38"}
-| 使用する機能 | 使用する場面 | 例 |
+::: {#ch03-programmatic-m377 .paragraph}
+それぞれの使い分けを整理すると、次のようになります。
+:::
+
+::: {#ch03-programmatic-m379 .table column-widths="23 51 26"}
+| 使用する機能 | 適している場面 | 使用例 |
 |---|---|---|
-| `Link` / `NavLink` | リンクのクリックで画面を移動する。 | 商品一覧へ移動する、詳細画面を表示する、キャンセルする。 |
-| `useNavigate()` で取得した関数 | プログラムの処理に応じて画面を移動する。 | 登録や更新が成功した後で一覧画面へ移動する。 |
+| `Link` | リンクをクリックして、指定した画面へ移動する。 | 商品詳細へ移動する、キャンセルして一覧へ戻る。 |
+| `NavLink` | リンクで移動するとともに、現在の画面に対応するリンクを強調する。 | 共通メニューの画面遷移と強調表示。 |
+| `useNavigate()` で取得した関数 | プログラムの処理に応じて画面遷移を行う。 | 商品の登録や更新に成功した後で一覧へ移動する。 |
 :::
 
-::: {#ch03-programmatic-note .training-note}
+::: {#ch03-programmatic-m385 .paragraph}
+通常のリンクによる画面遷移には `Link` や `NavLink` を使用し、処理を実行した結果に応じて移動する場合には `useNavigate()` で取得した関数を使用する、という考え方を押さえておきましょう。
+:::
+
+::: {#ch03-programmatic-m387 .training-note breakable="true"}
 【補足】実際の商品登録画面では
 
-今回のサンプルでは、［登録］ボタンをクリックすると、商品を登録する処理を行わずに商品一覧画面へ移動します。そのため、商品一覧に新しい商品が追加されることはありません。
+今回のサンプルでは、［登録］ボタンをクリックしても、商品を登録する処理は実行されません。商品一覧画面へ移動する処理だけを記述しているためです。
 
-実際の商品登録画面では、入力された商品情報をREST APIへ送信し、商品が正常に登録されたことを確認した後に `navigate()` を呼び出します。登録に失敗した場合は、商品登録画面に留まり、エラーメッセージを表示するなどの処理が必要です。
-
-商品を登録する処理は、今回のサンプルの次のコメント部分に追加します。その際は、登録が成功した場合にのみ `navigate()` が呼び出されるように変更します。
-
-```{#ch03-programmatic-068 .tsx filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="6"}
-  function handleRegister() {
-    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
-    navigate('/sample-3-6/products')
-  }
-```
-
-後続の章では、REST APIと連携して、実際にデータを登録した後で一覧画面へ移動する処理を学習します。
+`handleRegister` に記述している次のコメントは、実際の商品登録処理を追加する位置を示しています。
 :::
 
-::: {#ch03-programmatic-practice .heading level="minor" keep-next="2"}
+::: {#ch03-programmatic-m394 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="7"}
+~~~tsx
+    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
+~~~
+:::
+
+::: {#ch03-programmatic-m398 .paragraph}
+実際の商品登録画面では、フォームで入力された商品情報をREST APIへ送信します。そして、REST APIから返された結果を確認し、登録が成功した場合に商品一覧画面へ移動するようにします。
+:::
+
+![画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる](assets/programmatic-navigation-api.svg){#ch03-programmatic-api}
+
+::: {#ch03-programmatic-api-caption .caption}
+画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる
+:::
+
+::: {#ch03-programmatic-m409 .paragraph punctuation-font="inherit"}
+**商品を登録する処理と、登録後に画面を切り替える処理は、別の処理です。** 後続の章では、商品を正常に登録できた場合にのみ `navigate()` を呼び出すように実装します。
+:::
+
+::: {#ch03-programmatic-m411 .heading level="minor"}
 【確認演習】プログラムから画面遷移を行う
 :::
 
-::: {#ch03-programmatic-071 .paragraph}
-商品登録画面の［登録］ボタンをクリックしたときに、商品一覧画面へ移動するようにしましょう。
+::: {#ch03-programmatic-m413 .paragraph}
+商品登録画面の［登録］ボタンをクリックすると、プログラムから商品一覧画面へ移動できるようにしましょう。
 :::
 
-::: {#ch03-programmatic-072 .paragraph}
-商品一覧画面、商品登録画面の基本構成、ルーティングの設定、登録ボタンのイベント処理は、あらかじめ用意されています。今回は、`useNavigate()` を使用して画面遷移を行うための記述を実装します。
+::: {#ch03-programmatic-m415 .paragraph}
+今回の演習では、商品一覧画面、商品登録画面の基本構成、共通レイアウト、ルーティング、ボタンのクリックイベントなどをあらかじめ用意しています。前節までに学習した構文を使用する部分は実装済みです。
 :::
 
-::: {#ch03-programmatic-073 .paragraph numbered="true"}
-1．`ch03-basic-q` プロジェクトの次のファイルを開いてください。
+::: {#ch03-programmatic-m417 .paragraph}
+編集するファイルは、`pages` フォルダー内の商品登録画面だけです。
 :::
 
-::: {#ch03-programmatic-074 .paragraph}
-● `src/components/ProductRegister3_6Q.tsx`
+::: {#ch03-programmatic-m419-1 .paragraph numbered="true"}
+1\. `ch03-basic-q` プロジェクトの `src/exercises/q3_6/pages/ProductRegisterPage.tsx` を開いてください。
 :::
 
-::: {#ch03-programmatic-075 .paragraph numbered="true"}
-2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch03-programmatic-m419-2 .paragraph numbered="true"}
+2\. コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。3つとも実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch03-programmatic-076 .paragraph numbered="true"}
-3．編集したファイルを保存してください。
+::: {#ch03-programmatic-m419-3 .paragraph numbered="true"}
+3\. 編集したファイルを保存してください。
 :::
 
-::: {#ch03-programmatic-077 .paragraph numbered="true"}
-4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch03-programmatic-m419-4 .paragraph numbered="true"}
+4\. `ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-programmatic-078 .paragraph numbered="true"}
-5．メニューから「3.6 プログラムによる画面遷移」を選んでください。
+::: {#ch03-programmatic-m419-5 .paragraph numbered="true"}
+5\. メニューから「3.6 プログラムによる画面遷移」を選択してください。
 :::
 
-::: {#ch03-programmatic-check .heading level="minor"}
+::: {#ch03-programmatic-m425 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch03-programmatic-080 .paragraph numbered="true"}
-6．共通メニューの［商品一覧］をクリックしてください。次に、［商品登録］をクリックして、商品登録画面を表示します。
+::: {#ch03-programmatic-m427-1 .paragraph numbered="true"}
+6\. 共通メニューの［商品一覧］をクリックしてください。次に、［商品登録］をクリックして商品登録画面を表示し、［登録］ボタンをクリックします。
 :::
 
-::: {#ch03-programmatic-081 .paragraph}
-商品登録画面の［登録］ボタンをクリックし、次の内容を確認してください。
-:::
-
-::: {#ch03-programmatic-082 .paragraph}
-● URLのパスが `/sample-3-6/products` になっていること。
-:::
-
-::: {#ch03-programmatic-083 .paragraph}
-● 商品一覧画面が表示されていること。
-:::
-
-::: {#ch03-programmatic-084 .paragraph}
-● 共通ヘッダー、メニュー、フッターが引き続き表示されていること。
+::: {#ch03-programmatic-m429 .paragraph}
+次の図と見比べながら、商品一覧画面へ戻ったことを確認してください。
 :::
 
 ![登録ボタンのイベント処理から商品一覧画面へ移動する](assets/programmatic-navigation-exercise-result.svg){#ch03-programmatic-figure-5}
@@ -3706,19 +3880,37 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 登録ボタンのイベント処理から商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-086 .paragraph}
-もう一度［商品登録］をクリックし、商品登録画面を表示してください。今度は［キャンセル］をクリックし、商品一覧画面へ戻ることを確認してください。
+::: {#ch03-programmatic-m440 .paragraph}
+商品一覧画面へ戻ったら、もう一度［商品登録］をクリックしてください。今度は［キャンセル］をクリックし、商品一覧画面へ戻ることを確認してください。
 :::
 
-::: {#ch03-programmatic-087 .paragraph keep-next="3"}
-［登録］ボタンと［キャンセル］リンクのどちらを使用しても、商品一覧画面へ移動できれば、演習完了です。
+![キャンセルのLinkからも商品一覧画面へ戻ることを確認する](assets/programmatic-navigation-exercise-cancel.svg){#ch03-programmatic-exercise-cancel}
+
+::: {#ch03-programmatic-exercise-cancel-caption .caption}
+キャンセルのLinkからも商品一覧画面へ戻ることを確認する
 :::
 
-::: {#ch03-programmatic-088 .paragraph}
-※ 今回は商品登録処理を実装していないため、［登録］ボタンをクリックしても、商品一覧に新しい商品は追加されません。
+::: {#ch03-programmatic-m448 .paragraph}
+次の内容を確認できれば、演習完了です。
 :::
 
-::: {#ch03-programmatic-089 .paragraph}
+::: {#ch03-programmatic-m450-1 .paragraph}
+● ［登録］ボタンと［キャンセル］リンクのどちらを操作しても、URLのパスが `/sample-3-6/products` に変わり、商品一覧画面が表示される。
+:::
+
+::: {#ch03-programmatic-m450-2 .paragraph}
+● 共通ヘッダー、メニュー、フッターが引き続き表示される。
+:::
+
+::: {#ch03-programmatic-m450-3 .paragraph}
+● 商品一覧に表示されている商品の件数や内容は変わらない。
+:::
+
+::: {#ch03-programmatic-m454 .paragraph}
+なお、［キャンセル］はあらかじめ実装されています。［登録］ボタンをクリックした場合にも商品一覧画面へ戻れることを必ず確認してください。
+:::
+
+::: {#ch03-programmatic-m456 .paragraph}
 画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
@@ -3727,17 +3919,15 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 
 ● `useNavigate()` を使用すると、画面遷移を行うための関数を取得できる。
 
-● 取得した関数の引数に移動先のURLを指定して呼び出すと、プログラムから画面遷移を行える。
+● `useNavigate()` は関数コンポーネントのトップレベルで呼び出す。取得した関数は、画面遷移を行いたい処理の中で呼び出す。
 
-● イベントハンドラー内で `navigate()` を呼び出すことで、ボタンのクリック後の処理に応じて画面を切り替えられる。
+● 取得した関数の引数に移動先のURLのパスを指定すると、プログラムから画面遷移を行える。
 
 ● `Link` や `NavLink` と、`useNavigate()` で取得した関数は、画面遷移を行う場面に応じて使い分ける。
 :::
-
 ::::
 
 :::: {#page-18 .source-page}
-
 ::: {#ch03-summary-title .heading}
 章のまとめ
 :::
@@ -3758,28 +3948,23 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 ■ プログラムによる画面遷移
 :::
 
-::: {#ch03-summary-1 .paragraph}
-この章では、Reactを使用して複数の画面を持つSPAを作成する方法を学習しました。
+::: {#ch03-summary-m482 .paragraph}
+この章では、Reactを使用して複数の画面を持つSPAを構築する方法を学習しました。
 :::
 
-::: {#ch03-summary-2 .paragraph}
-最初に、コンポーネントを分割し、Propsを使用して親コンポーネントから子コンポーネントへデータを渡す方法を学習しました。
+::: {#ch03-summary-m484 .paragraph}
+最初に、画面の一部をコンポーネントとして分割し、Propsを使用して親コンポーネントから子コンポーネントへデータを渡しました。これにより、同じ商品カードを再利用して、複数の商品を一覧表示できるようになりました。
 :::
 
-::: {#ch03-summary-3 .paragraph}
-続いて、React Routerを使用してURLに応じた画面表示を実装しました。また、共通レイアウトを作成し、ヘッダーやメニュー、フッターを維持したまま、コンテンツ部分を切り替える方法を確認しました。
+::: {#ch03-summary-m486 .paragraph}
+続いて、React Routerを使用してURLと画面を対応付ける方法を学びました。画面のコンポーネント、共通レイアウト、ルーティングの設定を役割ごとに分けて管理し、`Outlet` を使用して共通レイアウトの中に各画面を表示しました。
 :::
 
-::: {#ch03-summary-4 .paragraph}
-さらに、LinkやNavLinkを使用した画面遷移や、useParams()を使用してURLから商品番号などの値を取得する方法を学習しました。
+::: {#ch03-summary-m488 .paragraph}
+さらに、`Link` や `NavLink` を使用したSPAの画面遷移と、`useParams()` を使用したURLパラメータの取得を学習しました。最後に、`useNavigate()` で取得した関数を使用して、プログラムの処理に応じた画面遷移を実装しました。
 :::
 
-::: {#ch03-summary-5 .paragraph}
-最後に、useNavigate()を使用して、プログラムの処理に応じて画面遷移を行う方法を学習しました。
+::: {#ch03-summary-m490 .paragraph}
+ここまでの学習で、複数の画面から構成されるアプリケーションの基本ができました。後続の章では、REST APIと連携し、サーバーから取得したデータを画面に表示したり、商品の登録や更新、削除を行ったりする方法を学習します。
 :::
-
-::: {#ch03-summary-6 .paragraph}
-次の第4章では、REST APIと通信し、取得したデータを画面に反映する方法を学習します。
-:::
-
 ::::

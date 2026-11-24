@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router'
 
-export default function ProductRegister3_6() {
+export default function ProductRegisterPage() {
   const navigate = useNavigate()
 
   function handleRegister() {

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="365" viewBox="0 0 760 365" font-family="Meiryo, sans-serif">
+<title>キャンセルから商品一覧画面へ戻る</title>
+<text x="380" y="34" font-size="24" fill="#18364e" text-anchor="middle" font-weight="700">キャンセルから商品一覧画面へ戻る</text>
+<text x="12" y="70" font-size="18" fill="#255977" text-anchor="start" font-weight="700">操作前</text>
+<rect x="12" y="82" width="330" height="208" rx="6" fill="#ffffff" stroke="#a6bfce" stroke-width="1.5"/>
+<rect x="13" y="83" width="328" height="31" rx="6" fill="#e7f0f7" stroke="none" stroke-width="1.5"/>
+<rect x="21" y="88" width="312" height="20" rx="3" fill="#fff" stroke="#a7bdcd" stroke-width="1"/>
+<text x="26" y="103" font-size="15" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">/sample-3-6/products/new</text>
+<rect x="13" y="113" width="328" height="25" rx="0" fill="#212529" stroke="none" stroke-width="1.5"/>
+<text x="24" y="131" font-size="16" fill="#fff" text-anchor="start" font-weight="400">商品管理システム</text>
+<rect x="13" y="138" width="328" height="30" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1.5"/>
+<text x="25" y="158" font-size="15" fill="#0d6efd" text-anchor="start" font-weight="400">ホーム</text>
+<rect x="86" y="141" width="79" height="24" rx="3" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="125.5" y="158" font-size="15" fill="#fff" text-anchor="middle" font-weight="400">商品一覧</text>
+<text x="176" y="158" font-size="15" fill="#0d6efd" text-anchor="start" font-weight="400">ご利用案内</text>
+<rect x="13" y="266" width="328" height="23" rx="3" fill="#f8f9fa" stroke="none" stroke-width="1.5"/>
+<text x="177.0" y="282" font-size="14" fill="#18364e" text-anchor="middle" font-weight="400">商品管理システム</text>
+<text x="24" y="188" font-size="21" fill="#18364e" text-anchor="start" font-weight="700">商品登録</text>
+<rect x="24" y="195" width="306" height="39" rx="3" fill="#cff4fc" stroke="#acdbe5" stroke-width="1"/>
+<text x="29" y="210" font-size="15" fill="#055160" text-anchor="start" font-weight="400">この節では、商品登録処理は行わず、画面</text>
+<text x="29" y="229" font-size="15" fill="#055160" text-anchor="start" font-weight="400">遷移のみを確認します。</text>
+<rect x="24" y="238" width="47" height="22" rx="4" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="47.5" y="254" font-size="14" fill="#fff" text-anchor="middle" font-weight="400">登録</text>
+<rect x="80" y="238" width="82" height="22" rx="4" fill="#6c757d" stroke="none" stroke-width="1.5"/>
+<text x="121.0" y="254" font-size="14" fill="#fff" text-anchor="middle" font-weight="400">キャンセル</text>
+<rect x="78" y="236" width="86" height="26" rx="2" fill="none" stroke="#b42331" stroke-width="2"/>
+<path d="M349 246L406 246M398.00 251.00L406 246L398.00 241.00" stroke="#b42331" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="380" y="344" font-size="19" fill="#b42331" text-anchor="middle" font-weight="700">［キャンセル］をクリック（Link）</text>
+<text x="414" y="70" font-size="18" fill="#255977" text-anchor="start" font-weight="700">操作後（画面の一部）</text>
+<rect x="414" y="82" width="334" height="235" rx="6" fill="#ffffff" stroke="#a6bfce" stroke-width="1.5"/>
+<rect x="415" y="83" width="332" height="31" rx="6" fill="#e7f0f7" stroke="none" stroke-width="1.5"/>
+<rect x="423" y="88" width="316" height="20" rx="3" fill="#fff" stroke="#a7bdcd" stroke-width="1"/>
+<text x="428" y="103" font-size="15" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">/sample-3-6/products</text>
+<rect x="426.0" y="87" width="186.0" height="23" rx="2" fill="none" stroke="#b42331" stroke-width="2"/>
+<rect x="415" y="113" width="332" height="25" rx="0" fill="#212529" stroke="none" stroke-width="1.5"/>
+<text x="426" y="131" font-size="16" fill="#fff" text-anchor="start" font-weight="400">商品管理システム</text>
+<rect x="415" y="138" width="332" height="30" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1.5"/>
+<text x="427" y="158" font-size="15" fill="#0d6efd" text-anchor="start" font-weight="400">ホーム</text>
+<rect x="488" y="141" width="79" height="24" rx="3" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="527.5" y="158" font-size="15" fill="#fff" text-anchor="middle" font-weight="400">商品一覧</text>
+<text x="578" y="158" font-size="15" fill="#0d6efd" text-anchor="start" font-weight="400">ご利用案内</text>
+<rect x="415" y="293" width="332" height="23" rx="3" fill="#f8f9fa" stroke="none" stroke-width="1.5"/>
+<text x="581.0" y="309" font-size="14" fill="#18364e" text-anchor="middle" font-weight="400">商品管理システム</text>
+<text x="425" y="191" font-size="22" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="421" y="171" width="99" height="25" rx="2" fill="none" stroke="#b42331" stroke-width="2"/>
+<rect x="426" y="198" width="75" height="22" rx="4" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="463.5" y="214" font-size="14" fill="#fff" text-anchor="middle" font-weight="400">商品登録</text>
+<rect x="426" y="224" width="151" height="65" rx="5" fill="#fff" stroke="#bdccd7" stroke-width="1.2"/>
+<image x="430" y="238" width="32" height="34" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuODleOCoeOCpOODqzwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NyIgY3k9IjEwMCIgcng9IjU1IiByeT0iNiIgZmlsbD0iIzI0NDczYyIgb3BhY2l0eT0iLjEyIi8+DQogIDxnIHRyYW5zZm9ybT0icm90YXRlKC04IDg0IDYwKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTMxIDMyYTUgNSAwIDAgMSA1LTVoMzJsMTEgMTBoNTFhNSA1IDAgMCAxIDUgNXY1MGE1IDUgMCAwIDEtNSA1SDM2YTUgNSAwIDAgMS01LTVaIiBmaWxsPSIjNGI5NTg5IiBzdHJva2U9IiMyODY4NWUiIHN0cm9rZS13aWR0aD0iMS42Ii8+DQogICAgPHBhdGggZD0iTTQ4IDQxaDY5bDggMTB2MzZINDhaIiBmaWxsPSIjZGZlY2U5IiBzdHJva2U9IiM4OWE5YTMiIHN0cm9rZS13aWR0aD0iMS4yIi8+DQogICAgPHBhdGggZD0iTTQyIDMyaDY2bDEyIDExdjQwSDQyWiIgZmlsbD0iI2ZmZmRmNSIgc3Ryb2tlPSIjOTRiNWFjIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KICAgIDxwYXRoIGQ9Ik0xMDggMzJ2MTJoMTIiIGZpbGw9IiNkN2U5ZTIiIHN0cm9rZT0iIzk0YjVhYyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4NCiAgICA8cGF0aCBkPSJNNTAgNDVoMzltLTM5IDdoNDhtLTQ4IDdoMzUiIHN0cm9rZT0iI2JiY2ZjOSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICAgIDxwYXRoIGQ9Ik0zNSA5NCA0NiA1N2E1IDUgMCAwIDEgNC0zaDkxYTQgNCAwIDAgMSA0IDVsLTExIDM1YTUgNSAwIDAgMS00IDRIMzlhNCA0IDAgMCAxLTQtNFoiIGZpbGw9IiM4MGJiYWMiIHN0cm9rZT0iIzM0N2Q3MCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4NCiAgICA8cGF0aCBkPSJNNTEgNThoODgiIHN0cm9rZT0iI2MyZTBkOCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICAgIDxyZWN0IHg9IjgzIiB5PSI2OCIgd2lkdGg9IjM5IiBoZWlnaHQ9IjE1IiByeD0iMi41IiBmaWxsPSIjZThmNWYwIiBzdHJva2U9IiM2NDk3ODkiIHN0cm9rZS13aWR0aD0iMSIvPg0KICAgIDxwYXRoIGQ9Ik05MSA3NWgyMiIgc3Ryb2tlPSIjODNhYzllIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICA8L2c+DQo8L3N2Zz4NCg=="/>
+<text x="468" y="237" font-size="15" fill="#18364e" text-anchor="start" font-weight="700">ファイル</text>
+<text x="468" y="251" font-size="13" fill="#18364e" text-anchor="start" font-weight="400">商品番号：201</text>
+<text x="468" y="264" font-size="13" fill="#18364e" text-anchor="start" font-weight="400">単価：600円</text>
+<rect x="468" y="268" width="39" height="17" rx="3" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="487.5" y="281" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="584" y="224" width="151" height="65" rx="5" fill="#fff" stroke="#bdccd7" stroke-width="1.2"/>
+<image x="588" y="238" width="32" height="34" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuOCr+ODquODg+ODlzwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NCIgY3k9Ijk0IiByeD0iNTEiIHJ5PSI1IiBmaWxsPSIjMjk0NjUzIiBvcGFjaXR5PSIuMTAiLz4NCiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4NCiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2IDcpIHJvdGF0ZSgyMyA0OCA1NikiPg0KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjMzQ0ZDYzIiBzdHJva2Utd2lkdGg9IjQuNSIvPg0KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjYTliY2NhIiBzdHJva2Utd2lkdGg9IjIuMyIvPg0KICAgIDwvZz4NCiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOSAtMykgcm90YXRlKC0zMCA0OCA1NikiPg0KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjMzY2ZDhkIiBzdHJva2Utd2lkdGg9IjQuNSIvPg0KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjODFiNGQyIiBzdHJva2Utd2lkdGg9IjIuMyIvPg0KICAgIDwvZz4NCiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3NiAxMikgcm90YXRlKDQyIDQ4IDU2KSBzY2FsZSguODgpIj4NCiAgICAgIDxwYXRoIGQ9Ik01MSA3NVYzOGE5IDkgMCAwIDAtMTggMHY0M2ExNCAxNCAwIDAgMCAyOCAwVjM4YTE5IDE5IDAgMCAwLTM4IDB2MzMiIHN0cm9rZT0iI2E4NTkzNyIgc3Ryb2tlLXdpZHRoPSI0LjgiLz4NCiAgICAgIDxwYXRoIGQ9Ik01MSA3NVYzOGE5IDkgMCAwIDAtMTggMHY0M2ExNCAxNCAwIDAgMCAyOCAwVjM4YTE5IDE5IDAgMCAwLTM4IDB2MzMiIHN0cm9rZT0iI2U1YTQ3YiIgc3Ryb2tlLXdpZHRoPSIyLjQiLz4NCiAgICA8L2c+DQogIDwvZz4NCjwvc3ZnPg0K"/>
+<text x="626" y="237" font-size="15" fill="#18364e" text-anchor="start" font-weight="700">クリップ</text>
+<text x="626" y="251" font-size="13" fill="#18364e" text-anchor="start" font-weight="400">商品番号：202</text>
+<text x="626" y="264" font-size="13" fill="#18364e" text-anchor="start" font-weight="400">単価：180円</text>
+<rect x="626" y="268" width="39" height="17" rx="3" fill="#0d6efd" stroke="none" stroke-width="1.5"/>
+<text x="645.5" y="281" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+</svg>

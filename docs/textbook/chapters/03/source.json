@@ -182,27 +182,47 @@
     "ch03-programmatic-figure-1": {
       "caption_id": "ch03-programmatic-figure-1-caption",
       "width": 380,
-      "max_height": 312
+      "max_height": 315
+    },
+    "ch03-programmatic-folder-structure": {
+      "caption_id": "ch03-programmatic-folder-structure-caption",
+      "width": 383,
+      "max_height": 247
     },
     "ch03-programmatic-figure-2": {
       "caption_id": "ch03-programmatic-figure-2-caption",
       "width": 380,
-      "max_height": 442
+      "max_height": 445
+    },
+    "ch03-programmatic-route-ranking": {
+      "caption_id": "ch03-programmatic-route-ranking-caption",
+      "width": 383,
+      "max_height": 302
     },
     "ch03-programmatic-figure-3": {
       "caption_id": "ch03-programmatic-figure-3-caption",
       "width": 380,
-      "max_height": 309
+      "max_height": 326
     },
     "ch03-programmatic-figure-4": {
       "caption_id": "ch03-programmatic-figure-4-caption",
-      "width": 380,
-      "max_height": 340
+      "width": 382,
+      "max_height": 360
+    },
+    "ch03-programmatic-api": {
+      "caption_id": "ch03-programmatic-api-caption",
+      "width": 383,
+      "max_height": 330
     },
     "ch03-programmatic-figure-5": {
       "caption_id": "ch03-programmatic-figure-5-caption",
       "width": 380,
-      "max_height": 443
+      "max_height": 465
+    },
+    "ch03-programmatic-exercise-cancel": {
+      "caption_id": "ch03-programmatic-exercise-cancel-caption",
+      "width": 380,
+      "max_height": 365
     }
   },
   "pagination": {

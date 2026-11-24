@@ -6,7 +6,7 @@
 <rect x="10" y="47" width="440" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="17" cy="57.5" r="1.6" fill="#8ba5b8"/><circle cx="23" cy="57.5" r="1.6" fill="#8ba5b8"/>
 <rect x="28" y="50" width="417" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="32.00 38.19 44.37 50.56 56.74 62.93 69.11 75.30 81.48 87.67 93.85 100.04 106.22 112.41 118.59 124.78 130.96 137.15 143.33 149.52 155.70 161.89 168.07 174.26 180.44 186.63 192.82 199.00 205.19 211.37 217.56 223.74 229.93 236.11" y="61.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">localhost:5173/sample-3-6/products</text>
+<text x="32.00 38.19 44.37 50.56 56.75 62.93 69.12 75.31 81.50 87.68 93.87 100.06 106.24 112.43 118.62 124.80 130.99 137.18 143.36 149.55 155.74 161.92 168.11 174.30 180.49 186.67 192.86 199.05 205.23 211.42 217.61 223.79 229.98 236.17 242.35 248.54 254.73 260.91 267.10 273.29 279.48" y="61.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5173/sample-3-6/products</text>
 <rect x="10.6" y="68" width="438.8" height="19" rx="0" fill="#212529"/>
 <text x="19" y="81.3" font-size="11.2" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="10.6" y="87" width="438.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -132,7 +132,7 @@
 <rect x="10" y="365" width="440" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="17" cy="375.5" r="1.6" fill="#8ba5b8"/><circle cx="23" cy="375.5" r="1.6" fill="#8ba5b8"/>
 <rect x="28" y="368" width="417" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="32.00 38.19 44.37 50.56 56.74 62.93 69.11 75.30 81.48 87.67 93.85 100.04 106.22 112.41 118.59 124.78 130.96 137.15 143.33 149.52 155.70 161.89 168.07 174.26 180.44 186.63 192.82 199.00 205.19 211.37 217.56 223.74 229.93 236.11 242.30 248.48 254.67 260.85" y="379.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">localhost:5173/sample-3-6/products/new</text><rect x="247.48" y="367.1" width="20.56" height="15.7" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="32.00 38.19 44.37 50.56 56.75 62.93 69.12 75.31 81.50 87.68 93.87 100.06 106.24 112.43 118.62 124.80 130.99 137.18 143.36 149.55 155.74 161.92 168.11 174.30 180.49 186.67 192.86 199.05 205.23 211.42 217.61 223.79 229.98 236.17 242.35 248.54 254.73 260.91 267.10 273.29 279.48 285.66 291.85 298.04 304.22" y="379.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5173/sample-3-6/products/new</text><rect x="290.45" y="367.1" width="20.56" height="15.7" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
 <rect x="10.6" y="386" width="438.8" height="19" rx="0" fill="#212529"/>
 <text x="19" y="399.3" font-size="11.2" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="10.6" y="405" width="438.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -147,4 +147,5 @@
 <text x="25" y="467" font-size="10.7" fill="#055160" text-anchor="start">この節では、商品登録処理は行わず、画面遷移のみを確認します。</text>
 <rect x="20" y="481" width="42" height="17" rx="3" fill="#0d6efd"/><text x="41.0" y="493.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">登録</text>
 <rect x="68" y="481" width="70" height="17" rx="3" fill="#6c757d"/><text x="103.0" y="493.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">キャンセル</text>
+<rect x="17" y="430" width="65" height="19" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
 </svg>
