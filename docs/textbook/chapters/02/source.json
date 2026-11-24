@@ -26,58 +26,15 @@
       "width": 351,
       "max_height": 137
     },
-    "ch02-stock-if-flow": {
-      "caption_id": "ch02-stock-if-flow-caption",
-      "width": 380,
-      "max_height": 131
-    },
-    "ch02-stock-ternary-parts": {
-      "caption_id": "ch02-stock-ternary-parts-caption",
-      "width": 380,
-      "max_height": 125
-    },
-    "ch02-stock-and-warning": {
-      "caption_id": "ch02-stock-and-warning-caption",
-      "width": 380,
-      "max_height": 119
-    },
     "ch02-stock-purchase-states": {
       "caption_id": "ch02-stock-purchase-states-caption",
-      "width": 394,
+      "width": 382,
       "max_height": 170
-    },
-    "ch02-stock-display-flow": {
-      "caption_id": "ch02-stock-display-flow-caption",
-      "width": 380,
-      "max_height": 186,
-      "file_path": "ch02-basic/src/components/Sample2_5.tsx"
-    },
-    "ch02-list-list-preview": {
-      "caption_id": "ch02-list-list-preview-caption",
-      "width": 260,
-      "max_height": 88
-    },
-    "ch02-list-map-items": {
-      "caption_id": "ch02-list-map-items-caption",
-      "width": 382,
-      "max_height": 130
-    },
-    "ch02-list-key-rows": {
-      "caption_id": "ch02-list-key-rows-caption",
-      "width": 382,
-      "max_height": 137
     },
     "ch02-list-table-match": {
       "caption_id": "ch02-list-table-match-caption",
-      "width": 382,
-      "max_height": 157,
-      "file_path": "ch02-basic/src/components/Sample2_6.tsx"
-    },
-    "ch02-list-table-flow": {
-      "caption_id": "ch02-list-table-flow-caption",
-      "width": 365,
-      "max_height": 164,
-      "file_path": "ch02-basic/src/components/Sample2_6.tsx"
+      "width": 173,
+      "max_height": 184
     },
     "ch02-form-onchange-parts": {
       "caption_id": "ch02-form-onchange-parts-caption",

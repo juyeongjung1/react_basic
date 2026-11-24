@@ -1184,503 +1184,42 @@ Reactでは、クリック以外にも次のようなイベントを扱えます
 ::: {#ch02-stock-slide .slide layout="illustration"}
 条件に応じた表示
 
-![条件分岐の用途と記述箇所を比較する](assets/stock-conditions-slide.svg)
+![if文、三項演算子、論理AND演算子の用途とJSXへの記述可否](assets/stock-conditions-slide.svg)
 :::
 
-::: {#ch02-stock-intro .heading level="minor"}
+::: {#ch02-stock-definition .heading level="minor"}
 Reactで条件に応じた表示を行う
 :::
 
-::: {#ch02-stock-intro-text-1 .paragraph}
-Webアプリケーションでは、データの内容によって画面に表示する情報を変更することがあります。
+::: {#ch02-stock-intro-1 .paragraph}
+Webアプリケーションでは、データの内容によって、処理を実行するかどうかを判断したり、画面の表示を切り替えたりする必要があります。
 :::
 
-::: {#ch02-stock-intro-text-2 .paragraph}
-例えば、ショッピングサイトでは、商品の在庫数に応じて次のように表示を切り替えることがあります。
+::: {#ch02-stock-intro-2 .paragraph}
+例えば、ショッピングサイトでは、在庫がある場合は「購入できます」、在庫がない場合は「購入できません」と表示します。また、在庫が残り1個になったときだけ注意メッセージを表示し、在庫が0個になったときは購入できないようにします。
 :::
 
-::: {#ch02-stock-intro-table-1 .table}
-| 在庫数 | 画面に表示する内容 |
-|---|---|
-| 2個以上 | 「在庫あり」「購入できます」 |
-| 1個 | 「在庫あり」「残り1個です」 |
-| 0個 | 「在庫切れ」「購入できません」 |
+::: {#ch02-stock-intro-3 .paragraph}
+Reactでは、JavaScriptの `if` 文、三項演算子（`? :`）、論理AND演算子（`&&`）を使用して、このような処理や表示の切り替えを実装できます。
+:::
+
+::: {#ch02-stock-intro-4 .paragraph}
+3つの構文は用途に応じて使い分けます。今回のサンプルでは、`if` 文で購入処理を制御し、三項演算子と `&&` を使って在庫数に応じた画面を表示します。
 :::
 
 ::::
 
 :::: {#page-47 .source-page}
 
-::: {#ch02-stock-intro-text-3 .paragraph}
-また、在庫がない商品については、購入処理そのものを実行しないようにする必要があります。
-:::
-
-::: {#ch02-stock-intro-text-4 .paragraph}
-このように、Webアプリケーションでは、条件によって**画面の表示を切り替える処理**と、**プログラムの処理を分岐させること**の両方が必要になります。
-:::
-
-::: {#ch02-stock-intro-text-5 .paragraph}
-Reactでは、JavaScriptの条件分岐を利用して、これらを実現できます。
-:::
-
-::: {#ch02-stock-intro-text-6 .paragraph}
-今回は、`if`文・三項演算子・論理AND演算子の3つを学習し、それぞれの使い分けを理解していきましょう。
-:::
-
-::: {#ch02-stock-if .heading level="minor"}
-if文を使用して処理を分岐する
-:::
-
-::: {#ch02-stock-if-text-1 .paragraph}
-まずは、JavaScriptで学習した`if`文です。
-:::
-
-::: {#ch02-stock-if-text-2 .paragraph}
-`if`文は、条件によってプログラムの処理を実行したり、実行しなかったりする場合に使用します。
-:::
-
-::: {#ch02-stock-if-text-3 .paragraph}
-例えば、商品を購入する際に、在庫が残っている場合だけ在庫数を1個減らしたいとします。
-:::
-
-::: {#ch02-stock-if-text-4 .paragraph}
-次のように記述できます。
-:::
-
-::: {#ch02-stock-if-example .code example="true"}
-```tsx
-const purchaseOne = () => {
-  if (stock > 0) {
-    setStock(stock - 1)
-  }
-}
-```
-:::
-
-::: {#ch02-stock-if-text-5 .paragraph}
-このコードでは、`if (stock > 0)`で在庫が1個以上あるかを判定しています。
-:::
-
-::: {#ch02-stock-if-text-6 .paragraph}
-条件がtrueの場合は、`setStock(stock - 1)`が実行され、在庫数が1減ります。
-:::
-
-::: {#ch02-stock-if-text-7 .paragraph}
-一方、条件がfalseの場合は、`setStock()`は実行されません。
-:::
-
-::: {#ch02-stock-if-text-8 .paragraph}
-そのため、在庫数が0個のときに購入処理を実行しても、在庫がマイナスになることを防げます。
-:::
-
-::: {#ch02-stock-if-text-9 .paragraph}
-つまり、ここでの`if`文は、単に文字列の表示を変更しているのではなく、**在庫数を変更する処理を実行するかどうかを判断している**のです。
-:::
-
-::::
-
-:::: {#page-48 .source-page}
-
-![if文で購入処理を実行するか判断する](assets/stock-if-flow.svg){#ch02-stock-if-flow}
-
-::: {#ch02-stock-if-flow-caption .caption}
-if文で購入処理を実行するか判断する
-:::
-
-::: {#ch02-stock-if-use .step}
-**if文が適している場面**
-:::
-
-::: {#ch02-stock-if-use-text-1 .paragraph}
-`if`文は、条件に応じて複数の処理をまとめて実行したり、3つ以上の条件に分岐したりする場合にも便利です。
-:::
-
-::: {#ch02-stock-if-use-text-2 .paragraph}
-例えば、在庫数に応じて3種類のメッセージを設定したい場合は、次のように記述できます。
-:::
-
-::: {#ch02-stock-if-use-example .code example="true"}
-```tsx
-let stockMessage = ''
-
-if (stock === 0) {
-  stockMessage = '在庫切れ'
-} else if (stock === 1) {
-  stockMessage = '残りわずか'
-} else {
-  stockMessage = '在庫あり'
-}
-```
-:::
-
-::: {#ch02-stock-if-use-text-3 .paragraph}
-このように複数の条件を順番に判定する処理は、`if / else if / else`を使用すると分かりやすくなります。
-:::
-
-::::
-
-:::: {#page-49 .source-page}
-
-::: {#ch02-stock-jsx-expression .heading level="minor"}
-JSXの中ではif文を直接記述できない
-:::
-
-::: {#ch02-stock-jsx-expression-text-1 .paragraph}
-ここで注意したいのは、`if`文を記述する場所です。
-:::
-
-::: {#ch02-stock-jsx-expression-text-2 .paragraph}
-JSXでは、`{ }`の中にJavaScriptの式を記述できますが、`if`文を直接記述することはできません。
-:::
-
-::: {#ch02-stock-jsx-expression-text-3 .paragraph}
-例えば、次の書き方はエラーになります。
-:::
-
-::: {#ch02-stock-jsx-if-error .code example="true"}
-```tsx
-<p>
-  {if (stock > 0) {
-    '在庫あり'
-  }}
-</p>
-```
-:::
-
-::: {#ch02-stock-jsx-expression-text-4 .paragraph}
-`if`文はJavaScriptの「文」であり、JSXの`{ }`の中で直接使用することはできないためです。
-:::
-
-::: {#ch02-stock-jsx-expression-text-5 .paragraph}
-そのため、`if`文は、先ほどのようにイベントハンドラーの内部や、JSXを返す`return`より前のJavaScriptの処理部分などで使用します。
-:::
-
-::: {#ch02-stock-jsx-expression-text-6 .paragraph}
-一方、**JSXの中で条件に応じて表示内容を切り替えたい場合**は、次に紹介する三項演算子や論理AND演算子が便利です。
-:::
-
-::: {#ch02-stock-ternary .heading level="minor"}
-三項演算子（? :）による表示の切り替え
-:::
-
-::: {#ch02-stock-ternary-text-1 .paragraph}
-三項演算子は、条件に応じて2つの値から1つを選ぶための構文です。
-:::
-
-::: {#ch02-stock-ternary-text-2 .paragraph}
-JavaScriptでも使用できる構文ですが、ReactではJSXの中でよく利用します。
-:::
-
-::: {#ch02-stock-ternary-text-3 .paragraph}
-例えば、在庫数が0より大きい場合は「在庫あり」、そうでなければ「在庫切れ」と表示したいとします。
-:::
-
-::: {#ch02-stock-ternary-basic .step}
-**基本構文**
-:::
-
-::: {#ch02-stock-ternary-syntax .code example="true"}
-```tsx
-条件式 ? 条件がtrueの場合の値 : 条件がfalseの場合の値
-```
-:::
-
-::: {#ch02-stock-ternary-basic-text-1 .paragraph}
-先ほどの在庫状況を三項演算子で記述すると、次のようになります。
-:::
-
-::: {#ch02-stock-ternary-example .code example="true"}
-```tsx
-<p>
-  {stock > 0 ? '在庫あり' : '在庫切れ'}
-</p>
-```
-:::
-
-::::
-
-:::: {#page-50 .source-page}
-
-::: {#ch02-stock-ternary-basic-text-2 .paragraph}
-このコードは、次のように読みます。
-:::
-
-::: {#ch02-stock-ternary-basic-bullet-1 .paragraph}
-● `stock > 0`：在庫が1個以上あるかを判定する
-:::
-
-::: {#ch02-stock-ternary-basic-bullet-2 .paragraph}
-● `? '在庫あり'`：条件がtrueの場合に選択する文字列
-:::
-
-::: {#ch02-stock-ternary-basic-bullet-3 .paragraph}
-● `: '在庫切れ'`：条件がfalseの場合に選択する文字列
-:::
-
-::: {#ch02-stock-ternary-basic-text-3 .paragraph}
-つまり、**在庫数が0より大きければ「在庫あり」、そうでなければ「在庫切れ」を表示する**という意味です。
-:::
-
-::: {#ch02-stock-ternary-basic-text-4 .paragraph}
-ここで注目したいのは、三項演算子をJSXの`{ }`に直接記述していることです。
-:::
-
-::: {#ch02-stock-ternary-basic-text-5 .paragraph}
-`if`文を使用する場合とは異なり、表示したい場所にそのまま条件式を記述できます。
-:::
-
-![条件式の結果によって選ぶ文字列が変わる](assets/stock-ternary.svg){#ch02-stock-ternary-parts}
-
-::: {#ch02-stock-ternary-parts-caption .caption}
-条件式の結果によって選ぶ文字列が変わる
-:::
-
-::: {#ch02-stock-attribute .step}
-**HTML属性にも三項演算子を使用できる**
-:::
-
-::: {#ch02-stock-attribute-text-1 .paragraph}
-三項演算子は、表示する文字列だけでなく、HTML属性の値を切り替える場合にも使用できます。
-:::
-
-::: {#ch02-stock-attribute-text-2 .paragraph}
-例えば、在庫がある場合は緑色、在庫がない場合は赤色でメッセージを表示したいとします。
-:::
-
-::: {#ch02-stock-attribute-text-3 .paragraph}
-その場合は、次のように記述できます。
-:::
-
-::: {#ch02-stock-attribute-example .code example="true"}
-```tsx
-<p className={stock > 0 ? 'text-success' : 'text-danger'}>
-  {stock > 0 ? '購入できます' : '購入できません'}
-</p>
-```
-:::
-
-::::
-
-:::: {#page-51 .source-page}
-
-::: {#ch02-stock-attribute-text-4 .paragraph}
-ここでは、`className`の値と、`<p>`の中に表示する文字列の両方を条件によって切り替えています。
-:::
-
-::: {#ch02-stock-attribute-text-5 .paragraph}
-`text-success`と`text-danger`はBootstrapで用意されているCSSのクラスです。
-:::
-
-::: {#ch02-stock-attribute-table-1 .table}
-| 条件 | 文字色 | 表示する内容 |
-|---|---|---|
-| `stock > 0`がtrue | 緑色 | 購入できます |
-| `stock > 0`がfalse | 赤色 | 購入できません |
-:::
-
-::: {#ch02-stock-attribute-text-6 .paragraph}
-このように、三項演算子を使用すると、**1つのHTML要素の中で表示内容やデザインを切り替えられます。**
-:::
-
-::: {#ch02-stock-and .heading level="minor"}
-論理AND演算子（&&）による条件付き表示
-:::
-
-::: {#ch02-stock-and-text-1 .paragraph}
-ここまでの三項演算子では、条件によって2つの表示を切り替えていました。
-:::
-
-::: {#ch02-stock-and-text-2 .paragraph}
-しかし、実際のWebアプリケーションでは、**条件を満たした場合だけ、特定のメッセージを表示したい**こともあります。
-:::
-
-::: {#ch02-stock-and-text-3 .paragraph}
-例えば、商品の在庫数が1個になったときだけ、「残り1個です」という注意メッセージを表示したいとします。
-:::
-
-::: {#ch02-stock-and-text-4 .paragraph}
-このような場合に便利なのが、論理AND演算子の`&&`です。
-:::
-
-::: {#ch02-stock-and-basic .step}
-**基本構文**
-:::
-
-::: {#ch02-stock-and-syntax .code example="true"}
-```tsx
-{条件式 && 表示したいJSX}
-```
-:::
-
-::: {#ch02-stock-and-basic-text-1 .paragraph}
-例えば、次のように記述できます。
-:::
-
-::: {#ch02-stock-and-example .code example="true"}
-```tsx
-{stock === 1 && (
-  <p className="alert alert-warning">
-    残り1個です
-  </p>
-)}
-```
-:::
-
-::: {#ch02-stock-and-style .paragraph}
-Bootstrapの `alert` と `alert-warning` を指定すると、注意メッセージを黄色の背景付きで表示できます。
-:::
-
-::::
-
-:::: {#page-52 .source-page}
-
-::: {#ch02-stock-and-basic-text-2 .paragraph}
-このコードでは、`stock === 1`という条件を判定しています。
-:::
-
-::: {#ch02-stock-and-basic-text-3 .paragraph}
-条件がtrueの場合は、右側に記述した`<p>`要素を表示します。
-:::
-
-::: {#ch02-stock-and-basic-text-4 .paragraph}
-一方、条件がfalseの場合は、その`<p>`要素を表示しません。
-:::
-
-::: {#ch02-stock-and-basic-table-1 .table}
-| 在庫数 | 条件 `stock === 1` | 注意メッセージ |
-|---|---|---|
-| 2個 | false | 表示しない |
-| 1個 | true | 「残り1個です」を表示 |
-| 0個 | false | 表示しない |
-:::
-
-::: {#ch02-stock-and-basic-text-5 .paragraph}
-三項演算子がtrueとfalseの2つの表示を切り替えるのに対し、`&&`は**条件を満たすときだけ要素を表示したい場合**に適しています。
-:::
-
-::: {#ch02-stock-and-basic-text-6 .paragraph}
-また、三項演算子と同様に、JSXの`{ }`へ直接記述できます。
-:::
-
-![在庫数が1個のときだけ注意メッセージを表示する](assets/stock-and-screens.svg){#ch02-stock-and-warning}
-
-::: {#ch02-stock-and-warning-caption .caption}
-在庫数が1個のときだけ注意メッセージを表示する
-:::
-
-::: {#ch02-stock-comparison .heading level="minor"}
-3つの条件分岐の使い分け
-:::
-
-::: {#ch02-stock-comparison-text-1 .paragraph}
-ここまでに学習した3つの構文は、すべて条件を扱うものですが、得意とする処理が異なります。
-:::
-
-::: {#ch02-stock-comparison-table-1 .table column-widths="26 43 31"}
-| 構文 | 適している場面 | JSXの`{ }`に直接記述 |
-|---|---|---|
-| `if / else` | 条件に応じて処理を実行・分岐させたい | できない |
-| 三項演算子 `? :` | 条件によって2つの表示を切り替えたい | できる |
-| 論理AND演算子 `&&` | 条件を満たすときだけ表示したい | できる |
-:::
-
-::: {#ch02-stock-comparison-text-2 .paragraph}
-例えば、今回の商品管理画面では、次のように使い分けます。
-:::
-
-::::
-
-:::: {#page-53 .source-page}
-
-::: {#ch02-stock-comparison-if .step}
-**① if文：在庫がある場合だけ購入処理を実行する**
-:::
-
-::: {#ch02-stock-comparison-if-example .code example="true"}
-```tsx
-if (stock > 0) {
-  setStock(stock - 1)
-}
-```
-:::
-
-::: {#ch02-stock-comparison-ternary .step}
-**② 三項演算子：在庫状況の表示を切り替える**
-:::
-
-::: {#ch02-stock-comparison-ternary-example .code example="true"}
-```tsx
-{stock > 0 ? '在庫あり' : '在庫切れ'}
-```
-:::
-
-::: {#ch02-stock-comparison-and .step}
-**③ &&：在庫が1個のときだけ注意文を表示する**
-:::
-
-::: {#ch02-stock-comparison-and-example .code example="true"}
-```tsx
-{stock === 1 && <p>残り1個です</p>}
-```
-:::
-
-::: {#ch02-stock-comparison-and-text-1 .paragraph}
-このように、`if`文はプログラムの処理を制御したいとき、三項演算子や`&&`はJSXの中で表示を切り替えたいときに使うと、コードを分かりやすく整理できます。
-:::
-
-::: {#ch02-stock-comparison-and-text-2 .paragraph}
-なお、三項演算子や`&&`もJavaScriptの構文なので、JSX以外の場所で使用できます。ただし、条件によって複数の処理を実行する場合などは、`if`文の方が読みやすくなることが一般的です。
-:::
-
-::: {#ch02-stock-and-note .training-note}
-【補足】&&を使用するときの注意点
-
-`&&`の左側には、基本的にtrueまたはfalseとなる条件式を指定します。
-
-例えば、`stock === 1`や`stock > 0`です。
-
-単に`stock && <p>在庫あり</p>`とすると、`stock`が0の場合、画面に数字の「0」が表示されることがあります。
-
-そのため、本研修では、`stock > 0`のように条件式を明確に記述することをおすすめします。
-:::
-
-::::
-
-:::: {#page-54 .source-page}
-
 ::: {#ch02-stock-sample .heading level="minor"}
 【サンプル】商品の在庫状況を表示する
 :::
 
-::: {#ch02-stock-sample-text-1 .paragraph}
-それでは、ここまでに学習した3つの条件分岐の方法を組み合わせて、商品の在庫管理画面を作成してみましょう。
+::: {#ch02-stock-sample-intro .paragraph}
+最初の在庫数を2個とし、［1個購入］ボタンをクリックするたびに在庫数を1個減らします。在庫数に応じて、メッセージや文字色、ボタンの状態が変わるサンプルを確認しましょう。
 :::
 
-::: {#ch02-stock-sample-text-2 .paragraph}
-今回は、最初の在庫数を2個とします。
-:::
-
-::: {#ch02-stock-sample-text-3 .paragraph}
-「1個購入」ボタンをクリックするたびに在庫数が1個減り、在庫数に応じて画面の表示が切り替わるようにします。
-:::
-
-::: {#ch02-stock-sample-text-4 .paragraph}
-今回のポイントは、次の3つです。
-:::
-
-::: {#ch02-stock-sample-bullet-1 .paragraph}
-● **if文**：在庫がある場合だけ、購入処理を実行する
-:::
-
-::: {#ch02-stock-sample-bullet-2 .paragraph}
-● **三項演算子**：「在庫あり」「在庫切れ」などの表示を切り替える
-:::
-
-::: {#ch02-stock-sample-bullet-3 .paragraph}
-● **&&**：在庫が1個になったときだけ注意メッセージを表示する
-:::
-
-::: {#ch02-stock-sample-code-p1 .code filename="ch02-basic/src/components/Sample2_5.tsx"}
+::: {#ch02-stock-sample-source .code filename="ch02-basic/src/components/Sample2_5.tsx"}
 ```tsx
 import { useState } from 'react'
 
@@ -1708,15 +1247,6 @@ export default function Sample2_5() {
       {stock === 1 && (
         <p className="alert alert-warning">残り1個です</p>
       )}
-```
-:::
-
-::::
-
-:::: {#page-55 .source-page}
-
-::: {#ch02-stock-sample-code-p2 .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="27"}
-```tsx
 
       <button className="btn btn-primary" onClick={purchaseOne}
         disabled={stock === 0}>
@@ -1728,71 +1258,25 @@ export default function Sample2_5() {
 ```
 :::
 
-::: {#ch02-stock-sample-check .step}
-**動作確認**
-:::
+::::
 
-::: {#ch02-stock-sample-check-text-1 .paragraph}
-`ch02-basic`の開発サーバーを起動し、メニューから「2.5 条件に応じた表示」を選択してください。
-:::
+:::: {#page-48 .source-page}
 
-::: {#ch02-stock-sample-check-text-2 .paragraph}
-購入ボタンをクリックするたびに、次のように画面の状態が変わります。
-:::
+![在庫2個、1個、0個で表示と購入ボタンの状態が変わる](assets/stock-purchase-screens.svg){#ch02-stock-purchase-states}
 
-::: {#ch02-stock-sample-check-table-1 .table column-widths="27 16 43 14"}
-| 状態 | 在庫状況 | メッセージ | ボタン |
-|---|---|---|---|
-| 初期状態（2個） | 在庫あり | 購入できます | 押せる |
-| 1回クリック（1個） | 在庫あり | 購入できます／残り1個です | 押せる |
-| 2回クリック（0個） | 在庫切れ | 購入できません | 押せない |
-:::
-
-![在庫数が2個、1個、0個と変わったときの表示](assets/stock-purchase-screens.svg){#ch02-stock-purchase-states}
-
-::: {#ch02-stock-purchase-states-caption .caption}
+::: {#ch02-stock-purchase-states-caption .paragraph}
 在庫数が2個、1個、0個と変わったときの表示
 :::
 
-::::
-
-:::: {#page-56 .source-page}
-
-::: {#ch02-stock-review .heading level="minor"}
+::: {#ch02-stock-syntax .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch02-stock-review-text-1 .paragraph}
-ここからは、サンプルコードの重要な部分を確認します。
+::: {#ch02-stock-syntax-if .step}
+**① if文で購入処理を制御する**
 :::
 
-::: {#ch02-stock-review-state .step}
-**① 在庫数をstateで管理する**
-:::
-
-::: {#ch02-stock-review-state-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="4"}
-```tsx
-  const [stock, setStock] = useState(2)
-```
-:::
-
-::: {#ch02-stock-review-state-text-1 .paragraph}
-商品の在庫数を`stock`というstateで管理します。
-:::
-
-::: {#ch02-stock-review-state-text-2 .paragraph}
-初期値は2個です。
-:::
-
-::: {#ch02-stock-review-state-text-3 .paragraph}
-`setStock`を使用して在庫数を変更すると、Reactが再レンダリングし、画面の表示も新しい在庫数に応じて変化します。
-:::
-
-::: {#ch02-stock-review-purchase .step}
-**② if文で購入処理を実行するか判断する**
-:::
-
-::: {#ch02-stock-review-purchase-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="6"}
+::: {#ch02-stock-if-source .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="6"}
 ```tsx
   const purchaseOne = () => {
     if (stock > 0) {
@@ -1802,50 +1286,34 @@ export default function Sample2_5() {
 ```
 :::
 
-::: {#ch02-stock-review-purchase-text-1 .paragraph}
-この関数は、商品を1個購入するための処理です。
+::: {#ch02-stock-if-1 .paragraph}
+在庫数は、初期値を2としたstateの `stock` で管理しています。
 :::
 
-::: {#ch02-stock-review-purchase-text-2 .paragraph}
-`if (stock > 0)`で在庫が残っていることを確認してから、在庫数を1減らしています。
+::: {#ch02-stock-if-2 .paragraph}
+［1個購入］ボタンをクリックすると、`purchaseOne` 関数が実行されます。`if (stock > 0)` によって在庫が残っているかを判定し、条件を満たす場合だけ `setStock(stock - 1)` を実行します。
 :::
 
-::: {#ch02-stock-review-purchase-text-3 .paragraph}
-在庫数が0の場合は、`setStock()`が実行されないため、在庫がマイナスになることを防げます。
+::: {#ch02-stock-if-3 .paragraph}
+在庫数が0の場合はstateを更新しないため、在庫がマイナスになることを防げます。このように、**条件によって処理を実行するかどうかを判断する場合**や、複数の処理をまとめて実行する場合には、`if` 文が適しています。`else if` を使えば、3つ以上の条件に分岐する処理も分かりやすく記述できます。
 :::
 
-::: {#ch02-stock-review-purchase-text-4 .paragraph}
-ここでの`if`文は、画面に表示する文字列を選んでいるのではなく、**stateを更新する処理を実行するかどうかを判断しています。**
+::: {#ch02-stock-if-4 .paragraph}
+JSXの `{ }` には、値を求めるJavaScriptの式を記述します。`if` は処理を分岐させる文のため、ここに直接記述できません。イベントハンドラーの内部やJSXを返す前のJavaScriptの処理部分などで使用します。
 :::
 
 ::::
 
-:::: {#page-57 .source-page}
+:::: {#page-49 .source-page}
 
-::: {#ch02-stock-review-message .step}
-**③ 三項演算子で在庫状況を表示する**
+::: {#ch02-stock-syntax-ternary .step}
+**② 三項演算子で表示内容と文字色を切り替える**
 :::
 
-::: {#ch02-stock-review-message-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="17"}
+::: {#ch02-stock-ternary-source .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="17"}
 ```tsx
       <p>在庫状況：{stock > 0 ? '在庫あり' : '在庫切れ'}</p>
-```
-:::
 
-::: {#ch02-stock-review-message-text-1 .paragraph}
-在庫数が0より大きい場合は「在庫あり」、在庫数が0の場合は「在庫切れ」と表示します。
-:::
-
-::: {#ch02-stock-review-message-text-2 .paragraph}
-条件によって表示する文字列を2つから選び、JSXの中に直接表示しています。
-:::
-
-::: {#ch02-stock-review-ternary .step}
-**④ 三項演算子で表示内容と文字色を切り替える**
-:::
-
-::: {#ch02-stock-review-ternary-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="19"}
-```tsx
       <p className={stock > 0 ? 'text-success fw-bold'
         : 'text-danger fw-bold'}>
         {stock > 0 ? '購入できます' : '購入できません'}
@@ -1853,27 +1321,44 @@ export default function Sample2_5() {
 ```
 :::
 
-::: {#ch02-stock-review-ternary-text-1 .paragraph}
-在庫数が0より大きい場合は、緑色で「購入できます」と表示します。
+::: {#ch02-stock-ternary-intro .paragraph}
+三項演算子は、条件に応じて2つの値から1つを選ぶための演算子です。
 :::
 
-::: {#ch02-stock-review-ternary-text-2 .paragraph}
-在庫数が0の場合は、赤色で「購入できません」と表示します。
+::: {#ch02-stock-ternary-example .code example="true"}
+```tsx
+条件式 ? trueの場合の値 : falseの場合の値
+```
 :::
 
-::: {#ch02-stock-review-ternary-text-3 .paragraph}
-三項演算子を使用することで、同じ`<p>`要素の中で表示内容と文字色を切り替えています。
+::: {#ch02-stock-ternary-1 .paragraph}
+例えば、`stock > 0 ? '在庫あり' : '在庫切れ'` では、`stock > 0` がtrueの場合は「在庫あり」、falseの場合は「在庫切れ」が選択されます。
+:::
+
+::: {#ch02-stock-ternary-2 .paragraph}
+三項演算子はJavaScriptの式なので、JSXの `{ }` に直接記述できます。要素の中に表示する文字列だけでなく、`className` などの属性の値にも使用できます。
+:::
+
+::: {#ch02-stock-ternary-3 .paragraph}
+今回のサンプルでは、購入可否のメッセージと、その文字色に使用するCSSのクラスを同じ条件で切り替えています。
+:::
+
+::: {#ch02-stock-ternary-table .table column-widths="1 1.7 1"}
+| 在庫数 | 表示内容 | 文字色 |
+|---|---|---|
+| 1個以上 | 購入できます | 緑色 |
+| 0個 | 購入できません | 赤色 |
 :::
 
 ::::
 
-:::: {#page-58 .source-page}
+:::: {#page-50 .source-page}
 
-::: {#ch02-stock-review-and .step}
-**⑤ &&で注意メッセージを表示する**
+::: {#ch02-stock-syntax-and .step}
+**③ 論理AND演算子（&&）で必要な場合だけ表示する**
 :::
 
-::: {#ch02-stock-review-and-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="24"}
+::: {#ch02-stock-and-source .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="24"}
 ```tsx
       {stock === 1 && (
         <p className="alert alert-warning">残り1個です</p>
@@ -1881,19 +1366,37 @@ export default function Sample2_5() {
 ```
 :::
 
-::: {#ch02-stock-review-and-text-1 .paragraph}
-在庫数が1個の場合だけ、注意メッセージを表示します。
+::: {#ch02-stock-and-1 .paragraph}
+三項演算子では、条件に応じて2つの表示を切り替えました。一方、条件を満たす場合だけ要素を表示したいときには、論理AND演算子の `&&` が便利です。
 :::
 
-::: {#ch02-stock-review-and-text-2 .paragraph}
-在庫数が2個以上、または0個の場合は、この要素は表示されません。
+::: {#ch02-stock-and-2 .paragraph}
+左側の `stock === 1` がtrueの場合は、右側に記述した `<p>` 要素が表示されます。falseの場合は、この要素は表示されません。
 :::
 
-::: {#ch02-stock-review-disabled .step}
-**⑥ 在庫が0個の場合は購入ボタンを無効にする**
+::: {#ch02-stock-and-3 .paragraph}
+このため、在庫数が1個の場合だけ、黄色の背景付きで「残り1個です」と表示されます。在庫数が2個以上、または0個の場合は表示されません。
 :::
 
-::: {#ch02-stock-review-disabled-code .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="28" highlight-lines="29-29"}
+::: {#ch02-stock-and-4 .paragraph}
+`&&` も三項演算子と同様に、JSXの `{ }` の中に直接記述できます。
+:::
+
+::: {#ch02-stock-and-note .training-note}
+【補足】&&を使用するときの注意点
+
+`&&` の左側には、`stock === 1` や `stock > 0` のように、trueまたはfalseになる条件式を指定することを基本とします。単に `stock && <p>在庫あり</p>` と記述すると、`stock` が0の場合に数字の「0」が画面に表示されることがあるためです。
+:::
+
+::::
+
+:::: {#page-51 .source-page}
+
+::: {#ch02-stock-syntax-disabled .step}
+**④ 在庫が0個の場合は購入ボタンを無効にする**
+:::
+
+::: {#ch02-stock-disabled-source .code filename="ch02-basic/src/components/Sample2_5.tsx" start-line="28"}
 ```tsx
       <button className="btn btn-primary" onClick={purchaseOne}
         disabled={stock === 0}>
@@ -1902,96 +1405,80 @@ export default function Sample2_5() {
 ```
 :::
 
-::: {#ch02-stock-review-disabled-text-1 .paragraph}
-`disabled`は、ボタンを操作できない状態にするためのHTML属性です。
+::: {#ch02-stock-disabled-1 .paragraph}
+`disabled` は、ボタンなどのHTML要素を操作できない状態にするための属性です。`disabled={stock === 0}` と指定すると、条件がtrueになる在庫0個の場合だけ、購入ボタンをクリックできなくなります。
 :::
 
-::: {#ch02-stock-review-disabled-text-2 .paragraph}
-`disabled={stock === 0}`と指定すると、在庫数が0の場合にボタンが無効になります。
+::: {#ch02-stock-disabled-2 .paragraph}
+ここでの `disabled` は画面上の操作を制限するためのものです。一方、①の `if` 文は、購入処理自体を実行するかどうかを判断するためのものです。この2つには役割の違いがあります。
 :::
-
-::: {#ch02-stock-review-disabled-text-3 .paragraph}
-ここでは、`disabled`でユーザーの操作を制限するとともに、`purchaseOne`関数内の`if`文でも在庫数が0未満にならないようにしています。
-:::
-
-::: {#ch02-stock-review-disabled-text-4 .paragraph}
-**disabledはボタンの操作を制御し、if文は実行する処理を制御する**という役割の違いがあります。
-:::
-
-![購入ボタンを押した後、在庫数と画面の表示が更新される流れ](assets/stock-display-flow.svg){#ch02-stock-display-flow}
-
-::: {#ch02-stock-display-flow-caption .caption}
-購入ボタンを押した後、在庫数と画面の表示が更新される流れ
-:::
-
-::::
-
-:::: {#page-59 .source-page}
 
 ::: {#ch02-stock-practice .heading level="minor"}
 【確認演習】商品の在庫表示を実装する
 :::
 
-::: {#ch02-stock-practice-text-1 .paragraph}
-在庫数に応じて「在庫あり」「在庫切れ」などのメッセージを切り替える画面を作成します。
+::: {#ch02-stock-practice-intro .paragraph}
+在庫数を管理するstateや画面の基本構成は、あらかじめ用意されています。`if` 文、三項演算子、論理AND演算子、`disabled` 属性を使用して、在庫数に応じた処理と表示を実装しましょう。
 :::
 
-::: {#ch02-stock-practice-text-2 .paragraph}
-在庫数を管理するstateや画面の基本構成は、あらかじめ用意されています。
+::: {#ch02-stock-practice-1 .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_5.tsx` を開いてください。
 :::
 
-::: {#ch02-stock-practice-text-3 .paragraph}
-今回は、`if`文で購入処理の実行を制御し、三項演算子・論理AND演算子・`disabled`属性を使用して、在庫数に応じた表示を実装しましょう。
-:::
-
-::: {#ch02-stock-practice-steps .step}
-**作業手順・動作確認**
-:::
-
-::: {#ch02-stock-practice-step-1 .paragraph numbered="true"}
-1．　`ch02-basic-q`プロジェクトの`src/components/Q2_5.tsx`を開いてください。
-:::
-
-::: {#ch02-stock-practice-step-2 .paragraph numbered="true"}
+::: {#ch02-stock-practice-2 .paragraph numbered="true"}
 2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀は既存コードの確認、➁～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-stock-practice-step-3 .paragraph numbered="true"}
+::: {#ch02-stock-practice-3 .paragraph numbered="true"}
 3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-stock-practice-step-4 .paragraph numbered="true"}
-4．　`ch02-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch02-stock-practice-4 .paragraph numbered="true"}
+4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-stock-practice-step-5 .paragraph numbered="true"}
+::: {#ch02-stock-practice-5 .paragraph numbered="true"}
 5．　メニューから「2.5 条件に応じた表示」を選んでください。
 :::
 
-::: {#ch02-stock-practice-step-6 .paragraph numbered="true" keep-lines="true"}
-6．　次の動作を確認してください。<br>● **初期状態**：在庫数2個。「在庫あり」「購入できます」と表示されます。<br>● **1回クリック**：在庫数1個。「在庫あり」「購入できます」に加えて、黄色の背景付きで「残り1個です」と表示されます。<br>● **2回クリック**：在庫数0個。「在庫切れ」「購入できません」と表示され、「1個購入」ボタンが押せなくなります。
+::::
+
+:::: {#page-52 .source-page}
+
+::: {#ch02-stock-practice-check .heading level="minor"}
+動作確認
 :::
 
-::: {#ch02-stock-practice-steps-text-1 .paragraph}
+::: {#ch02-stock-practice-6 .paragraph numbered="true"}
+6．　［1個購入］ボタンをクリックし、次の表のとおりに表示が変わることを確認してください。
+:::
+
+::: {#ch02-stock-practice-result-table .table column-widths="1 1.3 2.5 .8"}
+| 操作 | 在庫数・在庫状況 | メッセージ | ボタン |
+|---|---|---|---|
+| 初期状態 | 2個・在庫あり | 購入できます（緑色） | 押せる |
+| 1回クリック | 1個・在庫あり | 購入できます（緑色）／残り1個です（黄色の背景付き） | 押せる |
+| 2回クリック | 0個・在庫切れ | 購入できません（赤色） | 押せない |
+:::
+
+::: {#ch02-stock-practice-note-1 .paragraph}
 在庫数に応じて表示内容やボタンの状態が正しく切り替われば、演習完了です。
+:::
+
+::: {#ch02-stock-practice-note-2 .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
 ::: {#ch02-stock-points .section-points}
 この節のポイント
 
-● Reactでは、JavaScriptの条件分岐を使用して、処理や画面の表示を切り替えられる。
+● `if` 文は条件に応じて処理を実行・分岐する場合に適している。JSXの `{ }` 内には直接記述できない。
 
-● **if / else文**は、条件に応じて処理を実行・分岐させたい場合に適している。
+● 三項演算子（`? :`）は2つの表示を切り替えるとき、論理AND演算子（`&&`）は条件を満たす場合だけ要素を表示するときに便利である。<br>どちらもJSXの `{ }` 内に記述できる。
 
-● **三項演算子（? :）**は、条件に応じて2つの表示を切り替える場合に便利である。
+● `disabled={条件式}` を使うと、条件に応じてボタンの操作を制限できる。
 
-● **論理AND演算子（&&）**は、条件を満たした場合だけ要素を表示したいときに便利である。
-
-● `if`文はJSXの`{ }`内に直接記述できないが、三項演算子と`&&`はJSXの中に記述できる。
-
-● `disabled={条件式}`を使用すると、条件によってボタンを操作できない状態にできる。
-
-● `useState()`と組み合わせることで、データの変化に応じて画面の表示を切り替えられる。
+● stateの更新に応じて、条件に合った表示が画面に反映される。
 :::
 
 ::::
@@ -2005,304 +1492,38 @@ export default function Sample2_5() {
 ::: {#ch02-list-slide .slide layout="illustration"}
 配列データの一覧表示
 
-![配列から一覧の行を作る流れ](assets/array-list-slide.svg)
+![配列の3件の商品データからmapでテーブルの3行を生成する](assets/array-list-slide.svg)
 :::
 
-::: {#ch02-list-intro .heading level="minor"}
+::: {#ch02-list-definition .heading level="minor"}
 複数のデータを画面に表示するには
 :::
 
-::: {#ch02-list-intro-text-1 .paragraph}
-これまでの学習では、商品名や単価などのデータをJSXに埋め込み、画面に表示する方法を学習しました。
+::: {#ch02-list-intro-1 .paragraph}
+これまでの学習では、商品の名前や単価などをJSXに埋め込んで表示しました。しかし、実際のWebアプリケーションでは、商品一覧や社員一覧のように、複数のデータをまとめて表示する場面が多くあります。
 :::
 
-::: {#ch02-list-intro-text-2 .paragraph}
-しかし、実際のWebアプリケーションでは、1件だけではなく、複数のデータをまとめて表示する場面が多くあります。
+::: {#ch02-list-intro-2 .paragraph}
+商品ごとにHTMLの `<tr>` や `<td>` を記述する方法では、商品が増えるたびに行を追加する必要があります。データが100件、1,000件と増えることを考えると、データの件数に合わせて自動的に行を生成できる仕組みが必要です。
 :::
 
-::: {#ch02-list-intro-text-3 .paragraph}
-例えば、商品管理システムでは、次のような商品一覧画面が必要になることがあります。
-:::
-
-::: {#ch02-list-intro-table-1 .table}
-| 商品番号 | 商品名 | 単価 |
-|---|---|---:|
-| 101 | ノート | 250円 |
-| 102 | ボールペン | 120円 |
-| 103 | 消しゴム | 100円 |
+::: {#ch02-list-intro-3 .paragraph}
+Reactでは、JavaScriptの配列の `map()` メソッドを使って、配列のデータから必要な数のJSX要素を生成できます。これにより、商品1件分の表示を記述するだけで、配列に格納された商品を一覧表示できます。
 :::
 
 ::::
 
 :::: {#page-61 .source-page}
 
-::: {#ch02-list-intro-text-4 .paragraph}
-このような画面を通常のHTMLで作成する場合、商品ごとに`<tr>`と`<td>`を記述して、テーブルの行を作成します。
-:::
-
-::: {#ch02-list-intro-text-5 .paragraph}
-例えば、次のようなコードです。
-:::
-
-::: {#ch02-list-html-rows .code example="true"}
-```html
-<tr>
-  <td>101</td>
-  <td>ノート</td>
-  <td>250円</td>
-</tr>
-<tr>
-  <td>102</td>
-  <td>ボールペン</td>
-  <td>120円</td>
-</tr>
-<tr>
-  <td>103</td>
-  <td>消しゴム</td>
-  <td>100円</td>
-</tr>
-```
-:::
-
-::: {#ch02-list-intro-text-6 .paragraph}
-この方法でも商品一覧を表示できますが、商品が100件、1,000件と増えていくと、商品ごとにHTMLを書くのは大変です。
-:::
-
-::: {#ch02-list-intro-text-7 .paragraph}
-また、商品が追加・削除された際にも、それに合わせてHTMLを修正しなければなりません。
-:::
-
-::: {#ch02-list-intro-text-8 .paragraph}
-そこでReactでは、**配列に格納されたデータをもとに、必要な数のHTML要素を自動的に生成する**という方法を使用します。
-:::
-
-::: {#ch02-list-intro-text-9 .paragraph}
-このときに使用するのが、JavaScriptの`map()`というメソッドです。
-:::
-
-::::
-
-:::: {#page-62 .source-page}
-
-::: {#ch02-list-map .heading level="minor"}
-map()とは
-:::
-
-::: {#ch02-list-map-text-1 .paragraph}
-`map()`は、配列の要素を1つずつ取り出して処理し、その結果を新しい配列として返すJavaScriptのメソッドです。
-:::
-
-::: {#ch02-list-map-text-2 .paragraph}
-React独自の関数ではなく、通常のJavaScriptでも使用できます。
-:::
-
-::: {#ch02-list-map-text-3 .paragraph}
-Reactでは、この`map()`を利用して、配列の要素からJSXを繰り返し生成します。
-:::
-
-::: {#ch02-list-map-syntax .step}
-**基本構文**
-:::
-
-::: {#ch02-list-map-syntax-text-1 .paragraph}
-まずは、次のコードを確認してください。
-:::
-
-::: {#ch02-list-map-array-example .code example="true"}
-```tsx
-const products = [
-  { id: 101, name: 'ノート' },
-  { id: 102, name: 'ボールペン' },
-  { id: 103, name: '消しゴム' }
-]
-```
-:::
-
-::: {#ch02-list-map-syntax-text-2 .paragraph}
-この配列には、3件の商品オブジェクトが格納されています。
-:::
-
-::: {#ch02-list-map-syntax-text-3 .paragraph}
-これらの商品名を繰り返し表示する場合は、次のように記述します。
-:::
-
-::: {#ch02-list-map-list-example .code example="true"}
-```tsx
-<ul>
-  {products.map((product) => (
-    <li key={product.id}>{product.name}</li>
-  ))}
-</ul>
-```
-:::
-
-::: {#ch02-list-map-syntax-text-4 .paragraph}
-このコードを実行すると、画面には次のように表示されます。
-:::
-
-![3件の商品名をリストに表示した画面](assets/array-list-preview.svg){#ch02-list-list-preview}
-
-::: {#ch02-list-list-preview-caption .caption}
-3件の商品名をリストに表示した画面
-:::
-
-::::
-
-:::: {#page-63 .source-page}
-
-::: {#ch02-list-map-syntax-text-5 .paragraph}
-`<li>`要素は1つしか記述していませんが、配列に3件のデータがあるため、3つの`<li>`要素が生成されます。
-:::
-
-::: {#ch02-list-map-breakdown .step}
-**map()の構文を分解してみよう**
-:::
-
-::: {#ch02-list-map-breakdown-code .code example="true"}
-```tsx
-products.map((product) => (
-  <li key={product.id}>{product.name}</li>
-))
-```
-:::
-
-::: {#ch02-list-map-breakdown-text-1 .paragraph}
-それぞれの意味は、次のとおりです。
-:::
-
-::: {#ch02-list-map-breakdown-table-1 .table}
-| 記述 | 意味 |
-|---|---|
-| `products` | 繰り返し処理する配列 |
-| `.map()` | 配列の要素を順番に処理するメソッド |
-| `product` | 配列から取り出した1件分の商品データ |
-| `=>` | アロー関数を表す記号 |
-| `<li>...</li>` | 商品1件分として生成するJSX |
-:::
-
-::: {#ch02-list-map-breakdown-text-2 .paragraph}
-`map()`は、配列内のデータを1件ずつ`product`という変数に渡し、アロー関数を実行します。
-:::
-
-::: {#ch02-list-map-breakdown-text-3 .paragraph}
-今回は、そのアロー関数が`<li>`要素を返しています。
-:::
-
-::: {#ch02-list-map-breakdown-text-4 .paragraph}
-この処理が配列の要素数だけ繰り返されるため、商品データの数に応じて表示されるHTML要素も増えるわけです。
-:::
-
-![商品1件から1つのリスト要素を生成する](assets/array-map-items.svg){#ch02-list-map-items}
-
-::: {#ch02-list-map-items-caption .caption}
-商品1件から1つのリスト要素を生成する
-:::
-
-::::
-
-:::: {#page-64 .source-page}
-
-::: {#ch02-list-key .heading level="minor"}
-key属性とは
-:::
-
-::: {#ch02-list-key-text-1 .paragraph}
-ところで、先ほどのコードには、まだ説明していない記述がありました。
-:::
-
-::: {#ch02-list-key-list-example .code example="true"}
-```tsx
-<li key={product.id}>{product.name}</li>
-```
-:::
-
-::: {#ch02-list-key-text-2 .paragraph}
-この`key`は、**Reactが繰り返し表示した要素を区別するために使用する特別な属性**です。
-:::
-
-::: {#ch02-list-key-text-3 .paragraph}
-例えば、商品一覧に3つの商品が表示されているとします。
-:::
-
-::: {#ch02-list-key-text-4 .paragraph}
-その後、商品が1件削除されたり、表示する順番が変更されたりする場合があります。
-:::
-
-::: {#ch02-list-key-text-5 .paragraph}
-このとき、Reactがそれぞれの商品を正しく識別するために使用するのが`key`です。
-:::
-
-::: {#ch02-list-key-unique .step}
-**keyには一意な値を指定する**
-:::
-
-::: {#ch02-list-key-unique-text-1 .paragraph}
-基本的には、商品番号や社員番号など、データを一意に識別できる値を指定します。
-:::
-
-::: {#ch02-list-key-row-example .code example="true"}
-```tsx
-<tr key={product.id}>
-```
-:::
-
-::: {#ch02-list-key-unique-text-2 .paragraph}
-例えば、商品番号が101、102、103であれば、それぞれ異なる`key`が設定されます。
-:::
-
-::: {#ch02-list-key-unique-table-1 .table}
-| 商品名 | keyに指定する値 |
-|---|---|
-| ノート | 101 |
-| ボールペン | 102 |
-| 消しゴム | 103 |
-:::
-
-::: {#ch02-list-key-unique-text-3 .paragraph}
-Reactはこれらの値を利用して、どの商品がどの要素に対応しているかを判断します。
-:::
-
-::: {#ch02-list-key-unique-text-4 .paragraph}
-なお、`key`は画面に表示される属性ではありません。Reactが内部で要素を識別するために使用するものです。
-:::
-
-::::
-
-:::: {#page-65 .source-page}
-
-![商品番号をkeyに使い、Reactが各行を識別する](assets/array-key-rows.svg){#ch02-list-key-rows}
-
-::: {#ch02-list-key-rows-caption .caption}
-商品番号をkeyに使い、Reactが各行を識別する
-:::
-
-::: {#ch02-list-key-note .training-note}
-【補足】keyを省略するとどうなる？
-
-`map()`で複数のJSX要素を生成する際に`key`を指定しないと、Reactから警告が表示されます。
-
-また、配列の順番を表す番号を`key`として使用する方法もありますが、データの追加や削除、並べ替えが発生する場合には問題につながることがあります。
-
-そのため、本研修では、商品番号のように**データごとに決まっている一意な値をkeyに指定する**方法を使用します。
-:::
-
 ::: {#ch02-list-sample .heading level="minor"}
 【サンプル】商品データをテーブルで一覧表示する
 :::
 
-::: {#ch02-list-sample-text-1 .paragraph}
-それでは、`map()`を使用して、商品一覧画面を作成してみましょう。
+::: {#ch02-list-sample-intro .paragraph}
+3件の商品情報を配列として用意し、`map()` を使用してテーブル形式で一覧表示するサンプルを確認しましょう。
 :::
 
-::: {#ch02-list-sample-text-2 .paragraph keep-lines="true"}
-今回は、3件の商品情報を配列として定義し、<br>Bootstrapのテーブルを使用して一覧表示します。
-:::
-
-::::
-
-:::: {#page-66 .source-page}
-
-::: {#ch02-list-sample-code .code filename="ch02-basic/src/components/Sample2_6.tsx"}
+::: {#ch02-list-sample-source .code filename="ch02-basic/src/components/Sample2_6.tsx"}
 ```tsx
 export default function Sample2_6() {
   const products = [
@@ -2340,47 +1561,23 @@ export default function Sample2_6() {
 
 ::::
 
-:::: {#page-67 .source-page}
+:::: {#page-62 .source-page}
 
-::: {#ch02-list-sample-check .step}
-**動作確認**
+![ノート、ボールペン、消しゴムが3行に表示された商品一覧](assets/array-table-match.svg){#ch02-list-table-match}
+
+::: {#ch02-list-table-match-caption .paragraph}
+完成サンプルの商品一覧（3件）
 :::
 
-::: {#ch02-list-sample-check-text-1 .paragraph}
-`ch02-basic`の開発サーバーを起動し、メニューから「2.6 配列データの一覧表示」を選択してください。
-:::
-
-::: {#ch02-list-sample-check-text-2 .paragraph}
-次のように、配列に格納した3件の商品がテーブル形式で表示されます。
-:::
-
-::: {#ch02-list-sample-browser-label .step}
-【ブラウザー画面の表示イメージ】
-:::
-
-![配列の3件が一覧画面の3行に対応する](assets/array-table-match.svg){#ch02-list-table-match}
-
-::: {#ch02-list-table-match-caption .caption}
-配列の3件が一覧画面の3行に対応する
-:::
-
-::::
-
-:::: {#page-68 .source-page}
-
-::: {#ch02-list-review .heading level="minor"}
+::: {#ch02-list-syntax .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch02-list-review-text-1 .paragraph}
-ここからは、サンプルコードの重要な部分を確認します。
-:::
-
-::: {#ch02-list-review-array .step}
+::: {#ch02-list-syntax-array .step}
 **① 商品データを配列で定義する**
 :::
 
-::: {#ch02-list-review-array-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="2"}
+::: {#ch02-list-array-source .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="2"}
 ```tsx
   const products = [
     { id: 101, name: 'ノート', price: 250 },
@@ -2390,39 +1587,23 @@ export default function Sample2_6() {
 ```
 :::
 
-::: {#ch02-list-review-array-text-1 .paragraph}
-ここでは、`products`という配列に3件の商品データを格納しています。
+::: {#ch02-list-array-1 .paragraph}
+`products` は、商品番号（`id`）、商品名（`name`）、単価（`price`）を持つ商品オブジェクトを3件格納した配列です。
 :::
 
-::: {#ch02-list-review-array-text-2 .paragraph}
-それぞれの商品は、次の3つのプロパティを持つオブジェクトです。
-:::
-
-::: {#ch02-list-review-array-table-1 .table}
-| プロパティ | 意味 |
-|---|---|
-| `id` | 商品番号 |
-| `name` | 商品名 |
-| `price` | 単価 |
-:::
-
-::: {#ch02-list-review-array-text-3 .paragraph}
-今回は、Reactの中で商品データを直接定義しています。
-:::
-
-::: {#ch02-list-review-array-text-4 .paragraph}
-実際のWebアプリケーションでは、データベースやREST APIから取得した商品データを、同じような配列として扱うこともあります。
+::: {#ch02-list-array-2 .paragraph}
+今回は、一覧表示の仕組みを学習するため、商品データをコンポーネント内に直接定義しています。後続の章では、REST APIから取得した商品データを同じように配列として扱います。
 :::
 
 ::::
 
-:::: {#page-69 .source-page}
+:::: {#page-63 .source-page}
 
-::: {#ch02-list-review-map .step}
-**② map()で商品データを繰り返し処理する**
+::: {#ch02-list-syntax-map .step}
+**② map()で配列データを一覧表示する**
 :::
 
-::: {#ch02-list-review-map-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="20"}
+::: {#ch02-list-map-source .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="20"}
 ```tsx
           {products.map((product) => (
             <tr key={product.id}>
@@ -2434,173 +1615,118 @@ export default function Sample2_6() {
 ```
 :::
 
-::: {#ch02-list-review-map-text-1 .paragraph}
-20行目では、`products`配列に対して`map()`を実行しています。
+::: {#ch02-list-map-intro-1 .paragraph}
+`map()` は、配列の要素を1つずつ取り出して処理し、その結果を新しい配列として返すJavaScriptのメソッドです。Reactでは、この仕組みを利用して、配列データから複数のJSX要素を生成します。
 :::
 
-::: {#ch02-list-review-map-text-2 .paragraph}
-`map()`は、配列から商品データを1件ずつ取り出して、`product`という変数に渡します。
+::: {#ch02-list-map-intro-2 .paragraph}
+今回のコードを分解すると、次のようになります。
 :::
 
-::: {#ch02-list-review-map-text-3 .paragraph}
-そして、21～25行目の`<tr>`要素を、商品データ1件につき1つ生成します。
+::: {#ch02-list-map-table .table column-widths="1 1.9"}
+| 記述 | 意味 |
+|---|---|
+| `products` | 繰り返し処理する配列 |
+| `.map()` | 配列の要素を順番に処理するメソッド |
+| `(product) =>` | 商品データ1件分を受け取るアロー関数 |
+| `<tr>...</tr>` | 商品1件分として返すJSX |
 :::
 
-::: {#ch02-list-review-map-text-4 .paragraph}
-今回の配列には3件の商品データがあるため、テーブルには3行のデータが表示されます。
+::: {#ch02-list-map-1 .paragraph}
+アロー関数の引数 `product` には、配列から取り出された商品オブジェクトが1件ずつ渡されます。そして、`{product.id}`、`{product.name}`、`{product.price}` を使用して、その商品の情報を `<td>` 要素に表示します。
 :::
 
-::: {#ch02-list-review-map-text-5 .paragraph}
-ここでは、`map()`のアロー関数でJSXを返しています。
+::: {#ch02-list-map-2 .paragraph}
+例えば、最初の商品では商品番号101、商品名「ノート」、単価250円が表示されます。2件目、3件目についても同じ処理が行われます。
 :::
 
-::: {#ch02-list-review-map-text-6 .paragraph keep-lines="true"}
-なお、`=> (`のように記述した場合は、<br>`return`を明示的に記述しなくても、括弧内のJSXが返されます。
+::: {#ch02-list-map-3 .paragraph}
+ここでは、アロー関数を `=> (` の形式で記述しているため、`return` を明示的に書かなくても、括弧内のJSXが返されます。
 :::
 
-::: {#ch02-list-review-key .step}
-**③ key属性で各行を識別する**
+::: {#ch02-list-map-4 .paragraph}
+その結果、`map()` は3件分の `<tr>` 要素を含む配列を返し、Reactがそれらを一覧として表示します。
 :::
 
-::: {#ch02-list-review-key-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="21"}
+::::
+
+:::: {#page-64 .source-page}
+
+::: {#ch02-list-syntax-key .step}
+**③ key属性で繰り返し生成した要素を識別する**
+:::
+
+::: {#ch02-list-key-source .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="21"}
 ```tsx
             <tr key={product.id}>
 ```
 :::
 
-::: {#ch02-list-review-key-text-1 .paragraph}
-`<tr>`要素には、商品番号を使用した`key`属性を設定しています。
+::: {#ch02-list-key-1 .paragraph}
+`key` は、Reactが繰り返し生成した要素を識別するために使用する特別な属性です。
 :::
 
-::: {#ch02-list-review-key-text-2 .paragraph}
-この`key`によって、Reactは各行を区別できます。
+::: {#ch02-list-key-2 .paragraph}
+例えば、商品が追加・削除されたり、並べ替えられたりした場合、Reactは `key` を利用して、変更前後のどの要素が同じ商品に対応するかを判断します。
 :::
 
-::: {#ch02-list-review-key-text-3 .paragraph}
-今回の商品番号は101、102、103なので、それぞれ異なる`key`が割り当てられます。
+::: {#ch02-list-key-3 .paragraph}
+今回のサンプルでは、商品番号101、102、103を `key` に指定しています。商品番号のように、同じ一覧内で重複せず、商品ごとに安定した値を使用することが基本です。
 :::
 
-::: {#ch02-list-review-key-text-4 .paragraph}
-`map()`で繰り返し生成する要素には、このように適切な`key`を指定してください。
+::: {#ch02-list-key-4 .paragraph}
+なお、`key` はReactが内部で使用するもので、画面に表示される属性ではありません。指定しない場合は開発時に警告が表示されます。また、配列の順番を表す番号を `key` にすると、追加・削除・並べ替えの際に問題が生じることがあるため、本研修では商品番号などを使用します。
 :::
-
-::::
-
-:::: {#page-70 .source-page}
-
-::: {#ch02-list-review-cell .step}
-**④ 商品の各プロパティを表示する**
-:::
-
-::: {#ch02-list-review-cell-code .code filename="ch02-basic/src/components/Sample2_6.tsx" start-line="22"}
-```tsx
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>{product.price}円</td>
-```
-:::
-
-::: {#ch02-list-review-cell-text-1 .paragraph keep-lines="true"}
-ここでは、`map()`で取り出した商品データの各プロパティを、<br>JSXの`{ }`を使って表示しています。
-:::
-
-::: {#ch02-list-review-cell-text-2 .paragraph}
-例えば、最初の商品では、次のような値が使用されます。
-:::
-
-::: {#ch02-list-review-cell-reading-1 .paragraph}
-● `product.id`：101
-:::
-
-::: {#ch02-list-review-cell-reading-2 .paragraph}
-● `product.name`：ノート
-:::
-
-::: {#ch02-list-review-cell-reading-3 .paragraph}
-● `product.price`：250
-:::
-
-::: {#ch02-list-review-cell-text-3 .paragraph}
-次の商品を処理すると、`product`に格納されるデータも変わるため、2行目にはボールペンの情報が表示されます。
-:::
-
-::: {#ch02-list-review-cell-text-4 .paragraph}
-このように、**同じJSXの記述を使いながら、データに応じて異なる内容を繰り返し表示できる**ことが`map()`の特徴です。
-:::
-
-![配列から一覧の行を生成する流れ](assets/array-table-flow.svg){#ch02-list-table-flow}
-
-::: {#ch02-list-table-flow-caption .caption}
-配列から一覧の行を生成する流れ
-:::
-
-::::
-
-:::: {#page-71 .source-page}
 
 ::: {#ch02-list-state-note .training-note}
 【補足】map()とuseState()の違い
 
-ここまでのサンプルでは、`useState()`を使用していません。
+今回のサンプルでは、あらかじめ用意した配列を一覧表示するだけなので、`useState()` は使用していません。
 
-なぜなら、今回の商品一覧は、最初に用意した配列データを画面に表示するだけだからです。
-
-`map()`は配列の要素から表示用のJSXを生成するための処理であり、`useState()`は、変化するデータをReactで管理するための仕組みです。
-
-例えば、商品を追加・削除するボタンを用意し、操作に応じて一覧を更新したい場合は、`useState()`などによる状態管理と`map()`を組み合わせることができます。
-
-今回は、まず**配列のデータを繰り返し表示する方法**を理解しましょう。
+`map()` は配列データから表示用のJSXを生成するための処理であり、`useState()` は変化するデータを管理するための仕組みです。データが変化する一覧画面では、この2つを組み合わせて使用できます。
 :::
+
+::::
+
+:::: {#page-65 .source-page}
 
 ::: {#ch02-list-practice .heading level="minor"}
 【確認演習】商品一覧を表示する
 :::
 
-::: {#ch02-list-practice-text-1 .paragraph}
-配列に格納された商品データを、`map()`を使用してテーブル形式で表示する演習です。
+::: {#ch02-list-practice-intro .paragraph}
+商品データの配列やテーブルの見出しは、あらかじめ用意されています。`map()` を使用して繰り返し行を生成し、`key` 属性と商品の各プロパティを設定してください。
 :::
 
-::: {#ch02-list-practice-text-2 .paragraph}
-商品データの配列や、テーブルの見出しはあらかじめ用意されています。
+::: {#ch02-list-practice-1 .paragraph numbered="true"}
+1．　`ch02-basic-q` プロジェクトの `src/components/Q2_6.tsx` を開いてください。
 :::
 
-::: {#ch02-list-practice-text-3 .paragraph keep-lines="true"}
-今回は、**map()による繰り返し処理、key属性、<br>オブジェクトのプロパティの表示**を実装します。
-:::
-
-::::
-
-:::: {#page-72 .source-page}
-
-::: {#ch02-list-practice-steps .step}
-**作業手順・動作確認**
-:::
-
-::: {#ch02-list-practice-step-1 .paragraph numbered="true"}
-1．　`ch02-basic-q`プロジェクトの`src/components/Q2_6.tsx`を開いてください。
-:::
-
-::: {#ch02-list-practice-step-2 .paragraph numbered="true"}
+::: {#ch02-list-practice-2 .paragraph numbered="true"}
 2．　コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀と➁は確認、➂～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-list-practice-step-3 .paragraph numbered="true"}
+::: {#ch02-list-practice-3 .paragraph numbered="true"}
 3．　編集したファイルを保存してください。
 :::
 
-::: {#ch02-list-practice-step-4 .paragraph numbered="true"}
-4．　`ch02-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch02-list-practice-4 .paragraph numbered="true"}
+4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-list-practice-step-5 .paragraph numbered="true"}
+::: {#ch02-list-practice-5 .paragraph numbered="true"}
 5．　メニューから「2.6 配列データの一覧表示」を選んでください。
 :::
 
-::: {#ch02-list-practice-step-6 .paragraph numbered="true"}
-6．　商品データが次のようにテーブル形式で表示されることを確認してください。
+::: {#ch02-list-practice-check .heading level="minor"}
+動作確認
 :::
 
-::: {#ch02-list-practice-steps-table-1 .table}
+::: {#ch02-list-practice-6 .paragraph numbered="true"}
+6．　商品データが次の表のとおりに表示されることを確認してください。
+:::
+
+::: {#ch02-list-practice-result-table .table column-widths="1 1.4 1"}
 | 商品番号 | 商品名 | 単価 |
 |---|---|---:|
 | 201 | ファイル | 600円 |
@@ -2609,28 +1735,24 @@ export default function Sample2_6() {
 | 204 | 封筒 | 100円 |
 :::
 
-::: {#ch02-list-practice-steps-text-1 .paragraph}
-**4件の商品データが4行に表示されていれば、演習完了です。**
+::: {#ch02-list-practice-note-1 .paragraph}
+4件の商品データが4行に表示されていれば、演習完了です。また、ブラウザーの開発者ツールに `key` に関する警告が表示されていないことも確認してください。
 :::
 
-::: {#ch02-list-practice-steps-text-2 .paragraph keep-lines="true"}
-また、ブラウザーの開発者ツールに<br>`key`に関する警告が表示されていないことも確認してください。
+::: {#ch02-list-practice-note-2 .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
 ::: {#ch02-list-points .section-points}
 この節のポイント
 
-● Reactでは、JavaScriptの**`map()`**を使って配列データから複数のJSX要素を生成できる。
+● JavaScriptの `map()` を使うと、配列の要素数に応じて複数のJSX要素を生成できる。
 
-● `map()`では、配列の要素を1件ずつ取り出し、同じ処理を繰り返すことができる。
+● `map()` のアロー関数では、配列の要素を1件ずつ受け取り、1件分の表示に使用するJSXを返す。
 
-● 配列の要素数に応じて、テーブルの行などを自動的に生成できる。
+● `key` 属性は、Reactが繰り返し生成した要素を識別するために使用する。
 
-● **`key`属性**は、Reactが繰り返し生成された要素を区別するために使用する。
-
-● `key`には、商品番号などの一意で安定した値を指定する。
-
-● `map()`とJSXの`{ }`を組み合わせることで、<br>商品一覧や社員一覧などの画面を作成できる。
+● `key` には、商品番号のような一意で安定した値を指定する。
 :::
 
 ::::

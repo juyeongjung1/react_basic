@@ -1,50 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="352" height="218" viewBox="0 0 352 218">
   <rect x="4" y="4" width="108" height="194" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
   <rect x="5" y="5" width="106" height="26" rx="6" fill="#205b84" stroke="none" stroke-width="0.8"/>
-  <text x="58" y="22.5" font-size="11.0" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">if / else</text>
+  <text x="58" y="22.5" font-size="11.0" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">if / else文</text>
   <text x="58" y="47" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">処理を実行するか</text>
   <text x="58" y="63" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">判断する</text>
   <rect x="8" y="72" width="100" height="34" rx="4" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
-  <text x="58" y="86" font-size="9.0" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JavaScriptの処理部分</text>
-  <text x="58" y="100" font-size="9.9" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXに直接書けない</text>
-  <rect x="8" y="112" width="100" height="42" rx="4" fill="#f2f5f8" stroke="none" stroke-width="0.8"/>
-  <text x="10" y="124.0" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">if (stock &gt; 0) {</text>
-  <text x="10" y="135.4" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">  setStock(stock - 1)</text>
-  <text x="10" y="146.8" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">}</text>
-  <rect x="10" y="160" width="96" height="15" rx="3" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
-  <text x="58" y="171" font-size="9.15" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫2個 → 1個</text>
-  <rect x="10" y="177" width="96" height="15" rx="3" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
-  <text x="58" y="188" font-size="9.15" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫0個 → 変更なし</text>
+  <text x="58" y="86" font-size="9.0" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXの { } の中</text>
+  <text x="58" y="100" font-size="9.9" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">直接書けない</text>
+  <text x="58" y="129" font-size="10.5" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数の変化</text>
+  <rect x="10" y="139" width="96" height="21" rx="3" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
+  <text x="58" y="153" font-size="9.15" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫2個 → 1個</text>
+  <rect x="10" y="167" width="96" height="21" rx="3" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
+  <text x="58" y="181" font-size="9.15" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫0個 → 変更なし</text>
   <rect x="122" y="4" width="108" height="194" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
   <rect x="123" y="5" width="106" height="26" rx="6" fill="#226757" stroke="none" stroke-width="0.8"/>
   <text x="176" y="22.5" font-size="11.0" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">三項演算子 ? :</text>
   <text x="176" y="47" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">2つの表示を</text>
   <text x="176" y="63" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">切り替える</text>
   <rect x="126" y="72" width="100" height="34" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="176" y="86" font-size="9.0" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXの { } 内でも使用</text>
-  <text x="176" y="100" font-size="9.9" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXに直接書ける</text>
-  <rect x="126" y="112" width="100" height="42" rx="4" fill="#f2f5f8" stroke="none" stroke-width="0.8"/>
-  <text x="128" y="124.0" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">{stock &gt; 0</text>
-  <text x="128" y="135.4" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">  ? &#x27;在庫あり&#x27;</text>
-  <text x="128" y="146.8" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">  : &#x27;在庫切れ&#x27;}</text>
-  <rect x="128" y="160" width="96" height="15" rx="3" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="176" y="171" font-size="9.15" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫あり</text>
-  <rect x="128" y="177" width="96" height="15" rx="3" fill="#fff1f0" stroke="none" stroke-width="0.8"/>
-  <text x="176" y="188" font-size="9.15" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫切れ</text>
+  <text x="176" y="86" font-size="9.0" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXの { } の中</text>
+  <text x="176" y="100" font-size="9.9" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">直接書ける</text>
+  <text x="176" y="129" font-size="10.5" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫状況の表示</text>
+  <rect x="128" y="139" width="96" height="21" rx="3" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
+  <text x="176" y="153" font-size="9.15" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">1個以上 → 在庫あり</text>
+  <rect x="128" y="167" width="96" height="21" rx="3" fill="#fff1f0" stroke="none" stroke-width="0.8"/>
+  <text x="176" y="181" font-size="9.15" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">0個 → 在庫切れ</text>
   <rect x="240" y="4" width="108" height="194" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
   <rect x="241" y="5" width="106" height="26" rx="6" fill="#805900" stroke="none" stroke-width="0.8"/>
   <text x="294" y="22.5" font-size="10.4" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">論理AND演算子 &amp;&amp;</text>
   <text x="294" y="47" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">条件を満たすとき</text>
   <text x="294" y="63" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">だけ表示する</text>
   <rect x="244" y="72" width="100" height="34" rx="4" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
-  <text x="294" y="86" font-size="9.0" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXの { } 内でも使用</text>
-  <text x="294" y="100" font-size="9.9" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXに直接書ける</text>
-  <rect x="244" y="112" width="100" height="42" rx="4" fill="#f2f5f8" stroke="none" stroke-width="0.8"/>
-  <text x="246" y="124.0" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">{stock === 1 &amp;&amp;</text>
-  <text x="246" y="135.4" font-size="8.95" fill="#183449" font-weight="400" text-anchor="start" font-family="MS Gothic, monospace" xml:space="preserve">  &lt;p&gt;残り1個です&lt;/p&gt;}</text>
-  <rect x="246" y="160" width="96" height="15" rx="3" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
-  <text x="294" y="171" font-size="9.15" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">残り1個です</text>
-  <rect x="246" y="177" width="96" height="15" rx="3" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
-  <text x="294" y="188" font-size="9.15" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫が1個のときだけ</text>
+  <text x="294" y="86" font-size="9.0" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">JSXの { } の中</text>
+  <text x="294" y="100" font-size="9.9" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">直接書ける</text>
+  <text x="294" y="129" font-size="10.5" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">注意メッセージ</text>
+  <rect x="246" y="139" width="96" height="21" rx="3" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
+  <text x="294" y="153" font-size="9.15" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">残り1個です</text>
+  <rect x="246" y="167" width="96" height="21" rx="3" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
+  <text x="294" y="181" font-size="9.15" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫が1個のときだけ</text>
   <text x="176" y="214" font-size="11.0" fill="#183449" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">目的に応じて3つの構文を使い分ける</text>
 </svg>
