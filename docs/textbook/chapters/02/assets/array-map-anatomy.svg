@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="560" height="290" viewBox="0 0 560 290">
+<rect x="4" y="63" width="552" height="185" fill="white" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<polyline points="39,66 39,244" fill="none" stroke="#b4c8d8" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="42" y="73" width="277" height="24" fill="#f0f5f8" stroke="none" rx="3" stroke-width="0.9"/>
+<rect x="5" y="4" width="161" height="39" fill="#e6f1fc" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<text x="85.5" y="28" font-size="13.4" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">処理対象の配列</text>
+<polyline points="85.5,44 85.5,51 75.75,69 75.75,74" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="48.75" y="75" width="54" height="20" fill="#e6f1fc" stroke="none" rx="2" stroke-width="0.9"/>
+<rect x="199" y="4" width="162" height="39" fill="#eef7f2" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<text x="280" y="28" font-size="13.4" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">配列の各要素を処理する</text>
+<polyline points="280,44 280,51 116.25,69 116.25,74" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="102.75" y="75" width="27" height="20" fill="#eef7f2" stroke="none" rx="2" stroke-width="0.9"/>
+<rect x="393" y="4" width="162" height="39" fill="#fff3e8" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<text x="474" y="28" font-size="13.4" font-family="Meiryo" fill="#8e522a" font-weight="700" text-anchor="middle" xml:space="preserve">商品1件分を受け取る</text>
+<polyline points="474,44 474,51 177,69 177,74" fill="none" stroke="#8e522a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="136.5" y="75" width="81" height="20" fill="#fff3e8" stroke="none" rx="2" stroke-width="0.9"/>
+<rect x="41" y="102" width="277" height="116" fill="#f6eef8" stroke="#cfafd7" rx="4" stroke-width="0.9"/>
+<text x="31" y="90" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">20</text>
+<text x="42" y="90" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">{products.map((product) =&gt; (</text>
+<text x="31" y="113" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">21</text>
+<text x="42" y="113" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">  &lt;tr key={product.id}&gt;</text>
+<text x="31" y="136" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">22</text>
+<text x="42" y="136" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">    &lt;td&gt;{product.id}&lt;/td&gt;</text>
+<text x="31" y="159" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">23</text>
+<text x="42" y="159" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">    &lt;td&gt;{product.name}&lt;/td&gt;</text>
+<text x="31" y="182" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">24</text>
+<text x="42" y="182" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">    &lt;td&gt;{product.price}円&lt;/td&gt;</text>
+<text x="31" y="205" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">25</text>
+<text x="42" y="205" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">  &lt;/tr&gt;</text>
+<text x="31" y="228" font-size="12.5" font-family="MS Gothic" fill="#566675" font-weight="400" text-anchor="end" xml:space="preserve">26</text>
+<text x="42" y="228" font-size="13.5" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">))}</text>
+<polyline points="320,165 348,165" fill="none" stroke="#846792" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="352" y="143" width="190" height="44" fill="#f6eef8" stroke="#cfafd7" rx="5" stroke-width="0.9"/>
+<text x="447" y="170" font-size="14.3" font-family="Meiryo" fill="#6d487e" font-weight="700" text-anchor="middle" xml:space="preserve">1件分のJSXを返す</text>
+<rect x="4" y="257" width="552" height="27" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<text x="280" y="275" font-size="13.6" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">map()の戻り値：商品3件分のReact要素を含む配列</text>
+</svg>

@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="380" height="131" viewBox="0 0 380 131">
-  <rect x="131" y="3" width="118" height="21" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="190" y="17.5" font-size="10.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数を確認する</text>
+  <rect x="96" y="3" width="188" height="21" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
+  <text x="190" y="17.5" font-size="10.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">purchaseOne関数を実行する</text>
   <path d="M 190 25 V 31" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M 187 31 H 193 L 190 35 Z" fill="#205b84"/>
   <path d="M 190 35 L 261 54 L 190 73 L 119 54 Z" fill="#ffffff" stroke="#7095b1" stroke-width="1.0"/>
   <text x="190" y="58" font-size="12.5" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">stock &gt; 0</text>
   <path d="M 119 54 H 96 V 67 M 96 87 V 94" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M 93 94 H 99 L 96 98 Z" fill="#226757"/>
-  <text x="96" y="81" font-size="10.8" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">true（在庫2個）</text>
+  <text x="96" y="81" font-size="10.8" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">true（例：在庫2個）</text>
   <rect x="5" y="99" width="180" height="30" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
   <text x="96" y="111.5" font-size="10.7" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">setStock(stock - 1)</text>
   <text x="96" y="124.6" font-size="9.7" fill="#183449" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数が1個になる</text>
   <path d="M 261 54 H 284 V 67 M 284 87 V 94" fill="none" stroke="#a1333b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M 281 94 H 287 L 284 98 Z" fill="#a1333b"/>
-  <text x="284" y="81" font-size="10.8" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">false（在庫0個）</text>
+  <text x="284" y="81" font-size="10.8" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">false（例：在庫0個）</text>
   <rect x="195" y="99" width="180" height="30" rx="5" fill="#fff1f0" stroke="#aabfcf" stroke-width="0.8"/>
   <text x="284" y="111.5" font-size="10.7" fill="#a1333b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">setStock()を実行しない</text>
   <text x="284" y="124.6" font-size="9.7" fill="#183449" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">在庫数は0個のまま</text>

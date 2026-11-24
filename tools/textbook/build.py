@@ -118,13 +118,14 @@ def read_markdown(path):
                 parts = []
                 language = None
                 note = attrs[1][0] == 'training-note'
-                embedded_component = None
+                embedded_components = []
                 for child in children:
                     if note and child['t'] in ('CodeBlock', 'Div'):
                         component_attrs, value = child['c']
                         component_id, classes, settings = component_attrs
-                        if (embedded_component or not parts or not component_id or component_id == attrs[0]
-                                or component_id in nodes or component_id in figures):
+                        if (not parts or not component_id or component_id == attrs[0]
+                                or component_id in nodes or component_id in figures
+                                or any(component_id == ident for _, ident, _ in embedded_components)):
                             raise ValueError(f'補足枠の部品の位置またはIDが不正です: {attrs[0]}')
                         component = dict(attrs=dict(settings), language=None)
                         if child['t'] == 'CodeBlock':
@@ -136,7 +137,7 @@ def read_markdown(path):
                         else:
                             raise ValueError(f'補足枠の部品はコードまたは表にしてください: {component_id}')
                         component['parts'] = [(component['text'], None)]
-                        embedded_component = (len(paragraph_parts(parts)) - 1, component_id, component)
+                        embedded_components.append((len(paragraph_parts(parts)) - 1, component_id, component))
                         continue
                     if child["t"] == "CodeBlock":
                         parts.append((child["c"][1], None))
@@ -159,9 +160,9 @@ def read_markdown(path):
                 if attrs[1][0] in ('table', 'comparison'):
                     nodes[attrs[0]].update(rows=rows, has_header=has_header)
                 entries.append(attrs[0])
-                if embedded_component:
-                    after, component_id, component = embedded_component
-                    nodes[attrs[0]]['embedded_component'] = (after, component_id)
+                if embedded_components:
+                    nodes[attrs[0]]['embedded_components'] = [(after, ident) for after, ident, _ in embedded_components]
+                for _, component_id, component in embedded_components:
                     nodes[component_id] = component
                     entries.append(component_id)
             elif block["t"] == "Para" and len(block["c"]) == 1 and block["c"][0]["t"] == "Image":
@@ -390,7 +391,7 @@ def paragraph_parts(parts):
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     page_continuations, paragraph_pairs, figure_scales = pagination_options(config, layout, nodes, figures, order)
     heading_spacing = config.get('typography', {}).get('minor_heading_extra_space', {})
-    note_components = {node['embedded_component'][1] for node in nodes.values() if 'embedded_component' in node}
+    note_components = {ident for node in nodes.values() for _, ident in node.get('embedded_components', ())}
     if isinstance(heading_spacing, list):
         heading_spacing = dict.fromkeys(heading_spacing, 18)
     if any(ident not in nodes or nodes[ident]['kind'] != 'heading' for ident in heading_spacing):
@@ -727,9 +728,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                     parts.append(f'#bullet-paragraph({q(item)}, [●], [{inline(paragraph[1:])}])')
                 else:
                     parts.append(inline(paragraph))
-            if embedded_component := node.get('embedded_component'):
-                after, component_id = embedded_component
-                parts.insert(after, modern_panel(component_id) if modern else render(component_id))
+            for index, (after, component_id) in enumerate(node.get('embedded_components', ())):
+                component = modern_panel(component_id) if modern else render(component_id)
+                parts.insert(after + index, component)
             body = '#parbreak()'.join(parts)
             return f'#training-note({q(ident)}, [{inline(title)}], [{body}])'
         if node['kind'] == 'stage-flow':

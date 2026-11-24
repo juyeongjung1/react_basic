@@ -1,46 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="380" height="186" viewBox="0 0 380 186">
-  <rect x="9" y="4" width="362" height="24" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="16" r="8" fill="#205b84"/>
-  <text x="23" y="19.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">1</text>
-  <text x="36" y="19.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">「1個購入」ボタンをクリックする</text>
-  <rect x="299" y="8" width="67" height="16" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="332.5" y="19.2" font-size="9.1" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">28行目</text>
-  <path d="M 190 28 V 31" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 187 31 H 193 L 190 35 Z" fill="#226757"/>
-  <rect x="9" y="35" width="362" height="24" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="47" r="8" fill="#205b84"/>
-  <text x="23" y="50.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">2</text>
-  <text x="36" y="50.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">purchaseOne関数が実行される</text>
-  <rect x="299" y="39" width="67" height="16" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="332.5" y="50.2" font-size="9.1" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">6行目</text>
-  <path d="M 190 59 V 62" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 187 62 H 193 L 190 66 Z" fill="#226757"/>
-  <rect x="9" y="66" width="362" height="24" rx="5" fill="#edf5fa" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="78" r="8" fill="#205b84"/>
-  <text x="23" y="81.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">3</text>
-  <text x="36" y="81.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">if (stock &gt; 0)で購入処理を実行するか判断する</text>
-  <rect x="299" y="70" width="67" height="16" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="332.5" y="81.2" font-size="9.1" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">7行目</text>
-  <path d="M 190 90 V 93" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 187 93 H 193 L 190 97 Z" fill="#226757"/>
-  <rect x="9" y="97" width="362" height="24" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="109" r="8" fill="#226757"/>
-  <text x="23" y="112.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">4</text>
-  <text x="36" y="112.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">setStockで在庫数を更新する</text>
-  <rect x="299" y="101" width="67" height="16" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="332.5" y="112.2" font-size="9.1" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">8行目</text>
-  <path d="M 190 121 V 124" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 187 124 H 193 L 190 128 Z" fill="#226757"/>
-  <rect x="9" y="128" width="362" height="24" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="140" r="8" fill="#226757"/>
-  <text x="23" y="143.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">5</text>
-  <text x="36" y="143.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">Reactが再レンダリングする</text>
-  <path d="M 190 152 V 155" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 187 155 H 193 L 190 159 Z" fill="#226757"/>
-  <rect x="9" y="159" width="362" height="24" rx="5" fill="#e8f5ed" stroke="#aabfcf" stroke-width="0.8"/>
-  <circle cx="23" cy="171" r="8" fill="#226757"/>
-  <text x="23" y="174.5" font-size="9.2" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">6</text>
-  <text x="36" y="174.5" font-size="10.0" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">三項演算子と&amp;&amp;が新しい在庫数に応じた表示を生成する</text>
-  <rect x="299" y="163" width="67" height="16" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="332.5" y="174.2" font-size="9.1" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">17〜26行目</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="455" height="426" viewBox="0 0 455 426">
+<text x="227.5" y="18" font-size="13.5" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">在庫数が2個の場合</text>
+<rect x="4" y="26" width="447" height="30" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="33" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="45.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">1</text>
+<text x="40" y="45.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">［1個購入］ボタンをクリックする</text>
+<rect x="365" y="31" width="77" height="20" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="403.5" y="45.3" font-size="11" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">28行目</text>
+<polyline points="227.5,57 227.5,67" fill="none" stroke="#205b84" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="225.01,62.3 227.5,67 229.99,62.3" fill="#205b84"/>
+<rect x="4" y="68" width="447" height="30" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="75" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="87.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">2</text>
+<text x="40" y="87.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">purchaseOne関数が実行される</text>
+<rect x="365" y="73" width="77" height="20" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="403.5" y="87.3" font-size="11" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">6行目</text>
+<polyline points="227.5,99 227.5,109" fill="none" stroke="#205b84" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="225.01,104.3 227.5,109 229.99,104.3" fill="#205b84"/>
+<rect x="4" y="110" width="447" height="39" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="117" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="129.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">3</text>
+<text x="40" y="129.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">if (stock &gt; 0) で在庫を確認する</text>
+<text x="41" y="143.5" font-size="11.2" font-family="MS Gothic" fill="#226757" font-weight="400" text-anchor="start" xml:space="preserve">true（在庫2個）</text>
+<rect x="365" y="115" width="77" height="20" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="403.5" y="129.3" font-size="11" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">7行目</text>
+<polyline points="227.5,150 227.5,160" fill="none" stroke="#205b84" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="225.01,155.3 227.5,160 229.99,155.3" fill="#205b84"/>
+<rect x="4" y="161" width="447" height="30" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="168" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="180.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">4</text>
+<text x="40" y="180.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">setStock(stock - 1) で次の在庫数を1にする</text>
+<rect x="365" y="166" width="77" height="20" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="403.5" y="180.3" font-size="11" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">8行目</text>
+<polyline points="227.5,192 227.5,202" fill="none" stroke="#205b84" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="225.01,197.3 227.5,202 229.99,197.3" fill="#205b84"/>
+<rect x="4" y="203" width="447" height="39" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="210" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="222.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">5</text>
+<text x="40" y="222.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">Reactが再レンダリングする</text>
+<text x="41" y="236.5" font-size="11.2" font-family="MS Gothic" fill="#226757" font-weight="400" text-anchor="start" xml:space="preserve">stock = 1</text>
+<polyline points="227.5,243 227.5,253" fill="none" stroke="#205b84" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="225.01,248.3 227.5,253 229.99,248.3" fill="#205b84"/>
+<rect x="4" y="254" width="447" height="30" fill="#edf5fa" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="12" y="261" width="19" height="17" fill="#205b84" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="21.5" y="273.7" font-size="11.5" font-family="Meiryo" fill="white" font-weight="700" text-anchor="middle" xml:space="preserve">6</text>
+<text x="40" y="273.7" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">新しい在庫数をもとに表示・ボタンの状態を決定する</text>
+<rect x="4" y="331" width="143" height="87" fill="#e6f1fc" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="75.5" y="349" font-size="12.4" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">三項演算子</text>
+<text x="75.5" y="365" font-size="10.2" font-family="Meiryo" fill="#205b84" font-weight="400" text-anchor="middle" xml:space="preserve">（17、19～22行目）</text>
+<text x="75.5" y="390" font-size="11.3" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">在庫あり・購入できます</text>
+<text x="75.5" y="406" font-size="10.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">（緑の太字）</text>
+<polyline points="227.5,285 227.5,312 75.5,312 75.5,327" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="72.74,321.8 75.5,327 78.26,321.8" fill="#205b84"/>
+<rect x="156" y="331" width="143" height="87" fill="#eef7f2" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="227.5" y="349" font-size="12.4" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">&amp;&amp;</text>
+<text x="227.5" y="365" font-size="10.2" font-family="Meiryo" fill="#226757" font-weight="400" text-anchor="middle" xml:space="preserve">（24～26行目）</text>
+<rect x="172" y="373" width="111" height="23" fill="#fff3cd" stroke="#e8cf86" rx="4" stroke-width="0.9"/>
+<text x="227.5" y="390" font-size="11.3" font-family="Meiryo" fill="#664d03" font-weight="700" text-anchor="middle" xml:space="preserve">残り1個です</text>
+<text x="227.5" y="406" font-size="10.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">（黄色背景）</text>
+<polyline points="227.5,285 227.5,312 227.5,312 227.5,327" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="224.74,321.8 227.5,327 230.26,321.8" fill="#205b84"/>
+<rect x="308" y="331" width="143" height="87" fill="#fff3e8" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="379.5" y="349" font-size="12.4" font-family="Meiryo" fill="#8e522a" font-weight="700" text-anchor="middle" xml:space="preserve">disabled</text>
+<text x="379.5" y="365" font-size="10.2" font-family="Meiryo" fill="#8e522a" font-weight="400" text-anchor="middle" xml:space="preserve">（29行目）</text>
+<text x="379.5" y="390" font-size="11.3" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">購入ボタンは有効</text>
+<polyline points="227.5,285 227.5,312 379.5,312 379.5,327" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="376.74,321.8 379.5,327 382.26,321.8" fill="#205b84"/>
 </svg>

@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="148" height="157" viewBox="234 0 148 157">
+<svg xmlns="http://www.w3.org/2000/svg" width="148" height="174" viewBox="234 0 148 174">
   <rect x="238" y="4" width="140" height="149" rx="5" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
   <rect x="238" y="4" width="140" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
   <rect x="244" y="10" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
   <rect x="250" y="10" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
   <rect x="260" y="7" width="112" height="10" rx="3" fill="#ffffff" stroke="#c8d6de" stroke-width="0.8"/>
-  <text x="264" y="14.6" font-size="6.8" fill="#415b6c" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">localhost:5173</text>
+  <text x="264" y="14.6" font-size="6.8" fill="#415b6c" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">http://localhost:5174/</text>
   <text x="245" y="43" font-size="14" fill="#212529" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">商品一覧</text>
   <rect x="245" y="52" width="126" height="84" rx="0" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8"/>
   <rect x="245" y="52" width="126" height="21" rx="0" fill="#f8f9fa" stroke="#dee2e6" stroke-width="0.8"/>
@@ -25,4 +25,6 @@
   <path d="M 245 73 L 371 73" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
   <path d="M 245 94 L 371 94" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
   <path d="M 245 115 L 371 115" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
+  <rect x="245" y="73" width="126" height="63" fill="none" stroke="#b42331" stroke-width="1.2"/>
+  <text x="308" y="166" fill="#b42331" font-family="Meiryo" font-size="10.1" font-weight="700" text-anchor="middle">3件の商品データ</text>
 </svg>

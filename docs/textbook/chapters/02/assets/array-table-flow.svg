@@ -1,32 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="365" height="164" viewBox="0 0 365 164">
-  <rect x="3" y="2" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="12" y="17" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">① productsから1件目の商品を取り出す</text>
-  <rect x="271" y="5" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="312.5" y="16.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20行目</text>
-  <path d="M 182.5 24 L 182.5 24.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 182.5 29 L 184.90 24.70 L 180.10 24.70 Z" fill="#205c84"/>
-  <rect x="3" y="30" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="12" y="45" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">② productに商品データが入る</text>
-  <rect x="271" y="33" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="312.5" y="44.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20行目</text>
-  <path d="M 182.5 52 L 182.5 52.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 182.5 57 L 184.90 52.70 L 180.10 52.70 Z" fill="#205c84"/>
-  <rect x="3" y="58" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="12" y="73" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">③ trとtdに値を当てはめる</text>
-  <rect x="271" y="61" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="312.5" y="72.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">22〜24行目</text>
-  <path d="M 182.5 80 L 182.5 80.7" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 182.5 85 L 184.90 80.70 L 180.10 80.70 Z" fill="#205c84"/>
-  <rect x="3" y="86" width="359" height="22" rx="5" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="12" y="101" font-size="10.15" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">④ テーブルに1行追加される</text>
-  <rect x="271" y="89" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="312.5" y="100.5" font-size="9.4" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">21〜25行目</text>
-  <path d="M 182.5 108 L 182.5 108.7" stroke="#22655a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 182.5 113 L 184.90 108.70 L 180.10 108.70 Z" fill="#22655a"/>
-  <rect x="3" y="114" width="359" height="22" rx="5" fill="#e7f3ee" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="12" y="129" font-size="10.15" fill="#22655a" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">⑤ 配列の残りの商品についても同じ処理を繰り返す</text>
-  <rect x="271" y="117" width="83" height="16" rx="3" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="312.5" y="128.5" font-size="9.4" fill="#22655a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">20〜26行目</text>
-  <rect x="103" y="141" width="159" height="21" rx="4" fill="#22655a" stroke="none" stroke-width="0.8"/>
-  <text x="182.5" y="155.5" font-size="10.3" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif" xml:space="preserve">配列3件 → テーブル3行</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="621" height="560" viewBox="0 0 621 560">
+<text x="137" y="24" font-size="16" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">products配列（2～6行目）</text>
+<text x="488" y="24" font-size="16" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">map()の戻り値</text>
+<text x="307" y="45" font-size="12.6" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">productに渡す</text>
+<text x="307" y="62" font-size="11.8" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">21～25行目のJSXを返す</text>
+<rect x="394" y="67" width="223" height="223" fill="#f5f8fb" stroke="#b4c8d8" rx="7" stroke-width="0.9"/>
+<rect x="5" y="74" width="226" height="61" fill="#e6f1fc" stroke="#205b84" rx="6" stroke-width="1.2"/>
+<text x="15" y="92" font-size="13" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="start" xml:space="preserve">1件目</text>
+<text x="15" y="111" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">{ id: 101, name: &#x27;ノート&#x27;,</text>
+<text x="25" y="128" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">price: 250 }</text>
+<polyline points="237,104 387,104" fill="none" stroke="#205b84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="380,107.71 387,104 380,100.29" fill="#205b84"/>
+<rect x="404" y="74" width="203" height="61" fill="#e6f1fc" stroke="#205b84" rx="6" stroke-width="1.2"/>
+<text x="505.5" y="100" font-size="14.5" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">ノートの1行分の</text>
+<text x="505.5" y="121" font-size="14.5" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">React要素</text>
+<rect x="5" y="146" width="226" height="61" fill="#eef7f2" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="15" y="164" font-size="13" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="start" xml:space="preserve">2件目</text>
+<text x="15" y="183" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">{ id: 102, name: &#x27;ボールペン&#x27;,</text>
+<text x="25" y="200" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">price: 120 }</text>
+<polyline points="237,176 387,176" fill="none" stroke="#226757" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="380,179.71 387,176 380,172.29" fill="#226757"/>
+<rect x="404" y="146" width="203" height="61" fill="#eef7f2" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="505.5" y="172" font-size="14.5" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">ボールペンの1行分の</text>
+<text x="505.5" y="193" font-size="14.5" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">React要素</text>
+<rect x="5" y="218" width="226" height="61" fill="#fff3e8" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="15" y="236" font-size="13" font-family="Meiryo" fill="#8e522a" font-weight="700" text-anchor="start" xml:space="preserve">3件目</text>
+<text x="15" y="255" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">{ id: 103, name: &#x27;消しゴム&#x27;,</text>
+<text x="25" y="272" font-size="12.7" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="start" xml:space="preserve">price: 100 }</text>
+<polyline points="237,248 387,248" fill="none" stroke="#8e522a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="380,251.71 387,248 380,244.29" fill="#8e522a"/>
+<rect x="404" y="218" width="203" height="61" fill="#fff3e8" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="505.5" y="244" font-size="14.5" font-family="Meiryo" fill="#8e522a" font-weight="700" text-anchor="middle" xml:space="preserve">消しゴムの1行分の</text>
+<text x="505.5" y="265" font-size="14.5" font-family="Meiryo" fill="#8e522a" font-weight="700" text-anchor="middle" xml:space="preserve">React要素</text>
+<polyline points="505.5,296 505.5,320 308,320 308,339" fill="none" stroke="#226757" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="304.29,332 308,339 311.71,332" fill="#226757"/>
+<text x="62" y="315" font-size="14.2" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="start" xml:space="preserve">Reactが配列の各要素を表示する</text>
+<text x="308" y="361" font-size="15" font-family="Meiryo" fill="#226757" font-weight="700" text-anchor="middle" xml:space="preserve">ブラウザーの表示</text>
+<rect x="129" y="370" width="362" height="147" fill="white" stroke="#b4c8d8" rx="7" stroke-width="0.9"/>
+<rect x="130" y="371" width="360" height="14" fill="#edf5fa" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="145" y="407" font-size="17" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">商品一覧</text>
+<rect x="145" y="416" width="96" height="23" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="193" y="432.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品番号</text>
+<rect x="241" y="416" width="132" height="23" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="307" y="432.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品名</text>
+<rect x="373" y="416" width="102" height="23" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="424" y="432.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">単価</text>
+<rect x="145" y="439" width="96" height="23" fill="#e6f1fc" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="193" y="455.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">101</text>
+<rect x="241" y="439" width="132" height="23" fill="#e6f1fc" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="307" y="455.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">ノート</text>
+<rect x="373" y="439" width="102" height="23" fill="#e6f1fc" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="424" y="455.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">250円</text>
+<rect x="145" y="462" width="96" height="23" fill="#eef7f2" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="193" y="478.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">102</text>
+<rect x="241" y="462" width="132" height="23" fill="#eef7f2" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="307" y="478.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">ボールペン</text>
+<rect x="373" y="462" width="102" height="23" fill="#eef7f2" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="424" y="478.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">120円</text>
+<rect x="145" y="485" width="96" height="23" fill="#fff3e8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="193" y="501.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">103</text>
+<rect x="241" y="485" width="132" height="23" fill="#fff3e8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="307" y="501.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">消しゴム</text>
+<rect x="373" y="485" width="102" height="23" fill="#fff3e8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="424" y="501.69" font-size="13.3" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">100円</text>
+<text x="310.5" y="546" font-size="14" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">商品データ3件 → 3件分のReact要素を含む配列 → テーブルのデータ行3行</text>
 </svg>

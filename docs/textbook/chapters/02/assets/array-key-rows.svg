@@ -1,41 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="382" height="137" viewBox="0 0 382 137">
-  <text x="5" y="36" font-size="10.5" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">React内の識別</text>
-  <rect x="141" y="4" width="237" height="129" rx="5" fill="#ffffff" stroke="#b0c3d1" stroke-width="0.8"/>
-  <rect x="141" y="4" width="237" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <rect x="147" y="10" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
-  <rect x="153" y="10" width="3.2" height="3.2" rx="1.6" fill="#94aebc" stroke="none" stroke-width="0.8"/>
-  <rect x="163" y="7" width="209" height="10" rx="3" fill="#ffffff" stroke="#c8d6de" stroke-width="0.8"/>
-  <text x="167" y="14.6" font-size="6.8" fill="#415b6c" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">localhost:5173</text>
-  <text x="152" y="43" font-size="14" fill="#212529" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">商品一覧</text>
-  <rect x="151" y="50" width="217" height="76" rx="0" fill="#ffffff" stroke="#dee2e6" stroke-width="0.8"/>
-  <rect x="151" y="50" width="217" height="19" rx="0" fill="#f8f9fa" stroke="#dee2e6" stroke-width="0.8"/>
-  <text x="156" y="62.56666666666666" font-size="9.2" fill="#212529" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">商品番号</text>
-  <text x="156" y="81.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">101</text>
-  <text x="156" y="100.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">102</text>
-  <text x="156" y="119.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">103</text>
-  <path d="M 209 50 L 209 126" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
-  <text x="214" y="62.56666666666666" font-size="9.2" fill="#212529" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">商品名</text>
-  <text x="214" y="81.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">ノート</text>
-  <text x="214" y="100.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">ボールペン</text>
-  <text x="214" y="119.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">消しゴム</text>
-  <path d="M 303 50 L 303 126" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
-  <text x="308" y="62.56666666666666" font-size="9.2" fill="#212529" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">単価</text>
-  <text x="308" y="81.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">250円</text>
-  <text x="308" y="100.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">120円</text>
-  <text x="308" y="119.56666666666666" font-size="9.2" fill="#212529" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif" xml:space="preserve">100円</text>
-  <path d="M 151 69 L 368 69" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
-  <path d="M 151 88 L 368 88" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
-  <path d="M 151 107 L 368 107" stroke="#dee2e6" stroke-width="0.75" fill="none" stroke-linecap="round"/>
-  <rect x="5" y="70.5" width="86" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="48" y="81.9" font-size="10" fill="#205c84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=101</text>
-  <path d="M 95 78.5 L 145.7 78.5" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 150 78.5 L 145.70 76.10 L 145.70 80.90 Z" fill="#205c84"/>
-  <rect x="5" y="89.5" width="86" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="48" y="100.9" font-size="10" fill="#205c84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=102</text>
-  <path d="M 95 97.5 L 145.7 97.5" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 150 97.5 L 145.70 95.10 L 145.70 99.90 Z" fill="#205c84"/>
-  <rect x="5" y="108.5" width="86" height="16" rx="4" fill="#edf5f9" stroke="#b0c3d1" stroke-width="0.8"/>
-  <text x="48" y="119.9" font-size="10" fill="#205c84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace" xml:space="preserve">key=103</text>
-  <path d="M 95 116.5 L 145.7 116.5" stroke="#205c84" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M 150 116.5 L 145.70 114.10 L 145.70 118.90 Z" fill="#205c84"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="675" height="254" viewBox="0 0 675 254">
+<text x="190" y="25" font-size="17" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">変更前</text>
+<text x="491" y="25" font-size="16" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">変更後（ボールペンを削除した場合）</text>
+<rect x="82" y="39" width="212" height="159" fill="white" stroke="#b4c8d8" rx="7" stroke-width="0.9"/>
+<rect x="83" y="40" width="210" height="14" fill="#edf5fa" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="91" y="77" font-size="16.5" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">商品一覧</text>
+<rect x="89" y="87" width="62" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="120" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品番号</text>
+<rect x="151" y="87" width="83" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="192.5" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品名</text>
+<rect x="234" y="87" width="54" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="261" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">単価</text>
+<rect x="89" y="112" width="62" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="120" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">101</text>
+<rect x="151" y="112" width="83" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="192.5" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">ノート</text>
+<rect x="234" y="112" width="54" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="261" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">250円</text>
+<rect x="89" y="137" width="62" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="120" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">102</text>
+<rect x="151" y="137" width="83" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="192.5" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">ボールペン</text>
+<rect x="234" y="137" width="54" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="261" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">120円</text>
+<rect x="89" y="162" width="62" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="120" y="179.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">103</text>
+<rect x="151" y="162" width="83" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="192.5" y="179.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">消しゴム</text>
+<rect x="234" y="162" width="54" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="261" y="179.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">100円</text>
+<rect x="381" y="39" width="212" height="159" fill="white" stroke="#b4c8d8" rx="7" stroke-width="0.9"/>
+<rect x="382" y="40" width="210" height="14" fill="#edf5fa" stroke="none" rx="4" stroke-width="0.9"/>
+<text x="390" y="77" font-size="16.5" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="start" xml:space="preserve">商品一覧</text>
+<rect x="388" y="87" width="62" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="419" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品番号</text>
+<rect x="450" y="87" width="83" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="491.5" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">商品名</text>
+<rect x="533" y="87" width="54" height="25" fill="#f1f5f8" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="560" y="104.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">単価</text>
+<rect x="388" y="112" width="62" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="419" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">101</text>
+<rect x="450" y="112" width="83" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="491.5" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">ノート</text>
+<rect x="533" y="112" width="54" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="560" y="129.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">250円</text>
+<rect x="388" y="137" width="62" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="419" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">103</text>
+<rect x="450" y="137" width="83" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="491.5" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">消しゴム</text>
+<rect x="533" y="137" width="54" height="25" fill="white" stroke="#c6d2db" rx="0" stroke-width="0.8"/>
+<text x="560" y="154.49" font-size="12.8" font-family="Meiryo" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">100円</text>
+<rect x="4" y="114" width="62" height="21" fill="#f5f8fa" stroke="#b4c8d8" rx="4" stroke-width="0.8"/>
+<text x="35" y="128.7" font-size="12.4" font-family="MS Gothic" fill="#205b84" font-weight="400" text-anchor="middle" xml:space="preserve">key=101</text>
+<polyline points="66,124.5 82,124.5" fill="none" stroke="#b4c8d8" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="4" y="139" width="62" height="21" fill="#f5f8fa" stroke="#b4c8d8" rx="4" stroke-width="0.8"/>
+<text x="35" y="153.7" font-size="12.4" font-family="MS Gothic" fill="#205b84" font-weight="400" text-anchor="middle" xml:space="preserve">key=102</text>
+<polyline points="66,149.5 82,149.5" fill="none" stroke="#b4c8d8" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="4" y="164" width="62" height="21" fill="#f5f8fa" stroke="#b42331" rx="0" stroke-width="1.75"/>
+<text x="35" y="178.7" font-size="12.4" font-family="MS Gothic" fill="#b42331" font-weight="700" text-anchor="middle" xml:space="preserve">key=103</text>
+<polyline points="66,174.5 82,174.5" fill="none" stroke="#b42331" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="607" y="114" width="62" height="21" fill="#f5f8fa" stroke="#b4c8d8" rx="4" stroke-width="0.8"/>
+<text x="638" y="128.7" font-size="12.4" font-family="MS Gothic" fill="#205b84" font-weight="400" text-anchor="middle" xml:space="preserve">key=101</text>
+<polyline points="593,124.5 607,124.5" fill="none" stroke="#b4c8d8" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="607" y="139" width="62" height="21" fill="#f5f8fa" stroke="#b42331" rx="0" stroke-width="1.75"/>
+<text x="638" y="153.7" font-size="12.4" font-family="MS Gothic" fill="#b42331" font-weight="700" text-anchor="middle" xml:space="preserve">key=103</text>
+<polyline points="593,149.5 607,149.5" fill="none" stroke="#b42331" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="300,124.5 330,124.5 351,124.5 375,124.5" fill="none" stroke="#205b84" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="368.3,128.05 375,124.5 368.3,120.95" fill="#205b84"/>
+<polyline points="300,174.5 330,174.5 351,149.5 375,149.5" fill="none" stroke="#b42331" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="368.3,153.05 375,149.5 368.3,145.95" fill="#b42331"/>
+<rect x="388" y="137" width="199" height="25" fill="none" stroke="#b42331" rx="0" stroke-width="1.55"/>
+<text x="337.5" y="220" font-size="14" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">React内部の識別に使用</text>
+<text x="337.5" y="242" font-size="14" font-family="Meiryo" fill="#205b84" font-weight="700" text-anchor="middle" xml:space="preserve">商品が追加・削除・並べ替えされても、同じ商品には同じkeyを使用する</text>
 </svg>

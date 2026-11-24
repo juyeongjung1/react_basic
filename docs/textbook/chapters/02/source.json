@@ -62,13 +62,13 @@
     },
     "ch02-stock-purchase-states": {
       "caption_id": "ch02-stock-purchase-states-caption",
-      "width": 382,
-      "max_height": 170
+      "width": 380,
+      "max_height": 471
     },
     "ch02-list-table-match": {
       "caption_id": "ch02-list-table-match-caption",
-      "width": 173,
-      "max_height": 184
+      "width": 250,
+      "max_height": 248
     },
     "ch02-form-onchange-parts": {
       "caption_id": "ch02-form-onchange-parts-caption",
@@ -125,6 +125,56 @@
       "caption_id": "ch02-events-exercise-result-caption",
       "width": 380,
       "max_height": 363
+    },
+    "ch02-stock-if-flow": {
+      "caption_id": "ch02-stock-if-flow-caption",
+      "width": 371,
+      "max_height": 139,
+      "file_path": "ch02-basic/src/components/Sample2_5.tsx"
+    },
+    "ch02-stock-ternary": {
+      "caption_id": "ch02-stock-ternary-caption",
+      "width": 377,
+      "max_height": 179,
+      "file_path": "ch02-basic/src/components/Sample2_5.tsx"
+    },
+    "ch02-stock-message-color": {
+      "caption_id": "ch02-stock-message-color-caption",
+      "width": 380,
+      "max_height": 155
+    },
+    "ch02-stock-and-screens": {
+      "caption_id": "ch02-stock-and-screens-caption",
+      "width": 380,
+      "max_height": 142
+    },
+    "ch02-stock-display-flow": {
+      "caption_id": "ch02-stock-display-flow-caption",
+      "width": 380,
+      "max_height": 349,
+      "file_path": "ch02-basic/src/components/Sample2_5.tsx"
+    },
+    "ch02-list-map-anatomy": {
+      "caption_id": "ch02-list-map-anatomy-caption",
+      "width": 380,
+      "max_height": 230,
+      "file_path": "ch02-basic/src/components/Sample2_6.tsx"
+    },
+    "ch02-list-table-flow": {
+      "caption_id": "ch02-list-table-flow-caption",
+      "width": 380,
+      "max_height": 361,
+      "file_path": "ch02-basic/src/components/Sample2_6.tsx"
+    },
+    "ch02-list-key-rows": {
+      "caption_id": "ch02-list-key-rows-caption",
+      "width": 380,
+      "max_height": 200
+    },
+    "ch02-list-exercise-result": {
+      "caption_id": "ch02-list-exercise-result-caption",
+      "width": 380,
+      "max_height": 252
     }
   }
 }

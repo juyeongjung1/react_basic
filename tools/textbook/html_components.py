@@ -383,7 +383,7 @@ def explanation_html(record, nodes, layout=None):
 def prepare(folder, config, layout, nodes, figures, order):
     chapter = folder.name
     fixed = set(config.get('native_pages',[]))
-    note_components = {node['embedded_component'][1] for node in nodes.values() if 'embedded_component' in node}
+    note_components = {ident for node in nodes.values() for _, ident in node.get('embedded_components', ())}
     pages = {ident:page['source_page'] for page in order for ident in page['entries']}
     numbered_figures = figure_numbers(folder, config, layout, nodes, figures, order)
     explanations = [r for r in json.loads((HERE/'code_explanations.json').read_text(encoding='utf-8')) if r['chapter']==chapter and pages[r['anchor_id']] not in fixed]

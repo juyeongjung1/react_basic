@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="405" height="155" viewBox="0 0 405 155">
+<rect x="4" y="4" width="194" height="146" fill="#edf7f0" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="101" y="24" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">在庫あり（stock &gt; 0 がtrue）</text>
+<rect x="10" y="35" width="182" height="27" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="101" y="52" font-size="10.85" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">className=&quot;text-success fw-bold&quot;</text>
+<polyline points="101,68 101,84" fill="none" stroke="#205b84" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="98.35,79 101,84 103.65,79" fill="#205b84"/>
+<rect x="19" y="88" width="164" height="51" fill="white" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="20" y="89" width="162" height="11" fill="#edf5fa" stroke="none" rx="3" stroke-width="0.9"/>
+<rect x="33" y="105" width="136" height="27" fill="none" stroke="#b42331" rx="0" stroke-width="1.25"/>
+<text x="101" y="123" font-size="14.2" font-family="Meiryo" fill="#198754" font-weight="700" text-anchor="middle" xml:space="preserve">購入できます</text>
+<rect x="207" y="4" width="194" height="146" fill="#fff2ef" stroke="#b4c8d8" rx="6" stroke-width="0.9"/>
+<text x="304" y="24" font-size="12" font-family="Meiryo" fill="#183449" font-weight="700" text-anchor="middle" xml:space="preserve">在庫切れ（stock &gt; 0 がfalse）</text>
+<rect x="213" y="35" width="182" height="27" fill="white" stroke="#b4c8d8" rx="4" stroke-width="0.9"/>
+<text x="304" y="52" font-size="10.85" font-family="MS Gothic" fill="#183449" font-weight="400" text-anchor="middle" xml:space="preserve">className=&quot;text-danger fw-bold&quot;</text>
+<polyline points="304,68 304,84" fill="none" stroke="#205b84" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="301.35,79 304,84 306.65,79" fill="#205b84"/>
+<rect x="222" y="88" width="164" height="51" fill="white" stroke="#b4c8d8" rx="5" stroke-width="0.9"/>
+<rect x="223" y="89" width="162" height="11" fill="#edf5fa" stroke="none" rx="3" stroke-width="0.9"/>
+<rect x="236" y="105" width="136" height="27" fill="none" stroke="#b42331" rx="0" stroke-width="1.25"/>
+<text x="304" y="123" font-size="14.2" font-family="Meiryo" fill="#dc3545" font-weight="700" text-anchor="middle" xml:space="preserve">購入できません</text>
+</svg>
