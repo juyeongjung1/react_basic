@@ -6,16 +6,16 @@
 <polyline points="88,73 88,77" fill="none" stroke="#b54c29" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M85 77h6L88 81Z" fill="#b54c29"/>
 <rect x="15" y="82" width="146" height="33" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
-<text x="88" y="102" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">変数の値が変わる</text>
+<text x="88" y="102" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">通常の変数を変更する</text>
 <polyline points="88,116 88,120" fill="none" stroke="#b54c29" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M85 120h6L88 124Z" fill="#b54c29"/>
 <rect x="15" y="125" width="146" height="33" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
-<text x="88" y="138" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">Reactは画面の</text>
-<text x="88" y="150" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">再表示を行わない</text>
+<text x="88" y="138" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">変数の変更だけでは</text>
+<text x="88" y="150" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">再レンダリングされない</text>
 <polyline points="88,159 88,163" fill="none" stroke="#b54c29" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M85 163h6L88 167Z" fill="#b54c29"/>
 <rect x="15" y="168" width="146" height="33" rx="5" fill="#f7d9c7" stroke="#b54c29" stroke-width="0.8"/>
-<text x="88" y="188" fill="#8f361b" font-family="Meiryo" font-size="10.3" font-weight="700" text-anchor="middle">表示は変わらない</text>
+<text x="88" y="188" fill="#8f361b" font-family="Meiryo" font-size="10.3" font-weight="700" text-anchor="middle">数量の表示は1個のまま</text>
 <rect x="180" y="7" width="168" height="209" rx="7" fill="#edf7f4" stroke="#b9cada" stroke-width="0.8"/>
 <text x="264" y="29" fill="#21685d" font-family="Meiryo" font-size="12.4" font-weight="700" text-anchor="middle">Reactのstate（useState）</text>
 <rect x="191" y="39" width="146" height="33" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
@@ -23,7 +23,7 @@
 <polyline points="264,73 264,77" fill="none" stroke="#21685d" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M261 77h6L264 81Z" fill="#21685d"/>
 <rect x="191" y="82" width="146" height="33" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
-<text x="264" y="102" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">set関数でstateを更新する</text>
+<text x="264" y="102" fill="#172f44" font-family="Meiryo" font-size="10.3" font-weight="400" text-anchor="middle">更新用の関数でstateを更新</text>
 <polyline points="264,116 264,120" fill="none" stroke="#21685d" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M261 120h6L264 124Z" fill="#21685d"/>
 <rect x="191" y="125" width="146" height="33" rx="5" fill="#ffffff" stroke="#b9cada" stroke-width="0.8"/>
@@ -32,5 +32,5 @@
 <polyline points="264,159 264,163" fill="none" stroke="#21685d" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M261 163h6L264 167Z" fill="#21685d"/>
 <rect x="191" y="168" width="146" height="33" rx="5" fill="#cfece2" stroke="#21685d" stroke-width="0.8"/>
-<text x="264" y="188" fill="#185849" font-family="Meiryo" font-size="10.3" font-weight="700" text-anchor="middle">画面の表示が更新される</text>
+<text x="264" y="188" fill="#185849" font-family="Meiryo" font-size="10.3" font-weight="700" text-anchor="middle">数量の表示が2個になる</text>
 </svg>

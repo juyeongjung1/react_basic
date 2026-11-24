@@ -16,58 +16,15 @@
       "width": 255,
       "max_height": 230
     },
-    "ch02-state-plain-screen": {
-      "caption_id": "ch02-state-plain-screen-caption",
-      "width": 380,
-      "max_height": 154
-    },
-    "ch02-state-pair": {
-      "caption_id": "ch02-state-pair-caption",
-      "width": 375,
-      "max_height": 132,
-      "file_path": "ch02-basic/src/components/Sample2_3.tsx"
-    },
     "ch02-state-click-states": {
       "caption_id": "ch02-state-click-states-caption",
-      "width": 380,
-      "max_height": 142
-    },
-    "ch02-state-update-flow": {
-      "caption_id": "ch02-state-update-flow-caption",
-      "width": 338,
-      "max_height": 211,
-      "file_path": "ch02-basic/src/components/Sample2_3.tsx"
-    },
-    "ch02-events-click-action": {
-      "caption_id": "ch02-events-click-action-caption",
-      "width": 367,
-      "max_height": 142
-    },
-    "ch02-events-handler-timing": {
-      "caption_id": "ch02-events-handler-timing-caption",
-      "width": 376,
-      "max_height": 100
-    },
-    "ch02-events-handler-arguments": {
-      "caption_id": "ch02-events-handler-arguments-caption",
-      "width": 376,
-      "max_height": 138
+      "width": 292,
+      "max_height": 166
     },
     "ch02-events-selection-browser": {
       "caption_id": "ch02-events-selection-browser-caption",
       "width": 351,
       "max_height": 137
-    },
-    "ch02-events-selection-states": {
-      "caption_id": "ch02-events-selection-states-caption",
-      "width": 380,
-      "max_height": 115
-    },
-    "ch02-events-selection-flow": {
-      "caption_id": "ch02-events-selection-flow-caption",
-      "width": 354,
-      "max_height": 169,
-      "file_path": "ch02-basic/src/components/Sample2_4.tsx"
     },
     "ch02-stock-if-flow": {
       "caption_id": "ch02-stock-if-flow-caption",
