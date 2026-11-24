@@ -130,7 +130,7 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False, highlight_tokens=''):
+def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False, highlight_tokens='', label=None):
     ranges = []
     for segment in filter(None, highlight_lines.split(',')):
         start, _, end = segment.partition('-')
@@ -172,7 +172,7 @@ def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_te
         gutter = '' if example else f'<div class="line-number">{number}</div>'
         pieces.append(f'<div class="{" ".join(classes)}" data-break-row' + ids_attr(row['ids']) + '>'
             + gutter + f'<pre class="source-code" spellcheck="false">{content}</pre></div>')
-    label = LABELS[lang] + ('の記述例' if example else '')
+    label = label or LABELS[lang] + ('の記述例' if example else '')
     return '<section class="card code-card">'+header(label, filenames)+'<div class="card-content">'+''.join(pieces)+'</div><footer class="card-footer">'+footer+'</footer></section>'
 
 
@@ -448,7 +448,8 @@ def prepare(folder, config, layout, nodes, figures, order):
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
         attrs = nodes[ident]['attrs']
         code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''),
-                         example=attrs.get('example') == 'true', highlight_tokens=attrs.get('highlight-tokens', ''))
+                         example=attrs.get('example') == 'true', highlight_tokens=attrs.get('highlight-tokens', ''),
+                         label=attrs.get('code-label'))
         add(ident,ident,consume,code,width,offset)
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:

@@ -2448,3 +2448,659 @@ export default function Layout3_4() {
 :::
 
 ::::
+
+:::: {#page-16 .source-page}
+
+::: {#ch03-params-title .heading}
+3.5. URLパラメータの取得
+:::
+
+::: {#ch03-params-slide .slide layout="illustration"}
+URLパラメータの取得
+
+![URLパラメータの取得](assets/url-parameters-slide.svg)
+:::
+
+::: {#ch03-params-background .heading level="minor"}
+商品ごとの詳細画面を表示するには
+:::
+
+::: {#ch03-params-004 .paragraph}
+前節では、`Link` や `NavLink` を使用して、ページ全体を再読み込みせずに画面を切り替える方法を学習しました。
+:::
+
+::: {#ch03-params-005 .paragraph}
+今回は、商品一覧から、選択した商品の詳細画面へ移動する方法を学習します。
+:::
+
+::: {#ch03-params-006 .paragraph}
+例えば、商品一覧でノートの［詳細］をクリックした場合はノートの詳細画面を、ボールペンの［詳細］をクリックした場合はボールペンの詳細画面を表示したいとします。
+:::
+
+::: {#ch03-params-007 .paragraph}
+商品ごとに異なるコンポーネントやルートを用意することもできます。しかし、商品が追加されるたびにソースコードを修正する必要があるため、実際の開発では適切な方法とはいえません。
+:::
+
+::: {#ch03-params-008 .paragraph}
+そこで、**商品詳細画面を1つのコンポーネントとして作成し、商品番号によって表示する内容を切り替える** という方法を考えます。
+:::
+
+::: {#ch03-params-009 .paragraph}
+表示する商品を区別するために、今回はURLの末尾に商品番号を含めます。
+:::
+
+::: {#ch03-params-010 .table column-widths="54 46"}
+| URLのパス | 対象の商品 |
+|---|---|
+| `/sample-3-5/products/101` | ノート |
+| `/sample-3-5/products/102` | ボールペン |
+| `/sample-3-5/products/103` | 消しゴム |
+:::
+
+::: {#ch03-params-011 .paragraph}
+React Routerでは、このようにURLのパスに可変部分を定義し、その部分の値を取得できます。取得した値を **ルートパラメータ（Route Params）** と呼びます。本研修では、URLパラメータと表記します。
+:::
+
+::: {#ch03-params-012 .paragraph}
+実際の商品詳細画面では、取得した商品番号を使ってREST APIから商品情報を取得し、画面に表示します。
+:::
+
+::: {#ch03-params-013 .paragraph}
+ただし、REST APIとの連携については後続の章で学習するため、**この節では、URLから商品番号を取得し、画面に表示するところまで** を実装します。
+:::
+
+::: {#ch03-params-sample .heading level="minor"}
+【サンプル】URLから商品番号を取得する
+:::
+
+::: {#ch03-params-015 .paragraph}
+前節の商品管理システムを基に、商品一覧の各カードに［詳細］を追加します。
+:::
+
+::: {#ch03-params-016 .paragraph}
+［詳細］をクリックすると、選択した商品の番号を含むURLへ移動します。商品詳細画面には、URLから取得した商品番号を表示します。また、［商品一覧へ戻る］をクリックすると、商品一覧画面へ戻ります。
+:::
+
+::: {#ch03-params-017 .paragraph}
+今回使用するファイルは、次のとおりです。
+:::
+
+::: {#ch03-params-018 .table column-widths="37 63"}
+| ファイル | 役割 |
+|---|---|
+| `ProductCard3_5.tsx` | 商品カードを表示し、商品ごとの詳細画面へのリンクを配置する。 |
+| `ProductDetail3_5.tsx` | URLから商品番号を取得し、画面に表示する。 |
+| `Sample3_5.tsx` | 商品一覧を作成し、各画面のルートを定義する。 |
+| `products3_5.ts` | 商品一覧で使用する6件の商品データを定義する。 |
+| `Layout3_5.tsx` | ヘッダー・メニュー・フッターなどの共通レイアウトを定義する。 |
+:::
+
+::: {#ch03-params-019 .paragraph}
+商品データと共通レイアウトは、前節までと同じ考え方で作成しています。そのため、この節では新しく学習する構文を含む3つのファイルのソースコードを確認します。
+:::
+
+::: {#ch03-params-card .step keep-next="2"}
+**① 商品カードの作成**
+:::
+
+::: {#ch03-params-021 .paragraph}
+3.1節で作成した商品カードに、商品番号を表示する部分と［詳細］リンクを追加します。
+:::
+
+::: {#ch03-params-022 .code filename="ch03-basic/src/components/ProductCard3_5.tsx" start-line="1"}
+```tsx
+import { Link } from 'react-router'
+
+type ProductCard3_5Props = {
+  id: number
+  name: string
+  price: number
+  imagePath: string
+}
+
+export default function ProductCard3_5(
+  { id, name, price, imagePath }: ProductCard3_5Props
+) {
+  return (
+    <div className="col-12 col-sm-6 col-lg-4">
+      <div className="card h-100">
+        <img
+          src={imagePath}
+          alt={name}
+          className="card-img-top p-3"
+          style={{ height: '180px', objectFit: 'contain' }}
+        />
+        <div className="card-body">
+          <h2 className="h5 card-title">{name}</h2>
+          <p className="card-text">商品番号：{id}</p>
+          <p className="card-text">単価：{price}円</p>
+          <Link to={`/sample-3-5/products/${id}`}
+                className="btn btn-primary">
+            詳細
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+```
+:::
+
+::: {#ch03-params-detail .step keep-next="2"}
+**② 商品詳細画面の作成**
+:::
+
+::: {#ch03-params-024 .paragraph}
+商品詳細画面では、URLから取得した商品番号を表示します。商品情報を取得する処理は、後続の章で追加します。
+:::
+
+::: {#ch03-params-025 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="1"}
+```tsx
+import { Link, useParams } from 'react-router'
+
+export default function ProductDetail3_5() {
+  const { id } = useParams()
+
+  // 実際の開発では、idを使ってREST APIから商品情報を取得する。
+
+  return (
+    <main className="container mt-4">
+      <h1>商品詳細</h1>
+      <p>商品番号：{id}</p>
+      <p className="alert alert-info">
+        実際の開発では、この商品番号を使ってREST APIから商品情報を取得します。
+      </p>
+      <Link to="/sample-3-5/products" className="btn btn-secondary">
+        商品一覧へ戻る
+      </Link>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch03-params-routes .step keep-next="2"}
+**③ ルーティングの設定**
+:::
+
+::: {#ch03-params-027 .paragraph}
+`Sample3_5.tsx` では、前節までのルートに商品詳細画面のルートを追加します。また、商品一覧を表示する `ProductListPage` から各商品カードへ、商品番号を含む商品データをPropsとして渡します。
+:::
+
+::: {#ch03-params-028 .code filename="ch03-basic/src/components/Sample3_5.tsx" start-line="1"}
+```tsx
+import { Routes, Route } from 'react-router'
+import Layout3_5 from './Layout3_5'
+import ProductCard3_5 from './ProductCard3_5'
+import ProductDetail3_5 from './ProductDetail3_5'
+import { products } from '../data/products3_5'
+
+```
+:::
+
+::: {#ch03-params-028-continued .code filename="ch03-basic/src/components/Sample3_5.tsx" start-line="7"}
+```tsx
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+
+function GuidePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ご利用案内</h1>
+      <p>このシステムでは商品情報を確認できます。</p>
+    </main>
+  )
+}
+
+function ProductListPage() {
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      <div className="row g-3">
+        {products.map((product) => (
+          <ProductCard3_5
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            imagePath={product.imagePath}
+          />
+        ))}
+      </div>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch03-params-028-routes .code filename="ch03-basic/src/components/Sample3_5.tsx" start-line="43"}
+```tsx
+
+export default function Sample3_5() {
+  return (
+    <Routes>
+      <Route element={<Layout3_5 />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<ProductListPage />} />
+        <Route path="products/:id" element={<ProductDetail3_5 />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+    </Routes>
+  )
+}
+```
+:::
+
+::: {#ch03-params-029 .paragraph}
+今回は、次の3つの記述がどのようにつながっているのかに注目してください。
+:::
+
+::: {#ch03-params-030 .paragraph}
+● 商品詳細画面のルートの定義
+:::
+
+::: {#ch03-params-031 .paragraph}
+● 商品番号を含むリンク先の指定
+:::
+
+::: {#ch03-params-032 .paragraph}
+● 詳細画面でのURLパラメータの取得
+:::
+
+::: {#ch03-params-syntax .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch03-params-route-parameter .step}
+**① URLのパスに可変部分を定義する**
+:::
+
+::: {#ch03-params-035 .code filename="ch03-basic/src/components/Sample3_5.tsx" start-line="50"}
+```tsx
+        <Route path="products/:id" element={<ProductDetail3_5 />} />
+```
+:::
+
+::: {#ch03-params-036 .paragraph}
+前節までは、`products` や `guide` のように、あらかじめ決められたパスに対してルートを定義していました。
+:::
+
+::: {#ch03-params-037 .paragraph}
+一方、商品詳細画面では、選択した商品によってURLの末尾が変わります。このような場合に、商品番号ごとにルートを定義する必要はありません。
+:::
+
+::: {#ch03-params-038 .paragraph}
+React Routerでは、**パスの一部分をコロン（`:`）から始めることで、その部分をURLパラメータとして扱うことができます。**
+:::
+
+::: {#ch03-params-039 .paragraph}
+例えば、今回の `path="products/:id"` は、`products` に続く1つのパスの部分を、`id` という名前のURLパラメータとして扱う設定です。
+:::
+
+::: {#ch03-params-040 .table column-widths="40 25 35"}
+| URLのパス | 取得する `id` の値 | 表示するコンポーネント |
+|---|---|---|
+| `/sample-3-5/products/101` | `'101'` | `ProductDetail3_5` |
+| `/sample-3-5/products/102` | `'102'` | `ProductDetail3_5` |
+| `/sample-3-5/products/103` | `'103'` | `ProductDetail3_5` |
+:::
+
+![商品番号が異なるURLでも、同じ商品詳細コンポーネントを表示できる](assets/url-parameters-route.svg){#ch03-params-figure-1}
+
+::: {#ch03-params-figure-1-caption .caption}
+商品番号が異なるURLでも、同じ商品詳細コンポーネントを表示できる
+:::
+
+::: {#ch03-params-042 .paragraph}
+なお、`id` はReact Routerで決められた特別な名前ではありません。例えば、`:productId` と定義することもできます。その場合は、値を取得する際にも `productId` という名前を使用します。
+:::
+
+::: {#ch03-params-link .step}
+**② 商品ごとに異なるURLをLinkに指定する**
+:::
+
+::: {#ch03-params-044 .paragraph}
+商品一覧から詳細画面へ移動する際は、選択した商品の番号をURLに含める必要があります。
+:::
+
+::: {#ch03-params-045 .paragraph}
+まず、商品一覧側のコードを確認しましょう。
+:::
+
+::: {#ch03-params-046 .code filename="ch03-basic/src/components/Sample3_5.tsx" start-line="30"}
+```tsx
+        {products.map((product) => (
+          <ProductCard3_5
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            price={product.price}
+            imagePath={product.imagePath}
+          />
+        ))}
+```
+:::
+
+::: {#ch03-params-047 .paragraph}
+3.1節で学習したPropsを使用して、商品名・単価・画像のパスに加え、商品番号（`id`）を商品カードへ渡しています。
+:::
+
+::: {#ch03-params-048 .paragraph}
+次に、商品カード側のコードを確認します。
+:::
+
+::: {#ch03-params-049 .code filename="ch03-basic/src/components/ProductCard3_5.tsx" start-line="26"}
+```tsx
+          <Link to={`/sample-3-5/products/${id}`}
+                className="btn btn-primary">
+            詳細
+          </Link>
+```
+:::
+
+::: {#ch03-params-050 .paragraph}
+前節で学習したとおり、`Link` の `to` 属性には、移動先のURLを指定します。
+:::
+
+::: {#ch03-params-051 .paragraph}
+今回は、商品ごとに異なるURLを指定する必要があるため、Propsで受け取った `id` の値を使用してURLを組み立てます。
+:::
+
+::: {#ch03-params-052 .paragraph}
+JavaScriptでは、文字列をバッククォート（`` ` ``）で囲み、その中に `${式}` と記述することで、式の値を文字列に埋め込むことができます。この書き方を **テンプレートリテラル** と呼びます。
+:::
+
+::: {#ch03-params-053 .paragraph}
+例えば、`id` の値が101の場合、次の2つの記述で指定される移動先は同じです。
+:::
+
+::: {#ch03-params-054 .table column-widths="53 47"}
+| 記述例 | 特徴 |
+|---|---|
+| ``to={`/sample-3-5/products/${id}`} `` | `id` の値に応じて移動先が変わる。 |
+| `to="/sample-3-5/products/101"` | 常に同じURLへ移動する。 |
+:::
+
+![同じLinkの記述でも、商品番号によって移動先が変わる](assets/url-parameters-links.svg){#ch03-params-figure-2}
+
+::: {#ch03-params-figure-2-caption .caption}
+同じLinkの記述でも、商品番号によって移動先が変わる
+:::
+
+::: {#ch03-params-056 .paragraph}
+このように、**テンプレートリテラルを使用すると、商品ごとに異なるリンク先を、1つの記述で指定できます。**
+:::
+
+::: {#ch03-params-useparams .step}
+**③ useParams()でURLパラメータを取得する**
+:::
+
+::: {#ch03-params-058 .paragraph}
+詳細画面に移動した後は、URLから商品番号を取得します。
+:::
+
+::: {#ch03-params-059 .paragraph}
+そのために使用するのが、React Routerが提供する **useParams()** です。
+:::
+
+::: {#ch03-params-060 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="1"}
+```tsx
+import { Link, useParams } from 'react-router'
+```
+:::
+
+::: {#ch03-params-061 .paragraph}
+`useParams` はReact Routerが提供するHookです。`react-router` からインポートし、商品詳細を表示するコンポーネントの関数内で使用します。
+:::
+
+::: {#ch03-params-062 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="4"}
+```tsx
+  const { id } = useParams()
+```
+:::
+
+::: {#ch03-params-063 .paragraph}
+`useParams()` は、現在のURLに対応するルートのURLパラメータをオブジェクトとして返します。
+:::
+
+::: {#ch03-params-064 .paragraph}
+例えば、`/sample-3-5/products/101` にアクセスした場合は、次のようなオブジェクトを取得できます。
+:::
+
+::: {#ch03-params-065 .code example="true" code-label="取得結果のイメージ（JavaScript）"}
+```js
+{ id: '101' }
+```
+:::
+
+::: {#ch03-params-066 .paragraph}
+今回のコードでは、3.1節で学習したオブジェクトの分割代入を使用して、このオブジェクトから `id` の値を取り出しています。
+:::
+
+![ルートで定義したidの値をuseParams()で取得する](assets/url-parameters-useparams.svg){#ch03-params-figure-3}
+
+::: {#ch03-params-figure-3-caption .caption}
+ルートで定義したidの値をuseParams()で取得する
+:::
+
+::: {#ch03-params-068 .paragraph}
+ここで注意してほしいのは、URLの末尾が101という数字であっても、**useParams()で取得する値は文字列である** という点です。
+:::
+
+::: {#ch03-params-069 .paragraph}
+また、TypeScriptでは、パラメータが取得できない場合も考慮するため、`id` は `string | undefined` という型で扱われます。これは、文字列または `undefined` のいずれかになる可能性があるという意味です。
+:::
+
+::: {#ch03-params-070 .paragraph}
+今回の `products/:id` に一致するURLには、商品番号に相当する部分が含まれています。商品番号を指定せずに `/sample-3-5/products` にアクセスした場合は、商品一覧画面が表示されます。
+:::
+
+::: {#ch03-params-number .step}
+**④ 取得した商品番号を画面に表示する**
+:::
+
+::: {#ch03-params-072 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="11"}
+```tsx
+      <p>商品番号：{id}</p>
+```
+:::
+
+::: {#ch03-params-073 .paragraph}
+URLから取得した `id` の値を、JSXの波括弧内に記述します。これは、2.2節で学習した変数の値を画面に表示する方法と同じです。
+:::
+
+::: {#ch03-params-074 .paragraph}
+例えば、ノートの［詳細］から移動した場合は「商品番号：101」、ボールペンの［詳細］から移動した場合は「商品番号：102」と表示されます。
+:::
+
+::: {#ch03-params-075 .paragraph}
+**商品詳細画面のコンポーネントは同じですが、URLに含まれる商品番号によって表示内容が変わります。**
+:::
+
+::: {#ch03-params-076 .paragraph}
+なお、商品詳細画面でも、共通ヘッダーやメニュー、フッターは引き続き表示されます。商品一覧の `NavLink` には `end` 属性を指定していないため、商品詳細画面でも「商品一覧」のメニューが強調されます。
+:::
+
+::: {#ch03-params-077 .paragraph}
+［商品一覧へ戻る］の `Link` には、商品一覧に対応する固定のURLを指定しています。
+:::
+
+::: {#ch03-params-078 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="15"}
+```tsx
+      <Link to="/sample-3-5/products" className="btn btn-secondary">
+        商品一覧へ戻る
+      </Link>
+```
+:::
+
+::: {#ch03-params-note .training-note}
+【補足】実際の商品詳細画面では
+
+今回の商品詳細画面には、取得した商品番号だけを表示しています。
+
+しかし、実際の商品管理システムでは、商品番号だけでなく、商品名や単価、商品画像なども表示する必要があります。
+
+REST APIとデータベースを連携させるアプリケーションでは、一般的に、**URLから取得した商品番号を使ってREST APIにリクエストを送信し、該当する商品情報を取得します。**
+
+例えば、商品番号101の詳細画面を表示する場合は、次のような流れになります。
+:::
+
+::: {#ch03-params-084 .paragraph numbered="true"}
+1．Reactで `useParams()` を使用し、URLから商品番号を取得する。
+:::
+
+::: {#ch03-params-085 .paragraph numbered="true"}
+2．取得した商品番号を使用して、REST APIにリクエストを送信する。
+:::
+
+::: {#ch03-params-086 .paragraph numbered="true"}
+3．REST API側で商品番号を受け取り、データベースから該当する商品情報を取得する。
+:::
+
+::: {#ch03-params-087 .paragraph numbered="true"}
+4．REST APIから返された商品情報をReactで受け取り、商品詳細画面に表示する。
+:::
+
+![取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）](assets/url-parameters-api.svg){#ch03-params-figure-4}
+
+::: {#ch03-params-figure-4-caption .caption}
+取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）
+:::
+
+::: {#ch03-params-089 .paragraph}
+ここで、ブラウザーに表示されるURLは、React Routerが画面を切り替えるために使用します。一方、図に示した `/api/products/101` は、商品情報を取得するためにREST APIへ送信するリクエスト先の例です。両者は用途が異なります。
+:::
+
+::: {#ch03-params-090 .paragraph}
+今回のサンプルでは、商品情報を取得する処理をまだ記述していません。ソースコードには、実際の開発でREST APIを利用する箇所をコメントとして記載しています。また、商品詳細画面にも、その旨を表示しています。
+:::
+
+::: {#ch03-params-091 .code filename="ch03-basic/src/components/ProductDetail3_5.tsx" start-line="6"}
+```tsx
+  // 実際の開発では、idを使ってREST APIから商品情報を取得する。
+```
+:::
+
+::: {#ch03-params-092 .paragraph}
+なお、URLから商品番号を取得できたとしても、その商品がデータベースに存在するとは限りません。商品の存在確認や、不正な商品番号が指定された場合の処理については、REST APIと連携する際に考慮する必要があります。
+:::
+
+::: {#ch03-params-093 .paragraph}
+この節では、後続の章で商品情報を取得するための準備として、URLから商品番号を取得する方法を理解しておきましょう。
+:::
+
+::: {#ch03-params-practice .heading level="minor"}
+【確認演習】URLパラメータを取得する
+:::
+
+::: {#ch03-params-095 .paragraph}
+商品一覧の［詳細］をクリックすると、選択した商品の番号を含むURLへ移動し、詳細画面にその商品番号が表示されるようにしましょう。
+:::
+
+::: {#ch03-params-096 .paragraph}
+商品データ、共通レイアウト、商品カードのデザイン、商品詳細画面の基本構成は、あらかじめ用意されています。今回は、商品詳細画面のルートの定義、商品番号に応じたリンク先の設定、URLパラメータの取得を実装します。
+:::
+
+::: {#ch03-params-097 .paragraph numbered="true"}
+1．`ch03-basic-q` プロジェクトの次の3つのファイルを開いてください。
+:::
+
+::: {#ch03-params-098 .paragraph}
+● `src/components/Q3_5.tsx`
+:::
+
+::: {#ch03-params-099 .paragraph}
+● `src/components/ProductCard3_5Q.tsx`
+:::
+
+::: {#ch03-params-100 .paragraph}
+● `src/components/ProductDetail3_5Q.tsx`
+:::
+
+::: {#ch03-params-101 .paragraph numbered="true"}
+2．3つのファイルに記載された➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-params-102 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
+:::
+
+::: {#ch03-params-103 .paragraph numbered="true"}
+4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+:::
+
+::: {#ch03-params-104 .paragraph numbered="true"}
+5．メニューから「3.5 URLパラメータの取得」を選んでください。
+:::
+
+::: {#ch03-params-check .heading level="minor"}
+動作確認
+:::
+
+::: {#ch03-params-106 .paragraph numbered="true"}
+6．共通メニューの［商品一覧］をクリックしてください。次に、ファイルの［詳細］をクリックし、次の内容を確認します。
+:::
+
+::: {#ch03-params-107 .paragraph}
+● URLのパスが `/sample-3-5/products/201` になっていること。
+:::
+
+::: {#ch03-params-108 .paragraph}
+● 詳細画面に「商品番号：201」と表示されていること。
+:::
+
+![ファイルの［詳細］をクリックし、URLと取得した商品番号を確認する](assets/url-parameters-check-201.svg){#ch03-params-figure-5}
+
+::: {#ch03-params-figure-5-caption .caption}
+ファイルの［詳細］をクリックし、URLと取得した商品番号を確認する
+:::
+
+::: {#ch03-params-110 .paragraph}
+続いて、［商品一覧へ戻る］をクリックしてください。商品一覧画面に戻ったら、今度はクリップの［詳細］をクリックします。
+:::
+
+::: {#ch03-params-111 .paragraph}
+URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」と表示されることを確認してください。
+:::
+
+![商品を変更すると、URLパラメータとして取得する商品番号も変わる](assets/url-parameters-check-202.svg){#ch03-params-figure-6}
+
+::: {#ch03-params-figure-6-caption .caption}
+商品を変更すると、URLパラメータとして取得する商品番号も変わる
+:::
+
+::: {#ch03-params-113 .paragraph}
+どちらの商品を選択しても、URLに含まれる商品番号と詳細画面に表示される商品番号が一致していれば、演習完了です。
+:::
+
+::: {#ch03-params-114 .paragraph}
+※ 今回は商品情報の取得や商品の存在確認は行いません。詳細画面に商品名や単価、商品画像が表示されていないのは、意図した動作です。
+:::
+
+::: {#ch03-params-115 .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+:::
+
+::: {#ch03-params-116 .paragraph}
+次の3.6節では、リンクのクリックだけでなく、プログラムの処理に応じて画面遷移を行う方法を学習します。
+:::
+
+::: {#ch03-params-points .section-points}
+この節のポイント
+
+● `Route` の `path` で `:id` のように可変部分を定義すると、URLパラメータとして値を取得できる。
+
+● テンプレートリテラルを使用すると、商品番号に応じて `Link` の移動先を組み立てられる。
+
+● `useParams()` を使用すると、現在のURLに対応するルートのURLパラメータを取得できる。取得する値は文字列である。
+
+● 実際の詳細画面では、取得した商品番号をREST APIへのリクエストに使用し、商品情報を取得して表示できる。
+:::
+
+::::
