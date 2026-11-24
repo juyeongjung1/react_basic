@@ -767,27 +767,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 ::: {#ch02-state-slide .slide layout="illustration"}
 状態の管理（useState）
 
-![通常の変数とstateの動作の比較](assets/use-state-slide.svg)
+![商品を追加する操作に合わせて数量と合計金額を画面に反映する](assets/use-state-slide.svg)
 :::
 
 ::: {#ch02-state-definition .heading level="minor"}
-状態（state）とは
+操作に応じて画面を更新する
 :::
 
 ::: {#ch02-state-intro-1 .paragraph}
-前節では、JSXを使用して変数や計算結果を画面に表示する方法を学習しました。
+前節では、その時点の数量と単価をもとに、合計金額をJSXで表示しました。この節では、商品の数量を操作で変え、その結果を画面に反映します。
 :::
 
 ::: {#ch02-state-intro-2 .paragraph}
-しかし、実際のWebアプリケーションでは、ユーザーの操作に応じてデータを変更し、その結果を画面に反映する必要があります。例えば、商品の数量を1個から2個に増やすと、単価250円の商品であれば、合計金額も250円から500円に変わります。
+例えば、単価が250円の商品で［1個追加］を押すと、数量は1個から2個へ、合計は250円から500円へ変わります。次に押したときは、前回の数量を引き継いで計算する必要があります。
 :::
 
 ::: {#ch02-state-intro-3 .paragraph}
-通常のJavaScriptの変数を変更しただけでは、Reactはコンポーネントを再レンダリングする必要があることを認識できません。また、通常のローカル変数は、コンポーネントが再実行されたときに改めて初期化されます。
-:::
-
-::: {#ch02-state-intro-4 .paragraph}
-そこでReactでは、ユーザーの操作などによって変化し、画面の表示に反映させたいデータを **状態（state：ステート）** として管理します。stateを管理するために使用するのが `useState()` です。
+Reactでは、こうした変化するデータを **状態（state、ステート）** として管理できます。商品の購入数を例に、`useState()` を使って値を記憶し、表示を更新する仕組みを学びます。
 :::
 
 ::::
@@ -837,54 +833,84 @@ export default function Sample2_3() {
 
 :::: {#page-23 .source-page}
 
-![初期状態の数量1個・合計250円と、1回クリック後の数量2個・合計500円](assets/state-clicks.svg){#ch02-state-click-states}
-
-::: {#ch02-state-click-states-caption .paragraph}
-初期状態と「1個追加」を1回クリックしたときの表示
-:::
-
 ::: {#ch02-state-syntax .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch02-state-syntax-declaration .step}
-**① useStateを使ってstateを定義する**
+::: {#ch02-state-syntax-local .step}
+**① なぜ通常の変数ではなくstateを使用するのか**
 :::
 
-::: {#ch02-state-import-source .code filename="ch02-basic/src/components/Sample2_3.tsx"}
+::: {#ch02-state-local-comparison-source .code filename="ch02-basic/src/components/Sample2_3.tsx"}
 ```tsx
-1:import { useState } from 'react'
 6:  //let quantity = 1
 7:  const [quantity, setQuantity] = useState(1)
+10:    //quantity = quantity + 1
+11:    setQuantity(quantity + 1)
 ```
 :::
 
-::: {#ch02-state-declaration-1 .paragraph}
-`useState()` は、Reactでstateを管理するための関数です。このようなReactの特別な関数を **Hooks（フック）** と呼びます。使用するには、`react` からインポートします。
+::: {#ch02-state-local-comments .paragraph}
+6行目と10行目の `//` で始まる行は、通常の変数を使う場合との比較用コメントです。6行目は数量を `1` で初期化する宣言、10行目は数量を1増やす代入です。完成サンプルでは、7行目と11行目でstateを使います。
 :::
 
-::: {#ch02-state-declaration-2 .paragraph}
-`useState(1)` は、初期値を1とするstateを用意し、現在の値と更新用の関数を返します。それらを `[quantity, setQuantity]` のように受け取ります。この書き方は、JavaScriptの分割代入です。
+::: {#ch02-state-local-render .paragraph}
+通常の変数に代入する組み合わせでは、1回クリックすると `quantity` の値は `2` になります。ただし、代入だけではReactに描画のきっかけが伝わらず、「数量：1個」「合計：250円」と表示されたままです。別のきっかけで再レンダリングされると、関数が再実行され、ローカル変数は `1` で初期化されます。
 :::
 
-::: {#ch02-state-declaration-table .table column-widths="1 2"}
-| 記述 | 意味 |
-|---|---|
-| `useState(1)` | stateの初期値を1にする |
-| `quantity` | 現在の数量 |
-| `setQuantity` | 数量を更新するための関数 |
+::: {#ch02-state-local-state .paragraph}
+数量をstateにすると、更新用の関数 `setQuantity` で新しい値をReactに伝えられます。Reactはその値を保持し、再レンダリングで数量と合計金額を更新します。
 :::
 
-::: {#ch02-state-declaration-retained .paragraph}
-通常のローカル変数とは異なり、stateの値はReactによって保持されます。そのため、再レンダリングのたびに初期値の1へ戻るわけではありません。
+![1回クリック後、通常の変数では数量1個・合計250円の表示が残り、stateでは数量2個・合計500円に変わる](assets/plain-variable.svg){#ch02-state-plain-screen}
+
+::: {#ch02-state-plain-screen-caption .paragraph}
+「1個追加」を1回押した後の表示を比較
 :::
 
 ::::
 
 :::: {#page-24 .source-page}
 
+::: {#ch02-state-syntax-declaration .step}
+**② useStateを使ってstateを定義する**
+:::
+
+::: {#ch02-state-declaration-source .code filename="ch02-basic/src/components/Sample2_3.tsx"}
+```tsx
+1:import { useState } from 'react'
+7:  const [quantity, setQuantity] = useState(1)
+```
+:::
+
+::: {#ch02-state-import .paragraph}
+`useState` を使うには、最初に `react` からインポートします。`useState` は **Hooks（フック）** と呼ばれるReactの機能の一つで、コンポーネントごとの値を保持するために使います。
+:::
+
+::: {#ch02-state-declaration-pair .paragraph}
+`useState(1)` は、現在の値と更新用の関数を、この順に並べた配列として返します。左側の `[quantity, setQuantity]` は、配列の1番目を `quantity`、2番目を `setQuantity` として受け取る書き方です。これをJavaScriptの **配列の分割代入** と呼びます。
+:::
+
+::: {#ch02-state-declaration-const .paragraph}
+`const` は、その実行中の変数 `quantity` への再代入を禁止します。`setQuantity` はこの変数に代入する関数ではなく、Reactが保持するstateに次の値を渡す関数です。次の描画では、関数が再び実行され、新しい値を `quantity` として受け取ります。
+:::
+
+::: {#ch02-state-declaration-initial .paragraph}
+`useState(1)` の `1` は、最初の表示に使う **初期値** です。再レンダリングのたびに `useState(1)` を呼び出しますが、そのときの `quantity` には、Reactが保持している数量が入ります。
+:::
+
+![quantityは現在の値、setQuantityは更新用の関数、1は初期値](assets/state-structure.svg){#ch02-state-pair}
+
+::: {#ch02-state-pair-caption .paragraph}
+useStateの初期値と、分割代入で受け取る二つの項目
+:::
+
+::::
+
+:::: {#page-25 .source-page}
+
 ::: {#ch02-state-syntax-update .step}
-**② 更新用の関数でstateを変更する**
+**③ 更新用の関数でstateを変更する**
 :::
 
 ::: {#ch02-state-update-source .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="9"}
@@ -896,20 +922,16 @@ export default function Sample2_3() {
 ```
 :::
 
-::: {#ch02-state-update-1 .paragraph}
-通常の変数であれば、コメントに記載した `quantity = quantity + 1` のように値を変更します。
+::: {#ch02-state-update-reason .paragraph}
+stateを更新するときは、今の `quantity` に直接代入せず、`setQuantity` に次の値を渡します。直接代入では、Reactが管理している値の更新と、その後の描画を依頼できません。
 :::
 
-::: {#ch02-state-update-2 .paragraph}
-しかし、stateを更新するときは直接代入するのではなく、`setQuantity()` のような更新用の関数を使用します。`setQuantity(quantity + 1)` は、現在の数量に1を加えた値を、新しいstateとしてReactに渡す処理です。
-:::
-
-::: {#ch02-state-update-3 .paragraph}
-例えば、現在の数量が1であれば、`setQuantity(2)` に相当する処理になります。Reactはstateの更新を受けてコンポーネントを再レンダリングし、新しい値を使って画面を作成します。
+::: {#ch02-state-update-value .paragraph}
+今の数量が `1` なら、`quantity + 1` の計算結果は `2` なので、ここでは `setQuantity(2)` を呼び出すのと同じです。この呼び出しによってReactに次の数量が伝わり、再レンダリング時に新しい数量を使って表示を作り直します。
 :::
 
 ::: {#ch02-state-syntax-click .step}
-**③ ボタンの操作に応じて表示を更新する**
+**④ ボタン操作と画面の更新**
 :::
 
 ::: {#ch02-state-click-source .code filename="ch02-basic/src/components/Sample2_3.tsx" start-line="19"}
@@ -922,46 +944,49 @@ export default function Sample2_3() {
 ```
 :::
 
-::: {#ch02-state-click-1 .paragraph}
-`onClick={addOne}` により、ボタンをクリックしたときに `addOne` 関数が実行されます。その中で `setQuantity()` が呼び出され、stateが更新されます。
+::: {#ch02-state-click-path .paragraph}
+［1個追加］ボタンを押すと `addOne` が実行されます。次の描画では、`{quantity}` に新しい数量が入り、`{price * quantity}` も新しい数量で計算されます。例えば数量が2個になれば、合計は `250 * 2` で500円です。
 :::
 
-::: {#ch02-state-click-2 .paragraph}
-再レンダリングされると、JSXの `{quantity}` と `{price * quantity}` に新しい数量が使用されるため、数量と合計金額の表示が変わります。
-:::
-
-::: {#ch02-state-click-3 .paragraph}
-なお、`onClick` の詳しい書き方は、次の2.4節で学習します。
+::: {#ch02-state-click-total .paragraph}
+合計は単価と数量から計算できるので、合計用のstateを別に持つ必要はありません。ボタンのクリックと関数を結び付ける `onClick` は、2.4節で詳しく学びます。
 :::
 
 ::::
 
-:::: {#page-25 .source-page}
+:::: {#page-26 .source-page}
+
+![クリック、addOne、setQuantity、再レンダリング、数量と合計の更新の順に処理する](assets/state-update-flow.svg){#ch02-state-update-flow}
+
+::: {#ch02-state-update-flow-caption .paragraph}
+ボタンをクリックしてから、数量と合計が更新されるまで
+:::
 
 ::: {#ch02-state-syntax-choice .step}
-**④ 通常の変数とstateを使い分ける**
+**⑤ 通常の変数とstateの使い分け**
 :::
 
 ::: {#ch02-state-choice-intro .paragraph}
-すべてのデータをstateとして管理する必要はありません。今回のサンプルでは、次のように使い分けています。
+画面に使う値ごとに、固定の値か、操作で変わる値か、ほかの値から求められるかを考えます。今回のサンプルでは、次のように使い分けています。
 :::
 
-::: {#ch02-state-choice-table .table column-widths="1.4 1 2"}
+::: {#ch02-state-choice-table .table column-widths="1.2 1.2 1.9"}
 | データ | 管理方法 | 理由 |
 |---|---|---|
-| 商品名・単価（`productName`、`price`） | `const` | 変更しない値であるため |
-| 数量（`quantity`） | `useState()` | ボタン操作に応じて変化し、表示を更新するため |
-| 合計金額 | `price * quantity` | 単価と数量から計算できるため |
+| 商品名（`productName`） | 通常の変数（`const`） | 商品名は変わらない |
+| 単価（`price`） | 通常の変数（`const`） | 単価は変わらない |
+| 数量（`quantity`） | state（`useState()`） | ボタン操作で変わり、画面に反映する |
+| 合計金額 | `price * quantity` | 既存の単価と数量から計算できる |
 :::
 
-::: {#ch02-state-choice-derived .paragraph}
-合計金額のように既存の値から計算できるデータは、別のstateとして管理する必要はありません。
-:::
+::::
+
+:::: {#page-27 .source-page}
 
 ::: {#ch02-state-type-note .training-note}
 【補足】useStateで管理できるデータ型
 
-`useState()` では数値のほか、文字列や真偽値なども管理できます。
+`useState` では、数量のような数値に加え、文字列や真偽値も管理できます。
 :::
 
 ::: {#ch02-state-type-example .code example="true"}
@@ -973,16 +998,12 @@ const [isActive, setIsActive] = useState(true)
 :::
 
 ::: {#ch02-state-type-1 .paragraph}
-TypeScriptでは、これらの初期値から型が推論されます。例えば、数値を管理する `count` に文字列を設定しようとすると、型チェックで不一致を検出できます。
+TypeScriptは、渡した初期値から型を推論します。例えば `useState(0)` で定義した `count` は数値です。`setCount('田中')` とすると、渡した値の型が合わないことを開発中に検出できます。
 :::
 
 ::: {#ch02-state-type-2 .paragraph}
-また、`useState()` はコンポーネントの関数内のトップレベルで呼び出します。`if` 文や繰り返し処理の中では呼び出さないようにしてください。
+`useState` はコンポーネント関数のトップレベルで呼び出します。`if` や繰り返し処理の外に置くことで、Reactが描画のたびに同じ順序でstateを対応づけられます。
 :::
-
-::::
-
-:::: {#page-26 .source-page}
 
 ::: {#ch02-state-practice .heading level="minor"}
 【確認演習】useStateで商品の数量を1個ずつ増やす
@@ -1011,6 +1032,10 @@ TypeScriptでは、これらの初期値から型が推論されます。例え�
 ::: {#ch02-state-practice-5 .paragraph numbered="true"}
 5．　メニューから「2.3 状態の管理（useState）」を選んでください。
 :::
+
+::::
+
+:::: {#page-28 .source-page}
 
 ::: {#ch02-state-practice-check .heading level="minor"}
 動作確認
@@ -1055,27 +1080,23 @@ TypeScriptでは、これらの初期値から型が推論されます。例え�
 ::: {#ch02-events-slide .slide layout="illustration"}
 イベント処理
 
-![ボタン操作からイベントハンドラーの実行、stateの更新、画面の更新まで](assets/event-slide.svg)
+![ボタン操作に応じて処理を実行し、画面の表示を更新する](assets/event-slide.svg)
 :::
 
 ::: {#ch02-events-definition .heading level="minor"}
-イベント処理とは
+ユーザーの操作に応じて処理を実行する
 :::
 
 ::: {#ch02-events-intro-1 .paragraph}
-前節では、ボタンをクリックすると商品の数量が増え、合計金額が変わる画面を確認しました。
+前節では、［1個追加］をクリックすると、数量と合計が変わる画面を作りました。この節では、どの操作でどの処理を実行するかに注目します。
 :::
 
 ::: {#ch02-events-intro-2 .paragraph}
-Webアプリケーションでは、ボタンのクリック、マウスの移動、フォームへの入力など、ユーザーのさまざまな操作をきっかけに処理を実行することがあります。このような操作や出来事を **イベント** と呼び、イベントが発生したときに実行する処理を **イベントハンドラー** と呼びます。
+商品の選択画面では、ノートとボールペンのボタンは同じ「商品を選ぶ」操作ですが、反映する商品名は異なります。選択を解除する操作も必要です。
 :::
 
 ::: {#ch02-events-intro-3 .paragraph}
-Reactでは、JSXの `onClick` などの属性に関数を指定することで、イベントと実行する処理を結びつけられます。
-:::
-
-::: {#ch02-events-intro-4 .paragraph}
-この節では、クリックイベントを使用して、ボタンごとに異なる商品名を選択する方法を学習します。
+クリックしたボタンに応じて関数を呼び出し、選択中の商品を画面に表示する方法を学びます。
 :::
 
 ::::
@@ -1132,18 +1153,30 @@ export default function Sample2_4() {
 
 :::: {#page-35 .source-page}
 
-![選択中の商品がノートで、ノート、ボールペン、選択解除のボタンが並ぶ画面](assets/event-selection-browser.svg){#ch02-events-selection-browser}
-
-::: {#ch02-events-selection-browser-caption .paragraph}
-「ノートを選択」をクリックしたときの表示
-:::
-
 ::: {#ch02-events-syntax .heading level="minor"}
 構文の解説
 :::
 
+::: {#ch02-events-syntax-event .step}
+**① イベントとイベントハンドラー**
+:::
+
+::: {#ch02-events-definition-event .paragraph}
+ボタンを押した、マウスポインターが要素に入った、入力欄の値が変わったといった出来事を **イベント** と呼びます。イベントが起きたときに呼び出す関数が **イベントハンドラー** です。
+:::
+
+::: {#ch02-events-definition-onclick .paragraph}
+クリックに応じて処理を実行するときは、JSXのボタンに `onClick` 属性を書きます。そこに関数を指定すると、Reactがクリックイベントと関数を結び付けます。例えば、このサンプルでは［選択を解除］を押したときに `clearSelection` が呼び出されます。
+:::
+
+![JSXのonClickで関連付けたclearSelectionが、選択を解除のクリック時に実行される](assets/event-click-action.svg){#ch02-events-click-action}
+
+::: {#ch02-events-click-action-caption .paragraph}
+クリックイベントとイベントハンドラーの対応
+:::
+
 ::: {#ch02-events-syntax-handler .step}
-**① イベントハンドラーを指定する**
+**② 引数を必要としないイベントハンドラーを指定する**
 :::
 
 ::: {#ch02-events-clear-source .code filename="ch02-basic/src/components/Sample2_4.tsx"}
@@ -1151,42 +1184,40 @@ export default function Sample2_4() {
 10:  const clearSelection = () => {
 11:    setSelectedName('未選択')
 12:  }
-27:      <button className="btn btn-secondary"
 28:        onClick={clearSelection}>
-29:        選択を解除
-30:      </button>
 ```
 :::
 
-::: {#ch02-events-handler-1 .paragraph}
-`clearSelection` は、選択中の商品名を「未選択」に戻すための関数です。
-:::
-
-::: {#ch02-events-handler-2 .paragraph}
-`onClick={clearSelection}` と記述すると、［選択を解除］ボタンがクリックされたときに、この関数が実行されます。
-:::
-
-::: {#ch02-events-handler-3 .paragraph}
-ここで注意したいのは、関数名の後ろに `()` を付けないことです。
-:::
-
-::: {#ch02-events-handler-table .table column-widths="1 2.1"}
-| 記述 | 意味 |
-|---|---|
-| `onClick={clearSelection}` | クリック時に実行する関数を指定する |
-| `onClick={clearSelection()}` | 画面を作成する処理の途中で関数を呼び出してしまう（今回の関数では誤り） |
-:::
-
 ::: {#ch02-events-handler-reference .paragraph}
-クリック時に実行したい関数を指定する場合は、関数の実行結果ではなく、関数そのものを渡します。
+`clearSelection` は、選択中の商品を「未選択」に戻す関数です。`onClick={clearSelection}` では、クリック時に呼べるよう、描画の段階では関数そのものを渡します。
 :::
 
 ::::
 
 :::: {#page-36 .source-page}
 
+::: {#ch02-events-handler-mistake-title .step}
+誤った書き方
+:::
+
+::: {#ch02-events-handler-call-example .code example="true"}
+```tsx
+onClick={clearSelection()}
+```
+:::
+
+::: {#ch02-events-handler-call .paragraph}
+JavaScriptで関数名の後ろに `()` を付けると、評価した時点で関数を呼び出します。この書き方では、クリックを待たずにレンダリング中に `clearSelection()` が実行されます。戻り値がない関数なので、`onClick` に必要な関数を渡せず、TypeScriptでも型のエラーになります。
+:::
+
+![clearSelectionはクリック時に実行され、clearSelection()と書くとレンダリング中に実行される](assets/event-handler-compare.svg){#ch02-events-handler-timing}
+
+::: {#ch02-events-handler-timing-caption .paragraph}
+括弧の有無で関数を呼び出す時点が変わる
+:::
+
 ::: {#ch02-events-syntax-argument .step}
-**② 引数を受け取るイベントハンドラーを定義する**
+**③ 引数を受け取るイベントハンドラーを定義する**
 :::
 
 ::: {#ch02-events-selection-source .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="6"}
@@ -1197,26 +1228,22 @@ export default function Sample2_4() {
 ```
 :::
 
-::: {#ch02-events-argument-1 .paragraph}
-今回のサンプルでは、ノートを選択した場合もボールペンを選択した場合も、商品名をstateに設定するという処理は同じです。
-:::
-
-::: {#ch02-events-argument-2 .paragraph}
-そこで、商品名を引数として受け取る `showSelection` 関数を定義しています。`setSelectedName(name)` によって、受け取った商品名をstateに設定します。
-:::
-
-::: {#ch02-events-argument-3 .paragraph}
-例えば、`showSelection('ノート')` が実行されると、選択中の商品名が「ノート」になります。
+::: {#ch02-events-argument-value .paragraph}
+ノートを選ぶ場合もボールペンを選ぶ場合も、選択中の商品名を更新する処理は共通です。`showSelection` は、渡された商品名を `name` で受け取り、`setSelectedName(name)` に渡します。商品名だけを変えれば、どのボタンでも同じ関数を使えます。
 :::
 
 ::: {#ch02-events-type-note .training-note}
-【補足】TypeScriptで引数の型を指定する
+【補足】TypeScriptでは引数に型を指定する
 
-`name: string` は、引数 `name` が文字列を受け取ることを表しています。TypeScriptでは、自分で定義する関数の引数の型が推論できない場合は、`name: string` や `id: number` のように型を指定します。本研修では、引数を受け取る関数の型は明示することを基本とします。これにより、異なる型の値を渡した場合に型チェックで不一致を検出できます。
+`name: string` の `name` は引数の名前、`string` は受け取る値の型です。例えば `showSelection('ノート')` は文字列を渡しています。`showSelection(1)` のように数値を渡すと、TypeScriptが開発中に型の不一致を検出します。
 :::
 
+::::
+
+:::: {#page-37 .source-page}
+
 ::: {#ch02-events-syntax-arrow .step}
-**③ アロー関数を使用して引数を渡す**
+**④ アロー関数を使用して引数を渡す**
 :::
 
 ::: {#ch02-events-buttons-source .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="19"}
@@ -1232,32 +1259,63 @@ export default function Sample2_4() {
 ```
 :::
 
-::: {#ch02-events-arrow-timing .paragraph}
-商品名を引数として渡したい場合、`onClick={showSelection('ノート')}` と書くと、クリックする前に関数が実行されてしまいます。
+::: {#ch02-events-arrow-function .paragraph}
+`onClick` には、クリック時に呼び出せる関数を渡します。`() => showSelection('ノート')` はアロー関数で、`=>` の右側に書いた `showSelection('ノート')` が、この関数を呼び出したときに行う処理です。先頭の `()` は引数を並べる場所です。この例ではクリックイベントの情報を使わないので、空にしています。
+:::
+
+::: {#ch02-events-arrow-click .paragraph}
+レンダリング中は、このアロー関数を作って `onClick` に渡します。ボタンがクリックされたときにReactがアロー関数を呼び出し、その中で初めて `showSelection` に「ノート」を渡します。ボールペンのボタンでは、同じ仕組みで「ボールペン」を渡します。
+:::
+
+::: {#ch02-events-arrow-mistake .paragraph}
+`onClick={showSelection('ノート')}` と書くと、②の `clearSelection()` と同じく、レンダリング中に関数を実行してしまいます。引数のある処理をクリックまで待たせるために、ここではアロー関数で包みます。
+:::
+
+![ノートとボールペンの各ボタンが、商品名の文字列を同じshowSelection関数に渡す](assets/event-handler-arguments.svg){#ch02-events-handler-arguments}
+
+::: {#ch02-events-handler-arguments-caption .paragraph}
+二つのボタンから同じ関数へ異なる商品名を渡す
 :::
 
 ::::
 
-:::: {#page-37 .source-page}
+:::: {#page-38 .source-page}
 
-::: {#ch02-events-arrow-1 .paragraph}
-そこで、`onClick={() => showSelection('ノート')}` のように、クリック時に `showSelection('ノート')` を実行するアロー関数を指定します。
+::: {#ch02-events-timing-summary .step}
+関数の渡し方と実行のタイミング
 :::
 
-::: {#ch02-events-arrow-2 .paragraph}
-ノートとボールペンのボタンでは、同じ `showSelection` 関数を使用していますが、渡す引数が異なります。このように、引数を利用することで共通の関数を使い回せます。
-:::
-
-::: {#ch02-events-arrow-table .table column-widths="1.3 1"}
-| 書き方 | 主な用途 |
+::: {#ch02-events-arrow-table .table column-widths="1.25 1.15"}
+| 書き方 | いつ何を実行するか |
 |---|---|
-| `onClick={clearSelection}` | 引数を指定せずに関数を実行する |
-| `onClick={() => showSelection('ノート')}` | 引数を渡して関数を実行する |
+| `onClick={clearSelection}` | クリック時に関数を実行する |
+| `onClick={() => showSelection('ノート')}` | クリック時に「ノート」を渡して関数を実行する |
+| `onClick={showSelection('ノート')}` | レンダリング中に関数を実行してしまう |
 :::
 
-::: {#ch02-events-arrow-state .paragraph}
-`showSelection` や `clearSelection` で `setSelectedName()` を実行すると、前節で学習したstateの更新によって、JSXの `{selectedName}` に新しい商品名が反映されます。
+::: {#ch02-events-syntax-flow .step}
+**⑤ イベント処理から画面が更新されるまでの流れ**
 :::
+
+::: {#ch02-events-selected-source .code filename="ch02-basic/src/components/Sample2_4.tsx" start-line="17"}
+```tsx
+      <p>選択中の商品：{selectedName}</p>
+```
+:::
+
+::: {#ch02-events-flow-result .paragraph}
+［ノートを選択］を押すと、クリック時の処理から `showSelection` に「ノート」が渡り、`setSelectedName` がstateの更新をReactに伝えます。再レンダリングすると、17行目の `{selectedName}` に新しい値が入り、「選択中の商品：ノート」と表示されます。
+:::
+
+![クリック、showSelection、setSelectedName、再レンダリング、選択中の商品名の更新](assets/event-selection-flow.svg){#ch02-events-selection-flow}
+
+::: {#ch02-events-selection-flow-caption .paragraph}
+商品を選ぶ操作が、画面の表示に反映されるまで
+:::
+
+::::
+
+:::: {#page-39 .source-page}
 
 ::: {#ch02-events-other-note .training-note}
 【補足】その他のイベント
@@ -1279,10 +1337,6 @@ Reactでは、クリック以外にも次のようなイベントを扱えます
 ::: {#ch02-events-other-next .paragraph}
 フォーム入力で使用する `onChange` は、2.7節で詳しく学習します。
 :::
-
-::::
-
-:::: {#page-38 .source-page}
 
 ::: {#ch02-events-practice .heading level="minor"}
 【確認演習】商品の選択イベントを実装する
@@ -1311,6 +1365,10 @@ Reactでは、クリック以外にも次のようなイベントを扱えます
 ::: {#ch02-events-practice-5 .paragraph numbered="true"}
 5．　メニューから「2.4 イベント処理」を選んでください。
 :::
+
+::::
+
+:::: {#page-40 .source-page}
 
 ::: {#ch02-events-practice-check .heading level="minor"}
 動作確認

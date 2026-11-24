@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="367" height="142" viewBox="0 0 367 142">
   <text x="8" y="19" font-size="11" fill="#205c84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">JSXの記述</text>
   <rect x="4" y="28" width="166" height="92" rx="5" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
-  <text x="14" y="56" font-size="12" fill="#205c84" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">onClick={showMessage}</text>
-  <path d="M 69 60 H 135" stroke="#205c84" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="14" y="56" font-size="12" fill="#205c84" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">onClick={clearSelection}</text>
+  <path d="M 69 60 H 153" stroke="#205c84" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="14" y="81" font-size="10.2" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">クリック時に実行する</text>
   <text x="14" y="99" font-size="10.2" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">関数を指定する</text>
   <path d="M 172 66 L 192.40 66.00" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,10 +11,10 @@
   <rect x="201" y="6" width="162" height="20" rx="5" fill="#edf5f9" stroke="#b4c6d5" stroke-width="0.8"/>
   <text x="211" y="19" font-size="9.5" fill="#435b6b" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ブラウザー</text>
   <rect x="215" y="36" width="68" height="20" rx="4" fill="#ffffff" stroke="#0d6efd" stroke-width="0.8"/>
-  <text x="249" y="50" font-size="9.2" fill="#0d6efd" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">クリック</text>
+  <text x="249" y="50" font-size="9.2" fill="#0d6efd" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">選択を解除</text>
   <path d="M 249 58 L 249.00 63.40" stroke="#205c84" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M 249 68 L 251.50 63.40 L 246.50 63.40 Z" stroke="#205c84" fill="#205c84" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="211" y="71" width="142" height="53" rx="4" fill="#f5f8fa" stroke="#b4c6d5" stroke-width="0.8"/>
-  <text x="219" y="87" font-size="9.4" fill="#435b6b" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">メッセージ</text>
-  <text x="219" y="108" font-size="9.1" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ボタンがクリックされました</text>
+  <text x="219" y="87" font-size="9.4" fill="#435b6b" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">クリック時に呼び出す関数</text>
+  <text x="219" y="108" font-size="9.1" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">clearSelection()</text>
 </svg>
