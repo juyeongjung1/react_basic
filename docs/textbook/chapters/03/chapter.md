@@ -750,7 +750,7 @@ function ProductCard(props: ProductCardProps) {
 :::
 ::::
 
-:::: {#page-5 .source-page}
+::::: {#page-5 .source-page}
 ::: {#ch03-router-title .heading}
 3.2. React Routerによるルーティング
 :::
@@ -761,19 +761,19 @@ React Routerによるルーティング
 ![React Routerによるルーティング](assets/router-slide.svg)
 :::
 
-::: {#ch03-router-m44 .heading level="minor"}
+::: {#ch03-router-r31 .heading level="minor"}
 複数の画面を持つアプリケーションを作るには
 :::
 
-::: {#ch03-router-m46 .paragraph}
+::: {#ch03-router-r33 .paragraph}
 前節では、商品カードを独立したコンポーネントとして作成し、Propsを使用して、商品ごとに異なる情報を表示する方法を学習しました。
 :::
 
-::: {#ch03-router-m48 .paragraph}
+::: {#ch03-router-r35 .paragraph}
 実際の商品管理システムには、商品一覧以外にも、さまざまな画面が必要です。例えば、次の3つの画面を持つシステムを考えてみましょう。
 :::
 
-::: {#ch03-router-m50 .table column-widths="27 73"}
+::: {#ch03-router-r37 .table column-widths="27 73"}
 | 画面 | 主な役割 |
 |---|---|
 | ホーム画面 | システムのトップページを表示する。 |
@@ -781,100 +781,100 @@ React Routerによるルーティング
 | ご利用案内画面 | システムの使い方などを表示する。 |
 :::
 
-::: {#ch03-router-m56 .paragraph}
+::: {#ch03-router-r43 .paragraph}
 これらの画面は、それぞれReactのコンポーネントとして作成できます。
 :::
 
-::: {#ch03-router-m58 .paragraph}
+::: {#ch03-router-r45 .paragraph}
 では、ユーザーが商品一覧のURLにアクセスした場合に、どのようにして商品一覧画面を表示すればよいのでしょうか。
 :::
 
-::: {#ch03-router-m60 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r47 .paragraph punctuation-font="inherit"}
 このように、**アクセスしたURLに応じて表示する画面を決定する仕組み**を、ルーティングと呼びます。
 :::
 
-::: {#ch03-router-m62 .heading level="minor"}
+::: {#ch03-router-r49 .heading level="minor"}
 React Routerとは
 :::
 
-::: {#ch03-router-m64 .paragraph}
+::: {#ch03-router-r51 .paragraph}
 Reactは、画面を作成したり、データの変更を画面に反映したりするためのライブラリです。しかし、React単体では、URLと表示する画面の対応関係まで自動的に管理するわけではありません。
 :::
 
-::: {#ch03-router-m66 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r53 .paragraph punctuation-font="inherit"}
 そこで、本研修では **React Router（リアクトルーター）** というライブラリを使用します。
 :::
 
-::: {#ch03-router-m68 .paragraph}
-React Routerを使用すると、次のように、URLのパスと表示するコンポーネントを対応付けることができます。
+::: {#ch03-router-r55 .paragraph}
+例えば、1つの商品管理システムを開発する場合、次のように、URLのパスと表示するコンポーネントを対応付けることができます。
 :::
 
-::: {#ch03-router-m70 .table column-widths="30 46 24"}
+::: {#ch03-router-r57 .table column-widths="30 46 24"}
 | URLのパス | 表示するコンポーネント | 画面 |
 |---|---|---|
-| `/sample-3-2` | `HomePage` | ホーム |
-| `/sample-3-2/products` | `ProductListPage` | 商品一覧 |
-| `/sample-3-2/guide` | `GuidePage` | ご利用案内 |
+| `/` | `HomePage` | ホーム |
+| `/products` | `ProductListPage` | 商品一覧 |
+| `/guide` | `GuidePage` | ご利用案内 |
 :::
 
-::: {#ch03-router-m76 .paragraph}
-例えば、次のURLのうち、`/sample-3-2/products` がパスに該当します。
+::: {#ch03-router-r63 .paragraph}
+例えば、次のURLのうち、`/products` がパスに該当します。
 :::
 
-::: {#ch03-router-m78 .paragraph}
-`http://localhost:5173/sample-3-2/products`
+::: {#ch03-router-r65 .paragraph}
+`http://localhost:5173/products`
 :::
 
-::: {#ch03-router-m80 .table column-widths="17 28 55"}
+::: {#ch03-router-r67 .table column-widths="20 25 55"}
 | 部分 | 例 | 意味 |
 |---|---|---|
 | スキーム | `http` | 通信に使用する方式。 |
 | ホスト名 | `localhost` | 接続先のコンピューター。 |
 | ポート番号 | `5173` | 接続先のプログラムを区別する番号。 |
-| パス | `/sample-3-2/products` | 今回、表示する画面を区別するために使用する部分。 |
+| パス | `/products` | 今回、表示する画面を区別するために使用する部分。 |
 :::
 
-::: {#ch03-router-m87 .paragraph}
+::: {#ch03-router-r74 .paragraph}
 React Routerは、現在のURLのパスに対応するルートを選択し、そのルートに指定されたコンポーネントを表示します。
 :::
 
-![URLのパスに対応する画面のコンポーネントを表示する](assets/router-path.svg){#ch03-router-figure-path}
+![URLのパスに対応する画面のコンポーネントを表示する（通常構成の例）](assets/router-path.svg){#ch03-router-figure-path}
 
 ::: {#ch03-router-figure-path-caption .caption}
-URLのパスに対応する画面のコンポーネントを表示する
+URLのパスに対応する画面のコンポーネントを表示する（通常構成の例）
 :::
 
-::: {#ch03-router-m95 .heading level="minor"}
+::: {#ch03-router-r82 .heading level="minor"}
 React Routerの導入
 :::
 
-::: {#ch03-router-m97 .paragraph}
+::: {#ch03-router-r84 .paragraph}
 React RouterはReactとは別のライブラリです。新しいプロジェクトで使用する場合は、次のコマンドを実行してインストールします。
 :::
 
-::: {#ch03-router-m100 .code example="true" code-label="コンソールの記述例"}
+::: {#ch03-router-r87 .code code-label="コンソールの記述例" example="true"}
 ~~~bash
 npm install react-router
 ~~~
 :::
 
-::: {#ch03-router-m104 .paragraph}
+::: {#ch03-router-r91 .paragraph}
 このコマンドを実行すると、React Routerがインストールされ、プロジェクトの `package.json` に依存ライブラリとして登録されます。
 :::
 
-::: {#ch03-router-m106 .paragraph}
+::: {#ch03-router-r93 .paragraph}
 本研修では、React Routerがあらかじめ登録されたプロジェクトを使用します。初回の起動時に `npm install` を実行すれば、必要なライブラリがインストールされるため、React Routerを個別にインストールする必要はありません。
 :::
 
-::: {#ch03-router-m108 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r95 .paragraph punctuation-font="inherit"}
 React Routerには、いくつかの利用方式があります。本研修では、JSXでルートを定義する **Declarative Mode（宣言的なルーティング方式）** を使用します。
 :::
 
-::: {#ch03-router-m110 .paragraph}
+::: {#ch03-router-r97 .paragraph}
 この節では、主に次の3つのコンポーネントを学習します。
 :::
 
-::: {#ch03-router-m112 .table column-widths="28 72"}
+::: {#ch03-router-r99 .table column-widths="29 71"}
 | コンポーネント | 役割 |
 |---|---|
 | `BrowserRouter` | ブラウザーのURLを利用してルーティングを管理する。 |
@@ -882,113 +882,83 @@ React Routerには、いくつかの利用方式があります。本研修で�
 | `Route` | URLのパスと表示するReact要素の対応関係を定義する。 |
 :::
 
-::: {#ch03-router-m118 .heading level="minor"}
+::: {#ch03-router-r105 .heading level="minor"}
 画面とルーティングの設定を別々に管理する
 :::
 
-::: {#ch03-router-m120 .paragraph}
-ここからは、複数の画面を持つアプリケーションを開発します。そのため、これまでのように1つのファイルに画面の構成をまとめるのではなく、ファイルを役割ごとに分けて管理します。
+::: {#ch03-router-r107 .paragraph}
+ここからは、複数の画面を持つアプリケーションを開発します。そのため、ファイルを役割ごとに分けて管理します。
 :::
 
-::: {#ch03-router-m122 .paragraph}
-例えば、商品一覧を表示する画面と、その画面へのURLを設定する処理は、別々の役割を持っています。これらを別のファイルとして管理すると、画面の内容を修正する場合と、画面を追加・変更する場合とで、編集するファイルを区別できます。
+::: {#ch03-router-r109 .paragraph}
+例えば、商品一覧を表示する画面と、その画面へのURLを設定する処理は、別々の役割を持っています。これらを別のファイルとして管理すると、画面の表示内容を修正する場合と、URLとの対応関係を変更する場合とで、編集するファイルを区別できます。
 :::
 
-::: {#ch03-router-m124 .paragraph}
-本研修では、次のフォルダー構成を基本とします。
+::: {#ch03-router-r111 .paragraph}
+本研修では、1つの商品管理システムを開発する場合に、次のようなフォルダー構成を基本とします。
 :::
 
-::: {#ch03-router-m126 .table column-widths="24 76"}
-| フォルダー | 格納するファイル |
-|---|---|
-| `components` | 商品カードなど、画面を構成する再利用可能な部品。 |
-| `pages` | ホーム画面や商品一覧画面など、ルーティングの対象となる画面。 |
-| `routes` | URLと画面の対応関係を定義するファイル。 |
-| `layouts` | 複数の画面で使用する共通レイアウト。次の3.3節で追加する。 |
-:::
-
-::: {#ch03-router-m133 .paragraph punctuation-font="inherit"}
-`pages` に配置する画面も、`components` に配置する部品も、Reactのコンポーネントです。**フォルダーを分けているのは、それぞれの役割を明確にするためです。**
-:::
-
-::: {#ch03-router-m135 .paragraph}
-なお、Reactには、このフォルダー名やファイルの分け方を必ず使用しなければならないというルールはありません。今回は、今後の機能追加や修正を行いやすい構成として、この分け方を採用します。
-:::
-::::
-
-:::: {#page-6 .source-page}
-::: {#ch03-router-m137 .heading level="minor"}
-【サンプル】URLに応じた画面の切り替え
-:::
-
-::: {#ch03-router-m139 .paragraph}
-今回は、ホーム・商品一覧・ご利用案内の3つの画面を別々のファイルとして用意し、ルーティングを設定します。
-:::
-
-::: {#ch03-router-m141 .paragraph}
-配布サンプルの `ch03-basic` プロジェクトを開き、次のファイル構成を確認してください。
-:::
-
-::: {#ch03-router-m144 .code example="true" code-label="フォルダー構成"}
+::: {#ch03-router-r114 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
 ~~~text
-ch03-basic/
-└─ src/
-   ├─ components/
-   │  ├─ ProductCard.tsx       （3.1）
-   │  ├─ Sample3_1.tsx        （3.1）
-   │  └─ Sample3_2.tsx        （教材メニューとの接続用）
-   ├─ samples/
-   │  └─ sample3_2/
-   │     ├─ components/
-   │     │  └─ ProductCard.tsx
-   │     ├─ pages/
-   │     │  ├─ HomePage.tsx
-   │     │  ├─ ProductListPage.tsx
-   │     │  └─ GuidePage.tsx
-   │     └─ routes/
-   │        └─ AppRoutes.tsx
-   ├─ App.tsx
-   └─ main.tsx
+src/
+├─ components/
+│  └─ ProductCard.tsx
+├─ pages/
+│  ├─ HomePage.tsx
+│  ├─ ProductListPage.tsx
+│  └─ GuidePage.tsx
+├─ routes/
+│  └─ AppRoutes.tsx
+├─ App.tsx
+└─ main.tsx
 ~~~
 :::
 
-::: {#ch03-router-m165 .paragraph}
-※ 3.2に関係するファイルのみを抜粋しています。
+::: {#ch03-router-r128 .table column-widths="31 69"}
+| フォルダー・ファイル | 役割 |
+|---|---|
+| `components/` | 商品カードなど、再利用する画面の部品を格納する。 |
+| `pages/` | ホーム画面や商品一覧画面など、ルーティングの対象となる画面を格納する。 |
+| `routes/` | URLと画面の対応関係を定義するファイルを格納する。 |
+| `App.tsx` | アプリケーションのルートコンポーネントを定義する。 |
+| `main.tsx` | アプリケーションの起動処理を記述する。 |
 :::
 
-::: {#ch03-router-m167 .paragraph}
-本研修では、前の節の完成サンプルを残しながら学習できるように、`samples` の下に節ごとのフォルダーを用意します。今回使用するフォルダーは `sample3_2` です。
+::: {#ch03-router-r136 .paragraph punctuation-font="inherit"}
+`pages` に配置する画面も、`components` に配置する部品も、Reactのコンポーネントです。**フォルダーを分けているのは、それぞれの役割を明確にするためです。**
 :::
 
-::: {#ch03-router-m169 .paragraph punctuation-font="inherit"}
-通常のアプリケーションでは、学習する節ごとにフォルダーを分ける必要はありません。今回は、**各節のサンプルを独立して実行するための研修用の構成**として用意しています。
+::: {#ch03-router-r138 .paragraph}
+なお、Reactには、このフォルダー名やファイルの分け方を必ず使用しなければならないというルールはありません。本研修では、今後の機能追加や修正を行いやすい構成として、この分け方を採用します。次の3.3節では、共通レイアウトを格納する `layouts` フォルダーを追加します。
+:::
+:::::
+
+::::: {#page-6 .source-page}
+::: {#ch03-router-r140 .heading level="minor"}
+【サンプル】URLに応じた画面の切り替え
 :::
 
-::: {#ch03-router-m171 .training-note}
-**【補足】3.1で作成した商品カードの再利用**
-
-`sample3_2/components/ProductCard.tsx` は、3.1節で使用した `src/components/ProductCard.tsx` と同じソースコードです。
-
-また、`sample3_2/pages/ProductListPage.tsx` は、3.1節の `Sample3_1.tsx` を基に、商品一覧画面として用意したものです。コンポーネント名と商品カードの読み込み先を変更していますが、商品データやPropsの受け渡し、カードの表示処理は同じです。
-
-同じ名前の `ProductCard.tsx` が複数存在しますが、格納されているフォルダーが異なるため、別々のファイルとして管理できます。3.2のサンプルで使用するのは、`sample3_2` 内のファイルです。
+::: {#ch03-router-r142 .paragraph}
+まず、1つの商品管理システムを開発する通常の構成で、ルーティングの書き方を確認しましょう。
 :::
 
-![3.1の画面表示を維持し、3.2のサンプル内で独立して使用する](assets/router-product-reuse.svg){#ch03-router-figure-reuse}
-
-::: {#ch03-router-figure-reuse-caption .caption}
-3.1の画面表示を維持し、3.2のサンプル内で独立して使用する
+::: {#ch03-router-r144 .paragraph}
+今回は、ホーム・商品一覧・ご利用案内の3つの画面を別々のファイルとして用意します。3.1節で学習した商品カードのコードはそのまま活用し、商品一覧画面には、前節の一覧表示と同じ処理を記述します。
 :::
 
-::: {#ch03-router-m185 .step}
+::: {#ch03-router-r146 .paragraph}
+以下のコードは、先ほどの通常のフォルダー構成を使用する場合の記述例です。本研修の配布サンプルで動作を確認する方法については、構文の解説の後に説明します。
+:::
+
+::: {#ch03-router-r148 .paragraph punctuation-font="inherit"}
 **画面を定義するファイル**
 :::
 
-::: {#ch03-router-m187 .paragraph}
-まず、ホーム画面を定義する `HomePage.tsx` と、ご利用案内画面を定義する `GuidePage.tsx` を確認しましょう。
+::: {#ch03-router-r150 .paragraph}
+`pages/HomePage.tsx` と `pages/GuidePage.tsx` では、それぞれホーム画面とご利用案内画面を定義します。
 :::
 
-::: {#ch03-router-m190 .code filename="ch03-basic/src/samples/sample3_2/pages/HomePage.tsx" start-line="1"}
+::: {#ch03-router-r153 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/pages/HomePage.tsx"}
 ~~~tsx
 export default function HomePage() {
   return (
@@ -1001,7 +971,7 @@ export default function HomePage() {
 ~~~
 :::
 
-::: {#ch03-router-m202 .code filename="ch03-basic/src/samples/sample3_2/pages/GuidePage.tsx" start-line="1"}
+::: {#ch03-router-r165 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/pages/GuidePage.tsx"}
 ~~~tsx
 export default function GuidePage() {
   return (
@@ -1014,31 +984,29 @@ export default function GuidePage() {
 ~~~
 :::
 
-::: {#ch03-router-m213 .paragraph}
-商品一覧画面は `ProductListPage.tsx` に定義しています。商品カードを読み込む部分は、次のとおりです。
+::: {#ch03-router-r176 .paragraph}
+商品一覧画面は `pages/ProductListPage.tsx` に定義します。このコンポーネントでは、前節までと同じ商品データと `map()` を使用して、商品カードを一覧表示します。商品カードを読み込む部分は、次のとおりです。
 :::
 
-::: {#ch03-router-m216 .code filename="ch03-basic/src/samples/sample3_2/pages/ProductListPage.tsx" start-line="1"}
+::: {#ch03-router-r179 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/pages/ProductListPage.tsx"}
 ~~~tsx
 import ProductCard from '../components/ProductCard'
-
-export default function ProductListPage() {
 ~~~
 :::
 
-::: {#ch03-router-m222 .paragraph}
-これらの画面は、これまでに学習したReactのコンポーネントと同じ方法で定義しています。
+::: {#ch03-router-r183 .paragraph}
+このように、ルーティングの対象となる画面も、これまでに学習したReactのコンポーネントと同じ方法で定義します。各画面にルーティング専用の処理を記述する必要はありません。
 :::
 
-::: {#ch03-router-m224 .step}
+::: {#ch03-router-r185 .paragraph punctuation-font="inherit"}
 **ルーティングを定義するファイル**
 :::
 
-::: {#ch03-router-m226 .paragraph}
-次に、3つの画面をURLに応じて表示するための `AppRoutes.tsx` を確認してください。
+::: {#ch03-router-r187 .paragraph}
+次に、3つの画面をURLに応じて表示するための `routes/AppRoutes.tsx` を用意します。
 :::
 
-::: {#ch03-router-m229 .code filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="1"}
+::: {#ch03-router-r190 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/routes/AppRoutes.tsx"}
 ~~~tsx
 import { Routes, Route } from 'react-router'
 import HomePage from '../pages/HomePage'
@@ -1048,28 +1016,50 @@ import GuidePage from '../pages/GuidePage'
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="" element={<HomePage />} />
-      <Route path="products" element={<ProductListPage />} />
-      <Route path="guide" element={<GuidePage />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/products" element={<ProductListPage />} />
+      <Route path="/guide" element={<GuidePage />} />
     </Routes>
   )
 }
 ~~~
 :::
 
-::: {#ch03-router-m246 .paragraph}
-このファイルには、各画面で表示する見出しや商品カードのデザインを記述していません。表示する画面のコンポーネントを読み込み、URLとの対応関係を定義しています。
+::: {#ch03-router-r207 .paragraph punctuation-font="inherit"}
+このファイルには、各画面で表示する見出しや商品カードのデザインを記述していません。**どのURLにアクセスしたときに、どの画面を表示するのか**を定義しています。
 :::
 
-::: {#ch03-router-m248 .step}
+::: {#ch03-router-r209 .paragraph punctuation-font="inherit"}
+**ルーティングの設定を使用するファイル**
+:::
+
+::: {#ch03-router-r211 .paragraph}
+`App.tsx` では、先ほど定義した `AppRoutes` コンポーネントを読み込み、使用します。
+:::
+
+::: {#ch03-router-r214 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/App.tsx"}
+~~~tsx
+import AppRoutes from './routes/AppRoutes'
+
+export default function App() {
+  return <AppRoutes />
+}
+~~~
+:::
+
+::: {#ch03-router-r222 .paragraph}
+この構成では、ルーティングの設定を `AppRoutes.tsx` にまとめているため、`App.tsx` に同じルートを記述する必要はありません。
+:::
+
+::: {#ch03-router-r224 .paragraph punctuation-font="inherit"}
 **アプリケーションの起動処理**
 :::
 
-::: {#ch03-router-m250 .paragraph}
-最後に、`main.tsx` の起動処理を確認してください。
+::: {#ch03-router-r226 .paragraph}
+最後に、`main.tsx` で、アプリケーション全体を `BrowserRouter` で囲みます。
 :::
 
-::: {#ch03-router-m253 .code filename="ch03-basic/src/main.tsx" start-line="1"}
+::: {#ch03-router-r229 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/main.tsx"}
 ~~~tsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -1087,79 +1077,75 @@ createRoot(document.getElementById('root')!).render(
 ~~~
 :::
 
-::: {#ch03-router-m269 .paragraph}
+::: {#ch03-router-r245 .paragraph}
 第1章で確認した起動処理に、`BrowserRouter` が追加されています。
 :::
 
-::: {#ch03-router-m271 .paragraph}
-ここまでのファイルは、配布サンプルにあらかじめ用意されています。`ch03-basic` の開発サーバーを起動し、メニューから「3.2 React Routerによるルーティング」を選択してください。
+::: {#ch03-router-r247 .paragraph}
+ここまでの構成を整理すると、`main.tsx` でアプリケーションを起動し、`App.tsx` で `AppRoutes` を使用します。そして、`AppRoutes.tsx` でURLに応じて表示する画面を定義します。
 :::
 
-::: {#ch03-router-m273 .paragraph}
-この節では、アドレスバーからURLを変更して3つの画面を表示します。リンクをクリックして画面を切り替える方法は、3.4節で学習します。
+![起動処理、ルーティングの設定、画面のコンポーネントを分けて管理する](assets/router-nesting.svg){#ch03-router-figure-nesting}
+
+::: {#ch03-router-figure-nesting-caption .caption}
+起動処理、ルーティングの設定、画面のコンポーネントを分けて管理する
 :::
 
-::: {#ch03-router-m275 .heading level="minor"}
+::: {#ch03-router-r255 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-router-m277 .step}
+::: {#ch03-router-r257 .step}
 **① BrowserRouterを設定する**
 :::
 
-::: {#ch03-router-m279 .paragraph}
+::: {#ch03-router-r259 .paragraph}
 React Routerの機能を使用するには、アプリケーションの中でルーティングを利用できるように設定する必要があります。
 :::
 
-::: {#ch03-router-m281 .paragraph}
+::: {#ch03-router-r261 .paragraph}
 まず、`main.tsx` では、React Routerから `BrowserRouter` を読み込んでいます。
 :::
 
-::: {#ch03-router-m284 .code filename="ch03-basic/src/main.tsx" start-line="3"}
+::: {#ch03-router-r264 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/main.tsx"}
 ~~~tsx
 import { BrowserRouter } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-router-m288 .paragraph}
+::: {#ch03-router-r268 .paragraph}
 続いて、次のように、アプリケーションのルートとなる `App` コンポーネントを囲んでいます。
 :::
 
-::: {#ch03-router-m291 .code filename="ch03-basic/src/main.tsx" start-line="9"}
+::: {#ch03-router-r271 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/main.tsx"}
 ~~~tsx
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+<BrowserRouter>
+  <App />
+</BrowserRouter>
 ~~~
 :::
 
-::: {#ch03-router-m297 .paragraph}
+::: {#ch03-router-r277 .paragraph}
 `BrowserRouter` は、ブラウザーの現在のURLなどの情報を扱うためのコンポーネントです。
 :::
 
-::: {#ch03-router-m299 .paragraph}
-`App` を `BrowserRouter` で囲むことによって、その内側のコンポーネントで、React Routerのルーティングの機能を使用できるようになります。
+::: {#ch03-router-r279 .paragraph}
+`App` を `BrowserRouter` で囲むことによって、その内側のコンポーネントでReact Routerの機能を使用できるようになります。
 :::
 
-::: {#ch03-router-m301 .paragraph punctuation-font="inherit"}
-**本研修では、アプリケーション全体を囲むBrowserRouterを、main.tsxに1つだけ設定します。** 各画面や各節の `AppRoutes.tsx` に、別の `BrowserRouter` を追加する必要はありません。
+::: {#ch03-router-r281 .paragraph punctuation-font="inherit"}
+**本研修では、アプリケーション全体を囲むBrowserRouterをmain.tsxに1つ設定します。** 各画面や `AppRoutes.tsx` に別の `BrowserRouter` を追加する必要はありません。
 :::
 
-![BrowserRouterでアプリケーションを囲み、内部でルーティングを利用する](assets/router-nesting.svg){#ch03-router-figure-nesting}
-
-::: {#ch03-router-figure-nesting-caption .caption}
-BrowserRouterでアプリケーションを囲み、内部でルーティングを利用する
-:::
-
-::: {#ch03-router-m309 .step}
+::: {#ch03-router-r283 .step}
 **② 各画面のコンポーネントを読み込む**
 :::
 
-::: {#ch03-router-m311 .paragraph}
+::: {#ch03-router-r285 .paragraph}
 画面のコンポーネントを別々のファイルに定義したため、ルーティングを定義するファイルでは、必要なコンポーネントを読み込んで使用します。
 :::
 
-::: {#ch03-router-m314 .code filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="1"}
+::: {#ch03-router-r288 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/routes/AppRoutes.tsx"}
 ~~~tsx
 import { Routes, Route } from 'react-router'
 import HomePage from '../pages/HomePage'
@@ -1168,19 +1154,15 @@ import GuidePage from '../pages/GuidePage'
 ~~~
 :::
 
-::: {#ch03-router-m321 .paragraph}
-1行目では、React Routerの `Routes` と `Route` を読み込んでいます。
+::: {#ch03-router-r295 .paragraph}
+最初の行では、React Routerの `Routes` と `Route` を読み込んでいます。続く3行では、`pages` フォルダーにある3つの画面のコンポーネントを読み込んでいます。
 :::
 
-::: {#ch03-router-m323 .paragraph}
-2～4行目では、`pages` フォルダーにある3つのコンポーネントを読み込んでいます。
-:::
-
-::: {#ch03-router-m325 .paragraph}
+::: {#ch03-router-r297 .paragraph}
 ここで、import先のパスに注目してください。`AppRoutes.tsx` は `routes` フォルダーにあります。そのため、`../pages/HomePage` と記述することで、1つ上のフォルダーに移動し、`pages` フォルダーにある `HomePage.tsx` を読み込むことができます。
 :::
 
-::: {#ch03-router-m327 .paragraph}
+::: {#ch03-router-r299 .paragraph}
 `ProductListPage.tsx` から商品カードを読み込む際も、同じ考え方で `../components/ProductCard` と記述しています。
 :::
 
@@ -1190,62 +1172,58 @@ import GuidePage from '../pages/GuidePage'
 役割ごとに分けたファイルをimportで読み込む
 :::
 
-::: {#ch03-router-m335 .paragraph}
-このように、ファイルを別々のフォルダーに分けて管理している場合でも、importを使用して必要なコンポーネントを組み合わせることができます。
-:::
-
-::: {#ch03-router-m337 .step}
+::: {#ch03-router-r307 .step}
 **③ RoutesとRouteでURLと画面を対応付ける**
 :::
 
-::: {#ch03-router-m339 .paragraph}
-ここからは、`AppRoutes.tsx` に記述されているルートの定義を確認します。
+::: {#ch03-router-r309 .paragraph}
+ここからは、通常のアプリケーションの `AppRoutes.tsx` に記述されているルートの定義を確認します。
 :::
 
-::: {#ch03-router-m342 .code filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="8"}
+::: {#ch03-router-r312 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/routes/AppRoutes.tsx"}
 ~~~tsx
-    <Routes>
-      <Route path="" element={<HomePage />} />
-      <Route path="products" element={<ProductListPage />} />
-      <Route path="guide" element={<GuidePage />} />
-    </Routes>
+<Routes>
+  <Route path="/" element={<HomePage />} />
+  <Route path="/products" element={<ProductListPage />} />
+  <Route path="/guide" element={<GuidePage />} />
+</Routes>
 ~~~
 :::
 
-::: {#ch03-router-m350 .paragraph}
-`Routes` は、複数の `Route` をまとめるためのコンポーネントです。
+::: {#ch03-router-r320 .paragraph}
+`Routes` は、複数の `Route` をまとめるためのコンポーネントです。React Routerは、`Routes` の中のルートの定義から、現在のURLに対応するものを選択します。
 :::
 
-::: {#ch03-router-m352 .paragraph}
+::: {#ch03-router-r322 .paragraph}
 `Route` は、URLのパスと、表示するReact要素の対応関係を定義するために使用します。
 :::
 
-::: {#ch03-router-m354 .paragraph}
+::: {#ch03-router-r324 .paragraph}
 例えば、商品一覧画面に対応するルートは、次のように記述しています。
 :::
 
-::: {#ch03-router-m357 .code filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="10"}
+::: {#ch03-router-r327 .code code-label="TSXの記述例（通常構成・抜粋）" example="true" filename="src/routes/AppRoutes.tsx"}
 ~~~tsx
-      <Route path="products" element={<ProductListPage />} />
+<Route path="/products" element={<ProductListPage />} />
 ~~~
 :::
 
-::: {#ch03-router-m361 .paragraph}
+::: {#ch03-router-r331 .paragraph}
 この記述では、`Route` に次の2つの属性を指定しています。
 :::
 
-::: {#ch03-router-m363 .table column-widths="22 78"}
+::: {#ch03-router-r333 .table column-widths="27 73"}
 | 属性 | 役割 |
 |---|---|
 | `path` | どのURLのパスに対応するかを指定する。 |
 | `element` | そのルートに一致したときに表示するReact要素を指定する。 |
 :::
 
-::: {#ch03-router-m368 .paragraph}
-`path="products"` は、今回のサンプルの入口に続く `products` というパスを指定しています。
+::: {#ch03-router-r338 .paragraph}
+`path="/products"` は、サイトのルートを基準とする商品一覧のURLのパスを指定しています。先頭の `/` から始まる、このような指定方法を絶対パスと呼びます。
 :::
 
-::: {#ch03-router-m370 .paragraph}
+::: {#ch03-router-r340 .paragraph}
 また、`element={<ProductListPage />}` では、表示する画面として `ProductListPage` コンポーネントを指定しています。`element` に設定するのはコンポーネントの名前を表す文字列ではなく、JSXで記述したReact要素です。
 :::
 
@@ -1255,169 +1233,266 @@ import GuidePage from '../pages/GuidePage'
 pathとelementでURLのパスと画面を対応付ける
 :::
 
-::: {#ch03-router-m378 .step}
-**④ サンプルの入口と各画面のURLの関係**
+::: {#ch03-router-r348 .paragraph}
+ホーム画面の場合は `path="/"`、ご利用案内画面の場合は `path="/guide"` と指定します。このように、画面ごとのルートを追加することで、URLに応じて表示する画面を切り替えることができます。
 :::
 
-::: {#ch03-router-m380 .paragraph}
-ここで、1つ注意しておきたいことがあります。`AppRoutes.tsx` では、商品一覧のルートの `path` を `products` と記述しています。しかし、ブラウザーでアクセスするURLのパスは `/sample-3-2/products` です。
+::: {#ch03-router-r350 .step}
+**④ App.tsxからルーティングの設定を使用する**
 :::
 
-::: {#ch03-router-m382 .paragraph}
-これは、本研修の配布プロジェクトでは、節ごとにサンプルの入口となるルートを用意しているためです。
+::: {#ch03-router-r352 .paragraph}
+ここまでに定義した `AppRoutes` も、Reactのコンポーネントです。そのため、ほかのコンポーネントと同じように、`App.tsx` から読み込んで使用できます。
 :::
 
-::: {#ch03-router-m384 .paragraph}
-例えば、3.2のサンプルへ接続する設定は、次のようになります。
-:::
-
-::: {#ch03-router-m387 .code example="true" code-label="TSXの記述例（教材メニューとの接続設定・一部）" wide-code-label="true"}
+::: {#ch03-router-r355 .code code-label="TSXの記述例（通常構成）" example="true" filename="src/App.tsx"}
 ~~~tsx
-<Route path="/sample-3-2/*" element={<Sample3_2 />} />
+import AppRoutes from './routes/AppRoutes'
+
+export default function App() {
+  return <AppRoutes />
+}
 ~~~
 :::
 
-::: {#ch03-router-m391 .paragraph}
-この設定は、3.2のサンプルの入口である `/sample-3-2` と、それに続くパスに対応するためのものです。末尾の `/*` を指定することで、その先にある商品一覧やご利用案内のパスも扱えるようにしています。
+::: {#ch03-router-r363 .paragraph}
+`App` が表示されると、その中で `AppRoutes` が使用されます。そして、`AppRoutes` の中の `Routes` によって、現在のURLに対応する画面が表示されます。
 :::
 
-::: {#ch03-router-m393 .paragraph}
-`Sample3_2.tsx` は、教材用メニューと、3.2のルーティングを定義した `AppRoutes.tsx` を接続するためのファイルです。この設定は配布プロジェクトに用意されているため、受講者が変更する必要はありません。
+::: {#ch03-router-r365 .paragraph}
+今回の構成では、`App.tsx` は `AppRoutes` を使用するだけです。URLと画面の対応関係を変更する場合は、`routes/AppRoutes.tsx` を編集します。
 :::
 
-::: {#ch03-router-m395 .paragraph}
-`AppRoutes.tsx` の中では、入口に続く部分を指定します。今回の3つのルートと実際のURLとの関係は、次のとおりです。
+::: {#ch03-router-r367 .paragraph}
+例えば、新たに商品登録画面を追加する場合は、`pages` フォルダーに商品登録画面のコンポーネントを作成し、`AppRoutes.tsx` にそのコンポーネントを読み込む記述と、対応する `Route` を追加します。
 :::
 
-::: {#ch03-router-m397 .table column-widths="39 36 25"}
-| AppRoutes.tsxで指定するpath | 実際のURLのパス | 表示する画面 |
-|---|---|---|
-| `""`（空文字列） | `/sample-3-2` | ホーム |
-| `"products"` | `/sample-3-2/products` | 商品一覧 |
-| `"guide"` | `/sample-3-2/guide` | ご利用案内 |
+::: {#ch03-router-r369 .paragraph punctuation-font="inherit"}
+このように、**画面のコンポーネントとルーティングの設定を役割ごとに分けて管理することで、機能を追加する際に変更する場所が明確になります。**
 :::
 
-::: {#ch03-router-m403 .paragraph punctuation-font="inherit"}
-このように、基準となるルートのパスに続く部分を指定する方法を、**相対パスによるルートの指定**といいます。
-:::
-
-::: {#ch03-router-m405 .paragraph}
-ホーム画面では、入口に続くパスがないため、`path=""` と記述しています。次の3.3節では、共通レイアウトを追加し、その入口に対応する画面を `index` という属性で指定する方法も学習します。
-:::
-
-![教材用の入口を基準に、各画面のルートを定義する](assets/router-relative-path.svg){#ch03-router-figure-relative-path}
-
-::: {#ch03-router-figure-relative-path-caption .caption}
-教材用の入口を基準に、各画面のルートを定義する
-:::
-
-::: {#ch03-router-m413 .step}
+::: {#ch03-router-r371 .step}
 **⑤ URLに対応する画面が表示されるまでの流れ**
 :::
 
-::: {#ch03-router-m415 .paragraph}
-例えば、ブラウザーのアドレスバーに `/sample-3-2/products` を含むURLを入力した場合は、次のように処理されます。
+::: {#ch03-router-r373 .paragraph}
+ここまでの構成で、ユーザーが `http://localhost:5173/products` にアクセスした場合を考えてみましょう。
 :::
 
-::: {#ch03-router-m417-1 .paragraph numbered="true"}
-1\. `BrowserRouter` のもとで、現在のURLを扱う。
+::: {#ch03-router-r375-1 .paragraph numbered="true"}
+1\. `main.tsx` からアプリケーションを起動し、`BrowserRouter` の内側に `App` を表示する。
 :::
 
-::: {#ch03-router-m417-2 .paragraph numbered="true"}
-2\. 教材用のルート設定によって3.2のサンプルが表示される。
+::: {#ch03-router-r375-2 .paragraph numbered="true"}
+2\. `App` から `AppRoutes` を使用する。
 :::
 
-::: {#ch03-router-m417-3 .paragraph numbered="true"}
-3\. `AppRoutes` の `Routes` が、残りのパス `products` に対応する `Route` を選択する。
+::: {#ch03-router-r375-3 .paragraph numbered="true"}
+3\. `Routes` が現在のURLのパス `/products` に対応する `Route` を選択する。
 :::
 
-::: {#ch03-router-m417-4 .paragraph numbered="true"}
+::: {#ch03-router-r375-4 .paragraph numbered="true"}
 4\. `element` に指定された `ProductListPage` が表示される。
 :::
 
-::: {#ch03-router-m417-5 .paragraph numbered="true"}
+::: {#ch03-router-r375-5 .paragraph numbered="true"}
 5\. `ProductListPage` が、6件の商品データを使用して商品カードを表示する。
 :::
 
-![URLに対応する画面を選択し、画面のコンポーネントを表示する](assets/router-flow.svg){#ch03-router-figure-flow}
+![通常のアプリケーションでURLに応じた画面を表示する流れ](assets/router-flow.svg){#ch03-router-figure-flow}
 
 ::: {#ch03-router-figure-flow-caption .caption}
-URLに対応する画面を選択し、画面のコンポーネントを表示する
+通常のアプリケーションでURLに応じた画面を表示する流れ
 :::
 
-::: {#ch03-router-m429 .paragraph}
-このように、各画面のコンポーネントとルーティングの設定を分けて管理することで、画面の表示内容を変更する場合は `pages` や `components`、URLとの対応関係を変更する場合は `routes` を編集するという形で、作業する場所を区別できます。
+::: {#ch03-router-r387 .paragraph}
+このように、React Routerを使用することで、URLに応じて表示する画面を切り替えることができます。
 :::
 
-::: {#ch03-router-m431 .training-note}
+:::: {#ch03-router-r389 .training-note breakable="true"}
+【補足】本研修の配布サンプルの構成
+
+ここまでに学習したのは、1つの商品管理システムを開発する場合の基本的な構成です。
+
+一方、講義用の `ch03-basic` プロジェクトでは、各節の完成サンプルを残し、教材のメニューから選択して確認できるようにしています。そのため、節ごとにフォルダーとURLの入口を分けています。
+
+**この構成は、本研修の配布サンプルを管理するためのものです。通常のアプリケーションを開発する際に、節ごとのフォルダーや教材メニューとの接続設定を用意する必要はありません。**
+
+3.2で使用するのは、次のフォルダーです。
+
+~~~{#ch03-router-r400 .text code-label="配布サンプルのフォルダー構成（抜粋）" example="true" wide-code-label="true"}
+ch03-basic/src/samples/sample3_2/
+├─ components/
+│  └─ ProductCard.tsx
+├─ pages/
+│  ├─ HomePage.tsx
+│  ├─ ProductListPage.tsx
+│  └─ GuidePage.tsx
+└─ routes/
+   └─ AppRoutes.tsx
+~~~
+
+通常の構成と同じように、画面の部品・各画面・ルーティングの設定を分けています。ただし、3.2で使用するファイルを `sample3_2` フォルダーの中にまとめています。
+
+**3.1で学習したコードの再利用**
+
+`sample3_2/components/ProductCard.tsx` は、3.1節で使用した `src/components/ProductCard.tsx` と同じソースコードです。
+
+また、`sample3_2/pages/ProductListPage.tsx` は、3.1節の `Sample3_1.tsx` を基に、コンポーネント名と商品カードの読み込み先を変更したものです。商品データやPropsの受け渡し、カードの表示処理は同じです。
+
+同名の `ProductCard.tsx` が複数存在しますが、格納されているフォルダーが異なるため、別々のファイルとして管理できます。3.2では `sample3_2` 内のファイルを使用します。
+
+::: {#ch03-router-figure-reuse .note-figure}
+![3.1で学習したコードを3.2のサンプルで再利用する](assets/router-product-reuse.svg)
+:::
+
+**配布サンプルのURLとルートの指定**
+
+3.2の配布サンプルでは、`/sample-3-2` を入口としています。そのため、商品一覧のURLは `/sample-3-2/products` になります。
+
+配布サンプルの `routes/AppRoutes.tsx` では、入口に続く部分を指定しています。
+
+~~~{#ch03-router-r435 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="1"}
+import { Routes, Route } from 'react-router'
+import HomePage from '../pages/HomePage'
+import ProductListPage from '../pages/ProductListPage'
+import GuidePage from '../pages/GuidePage'
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="" element={<HomePage />} />
+      <Route path="products" element={<ProductListPage />} />
+      <Route path="guide" element={<GuidePage />} />
+    </Routes>
+  )
+}
+~~~
+
+通常の構成で学習した記述との違いは、`path` に指定する値です。配布サンプルでは、`products` のように先頭の `/` を付けず、基準となるルートに続くパスを指定しています。これを相対パスと呼びます。
+
+::: {#ch03-router-r454 .table column-widths="19 21 24 36"}
+| 画面 | 通常構成の `path` | 配布サンプルの `path` | 配布サンプルでアクセスするパス |
+|---|---|---|---|
+| ホーム | `/` | `""`（空文字列） | `/sample-3-2` |
+| 商品一覧 | `/products` | `products` | `/sample-3-2/products` |
+| ご利用案内 | `/guide` | `guide` | `/sample-3-2/guide` |
+:::
+
+ホーム画面の場合は、入口に続くパスがないため、空文字列を指定しています。いずれも、URLのパスと表示する画面を対応付けるという考え方は同じです。
+
+::: {#ch03-router-figure-relative-path .note-figure}
+![配布サンプルでは、節ごとにURLの入口を設けている](assets/router-relative-path.svg)
+:::
+::::
+
+:::: {#ch03-router-r468 .training-note breakable="true"}
+**【参考】教材用の入口を設定するファイル**
+
+配布プロジェクトでは、教材のメニューと各節のサンプルを接続するための設定があらかじめ用意されています。例えば、3.2の入口を設定する記述は、次のような形式になります。
+
+~~~{#ch03-router-r473 .tsx code-label="TSXの記述例（教材専用の接続設定・参考）" example="true" wide-code-label="true"}
+<Route path="/sample-3-2/*" element={<Sample3_2 />} />
+~~~
+
+このような外側のルート設定は `App.tsx` などの教材用の設定に記述します。`Sample3_2.tsx` は、3.2の `AppRoutes.tsx` を教材のメニューから使用するための接続用ファイルです。
+
+これらは、複数のサンプルを1つの配布プロジェクトで利用するための設定です。**通常のアプリケーションのルーティングを学習するうえで、詳しい書き方を覚えたり、これらのファイルを変更したりする必要はありません。**
+::::
+
+::: {#ch03-router-r483 .heading level="minor"}
+配布サンプルの動作確認
+:::
+
+::: {#ch03-router-r485 .paragraph}
+配布サンプルの `ch03-basic` の開発サーバーを起動し、メニューから「3.2 React Routerによるルーティング」を選択してください。
+:::
+
+::: {#ch03-router-r487 .paragraph}
+ブラウザーのアドレスバーで、次の3つのパスにアクセスしてみましょう。ホスト名とポート番号は、開発サーバーの起動時に表示されたものを使用してください。
+:::
+
+::: {#ch03-router-r489 .table column-widths="44 56"}
+| 配布サンプルのURLのパス | 表示される画面 |
+|---|---|
+| `/sample-3-2` | ホーム |
+| `/sample-3-2/products` | 商品一覧（6件の商品カード） |
+| `/sample-3-2/guide` | ご利用案内 |
+:::
+
+:::: {#ch03-router-r495 .training-note breakable="true"}
 **【補足】アドレスバーからの移動とSPAの画面遷移**
 
 今回は、ブラウザーのアドレスバーからURLを入力して、ルーティングの動作を確認します。この操作ではページの読み込みが発生します。
 
 SPAの特徴である、ページ全体を再読み込みせずに画面を切り替える方法については、3.4節で学習します。
-:::
 ::::
+:::::
 
-:::: {#page-7 .source-page}
-::: {#ch03-router-m437 .heading level="minor"}
+::::: {#page-7 .source-page}
+::: {#ch03-router-r501 .heading level="minor"}
 【確認演習】URLに応じて表示する画面を設定する
 :::
 
-::: {#ch03-router-m439 .paragraph}
+::: {#ch03-router-r503 .paragraph}
 ホーム・商品一覧・ご利用案内の3つの画面をURLに応じて表示できるように、ルーティングを設定します。
 :::
 
-::: {#ch03-router-m441 .paragraph}
+::: {#ch03-router-r505 .paragraph}
 確認演習用のフォルダーには、3つの画面と商品カードの完成済みコンポーネントが用意されています。3.1節の確認演習が未完成でも、今回の確認演習に取り組むことができます。
 :::
 
-::: {#ch03-router-m443 .paragraph numbered="true"}
+::: {#ch03-router-r507 .paragraph}
+この確認演習では、前の補足で確認した研修用のフォルダー構成とURLを使用します。ルートの定義には、入口以降の相対パスを指定してください。
+:::
+
+::: {#ch03-router-r509 .paragraph numbered="true"}
 1．`ch03-basic-q` プロジェクトの次のファイルを開いてください。
 :::
 
-::: {#ch03-router-m445 .paragraph}
+::: {#ch03-router-r511 .paragraph}
 `src/exercises/q3_2/routes/AppRoutes.tsx`
 :::
 
-::: {#ch03-router-m447 .paragraph numbered="true"}
+::: {#ch03-router-r513 .paragraph numbered="true"}
 2．コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。➀は既存コードの確認、➁～➄は実装問題です。
 :::
 
-::: {#ch03-router-m449 .table column-widths="12 88"}
+::: {#ch03-router-r515 .table column-widths="12 88"}
 | 番号 | 作業内容 |
 |---|---|
 | ➀ | React RouterのRoutesとRouteが読み込まれていることを確認する。 |
 | ➁ | pagesフォルダーから3つの画面のコンポーネントを読み込む。 |
-| ➂ | ホーム画面に対応するRouteを記述する。 |
-| ➃ | 商品一覧画面に対応するRouteを記述する。 |
-| ➄ | ご利用案内画面に対応するRouteを記述する。 |
+| ➂ | ホーム画面に対応するRouteを記述する。`path` は空文字列。 |
+| ➃ | 商品一覧画面に対応するRouteを記述する。`path` は `products`。 |
+| ➄ | ご利用案内画面に対応するRouteを記述する。`path` は `guide`。 |
 :::
 
-::: {#ch03-router-m457 .paragraph}
+::: {#ch03-router-r523 .paragraph}
 「ルートを設定してください。」と表示するための補助ルートは、あらかじめ用意されています。変更する必要はありません。コメントに指定されていないコードや、ほかのファイルも変更する必要はありません。
 :::
 
-::: {#ch03-router-m459 .paragraph numbered="true"}
+::: {#ch03-router-r525 .paragraph numbered="true"}
 3．編集したファイルを保存してください。
 :::
 
-::: {#ch03-router-m461 .paragraph numbered="true"}
+::: {#ch03-router-r527 .paragraph numbered="true"}
 4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-router-m463 .paragraph numbered="true"}
+::: {#ch03-router-r529 .paragraph numbered="true"}
 5．メニューから「3.2 React Routerによるルーティング」を選択してください。
 :::
 
-::: {#ch03-router-m465 .heading level="minor"}
+::: {#ch03-router-r531 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch03-router-m467 .paragraph numbered="true"}
+::: {#ch03-router-r533 .paragraph numbered="true"}
 6．ブラウザーのアドレスバーから、次の3つのURLにアクセスし、それぞれに対応する画面が表示されることを確認してください。
 :::
 
-::: {#ch03-router-m469 .table column-widths="28 72"}
+::: {#ch03-router-r535 .table column-widths="44 56"}
 | URLのパス | 確認する画面 |
 |---|---|
 | `/sample-3-2` | ホーム。「商品管理システムへようこそ。」と表示される。 |
@@ -1425,7 +1500,7 @@ SPAの特徴である、ページ全体を再読み込みせずに画面を切�
 | `/sample-3-2/guide` | ご利用案内。「このシステムでは商品情報を確認できます。」と表示される。 |
 :::
 
-::: {#ch03-router-m475 .paragraph}
+::: {#ch03-router-r541 .paragraph}
 ホスト名とポート番号には、開発サーバーの起動時に表示されたURLのものを使用してください。
 :::
 
@@ -1435,11 +1510,11 @@ SPAの特徴である、ページ全体を再読み込みせずに画面を切�
 アドレスバーに入力したURLに応じて表示する画面が変わることを確認する
 :::
 
-::: {#ch03-router-m483 .paragraph}
+::: {#ch03-router-r549 .paragraph}
 3つのURLでそれぞれ正しい画面が表示されれば、演習完了です。
 :::
 
-::: {#ch03-router-m485 .paragraph}
+::: {#ch03-router-r551 .paragraph}
 画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
@@ -1448,15 +1523,15 @@ SPAの特徴である、ページ全体を再読み込みせずに画面を切�
 
 ● ルーティングとは、URLに応じて表示する画面を決定する仕組みである。
 
-● React Routerを使用すると、URLと表示するコンポーネントを対応付けられる。
-
-● `BrowserRouter` は、ブラウザーのURLを使用するルーティングのためのコンポーネントである。
+● `BrowserRouter` でアプリケーションを囲むことで、その内側でReact Routerの機能を使用できる。
 
 ● `Routes` の中に `Route` を定義し、`path` に対応するパス、`element` に表示するReact要素を指定する。
 
-● 各画面を `pages`、画面の部品を `components`、ルーティングの設定を `routes` に分けて管理することで、ファイルの役割を明確にできる。
+● 画面を `pages`、再利用する部品を `components`、ルーティングの設定を `routes` に分けて管理すると、ファイルの役割を明確にできる。
+
+● 本研修で採用する通常の構成では、`App.tsx` から `AppRoutes` を使用する。
 :::
-::::
+:::::
 
 :::: {#page-8 .source-page}
 ::: {#ch03-layout-title .heading}

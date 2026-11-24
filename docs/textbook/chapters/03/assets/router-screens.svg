@@ -5,7 +5,7 @@
 <rect x="96" y="68" width="542" height="104" rx="10" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.7"/>
 <rect x="97" y="69" width="540" height="38" rx="9" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
 <rect x="108" y="75" width="518" height="24" rx="5" fill="#ffffff" stroke="#a1bdcf" stroke-width="1"/>
-<text x="116" y="92" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://localhost:5174/sample-3-2</text>
+<text x="116" y="92" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://127.0.0.1:5174/sample-3-2</text>
 <text x="113" y="132" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="22" font-weight="bold" fill="#212529" text-anchor="start" xml:space="preserve">ホーム</text>
 <text x="113" y="157" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#212529" text-anchor="start" xml:space="preserve">商品管理システムへようこそ。</text>
 <rect x="328.2" y="75" width="119.2" height="24" rx="2" fill="none" stroke="#a32431" stroke-width="2"/>
@@ -16,7 +16,7 @@
 <rect x="96" y="219" width="542" height="253" rx="10" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.7"/>
 <rect x="97" y="220" width="540" height="38" rx="9" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
 <rect x="108" y="226" width="518" height="24" rx="5" fill="#ffffff" stroke="#a1bdcf" stroke-width="1"/>
-<text x="116" y="243" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://localhost:5174/sample-3-2/products</text>
+<text x="116" y="243" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://127.0.0.1:5174/sample-3-2/products</text>
 <text x="113" y="283" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="22" font-weight="bold" fill="#212529" text-anchor="start" xml:space="preserve">商品一覧</text>
 <rect x="113.0" y="295" width="164.66666666666666" height="79" rx="6" fill="#ffffff" stroke="#b3c5d2" stroke-width="1"/>
 <image x="176.83333333333331" y="300" width="37" height="34" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuODleOCoeOCpOODqzwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NyIgY3k9IjEwMCIgcng9IjU1IiByeT0iNiIgZmlsbD0iIzI0NDczYyIgb3BhY2l0eT0iLjEyIi8+DQogIDxnIHRyYW5zZm9ybT0icm90YXRlKC04IDg0IDYwKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHBhdGggZD0iTTMxIDMyYTUgNSAwIDAgMSA1LTVoMzJsMTEgMTBoNTFhNSA1IDAgMCAxIDUgNXY1MGE1IDUgMCAwIDEtNSA1SDM2YTUgNSAwIDAgMS01LTVaIiBmaWxsPSIjNGI5NTg5IiBzdHJva2U9IiMyODY4NWUiIHN0cm9rZS13aWR0aD0iMS42Ii8+DQogICAgPHBhdGggZD0iTTQ4IDQxaDY5bDggMTB2MzZINDhaIiBmaWxsPSIjZGZlY2U5IiBzdHJva2U9IiM4OWE5YTMiIHN0cm9rZS13aWR0aD0iMS4yIi8+DQogICAgPHBhdGggZD0iTTQyIDMyaDY2bDEyIDExdjQwSDQyWiIgZmlsbD0iI2ZmZmRmNSIgc3Ryb2tlPSIjOTRiNWFjIiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KICAgIDxwYXRoIGQ9Ik0xMDggMzJ2MTJoMTIiIGZpbGw9IiNkN2U5ZTIiIHN0cm9rZT0iIzk0YjVhYyIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4NCiAgICA8cGF0aCBkPSJNNTAgNDVoMzltLTM5IDdoNDhtLTQ4IDdoMzUiIHN0cm9rZT0iI2JiY2ZjOSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICAgIDxwYXRoIGQ9Ik0zNSA5NCA0NiA1N2E1IDUgMCAwIDEgNC0zaDkxYTQgNCAwIDAgMSA0IDVsLTExIDM1YTUgNSAwIDAgMS00IDRIMzlhNCA0IDAgMCAxLTQtNFoiIGZpbGw9IiM4MGJiYWMiIHN0cm9rZT0iIzM0N2Q3MCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4NCiAgICA8cGF0aCBkPSJNNTEgNThoODgiIHN0cm9rZT0iI2MyZTBkOCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICAgIDxyZWN0IHg9IjgzIiB5PSI2OCIgd2lkdGg9IjM5IiBoZWlnaHQ9IjE1IiByeD0iMi41IiBmaWxsPSIjZThmNWYwIiBzdHJva2U9IiM2NDk3ODkiIHN0cm9rZS13aWR0aD0iMSIvPg0KICAgIDxwYXRoIGQ9Ik05MSA3NWgyMiIgc3Ryb2tlPSIjODNhYzllIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPg0KICA8L2c+DQo8L3N2Zz4NCg=="/>
@@ -50,7 +50,7 @@
 <rect x="96" y="519" width="542" height="104" rx="10" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.7"/>
 <rect x="97" y="520" width="540" height="38" rx="9" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
 <rect x="108" y="526" width="518" height="24" rx="5" fill="#ffffff" stroke="#a1bdcf" stroke-width="1"/>
-<text x="116" y="543" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://localhost:5174/sample-3-2/guide</text>
+<text x="116" y="543" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http://127.0.0.1:5174/sample-3-2/guide</text>
 <text x="113" y="583" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="22" font-weight="bold" fill="#212529" text-anchor="start" xml:space="preserve">ご利用案内</text>
 <text x="113" y="608" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#212529" text-anchor="start" xml:space="preserve">このシステムでは商品情報を確認できます。</text>
 <rect x="328.2" y="526" width="180.4" height="24" rx="2" fill="none" stroke="#a32431" stroke-width="2"/>

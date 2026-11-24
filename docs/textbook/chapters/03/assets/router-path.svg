@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="740" height="450" viewBox="0 0 740 450">
 <defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
 <text x="370.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">URLのパスと画面の対応</text>
-<rect x="50" y="53" width="640" height="55" rx="10" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<rect x="50" y="53" width="482" height="55" rx="10" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="81" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">http</text>
 <text x="109.8" y="134" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="normal" fill="#4b6176" text-anchor="middle" xml:space="preserve">スキーム</text>
 <text x="138.6" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">://</text>
@@ -10,10 +10,10 @@
 <text x="311.4" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">:</text>
 <text x="325.79999999999995" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">5173</text>
 <text x="354.59999999999997" y="134" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="normal" fill="#4b6176" text-anchor="middle" xml:space="preserve">ポート番号</text>
-<rect x="382.4" y="63" width="294.0" height="34" rx="3" fill="none" stroke="#a32431" stroke-width="2"/>
-<text x="383.4" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#a32431" text-anchor="start" xml:space="preserve">/sample-3-2/products</text>
-<text x="527.4" y="134" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="normal" fill="#a32431" text-anchor="middle" xml:space="preserve">パス</text>
-<polyline points="532,146 532,157 135,157 135,170" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
+<rect x="382.4" y="63" width="134.0" height="34" rx="3" fill="none" stroke="#a32431" stroke-width="2"/>
+<text x="383.4" y="88" font-family="Courier New, Meiryo UI, monospace" font-size="24" font-weight="normal" fill="#a32431" text-anchor="start" xml:space="preserve">/products</text>
+<text x="448.2" y="134" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="normal" fill="#a32431" text-anchor="middle" xml:space="preserve">パス</text>
+<polyline points="448,146 448,157 135,157 135,170" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
 <rect x="49" y="173" width="172" height="40" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="135.0" y="198.94" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">React Router</text>
 <polyline points="226,193 272,193" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
@@ -47,4 +47,5 @@
 <image x="513.5" y="335" width="37" height="34" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuS7mOeuizwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NiIgY3k9IjEwMCIgcng9IjUxIiByeT0iNiIgZmlsbD0iIzZiNTUxZCIgb3BhY2l0eT0iLjEyIi8+DQogIDxnIHRyYW5zZm9ybT0icm90YXRlKDExIDgzIDYxKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHJlY3QgeD0iMzgiIHk9IjIyIiB3aWR0aD0iOTEiIGhlaWdodD0iNzYiIHJ4PSIzIiBmaWxsPSIjZGJhODM4IiBzdHJva2U9IiNhODgyMzIiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTQwIDg4aDg3bS04NyA0aDg3bS04NyAzaDg3IiBzdHJva2U9IiNmNGQ3N2UiIHN0cm9rZS13aWR0aD0iMS4yIi8+DQogICAgPHBhdGggZD0iTTM3IDE4aDg4djUycS0xMCA0LTE2IDE4SDM3WiIgZmlsbD0iI2Y3ZDM1YyIgc3Ryb2tlPSIjYWQ4OTM5IiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KICAgIDxwYXRoIGQ9Ik0zNyAxN2g4OHY1MGwtMjAgMjBIMzdaIiBmaWxsPSIjZmZkZjcyIiBzdHJva2U9IiNhZDg5MzkiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTEwNSA4N2MxLTEyIDUtMjAgMjAtMjBsLTIwIDIwWiIgZmlsbD0iI2ZmZjFhZSIgc3Ryb2tlPSIjYzJhMTRiIiBzdHJva2Utd2lkdGg9IjEuMSIvPg0KICAgIDxwYXRoIGQ9Ik00MCAyMGg4MXY2SDQwWiIgZmlsbD0iI2Y1Yzk1MCIvPg0KICAgIDxwYXRoIGQ9Ik00OSAzOGg0NW0tNDUgOWgzN20tMzcgOWgzMSIgc3Ryb2tlPSIjZDlhOTQxIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+DQogIDwvZz4NCjwvc3ZnPg0K"/>
 <text x="532.0" y="383" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">付箋</text>
 <text x="532.0" y="400" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" font-weight="normal" fill="#182f45" text-anchor="middle" xml:space="preserve">単価：240円</text>
+<text x="615" y="88" font-size="16" fill="#174e78" font-weight="700" text-anchor="middle">通常構成の例</text>
 </svg>

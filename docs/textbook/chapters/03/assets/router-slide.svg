@@ -10,14 +10,14 @@
 <text x="349.5" y="194" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">routes/AppRoutes.tsx</text>
 <text x="349.5" y="223" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#174e78" text-anchor="middle" xml:space="preserve">URLと画面の対応を定義</text>
 <rect x="8" y="91.0" width="205" height="40" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="110.5" y="116.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-2</text>
+<text x="110.5" y="116.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/</text>
 <polyline points="216,111.0 242,111.0" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
 <polyline points="457,111.0 481,111.0" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
 <rect x="485" y="76" width="247" height="70" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
 <text x="608.5" y="100" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">pages/HomePage.tsx</text>
 <text x="608.5" y="127" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="20" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">ホーム</text>
 <rect x="8" y="212.0" width="205" height="40" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="110.5" y="237.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-2/products</text>
+<text x="110.5" y="237.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/products</text>
 <polyline points="216,232.0 242,232.0" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
 <polyline points="457,232.0 481,232.0" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
 <rect x="485" y="167" width="247" height="130" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
@@ -36,12 +36,12 @@
 <rect x="643.0" y="261" width="55.0" height="29" rx="6" fill="#ffffff" stroke="#b3c5d2" stroke-width="1"/>
 <image x="654.0" y="263" width="33" height="25" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuS7mOeuizwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NiIgY3k9IjEwMCIgcng9IjUxIiByeT0iNiIgZmlsbD0iIzZiNTUxZCIgb3BhY2l0eT0iLjEyIi8+DQogIDxnIHRyYW5zZm9ybT0icm90YXRlKDExIDgzIDYxKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHJlY3QgeD0iMzgiIHk9IjIyIiB3aWR0aD0iOTEiIGhlaWdodD0iNzYiIHJ4PSIzIiBmaWxsPSIjZGJhODM4IiBzdHJva2U9IiNhODgyMzIiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTQwIDg4aDg3bS04NyA0aDg3bS04NyAzaDg3IiBzdHJva2U9IiNmNGQ3N2UiIHN0cm9rZS13aWR0aD0iMS4yIi8+DQogICAgPHBhdGggZD0iTTM3IDE4aDg4djUycS0xMCA0LTE2IDE4SDM3WiIgZmlsbD0iI2Y3ZDM1YyIgc3Ryb2tlPSIjYWQ4OTM5IiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KICAgIDxwYXRoIGQ9Ik0zNyAxN2g4OHY1MGwtMjAgMjBIMzdaIiBmaWxsPSIjZmZkZjcyIiBzdHJva2U9IiNhZDg5MzkiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTEwNSA4N2MxLTEyIDUtMjAgMjAtMjBsLTIwIDIwWiIgZmlsbD0iI2ZmZjFhZSIgc3Ryb2tlPSIjYzJhMTRiIiBzdHJva2Utd2lkdGg9IjEuMSIvPg0KICAgIDxwYXRoIGQ9Ik00MCAyMGg4MXY2SDQwWiIgZmlsbD0iI2Y1Yzk1MCIvPg0KICAgIDxwYXRoIGQ9Ik00OSAzOGg0NW0tNDUgOWgzN20tMzcgOWgzMSIgc3Ryb2tlPSIjZDlhOTQxIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+DQogIDwvZz4NCjwvc3ZnPg0K"/>
 <rect x="8" y="323.0" width="205" height="40" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="110.5" y="348.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-2/guide</text>
+<text x="110.5" y="348.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/guide</text>
 <polyline points="216,343.0 242,343.0" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
 <polyline points="457,343.0 481,343.0" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
 <rect x="485" y="308" width="247" height="70" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
 <text x="608.5" y="332" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">pages/GuidePage.tsx</text>
 <text x="608.5" y="359" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="20" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">ご利用案内</text>
 <rect x="52" y="395" width="636" height="39" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
-<text x="370.0" y="420.77" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="19" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">画面のコンポーネントとルーティングの設定を分けて管理する</text>
+<text x="370.0" y="420.77" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="19" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">URLと画面の対応関係を定義する</text>
 </svg>

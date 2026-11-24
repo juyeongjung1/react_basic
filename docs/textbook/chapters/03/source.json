@@ -51,43 +51,43 @@
     },
     "ch03-router-figure-path": {
       "caption_id": "ch03-router-figure-path-caption",
-      "width": 390,
-      "max_height": 260
-    },
-    "ch03-router-figure-reuse": {
-      "caption_id": "ch03-router-figure-reuse-caption",
-      "width": 390,
-      "max_height": 190
+      "width": 383,
+      "max_height": 235
     },
     "ch03-router-figure-nesting": {
       "caption_id": "ch03-router-figure-nesting-caption",
       "width": 383,
-      "max_height": 170
+      "max_height": 258
     },
     "ch03-router-figure-imports": {
       "caption_id": "ch03-router-figure-imports-caption",
       "width": 383,
-      "max_height": 230
+      "max_height": 205
     },
     "ch03-router-figure-attributes": {
       "caption_id": "ch03-router-figure-attributes-caption",
-      "width": 390,
-      "max_height": 160
-    },
-    "ch03-router-figure-relative-path": {
-      "caption_id": "ch03-router-figure-relative-path-caption",
       "width": 383,
-      "max_height": 180
+      "max_height": 179
     },
     "ch03-router-figure-flow": {
       "caption_id": "ch03-router-figure-flow-caption",
-      "width": 390,
-      "max_height": 400
+      "width": 383,
+      "max_height": 348
+    },
+    "ch03-router-figure-reuse": {
+      "caption_id": "ch03-router-figure-reuse-caption",
+      "width": 357,
+      "max_height": 158
+    },
+    "ch03-router-figure-relative-path": {
+      "caption_id": "ch03-router-figure-relative-path-caption",
+      "width": 357,
+      "max_height": 173
     },
     "ch03-router-figure-screens": {
       "caption_id": "ch03-router-figure-screens-caption",
-      "width": 390,
-      "max_height": 455
+      "width": 383,
+      "max_height": 340
     },
     "ch03-layout-product-screen": {
       "caption_id": "ch03-layout-product-screen-caption",
