@@ -1,9 +1,8 @@
-// ➃ 実装：react-routerからuseParamsを追加でインポートしてください。
+// ➃ 実装：react-routerからuseParamsを追加でインポートしてください。Linkのインポートは残してください。
 import { Link } from 'react-router'
 
-export default function ProductDetail3_5Q() {
-  // ➄ 実装：useParams()を使用して、URLパラメータidを取得する宣言に
-  // 置き換えてください。
+export default function ProductDetailPage() {
+  // ➄ 実装：次の仮の宣言を、useParams()の戻り値から分割代入でidを取得する宣言に置き換えてください。
   const id = ''
 
   // 実際の開発では、idを使ってREST APIから商品情報を取得する。

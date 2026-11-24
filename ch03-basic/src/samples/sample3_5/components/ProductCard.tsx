@@ -1,14 +1,14 @@
 import { Link } from 'react-router'
 
-type ProductCard3_5Props = {
+type ProductCardProps = {
   id: number
   name: string
   price: number
   imagePath: string
 }
 
-export default function ProductCard3_5(
-  { id, name, price, imagePath }: ProductCard3_5Props
+export default function ProductCard(
+  { id, name, price, imagePath }: ProductCardProps
 ) {
   return (
     <div className="col-12 col-sm-6 col-lg-4">

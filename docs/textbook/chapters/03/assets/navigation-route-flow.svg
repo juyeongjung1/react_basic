@@ -6,7 +6,7 @@
   <rect x="142" y="61" width="3.5" height="3.5" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.3"/>
   <rect x="147" y="61" width="3.5" height="3.5" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.3"/>
   <rect x="158" y="53" width="466" height="19" rx="4" fill="white" stroke="#c6d4de" stroke-width="1"/>
-  <text x="165" y="68" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">http://localhost:5174/sample-3-4</text>
+  <text x="165" y="68" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">http://localhost:5173/sample-3-4</text>
   <rect x="130" y="77" width="499" height="33" rx="0" fill="#212529" stroke="none" stroke-width="1.3"/>
   <text x="141" y="101" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="white" font-weight="700" text-anchor="start">商品管理システム</text>
   <rect x="130" y="110" width="499" height="37" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1.3"/>
@@ -22,19 +22,19 @@
   <polyline points="385,259 380,268 375,259" fill="none" stroke="#b42331" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="390" y="259" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#932530" font-weight="700" text-anchor="start">［商品一覧］をクリック</text>
   <rect x="12" y="273" width="509" height="74" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
-  <text x="509" y="294" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#205b84" font-weight="700" text-anchor="end">ch03-basic/src/components/Layout3_4.tsx（20行目）</text>
+  <text x="509" y="294" font-family="Courier New, MS Gothic, monospace" font-size="12.4" fill="#205b84" font-weight="700" text-anchor="end">ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx（20行目）</text>
   <text x="24" y="318" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">to=&quot;/sample-3-4/products&quot;</text>
   <text x="24" y="339" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#205b84" font-weight="400" text-anchor="start">移動先のURLを指定する</text>
   <polyline points="330,348 330,362" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <polyline points="335,353 330,362 325,353" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="12" y="364" width="509" height="74" rx="6" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.3"/>
-  <text x="509" y="385" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#226757" font-weight="700" text-anchor="end">ch03-basic/src/components/Sample3_4.tsx（28行目）</text>
-  <text x="24" y="409" font-family="Courier New, MS Gothic, monospace" font-size="15.2" fill="#183449" font-weight="400" text-anchor="start">&lt;Route path=&quot;products&quot; element={&lt;Sample3_1 /&gt;} /&gt;</text>
+  <text x="509" y="385" font-family="Courier New, MS Gothic, monospace" font-size="12.4" fill="#226757" font-weight="700" text-anchor="end">ch03-basic/src/samples/sample3_4/routes/AppRoutes.tsx（12行目）</text>
+  <text x="24" y="409" font-family="Courier New, MS Gothic, monospace" font-size="14" fill="#183449" font-weight="400" text-anchor="start">&lt;Route path="products" element={&lt;ProductListPage /&gt;} /&gt;</text>
   <text x="24" y="430" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#226757" font-weight="400" text-anchor="start">URLに対応する子ルートを選択する</text>
   <polyline points="330,439 330,453" fill="none" stroke="#226757" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <polyline points="335,444 330,453 325,444" fill="none" stroke="#226757" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="12" y="455" width="509" height="74" rx="6" fill="#f4eff9" stroke="#aabfcf" stroke-width="1.3"/>
-  <text x="509" y="476" font-family="Meiryo, MS Gothic, sans-serif" font-size="16" fill="#55498a" font-weight="700" text-anchor="end">ch03-basic/src/components/Layout3_4.tsx（28行目）</text>
+  <text x="509" y="476" font-family="Courier New, MS Gothic, monospace" font-size="12.4" fill="#55498a" font-weight="700" text-anchor="end">ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx（28行目）</text>
   <text x="24" y="500" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">&lt;Outlet /&gt;</text>
   <text x="24" y="521" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#55498a" font-weight="400" text-anchor="start">商品一覧を表示する</text>
   <rect x="537" y="324" width="213" height="136" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
@@ -54,7 +54,7 @@
   <rect x="44" y="573" width="3.5" height="3.5" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.3"/>
   <rect x="49" y="573" width="3.5" height="3.5" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.3"/>
   <rect x="60" y="565" width="461" height="19" rx="4" fill="white" stroke="#c6d4de" stroke-width="1"/>
-  <text x="67" y="580" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">http://localhost:5174/sample-3-4/products</text>
+  <text x="67" y="580" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#425a6b" font-weight="400" text-anchor="start">http://localhost:5173/sample-3-4/products</text>
   <rect x="254.07" y="565" width="196.999" height="19" rx="0" fill="none" stroke="#b42331" stroke-width="2.25"/>
   <rect x="32" y="589" width="494" height="33" rx="0" fill="#212529" stroke="none" stroke-width="1.3"/>
   <text x="43" y="613" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="white" font-weight="700" text-anchor="start">商品管理システム</text>

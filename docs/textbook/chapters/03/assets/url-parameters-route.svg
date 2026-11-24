@@ -2,9 +2,9 @@
 <title>1つのルートで異なる商品番号に対応する</title>
 <text x="220.0" y="19" font-size="14.4" fill="#18364e" text-anchor="middle" font-weight="700">1つのルートで異なる商品番号に対応する</text>
 <rect x="7" y="30" width="426" height="52" rx="4" fill="#f2f6fa" stroke="#afc2d1" stroke-width="1"/>
-<text x="424" y="45" font-size="10.45" fill="#18364e" text-anchor="end" font-family="Consolas, MS Gothic, monospace">ch03-basic/src/components/Sample3_5.tsx</text>
-<text x="16" y="65" font-size="10.4" fill="#52677a" text-anchor="start" font-family="Consolas, MS Gothic, monospace">50</text>
-<text x="37.00 42.88 48.76 54.64 60.53 66.41 72.29 78.17 84.05 89.93 95.81 101.70 107.58 113.46 119.34 125.22 131.10 136.98 142.87 148.75 154.63 160.51 166.39 172.27 178.16 184.04 189.92 195.80 201.68 207.56 213.44 219.33 225.21 231.09 236.97 242.85 248.73 254.61 260.50 266.38 272.26 278.14 284.02 289.90 295.78 301.67 307.55 313.43 319.31 325.19 331.07 336.95 342.84 348.72 354.60 360.48 366.36 372.24 378.12 384.01" y="65" font-family="Consolas, MS Gothic, monospace" font-size="10.65" fill="#18364e" xml:space="preserve">&lt;Route path=&quot;products/:id&quot; element={&lt;ProductDetail3_5 /&gt;} /&gt;</text><rect x="164.89" y="53.35" width="20.64" height="15.15" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
+<text x="424" y="45" font-size="10.45" fill="#18364e" text-anchor="end" font-family="Consolas, MS Gothic, monospace">ch03-basic/src/samples/sample3_5/routes/AppRoutes.tsx</text>
+<text x="16" y="65" font-size="10.4" fill="#52677a" text-anchor="start" font-family="Consolas, MS Gothic, monospace">14</text>
+<text x="37.00 42.88 48.76 54.64 60.53 66.41 72.29 78.17 84.05 89.93 95.82 101.70 107.58 113.46 119.34 125.22 131.10 136.99 142.87 148.75 154.63 160.51 166.39 172.28 178.16 184.04 189.92 195.80 201.68 207.56 213.45 219.33 225.21 231.09 236.97 242.85 248.73 254.62 260.50 266.38 272.26 278.14 284.02 289.91 295.79 301.67 307.55 313.43 319.31 325.19 331.08 336.96 342.84 348.72 354.60 360.48 366.37 372.25 378.13 384.01 389.89" y="65" font-family="Consolas, MS Gothic, monospace" font-size="10.65" fill="#18364e" xml:space="preserve">&lt;Route path="products/:id" element={&lt;ProductDetailPage /&gt;} /&gt;</text><rect x="164.89" y="53.35" width="20.64" height="15.15" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
 <text x="185" y="101" font-size="11.3" fill="#922b35" text-anchor="start" font-weight="700">URLによって変化する部分</text>
 <path d="M176 95L176 72M173.00 77.00L176 72L179.00 77.00" fill="none" stroke="#b42331" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="7" y="116" width="167" height="33" rx="4" fill="#eef7f9" stroke="#abc6d2" stroke-width="1"/>
@@ -19,5 +19,5 @@
 <text x="253" y="158" font-size="10.7" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">products/:id</text>
 <path d="M299 153L321 153M316.00 150.00L321 153L316.00 156.00" fill="none" stroke="#236951" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="323" y="131" width="110" height="45" rx="4" fill="#e9f3fa" stroke="#a7c5da" stroke-width="1"/>
-<text x="378" y="158" font-size="10.5" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">ProductDetail3_5</text>
+<text x="378" y="158" font-size="10.5" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">ProductDetailPage</text>
 </svg>

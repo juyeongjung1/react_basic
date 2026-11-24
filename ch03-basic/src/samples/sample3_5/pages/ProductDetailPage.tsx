@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router'
 
-export default function ProductDetail3_5() {
+export default function ProductDetailPage() {
   const { id } = useParams()
 
   // 実際の開発では、idを使ってREST APIから商品情報を取得する。

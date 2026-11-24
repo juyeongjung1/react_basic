@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from 'react-router'
 
-export default function Layout3_5Q() {
+export default function MainLayout() {
   return (
     <>
       <header className="bg-dark text-white p-3">

@@ -1,14 +1,14 @@
 import { Link } from 'react-router'
 
-type ProductCard3_5QProps = {
+type ProductCardProps = {
   id: number
   name: string
   price: number
   imagePath: string
 }
 
-export default function ProductCard3_5Q(
-  { id, name, price, imagePath }: ProductCard3_5QProps
+export default function ProductCard(
+  { id, name, price, imagePath }: ProductCardProps
 ) {
   return (
     <div className="col-12 col-sm-6 col-lg-4">
@@ -23,8 +23,7 @@ export default function ProductCard3_5Q(
           <h2 className="h5 card-title">{name}</h2>
           <p className="card-text">商品番号：{id}</p>
           <p className="card-text">単価：{price}円</p>
-          {/* ➂ 実装：/sample-3-5/products/ にidの値を続けたURLを
-              Linkのto属性に設定してください。次の仮のto属性を置き換えます。 */}
+          {/* ➂ 実装：/sample-3-5/products/ にidの値を続けたURLをテンプレートリテラルで組み立て、Linkのto属性に設定してください。次の仮のto属性を置き換えます。 */}
           <Link to="/sample-3-5/products"
                 className="btn btn-primary">
             詳細
