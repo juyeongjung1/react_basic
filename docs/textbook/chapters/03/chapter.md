@@ -2088,6 +2088,16 @@ import { Outlet } from 'react-router'
 | `/sample-3-3/guide` | ご利用案内画面 |
 :::
 
+::::
+
+:::: {#page-12 .source-page}
+
+![アドレスバーでURLを変更し、ホームからご利用案内へ切り替える](assets/layout-check-browser.svg){#ch03-layout-check-browser}
+
+::: {#ch03-layout-check-browser-caption .caption}
+アドレスバーでURLを変更し、ホームからご利用案内へ切り替える
+:::
+
 ::: {#ch03-layout-check-result .paragraph}
 どの画面でも同じヘッダー・メニュー・フッターが表示され、中央のコンテンツ部分だけが異なることを確認してください。
 :::
@@ -2114,7 +2124,7 @@ import { Outlet } from 'react-router'
 
 ::::
 
-:::: {#page-12 .source-page}
+:::: {#page-13 .source-page}
 
 ::: {#ch03-navigation-title .heading}
 3.4. SPAの画面遷移（LinkとNavLink）
@@ -2352,7 +2362,7 @@ export default function Layout3_4() {
 
 ::::
 
-:::: {#page-13 .source-page}
+:::: {#page-14 .source-page}
 
 ::: {#ch03-navigation-practice-heading .heading level="minor"}
 【確認演習】共通メニューから画面遷移する
@@ -2397,6 +2407,16 @@ export default function Layout3_4() {
 | 商品一覧 | `/sample-3-4/products` | 商品一覧画面 |
 | ご利用案内 | `/sample-3-4/guide` | ご利用案内画面 |
 | 商品管理システム | `/sample-3-4` | ホーム画面 |
+:::
+
+::::
+
+:::: {#page-15 .source-page}
+
+![「商品一覧」をクリックし、画面とメニューの強調が切り替わることを確認する](assets/navigation-check-browser.svg){#ch03-navigation-check-browser}
+
+::: {#ch03-navigation-check-browser-caption .caption}
+「商品一覧」をクリックし、画面とメニューの強調が切り替わることを確認する
 :::
 
 ::: {#ch03-navigation-check-other .paragraph}

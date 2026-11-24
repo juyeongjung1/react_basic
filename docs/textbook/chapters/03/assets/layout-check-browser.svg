@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="181" viewBox="0 0 480 181" font-family="Meiryo, sans-serif" role="img">
+  <title>3.3の動作確認。アドレスバーでホームからご利用案内へ移動する</title>
+  <text x="240" y="13.5" font-size="12.3" fill="#932530" font-weight="700" text-anchor="middle">アドレスバーに移動先のURLを入力して Enter</text>
+  <text x="4" y="29" font-size="11.5" fill="#24374a" font-weight="700">操作前</text>
+  <text x="254" y="29" font-size="11.5" fill="#24374a" font-weight="700">操作後</text>
+<g transform="translate(4 36)">
+  <rect x="0" y="0" width="222" height="140" fill="#fff" rx="6"/>
+  <path d="M0 23V6A6 6 0 0 1 6 0h210a6 6 0 0 1 6 6v17Z" fill="#eaf2f7"/>
+  <circle cx="9" cy="11.5" r="1.8" fill="#8ca5b7"/>
+  <circle cx="16" cy="11.5" r="1.8" fill="#8ca5b7"/>
+  <rect x="23" y="4" width="193" height="15" fill="#fff" rx="3" stroke="#b5c8d7" stroke-width="0.85"/>
+  <text x="28" y="14.65" font-size="9.7" fill="#24374a" font-weight="400" font-family="Consolas, MS Gothic, monospace">localhost:5173/sample-3-3</text>
+  <rect x="0" y="23" width="222" height="23" fill="#212529"/>
+  <text x="10" y="38.6" font-size="11.5" fill="#fff" font-weight="400">商品管理システム</text>
+  <rect x="0" y="46" width="222" height="25" fill="#f8f9fa"/>
+  <text x="32.0" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">ホーム</text>
+  <text x="91.5" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">商品一覧</text>
+  <text x="163.5" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">ご利用案内</text>
+  <text x="11" y="88" font-size="14.3" fill="#24374a" font-weight="700">ホーム</text>
+  <text x="11" y="104" font-size="10.15" fill="#24374a" font-weight="400">商品管理システムへようこそ。</text>
+  <rect x="0.5" y="116" width="221" height="19" fill="#f3f6f8"/>
+  <text x="111" y="128.7" font-size="10.75" fill="#24374a" font-weight="400" text-anchor="middle">商品管理システム</text>
+  <rect x="0" y="0" width="222" height="140" fill="none" rx="6" stroke="#8ba7bf" stroke-width="1.05"/>
+  <rect x="22" y="3" width="195" height="17" fill="none" rx="3" stroke="#b42331" stroke-width="1.9"/>
+</g>
+<g transform="translate(254 36)">
+  <rect x="0" y="0" width="222" height="140" fill="#fff" rx="6"/>
+  <path d="M0 23V6A6 6 0 0 1 6 0h210a6 6 0 0 1 6 6v17Z" fill="#eaf2f7"/>
+  <circle cx="9" cy="11.5" r="1.8" fill="#8ca5b7"/>
+  <circle cx="16" cy="11.5" r="1.8" fill="#8ca5b7"/>
+  <rect x="23" y="4" width="193" height="15" fill="#fff" rx="3" stroke="#b5c8d7" stroke-width="0.85"/>
+  <text x="28" y="14.65" font-size="9.7" fill="#24374a" font-weight="400" font-family="Consolas, MS Gothic, monospace">localhost:5173/sample-3-3/guide</text>
+  <rect x="0" y="23" width="222" height="23" fill="#212529"/>
+  <text x="10" y="38.6" font-size="11.5" fill="#fff" font-weight="400">商品管理システム</text>
+  <rect x="0" y="46" width="222" height="25" fill="#f8f9fa"/>
+  <text x="32.0" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">ホーム</text>
+  <text x="91.5" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">商品一覧</text>
+  <text x="163.5" y="62.2" font-size="10.8" fill="#212529" font-weight="600" text-anchor="middle">ご利用案内</text>
+  <text x="11" y="88" font-size="14.3" fill="#24374a" font-weight="700">ご利用案内</text>
+  <text x="11" y="104" font-size="10.15" fill="#24374a" font-weight="400">このシステムでは商品情報を確認できます。</text>
+  <rect x="0.5" y="116" width="221" height="19" fill="#f3f6f8"/>
+  <text x="111" y="128.7" font-size="10.75" fill="#24374a" font-weight="400" text-anchor="middle">商品管理システム</text>
+  <rect x="0" y="0" width="222" height="140" fill="none" rx="6" stroke="#8ba7bf" stroke-width="1.05"/>
+  <rect x="22" y="3" width="195" height="17" fill="none" rx="3" stroke="#b42331" stroke-width="1.9"/>
+  <rect x="5" y="72" width="212" height="39" fill="none" rx="2" stroke="#b42331" stroke-width="1.9"/>
+</g>
+  <path d="M232 47h16m-6-5 6 5-6 5" fill="none" stroke="#b42331" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
