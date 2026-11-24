@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="372" height="112" viewBox="0 0 372 112">
 <rect x="3" y="5" width="214" height="39" rx="4" fill="#eaf3fc" stroke="#a5c2db" stroke-width="0.9"/>
-<text x="12" y="19" font-family="Meiryo" font-size="10.8" fill="#245983" text-anchor="start" font-weight="700">パスを変数に入れる</text>
-<text x="12" y="34" font-family="MS Gothic" font-size="9.5" fill="#172f44" text-anchor="start" font-weight="400">const imagePath = '/images/notebook.png'</text>
+<text x="12" y="19" font-family="Meiryo" font-size="10.8" fill="#245983" text-anchor="start" font-weight="700">商品データに画像パスを用意する</text>
+<text x="12" y="34" font-family="MS Gothic" font-size="9.5" fill="#172f44" text-anchor="start" font-weight="400">product.imagePath → /images/notebook.png</text>
 <path d="M107 47 L107 51" fill="none" stroke="#44627b" stroke-width="1.4" stroke-linecap="round"/>
 <path d="M103.4 51h7.2L107 56Z" fill="#44627b"/>
 <rect x="3" y="61" width="214" height="44" rx="4" fill="#e8f5f0" stroke="#a7cabf" stroke-width="0.9"/>
 <text x="12" y="77" font-family="Meiryo" font-size="10.5" fill="#246a5c" text-anchor="start" font-weight="700">src属性に設定する</text>
-<rect x="11" y="83" width="96" height="16" rx="2" fill="#ffffff" stroke="#b64a2a" stroke-width="0.9"/>
-<text x="16" y="94.5" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">src={imagePath}</text>
+<rect x="11" y="83" width="140" height="16" rx="2" fill="#ffffff" stroke="#b64a2a" stroke-width="0.9"/>
+<text x="16" y="94.5" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">src={product.imagePath}</text>
 <path d="M220 82 L244 82" fill="none" stroke="#44627b" stroke-width="1.4" stroke-linecap="round"/>
 <path d="M244 78.5l5 3.5l-5 3.5Z" fill="#44627b"/>
 <rect x="254" y="6" width="113" height="99" rx="5" fill="#fcfdff" stroke="#bacddb" stroke-width="0.9"/>

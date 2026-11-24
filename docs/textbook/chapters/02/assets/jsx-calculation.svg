@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="270" height="178" viewBox="0 0 270 178">
-<text x="5" y="21" font-family="Meiryo" font-size="11" fill="#245983" text-anchor="start" font-weight="700">変数</text>
+<text x="5" y="21" font-family="Meiryo" font-size="11" fill="#245983" text-anchor="start" font-weight="700">計算に使う値</text>
 <rect x="85" y="5" width="179" height="34" rx="4" fill="#eaf3fc" stroke="#a5c2db" stroke-width="0.9"/>
-<text x="94" y="18" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">const price = 250</text>
-<text x="94" y="31" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">const quantity = 2</text>
+<text x="94" y="18" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">product.price → 250</text>
+<text x="94" y="31" font-family="MS Gothic" font-size="9.8" fill="#172f44" text-anchor="start" font-weight="400">quantity → 2</text>
 <path d="M175 42 L175 50" fill="none" stroke="#44627b" stroke-width="1.4" stroke-linecap="round"/>
 <path d="M171.4 50h7.2L175 55Z" fill="#44627b"/>
 <text x="5" y="78" font-family="Meiryo" font-size="11" fill="#246a5c" text-anchor="start" font-weight="700">JSXの式</text>
 <rect x="85" y="60" width="179" height="29" rx="4" fill="#e8f5f0" stroke="#a7cabf" stroke-width="0.9"/>
-<rect x="102" y="64" width="145" height="20" rx="3" fill="#ffffff" stroke="#b64a2a" stroke-width="0.9"/>
-<text x="175" y="78" font-family="MS Gothic" font-size="10.8" fill="#246a5c" text-anchor="middle" font-weight="700">{price * quantity}</text>
+<rect x="94" y="64" width="162" height="20" rx="3" fill="#ffffff" stroke="#b64a2a" stroke-width="0.9"/>
+<text x="175" y="78" font-family="MS Gothic" font-size="10.8" fill="#246a5c" text-anchor="middle" font-weight="700">{product.price * quantity}</text>
 <path d="M175 93 L175 101" fill="none" stroke="#44627b" stroke-width="1.4" stroke-linecap="round"/>
 <path d="M171.4 101h7.2L175 106Z" fill="#44627b"/>
 <text x="5" y="136" font-family="Meiryo" font-size="11" fill="#245983" text-anchor="start" font-weight="700">ブラウザー</text>
@@ -16,5 +16,5 @@
 <rect x="86" y="113" width="177" height="21" rx="4" fill="#eaf1f7" stroke="none" stroke-width="0.9"/>
 <path d="M86 134 L263 134" fill="none" stroke="#bacddb" stroke-width="1" stroke-linecap="round"/>
 <text x="94" y="127" font-family="Meiryo" font-size="9.7" fill="#44627b" text-anchor="start" font-weight="400">商品情報</text>
-<text x="97" y="157" font-family="Meiryo" font-size="14.5" fill="#245983" text-anchor="start" font-weight="700">合計：500円</text>
+<text x="97" y="157" font-family="Meiryo" font-size="14.5" fill="#0d6efd" text-anchor="start" font-weight="700">合計：500円</text>
 </svg>

@@ -6,10 +6,21 @@
   "cover_mode": "classic",
   "cover_wrap_goals": true,
   "illustrations": {
-    "ch02-jsx-app-screen": {
-      "caption_id": "ch02-jsx-app-screen-caption",
-      "width": 340,
-      "max_height": 198
+    "ch02-component-code": {
+      "caption_id": "ch02-component-code-caption",
+      "width": 380,
+      "max_height": 214,
+      "file_path": "ch01-setup/src/App.tsx"
+    },
+    "ch02-calculation-diagram": {
+      "caption_id": "ch02-calculation-diagram-caption",
+      "width": 270,
+      "max_height": 182
+    },
+    "ch02-image-path-result": {
+      "caption_id": "ch02-image-path-result-caption",
+      "width": 372,
+      "max_height": 115
     },
     "ch02-product-display": {
       "caption_id": "ch02-product-display-caption",
