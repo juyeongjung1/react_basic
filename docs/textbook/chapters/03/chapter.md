@@ -2131,41 +2131,48 @@ SPAにおける画面遷移
 :::
 
 ::: {#ch03-navigation-background-1 .paragraph}
-複数の画面で共通するヘッダーやメニュー、フッターをまとめたレイアウトでは、`Outlet`の位置に画面ごとの内容を表示します。しかし、画面を切り替えるために、ユーザーが毎回ブラウザーのアドレスバーへURLを入力するのは不便です。そこで、共通メニューにリンクを配置し、クリックすることで画面を切り替えられるようにしましょう。
+前節では、親ルートと子ルートを定義し、`Outlet`を使用して共通レイアウトの中に各画面を表示する方法を学習しました。しかし、前節で作成したメニューは文字を表示しているだけなので、クリックしても画面は切り替わりません。別の画面を表示するには、ブラウザーのアドレスバーからURLを変更する必要がありました。そこで、今回は共通メニューにリンクを配置し、クリックすることで画面を切り替えられるようにします。
 :::
 
-::: {#ch03-navigation-background-4 .paragraph}
-通常のHTMLでは、画面を移動するために`<a>`タグを使用します。Reactでも`<a>`タグを使用できますが、通常のリンクによる移動では、移動先のページを読み込み直すことになります。
+::: {#ch03-navigation-background-2 .paragraph}
+通常のHTMLでは、画面を移動するために`<a>`タグを使用しますが、通常のリンクによる移動ではページの読み込みが発生します。一方、React Routerが提供する`Link`や`NavLink`を使用すると、**ページ全体を再読み込みせずにURLを変更し、対応するコンポーネントを表示できます。**
 :::
 
-::: {#ch03-navigation-background-6 .paragraph}
-一方、React Routerが提供する`Link`や`NavLink`を使用すると、ページ全体を再読み込みせずにURLを変更し、対応するコンポーネントを表示できます。これが、**SPAにおける画面遷移**です。React Routerでは、リンクの用途に応じて、主に次の2つのコンポーネントを使い分けます。
+::: {#ch03-navigation-background-3 .paragraph}
+これが、第1章で学習したSPAにおける画面遷移です。React Routerでは、リンクの用途に応じて、次の2つのコンポーネントを使い分けます。
 :::
 
 ::: {#ch03-navigation-link-types .table column-widths="28 72"}
 | コンポーネント | 用途 |
 |---|---|
-| `Link` | 別の画面へ移動するためのリンク |
-| `NavLink` | 現在表示している画面に対応するリンクを強調できるリンク |
+| Link | 別の画面へ移動するためのリンク |
+| NavLink | 現在表示している画面に対応するリンクを強調できるリンク |
 :::
 
 ::: {#ch03-navigation-background-example .paragraph}
-例えば、画面内に配置する「商品一覧へ戻る」などのリンクには`Link`、現在表示している画面を強調したい共通メニューには`NavLink`が適しています。
+例えば、画面内の「商品一覧へ戻る」などのリンクには`Link`を、現在表示している画面を強調したい共通メニューには`NavLink`を使用します。
 :::
 
 ::: {#ch03-navigation-sample-heading .heading level="minor"}
 【サンプル】共通メニューから画面を切り替える
 :::
 
-::: {#ch03-navigation-sample-1 .paragraph}
-共通レイアウトに、画面を切り替えるためのリンクを配置します。システム名には`Link`を、ホーム・商品一覧・ご利用案内のメニューには`NavLink`を使用します。
+::: {#ch03-navigation-sample-intro .paragraph}
+前節の共通レイアウトに画面遷移を追加します。主に変更する`Layout3_4.tsx`では、ヘッダーのシステム名に`Link`を、ホーム・商品一覧・ご利用案内のメニューに`NavLink`を使用します。使用するファイルは次の2つです。
 :::
 
-::: {#ch03-navigation-sample-code .code filename="ch03-basic/src/components/Sample3_4.tsx"}
+::: {#ch03-navigation-sample-files .table column-widths="37 63"}
+| ファイル | 役割 |
+|---|---|
+| `Layout3_4.tsx` | 共通レイアウトと画面遷移用のリンクを定義する |
+| `Sample3_4.tsx` | 親ルートと子ルートを定義する |
+:::
+
+::: {#ch03-navigation-layout-code .code filename="ch03-basic/src/components/Layout3_4.tsx" start-line="1"}
 ```tsx
 import { Link, NavLink, Outlet } from 'react-router'
 
-export default function Sample3_4() {
+export default function Layout3_4() {
   return (
     <>
       <header className="bg-dark text-white p-3">
@@ -2192,7 +2199,7 @@ export default function Sample3_4() {
 ```
 :::
 
-::: {#ch03-navigation-sample-code-continued .code filename="ch03-basic/src/components/Sample3_4.tsx" start-line="27"}
+::: {#ch03-navigation-layout-code-continued .code filename="ch03-basic/src/components/Layout3_4.tsx" start-line="27"}
 ```tsx
 
       <Outlet />
@@ -2206,14 +2213,30 @@ export default function Sample3_4() {
 ```
 :::
 
-![商品一覧を選択した画面とホームを選択したときのメニュー](assets/navigation-browser.svg){#ch03-navigation-browser}
-
-::: {#ch03-navigation-browser-caption .caption}
-商品一覧を選択した画面とホームを選択したときのメニュー
+::: {#ch03-navigation-routes-intro .paragraph}
+前節のルート構成を使い、親ルートに`Layout3_4`を指定します。
 :::
 
-::: {#ch03-navigation-bootstrap .paragraph}
-なお、画面のデザインにはBootstrapを使用しています。
+::: {#ch03-navigation-routes-code .code filename="ch03-basic/src/components/Sample3_4.tsx" start-line="25"}
+```tsx
+<Routes>
+  <Route element={<Layout3_4 />}>
+    <Route index element={<HomePage />} />
+    <Route path="products" element={<Sample3_1 />} />
+    <Route path="guide" element={<GuidePage />} />
+  </Route>
+</Routes>
+```
+:::
+
+::: {#ch03-navigation-routes-result .paragraph}
+各画面のURLは、この節の「動作確認」の表で確認できます。
+:::
+
+![商品一覧を選択した画面](assets/navigation-browser.svg){#ch03-navigation-browser}
+
+::: {#ch03-navigation-browser-caption .caption}
+商品一覧を選択した画面
 :::
 
 ::: {#ch03-navigation-syntax-heading .heading level="minor"}
@@ -2224,7 +2247,7 @@ export default function Sample3_4() {
 **① Linkによる画面遷移**
 :::
 
-::: {#ch03-navigation-link-code .code filename="ch03-basic/src/components/Sample3_4.tsx" start-line="7"}
+::: {#ch03-navigation-link-code .code filename="ch03-basic/src/components/Layout3_4.tsx" start-line="7"}
 ```tsx
 <Link
   to="/sample-3-4"
@@ -2235,33 +2258,25 @@ export default function Sample3_4() {
 ```
 :::
 
-::: {#ch03-navigation-link-1 .paragraph}
-`Link`は、React Routerが提供する画面遷移用のコンポーネントです。
-:::
-
-::: {#ch03-navigation-link-2 .paragraph}
-HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link`では、**to属性に移動先のURLのパスを指定します。**
+::: {#ch03-navigation-link .paragraph}
+`Link`は、React Routerが提供する画面遷移用のコンポーネントです。HTMLのリンクとReact Routerの`Link`では、移動先を指定する属性が異なります。
 :::
 
 ::: {#ch03-navigation-link-attributes .table column-widths="50 50"}
 | HTMLのリンク | React RouterのLink |
 |---|---|
-| `href="/sample-3-4"` | `to="/sample-3-4"` |
+| `<a href="移動先">` | `<Link to="移動先">` |
 :::
 
-::: {#ch03-navigation-link-result-1 .paragraph}
-今回のサンプルでは、システム名をクリックすると、ホーム画面へ移動します。
-:::
-
-::: {#ch03-navigation-link-result-2 .paragraph}
-通常のクリック操作では、HTMLページ全体の再読み込みは行われません。
+::: {#ch03-navigation-link-result .paragraph}
+`Link`では、**to属性に移動先のURLを指定します。**今回のサンプルでは、ヘッダーの「商品管理システム」をクリックすると、`/sample-3-4`に対応するホーム画面が表示されます。このとき、通常のクリック操作ではページ全体を再読み込みしません。
 :::
 
 ::: {#ch03-navigation-navlink-heading .step}
-**② NavLinkによる画面遷移**
+**② NavLinkによる画面遷移とメニューの強調**
 :::
 
-::: {#ch03-navigation-navlink-code .code filename="ch03-basic/src/components/Sample3_4.tsx" start-line="20"}
+::: {#ch03-navigation-navlink-code .code filename="ch03-basic/src/components/Layout3_4.tsx" start-line="20"}
 ```tsx
 <NavLink to="/sample-3-4/products" className="nav-link">
   商品一覧
@@ -2269,62 +2284,70 @@ HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link
 ```
 :::
 
-::: {#ch03-navigation-navlink-1 .paragraph}
-`NavLink`も、`Link`と同様に`to`属性で移動先を指定します。
-:::
-
-::: {#ch03-navigation-navlink-2 .paragraph}
-ただし、`NavLink`には、現在表示している画面に対応するリンクへ、自動的に`active`というCSSのクラスを追加する機能があります。
-:::
-
-::: {#ch03-navigation-navlink-3 .paragraph}
-例えば、商品一覧画面を表示している場合、商品一覧のリンクには`nav-link`に加えて`active`が設定されます。
+::: {#ch03-navigation-navlink .paragraph}
+`NavLink`も、`Link`と同様に`to`属性で移動先を指定します。ただし、`NavLink`には、現在のURLがリンク先に対応している場合に、**activeというCSSのクラスを自動的に追加する機能**があります。例えば、商品一覧のリンクには、現在のURLに応じて次のようにクラスが設定されます。
 :::
 
 ::: {#ch03-navigation-active-classes .table column-widths="49 51"}
 | 現在のURL | 商品一覧のリンクに設定されるクラス |
 |---|---|
-| `/sample-3-4` | `nav-link` |
-| `/sample-3-4/products` | `nav-link active` |
-| `/sample-3-4/guide` | `nav-link` |
+| `/sample-3-4` | nav-link |
+| `/sample-3-4/products` | nav-link active |
+| `/sample-3-4/guide` | nav-link |
 :::
 
-::: {#ch03-navigation-navlink-result-1 .paragraph}
-今回のサンプルでは、Bootstrapの機能によって、`active`が設定されたメニューが青い背景で表示されます。
+::: {#ch03-navigation-navlink-result .paragraph}
+今回のサンプルでは、Bootstrapの機能によって、`active`が設定されたメニューが青い背景で表示されます。そのため、自分で条件分岐を記述してメニューの色を変更する必要はありません。
 :::
 
-::: {#ch03-navigation-navlink-result-2 .paragraph}
-このように、`NavLink`を使用すると、現在表示している画面をメニュー上で分かりやすく示すことができます。
+::: {#ch03-navigation-end-heading .step}
+**③ end属性でURLの一致範囲を指定する**
 :::
 
-::: {#ch03-navigation-navlink-end .paragraph}
-ホームの`NavLink`には`end`を付け、ホームのURLと完全に一致するときだけ強調されるようにします。
+::: {#ch03-navigation-end-code .code filename="ch03-basic/src/components/Layout3_4.tsx" start-line="17"}
+```tsx
+<NavLink to="/sample-3-4" className="nav-link" end>
+  ホーム
+</NavLink>
+```
 :::
 
-::: {#ch03-navigation-flow-heading .step keep-next="4"}
-**③ URLと表示画面が切り替わる仕組み**
+::: {#ch03-navigation-end-1 .paragraph}
+ホームの`NavLink`には、`end`という属性を指定しています。`NavLink`は、通常、リンク先のパスに続く子のパスにアクセスしている場合も、リンクが選択されていると判断します。
 :::
 
-::: {#ch03-navigation-flow-before .paragraph}
-ユーザーが商品一覧の`NavLink`をクリックすると、次の流れで画面が切り替わります。
+::: {#ch03-navigation-end-2 .paragraph}
+そのため、今回のホームのリンクに`end`を指定しないと、商品一覧やご利用案内を表示しているときにも、ホームのリンクが強調されてしまいます。`end`を指定すると、リンク先のパスと現在のパスが一致するときだけ、リンクが強調されます。
+:::
+
+::: {#ch03-navigation-end-match .table column-widths="46 27 27"}
+| 現在のURL | ホーム（endなし） | ホーム（endあり） |
+|---|---|---|
+| `/sample-3-4` | 強調する | 強調する |
+| `/sample-3-4/products` | 強調する | 強調しない |
+| `/sample-3-4/guide` | 強調する | 強調しない |
+:::
+
+![商品一覧画面でのend属性の有無によるメニューの違い](assets/navigation-end.svg){#ch03-navigation-end-menu}
+
+::: {#ch03-navigation-end-menu-caption .caption}
+商品一覧画面でのend属性の有無によるメニューの違い
+:::
+
+::: {#ch03-navigation-flow-heading .step}
+**④ リンクとルーティングの関係**
+:::
+
+::: {#ch03-navigation-flow-intro .paragraph}
+商品一覧のメニューをクリックすると、次のような流れで画面が切り替わります。
 :::
 
 ::: {#ch03-navigation-flow-steps .paragraph keep-lines="true"}
-① `NavLink`のクリックによってURLが`/sample-3-4/products`に変更される\
-↓\
-② React RouterがURLに対応するルートを選択する\
-↓\
-③ `Outlet`の位置に商品一覧コンポーネントが表示される\
-↓\
-④ 現在のURLに対応するメニューが強調される
+1．　`NavLink`のクリックによってURLが`/sample-3-4/products`に変更される。<br>2．　React Routerが商品一覧に対応する子ルートを選択する。<br>3．　`Outlet`の位置に`Sample3_1`が表示される。
 :::
 
-::: {#ch03-navigation-flow-after-1 .paragraph}
-このとき、共通ヘッダーやメニュー、フッターは維持され、中央のコンテンツ部分が切り替わります。
-:::
-
-::: {#ch03-navigation-flow-after-2 .paragraph}
-ページ全体を再読み込みする必要がないため、スムーズに画面を切り替えることができます。
+::: {#ch03-navigation-flow-result .paragraph}
+このとき、共通ヘッダーやメニュー、フッターは維持されます。また、現在のURLに合わせてメニューの強調表示も更新されます。つまり、前節で学習した共通レイアウトとルーティングに、`Link`や`NavLink`を組み合わせることで、SPAの画面遷移を実装できます。
 :::
 
 ::::
@@ -2335,12 +2358,12 @@ HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link
 【確認演習】共通メニューから画面遷移する
 :::
 
-::: {#ch03-navigation-practice-intro-1 .paragraph}
-共通レイアウトに`Link`と`NavLink`を配置し、各画面へ移動できるようにします。ルーティングの設定、共通レイアウト、各画面のコンポーネントは、あらかじめ用意されています。
+::: {#ch03-navigation-practice-intro .paragraph}
+前節の共通レイアウトをベースに、ヘッダーとメニューから各画面へ移動できるようにします。ルーティングの設定、共通レイアウトの基本構成、各画面のコンポーネントは、あらかじめ用意されています。
 :::
 
 ::: {#ch03-navigation-practice-step-1 .paragraph numbered="true"}
-1．　`ch03-basic-q`プロジェクトの`src/components/Q3_4.tsx`を開いてください。
+1．　`ch03-basic-q`プロジェクトの`src/components/Layout3_4Q.tsx`を開いてください。
 :::
 
 ::: {#ch03-navigation-practice-step-2 .paragraph numbered="true"}
@@ -2381,7 +2404,7 @@ HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link
 :::
 
 ::: {#ch03-navigation-check-result-1 .paragraph}
-● 現在表示している画面に対応するメニューが強調される。
+● 現在表示している画面に対応するメニューだけが青い背景で強調される。
 :::
 
 ::: {#ch03-navigation-check-result-2 .paragraph}
@@ -2395,13 +2418,13 @@ HTMLの`<a>`タグでは、移動先を`href`属性で指定しますが、`Link
 ::: {#ch03-navigation-points .section-points}
 この節のポイント
 
-● `Link`や`NavLink`を使用すると、ページ全体を再読み込みせずに画面遷移できる。
+● LinkやNavLinkを使用すると、ページ全体を再読み込みせずに画面遷移できる。
 
-● 移動先のURLのパスは`to`属性で指定する。
+● 移動先のURLはto属性で指定する。
 
-● `NavLink`は、現在のURLに対応するリンクへ`active`クラスを追加する。
+● NavLinkは、現在のURLに対応するリンクへactiveクラスを追加する。
 
-● React Routerと共通レイアウトを組み合わせることで、SPAの画面遷移を実装できる。
+● end属性によって、リンク先のパスと現在のパスが一致する場合だけ強調できる。
 :::
 
 ::::

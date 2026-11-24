@@ -1,35 +1,33 @@
-import { Link, NavLink, Outlet } from 'react-router'
+import { Routes, Route } from 'react-router'
+import Layout3_4 from './Layout3_4'
+import Sample3_1 from './Sample3_1'
+
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+
+function GuidePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ご利用案内</h1>
+      <p>このシステムでは商品情報を確認できます。</p>
+    </main>
+  )
+}
 
 export default function Sample3_4() {
   return (
-    <>
-      <header className="bg-dark text-white p-3">
-        <Link
-          to="/sample-3-4"
-          className="text-white text-decoration-none"
-        >
-          商品管理システム
-        </Link>
-      </header>
-
-      <nav className="nav nav-pills bg-light p-3 gap-2"
-           aria-label="商品管理システムのメニュー">
-        <NavLink to="/sample-3-4" className="nav-link" end>
-          ホーム
-        </NavLink>
-        <NavLink to="/sample-3-4/products" className="nav-link">
-          商品一覧
-        </NavLink>
-        <NavLink to="/sample-3-4/guide" className="nav-link">
-          ご利用案内
-        </NavLink>
-      </nav>
-
-      <Outlet />
-
-      <footer className="bg-light text-center p-3 mt-4">
-        商品管理システム
-      </footer>
-    </>
+    <Routes>
+      <Route element={<Layout3_4 />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<Sample3_1 />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+    </Routes>
   )
 }

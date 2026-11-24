@@ -1,34 +1,33 @@
-// ➀ 確認：react-routerからLink・NavLink・Outletをインポートしていることを確認してください。
-import { Link, NavLink, Outlet } from 'react-router'
+import { Routes, Route } from 'react-router'
+import Layout3_4Q from './Layout3_4Q'
+import Sample3_1 from './reference/Sample3_1'
+
+function HomePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ホーム</h1>
+      <p>商品管理システムへようこそ。</p>
+    </main>
+  )
+}
+
+function GuidePage() {
+  return (
+    <main className="container mt-4">
+      <h1>ご利用案内</h1>
+      <p>このシステムでは商品情報を確認できます。</p>
+    </main>
+  )
+}
 
 export default function Q3_4() {
   return (
-    <>
-      <header className="bg-dark text-white p-3">
-        {/* ➁ 実装：下の仮表示を、商品管理システムと表示するLinkに置き換えてください。
-            移動先は /sample-3-4、クラスは text-white text-decoration-none を指定してください。 */}
-        <span>商品管理システム</span>
-      </header>
-
-      <nav className="nav nav-pills bg-light p-3 gap-2"
-           aria-label="商品管理システムのメニュー">
-        {/* ➂ 実装：下の仮表示を、ホームと表示するNavLinkに置き換えてください。
-            移動先は /sample-3-4、クラスは nav-link を指定してください。
-            ホームのURLと完全に一致した場合だけ強調するよう、end属性も指定してください。 */}
-        <span className="nav-link">ホーム</span>
-        {/* ➃ 実装：下の仮表示を、商品一覧と表示するNavLinkに置き換えてください。
-            移動先は /sample-3-4/products、クラスは nav-link を指定してください。 */}
-        <span className="nav-link">商品一覧</span>
-        {/* ➄ 実装：下の仮表示を、ご利用案内と表示するNavLinkに置き換えてください。
-            移動先は /sample-3-4/guide、クラスは nav-link を指定してください。 */}
-        <span className="nav-link">ご利用案内</span>
-      </nav>
-
-      <Outlet />
-
-      <footer className="bg-light text-center p-3 mt-4">
-        商品管理システム
-      </footer>
-    </>
+    <Routes>
+      <Route element={<Layout3_4Q />}>
+        <Route index element={<HomePage />} />
+        <Route path="products" element={<Sample3_1 />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+    </Routes>
   )
 }

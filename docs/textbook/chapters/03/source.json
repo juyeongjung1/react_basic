@@ -80,13 +80,18 @@
     },
     "ch03-navigation-browser": {
       "caption_id": "ch03-navigation-browser-caption",
-      "width": 380,
-      "max_height": 275
+      "width": 360,
+      "max_height": 223
     },
     "ch03-layout-route-flow": {
       "caption_id": "ch03-layout-route-flow-caption",
       "width": 380,
       "max_height": 167
+    },
+    "ch03-navigation-end-menu": {
+      "caption_id": "ch03-navigation-end-menu-caption",
+      "width": 380,
+      "max_height": 55
     }
   }
 }

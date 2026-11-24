@@ -3,7 +3,6 @@ import Q3_1 from './components/Q3_1'
 import Q3_2 from './components/Q3_2'
 import Q3_3 from './components/Q3_3'
 import Q3_4 from './components/Q3_4'
-import Sample3_1 from './components/reference/Sample3_1'
 
 const propsPath = '/sample-3-1'
 const layoutPath = '/sample-3-3'
@@ -43,21 +42,7 @@ export default function App() {
       <Routes>
         <Route path={propsPath} element={<Q3_1 />} />
         <Route path={layoutPath + '/*'} element={<Q3_3 />} />
-        <Route path={navigationPath} element={<Q3_4 />}>
-          <Route index element={
-            <main className="container mt-4">
-              <h1>ホーム</h1>
-              <p>商品管理システムへようこそ。</p>
-            </main>
-          } />
-          <Route path="products" element={<Sample3_1 />} />
-          <Route path="guide" element={
-            <main className="container mt-4">
-              <h1>ご利用案内</h1>
-              <p>このシステムでは商品情報を確認できます。</p>
-            </main>
-          } />
-        </Route>
+        <Route path={navigationPath + '/*'} element={<Q3_4 />} />
         <Route path="/*" element={<Q3_2 />} />
       </Routes>
     </>

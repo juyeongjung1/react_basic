@@ -42,21 +42,7 @@ export default function App() {
       <Routes>
         <Route path={propsPath} element={<Sample3_1 />} />
         <Route path={layoutPath + '/*'} element={<Sample3_3 />} />
-        <Route path={navigationPath} element={<Sample3_4 />}>
-          <Route index element={
-            <main className="container mt-4">
-              <h1>ホーム</h1>
-              <p>商品管理システムへようこそ。</p>
-            </main>
-          } />
-          <Route path="products" element={<Sample3_1 />} />
-          <Route path="guide" element={
-            <main className="container mt-4">
-              <h1>ご利用案内</h1>
-              <p>このシステムでは商品情報を確認できます。</p>
-            </main>
-          } />
-        </Route>
+        <Route path={navigationPath + '/*'} element={<Sample3_4 />} />
         <Route path="/*" element={<Sample3_2 />} />
       </Routes>
     </>
