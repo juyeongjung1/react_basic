@@ -76,6 +76,16 @@ def flatten(nodes, style=None):
     return result
 
 
+def read_table(value, attrs):
+    raw_rows = value[3][1] + [row for body in value[4] for row in body[3]]
+    rows = [[''.join(text for block in cell[4] if block['t'] in ('Plain', 'Para')
+                    for text, _ in flatten(block['c'])) for cell in row[1]] for row in raw_rows]
+    has_header = attrs.get('has-header', 'true') == 'true'
+    if not has_header and rows and all(not cell.strip() for cell in rows[0]):
+        rows = rows[1:]
+    return rows, has_header
+
+
 def read_markdown(path):
     run = subprocess.run(["pandoc", str(path), "-f", "markdown-smart-citations-implicit_figures-tex_math_dollars", "--preserve-tabs", "-t", "json"], check=True, capture_output=True, encoding="utf-8")
     doc = json.loads(run.stdout)
@@ -107,31 +117,38 @@ def read_markdown(path):
                     continue
                 parts = []
                 language = None
-                note_code = None
+                note = attrs[1][0] == 'training-note'
+                embedded_component = None
                 for child in children:
+                    if note and child['t'] in ('CodeBlock', 'Div'):
+                        component_attrs, value = child['c']
+                        component_id, classes, settings = component_attrs
+                        if (embedded_component or not parts or not component_id or component_id == attrs[0]
+                                or component_id in nodes or component_id in figures):
+                            raise ValueError(f'補足枠の部品の位置またはIDが不正です: {attrs[0]}')
+                        component = dict(attrs=dict(settings), language=None)
+                        if child['t'] == 'CodeBlock':
+                            component.update(kind='code', text=value, language=next(iter(classes), None))
+                        elif classes == ['table'] and len(value) == 1 and value[0]['t'] == 'Table':
+                            rows, has_header = read_table(value[0]['c'], component['attrs'])
+                            component.update(kind='table', rows=rows, has_header=has_header,
+                                             text='\n'.join(' '.join(row) for row in rows))
+                        else:
+                            raise ValueError(f'補足枠の部品はコードまたは表にしてください: {component_id}')
+                        component['parts'] = [(component['text'], None)]
+                        embedded_component = (len(paragraph_parts(parts)) - 1, component_id, component)
+                        continue
                     if child["t"] == "CodeBlock":
-                        if attrs[1][0] == 'training-note':
-                            code_attrs, code_text = child['c']
-                            code_id = code_attrs[0]
-                            if (note_code or not parts or not code_id or code_id == attrs[0]
-                                    or code_id in nodes or code_id in figures):
-                                raise ValueError(f'補足枠のコードの位置またはIDが不正です: {attrs[0]}')
-                            note_code = (
-                                len(paragraph_parts(parts)) - 1, code_id,
-                                dict(kind='code', parts=[(code_text, None)], text=code_text,
-                                     language=next(iter(code_attrs[1]), None), attrs=dict(code_attrs[2])),
-                            )
-                            continue
                         parts.append((child["c"][1], None))
                         language = next(iter(child["c"][0][1]), None)
                     elif child['t']=='Table':
-                        data=child['c'];raw_rows=data[3][1]+[r for body in data[4] for r in body[3]]
-                        rows=[]
-                        for row in raw_rows:
-                            rows.append([''.join(v for b in c[4] if b['t'] in ('Plain','Para') for v,s in flatten(b['c'])) for c in row[1]])
-                        has_header=dict(attrs[2]).get('has-header','true')=='true'
-                        if not has_header and rows and all(not c.strip() for c in rows[0]):rows=rows[1:]
+                        rows, has_header = read_table(child['c'], dict(attrs[2]))
                         parts=[('\n'.join(' '.join(row) for row in rows),None)]
+                    elif note and child['t'] == 'BulletList':
+                        for item in child['c']:
+                            if len(item) != 1 or item[0]['t'] not in ('Plain', 'Para'):
+                                raise ValueError(f'補足枠の箇条書きは各項目を1段落で記述してください: {attrs[0]}')
+                            parts += [('\n\n', None), ('● ', None), *flatten(item[0]['c'])]
                     elif child["t"] in ("Para", "Plain"):
                         if parts:
                             parts.append(("\n\n", None))
@@ -142,11 +159,11 @@ def read_markdown(path):
                 if attrs[1][0] in ('table', 'comparison'):
                     nodes[attrs[0]].update(rows=rows, has_header=has_header)
                 entries.append(attrs[0])
-                if note_code:
-                    after, code_id, code_node = note_code
-                    nodes[attrs[0]]['embedded_code'] = (after, code_id)
-                    nodes[code_id] = code_node
-                    entries.append(code_id)
+                if embedded_component:
+                    after, component_id, component = embedded_component
+                    nodes[attrs[0]]['embedded_component'] = (after, component_id)
+                    nodes[component_id] = component
+                    entries.append(component_id)
             elif block["t"] == "Para" and len(block["c"]) == 1 and block["c"][0]["t"] == "Image":
                 image = block["c"][0]["c"]
                 if not image[0][0] or image[0][0] in figures or image[0][0] in nodes:
@@ -373,7 +390,7 @@ def paragraph_parts(parts):
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     page_continuations, paragraph_pairs, figure_scales = pagination_options(config, layout, nodes, figures, order)
     heading_spacing = config.get('typography', {}).get('minor_heading_extra_space', {})
-    note_codes = {node['embedded_code'][1] for node in nodes.values() if 'embedded_code' in node}
+    note_components = {node['embedded_component'][1] for node in nodes.values() if 'embedded_component' in node}
     if isinstance(heading_spacing, list):
         heading_spacing = dict.fromkeys(heading_spacing, 18)
     if any(ident not in nodes or nodes[ident]['kind'] != 'heading' for ident in heading_spacing):
@@ -703,10 +720,16 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection}, numbered: {numbered_entry})'
         if node['kind'] == 'training-note':
             title, *paragraphs = paragraph_parts(node['parts'])
-            parts = [inline(paragraph) for paragraph in paragraphs]
-            if embedded_code := node.get('embedded_code'):
-                after, code_id = embedded_code
-                parts.insert(after, modern_panel(code_id) if modern else render(code_id))
+            parts = []
+            for index, paragraph in enumerate(paragraphs, 1):
+                if paragraph and paragraph[0] == ('● ', None):
+                    item = f'{ident}-bullet-{index}'
+                    parts.append(f'#bullet-paragraph({q(item)}, [●], [{inline(paragraph[1:])}])')
+                else:
+                    parts.append(inline(paragraph))
+            if embedded_component := node.get('embedded_component'):
+                after, component_id = embedded_component
+                parts.insert(after, modern_panel(component_id) if modern else render(component_id))
             body = '#parbreak()'.join(parts)
             return f'#training-note({q(ident)}, [{inline(title)}], [{body}])'
         if node['kind'] == 'stage-flow':
@@ -748,7 +771,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             parts = typographic_parts(node['parts'], keep_lines=keep_lines)
             if node['attrs'].get('numbered') == 'true':
                 first, style = parts[0]
-                number = re.match(r'(?:\d+．|[①-⑳➀-➉])', first)
+                number = re.match(r'(?:\d+[.．]|[①-⑳➀-➉])', first)
                 if not number:
                     raise ValueError(f'作業手順に番号がありません: {ident}')
                 body = [part for part in [(first[number.end():], style), *parts[1:]] if part[0]]
@@ -906,7 +929,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if ident in illustration_captions or ident in joined_continuations:
             i += 1
             continue
-        if ident in note_codes:
+        if ident in note_components:
             i += 1
             continue
         # 続き本文の後に節・項が登場した場合は、その見出しから新頁にする。

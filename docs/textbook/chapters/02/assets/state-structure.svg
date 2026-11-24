@@ -17,9 +17,9 @@
 <polyline points="172.12,40 172.12,58 189.0,73" fill="none" stroke="#21685d" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="125" y="74" width="128" height="49" rx="4" fill="#d7ede4" stroke="#21685d" stroke-width="0.8"/>
 <text x="189.0" y="94" fill="#21685d" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="middle">更新用の関数</text>
-<text x="189.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">新しい数量を渡す</text>
+<text x="189.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">新しい数量をReactに渡す</text>
 <polyline points="294.68,40 294.68,58 317.0,73" fill="none" stroke="#b54c29" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="263" y="74" width="108" height="49" rx="4" fill="#fae5d5" stroke="#b54c29" stroke-width="0.8"/>
 <text x="317.0" y="94" fill="#b54c29" font-family="Meiryo" font-size="11" font-weight="700" text-anchor="middle">初期値</text>
-<text x="317.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">初回は1個</text>
+<text x="317.0" y="112" fill="#172f44" font-family="Meiryo" font-size="9.5" font-weight="400" text-anchor="middle">最初の数量は1個</text>
 </svg>

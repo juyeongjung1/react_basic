@@ -22,6 +22,8 @@ from table_styles import table_paint
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
+# 本文幅から補足枠の左右12ptの余白を引いた幅。
+NOTE_CONTENT_WIDTH = 426.672 - 24
 SYMBOLS = str.maketrans({'◼': '■', '⚫': '●', '\uf09f': '•'})
 LABELS = {'java': 'Java', 'html': 'HTML', 'xml': 'XML', 'css': 'CSS',
           'properties': 'Properties', 'sql': 'SQL', 'text': 'コンソール',
@@ -381,7 +383,7 @@ def explanation_html(record, nodes, layout=None):
 def prepare(folder, config, layout, nodes, figures, order):
     chapter = folder.name
     fixed = set(config.get('native_pages',[]))
-    note_codes = {node['embedded_code'][1] for node in nodes.values() if 'embedded_code' in node}
+    note_components = {node['embedded_component'][1] for node in nodes.values() if 'embedded_component' in node}
     pages = {ident:page['source_page'] for page in order for ident in page['entries']}
     numbered_figures = figure_numbers(folder, config, layout, nodes, figures, order)
     explanations = [r for r in json.loads((HERE/'code_explanations.json').read_text(encoding='utf-8')) if r['chapter']==chapter and pages[r['anchor_id']] not in fixed]
@@ -413,9 +415,8 @@ def prepare(folder, config, layout, nodes, figures, order):
         geo = geometries.get(ident)
         width = geo['frame'][2]-geo['frame'][0] if geo else 426.672
         offset = geo['frame'][0]-85.104 if geo else 0
-        if ident in note_codes:
-            # 補足枠の左右12ptの余白を差し引く。
-            width -= 24
+        if ident in note_components:
+            width = min(width, NOTE_CONTENT_WIDTH)
         caption_ids = list(dict.fromkeys(i for g in group for i in geometries.get(g,{}).get('caption_ids',[]) if FILE_LABEL.fullmatch(nodes[i]['text'].strip())))
         names = [(nodes[i]['text'].strip(),[i]) for i in caption_ids]
         if nodes[ident].get('attrs',{}).get('filename'):
@@ -452,6 +453,8 @@ def prepare(folder, config, layout, nodes, figures, order):
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:
             width,_=table_dimensions(layout,ident,node)
+            if ident in note_components:
+                width = min(width, NOTE_CONTENT_WIDTH)
             offset=0
             add(ident,ident,[ident],table_html(folder,layout,ident,node),width,offset,'table')
     for index,record in enumerate(explanations):
