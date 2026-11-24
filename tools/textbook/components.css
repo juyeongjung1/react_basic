@@ -67,6 +67,7 @@ html, body {
 .card-header .file-item {
   min-width: 0;
   max-width: 100%;
+  white-space: nowrap;
   padding: 1pt 4pt;
   border: 0.6pt solid #adc5dd;
   border-radius: 3pt;

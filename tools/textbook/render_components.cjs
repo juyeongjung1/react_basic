@@ -38,6 +38,7 @@ async function main() {
       await page.setViewportSize({ width: Math.ceil(card.width * PX_PER_PT), height: 1200 });
       await page.setContent(documentHtml(card.html, css, card.width), { waitUntil: 'load' });
       await page.evaluate(() => document.fonts.ready);
+      await page.addScriptTag({ path: path.join(__dirname, 'fit_filename_labels.js') });
       const fragments = await page.evaluate(({ id, maximum, scale }) => {
         const root = document.querySelector('#component-root');
         const template = root.querySelector('.card');
@@ -101,6 +102,7 @@ async function main() {
           }
           if (continuation) continuation.textContent = continued ? '続き' : '';
           root.replaceChildren(clone);
+          window.fitFilenameLabels(clone);
           return { html: clone.outerHTML, height: clone.getBoundingClientRect().height / scale };
         }
         const fits = part => part.height <= maximum;

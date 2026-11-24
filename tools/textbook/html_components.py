@@ -509,7 +509,8 @@ def prepare(folder, config, layout, nodes, figures, order):
 def _render(specs, chapter):
     cache=ROOT/'tmp/html-components'
     cache.mkdir(parents=True,exist_ok=True)
-    version=(HERE/'components.css').read_bytes()+(HERE/'render_components.cjs').read_bytes()+Path(__file__).read_bytes()
+    filename_fit=(HERE/'fit_filename_labels.js').read_bytes()
+    version=(HERE/'components.css').read_bytes()+(HERE/'render_components.cjs').read_bytes()+filename_fit+Path(__file__).read_bytes()
     pending=[]
     for spec in specs:
         key=sha256(version+json.dumps({k:spec[k] for k in ('id','width','html')},ensure_ascii=False).encode()).hexdigest()
@@ -546,7 +547,8 @@ def _render(specs, chapter):
     preview.mkdir(parents=True,exist_ok=True)
     css=(HERE/'components.css').read_text(encoding='utf-8')
     body='\n'.join('<article><p class="preview-id">'+escape(spec['id'])+'</p><div style="width:'+str(spec['width'])+'pt">'+spec['html']+'</div></article>' for spec in specs)
-    (preview/(chapter+'.html')).write_text('<!doctype html><html lang="ja"><meta charset="utf-8"><title>'+escape(chapter)+' 教材部品プレビュー</title><style>'+css+'body{padding:24px;background:#eef2f6}article{margin:0 auto 28px;width:max-content;max-width:100%}.preview-id{font:12px sans-serif;color:#475569}</style><body>'+body+'</body></html>',encoding='utf-8')
+    script='<script>'+filename_fit.decode('utf-8')+'\ndocument.fonts.ready.then(() => fitFilenameLabels(document));</script>'
+    (preview/(chapter+'.html')).write_text('<!doctype html><html lang="ja"><meta charset="utf-8"><title>'+escape(chapter)+' 教材部品プレビュー</title><style>'+css+'body{padding:24px;background:#eef2f6}article{margin:0 auto 28px;width:max-content;max-width:100%}.preview-id{font:12px sans-serif;color:#475569}</style><body>'+body+script+'</body></html>',encoding='utf-8')
 
 
 def finish_prose_emphasis(doc, html):
