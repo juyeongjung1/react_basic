@@ -4,7 +4,7 @@
   <rect x="4" y="4" width="392" height="22" rx="7" fill="#e9f1f7" stroke="#99b1c4" stroke-width=".85"/>
   <circle cx="15" cy="15" r="1.8" fill="#93a9ba"/><circle cx="22" cy="15" r="1.8" fill="#93a9ba"/>
   <rect x="32" y="9" width="354" height="12" rx="3" fill="#ffffff" stroke="#c3d2df" stroke-width=".85"/>
-  <text x="39" y="18" font-size="8.7" fill="#466075" font-weight="400" text-anchor="start">localhost:5173</text>
+  <text x="39" y="18" font-size="8.7" fill="#466075" font-weight="400" text-anchor="start">http://localhost:5174/sample-3-1</text>
   <text x="15" y="46" font-size="16" fill="#1b3145" font-weight="700" text-anchor="start">商品一覧</text>
   <rect x="15" y="53" width="117" height="85" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
   <g transform="translate(35.70 55.00) scale(0.4500)"><ellipse cx="85" cy="102" rx="43" ry="6" fill="#24456b" opacity=".11"/>

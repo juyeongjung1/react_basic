@@ -1,17 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="151" viewBox="0 0 400 151" font-family="Meiryo, sans-serif">
-  <title>Routeのpathとelementの対応</title>
-  <rect x="5" y="5" width="390" height="89" rx="5" fill="#f4f7fa" stroke="#adbfce" stroke-width=".9"/>
-  <rect x="26" y="28" width="347" height="22" rx="3" fill="#edf5fa" stroke="none" stroke-width=".9"/>
-  <rect x="26" y="51" width="347" height="22" rx="3" fill="#e9f4ef" stroke="none" stroke-width=".9"/>
-  <text x="18" y="24" font-size="13" fill="#1b3145" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">&lt;Route</text>
-  <text x="36" y="44" font-size="13.5" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">path="/products"</text>
-  <text x="36" y="67" font-size="13.5" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">element={&lt;Sample3_1 /&gt;}</text>
-  <text x="18" y="87" font-size="13" fill="#1b3145" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">/&gt;</text>
-  <rect x="5" y="107" width="180" height="39" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
-  <text x="17" y="124" font-size="12" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">path</text>
-  <text x="17" y="139" font-size="10.5" fill="#205c84" font-weight="400" text-anchor="start">アクセスするURLのパス</text>
-  <path d="M187 126H208" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M208 123l5 3-5 3Z" fill="#23695b"/>
-  <rect x="215" y="107" width="180" height="39" rx="5" fill="#e9f4ef" stroke="#a9c7b5" stroke-width=".9"/>
-  <text x="227" y="124" font-size="12" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">element</text>
-  <text x="227" y="139" font-size="10.5" fill="#23695b" font-weight="400" text-anchor="start">表示するコンポーネント</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="208" viewBox="0 0 760 208">
+  <rect x="8" y="19" width="744" height="71" rx="7" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="34" y="61" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">26</text>
+  <rect x="141.8" y="39" width="188.4" height="28" rx="0" fill="none" stroke="#205b84" stroke-width="2.35"/>
+  <rect x="335.6" y="39" width="268.2" height="28" rx="0" fill="none" stroke="#226757" stroke-width="2.35"/>
+  <text x="65" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">&lt;Route </text>
+  <text x="144.8" y="60" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">path=&quot;/products&quot;</text>
+  <text x="327.2" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400"> </text>
+  <text x="338.6" y="60" fill="#226757" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">element={&lt;Sample3_1 /&gt;}</text>
+  <text x="600.8" y="60" fill="#183449" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400"> /&gt;</text>
+  <polyline points="224.8,69 224.8,116 189,116 189,136" fill="none" stroke="#205b84" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="26" y="139" width="341" height="49" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="196.5" y="170.15" fill="#205b84" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">path：対応するURLのパス</text>
+  <polyline points="438.6,69 438.6,116 556,116 556,136" fill="none" stroke="#226757" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="393" y="139" width="341" height="49" rx="7" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="563.5" y="170.15" fill="#226757" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">element：表示するReact要素</text>
 </svg>

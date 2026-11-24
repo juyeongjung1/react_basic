@@ -1,33 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 170" width="400" height="170" font-family="Meiryo, sans-serif">
-  <title>親で商品データを用意し、子のJSXで商品カードを表示する流れ</title>
-  <rect x="4" y="5" width="391" height="91" rx="5" fill="#edf5fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <rect x="4" y="102" width="391" height="62" rx="5" fill="#e9f4ef" stroke="#adcbbe" stroke-width=".85"/>
-  <text x="14" y="35" font-size="12.5" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
-  <text x="14" y="53" font-size="10.3" fill="#205c84" font-weight="700" text-anchor="start">親コンポーネント</text>
-  <text x="14" y="128" font-size="12.5" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">ProductCard</text>
-  <text x="14" y="146" font-size="10.3" fill="#23695b" font-weight="700" text-anchor="start">子コンポーネント</text>
-  <rect x="119" y="11" width="264" height="22" rx="5" fill="#ffffff" stroke="#b5c9d5" stroke-width=".85"/>
-  <circle cx="132" cy="22" r="8" fill="#205c84"/>
-  <text x="132" y="25.8" font-size="9.8" fill="#ffffff" font-weight="700" text-anchor="middle">1</text>
-  <text x="146" y="26" font-size="10.5" fill="#1b3145" font-weight="400" text-anchor="start">6件の商品データを用意する</text>
-  <path d="M246 33V34" fill="none" stroke="#205c84" stroke-width="1.25"/><path d="m243 34 3 5 3-5Z" fill="#205c84"/>
-  <rect x="119" y="39" width="264" height="22" rx="5" fill="#ffffff" stroke="#b5c9d5" stroke-width=".85"/>
-  <circle cx="132" cy="50" r="8" fill="#205c84"/>
-  <text x="132" y="53.8" font-size="9.8" fill="#ffffff" font-weight="700" text-anchor="middle">2</text>
-  <text x="146" y="54" font-size="10.5" fill="#1b3145" font-weight="400" text-anchor="start">map()で商品を1件ずつ取り出す</text>
-  <path d="M246 61V62" fill="none" stroke="#205c84" stroke-width="1.25"/><path d="m243 62 3 5 3-5Z" fill="#205c84"/>
-  <rect x="119" y="67" width="264" height="22" rx="5" fill="#ffffff" stroke="#b5c9d5" stroke-width=".85"/>
-  <circle cx="132" cy="78" r="8" fill="#205c84"/>
-  <text x="132" y="81.8" font-size="9.8" fill="#ffffff" font-weight="700" text-anchor="middle">3</text>
-  <text x="146" y="82" font-size="10.5" fill="#1b3145" font-weight="400" text-anchor="start">画像のパス・商品名・単価をPropsとして渡す</text>
-  <path d="M246 89V103" fill="none" stroke="#205c84" stroke-width="1.25"/><path d="m243 103 3 5 3-5Z" fill="#205c84"/>
-  <rect x="119" y="108" width="264" height="22" rx="5" fill="#ffffff" stroke="#b5c9d5" stroke-width=".85"/>
-  <circle cx="132" cy="119" r="8" fill="#23695b"/>
-  <text x="132" y="122.8" font-size="9.8" fill="#ffffff" font-weight="700" text-anchor="middle">4</text>
-  <text x="146" y="123" font-size="10.5" fill="#1b3145" font-weight="400" text-anchor="start">ProductCardがPropsを受け取る</text>
-  <path d="M246 130V131" fill="none" stroke="#23695b" stroke-width="1.25"/><path d="m243 131 3 5 3-5Z" fill="#23695b"/>
-  <rect x="119" y="136" width="264" height="22" rx="5" fill="#ffffff" stroke="#b5c9d5" stroke-width=".85"/>
-  <circle cx="132" cy="147" r="8" fill="#23695b"/>
-  <text x="132" y="150.8" font-size="9.8" fill="#ffffff" font-weight="700" text-anchor="middle">5</text>
-  <text x="146" y="151" font-size="10.5" fill="#1b3145" font-weight="400" text-anchor="start">JSXで商品画像・商品名・単価を表示する</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="367" viewBox="0 0 760 367">
+  <text x="380" y="30" fill="#205b84" text-anchor="middle" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">受け取ったPropsをJSXで使用する</text>
+  <rect x="8" y="50" width="465" height="282" rx="7" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="33" y="82" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">12</text>
+  <text x="57" y="82" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">src={imagePath}</text>
+  <text x="33" y="115" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">13</text>
+  <text x="57" y="115" fill="#55498a" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">alt={name}</text>
+  <text x="33" y="169" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">18</text>
+  <text x="57" y="169" fill="#183449" text-anchor="start" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">&lt;h2 className=&quot;h5 card-title&quot;&gt;</text>
+  <text x="80" y="193" fill="#226757" text-anchor="start" font-size="18" font-family="Courier New, MS Gothic, monospace" font-weight="400">{name}&lt;/h2&gt;</text>
+  <text x="33" y="230" fill="#425a6b" text-anchor="middle" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">19</text>
+  <text x="57" y="230" fill="#183449" text-anchor="start" font-size="17" font-family="Courier New, MS Gothic, monospace" font-weight="400">&lt;p className=&quot;card-text&quot;&gt;</text>
+  <text x="80" y="254" fill="#934317" text-anchor="start" font-size="18" font-family="Courier New, MS Gothic, monospace" font-weight="400">単価：{price}円&lt;/p&gt;</text>
+  <text x="57" y="315" fill="#55498a" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">画像の代替テキスト</text>
+  <polyline points="60,122 49,122 49,309 52,309" fill="none" stroke="#55498a" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="551" y="72" width="197" height="243" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="579" y="78" width="141" height="141" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44OO44O844OIPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODUiIGN5PSIxMDIiIHJ4PSI0MyIgcnk9IjYiIGZpbGw9IiMyNDQ1NmIiIG9wYWNpdHk9Ii4xMSIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKC0xMCA4NCA2MCkiPgogICAgPHJlY3QgeD0iNDkiIHk9IjE2IiB3aWR0aD0iNzIiIGhlaWdodD0iOTEiIHJ4PSI3IiBmaWxsPSIjMTczODUzIi8+CiAgICA8cmVjdCB4PSI1MSIgeT0iMTgiIHdpZHRoPSI2OSIgaGVpZ2h0PSI4NSIgcng9IjYiIGZpbGw9IiNmOWY2ZWIiLz4KICAgIDxwYXRoIGQ9Ik01OCA5N2g2MW0tNjEgM2g2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2JjZmNiIiBzdHJva2Utd2lkdGg9IjEuMyIvPgogICAgPHJlY3QgeD0iNDciIHk9IjEzIiB3aWR0aD0iNzMiIGhlaWdodD0iODQiIHJ4PSI3IiBmaWxsPSIjMmE2MDkxIi8+CiAgICA8cGF0aCBkPSJNNTQgMTNoN3Y4NGgtN2E3IDcgMCAwIDEtNy03VjIwYTcgNyAwIDAgMSA3LTdaIiBmaWxsPSIjMWQ0Yjc4Ii8+CiAgICA8cGF0aCBkPSJNNjUgMTZoNDlhMyAzIDAgMCAxIDMgM3Y3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjE5YmMzIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHJlY3QgeD0iNzIiIHk9IjMxIiB3aWR0aD0iMzIiIGhlaWdodD0iMjIiIHJ4PSIzIiBmaWxsPSIjZTdmMWY0Ii8+CiAgICA8cGF0aCBkPSJNNzggMzloMjBtLTIwIDZoMTQiIHN0cm9rZT0iIzY1OTBhZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTc5IDc3aDI3bS0xOCA2aDE4IiBzdHJva2U9IiM1NTkzYmUiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRmMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBkPSJNNTMgMjVjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03bTIgMjFjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="559" y="287" fill="#183449" text-anchor="start" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ノート</text>
+  <text x="559" y="307" fill="#183449" text-anchor="start" font-size="21" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：250円</text>
+  <polyline points="241,76 515,76 515,129 557,129" fill="none" stroke="#205b84" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="548,124 557,129 548,134" fill="none" stroke="#205b84" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="161,187 490,187 490,279 553,279" fill="none" stroke="#226757" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="544,274 553,279 544,284" fill="none" stroke="#226757" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="240,250 471,250 471,303 553,303" fill="none" stroke="#934317" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="544,298 553,303 544,308" fill="none" stroke="#934317" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

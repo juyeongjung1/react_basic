@@ -1,20 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="143" viewBox="0 0 400 143" font-family="Meiryo, sans-serif">
-  <title>URLのパスを取り出して商品一覧画面を決める</title>
-  <text x="8" y="19" font-size="12.5" fill="#205c84" font-weight="700" text-anchor="start">ブラウザーのURL</text>
-  <rect x="6" y="28" width="388" height="44" rx="5" fill="#f4f8fb" stroke="#adbfce" stroke-width=".9"/>
-  <rect x="208" y="36" width="72" height="29" rx="3" fill="#ffece7" stroke="#c33d36" stroke-width=".9"/>
-  <text x="61" y="56" font-size="14.1" fill="#1b3145" font-weight="400" text-anchor="start" font-family="Consolas, MS Gothic, monospace">http://localhost:5173<tspan fill="#952b26" font-weight="700">/products</tspan></text>
-  <path d="M244 72V81" stroke="#ab4037" stroke-width="1.3" fill="none"/><path d="M241 81l3 5 3-5Z" fill="#ab4037"/>
-  <text x="244" y="98" font-size="10.3" fill="#952b26" font-weight="700" text-anchor="middle">この部分がパス</text>
-  <rect x="4" y="108" width="89" height="29" rx="5" fill="#ffece7" stroke="#adbfce" stroke-width=".9"/>
-  <text x="48.5" y="127" font-size="10.8" fill="#952b26" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">/products</text>
-  <path d="M94 122.5H99" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M99 119.5l5 3-5 3Z" fill="#23695b"/>
-  <rect x="105" y="108" width="89" height="29" rx="5" fill="#edf5fa" stroke="#adbfce" stroke-width=".9"/>
-  <text x="149.5" y="127" font-size="10.8" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">React Router</text>
-  <path d="M195 122.5H200" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M200 119.5l5 3-5 3Z" fill="#23695b"/>
-  <rect x="206" y="108" width="89" height="29" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
-  <text x="250.5" y="127" font-size="10.8" fill="#23695b" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
-  <path d="M296 122.5H301" stroke="#23695b" stroke-width="1.3" fill="none"/><path d="M301 119.5l5 3-5 3Z" fill="#23695b"/>
-  <rect x="307" y="108" width="89" height="29" rx="5" fill="#e9f4ef" stroke="#adbfce" stroke-width=".9"/>
-  <text x="351.5" y="127" font-size="10.8" fill="#23695b" font-weight="700" text-anchor="middle">商品一覧画面</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="282" viewBox="0 0 760 282">
+  <text x="380" y="23" fill="#205b84" text-anchor="middle" font-size="21" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ブラウザーのURL</text>
+  <rect x="42" y="38" width="676" height="34" rx="7" fill="#ebf2f6" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="52" y="53" width="4" height="4" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.4"/>
+  <rect x="59" y="53" width="4" height="4" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.4"/>
+  <rect x="66" y="53" width="4" height="4" rx="2" fill="#91a9b8" stroke="none" stroke-width="1.4"/>
+  <rect x="82" y="43" width="627" height="24" rx="5" fill="white" stroke="#c6d4de" stroke-width="1"/>
+  <text x="90" y="61" fill="#425a6b" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">http://localhost:5174/products</text>
+  <rect x="256.062" y="45" width="79.7969" height="20" rx="0" fill="none" stroke="#b42331" stroke-width="2.35"/>
+  <polyline points="107,72 107,89 174,89 174,105" fill="none" stroke="#205b84" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="174" y="127" fill="#205b84" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">開発サーバーへの接続先</text>
+  <polyline points="292.062,71 292.062,101 508,101 508,113" fill="none" stroke="#b42331" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="508" y="137" fill="#932530" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">URLのパス</text>
+  <polyline points="508,148 508,164 123,164 123,187" fill="none" stroke="#b42331" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="128,178 123,187 118,178" fill="none" stroke="#b42331" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="8" y="199" width="230" height="61" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="123" y="224" fill="#205b84" text-anchor="middle" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">React Routerが</text>
+  <text x="123" y="249" fill="#205b84" text-anchor="middle" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">パスを照合</text>
+  <polyline points="247,230 276,230" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="267,225 276,230 267,235" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="286" y="199" width="189" height="61" rx="7" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="380.5" y="236.85" fill="#226757" text-anchor="middle" font-size="21" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">Sample3_1</text>
+  <polyline points="483,230 519,230" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="510,225 519,230 510,235" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="529" y="192" width="223" height="76" rx="7" fill="#f4eff9" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="649" y="238" fill="#55498a" text-anchor="middle" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">商品一覧画面</text>
+  <rect x="542" y="216" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
+  <rect x="554" y="216" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
+  <rect x="566" y="216" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
+  <rect x="542" y="231" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
+  <rect x="554" y="231" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
+  <rect x="566" y="231" width="9" height="11" rx="1" fill="white" stroke="#8b9eb3" stroke-width="1"/>
 </svg>

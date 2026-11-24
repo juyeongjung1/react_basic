@@ -6,77 +6,86 @@
   "cover_mode": "classic",
   "cover_wrap_goals": true,
   "illustrations": {
+    "ch03-card-division": {
+      "caption_id": "ch03-card-division-caption",
+      "width": 380,
+      "max_height": 173
+    },
     "ch03-preview": {
       "caption_id": "ch03-preview-caption",
-      "width": 380,
-      "max_height": 234
+      "width": 350,
+      "max_height": 267
     },
     "ch03-files": {
       "caption_id": "ch03-files-caption",
       "width": 380,
-      "max_height": 121
+      "max_height": 171,
+      "file_path": "ch03-basic/src/components/Sample3_1.tsx"
     },
     "ch03-transfer": {
       "caption_id": "ch03-transfer-caption",
       "width": 380,
-      "max_height": 134
+      "max_height": 173
     },
     "ch03-type-relations": {
       "caption_id": "ch03-type-relations-caption",
       "width": 380,
-      "max_height": 151
-    },
-    "ch03-map-flow": {
-      "caption_id": "ch03-map-flow-caption",
-      "width": 380,
-      "max_height": 171
-    },
-    "ch03-result": {
-      "caption_id": "ch03-result-caption",
-      "width": 380,
-      "max_height": 226
+      "max_height": 240,
+      "file_path": "ch03-basic/src/components/ProductCard.tsx"
     },
     "ch03-code-flow": {
       "caption_id": "ch03-code-flow-caption",
       "width": 380,
-      "max_height": 162
+      "max_height": 197,
+      "file_path": "ch03-basic/src/components/ProductCard.tsx"
+    },
+    "ch03-map-flow": {
+      "caption_id": "ch03-map-flow-caption",
+      "width": 380,
+      "max_height": 222
+    },
+    "ch03-props-state-update": {
+      "caption_id": "ch03-props-state-update-caption",
+      "width": 380,
+      "max_height": 201
+    },
+    "ch03-props-practice-result": {
+      "caption_id": "ch03-props-practice-result-caption",
+      "width": 382,
+      "max_height": 304
     },
     "ch03-router-figure-path": {
       "caption_id": "ch03-router-figure-path-caption",
       "width": 380,
-      "max_height": 136
+      "max_height": 145
+    },
+    "ch03-router-figure-product": {
+      "caption_id": "ch03-router-figure-product-caption",
+      "width": 350,
+      "max_height": 267
     },
     "ch03-router-figure-nesting": {
       "caption_id": "ch03-router-figure-nesting-caption",
       "width": 380,
-      "max_height": 131
+      "max_height": 157,
+      "file_path": "ch03-basic/src/main.tsx"
     },
     "ch03-router-figure-attributes": {
       "caption_id": "ch03-router-figure-attributes-caption",
       "width": 380,
-      "max_height": 145
-    },
-    "ch03-router-figure-home": {
-      "caption_id": "ch03-router-figure-home-caption",
-      "width": 380,
-      "max_height": 77,
-      "numbered": false
-    },
-    "ch03-router-figure-guide": {
-      "caption_id": "ch03-router-figure-guide-caption",
-      "width": 380,
-      "max_height": 77,
-      "numbered": false
-    },
-    "ch03-router-figure-screens": {
-      "caption_id": "ch03-router-figure-screens-caption",
-      "width": 380,
-      "max_height": 161
+      "max_height": 117,
+      "file_path": "ch03-basic/src/components/Sample3_2.tsx"
     },
     "ch03-router-figure-flow": {
       "caption_id": "ch03-router-figure-flow-caption",
       "width": 380,
-      "max_height": 166
+      "max_height": 480,
+      "file_path": "ch03-basic/src/components/Sample3_2.tsx"
+    },
+    "ch03-router-figure-screens": {
+      "caption_id": "ch03-router-figure-screens-caption",
+      "width": 380,
+      "max_height": 426
     },
     "ch03-navigation-browser": {
       "caption_id": "ch03-navigation-browser-caption",
@@ -157,6 +166,13 @@
       "caption_id": "ch03-programmatic-figure-5-caption",
       "width": 380,
       "max_height": 443
+    }
+  },
+  "pagination": {
+    "continue_before": {
+      "4": "short-minor-heading",
+      "6": "continued-prose",
+      "7": "short-minor-heading"
     }
   }
 }

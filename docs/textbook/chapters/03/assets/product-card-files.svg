@@ -1,33 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 127" width="400" height="127" font-family="Meiryo, sans-serif">
-  <title>Sample3_1.tsxからProductCard.tsxを読み込む関係</title>
-  <rect x="4" y="5" width="180" height="117" rx="5" fill="#edf5fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="14" y="24" font-size="13.5" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">Sample3_1.tsx</text>
-  <text x="14" y="40" font-size="10.2" fill="#1b3145" font-weight="400" text-anchor="start">商品カードを読み込み、表示する</text>
-  <rect x="14" y="49" width="158" height="34" rx="5" fill="#ffffff" stroke="#bbcede" stroke-width=".85"/>
-  <text x="22" y="63" font-size="10.2" fill="#1b3145" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">import ProductCard</text>
-  <text x="22" y="77" font-size="10.2" fill="#1b3145" font-weight="400" text-anchor="start" font-family="Consolas, MS Gothic, monospace">from './ProductCard'</text>
-  <text x="22" y="104" font-size="12" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">&lt;ProductCard /&gt;</text>
-  <path d="M187 69H208" fill="none" stroke="#23695b" stroke-width="1.25"/><path d="m208 66 5 3-5 3Z" fill="#23695b"/>
-  <rect x="216" y="5" width="180" height="117" rx="5" fill="#e9f4ef" stroke="#adcbbe" stroke-width=".85"/>
-  <text x="226" y="24" font-size="13.5" fill="#23695b" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">ProductCard.tsx</text>
-  <text x="226" y="40" font-size="10.2" fill="#1b3145" font-weight="400" text-anchor="start">1件分の商品カードを作成する</text>
-  <rect x="226" y="51" width="159" height="60" rx="5" fill="#ffffff" stroke="#b9cfc7" stroke-width=".85"/>
-  <g transform="translate(230.00 56.57) scale(0.3988)"><ellipse cx="85" cy="102" rx="43" ry="6" fill="#24456b" opacity=".11"/>
-  <g transform="rotate(-10 84 60)">
-    <rect x="49" y="16" width="72" height="91" rx="7" fill="#173853"/>
-    <rect x="51" y="18" width="69" height="85" rx="6" fill="#f9f6eb"/>
-    <path d="M58 97h61m-61 3h60" fill="none" stroke="#cbcfcb" stroke-width="1.3"/>
-    <rect x="47" y="13" width="73" height="84" rx="7" fill="#2a6091"/>
-    <path d="M54 13h7v84h-7a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Z" fill="#1d4b78"/>
-    <path d="M65 16h49a3 3 0 0 1 3 3v70" fill="none" stroke="#619bc3" stroke-width="1.6"/>
-    <rect x="72" y="31" width="32" height="22" rx="3" fill="#e7f1f4"/>
-    <path d="M78 39h20m-20 6h14" stroke="#6590ad" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M79 77h27m-18 6h18" stroke="#5593be" stroke-width="1.4" stroke-linecap="round"/>
-    <g fill="none" stroke="#e6edf3" stroke-width="3" stroke-linecap="round">
-      <path d="M53 25c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7"/>
-    </g>
-  </g>
-</g>
-  <text x="303" y="75" font-size="12" fill="#1b3145" font-weight="700" text-anchor="start">ノート</text>
-  <text x="303" y="95" font-size="10.8" fill="#1b3145" font-weight="400" text-anchor="start">単価：250円</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="279" viewBox="0 0 760 279">
+  <rect x="8" y="10" width="305" height="256" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="160" y="42" fill="#205b84" text-anchor="middle" font-size="22" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">Sample3_1.tsx</text>
+  <text x="160" y="74" fill="#205b84" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">親コンポーネント</text>
+  <rect x="18" y="100" width="285" height="76" rx="7" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="33" y="128" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">import ProductCard</text>
+  <text x="33" y="151.75" fill="#205b84" text-anchor="start" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">from &#x27;./ProductCard&#x27;</text>
+  <text x="367" y="112" fill="#205b84" text-anchor="middle" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">読み込んで</text>
+  <text x="367" y="132" fill="#205b84" text-anchor="middle" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">使用する</text>
+  <polyline points="319,162 425,162" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="416,157 425,162 416,167" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="432" y="10" width="320" height="256" rx="7" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="592" y="42" fill="#226757" text-anchor="middle" font-size="22" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ProductCard.tsx</text>
+  <text x="592" y="73" fill="#226757" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">子コンポーネント</text>
+  <text x="592" y="103" fill="#226757" text-anchor="middle" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">export default function</text>
+  <text x="592" y="126.75" fill="#226757" text-anchor="middle" font-size="19" font-family="Courier New, MS Gothic, monospace" font-weight="400">ProductCard(...)</text>
+  <text x="592" y="151" fill="#226757" text-anchor="middle" font-size="17" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">商品1件分のカードを表示する</text>
+  <rect x="522" y="165" width="140" height="91" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="574" y="171" width="36" height="36" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44OO44O844OIPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODUiIGN5PSIxMDIiIHJ4PSI0MyIgcnk9IjYiIGZpbGw9IiMyNDQ1NmIiIG9wYWNpdHk9Ii4xMSIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKC0xMCA4NCA2MCkiPgogICAgPHJlY3QgeD0iNDkiIHk9IjE2IiB3aWR0aD0iNzIiIGhlaWdodD0iOTEiIHJ4PSI3IiBmaWxsPSIjMTczODUzIi8+CiAgICA8cmVjdCB4PSI1MSIgeT0iMTgiIHdpZHRoPSI2OSIgaGVpZ2h0PSI4NSIgcng9IjYiIGZpbGw9IiNmOWY2ZWIiLz4KICAgIDxwYXRoIGQ9Ik01OCA5N2g2MW0tNjEgM2g2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2JjZmNiIiBzdHJva2Utd2lkdGg9IjEuMyIvPgogICAgPHJlY3QgeD0iNDciIHk9IjEzIiB3aWR0aD0iNzMiIGhlaWdodD0iODQiIHJ4PSI3IiBmaWxsPSIjMmE2MDkxIi8+CiAgICA8cGF0aCBkPSJNNTQgMTNoN3Y4NGgtN2E3IDcgMCAwIDEtNy03VjIwYTcgNyAwIDAgMSA3LTdaIiBmaWxsPSIjMWQ0Yjc4Ii8+CiAgICA8cGF0aCBkPSJNNjUgMTZoNDlhMyAzIDAgMCAxIDMgM3Y3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjE5YmMzIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHJlY3QgeD0iNzIiIHk9IjMxIiB3aWR0aD0iMzIiIGhlaWdodD0iMjIiIHJ4PSIzIiBmaWxsPSIjZTdmMWY0Ii8+CiAgICA8cGF0aCBkPSJNNzggMzloMjBtLTIwIDZoMTQiIHN0cm9rZT0iIzY1OTBhZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTc5IDc3aDI3bS0xOCA2aDE4IiBzdHJva2U9IiM1NTkzYmUiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRmMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBkPSJNNTMgMjVjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03bTIgMjFjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="530" y="228" fill="#183449" text-anchor="start" font-size="17" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ノート</text>
+  <text x="530" y="248" fill="#183449" text-anchor="start" font-size="15" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：250円</text>
 </svg>

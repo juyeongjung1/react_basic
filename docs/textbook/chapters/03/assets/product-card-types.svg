@@ -1,34 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 158" width="400" height="158" font-family="Meiryo, sans-serif">
-  <title>Propsの型、分割代入、親が指定する属性の対応</title>
-  <rect x="4" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="65" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">型の定義</text>
-  <rect x="139" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="200" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">Propsの受け取り</text>
-  <rect x="274" y="5" width="122" height="126" rx="5" fill="#f3f7fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="335" y="23" font-size="11.4" fill="#205c84" font-weight="700" text-anchor="middle">親から渡す値</text>
-  <rect x="8" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
-  <text x="65" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name: string</text>
-  <rect x="143" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
-  <text x="200" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name</text>
-  <rect x="278" y="32" width="114" height="22" rx="5" fill="#eaf4fb" stroke="none" stroke-width=".85"/>
-  <text x="335" y="47" font-size="10.4" fill="#245b86" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">name="ノート"</text>
-  <path d="M126 43H133" fill="none" stroke="#245b86" stroke-width="1.25"/><path d="m133 40 5 3-5 3Z" fill="#245b86"/>
-  <path d="M261 43H268" fill="none" stroke="#245b86" stroke-width="1.25"/><path d="m268 40 5 3-5 3Z" fill="#245b86"/>
-  <rect x="8" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
-  <text x="65" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price: number</text>
-  <rect x="143" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
-  <text x="200" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price</text>
-  <rect x="278" y="62" width="114" height="22" rx="5" fill="#e7f4ef" stroke="none" stroke-width=".85"/>
-  <text x="335" y="77" font-size="10.4" fill="#256453" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">price={250}</text>
-  <path d="M126 73H133" fill="none" stroke="#256453" stroke-width="1.25"/><path d="m133 70 5 3-5 3Z" fill="#256453"/>
-  <path d="M261 73H268" fill="none" stroke="#256453" stroke-width="1.25"/><path d="m268 70 5 3-5 3Z" fill="#256453"/>
-  <rect x="8" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
-  <text x="65" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath: string</text>
-  <rect x="143" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
-  <text x="200" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath</text>
-  <rect x="278" y="92" width="114" height="22" rx="5" fill="#fdf2e2" stroke="none" stroke-width=".85"/>
-  <text x="335" y="107" font-size="10.4" fill="#8a4c15" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">imagePath="..."</text>
-  <path d="M126 103H133" fill="none" stroke="#8a4c15" stroke-width="1.25"/><path d="m133 100 5 3-5 3Z" fill="#8a4c15"/>
-  <path d="M261 103H268" fill="none" stroke="#8a4c15" stroke-width="1.25"/><path d="m268 100 5 3-5 3Z" fill="#8a4c15"/>
-  <text x="200" y="150" font-size="11.1" fill="#1b3145" font-weight="700" text-anchor="middle">引数の型には ProductCardProps を指定する</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="426" viewBox="0 0 760 426">
+  <text x="380" y="28" fill="#205b84" text-anchor="middle" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">Propsの型定義と受け取り方</text>
+  <rect x="8" y="48" width="744" height="90" rx="7" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="26" y="77" fill="#425a6b" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">7</text>
+  <polyline points="47,57 47,127" fill="none" stroke="#aabfcf" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="66" y="79" fill="#183449" text-anchor="start" font-size="21" font-family="Courier New, MS Gothic, monospace" font-weight="400">export default function ProductCard(</text>
+  <rect x="78" y="96" width="333.6" height="26" rx="0" fill="none" stroke="#b42331" stroke-width="2.35"/>
+  <text x="81" y="116" fill="#183449" text-anchor="start" font-size="21" font-family="Courier New, MS Gothic, monospace" font-weight="400">{ name, price, imagePath }</text>
+  <rect x="415.6" y="96" width="232.8" height="26" rx="0" fill="none" stroke="#55498a" stroke-width="2.35"/>
+  <text x="418.6" y="116" fill="#55498a" text-anchor="start" font-size="21" font-family="Courier New, MS Gothic, monospace" font-weight="400">: ProductCardProps</text>
+  <text x="649.4" y="116" fill="#183449" text-anchor="start" font-size="21" font-family="Courier New, MS Gothic, monospace" font-weight="400">) {</text>
+  <polyline points="223,124 223,151 155,151 155,164" fill="none" stroke="#b42331" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="500,124 500,150 562,150 562,161" fill="none" stroke="#55498a" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="155" y="183" fill="#932530" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">オブジェクトの分割代入</text>
+  <text x="562" y="183" fill="#55498a" text-anchor="middle" font-size="19" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">引数の型を指定</text>
+  <rect x="8" y="205" width="328" height="150" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="172" y="233" fill="#205b84" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">親から渡されるProps</text>
+  <rect x="416" y="205" width="336" height="150" rx="7" fill="#e9f4ef" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="584" y="233" fill="#226757" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">子コンポーネントで取り出した値</text>
+  <text x="19" y="260" fill="#205b84" text-anchor="start" font-size="17.5" font-family="Courier New, MS Gothic, monospace" font-weight="400">name: &#x27;ノート&#x27;</text>
+  <polyline points="343,255 410,255" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="401,250 410,255 401,260" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="428" y="260" fill="#205b84" text-anchor="start" font-size="17.5" font-family="Courier New, MS Gothic, monospace" font-weight="400">name → &#x27;ノート&#x27;</text>
+  <text x="19" y="289" fill="#934317" text-anchor="start" font-size="17.5" font-family="Courier New, MS Gothic, monospace" font-weight="400">price: 250</text>
+  <polyline points="343,284 410,284" fill="none" stroke="#934317" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="401,279 410,284 401,289" fill="none" stroke="#934317" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="428" y="289" fill="#934317" text-anchor="start" font-size="17.5" font-family="Courier New, MS Gothic, monospace" font-weight="400">price → 250</text>
+  <text x="19" y="318" fill="#226757" text-anchor="start" font-size="16" font-family="Courier New, MS Gothic, monospace" font-weight="400">imagePath:</text>
+  <text x="19" y="338" fill="#226757" text-anchor="start" font-size="16" font-family="Courier New, MS Gothic, monospace" font-weight="400"> &#x27;/images/products/notebook.svg&#x27;</text>
+  <polyline points="343,313 410,313" fill="none" stroke="#226757" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="401,308 410,313 401,318" fill="none" stroke="#226757" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="428" y="318" fill="#226757" text-anchor="start" font-size="16" font-family="Courier New, MS Gothic, monospace" font-weight="400">imagePath →</text>
+  <text x="428" y="338" fill="#226757" text-anchor="start" font-size="16" font-family="Courier New, MS Gothic, monospace" font-weight="400"> &#x27;/images/products/notebook.svg&#x27;</text>
+  <rect x="394" y="362" width="357" height="57" rx="7" fill="#f4eff9" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="572.5" y="386.1" fill="#55498a" text-anchor="middle" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">ProductCardProps：name: string /</text>
+  <text x="572.5" y="406.1" fill="#55498a" text-anchor="middle" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">price: number / imagePath: string</text>
+  <polyline points="621,171 756,171 756,391 752,391" fill="none" stroke="#55498a" stroke-width="1.2" stroke-dasharray="5 4" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

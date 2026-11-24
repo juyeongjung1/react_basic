@@ -1,125 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 224" width="352" height="224" font-family="Meiryo, sans-serif">
-  <title>6件の商品データをmap()で処理し、同じProductCardで表示する</title>
-  <rect x="5" y="12" width="110" height="173" rx="5" fill="#edf5fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="60" y="32" font-size="13" fill="#205c84" font-weight="700" text-anchor="middle">商品一覧</text>
-  <text x="60" y="49" font-size="10.1" fill="#205c84" font-weight="700" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">Sample3_1</text>
-  <text x="60" y="70" font-size="10.2" fill="#1b3145" font-weight="700" text-anchor="middle">6件の商品データ</text>
-  <rect x="11" y="78" width="98" height="97" rx="5" fill="#edf5fa" stroke="#b4c6d3" stroke-width=".85"/>
-  <text x="18" y="90.5" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">101</text>
-  <text x="39" y="90.5" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">ノート</text>
-  <text x="18" y="106.3" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">102</text>
-  <text x="39" y="106.3" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">ボールペン</text>
-  <text x="18" y="122.1" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">103</text>
-  <text x="39" y="122.1" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">消しゴム</text>
-  <text x="18" y="137.9" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">104</text>
-  <text x="39" y="137.9" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">ファイル</text>
-  <text x="18" y="153.7" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">105</text>
-  <text x="39" y="153.7" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">クリップ</text>
-  <text x="18" y="169.5" font-size="9.299999999999999" fill="#205c84" font-weight="700" text-anchor="start" font-family="Consolas, MS Gothic, monospace">106</text>
-  <text x="39" y="169.5" font-size="9.6" fill="#1b3145" font-weight="400" text-anchor="start">付箋</text>
-  <path d="M118 101H138" fill="none" stroke="#23695b" stroke-width="1.25"/><path d="m138 98 5 3-5 3Z" fill="#23695b"/>
-  <text x="244" y="26" font-size="12" fill="#23695b" font-weight="700" text-anchor="middle">同じ ProductCard で表示</text>
-  <rect x="145" y="34" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(150.00 37.57) scale(0.3155)"><ellipse cx="85" cy="102" rx="43" ry="6" fill="#24456b" opacity=".11"/>
-  <g transform="rotate(-10 84 60)">
-    <rect x="49" y="16" width="72" height="91" rx="7" fill="#173853"/>
-    <rect x="51" y="18" width="69" height="85" rx="6" fill="#f9f6eb"/>
-    <path d="M58 97h61m-61 3h60" fill="none" stroke="#cbcfcb" stroke-width="1.3"/>
-    <rect x="47" y="13" width="73" height="84" rx="7" fill="#2a6091"/>
-    <path d="M54 13h7v84h-7a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Z" fill="#1d4b78"/>
-    <path d="M65 16h49a3 3 0 0 1 3 3v70" fill="none" stroke="#619bc3" stroke-width="1.6"/>
-    <rect x="72" y="31" width="32" height="22" rx="3" fill="#e7f1f4"/>
-    <path d="M78 39h20m-20 6h14" stroke="#6590ad" stroke-width="1.6" stroke-linecap="round"/>
-    <path d="M79 77h27m-18 6h18" stroke="#5593be" stroke-width="1.4" stroke-linecap="round"/>
-    <g fill="none" stroke="#e6edf3" stroke-width="3" stroke-linecap="round">
-      <path d="M53 25c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7"/>
-    </g>
-  </g>
-</g>
-  <text x="176.5" y="89" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">ノート</text>
-  <text x="176.5" y="101" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：250円</text>
-  <rect x="213" y="34" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(218.00 37.57) scale(0.3155)"><ellipse cx="80" cy="94" rx="51" ry="5" fill="#22424d" opacity=".11"/>
-  <g transform="rotate(-32 84 58)">
-    <path d="M24 55 9 60l15 5 8-5Z" fill="#cdd8de" stroke="#536c7f" stroke-width="1.1"/>
-    <path d="M9 60H5" stroke="#334653" stroke-width="1.8" stroke-linecap="round"/>
-    <rect x="133" y="53" width="17" height="14" rx="4" fill="#8299aa" stroke="#344e61" stroke-width="1.1"/>
-    <rect x="24" y="52" width="115" height="16" rx="7" fill="#285b81" stroke="#233d55" stroke-width="1.4"/>
-    <path d="M30 55h97" stroke="#80b4d6" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M33 65h98" stroke="#1d4568" stroke-width="1.6" stroke-linecap="round"/>
-    <rect x="25" y="52" width="32" height="16" rx="6" fill="#263d4d"/>
-    <path d="M32 56v8m5-8v8m5-8v8m5-8v8m5-8v8" stroke="#7595a8" stroke-width="1.2" stroke-linecap="round"/>
-    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#556c7d" stroke-width="5" stroke-linecap="round"/>
-    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#e8f0f3" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-</g>
-  <text x="244.5" y="89" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">ボールペン</text>
-  <text x="244.5" y="101" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：120円</text>
-  <rect x="281" y="34" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(286.00 37.57) scale(0.3155)"><ellipse cx="84" cy="90" rx="52" ry="7" fill="#4b3931" opacity=".11"/>
-  <g transform="rotate(-14 84 60)">
-    <path d="M39 40h94a5 5 0 0 1 5 5v25l-13 9H30a5 5 0 0 1-5-5V50Z" fill="#d6c9bc" stroke="#9f8b7b" stroke-width="1.4" stroke-linejoin="round"/>
-    <rect x="25" y="40" width="113" height="30" rx="5" fill="#fff4e4" stroke="#9f8b7b" stroke-width="1.4"/>
-    <path d="M49 39h64v31l-12 10H37l12-10Z" fill="#b95346" stroke="#98473b" stroke-width="1.2" stroke-linejoin="round"/>
-    <path d="M49 39h64v31H49Z" fill="#e78067"/>
-    <path d="M54 41v25m54-25v25" stroke="#f6ac98" stroke-width="1.8"/>
-    <rect x="62" y="48" width="38" height="12" rx="2.5" fill="#ffebd7"/>
-    <path d="M69 54h24" stroke="#bd5f4c" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M118 44h13" stroke="#fffdf7" stroke-width="1.9" stroke-linecap="round"/>
-    <path d="M30 73h11m66 2 8-5" stroke="#a88f7e" stroke-width="1.1" stroke-linecap="round"/>
-  </g>
-</g>
-  <text x="312.5" y="89" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">消しゴム</text>
-  <text x="312.5" y="101" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：100円</text>
-  <rect x="145" y="111" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(150.00 114.57) scale(0.3155)"><ellipse cx="87" cy="100" rx="55" ry="6" fill="#24473c" opacity=".12"/>
-  <g transform="rotate(-8 84 60)" stroke-linejoin="round">
-    <path d="M31 32a5 5 0 0 1 5-5h32l11 10h51a5 5 0 0 1 5 5v50a5 5 0 0 1-5 5H36a5 5 0 0 1-5-5Z" fill="#4b9589" stroke="#28685e" stroke-width="1.6"/>
-    <path d="M48 41h69l8 10v36H48Z" fill="#dfece9" stroke="#89a9a3" stroke-width="1.2"/>
-    <path d="M42 32h66l12 11v40H42Z" fill="#fffdf5" stroke="#94b5ac" stroke-width="1.4"/>
-    <path d="M108 32v12h12" fill="#d7e9e2" stroke="#94b5ac" stroke-width="1.2"/>
-    <path d="M50 45h39m-39 7h48m-48 7h35" stroke="#bbcfc9" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M35 94 46 57a5 5 0 0 1 4-3h91a4 4 0 0 1 4 5l-11 35a5 5 0 0 1-4 4H39a4 4 0 0 1-4-4Z" fill="#80bbac" stroke="#347d70" stroke-width="1.6"/>
-    <path d="M51 58h88" stroke="#c2e0d8" stroke-width="1.6" stroke-linecap="round"/>
-    <rect x="83" y="68" width="39" height="15" rx="2.5" fill="#e8f5f0" stroke="#649789" stroke-width="1"/>
-    <path d="M91 75h22" stroke="#83ac9e" stroke-width="1.25" stroke-linecap="round"/>
-  </g>
-</g>
-  <text x="176.5" y="166" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">ファイル</text>
-  <text x="176.5" y="178" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：600円</text>
-  <rect x="213" y="111" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(218.00 114.57) scale(0.3155)"><ellipse cx="84" cy="94" rx="51" ry="5" fill="#294653" opacity=".10"/>
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <g transform="translate(6 7) rotate(23 48 56)">
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#344d63" stroke-width="4.5"/>
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a9bcca" stroke-width="2.3"/>
-    </g>
-    <g transform="translate(39 -3) rotate(-30 48 56)">
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#366d8d" stroke-width="4.5"/>
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#81b4d2" stroke-width="2.3"/>
-    </g>
-    <g transform="translate(76 12) rotate(42 48 56) scale(.88)">
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a85937" stroke-width="4.8"/>
-      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#e5a47b" stroke-width="2.4"/>
-    </g>
-  </g>
-</g>
-  <text x="244.5" y="166" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">クリップ</text>
-  <text x="244.5" y="178" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：180円</text>
-  <rect x="281" y="111" width="63" height="72" rx="5" fill="#ffffff" stroke="#c4d0db" stroke-width=".85"/>
-  <g transform="translate(286.00 114.57) scale(0.3155)"><ellipse cx="86" cy="100" rx="51" ry="6" fill="#6b551d" opacity=".12"/>
-  <g transform="rotate(11 83 61)" stroke-linejoin="round">
-    <rect x="38" y="22" width="91" height="76" rx="3" fill="#dba838" stroke="#a88232" stroke-width="1.4"/>
-    <path d="M40 88h87m-87 4h87m-87 3h87" stroke="#f4d77e" stroke-width="1.2"/>
-    <path d="M37 18h88v52q-10 4-16 18H37Z" fill="#f7d35c" stroke="#ad8939" stroke-width="1.4"/>
-    <path d="M37 17h88v50l-20 20H37Z" fill="#ffdf72" stroke="#ad8939" stroke-width="1.4"/>
-    <path d="M105 87c1-12 5-20 20-20l-20 20Z" fill="#fff1ae" stroke="#c2a14b" stroke-width="1.1"/>
-    <path d="M40 20h81v6H40Z" fill="#f5c950"/>
-    <path d="M49 38h45m-45 9h37m-37 9h31" stroke="#d9a941" stroke-width="1.7" stroke-linecap="round"/>
-  </g>
-</g>
-  <text x="312.5" y="166" font-size="9" fill="#1b3145" font-weight="700" text-anchor="middle">付箋</text>
-  <text x="312.5" y="178" font-size="8.4" fill="#354b5d" font-weight="400" text-anchor="middle">単価：240円</text>
-  <rect x="5" y="195" width="342" height="24" rx="5" fill="#e9f4ef" stroke="#a9caba" stroke-width=".85"/>
-  <text x="176" y="211" font-size="10.5" fill="#23695b" font-weight="700" text-anchor="middle">map() で1件ずつ取り出し、name・price・imagePath を渡す</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="427" viewBox="0 0 760 427">
+  <rect x="8" y="42" width="210" height="330" rx="7" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="113" y="80" fill="#205b84" text-anchor="middle" font-size="25" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">商品一覧</text>
+  <text x="113" y="111" fill="#205b84" text-anchor="middle" font-size="21" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">Sample3_1</text>
+  <text x="113" y="150" fill="#205b84" text-anchor="middle" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">6件の商品データ</text>
+  <text x="25" y="180" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">101 ノート</text>
+  <text x="25" y="209" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">102 ボールペン</text>
+  <text x="25" y="238" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">103 消しゴム</text>
+  <text x="25" y="267" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">104 ファイル</text>
+  <text x="25" y="296" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">105 クリップ</text>
+  <text x="25" y="325" fill="#183449" text-anchor="start" font-size="20" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">106 付箋</text>
+  <text x="290" y="170" fill="#205b84" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">商品ごとの</text>
+  <text x="290" y="192.5" fill="#205b84" text-anchor="middle" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">データを渡す</text>
+  <polyline points="229,228 357,228" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="348,223 357,228 348,233" fill="none" stroke="#205b84" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="291" y="263" fill="#226757" text-anchor="middle" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">Props</text>
+  <text x="557" y="41" fill="#226757" text-anchor="middle" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">同じProductCardを使用</text>
+  <rect x="368" y="62" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="393.5" y="68" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44OO44O844OIPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODUiIGN5PSIxMDIiIHJ4PSI0MyIgcnk9IjYiIGZpbGw9IiMyNDQ1NmIiIG9wYWNpdHk9Ii4xMSIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKC0xMCA4NCA2MCkiPgogICAgPHJlY3QgeD0iNDkiIHk9IjE2IiB3aWR0aD0iNzIiIGhlaWdodD0iOTEiIHJ4PSI3IiBmaWxsPSIjMTczODUzIi8+CiAgICA8cmVjdCB4PSI1MSIgeT0iMTgiIHdpZHRoPSI2OSIgaGVpZ2h0PSI4NSIgcng9IjYiIGZpbGw9IiNmOWY2ZWIiLz4KICAgIDxwYXRoIGQ9Ik01OCA5N2g2MW0tNjEgM2g2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2JjZmNiIiBzdHJva2Utd2lkdGg9IjEuMyIvPgogICAgPHJlY3QgeD0iNDciIHk9IjEzIiB3aWR0aD0iNzMiIGhlaWdodD0iODQiIHJ4PSI3IiBmaWxsPSIjMmE2MDkxIi8+CiAgICA8cGF0aCBkPSJNNTQgMTNoN3Y4NGgtN2E3IDcgMCAwIDEtNy03VjIwYTcgNyAwIDAgMSA3LTdaIiBmaWxsPSIjMWQ0Yjc4Ii8+CiAgICA8cGF0aCBkPSJNNjUgMTZoNDlhMyAzIDAgMCAxIDMgM3Y3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjE5YmMzIiBzdHJva2Utd2lkdGg9IjEuNiIvPgogICAgPHJlY3QgeD0iNzIiIHk9IjMxIiB3aWR0aD0iMzIiIGhlaWdodD0iMjIiIHJ4PSIzIiBmaWxsPSIjZTdmMWY0Ii8+CiAgICA8cGF0aCBkPSJNNzggMzloMjBtLTIwIDZoMTQiIHN0cm9rZT0iIzY1OTBhZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTc5IDc3aDI3bS0xOCA2aDE4IiBzdHJva2U9IiM1NTkzYmUiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRmMyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiPgogICAgICA8cGF0aCBkPSJNNTMgMjVjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03bTIgMjFjLTE4IDAtMTgtNy0yLTdtMiAyMWMtMTggMC0xOC03LTItN20yIDIxYy0xOCAwLTE4LTctMi03Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="376" y="184" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ノート</text>
+  <text x="376" y="204" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：250円</text>
+  <rect x="499" y="62" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="524.5" y="68" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44Oc44O844Or44Oa44OzPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODAiIGN5PSI5NCIgcng9IjUxIiByeT0iNSIgZmlsbD0iIzIyNDI0ZCIgb3BhY2l0eT0iLjExIi8+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTMyIDg0IDU4KSI+CiAgICA8cGF0aCBkPSJNMjQgNTUgOSA2MGwxNSA1IDgtNVoiIGZpbGw9IiNjZGQ4ZGUiIHN0cm9rZT0iIzUzNmM3ZiIgc3Ryb2tlLXdpZHRoPSIxLjEiLz4KICAgIDxwYXRoIGQ9Ik05IDYwSDUiIHN0cm9rZT0iIzMzNDY1MyIgc3Ryb2tlLXdpZHRoPSIxLjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPHJlY3QgeD0iMTMzIiB5PSI1MyIgd2lkdGg9IjE3IiBoZWlnaHQ9IjE0IiByeD0iNCIgZmlsbD0iIzgyOTlhYSIgc3Ryb2tlPSIjMzQ0ZTYxIiBzdHJva2Utd2lkdGg9IjEuMSIvPgogICAgPHJlY3QgeD0iMjQiIHk9IjUyIiB3aWR0aD0iMTE1IiBoZWlnaHQ9IjE2IiByeD0iNyIgZmlsbD0iIzI4NWI4MSIgc3Ryb2tlPSIjMjMzZDU1IiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHBhdGggZD0iTTMwIDU1aDk3IiBzdHJva2U9IiM4MGI0ZDYiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0zMyA2NWg5OCIgc3Ryb2tlPSIjMWQ0NTY4IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cmVjdCB4PSIyNSIgeT0iNTIiIHdpZHRoPSIzMiIgaGVpZ2h0PSIxNiIgcng9IjYiIGZpbGw9IiMyNjNkNGQiLz4KICAgIDxwYXRoIGQ9Ik0zMiA1NnY4bTUtOHY4bTUtOHY4bTUtOHY4bTUtOHY4IiBzdHJva2U9IiM3NTk1YTgiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xMzYgNTF2LTZoLTI4cS02IDAtOCA1IiBmaWxsPSJub25lIiBzdHJva2U9IiM1NTZjN2QiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNMTM2IDUxdi02aC0yOHEtNiAwLTggNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZThmMGYzIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="507" y="184" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ボールペン</text>
+  <text x="507" y="204" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：120円</text>
+  <rect x="630" y="62" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="655.5" y="68" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+5raI44GX44K044OgPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODQiIGN5PSI5MCIgcng9IjUyIiByeT0iNyIgZmlsbD0iIzRiMzkzMSIgb3BhY2l0eT0iLjExIi8+CiAgPGcgdHJhbnNmb3JtPSJyb3RhdGUoLTE0IDg0IDYwKSI+CiAgICA8cGF0aCBkPSJNMzkgNDBoOTRhNSA1IDAgMCAxIDUgNXYyNWwtMTMgOUgzMGE1IDUgMCAwIDEtNS01VjUwWiIgZmlsbD0iI2Q2YzliYyIgc3Ryb2tlPSIjOWY4YjdiIiBzdHJva2Utd2lkdGg9IjEuNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHJlY3QgeD0iMjUiIHk9IjQwIiB3aWR0aD0iMTEzIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iI2ZmZjRlNCIgc3Ryb2tlPSIjOWY4YjdiIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHBhdGggZD0iTTQ5IDM5aDY0djMxbC0xMiAxMEgzN2wxMi0xMFoiIGZpbGw9IiNiOTUzNDYiIHN0cm9rZT0iIzk4NDczYiIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik00OSAzOWg2NHYzMUg0OVoiIGZpbGw9IiNlNzgwNjciLz4KICAgIDxwYXRoIGQ9Ik01NCA0MXYyNW01NC0yNXYyNSIgc3Ryb2tlPSIjZjZhYzk4IiBzdHJva2Utd2lkdGg9IjEuOCIvPgogICAgPHJlY3QgeD0iNjIiIHk9IjQ4IiB3aWR0aD0iMzgiIGhlaWdodD0iMTIiIHJ4PSIyLjUiIGZpbGw9IiNmZmViZDciLz4KICAgIDxwYXRoIGQ9Ik02OSA1NGgyNCIgc3Ryb2tlPSIjYmQ1ZjRjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNMTE4IDQ0aDEzIiBzdHJva2U9IiNmZmZkZjciIHN0cm9rZS13aWR0aD0iMS45IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0zMCA3M2gxMW02NiAyIDgtNSIgc3Ryb2tlPSIjYTg4ZjdlIiBzdHJva2Utd2lkdGg9IjEuMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="638" y="184" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">消しゴム</text>
+  <text x="638" y="204" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：100円</text>
+  <rect x="368" y="222" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="393.5" y="228" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44OV44Kh44Kk44OrPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODciIGN5PSIxMDAiIHJ4PSI1NSIgcnk9IjYiIGZpbGw9IiMyNDQ3M2MiIG9wYWNpdHk9Ii4xMiIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKC04IDg0IDYwKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cGF0aCBkPSJNMzEgMzJhNSA1IDAgMCAxIDUtNWgzMmwxMSAxMGg1MWE1IDUgMCAwIDEgNSA1djUwYTUgNSAwIDAgMS01IDVIMzZhNSA1IDAgMCAxLTUtNVoiIGZpbGw9IiM0Yjk1ODkiIHN0cm9rZT0iIzI4Njg1ZSIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICAgIDxwYXRoIGQ9Ik00OCA0MWg2OWw4IDEwdjM2SDQ4WiIgZmlsbD0iI2RmZWNlOSIgc3Ryb2tlPSIjODlhOWEzIiBzdHJva2Utd2lkdGg9IjEuMiIvPgogICAgPHBhdGggZD0iTTQyIDMyaDY2bDEyIDExdjQwSDQyWiIgZmlsbD0iI2ZmZmRmNSIgc3Ryb2tlPSIjOTRiNWFjIiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHBhdGggZD0iTTEwOCAzMnYxMmgxMiIgZmlsbD0iI2Q3ZTllMiIgc3Ryb2tlPSIjOTRiNWFjIiBzdHJva2Utd2lkdGg9IjEuMiIvPgogICAgPHBhdGggZD0iTTUwIDQ1aDM5bS0zOSA3aDQ4bS00OCA3aDM1IiBzdHJva2U9IiNiYmNmYzkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0zNSA5NCA0NiA1N2E1IDUgMCAwIDEgNC0zaDkxYTQgNCAwIDAgMSA0IDVsLTExIDM1YTUgNSAwIDAgMS00IDRIMzlhNCA0IDAgMCAxLTQtNFoiIGZpbGw9IiM4MGJiYWMiIHN0cm9rZT0iIzM0N2Q3MCIgc3Ryb2tlLXdpZHRoPSIxLjYiLz4KICAgIDxwYXRoIGQ9Ik01MSA1OGg4OCIgc3Ryb2tlPSIjYzJlMGQ4IiBzdHJva2Utd2lkdGg9IjEuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cmVjdCB4PSI4MyIgeT0iNjgiIHdpZHRoPSIzOSIgaGVpZ2h0PSIxNSIgcng9IjIuNSIgZmlsbD0iI2U4ZjVmMCIgc3Ryb2tlPSIjNjQ5Nzg5IiBzdHJva2Utd2lkdGg9IjEiLz4KICAgIDxwYXRoIGQ9Ik05MSA3NWgyMiIgc3Ryb2tlPSIjODNhYzllIiBzdHJva2Utd2lkdGg9IjEuMjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwvZz4KPC9zdmc+Cg=="/>
+  <text x="376" y="344" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">ファイル</text>
+  <text x="376" y="364" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：600円</text>
+  <rect x="499" y="222" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="524.5" y="228" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+44Kv44Oq44OD44OXPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODQiIGN5PSI5NCIgcng9IjUxIiByeT0iNSIgZmlsbD0iIzI5NDY1MyIgb3BhY2l0eT0iLjEwIi8+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYgNykgcm90YXRlKDIzIDQ4IDU2KSI+CiAgICAgIDxwYXRoIGQ9Ik01MSA3NVYzOGE5IDkgMCAwIDAtMTggMHY0M2ExNCAxNCAwIDAgMCAyOCAwVjM4YTE5IDE5IDAgMCAwLTM4IDB2MzMiIHN0cm9rZT0iIzM0NGQ2MyIgc3Ryb2tlLXdpZHRoPSI0LjUiLz4KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjYTliY2NhIiBzdHJva2Utd2lkdGg9IjIuMyIvPgogICAgPC9nPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzkgLTMpIHJvdGF0ZSgtMzAgNDggNTYpIj4KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjMzY2ZDhkIiBzdHJva2Utd2lkdGg9IjQuNSIvPgogICAgICA8cGF0aCBkPSJNNTEgNzVWMzhhOSA5IDAgMCAwLTE4IDB2NDNhMTQgMTQgMCAwIDAgMjggMFYzOGExOSAxOSAwIDAgMC0zOCAwdjMzIiBzdHJva2U9IiM4MWI0ZDIiIHN0cm9rZS13aWR0aD0iMi4zIi8+CiAgICA8L2c+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3NiAxMikgcm90YXRlKDQyIDQ4IDU2KSBzY2FsZSguODgpIj4KICAgICAgPHBhdGggZD0iTTUxIDc1VjM4YTkgOSAwIDAgMC0xOCAwdjQzYTE0IDE0IDAgMCAwIDI4IDBWMzhhMTkgMTkgMCAwIDAtMzggMHYzMyIgc3Ryb2tlPSIjYTg1OTM3IiBzdHJva2Utd2lkdGg9IjQuOCIvPgogICAgICA8cGF0aCBkPSJNNTEgNzVWMzhhOSA5IDAgMCAwLTE4IDB2NDNhMTQgMTQgMCAwIDAgMjggMFYzOGExOSAxOSAwIDAgMC0zOCAwdjMzIiBzdHJva2U9IiNlNWE0N2IiIHN0cm9rZS13aWR0aD0iMi40Ii8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4K"/>
+  <text x="507" y="344" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">クリップ</text>
+  <text x="507" y="364" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：180円</text>
+  <rect x="630" y="222" width="121" height="150" rx="7" fill="white" stroke="#d3dce4" stroke-width="1.4"/>
+  <image x="655.5" y="228" width="70" height="70" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4KICA8dGl0bGU+5LuY566LPC90aXRsZT4KICA8ZWxsaXBzZSBjeD0iODYiIGN5PSIxMDAiIHJ4PSI1MSIgcnk9IjYiIGZpbGw9IiM2YjU1MWQiIG9wYWNpdHk9Ii4xMiIvPgogIDxnIHRyYW5zZm9ybT0icm90YXRlKDExIDgzIDYxKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+CiAgICA8cmVjdCB4PSIzOCIgeT0iMjIiIHdpZHRoPSI5MSIgaGVpZ2h0PSI3NiIgcng9IjMiIGZpbGw9IiNkYmE4MzgiIHN0cm9rZT0iI2E4ODIzMiIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDxwYXRoIGQ9Ik00MCA4OGg4N20tODcgNGg4N20tODcgM2g4NyIgc3Ryb2tlPSIjZjRkNzdlIiBzdHJva2Utd2lkdGg9IjEuMiIvPgogICAgPHBhdGggZD0iTTM3IDE4aDg4djUycS0xMCA0LTE2IDE4SDM3WiIgZmlsbD0iI2Y3ZDM1YyIgc3Ryb2tlPSIjYWQ4OTM5IiBzdHJva2Utd2lkdGg9IjEuNCIvPgogICAgPHBhdGggZD0iTTM3IDE3aDg4djUwbC0yMCAyMEgzN1oiIGZpbGw9IiNmZmRmNzIiIHN0cm9rZT0iI2FkODkzOSIgc3Ryb2tlLXdpZHRoPSIxLjQiLz4KICAgIDxwYXRoIGQ9Ik0xMDUgODdjMS0xMiA1LTIwIDIwLTIwbC0yMCAyMFoiIGZpbGw9IiNmZmYxYWUiIHN0cm9rZT0iI2MyYTE0YiIgc3Ryb2tlLXdpZHRoPSIxLjEiLz4KICAgIDxwYXRoIGQ9Ik00MCAyMGg4MXY2SDQwWiIgZmlsbD0iI2Y1Yzk1MCIvPgogICAgPHBhdGggZD0iTTQ5IDM4aDQ1bS00NSA5aDM3bS0zNyA5aDMxIiBzdHJva2U9IiNkOWE5NDEiIHN0cm9rZS13aWR0aD0iMS43IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo="/>
+  <text x="638" y="344" fill="#183449" text-anchor="start" font-size="18" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">付箋</text>
+  <text x="638" y="364" fill="#183449" text-anchor="start" font-size="16" font-family="Meiryo, MS Gothic, sans-serif" font-weight="400">単価：240円</text>
+  <text x="380" y="410" fill="#205b84" text-anchor="middle" font-size="23" font-family="Meiryo, MS Gothic, sans-serif" font-weight="700">同じ画面部品を使用し、商品ごとに異なる情報を表示する</text>
 </svg>
