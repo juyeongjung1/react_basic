@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="373" viewBox="0 0 460 373" font-family="Meiryo, sans-serif" role="img">
+<title>useNavigate()とnavigate()の役割</title>
+<text x="230" y="21" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">useNavigate()とnavigate()の役割</text>
+<rect x="9" y="34" width="442" height="107" rx="4" fill="#edf6fa" stroke="#a2becd" stroke-width="1"/>
+<text x="118.00 125.18 132.36 139.54 146.72 153.90 161.08 168.25 175.43 182.61 189.79 196.97 204.15 211.33 218.51 225.69 232.87 240.05 247.23 254.41 261.59 268.76 275.94 283.12 290.30 297.48 304.66 311.84 319.02 326.20" y="62" font-size="13" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">const navigate = useNavigate()</text><rect x="160.08" y="48" width="59.43" height="17.5" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/><rect x="239.05" y="48" width="95.33" height="17.5" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<path d="M291 81L190 81M195.00 84.00L190 81L195.00 78.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="230" y="107" font-size="13" fill="#18364e" text-anchor="middle" font-weight="700">画面遷移用の関数を取得する</text>
+<text x="230" y="126" font-size="11.8" fill="#40596c" text-anchor="middle">まだ画面は切り替わらない</text>
+<path d="M230 143L230 160M233.00 155.00L230 160L227.00 155.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="9" y="163" width="219" height="176" rx="4" fill="#eff7f1" stroke="#aac9b8" stroke-width="1"/>
+<text x="22.00 27.96 33.93 39.89 45.86 51.82 57.79 63.75 69.71 75.68 81.64 87.61 93.57 99.54 105.50 111.46 117.43 123.39 129.36 135.32 141.29 147.25 153.21 159.18 165.14 171.11 177.07 183.04 189.00 194.96 200.93 206.89" y="202" font-size="10.8" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/sample-3-6/products&#x27;)</text><rect x="21.0" y="190.2" width="49.71" height="15.3" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/><rect x="80.64" y="190.2" width="121.29" height="15.3" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<path d="M45 212L45 226M48.00 221.00L45 226L42.00 221.00" fill="none" stroke="#b42331" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="21" y="245" font-size="11.8" fill="#922b35" text-anchor="start" font-weight="700">取得した関数を呼び出す</text>
+<path d="M180 212L180 252M183.00 247.00L180 252L177.00 247.00" fill="none" stroke="#b42331" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="21" y="276" font-size="11.8" fill="#922b35" text-anchor="start" font-weight="700">移動先のURLを指定する</text>
+<path d="M231 243L246 243M241.00 240.00L246 243L241.00 246.00" fill="none" stroke="#27617c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="350" y="178" font-size="12.5" fill="#285669" text-anchor="middle" font-weight="700">画面が切り替わる</text>
+<rect x="252" y="186" width="199" height="178" rx="4" fill="#fff"/>
+<rect x="252" y="186" width="199" height="21" rx="4" fill="#eaf2f7"/>
+<circle cx="259" cy="196.5" r="1.6" fill="#8ba5b8"/><circle cx="265" cy="196.5" r="1.6" fill="#8ba5b8"/>
+<rect x="270" y="189" width="176" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
+<text x="274.00 280.19 286.37 292.56 298.74 304.93 311.11 317.30 323.48 329.67 335.85 342.04 348.22 354.41 360.59 366.78 372.96 379.15 385.33 391.52" y="200.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products</text>
+<rect x="252.6" y="207" width="197.8" height="19" rx="0" fill="#212529"/>
+<text x="261" y="220.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
+<rect x="252.6" y="226" width="197.8" height="22" rx="0" fill="#f8f9fa"/>
+<text x="260" y="241" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ホーム</text>
+<rect x="292" y="228.5" width="48" height="17" rx="3" fill="#0d6efd"/><text x="316.0" y="240.23" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="700">商品一覧</text>
+<text x="346" y="241" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ご利用案内</text>
+<rect x="252.6" y="346" width="197.8" height="17.5" rx="3" fill="#f3f6f8"/>
+<text x="351.5" y="358.6" font-size="9.5" fill="#18364e" text-anchor="middle">商品管理システム</text>
+<rect x="252" y="186" width="199" height="178" rx="5" fill="none" stroke="#92abbe" stroke-width="1"/>
+<text x="262" y="265" font-size="13.1" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="262" y="271" width="69" height="18" rx="3" fill="#0d6efd"/><text x="296.5" y="283.468" font-size="10.2" fill="#fff" text-anchor="middle" font-weight="700">商品登録</text>
+<rect x="260" y="294" width="183" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(262 303) scale(0.19)"><ellipse cx="85" cy="102" rx="43" ry="6" fill="#24456b" opacity=".11"/>
+  <g transform="rotate(-10 84 60)">
+    <rect x="49" y="16" width="72" height="91" rx="7" fill="#173853"/>
+    <rect x="51" y="18" width="69" height="85" rx="6" fill="#f9f6eb"/>
+    <path d="M58 97h61m-61 3h60" fill="none" stroke="#cbcfcb" stroke-width="1.3"/>
+    <rect x="47" y="13" width="73" height="84" rx="7" fill="#2a6091"/>
+    <path d="M54 13h7v84h-7a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Z" fill="#1d4b78"/>
+    <path d="M65 16h49a3 3 0 0 1 3 3v70" fill="none" stroke="#619bc3" stroke-width="1.6"/>
+    <rect x="72" y="31" width="32" height="22" rx="3" fill="#e7f1f4"/>
+    <path d="M78 39h20m-20 6h14" stroke="#6590ad" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M79 77h27m-18 6h18" stroke="#5593be" stroke-width="1.4" stroke-linecap="round"/>
+    <g fill="none" stroke="#e6edf3" stroke-width="3" stroke-linecap="round">
+      <path d="M53 25c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7"/>
+    </g>
+  </g></g>
+<text x="299" y="306" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">ノート</text>
+<text x="299" y="318" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：101</text>
+<text x="299" y="330" font-size="9.5" fill="#18364e" text-anchor="start">単価：250円</text>
+<rect x="407" y="321" width="30" height="13" rx="3" fill="#0d6efd"/><text x="422.0" y="330.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+</svg>

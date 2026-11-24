@@ -152,6 +152,10 @@ XXXX-T-01
 3.5. URLパラメータの取得
 :::
 
+::: {#contents-ch03-section-6 .contents-entry target="03:ch03-programmatic-title"}
+3.6. プログラムによる画面遷移
+:::
+
 ::::
 
 :::: {#page-4 .source-page}

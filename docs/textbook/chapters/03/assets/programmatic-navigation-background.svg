@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="377" viewBox="0 0 460 377" font-family="Meiryo, sans-serif" role="img">
+<title>登録処理の結果に応じて画面を切り替える</title>
+<text x="230" y="21" font-size="15.4" fill="#18364e" text-anchor="middle" font-weight="700">登録処理の結果に応じて画面を切り替える</text>
+<rect x="9" y="33" width="442" height="31" rx="4" fill="#fff5e8" stroke="#d5b594" stroke-width="1"/>
+<text x="230" y="53" font-size="11.55" fill="#71471f" text-anchor="middle" font-weight="700">実際の開発における処理の流れ（この節では画面遷移のみ実装）</text>
+<rect x="12" y="83" width="199" height="142" rx="5" fill="#fff" stroke="#9bb0c1" stroke-width="1"/>
+<rect x="12.6" y="83.6" width="197.8" height="21" rx="3" fill="#212529"/>
+<text x="21" y="98" font-size="10.7" fill="#fff" text-anchor="start" font-weight="700">商品登録画面（将来の実装例）</text>
+<text x="23" y="126" font-size="11.7" fill="#18364e" text-anchor="start" font-weight="700">商品名</text>
+<rect x="67" y="112" width="127" height="20" rx="4" fill="#fff" stroke="#a9bccc" stroke-width="1"/>
+<text x="23" y="158" font-size="11.7" fill="#18364e" text-anchor="start" font-weight="700">単価</text>
+<rect x="67" y="145" width="98" height="20" rx="4" fill="#fff" stroke="#a9bccc" stroke-width="1"/>
+<text x="173" y="159" font-size="10.8" fill="#18364e" text-anchor="start">円</text>
+<rect x="23" y="183" width="53" height="21" rx="3" fill="#0d6efd"/><text x="49.5" y="197.24" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">登録</text><rect x="21" y="181" width="57" height="25" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<path d="M213 105L237 105M232.00 102.00L237 105L232.00 108.00" fill="none" stroke="#b42331" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="242" y="89" width="201" height="31" rx="4" fill="#edf4f9" stroke="#9eb8cb" stroke-width="1"/>
+<text x="342.5" y="109" font-size="12.3" fill="#18364e" text-anchor="middle" font-weight="700">登録ボタンのクリック</text>
+<path d="M342.5 123L342.5 136M345.50 131.00L342.5 136L339.50 131.00" fill="none" stroke="#355971" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="242" y="139" width="201" height="33" rx="4" fill="#fff5e8" stroke="#b78556" stroke-width="1.1" stroke-dasharray="5 4"/>
+<text x="342.5" y="160" font-size="12" fill="#71471f" text-anchor="middle" font-weight="700">商品を登録する処理</text>
+<path d="M342.5 175L342.5 187M345.50 182.00L342.5 187L339.50 182.00" fill="none" stroke="#355971" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="242" y="190" width="201" height="33" rx="4" fill="#fff5e8" stroke="#b78556" stroke-width="1.1" stroke-dasharray="5 4"/>
+<text x="342.5" y="211" font-size="12" fill="#71471f" text-anchor="middle" font-weight="700">登録に成功したか</text>
+<path d="M342.5 224V237H111V249M342.5 237H346V249" fill="none" stroke="#416378" stroke-width="1.4"/>
+<path d="M111 249L111 267M114.00 262.00L111 267L108.00 262.00" fill="none" stroke="#256950" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M346 249L346 267M349.00 262.00L346 267L343.00 262.00" fill="none" stroke="#9f4c3d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="137" y="252" font-size="11.9" fill="#256950" text-anchor="middle" font-weight="700">成功</text>
+<text x="372" y="252" font-size="11.9" fill="#9f4c3d" text-anchor="middle" font-weight="700">失敗</text>
+<rect x="10" y="270" width="202" height="75" rx="4" fill="#eff7f2" stroke="#abcbbb" stroke-width="1"/>
+<text x="111" y="294" font-size="13.1" fill="#225944" text-anchor="middle" font-weight="700">商品一覧画面</text>
+<rect x="27" y="303" width="168" height="29" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="111" y="322" font-size="13" fill="#8b2734" text-anchor="middle" font-weight="700">商品一覧画面へ移動</text>
+<rect x="243" y="270" width="207" height="75" rx="4" fill="#fff5ee" stroke="#cfa88d" stroke-width="1"/>
+<text x="346.5" y="293" font-size="12.4" fill="#75452f" text-anchor="middle" font-weight="700">商品登録画面に留まる</text>
+<rect x="257" y="302" width="179" height="30" rx="4" fill="#fff" stroke="#b78556" stroke-width="1.1" stroke-dasharray="5 4"/>
+<text x="346.5" y="321" font-size="11.9" fill="#75452f" text-anchor="middle" font-weight="700">エラーメッセージを表示</text>
+<text x="230" y="367" font-size="11.7" fill="#71471f" text-anchor="middle" font-weight="700">破線枠は後続の章で扱う処理</text>
+</svg>

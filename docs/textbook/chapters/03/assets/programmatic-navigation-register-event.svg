@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="548" height="490" viewBox="0 0 548 490" font-family="Meiryo, sans-serif" role="img">
+<title>登録ボタンのクリックによって画面遷移する仕組み</title>
+<text x="274" y="21" font-size="16.1" fill="#18364e" text-anchor="middle" font-weight="700">登録ボタンのクリックによって画面遷移する仕組み</text>
+<text x="82" y="63" font-size="13.2" fill="#18364e" text-anchor="middle" font-weight="700">商品登録画面</text>
+<text x="465" y="44" font-size="13.2" fill="#18364e" text-anchor="middle" font-weight="700">商品一覧画面</text>
+<rect x="6" y="73" width="151" height="173" rx="4" fill="#fff"/>
+<rect x="6" y="73" width="151" height="21" rx="4" fill="#eaf2f7"/>
+<circle cx="13" cy="83.5" r="1.6" fill="#8ba5b8"/><circle cx="19" cy="83.5" r="1.6" fill="#8ba5b8"/>
+<rect x="24" y="76" width="128" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
+<text x="28.00 33.00 38.00 42.99 47.99 52.99 57.99 62.99 67.98 72.98 77.98 82.98 87.97 92.97 97.97 102.97 107.97 112.96 117.96 122.96 127.96 132.96 137.95 142.95" y="87.3" font-size="9.05" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products/new</text>
+<rect x="6.6" y="94" width="149.8" height="19" rx="0" fill="#212529"/>
+<text x="15" y="107.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
+<rect x="6.6" y="113" width="149.8" height="22" rx="0" fill="#f8f9fa"/>
+<text x="14" y="128" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ホーム</text>
+<rect x="46" y="115.5" width="48" height="17" rx="3" fill="#0d6efd"/><text x="70.0" y="127.23" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="700">商品一覧</text>
+<text x="100" y="128" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ご利用案内</text>
+<rect x="6.6" y="228" width="149.8" height="17.5" rx="3" fill="#f3f6f8"/>
+<text x="81.5" y="240.6" font-size="9.5" fill="#18364e" text-anchor="middle">商品管理システム</text>
+<rect x="6" y="73" width="151" height="173" rx="5" fill="none" stroke="#92abbe" stroke-width="1"/>
+<text x="16" y="153" font-size="12.4" fill="#18364e" text-anchor="start" font-weight="700">商品登録</text>
+<rect x="15" y="159" width="133" height="40" rx="3" fill="#cff4fc" stroke="#9ed8e4" stroke-width="1"/>
+<text x="20" y="170" font-size="9.1" fill="#055160" text-anchor="start">この節では、商品登録処理は</text>
+<text x="20" y="181" font-size="9.1" fill="#055160" text-anchor="start">行わず、画面遷移のみを</text>
+<text x="20" y="192" font-size="9.1" fill="#055160" text-anchor="start">確認します。</text>
+<rect x="16" y="206" width="42" height="17" rx="3" fill="#0d6efd"/><text x="37.0" y="218.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">登録</text><rect x="14" y="204" width="46" height="21" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<rect x="64" y="206" width="70" height="17" rx="3" fill="#6c757d"/><text x="99.0" y="218.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">キャンセル</text>
+<rect x="386" y="54" width="156" height="428" rx="4" fill="#fff"/>
+<rect x="386" y="54" width="156" height="21" rx="4" fill="#eaf2f7"/>
+<circle cx="393" cy="64.5" r="1.6" fill="#8ba5b8"/><circle cx="399" cy="64.5" r="1.6" fill="#8ba5b8"/>
+<rect x="404" y="57" width="133" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
+<text x="408.00 414.19 420.37 426.56 432.74 438.93 445.11 451.30 457.48 463.67 469.85 476.04 482.22 488.41 494.59 500.78 506.96 513.15 519.33 525.52" y="68.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products</text>
+<rect x="386.6" y="75" width="154.8" height="19" rx="0" fill="#212529"/>
+<text x="395" y="88.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
+<rect x="386.6" y="94" width="154.8" height="22" rx="0" fill="#f8f9fa"/>
+<text x="394" y="109" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ホーム</text>
+<rect x="426" y="96.5" width="48" height="17" rx="3" fill="#0d6efd"/><text x="450.0" y="108.23" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="700">商品一覧</text>
+<text x="480" y="109" font-size="9.5" fill="#0b5ed7" text-anchor="start" font-weight="700">ご利用案内</text>
+<rect x="386.6" y="464" width="154.8" height="17.5" rx="3" fill="#f3f6f8"/>
+<text x="464.0" y="476.6" font-size="9.5" fill="#18364e" text-anchor="middle">商品管理システム</text>
+<rect x="386" y="54" width="156" height="428" rx="5" fill="none" stroke="#92abbe" stroke-width="1"/>
+<text x="396" y="133" font-size="13.1" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="396" y="139" width="69" height="18" rx="3" fill="#0d6efd"/><text x="430.5" y="151.468" font-size="10.2" fill="#fff" text-anchor="middle" font-weight="700">商品登録</text>
+<rect x="394" y="162" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 171) scale(0.19)"><ellipse cx="85" cy="102" rx="43" ry="6" fill="#24456b" opacity=".11"/>
+  <g transform="rotate(-10 84 60)">
+    <rect x="49" y="16" width="72" height="91" rx="7" fill="#173853"/>
+    <rect x="51" y="18" width="69" height="85" rx="6" fill="#f9f6eb"/>
+    <path d="M58 97h61m-61 3h60" fill="none" stroke="#cbcfcb" stroke-width="1.3"/>
+    <rect x="47" y="13" width="73" height="84" rx="7" fill="#2a6091"/>
+    <path d="M54 13h7v84h-7a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Z" fill="#1d4b78"/>
+    <path d="M65 16h49a3 3 0 0 1 3 3v70" fill="none" stroke="#619bc3" stroke-width="1.6"/>
+    <rect x="72" y="31" width="32" height="22" rx="3" fill="#e7f1f4"/>
+    <path d="M78 39h20m-20 6h14" stroke="#6590ad" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M79 77h27m-18 6h18" stroke="#5593be" stroke-width="1.4" stroke-linecap="round"/>
+    <g fill="none" stroke="#e6edf3" stroke-width="3" stroke-linecap="round">
+      <path d="M53 25c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7m2 21c-18 0-18-7-2-7"/>
+    </g>
+  </g></g>
+<text x="433" y="174" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">ノート</text>
+<text x="433" y="186" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：101</text>
+<text x="433" y="198" font-size="9.5" fill="#18364e" text-anchor="start">単価：250円</text>
+<rect x="498" y="189" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="198.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="394" y="212" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 221) scale(0.19)"><ellipse cx="80" cy="94" rx="51" ry="5" fill="#22424d" opacity=".11"/>
+  <g transform="rotate(-32 84 58)">
+    <path d="M24 55 9 60l15 5 8-5Z" fill="#cdd8de" stroke="#536c7f" stroke-width="1.1"/>
+    <path d="M9 60H5" stroke="#334653" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="133" y="53" width="17" height="14" rx="4" fill="#8299aa" stroke="#344e61" stroke-width="1.1"/>
+    <rect x="24" y="52" width="115" height="16" rx="7" fill="#285b81" stroke="#233d55" stroke-width="1.4"/>
+    <path d="M30 55h97" stroke="#80b4d6" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M33 65h98" stroke="#1d4568" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="25" y="52" width="32" height="16" rx="6" fill="#263d4d"/>
+    <path d="M32 56v8m5-8v8m5-8v8m5-8v8m5-8v8" stroke="#7595a8" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#556c7d" stroke-width="5" stroke-linecap="round"/>
+    <path d="M136 51v-6h-28q-6 0-8 5" fill="none" stroke="#e8f0f3" stroke-width="2.5" stroke-linecap="round"/>
+  </g></g>
+<text x="433" y="224" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">ボールペン</text>
+<text x="433" y="236" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：102</text>
+<text x="433" y="248" font-size="9.5" fill="#18364e" text-anchor="start">単価：120円</text>
+<rect x="498" y="239" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="248.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="394" y="262" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 271) scale(0.19)"><ellipse cx="84" cy="90" rx="52" ry="7" fill="#4b3931" opacity=".11"/>
+  <g transform="rotate(-14 84 60)">
+    <path d="M39 40h94a5 5 0 0 1 5 5v25l-13 9H30a5 5 0 0 1-5-5V50Z" fill="#d6c9bc" stroke="#9f8b7b" stroke-width="1.4" stroke-linejoin="round"/>
+    <rect x="25" y="40" width="113" height="30" rx="5" fill="#fff4e4" stroke="#9f8b7b" stroke-width="1.4"/>
+    <path d="M49 39h64v31l-12 10H37l12-10Z" fill="#b95346" stroke="#98473b" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M49 39h64v31H49Z" fill="#e78067"/>
+    <path d="M54 41v25m54-25v25" stroke="#f6ac98" stroke-width="1.8"/>
+    <rect x="62" y="48" width="38" height="12" rx="2.5" fill="#ffebd7"/>
+    <path d="M69 54h24" stroke="#bd5f4c" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M118 44h13" stroke="#fffdf7" stroke-width="1.9" stroke-linecap="round"/>
+    <path d="M30 73h11m66 2 8-5" stroke="#a88f7e" stroke-width="1.1" stroke-linecap="round"/>
+  </g></g>
+<text x="433" y="274" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">消しゴム</text>
+<text x="433" y="286" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：103</text>
+<text x="433" y="298" font-size="9.5" fill="#18364e" text-anchor="start">単価：100円</text>
+<rect x="498" y="289" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="298.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="394" y="312" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 321) scale(0.19)"><ellipse cx="87" cy="100" rx="55" ry="6" fill="#24473c" opacity=".12"/>
+  <g transform="rotate(-8 84 60)" stroke-linejoin="round">
+    <path d="M31 32a5 5 0 0 1 5-5h32l11 10h51a5 5 0 0 1 5 5v50a5 5 0 0 1-5 5H36a5 5 0 0 1-5-5Z" fill="#4b9589" stroke="#28685e" stroke-width="1.6"/>
+    <path d="M48 41h69l8 10v36H48Z" fill="#dfece9" stroke="#89a9a3" stroke-width="1.2"/>
+    <path d="M42 32h66l12 11v40H42Z" fill="#fffdf5" stroke="#94b5ac" stroke-width="1.4"/>
+    <path d="M108 32v12h12" fill="#d7e9e2" stroke="#94b5ac" stroke-width="1.2"/>
+    <path d="M50 45h39m-39 7h48m-48 7h35" stroke="#bbcfc9" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M35 94 46 57a5 5 0 0 1 4-3h91a4 4 0 0 1 4 5l-11 35a5 5 0 0 1-4 4H39a4 4 0 0 1-4-4Z" fill="#80bbac" stroke="#347d70" stroke-width="1.6"/>
+    <path d="M51 58h88" stroke="#c2e0d8" stroke-width="1.6" stroke-linecap="round"/>
+    <rect x="83" y="68" width="39" height="15" rx="2.5" fill="#e8f5f0" stroke="#649789" stroke-width="1"/>
+    <path d="M91 75h22" stroke="#83ac9e" stroke-width="1.25" stroke-linecap="round"/>
+  </g></g>
+<text x="433" y="324" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">ファイル</text>
+<text x="433" y="336" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：104</text>
+<text x="433" y="348" font-size="9.5" fill="#18364e" text-anchor="start">単価：600円</text>
+<rect x="498" y="339" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="348.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="394" y="362" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 371) scale(0.19)"><ellipse cx="84" cy="94" rx="51" ry="5" fill="#294653" opacity=".10"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(6 7) rotate(23 48 56)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#344d63" stroke-width="4.5"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a9bcca" stroke-width="2.3"/>
+    </g>
+    <g transform="translate(39 -3) rotate(-30 48 56)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#366d8d" stroke-width="4.5"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#81b4d2" stroke-width="2.3"/>
+    </g>
+    <g transform="translate(76 12) rotate(42 48 56) scale(.88)">
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#a85937" stroke-width="4.8"/>
+      <path d="M51 75V38a9 9 0 0 0-18 0v43a14 14 0 0 0 28 0V38a19 19 0 0 0-38 0v33" stroke="#e5a47b" stroke-width="2.4"/>
+    </g>
+  </g></g>
+<text x="433" y="374" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">クリップ</text>
+<text x="433" y="386" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：105</text>
+<text x="433" y="398" font-size="9.5" fill="#18364e" text-anchor="start">単価：180円</text>
+<rect x="498" y="389" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="398.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<rect x="394" y="412" width="140" height="46" rx="4" fill="#fff" stroke="#b6c9d7" stroke-width="1"/>
+<g transform="translate(396 421) scale(0.19)"><ellipse cx="86" cy="100" rx="51" ry="6" fill="#6b551d" opacity=".12"/>
+  <g transform="rotate(11 83 61)" stroke-linejoin="round">
+    <rect x="38" y="22" width="91" height="76" rx="3" fill="#dba838" stroke="#a88232" stroke-width="1.4"/>
+    <path d="M40 88h87m-87 4h87m-87 3h87" stroke="#f4d77e" stroke-width="1.2"/>
+    <path d="M37 18h88v52q-10 4-16 18H37Z" fill="#f7d35c" stroke="#ad8939" stroke-width="1.4"/>
+    <path d="M37 17h88v50l-20 20H37Z" fill="#ffdf72" stroke="#ad8939" stroke-width="1.4"/>
+    <path d="M105 87c1-12 5-20 20-20l-20 20Z" fill="#fff1ae" stroke="#c2a14b" stroke-width="1.1"/>
+    <path d="M40 20h81v6H40Z" fill="#f5c950"/>
+    <path d="M49 38h45m-45 9h37m-37 9h31" stroke="#d9a941" stroke-width="1.7" stroke-linecap="round"/>
+  </g></g>
+<text x="433" y="424" font-size="10.1" fill="#18364e" text-anchor="start" font-weight="700">付箋</text>
+<text x="433" y="436" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：106</text>
+<text x="433" y="448" font-size="9.5" fill="#18364e" text-anchor="start">単価：240円</text>
+<rect x="498" y="439" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="448.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
+<path d="M159 209L168 191M163.08 194.13L168 191L168.45 196.81" fill="none" stroke="#b42331" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="170" y="155" width="200" height="55" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
+<text x="270" y="174" font-size="12" fill="#18364e" text-anchor="middle" font-weight="700">①</text>
+<text x="183.00 189.46 195.92 202.38 208.85 215.31 221.77 228.23 234.69 241.15 247.61 254.07 260.54 267.00 273.46 279.92 286.38 292.84 299.30 305.77 312.23 318.69 325.15 331.61" y="195" font-size="11.7" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">onClick={handleRegister}</text>
+<path d="M270 212L270 224M273.00 219.00L270 224L267.00 219.00" fill="none" stroke="#305e7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="170" y="227" width="200" height="44" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
+<text x="270" y="253" font-size="11.6" fill="#18364e" text-anchor="middle" font-weight="700">② handleRegister() が実行される</text>
+<path d="M270 274L270 285M273.00 280.00L270 285L267.00 280.00" fill="none" stroke="#305e7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="170" y="288" width="200" height="88" rx="4" fill="#eff7f1" stroke="#a3c4b2" stroke-width="1"/>
+<text x="270" y="305" font-size="12.1" fill="#18364e" text-anchor="middle" font-weight="700">③</text>
+<text x="180" y="323" font-size="9.45" fill="#266449" text-anchor="start" font-family="Consolas, MS Gothic, monospace">// 実際の開発では、REST APIで</text>
+<text x="185" y="338" font-size="9.45" fill="#266449" text-anchor="start" font-family="Consolas, MS Gothic, monospace">商品を登録し、成功を確認する。</text>
+<text x="182.00 187.58 193.16 198.73 204.31 209.89 215.47 221.04 226.62 232.20 237.78 243.35 248.93 254.51 260.09 265.67 271.24 276.82 282.40 287.98 293.55 299.13 304.71 310.29 315.87 321.44 327.02 332.60 338.18 343.75 349.33 354.91" y="360" font-size="10.1" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/sample-3-6/products&#x27;)</text><rect x="181.0" y="348.9" width="180.49" height="14.6" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<path d="M270 379L270 392M273.00 387.00L270 392L267.00 387.00" fill="none" stroke="#305e7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="170" y="395" width="200" height="54" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
+<text x="270" y="415" font-size="11.5" fill="#18364e" text-anchor="middle" font-weight="700">④ React RouterがURLに対応する</text>
+<text x="270" y="435" font-size="11.5" fill="#18364e" text-anchor="middle" font-weight="700">ルートを選択する</text>
+<path d="M373 423L383 423M378.00 420.00L383 423L378.00 426.00" fill="none" stroke="#305e7b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

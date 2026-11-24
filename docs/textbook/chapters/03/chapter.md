@@ -3104,3 +3104,457 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 :::
 
 ::::
+
+:::: {#page-17 .source-page}
+
+::: {#ch03-programmatic-title .heading}
+3.6. プログラムによる画面遷移
+:::
+
+::: {#ch03-programmatic-slide .slide layout="illustration"}
+プログラムによる画面遷移
+
+![プログラムによる画面遷移](assets/programmatic-navigation-slide.svg)
+:::
+
+::: {#ch03-programmatic-background .heading level="minor"}
+プログラムの処理に応じて画面を切り替えるには
+:::
+
+::: {#ch03-programmatic-004 .paragraph}
+3.4節では、`Link` や `NavLink` を使用して、画面遷移を行う方法を学習しました。3.5節では、商品一覧の［詳細］をクリックすると、商品番号を含むURLへ移動するようにしました。
+:::
+
+::: {#ch03-programmatic-005 .paragraph}
+これらは、リンクをクリックすることで、指定したURLへ移動する仕組みです。
+:::
+
+::: {#ch03-programmatic-006 .paragraph}
+しかし、実際のアプリケーションでは、**プログラムで何らかの処理を行った後に、別の画面へ移動したい場合** があります。
+:::
+
+::: {#ch03-programmatic-007 .paragraph}
+例えば、商品登録画面で［登録］ボタンをクリックした場合、一般的に次のような処理を行います。
+:::
+
+::: {#ch03-programmatic-008 .paragraph numbered="true"}
+1．入力された商品情報を使用して、商品を登録する。
+:::
+
+::: {#ch03-programmatic-009 .paragraph numbered="true"}
+2．商品が正常に登録されたことを確認する。
+:::
+
+::: {#ch03-programmatic-010 .paragraph numbered="true"}
+3．商品一覧画面へ移動する。
+:::
+
+![登録が正常に完了した後で商品一覧画面へ移動する](assets/programmatic-navigation-background.svg){#ch03-programmatic-figure-1}
+
+::: {#ch03-programmatic-figure-1-caption .caption}
+登録が正常に完了した後で商品一覧画面へ移動する
+:::
+
+::: {#ch03-programmatic-012 .paragraph}
+`Link` を使用すると、リンクのクリックによって移動先の画面が表示されます。しかし、登録処理の結果を確認し、その結果に応じて画面遷移を行うには、プログラムから画面遷移を実行できるようにする必要があります。
+:::
+
+::: {#ch03-programmatic-013 .paragraph}
+そこで使用するのが、React Routerが提供する **useNavigate()** です。
+:::
+
+::: {#ch03-programmatic-014 .paragraph}
+`useNavigate()` を使用すると、画面遷移を行うための関数を取得できます。この関数をプログラムの任意の処理の中で呼び出すことで、指定したURLへ移動できます。
+:::
+
+::: {#ch03-programmatic-015 .paragraph}
+商品登録処理やREST APIとの連携については後続の章で学習します。この節では、商品登録画面の［登録］ボタンをクリックしたときに、イベントハンドラーから商品一覧画面へ移動する方法を学習します。
+:::
+
+::: {#ch03-programmatic-sample .heading level="minor"}
+【サンプル】登録ボタンをクリックして商品一覧画面へ移動する
+:::
+
+::: {#ch03-programmatic-017 .paragraph}
+前節の商品管理システムに、商品登録画面を追加します。
+:::
+
+::: {#ch03-programmatic-018 .paragraph}
+商品一覧画面の［商品登録］をクリックすると商品登録画面へ移動し、商品登録画面で［登録］ボタンをクリックすると商品一覧画面へ戻ります。
+:::
+
+::: {#ch03-programmatic-019 .paragraph}
+また、［キャンセル］をクリックした場合も、商品一覧画面へ戻ります。［キャンセル］では登録処理を行わずに画面を移動するため、これまでに学習した `Link` を使用します。
+:::
+
+::: {#ch03-programmatic-020 .paragraph}
+今回は画面遷移の仕組みに集中するため、商品情報の入力や登録処理は実装しません。
+:::
+
+::: {#ch03-programmatic-021 .paragraph}
+使用するファイルは、次のとおりです。
+:::
+
+::: {#ch03-programmatic-022 .table column-widths="38 62"}
+| ファイル | 役割 |
+|---|---|
+| `ProductRegister3_6.tsx` | 商品登録画面を表示し、登録ボタンのクリック時に画面遷移を行う。 |
+| `Sample3_6.tsx` | 商品登録画面へのリンクとルートを定義する。 |
+| `ProductCard3_6.tsx` | 商品カードを表示する。 |
+| `ProductDetail3_6.tsx` | URLから商品番号を取得し、画面に表示する。 |
+| `products3_6.ts` | 商品一覧で使用する6件の商品データを定義する。 |
+| `Layout3_6.tsx` | ヘッダー・メニュー・フッターなどの共通レイアウトを定義する。 |
+:::
+
+::: {#ch03-programmatic-023 .paragraph}
+商品カード、商品詳細画面、商品データ、共通レイアウトは、前節までと同じ考え方で作成しています。
+:::
+
+::: {#ch03-programmatic-register .step keep-next="2"}
+**① 商品登録画面の作成**
+:::
+
+::: {#ch03-programmatic-025 .paragraph}
+商品登録画面には、［登録］ボタンと［キャンセル］リンクを配置します。
+:::
+
+::: {#ch03-programmatic-026 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="1"}
+```tsx
+import { Link, useNavigate } from 'react-router'
+
+export default function ProductRegister3_6() {
+  const navigate = useNavigate()
+
+  function handleRegister() {
+    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
+    navigate('/sample-3-6/products')
+  }
+
+```
+:::
+
+::: {#ch03-programmatic-026-continued .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="11"}
+```tsx
+  return (
+    <main className="container mt-4">
+      <h1>商品登録</h1>
+      <p className="alert alert-info">
+        この節では、商品登録処理は行わず、画面遷移のみを確認します。
+      </p>
+      <div className="d-flex gap-2">
+        <button type="button" className="btn btn-primary"
+                onClick={handleRegister}>
+          登録
+        </button>
+        <Link to="/sample-3-6/products" className="btn btn-secondary">
+          キャンセル
+        </Link>
+      </div>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch03-programmatic-list-link .step keep-next="2"}
+**② 商品一覧画面へのリンクの追加**
+:::
+
+::: {#ch03-programmatic-028 .paragraph}
+`Sample3_6.tsx` の商品一覧画面に、商品登録画面へ移動するための［商品登録］リンクを追加します。
+:::
+
+::: {#ch03-programmatic-029 .code filename="ch03-basic/src/components/Sample3_6.tsx" start-line="29"}
+```tsx
+      <h1>商品一覧</h1>
+      <Link to="/sample-3-6/products/new" className="btn btn-primary mb-3">
+        商品登録
+      </Link>
+```
+:::
+
+::: {#ch03-programmatic-030 .paragraph}
+このリンクのクリックによって、商品登録画面のURLへ移動します。
+:::
+
+::: {#ch03-programmatic-route .step keep-next="2"}
+**③ ルーティングの設定**
+:::
+
+::: {#ch03-programmatic-032 .paragraph}
+前節までのルートに、商品登録画面のルートを追加します。
+:::
+
+::: {#ch03-programmatic-033 .code filename="ch03-basic/src/components/Sample3_6.tsx" start-line="54"}
+```tsx
+        <Route path="products/new" element={<ProductRegister3_6 />} />
+```
+:::
+
+::: {#ch03-programmatic-034 .paragraph}
+各画面のURLとコンポーネントの対応は、次のとおりです。
+:::
+
+::: {#ch03-programmatic-035 .table column-widths="53 47"}
+| URLのパス | 表示される画面 |
+|---|---|
+| `/sample-3-6` | ホーム画面 |
+| `/sample-3-6/products` | 商品一覧画面 |
+| `/sample-3-6/products/new` | 商品登録画面 |
+| `/sample-3-6/products/101` | 商品番号101の詳細画面 |
+| `/sample-3-6/guide` | ご利用案内画面 |
+:::
+
+![Linkを使用して商品登録画面へ移動する](assets/programmatic-navigation-listing-to-register.svg){#ch03-programmatic-figure-2}
+
+::: {#ch03-programmatic-figure-2-caption .caption}
+Linkを使用して商品登録画面へ移動する
+:::
+
+::: {#ch03-programmatic-syntax .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch03-programmatic-hook .step}
+**① useNavigate()で画面遷移用の関数を取得する**
+:::
+
+::: {#ch03-programmatic-039 .paragraph}
+まず、`react-router` から `useNavigate` をインポートします。
+:::
+
+::: {#ch03-programmatic-040 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="1"}
+```tsx
+import { Link, useNavigate } from 'react-router'
+```
+:::
+
+::: {#ch03-programmatic-041 .paragraph}
+`useNavigate` は、React Routerが提供するHookです。前節で学習した `useParams` と同様に、コンポーネントの関数内で使用します。
+:::
+
+::: {#ch03-programmatic-042 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="4"}
+```tsx
+  const navigate = useNavigate()
+```
+:::
+
+::: {#ch03-programmatic-043 .paragraph}
+`useNavigate()` を呼び出すと、画面遷移を行うための関数が返されます。今回は、その関数を `navigate` という名前の変数に格納しています。
+:::
+
+::: {#ch03-programmatic-044 .paragraph}
+この時点では、まだ画面遷移は行われません。取得した関数を、画面遷移が必要になったときに呼び出します。
+:::
+
+![useNavigate()で関数を取得し、navigate()で画面遷移を実行する](assets/programmatic-navigation-hook.svg){#ch03-programmatic-figure-3}
+
+::: {#ch03-programmatic-figure-3-caption .caption}
+useNavigate()で関数を取得し、navigate()で画面遷移を実行する
+:::
+
+::: {#ch03-programmatic-046 .paragraph}
+なお、`navigate` は決められた特別な名前ではありません。`useNavigate()` から返された関数を格納する変数名です。
+:::
+
+::: {#ch03-programmatic-event .step keep-next="2"}
+**② イベントハンドラーから画面遷移を行う**
+:::
+
+::: {#ch03-programmatic-048 .paragraph}
+次に、［登録］ボタンがクリックされたときに実行する関数を確認しましょう。
+:::
+
+::: {#ch03-programmatic-049 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="6"}
+```tsx
+  function handleRegister() {
+    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
+    navigate('/sample-3-6/products')
+  }
+```
+:::
+
+::: {#ch03-programmatic-050 .paragraph}
+`navigate()` の引数には、移動先のURLを指定します。今回は、商品一覧画面に対応する `/sample-3-6/products` を指定しています。
+:::
+
+::: {#ch03-programmatic-051 .paragraph}
+そして、この関数を［登録］ボタンの `onClick` に設定します。
+:::
+
+::: {#ch03-programmatic-052 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="18"}
+```tsx
+        <button type="button" className="btn btn-primary"
+                onClick={handleRegister}>
+          登録
+        </button>
+```
+:::
+
+::: {#ch03-programmatic-053 .paragraph}
+これは、2.4節で学習したイベント処理の記述方法と同じです。
+:::
+
+::: {#ch03-programmatic-054 .paragraph}
+［登録］ボタンをクリックすると `handleRegister` が実行され、その中で `navigate()` が呼び出されます。React RouterがURLに対応するルートを選択することで、商品一覧画面が表示されます。
+:::
+
+![イベントハンドラー内でnavigate()を呼び出すと、商品一覧画面へ移動する](assets/programmatic-navigation-register-event.svg){#ch03-programmatic-figure-4}
+
+::: {#ch03-programmatic-figure-4-caption .caption}
+イベントハンドラー内でnavigate()を呼び出すと、商品一覧画面へ移動する
+:::
+
+::: {#ch03-programmatic-056 .paragraph}
+このとき、`Link` を使用した画面遷移と同様に、ページ全体を再読み込みすることなく、表示する画面が切り替わります。
+:::
+
+::: {#ch03-programmatic-057 .paragraph}
+**useNavigate()はコンポーネントの関数内で呼び出し、取得したnavigate()は画面遷移を行いたい処理の中で呼び出します。**
+:::
+
+::: {#ch03-programmatic-comparison .step}
+**③ LinkとuseNavigate()の使い分け**
+:::
+
+::: {#ch03-programmatic-059 .paragraph}
+今回のサンプルでは、［登録］ボタンと［キャンセル］リンクは、どちらも商品一覧画面へ移動します。しかし、画面遷移の記述方法は異なります。
+:::
+
+::: {#ch03-programmatic-060 .code filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="22"}
+```tsx
+        <Link to="/sample-3-6/products" className="btn btn-secondary">
+          キャンセル
+        </Link>
+```
+:::
+
+::: {#ch03-programmatic-061 .paragraph}
+［キャンセル］では、特別な処理を行わずに商品一覧画面へ移動するため、`Link` を使用しています。
+:::
+
+::: {#ch03-programmatic-062 .paragraph}
+一方、［登録］では、実際の開発において商品を登録し、その結果に応じて画面遷移を行う必要があります。そのため、イベントハンドラー内から `navigate()` を呼び出す構成にしています。
+:::
+
+::: {#ch03-programmatic-063 .table column-widths="27 35 38"}
+| 使用する機能 | 使用する場面 | 例 |
+|---|---|---|
+| `Link` / `NavLink` | リンクのクリックで画面を移動する。 | 商品一覧へ移動する、詳細画面を表示する、キャンセルする。 |
+| `useNavigate()` で取得した関数 | プログラムの処理に応じて画面を移動する。 | 登録や更新が成功した後で一覧画面へ移動する。 |
+:::
+
+::: {#ch03-programmatic-note .training-note}
+【補足】実際の商品登録画面では
+
+今回のサンプルでは、［登録］ボタンをクリックすると、商品を登録する処理を行わずに商品一覧画面へ移動します。そのため、商品一覧に新しい商品が追加されることはありません。
+
+実際の商品登録画面では、入力された商品情報をREST APIへ送信し、商品が正常に登録されたことを確認した後に `navigate()` を呼び出します。登録に失敗した場合は、商品登録画面に留まり、エラーメッセージを表示するなどの処理が必要です。
+
+商品を登録する処理は、今回のサンプルの次のコメント部分に追加します。その際は、登録が成功した場合にのみ `navigate()` が呼び出されるように変更します。
+
+```{#ch03-programmatic-068 .tsx filename="ch03-basic/src/components/ProductRegister3_6.tsx" start-line="6"}
+  function handleRegister() {
+    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
+    navigate('/sample-3-6/products')
+  }
+```
+
+後続の章では、REST APIと連携して、実際にデータを登録した後で一覧画面へ移動する処理を学習します。
+:::
+
+::: {#ch03-programmatic-practice .heading level="minor" keep-next="2"}
+【確認演習】プログラムから画面遷移を行う
+:::
+
+::: {#ch03-programmatic-071 .paragraph}
+商品登録画面の［登録］ボタンをクリックしたときに、商品一覧画面へ移動するようにしましょう。
+:::
+
+::: {#ch03-programmatic-072 .paragraph}
+商品一覧画面、商品登録画面の基本構成、ルーティングの設定、登録ボタンのイベント処理は、あらかじめ用意されています。今回は、`useNavigate()` を使用して画面遷移を行うための記述を実装します。
+:::
+
+::: {#ch03-programmatic-073 .paragraph numbered="true"}
+1．`ch03-basic-q` プロジェクトの次のファイルを開いてください。
+:::
+
+::: {#ch03-programmatic-074 .paragraph}
+● `src/components/ProductRegister3_6Q.tsx`
+:::
+
+::: {#ch03-programmatic-075 .paragraph numbered="true"}
+2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-programmatic-076 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
+:::
+
+::: {#ch03-programmatic-077 .paragraph numbered="true"}
+4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+:::
+
+::: {#ch03-programmatic-078 .paragraph numbered="true"}
+5．メニューから「3.6 プログラムによる画面遷移」を選んでください。
+:::
+
+::: {#ch03-programmatic-check .heading level="minor"}
+動作確認
+:::
+
+::: {#ch03-programmatic-080 .paragraph numbered="true"}
+6．共通メニューの［商品一覧］をクリックしてください。次に、［商品登録］をクリックして、商品登録画面を表示します。
+:::
+
+::: {#ch03-programmatic-081 .paragraph}
+商品登録画面の［登録］ボタンをクリックし、次の内容を確認してください。
+:::
+
+::: {#ch03-programmatic-082 .paragraph}
+● URLのパスが `/sample-3-6/products` になっていること。
+:::
+
+::: {#ch03-programmatic-083 .paragraph}
+● 商品一覧画面が表示されていること。
+:::
+
+::: {#ch03-programmatic-084 .paragraph}
+● 共通ヘッダー、メニュー、フッターが引き続き表示されていること。
+:::
+
+![登録ボタンのイベント処理から商品一覧画面へ移動する](assets/programmatic-navigation-exercise-result.svg){#ch03-programmatic-figure-5}
+
+::: {#ch03-programmatic-figure-5-caption .caption}
+登録ボタンのイベント処理から商品一覧画面へ移動する
+:::
+
+::: {#ch03-programmatic-086 .paragraph}
+もう一度［商品登録］をクリックし、商品登録画面を表示してください。今度は［キャンセル］をクリックし、商品一覧画面へ戻ることを確認してください。
+:::
+
+::: {#ch03-programmatic-087 .paragraph keep-next="3"}
+［登録］ボタンと［キャンセル］リンクのどちらを使用しても、商品一覧画面へ移動できれば、演習完了です。
+:::
+
+::: {#ch03-programmatic-088 .paragraph}
+※ 今回は商品登録処理を実装していないため、［登録］ボタンをクリックしても、商品一覧に新しい商品は追加されません。
+:::
+
+::: {#ch03-programmatic-089 .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+:::
+
+::: {#ch03-programmatic-points .section-points}
+この節のポイント
+
+● `useNavigate()` を使用すると、画面遷移を行うための関数を取得できる。
+
+● 取得した関数の引数に移動先のURLを指定して呼び出すと、プログラムから画面遷移を行える。
+
+● イベントハンドラー内で `navigate()` を呼び出すことで、ボタンのクリック後の処理に応じて画面を切り替えられる。
+
+● `Link` や `NavLink` と、`useNavigate()` で取得した関数は、画面遷移を行う場面に応じて使い分ける。
+:::
+
+::::
