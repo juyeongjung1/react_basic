@@ -120,6 +120,7 @@ html, body {
 
 .code-highlight-start::after { border-top: 1pt solid #c6292e; }
 .code-highlight-end::after { border-bottom: 1pt solid #c6292e; }
+.code-example.code-highlight::after { left: 5pt; }
 
 .code-highlight-text {
   outline: 0.85pt solid #c6292e;

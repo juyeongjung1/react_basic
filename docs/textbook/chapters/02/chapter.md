@@ -85,7 +85,6 @@
 ::::
 
 :::: {#page-3 .source-page}
-
 ::: {#ch02-jsx-intro-title .heading}
 2.1. ReactコンポーネントとJSXの基本
 :::
@@ -96,40 +95,50 @@ ReactコンポーネントとJSXの基本
 ![ReactコンポーネントとJSXの基本の図解](assets/components-slide.svg)
 :::
 
-::: {#ch02-jsx-intro-definition .heading level="minor"}
-ReactコンポーネントとJSXとは
+::: {#ch02-21-heading-01 .heading level="minor"}
+Reactコンポーネントとは
 :::
 
-::: {#ch02-jsx-intro-intro-1 .paragraph}
-第1章では、`App.tsx` の変数の値を変更すると、ブラウザーの表示も変わることを確認しました。この章では、Reactで画面を作成するための基本構文を学習します。
+::: {#ch02-21-paragraph-01 .paragraph}
+第1章では、`App.tsx` に記述された変数の値を変更すると、ブラウザーの表示も変わることを確認しました。
 :::
 
-::: {#ch02-jsx-intro-intro-2 .paragraph}
-Reactでは、画面を **コンポーネント** という部品に分けて作成できます。例えば、商品管理システムのヘッダー、メニュー、商品一覧などを、それぞれ独立したコンポーネントとして作成し、組み合わせて1つの画面を構築できます。
+::: {#ch02-21-paragraph-02 .paragraph}
+この章では、Reactで画面を作成するための基本構文を学習します。まずは、Reactの画面がどのような仕組みで作られているのかを確認しましょう。
 :::
 
-::: {#ch02-jsx-intro-intro-3 .paragraph}
-この節では、第1章の画面を例に、関数で画面の部品を作り、JSXでその内容を記述する基本を学びます。
+::: {#ch02-21-paragraph-03 .paragraph punctuation-font="inherit"}
+Reactでは、画面を **コンポーネント（Component）** という部品に分けて作成できます。
 :::
 
-::: {#ch02-jsx-intro-intro-4 .paragraph}
-本章では、まず1つのコンポーネントで基本構文を学習します。複数のコンポーネントに分割する方法は、第3章で学習します。
+::: {#ch02-21-paragraph-04 .paragraph}
+例えば、商品管理システムの画面は、ヘッダー、サイドメニュー、商品一覧、フッターなど、複数の部分から構成されています。これらをそれぞれコンポーネントとして作成し、組み合わせることで、1つの画面を構築できます。
 :::
 
+::: {#ch02-21-paragraph-05 .paragraph}
+Reactでは、コンポーネントをJavaScriptやTypeScriptの関数として定義できます。また、画面の内容を記述する際には、HTMLに似た **JSX** という構文を使用します。
+:::
+
+::: {#ch02-21-paragraph-06 .paragraph}
+本章では、まず1つのコンポーネントを使って、画面を作成するための基本構文を学習します。複数のコンポーネントに分割し、組み合わせて使用する方法は、第3章で学習します。
+:::
 ::::
 
 :::: {#page-4 .source-page}
-
-::: {#ch02-jsx-sample .heading level="minor"}
+::: {#ch02-21-heading-02 .heading level="minor"}
 【サンプル】関数コンポーネントで画面を表示する
 :::
 
-::: {#ch02-jsx-sample-intro .paragraph}
-第1章で使用した `App.tsx` も、Reactのコンポーネントです。次のソースコードを確認しながら、画面を作成するための基本的な構成を理解しましょう。
+::: {#ch02-21-paragraph-07 .paragraph}
+第1章で使用した `App.tsx` も、Reactのコンポーネントです。
 :::
 
-::: {#ch02-full-ch01-source .code filename="ch01-setup/src/App.tsx"}
-```tsx
+::: {#ch02-21-paragraph-08 .paragraph}
+第1章では、変数の値を変更して画面への反映を確認しました。今回は、同じソースコードを使用して、コンポーネントの基本的な構成とJSXの書き方を学習します。
+:::
+
+::: {#ch02-21-code-01 .code filename="ch01-setup/src/App.tsx"}
+~~~tsx
 export default function App() {
   // 画面に表示するデータ
   const courseName = 'React開発入門'
@@ -144,80 +153,143 @@ export default function App() {
     </main>
   )
 }
-```
+~~~
 :::
 
-::: {#ch02-jsx-syntax .heading level="minor"}
-構文の解説
+::: {#ch02-21-paragraph-09 .paragraph}
+このソースコードは、大きく次の3つの部分に分けられます。
 :::
 
-::: {#ch02-jsx-syntax-function .step}
-**① コンポーネントを定義する部分**
+::: {#ch02-21-paragraph-10 .paragraph}
+● コンポーネントとなる関数を定義する部分
 :::
 
-::: {#ch02-jsx-function-source .code filename="ch01-setup/src/App.tsx"}
-```tsx
-export default function App() {
-```
+::: {#ch02-21-paragraph-11 .paragraph}
+● 画面に表示するデータを変数として定義する部分
 :::
 
-::: {#ch02-jsx-function-1 .paragraph}
-`function App()` は、`App` という名前の関数を定義します。Reactは描画が必要なときにこの関数を呼び出し、返されたJSXを使って画面を組み立てます。画面の一部を作る処理を名前の付いた関数にすると、ほかの画面や部品からもそのコンポーネントを利用できます。
+::: {#ch02-21-paragraph-12 .paragraph}
+● 画面に表示する内容を返す部分
 :::
 
-::: {#ch02-jsx-function-2 .paragraph}
-コンポーネント名は、`App` のように先頭を大文字にします。JSXの `<App />` は関数コンポーネントを指し、`<main>` のような小文字で始まるタグはHTML要素を指します。`<app />` と書くと `App` 関数に結び付かず、この教材のTSXでは型チェックでエラーになります。
+::: {#ch02-21-paragraph-13 .paragraph}
+それぞれの部分について、順番に確認していきましょう。
 :::
-
 ::::
 
 :::: {#page-5 .source-page}
-
-::: {#ch02-jsx-function-export .paragraph}
-`export default` を付けると、`App` をこのファイルの代表として公開します。こうして公開したものをデフォルトエクスポートと呼び、別のファイルから読み込んで使えます。
+::: {#ch02-21-heading-03 .heading level="minor"}
+構文の解説
 :::
 
-::: {#ch02-jsx-main-source .code filename="ch01-setup/src/main.tsx"}
-```tsx
+::: {#ch02-21-step-01 .step}
+**① コンポーネントを定義する**
+:::
+
+::: {#ch02-21-code-02 .code filename="ch01-setup/src/App.tsx"}
+~~~tsx
+export default function App() {
+~~~
+:::
+
+::: {#ch02-21-paragraph-14 .paragraph}
+`function App()` は、`App` という名前の関数を定義するための記述です。
+:::
+
+::: {#ch02-21-paragraph-15 .paragraph}
+Reactでは、このように関数を使ってコンポーネントを作成できます。関数の中に画面の内容を記述し、Reactがその関数を呼び出すことで、画面を表示するために必要な情報を取得します。
+:::
+
+::: {#ch02-21-paragraph-16 .paragraph}
+このように、**関数として定義されたコンポーネントを関数コンポーネント**と呼びます。
+:::
+
+::: {#ch02-21-paragraph-17 .paragraph}
+コンポーネント名には、1つ注意すべきルールがあります。HTML要素と区別するために、**コンポーネント名の先頭は大文字**にします。
+:::
+
+::: {#ch02-21-paragraph-18 .paragraph}
+例えば、JSXの中で次のように記述した場合、それぞれの意味は異なります。
+:::
+
+::: {#ch02-21-table-01 .table}
+| 記述 | 意味 |
+|---|---|
+| `<App />` | 自分で定義した `App` コンポーネントを使用する |
+| `<main>` | HTMLの `main` 要素を使用する |
+:::
+
+::: {#ch02-21-paragraph-19 .paragraph}
+`App` を使用するつもりで `<app />` と記述しても、Reactは `App` 関数を呼び出すための記述として扱いません。
+:::
+
+::: {#ch02-21-paragraph-20 .paragraph}
+また、1行目にある `export default` は、**別のファイルからこのコンポーネントを読み込んで使用できるようにする**ための記述です。
+:::
+
+::: {#ch02-21-paragraph-21 .paragraph}
+実際に、第1章の `main.tsx` では、次のように `App` コンポーネントを読み込んで使用しています。
+:::
+
+::: {#ch02-21-code-03 .code filename="ch01-setup/src/main.tsx"}
+~~~tsx
 2:import App from './App'
 7:  createRoot(root).render(<App />)
-```
+~~~
 :::
 
-::: {#ch02-jsx-function-import .paragraph}
-第1章の `main.tsx` では、`import App from './App'` で同じフォルダーの `App.tsx` から `App` を読み込みます。続く `render(<App />)` が、そのコンポーネントをページに表示する指定です。
+::: {#ch02-21-paragraph-22 .paragraph}
+`import App from './App'` で、同じフォルダーにある `App.tsx` からコンポーネントを読み込んでいます。そして、`render(<App />)` によって、Reactに `App` コンポーネントの表示を指示しています。
 :::
-
-::: {#ch02-jsx-syntax-data .step}
-**② 変数を定義する部分**
-:::
-
-::: {#ch02-jsx-data-source .code filename="ch01-setup/src/App.tsx" start-line="3"}
-```tsx
-  const courseName = 'React開発入門'
-  const message = 'Reactの動作確認をしています'
-  const lessonNumber = 1
-```
-:::
-
-::: {#ch02-jsx-data-1 .paragraph}
-コンポーネントの中も、JavaScriptやTypeScriptの関数の中です。`const` で変数を宣言したり、計算や条件分岐を行ったりできます。ここでは、講座名と案内文を文字列、章番号を数値として用意しています。
-:::
-
-::: {#ch02-jsx-data-2 .paragraph}
-表示する値を先に変数に置くと、何を表示するかは変数の宣言、どこに表示するかはJSXを読めば分かります。例えば、`lessonNumber` の値を `2` に変更すれば、同じJSXで「現在の学習：第2章」と表示されます。
-:::
-
 ::::
 
 :::: {#page-6 .source-page}
-
-::: {#ch02-jsx-syntax-return .step}
-**③ 画面に表示する内容を返す部分**
+::: {#ch02-21-step-02 .step}
+**② 画面に表示するデータを変数として定義する**
 :::
 
-::: {#ch02-jsx-return-source .code filename="ch01-setup/src/App.tsx" start-line="7"}
-```tsx
+::: {#ch02-21-code-04 .code filename="ch01-setup/src/App.tsx" start-line="3"}
+~~~tsx
+  const courseName = 'React開発入門'
+  const message = 'Reactの動作確認をしています'
+  const lessonNumber = 1
+~~~
+:::
+
+::: {#ch02-21-paragraph-23 .paragraph}
+Reactのコンポーネント内では、通常のJavaScriptやTypeScriptと同じように、変数の宣言や計算、条件分岐などを記述できます。
+:::
+
+::: {#ch02-21-paragraph-24 .paragraph}
+今回のサンプルでは、画面に表示するデータを、次の3つの変数に格納しています。
+:::
+
+::: {#ch02-21-paragraph-25 .paragraph}
+● `courseName`：講座名
+:::
+
+::: {#ch02-21-paragraph-26 .paragraph}
+● `message`：案内文
+:::
+
+::: {#ch02-21-paragraph-27 .paragraph}
+● `lessonNumber`：現在学習している章の番号
+:::
+
+::: {#ch02-21-paragraph-28 .paragraph}
+このように、**画面に表示するデータと、画面の構成を記述するJSXを分けて管理できます。**
+:::
+
+::: {#ch02-21-paragraph-29 .paragraph}
+例えば、`lessonNumber` の値を2に変更して保存すると、JSXの記述を変更しなくても、「現在の学習：第2章」と表示されます。
+:::
+
+::: {#ch02-21-step-03 .step}
+**③ JSXを使用して画面に表示する内容を返す**
+:::
+
+::: {#ch02-21-code-05 .code filename="ch01-setup/src/App.tsx" start-line="7"}
+~~~tsx
   return (
     <main>
       <h1>{courseName}</h1>
@@ -225,111 +297,175 @@ export default function App() {
       <p>現在の学習：第{lessonNumber}章</p>
     </main>
   )
-```
+~~~
 :::
 
-::: {#ch02-jsx-return-1 .paragraph}
-`return` は、関数の結果を呼び出し元に返します。この例では、`<main>` にまとめた要素を返し、Reactが画面に表示します。複数行の記述は `return ( ... )` のように丸括弧で囲むと読みやすくなります。
+::: {#ch02-21-paragraph-30 .paragraph}
+JavaScriptやTypeScriptの `return` は、関数の戻り値を指定するための構文です。
 :::
 
-::: {#ch02-jsx-return-2 .paragraph}
-JavaScriptの中でHTMLに似た形で要素を書ける構文を **JSX（JavaScript XML）** と呼びます。TypeScriptでJSXを含むファイルには `.tsx` を使います。この拡張子を使うと、開発ツールがJSXを含むTypeScriptとして処理します。
+::: {#ch02-21-paragraph-31 .paragraph}
+Reactの関数コンポーネントでは、**`return` で画面に表示する内容を返します。** Reactは、関数コンポーネントから返された内容をもとに、ブラウザーの画面を構成します。
 :::
 
-::: {#ch02-jsx-return-3 .paragraph}
-`<h1>` は見出し、`<p>` は段落です。`{courseName}` のように変数を波括弧で囲むと、`<h1>` に「React開発入門」が入ります。同様に、案内文は `{message}`、章番号は `{lessonNumber}` の値です。
+::: {#ch02-21-paragraph-32 .paragraph}
+ここで、`return` の後ろに記述されているコードに注目してください。`<h1>` や `<p>` など、HTMLに似たタグが使われています。
 :::
 
-![関数の宣言、変数の宣言、returnの3部分とブラウザーの表示](assets/components-code.svg){#ch02-component-code}
+::: {#ch02-21-paragraph-33 .paragraph punctuation-font="inherit"}
+このように、**JavaScriptの中にHTMLに似た記述を書くための構文を、JSX（JavaScript XML）と呼びます。**
+:::
+
+::: {#ch02-21-paragraph-34 .paragraph}
+本研修ではTypeScriptを使用しているため、JSXを含むファイルの拡張子には `.tsx` を使用します。
+:::
+
+::: {#ch02-21-paragraph-35 .paragraph}
+また、JSXの中では、変数の値を画面に表示できます。
+:::
+
+::: {#ch02-21-paragraph-36 .paragraph}
+例えば、9行目の `<h1>{courseName}</h1>` では、`courseName` を波括弧 `{ }` で囲んでいます。そのため、見出しには変数名ではなく、変数に格納されている「React開発入門」という文字列が表示されます。
+:::
+
+::: {#ch02-21-paragraph-37 .paragraph}
+10行目の案内文、11行目の章番号についても、同じ仕組みで変数の値を表示しています。
+:::
+
+![App.tsxの3つの部分と、ブラウザーの表示内容](assets/components-code.svg){#ch02-component-code}
 
 ::: {#ch02-component-code-caption .paragraph}
-App.tsxの3つの部分と、returnに対応する画面
+App.tsxの3つの部分と、ブラウザーの表示内容
 :::
 
+::: {#ch02-21-paragraph-38 .paragraph}
+このように、関数の中でデータを用意し、JSXを使って画面の内容を記述することが、Reactによる画面作成の基本です。
+:::
+
+::: {#ch02-21-paragraph-39 .paragraph}
+JSXで変数や計算結果を表示する方法については、次の2.2節で詳しく学習します。
+:::
 ::::
 
 :::: {#page-7 .source-page}
-
-::: {#ch02-jsx-html .step}
-**④ JSXとHTMLの主な違い**
+::: {#ch02-21-heading-04 .heading level="minor"}
+JSXとHTMLの主な違い
 :::
 
-::: {#ch02-jsx-parent-title .step}
-**複数の要素を一つにまとめる**
+::: {#ch02-21-paragraph-40 .paragraph}
+JSXはHTMLに似ていますが、HTMLとまったく同じ書き方ができるわけではありません。
 :::
 
-::: {#ch02-jsx-parent-intro .paragraph}
-HTMLでは見出しと段落を続けて書けます。コンポーネントの `return` に書くときは、返す内容を一つのJSXの式にまとめます。
+::: {#ch02-21-paragraph-41 .paragraph}
+Reactで画面を作成する際には、特に次の3つのルールを覚えておきましょう。
 :::
 
-::: {#ch02-jsx-html-invalid-title .step}
-誤った例
+::: {#ch02-21-step-04 .step}
+**① 複数のJSX要素を1つにまとめる**
 :::
 
-::: {#ch02-jsx-html-invalid .code example="true"}
-```tsx
+::: {#ch02-21-paragraph-42 .paragraph}
+関数コンポーネントの `return` に複数のJSX要素を並べて記述する場合は、それらを1つにまとめる必要があります。
+:::
+
+::: {#ch02-21-paragraph-43 .paragraph}
+例えば、見出しと案内文を表示するために、次のように記述したとします。
+:::
+
+::: {#ch02-21-step-05 .step keep-next="1"}
+**誤った例**
+:::
+
+::: {#ch02-21-code-06 .code example="true" highlight-lines="2-3"}
+~~~tsx
 return (
   <h1>商品管理システム</h1>
   <p>商品一覧を表示します</p>
 )
-```
+~~~
 :::
 
-::: {#ch02-jsx-parent-invalid .paragraph}
-外側の丸括弧は改行した式をまとめるためのものです。`<h1>` と `<p>` が別々の要素のまま並ぶと、一つのJSXの式として読めずエラーになります。
+::: {#ch02-21-paragraph-44 .paragraph}
+このコードでは、`<h1>` と `<p>` がそれぞれ独立した要素として並んでいるため、構文エラーになります。通常のHTMLではこのような書き方ができますが、JSXではそのまま `return` で返すことはできません。
 :::
 
-::: {#ch02-jsx-html-valid-title .step}
-親要素でまとめる例
+::: {#ch02-21-paragraph-45 .paragraph}
+なお、外側にある丸括弧 `( )` は、複数行にわたる式を記述するためのものです。丸括弧で囲んだだけでは、2つのJSX要素を1つにまとめたことにはなりません。
 :::
 
-::: {#ch02-jsx-html-valid .code example="true"}
-```tsx
+::: {#ch02-21-paragraph-46 .paragraph}
+このような場合は、次のように `<main>` などの親要素で囲みます。
+:::
+
+::: {#ch02-21-step-06 .step keep-next="1"}
+**正しい例**
+:::
+
+::: {#ch02-21-code-07 .code example="true" highlight-lines="2,5"}
+~~~tsx
 return (
   <main>
     <h1>商品管理システム</h1>
     <p>商品一覧を表示します</p>
   </main>
 )
-```
+~~~
 :::
 
-::: {#ch02-jsx-parent-valid .paragraph}
-`<main>` で囲むと、見出しと段落を子に持つ一つの要素を返せます。
+::: {#ch02-21-paragraph-47 .paragraph}
+これで、`<main>` を親要素として、その中に見出しと案内文を配置できました。
 :::
 
-::: {#ch02-jsx-fragment-title .step}
-フラグメントでまとめる例
+::: {#ch02-21-paragraph-48 .paragraph}
+先ほどの `App.tsx` でも、見出しと2つの段落を `<main>` で囲んでいます。
+:::
+::::
+
+:::: {#page-8 .source-page}
+::: {#ch02-21-step-07 .step punctuation-font="inherit"}
+**フラグメント（Fragment）を使用する場合**
 :::
 
-::: {#ch02-jsx-fragment-source .code example="true"}
-```tsx
+::: {#ch02-21-paragraph-49 .paragraph}
+画面の構成によっては、複数の要素をまとめたいだけで、新たなHTML要素を追加する必要がない場合もあります。
+:::
+
+::: {#ch02-21-paragraph-50 .paragraph}
+そのような場合は、次のように `<>` と `</>` で囲むことができます。
+:::
+
+::: {#ch02-21-code-08 .code example="true" highlight-lines="2,5"}
+~~~tsx
 return (
   <>
     <h1>商品管理システム</h1>
     <p>商品一覧を表示します</p>
   </>
 )
-```
+~~~
 :::
 
-::: {#ch02-jsx-fragment .paragraph}
-`<>` と `</>` で囲む書き方を **フラグメント（Fragment）** と呼びます。複数の要素をまとめながら、ブラウザーには中の見出しと段落だけが追加されます。
+::: {#ch02-21-paragraph-51 .paragraph punctuation-font="inherit"}
+この記述を **フラグメント（Fragment）** と呼びます。
 :::
 
-::::
-
-:::: {#page-8 .source-page}
-
-::: {#ch02-jsx-tags-title .step}
-**タグを正しく閉じる**
+::: {#ch02-21-paragraph-52 .paragraph}
+フラグメントを使用すると、複数のJSX要素を1つにまとめることができます。ただし、ブラウザーのHTMLには、フラグメントに相当する親要素は追加されません。
 :::
 
-::: {#ch02-jsx-tags-intro .paragraph}
-HTMLでは、画像・入力欄・改行のように内容を持たない要素を `<img>`、`<input>`、`<br>` の形で書けます。JSXでは、これらの末尾に `/>` を書いてタグを閉じます。
+::: {#ch02-21-step-08 .step}
+**② タグは必ず閉じる**
 :::
 
-::: {#ch02-jsx-tags-table .table column-widths="1 1"}
+::: {#ch02-21-paragraph-53 .paragraph}
+通常のHTMLでは、`<img>` や `<input>` など、終了タグを記述しない要素があります。
+:::
+
+::: {#ch02-21-paragraph-54 .paragraph}
+一方、**JSXではすべてのタグを閉じる必要があります。** `img` や `input` のように内容を持たない要素は、タグの末尾を `/>` と記述します。
+:::
+
+::: {#ch02-21-table-02 .table}
 | HTML | JSX |
 |---|---|
 | `<img src="sample.png">` | `<img src="sample.png" />` |
@@ -337,94 +473,126 @@ HTMLでは、画像・入力欄・改行のように内容を持たない要素�
 | `<br>` | `<br />` |
 :::
 
-::: {#ch02-jsx-tags-check .paragraph}
-JSXで `<img src="sample.png">` のままにすると、開始タグに対応する閉じ方がないためエラーになります。`<h1>` や `<p>` のように中身がある要素は、`</h1>` や `</p>` を書きます。
+::: {#ch02-21-paragraph-55 .paragraph}
+通常のHTMLと同じように `<img src="sample.png">` と記述すると、JSXではタグが閉じられていないため、構文エラーになります。
 :::
 
-::: {#ch02-jsx-class-title .step}
-**CSSのクラスはclassNameで指定する**
+::: {#ch02-21-paragraph-56 .paragraph}
+なお、`<h1>` や `<p>` のように内容を記述する要素は、通常のHTMLと同じように `</h1>` や `</p>` で閉じます。
 :::
-
-::: {#ch02-jsx-class-intro .paragraph}
-HTMLでCSSのクラスを指定する属性は `class` です。同じ指定をReactのJSXで書くときは、属性名を `className` にします。
-:::
-
-::: {#ch02-jsx-html-class .code example="true"}
-```html
-<p class="text-primary">こんにちは</p>
-```
-:::
-
-::: {#ch02-jsx-tsx-class .code example="true"}
-```tsx
-<p className="text-primary">こんにちは</p>
-```
-:::
-
-::: {#ch02-jsx-class-result .paragraph}
-ブラウザーで使われるHTMLには `class="text-primary"` が設定されます。TSXのHTML要素に `class` を書くと、TypeScriptの型チェックでエラーになります。クラス名によって実際に色や太さが変わる仕組みは、2.2節で確認します。
-:::
-
 ::::
 
 :::: {#page-9 .source-page}
+::: {#ch02-21-step-09 .step}
+**③ CSSのクラスを指定する際はclassNameを使用する**
+:::
 
-::: {#ch02-jsx-practice .heading level="minor"}
+::: {#ch02-21-paragraph-57 .paragraph}
+JSXでは、一部のHTML属性の名前が異なります。代表的なものが、CSSのクラスを指定する `class` 属性です。
+:::
+
+::: {#ch02-21-paragraph-58 .paragraph}
+通常のHTMLでは、次のように記述します。
+:::
+
+::: {#ch02-21-code-09 .code example="true" highlight-tokens="class"}
+~~~html
+<p class="text-primary">こんにちは</p>
+~~~
+:::
+
+::: {#ch02-21-paragraph-59 .paragraph}
+同じCSSのクラスをJSXで指定する場合は、次のように記述します。
+:::
+
+::: {#ch02-21-code-10 .code example="true" highlight-tokens="className"}
+~~~tsx
+<p className="text-primary">こんにちは</p>
+~~~
+:::
+
+::: {#ch02-21-paragraph-60 .paragraph}
+このように、**JSXでは `class` ではなく `className` を使用します。**
+:::
+
+::: {#ch02-21-paragraph-61 .paragraph}
+Reactが画面に反映する際には、指定したクラスがHTMLの `class` 属性として設定されます。
+:::
+
+::: {#ch02-21-paragraph-62 .paragraph}
+`className` を使って画面のデザインを設定する方法は、次の2.2節で学習します。
+:::
+
+::: {#ch02-21-heading-05 .heading level="minor"}
 【確認演習】変数をJSXに表示する
 :::
 
-::: {#ch02-jsx-practice-intro .paragraph}
+::: {#ch02-21-paragraph-63 .paragraph}
 関数コンポーネント内にあらかじめ定義されている変数を使用して、社員管理システムの見出しと案内文を表示します。
 :::
 
-::: {#ch02-jsx-practice-1 .paragraph numbered="true"}
-1．　`ch02-basic-q` プロジェクトの `src/components/Q2_1.tsx` を開いてください。
+::: {#ch02-21-paragraph-64 .paragraph numbered="true"}
+1．`ch02-basic-q` プロジェクトの `src/components/Q2_1.tsx` を開いてください。
 :::
 
-::: {#ch02-jsx-practice-2 .paragraph numbered="true"}
-2．　コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch02-21-paragraph-65 .paragraph numbered="true"}
+2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-jsx-practice-3 .paragraph numbered="true"}
-3．　編集したファイルを保存してください。
+::: {#ch02-21-paragraph-66 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
 :::
 
-::: {#ch02-jsx-practice-4 .paragraph numbered="true"}
-4．　初回は `ch02-basic-q` フォルダーで `npm install` を実行してください。1.5節と同じ手順で開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch02-21-paragraph-67 .paragraph numbered="true"}
+4．初回は `ch02-basic-q` フォルダーで `npm install` を実行してください。1.5節と同じ手順で開発サーバーを起動し、ターミナルに表示されたURLを開いてください。すでに開発サーバーを起動している場合は、ブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-jsx-practice-5 .paragraph numbered="true"}
-5．　メニューから「2.1 ReactコンポーネントとJSXの基本」を選んでください。
+::: {#ch02-21-paragraph-68 .paragraph numbered="true"}
+5．メニューから「2.1 ReactコンポーネントとJSXの基本」を選択してください。
 :::
+::::
 
-::: {#ch02-jsx-practice-check .heading level="minor"}
+:::: {#page-11 .source-page}
+::: {#ch02-21-heading-06 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch02-jsx-practice-result .paragraph numbered="true"}
-6．　見出しに「社員管理システム」、案内文に「社員情報を確認できます。」と表示されることを確認してください。
+::: {#ch02-21-paragraph-69 .paragraph numbered="true"}
+6．次の図と見比べながら、見出しと案内文が正しく表示されていることを確認してください。
 :::
 
-::: {#ch02-jsx-practice-note-1 .paragraph}
+![確認演習の実装後に表示される社員管理システムの画面](assets/jsx-exercise-app.svg){#ch02-app-exercise-result}
+
+::: {#ch02-app-exercise-result-caption .paragraph}
+確認演習の実装後に表示される社員管理システムの画面
+:::
+
+::: {#ch02-21-paragraph-70 .paragraph}
+見出しに「社員管理システム」、案内文に「社員情報を確認できます。」と表示されていれば、演習完了です。
+:::
+
+::: {#ch02-21-paragraph-71 .paragraph}
 画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度確認してください。
 :::
 
-::: {#ch02-jsx-points .section-points}
+::: {#ch02-21-section-points-01 .section-points}
 この節のポイント
 
 ● Reactでは、画面をコンポーネントという部品に分けて作成できる。
 
-● コンポーネントは関数として定義し、`return` にJSXを記述する。
+● 関数コンポーネントは関数として定義し、`return` で画面に表示する内容を返す。
+
+● コンポーネント名の先頭は大文字にする。
 
 ● JSXは、JavaScriptの中にHTMLに似た記述を書くための構文である。
 
-● JSXでは親要素やタグの閉じ方に注意し、CSSのクラスには `className` を使用する。
-:::
+● JSXでは、複数の要素を1つにまとめて返し、タグを必ず閉じる。
 
+● JSXでCSSのクラスを指定する際は、`className` を使用する。
+:::
 ::::
 
 :::: {#page-12 .source-page}
-
 ::: {#ch02-values-title .heading}
 2.2. JSXによるデータ表示と属性の設定
 :::
@@ -435,40 +603,58 @@ JSXによるデータ表示と属性の設定
 ![JSXによるデータ表示と属性の設定の図解](assets/jsx-values-slide.svg)
 :::
 
-::: {#ch02-values-definition .heading level="minor"}
-JSXでデータと属性を設定する
+::: {#ch02-22-heading-01 .heading level="minor"}
+JSXでJavaScriptの値を使用する
 :::
 
-::: {#ch02-values-intro-1 .paragraph}
-前節では、JSXの中に `{変数名}` と記述すると、変数の値を画面に表示できることを学習しました。
+::: {#ch02-22-paragraph-01 .paragraph}
+前節では、JSXの中に `{変数名}` と記述すると、変数に格納されている値を画面に表示できることを学習しました。
 :::
 
-::: {#ch02-values-intro-2 .paragraph}
-実際のWebアプリケーションでは、商品名や単価などをデータとして管理し、数量から合計金額を計算したり、商品ごとに表示する画像を変更したりする必要があります。
+::: {#ch02-22-paragraph-02 .paragraph}
+実際のWebアプリケーションでは、変数の値をそのまま表示するだけでなく、データをもとにさまざまな情報を表示する必要があります。
 :::
 
-::: {#ch02-values-intro-3 .paragraph}
-JSXでは、波括弧 `{ }` の中に変数や計算式、オブジェクトのプロパティなどを記述できます。さらに、HTML要素の本文だけでなく、画像のパスやCSSのクラスなど、属性にもJavaScriptの値を設定できます。
+::: {#ch02-22-paragraph-03 .paragraph}
+例えば、ショッピングサイトの商品情報画面では、次のような処理が必要になります。
 :::
 
-::: {#ch02-values-intro-4 .paragraph}
-この節では、商品情報を表示するサンプルを使い、これらの記述方法をまとめて確認します。
+::: {#ch02-22-paragraph-04 .paragraph}
+● 商品データから商品名や単価を取得して表示する。
 :::
 
+::: {#ch02-22-paragraph-05 .paragraph}
+● 商品の単価と数量から合計金額を計算して表示する。
+:::
+
+::: {#ch02-22-paragraph-06 .paragraph}
+● 商品ごとに異なる画像を表示する。
+:::
+
+::: {#ch02-22-paragraph-07 .paragraph}
+JSXでは、変数だけでなく、計算結果やオブジェクトのプロパティなども画面に表示できます。また、画像のパスやCSSのクラスなど、**HTML要素の属性にもJavaScriptの値を設定できます。**
+:::
+
+::: {#ch02-22-paragraph-08 .paragraph}
+この節では、商品情報を表示するサンプルを使って、これらの記述方法を学習します。
+:::
 ::::
 
 :::: {#page-13 .source-page}
-
-::: {#ch02-product-sample .heading level="minor"}
+::: {#ch02-22-heading-02 .heading level="minor"}
 【サンプル】商品情報を表示する
 :::
 
-::: {#ch02-product-sample-intro .paragraph}
-今回は、商品名・単価・画像のパスをオブジェクトで管理し、数量と合計金額を画面に表示します。合計金額はBootstrapを使用して青い太字で表示します。
+::: {#ch02-22-paragraph-09 .paragraph}
+今回は、商品名・単価・画像のパスを1つのオブジェクトとして管理し、それらの情報を画面に表示します。
 :::
 
-::: {#ch02-product-source .code filename="ch02-basic/src/components/Sample2_2.tsx"}
-```tsx
+::: {#ch02-22-paragraph-10 .paragraph}
+商品の数量は2個とし、単価と数量から合計金額を求めます。また、Bootstrapを使用して、合計金額を青い太字で表示します。
+:::
+
+::: {#ch02-22-code-01 .code filename="ch02-basic/src/components/Sample2_2.tsx"}
+~~~tsx
 export default function Sample2_2() {
   // 商品情報
   const product = {
@@ -501,261 +687,452 @@ export default function Sample2_2() {
     </main>
   )
 }
-```
+~~~
 :::
-
-::: {#ch02-product-sample-run .paragraph}
-配布サンプルの `ch02-basic` フォルダーで、初回は `npm install` を実行してください。1.5節と同じ手順で開発サーバーを起動し、ブラウザーのメニューから「2.2 JSXによるデータ表示と属性の設定」を選択してください。
-:::
-
 ::::
 
 :::: {#page-14 .source-page}
+::: {#ch02-22-paragraph-11 .paragraph}
+配布サンプルの `ch02-basic` フォルダーで、初回は `npm install` を実行してください。1.5節と同じ手順で開発サーバーを起動し、ブラウザーのメニューから「2.2 JSXによるデータ表示と属性の設定」を選択してください。
+:::
 
-::: {#ch02-values-syntax .heading level="minor"}
+::: {#ch02-22-paragraph-12 .paragraph}
+次のように、商品情報と合計金額が表示されます。
+:::
+
+![商品情報を表示する完成サンプル](assets/product-browser.svg){#ch02-product-display}
+
+::: {#ch02-product-display-caption .paragraph}
+商品情報を表示する完成サンプル
+:::
+
+::: {#ch02-22-heading-03 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch02-values-syntax-property .step}
-**① オブジェクトのプロパティや変数を表示する**
+::: {#ch02-22-step-01 .step}
+**① オブジェクトのプロパティや変数の値を表示する**
 :::
 
-::: {#ch02-product-property-source .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="23"}
-```tsx
-      <p>商品名：{product.name}</p>
-      <p>単価：{product.price}円</p>
-      <p>数量：{quantity}個</p>
-```
+::: {#ch02-22-paragraph-13 .paragraph}
+商品名や単価など、関連する複数のデータを管理する場合には、JavaScriptのオブジェクトを使用できます。
 :::
 
-::: {#ch02-product-property-1 .paragraph}
-商品名・単価・画像のパスのような関連する値は、`product` というオブジェクトにまとめています。宣言にある `name: 'ノート'` では、コロンの左がプロパティ名、右がその値です。
+::: {#ch02-22-paragraph-14 .paragraph}
+今回のサンプルでは、商品情報を次のように `product` というオブジェクトにまとめています。また、商品の数量は `quantity` という変数に格納しています。
 :::
 
-::: {#ch02-product-property-2 .paragraph}
-値を取り出すときは、ドットの左にオブジェクト名、右にプロパティ名を書きます。`product.name` は「ノート」、`product.price` は数値の `250` を取得します。数量は単独で用意した変数なので、`quantity` だけで値の `2` を参照できます。
+::: {#ch02-22-code-02 .code filename="ch02-basic/src/components/Sample2_2.tsx"}
+~~~tsx
+3:  const product = {
+4:    name: 'ノート',
+5:    price: 250,
+6:    imagePath: '/images/notebook.png'
+7:  }
+10:  const quantity = 2
+~~~
 :::
-
-::: {#ch02-product-property-3 .paragraph}
-JSXの波括弧 `{ }` は、その中のJavaScriptの式を評価して表示に差し込むために使います。`{product.price}` の結果は前後の文字と組み合わさり、「単価：250円」になります。`{quantity}` から波括弧を外すと、数字の `2` の代わりに「quantity」という文字が表示されます。
-:::
-
-::: {#ch02-product-property-4 .paragraph}
-波括弧の中に書くのは、値を求める式です。`if` や `for` は処理の流れを制御する文なので、そのまま中に書くと構文エラーになります。
-:::
-
-![ノート、単価250円、数量2個、合計500円が表示された商品情報](assets/product-browser.svg){#ch02-product-display}
-
-::: {#ch02-product-display-caption .paragraph}
-完成サンプルの商品名・単価・数量の表示
-:::
-
 ::::
 
 :::: {#page-15 .source-page}
-
-::: {#ch02-values-syntax-calculation .step}
-**② 計算結果を表示する**
+::: {#ch02-22-paragraph-15 .paragraph}
+オブジェクトには、プロパティ名と値の組み合わせを記述します。例えば、`name: 'ノート'` では、`name` というプロパティに「ノート」という文字列を設定しています。
 :::
 
-::: {#ch02-product-calculation-source .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="28"}
-```tsx
-        合計：{product.price * quantity}円
-```
+::: {#ch02-22-paragraph-16 .paragraph}
+オブジェクトから値を取得する場合は、`オブジェクト名.プロパティ名` の形式で記述します。今回の `product` では、次のように値を取得できます。
 :::
 
-::: {#ch02-product-calculation-1 .paragraph}
-JSXの `{ }` には、取り出した値を使う計算式も書けます。`*` はJavaScriptの掛け算です。`product.price * quantity` では、商品オブジェクトから取り出した単価 `250` に、変数 `quantity` の値 `2` を掛けます。
+::: {#ch02-22-table-01 .table}
+| 記述 | 取得できる値 | 意味 |
+|---|---|---|
+| `product.name` | `'ノート'` | 商品名 |
+| `product.price` | `250` | 単価 |
+| `product.imagePath` | `'/images/notebook.png'` | 商品画像のパス |
 :::
 
-::: {#ch02-product-calculation-2 .paragraph}
-式の結果である `500` が波括弧の位置に入り、前後の「合計：」と「円」と合わせて「合計：500円」と表示されます。このように、表示するときに式を評価できるので、合計を別の変数に入れずに記述できます。
+::: {#ch02-22-paragraph-17 .paragraph}
+次に、取得した値を画面に表示する部分を確認しましょう。
 :::
 
-![product.priceの250とquantityの2から、JSXの式を通じて合計500円が表示される](assets/jsx-calculation.svg){#ch02-calculation-diagram}
-
-::: {#ch02-calculation-diagram-caption .paragraph}
-単価と数量から求めた合計の表示
+::: {#ch02-22-code-03 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="23"}
+~~~tsx
+      <p>商品名：{product.name}</p>
+      <p>単価：{product.price}円</p>
+      <p>数量：{quantity}個</p>
+~~~
 :::
 
+::: {#ch02-22-paragraph-18 .paragraph}
+前節と同じように、表示したい値を波括弧 `{ }` で囲んでいます。
+:::
+
+::: {#ch02-22-paragraph-19 .paragraph}
+例えば、23行目の `{product.name}` では、`product` オブジェクトの `name` プロパティから取得した値が使用されます。その結果、画面には「商品名：ノート」と表示されます。
+:::
+
+::: {#ch02-22-paragraph-20 .paragraph}
+24行目では単価を、25行目では数量を表示しています。「単価：」や「円」のように、波括弧の外に記述した文字は、そのまま表示されます。
+:::
+
+::: {#ch02-22-table-02 .table}
+| JSXの記述 | 画面に表示される内容 |
+|---|---|
+| `商品名：{product.name}` | 商品名：ノート |
+| `単価：{product.price}円` | 単価：250円 |
+| `数量：{quantity}個` | 数量：2個 |
+:::
+
+::: {#ch02-22-paragraph-21 .paragraph}
+このように、**JSXの波括弧 `{ }` の中には、JavaScriptの式を記述できます。**
+:::
+
+::: {#ch02-22-paragraph-22 .paragraph}
+例えば、`product.name` はオブジェクトのプロパティの値を取得する式です。波括弧で囲むことで、その式から得られた値をJSXの中で使用できます。
+:::
+
+::: {#ch02-22-paragraph-23 .paragraph}
+なお、`if` 文や `for` 文のように、処理の流れを制御する文を波括弧の中にそのまま記述することはできません。条件に応じた表示や繰り返し表示の方法については、後続の節で学習します。
+:::
 ::::
 
 :::: {#page-16 .source-page}
-
-::: {#ch02-values-syntax-attributes .step}
-**③ HTML属性に値を設定する**
+::: {#ch02-22-step-02 .step}
+**② 計算結果を画面に表示する**
 :::
 
-::: {#ch02-product-image-html .paragraph}
-HTMLで画像を表示するときは、`src` に画像ファイルのパスを、引用符で囲んだ文字列として直接指定します。
+::: {#ch02-22-paragraph-24 .paragraph}
+JSXの波括弧 `{ }` の中には、変数やオブジェクトのプロパティだけでなく、計算式も記述できます。
 :::
 
-::: {#ch02-product-static-img .code example="true"}
-```html
+::: {#ch02-22-paragraph-25 .paragraph}
+今回のサンプルでは、商品の合計金額を次のように表示しています。
+:::
+
+::: {#ch02-22-code-04 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="28"}
+~~~tsx
+        合計：{product.price * quantity}円
+~~~
+:::
+
+::: {#ch02-22-paragraph-26 .paragraph}
+`product.price` は商品の単価、`quantity` は商品の数量です。これらを `*`（掛け算）で結ぶことで、合計金額を求めています。
+:::
+
+::: {#ch02-22-paragraph-27 .paragraph}
+今回の商品は単価250円、数量2個なので、計算結果は500となります。そのため、画面には「合計：500円」と表示されます。
+:::
+
+![単価と数量から合計金額を計算して表示する](assets/jsx-calculation.svg){#ch02-calculation-diagram}
+
+::: {#ch02-calculation-diagram-caption .paragraph}
+単価と数量から合計金額を計算して表示する
+:::
+
+::: {#ch02-22-paragraph-28 .paragraph}
+このように、**JSXの中で直接計算できるため、計算結果をあらかじめ別の変数に格納しなくても表示できます。**
+:::
+
+::: {#ch02-22-step-03 .step}
+**③ HTML要素の属性に値を設定する**
+:::
+
+::: {#ch02-22-paragraph-29 .paragraph}
+ここまでは、`<p>` などの要素の中に、JavaScriptの値を表示する方法を確認しました。
+:::
+
+::: {#ch02-22-paragraph-30 .paragraph}
+JSXでは、要素の中に表示する内容だけでなく、`src` や `alt` などの属性にもJavaScriptの値を設定できます。
+:::
+::::
+
+:::: {#page-17 .source-page}
+::: {#ch02-22-paragraph-31 .paragraph}
+例えば、通常のHTMLでノートの画像を表示する場合は、次のように記述します。
+:::
+
+::: {#ch02-22-code-05 .code example="true" highlight-tokens="\"/images/notebook.png\"|\"ノート\""}
+~~~html
 <img src="/images/notebook.png" alt="ノート">
-```
+~~~
 :::
 
-::: {#ch02-product-image-jsx .paragraph}
-JSXでは、属性にも変数やオブジェクトのプロパティを指定できます。商品ごとに画像が異なる場合も、同じ `<img>` の書き方で、商品データからパスと代替テキストを渡せます。
+::: {#ch02-22-paragraph-32 .paragraph}
+このコードでは、`src` 属性に画像のパスを、`alt` 属性に画像の代替テキストを直接指定しています。
 :::
 
-::: {#ch02-product-image-source .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="17"}
-```tsx
+::: {#ch02-22-paragraph-33 .paragraph}
+一方、今回のReactのサンプルでは、これらの情報を `product` オブジェクトに格納しています。オブジェクトに格納された値を属性に設定する場合は、次のように記述します。
+:::
+
+::: {#ch02-22-code-06 .code filename="ch02-basic/src/components/Sample2_2.tsx" start-line="17"}
+~~~tsx
       <img
         src={product.imagePath}
         alt={product.name}
         width={180}
       />
-```
+~~~
 :::
 
-::: {#ch02-product-image-roles .paragraph}
-`src` は画像を読み込む場所です。`product.imagePath` の値 `/images/notebook.png` がここに入ります。`alt` は画像の代替テキストです。`product.name` の値「ノート」が入るので、画像を表示できない場合や読み上げでも内容を伝えられます。
+::: {#ch02-22-paragraph-34 .paragraph}
+18行目の `src={product.imagePath}` では、`product.imagePath` から取得した画像のパスを `src` 属性に設定しています。今回の場合は `/images/notebook.png` が設定されるため、ノートの画像が表示されます。
 :::
 
+::: {#ch02-22-paragraph-35 .paragraph}
+19行目の `alt={product.name}` では、商品名の「ノート」を代替テキストとして設定しています。
+:::
+
+::: {#ch02-22-paragraph-36 .paragraph}
+また、20行目の `width={180}` では、画像の表示幅を180ピクセルに指定しています。
+:::
+
+::: {#ch02-22-paragraph-37 .paragraph}
+ここで重要なのは、**属性に固定の文字列を指定する場合と、JavaScriptの値を指定する場合では、書き方が異なる**という点です。
+:::
+
+::: {#ch02-22-table-03 .table}
+| 記述 | 意味 |
+|---|---|
+| `src="/images/notebook.png"` | 固定の文字列を画像のパスに指定する |
+| `src={product.imagePath}` | プロパティから取得した値を画像のパスに指定する |
+| `alt={product.name}` | プロパティから取得した値を代替テキストに指定する |
+| `width={180}` | 数値の180を画像の表示幅に指定する |
+:::
 ::::
 
-:::: {#page-17 .source-page}
-
-::: {#ch02-product-attributes-title .step}
-**固定値と変数の書き方を比べる**
+::::: {#page-18 .source-page}
+::: {#ch02-22-paragraph-38 .paragraph}
+固定の文字列を指定する場合は引用符 `" "` で囲み、JavaScriptの式を指定する場合は波括弧 `{ }` で囲みます。
 :::
 
-::: {#ch02-product-attributes .table column-widths="1.25 1.6"}
-| 記述例 | 意味 |
-|---|---|
-| `src="/images/notebook.png"` | 引用符で固定の画像パスを指定 |
-| `src={product.imagePath}` | プロパティの値を画像パスに指定 |
-| `alt={product.name}` | 商品名を代替テキストに指定 |
-| `width={180}` | 数値の式で画像の幅を180ピクセルに指定 |
+::: {#ch02-22-paragraph-39 .paragraph}
+例えば、次のように波括弧の外側を引用符で囲むと、`{product.imagePath}` という文字列そのものが画像のパスとして設定されます。そのため、目的の画像を読み込むことができません。
 :::
 
-::: {#ch02-product-image-quotes .paragraph}
-`src="{product.imagePath}"` と引用符で囲むと、`{product.imagePath}` という文字列がパスになり、目的の画像を読み込めません。式の値を属性に渡すときは `src={product.imagePath}` と書きます。
+::: {#ch02-22-step-04 .step keep-next="1"}
+**誤った例**
 :::
 
-![商品データに保存した画像パスがsrc属性に設定され、ノートの画像が表示される](assets/jsx-image-path.svg){#ch02-image-path-result}
+::: {#ch02-22-code-07 .code example="true" highlight-tokens="\"{product.imagePath}\""}
+~~~tsx
+<img src="{product.imagePath}" alt="ノート" />
+~~~
+:::
+
+::: {#ch02-22-step-05 .step keep-next="1"}
+**正しい例**
+:::
+
+::: {#ch02-22-code-08 .code example="true" highlight-tokens="src={product.imagePath}"}
+~~~tsx
+<img src={product.imagePath} alt="ノート" />
+~~~
+:::
+
+![オブジェクトに格納した画像のパスをsrc属性に設定する流れ](assets/jsx-image-path.svg){#ch02-image-path-result}
 
 ::: {#ch02-image-path-result-caption .paragraph}
-商品データの画像パスをsrc属性に渡す流れ
+オブジェクトに格納した画像のパスをsrc属性に設定する流れ
 :::
 
-::: {#ch02-product-image-supplement .training-note}
-【補足】画像ファイルの配置
-
-`notebook.png` は配布サンプルの `public/images` にあります。開発サーバーは `public` の中身をサイトのルートから配信するため、画像は `/images/notebook.png` で参照できます。
+::: {#ch02-22-paragraph-40 .paragraph}
+このように、商品情報をオブジェクトとして管理しておけば、商品ごとに異なる画像や代替テキストを、同じJSXの記述で設定できます。
 :::
 
+:::: {#ch02-22-training-note-01 .training-note}
+**【補足】画像ファイルの配置**
+
+今回使用する `notebook.png` は、配布サンプルの `public/images` フォルダーに用意されています。
+
+Viteでは、`public` フォルダー内のファイルを、サイトのルートを基準としたパスで参照できます。そのため、今回の画像は `/images/notebook.png` と指定します。画像のパスに `public` を含める必要はありません。
 ::::
+:::::
 
-:::: {#page-18 .source-page}
-
-::: {#ch02-values-syntax-class .step}
+::::: {#page-19 .source-page}
+::: {#ch02-22-step-06 .step}
 **④ classNameによるデザインの設定**
 :::
 
-::: {#ch02-product-class-literal .paragraph}
-Bootstrapのクラスを固定で使うときは、クラス名を空白で区切り、`className` に文字列として指定します。
+::: {#ch02-22-paragraph-41 .paragraph}
+前節では、JSXでCSSのクラスを指定する際に、`className` を使用することを学習しました。
 :::
 
-::: {#ch02-product-class-example .code example="true"}
-```tsx
+::: {#ch02-22-paragraph-42 .paragraph}
+本研修では、画面のデザインを簡単に整えるために、Bootstrapを使用します。
+:::
+
+::: {#ch02-22-paragraph-43 .paragraph}
+例えば、合計金額を青い太字で表示するには、次のように記述できます。
+:::
+
+::: {#ch02-22-code-09 .code example="true"}
+~~~tsx
 <p className="text-primary fw-bold">合計：500円</p>
-```
+~~~
 :::
 
-::: {#ch02-product-class-variable .paragraph}
-サンプルでは、同じ文字列を `totalClass` に入れ、`className={totalClass}` で渡しています。
+::: {#ch02-22-paragraph-44 .paragraph}
+`text-primary` と `fw-bold` は、Bootstrapが用意しているCSSのクラスです。
 :::
 
-::: {#ch02-product-class-source .code filename="ch02-basic/src/components/Sample2_2.tsx"}
-```tsx
+::: {#ch02-22-table-04 .table}
+| クラス名 | 役割 |
+|---|---|
+| `text-primary` | 文字色を青色にする（今回のBootstrapの設定の場合） |
+| `fw-bold` | 文字を太字にする |
+:::
+
+::: {#ch02-22-paragraph-45 .paragraph}
+複数のクラスを使用する場合は、空白で区切って指定します。これにより、2つのクラスが同じ要素に適用され、合計金額が青い太字で表示されます。
+:::
+
+::: {#ch02-22-paragraph-46 .paragraph}
+また、`className` 属性にもJavaScriptの変数を使用できます。
+:::
+
+::: {#ch02-22-paragraph-47 .paragraph}
+今回のサンプルでは、11行目でクラス名を変数に格納し、27行目でその変数の値を使用しています。
+:::
+
+::: {#ch02-22-code-10 .code filename="ch02-basic/src/components/Sample2_2.tsx"}
+~~~tsx
 11:  const totalClass = 'text-primary fw-bold'
 27:      <p className={totalClass}>
-```
+28:        合計：{product.price * quantity}円
+29:      </p>
+~~~
 :::
 
-::: {#ch02-product-class-result .paragraph}
-読み込んだBootstrapのCSSが、`text-primary` で文字を青く、`fw-bold` で太字にします。どちらの指定方法でも、合計の段落には同じ二つのクラスが適用されます。
+::: {#ch02-22-paragraph-48 .paragraph}
+`className={totalClass}` と記述することで、変数 `totalClass` に格納されている `text-primary fw-bold` がCSSのクラスとして設定されます。
 :::
 
-::: {#ch02-product-class-quotes .paragraph}
-`className="totalClass"` と書くと、クラス名は「totalClass」という文字列になります。変数に格納したクラス名を渡すときは、`className={totalClass}` と書きます。
+::: {#ch02-22-paragraph-49 .paragraph}
+クラス名を直接指定した場合も、変数の値を指定した場合も、適用されるCSSのクラスは同じです。
 :::
 
-::: {#ch02-product-css-supplement .training-note}
-【補足】BootstrapのCSSの読み込み
-
-配布サンプルでは、`main.tsx` でBootstrapのCSSを読み込んでいます。この読み込みによってクラス名に対応するスタイルを使えます。
+::: {#ch02-22-paragraph-50 .paragraph}
+ただし、`className="totalClass"` と記述すると、変数の値ではなく「totalClass」という固定の文字列を指定したことになります。
 :::
 
-::: {#ch02-product-bootstrap-source .code filename="ch02-basic/src/main.tsx" start-line="3"}
-```tsx
+::: {#ch02-22-paragraph-51 .paragraph}
+このように、**CSSのクラスを変数で指定する場合も、波括弧 `{ }` を使用します。**
+:::
+
+::: {#ch02-22-paragraph-52 .paragraph}
+データの値に応じて文字色やデザインを切り替える場合にも、この書き方を活用できます。条件によってデザインを切り替える方法は、2.5節で学習します。
+:::
+
+:::: {#ch02-22-training-note-02 .training-note}
+**【補足】BootstrapのCSSの読み込み**
+
+Bootstrapをインストールしただけでは、画面にBootstrapのデザインは適用されません。BootstrapのCSSを読み込む必要があります。
+
+本研修の配布サンプルでは、`main.tsx` に次の記述を用意しています。
+
+~~~{#ch02-22-code-11 .tsx filename="ch02-basic/src/main.tsx" start-line="3"}
 import 'bootstrap/dist/css/bootstrap.min.css'
-```
-:::
+~~~
 
+この記述によってBootstrapのCSSが読み込まれ、`text-primary` や `fw-bold` などのクラスを画面のデザインに使用できます。
+
+配布サンプルには、この設定があらかじめ記述されているため、受講者が追加する必要はありません。
 ::::
+:::::
 
-:::: {#page-19 .source-page}
-
-::: {#ch02-values-practice .heading level="minor"}
+:::: {#page-20 .source-page}
+::: {#ch02-22-heading-04 .heading level="minor"}
 【確認演習】商品情報の表示と属性を設定する
 :::
 
-::: {#ch02-values-practice-intro .paragraph}
-商品データやクラス名の変数を、JSXの本文とHTML属性に設定します。単価300円、数量3個、合計を青い太字にするクラス名は、あらかじめ定義されています。
+::: {#ch02-22-paragraph-53 .paragraph}
+商品名・単価・画像のパス・数量などのデータをJSXに設定し、商品情報を表示する画面を作成します。
 :::
 
-::: {#ch02-values-practice-1 .paragraph numbered="true"}
-1．　`ch02-basic-q` プロジェクトの `src/components/Q2_2.tsx` を開いてください。
+::: {#ch02-22-paragraph-54 .paragraph}
+商品データや数量、合計金額のデザインに使用するCSSのクラス名は、あらかじめ定義されています。これらの値を使用して、商品情報を正しく表示できるようにしましょう。
 :::
 
-::: {#ch02-values-practice-2 .paragraph numbered="true"}
-2．　コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch02-22-paragraph-55 .paragraph numbered="true"}
+1．`ch02-basic-q` プロジェクトの `src/components/Q2_2.tsx` を開いてください。
 :::
 
-::: {#ch02-values-practice-3 .paragraph numbered="true"}
-3．　編集したファイルを保存してください。
+::: {#ch02-22-paragraph-56 .paragraph numbered="true"}
+2．コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-values-practice-4 .paragraph numbered="true"}
-4．　`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch02-22-paragraph-57 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
 :::
 
-::: {#ch02-values-practice-5 .paragraph numbered="true"}
-5．　メニューから「2.2 JSXによるデータ表示と属性の設定」を選んでください。
+::: {#ch02-22-paragraph-58 .paragraph numbered="true"}
+4．`ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。すでに開発サーバーを起動している場合は、ブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-values-practice-check .heading level="minor"}
+::: {#ch02-22-paragraph-59 .paragraph numbered="true"}
+5．メニューから「2.2 JSXによるデータ表示と属性の設定」を選択してください。
+:::
+
+::: {#ch02-22-heading-05 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch02-values-practice-result .paragraph numbered="true" keep-lines="true"}
-6．　ノートの画像と商品名「ノート」、単価300円、数量3個を確認してください。<br>合計は **青い太字で900円** と表示されます。
+::: {#ch02-22-paragraph-60 .paragraph numbered="true"}
+6．次の図と見比べながら、商品情報が正しく表示されていることを確認してください。
 :::
 
-::: {#ch02-values-practice-note-1 .paragraph}
+![確認演習の実装後に表示される商品情報](assets/jsx-exercise-product.svg){#ch02-product-exercise-result}
+
+::: {#ch02-product-exercise-result-caption .paragraph}
+確認演習の実装後に表示される商品情報
+:::
+
+::: {#ch02-22-paragraph-61 .paragraph keep-next="3"}
+次の3点を確認できれば、演習完了です。
+:::
+
+::: {#ch02-22-paragraph-62 .paragraph}
+● ノートの画像が表示されている。
+:::
+
+::: {#ch02-22-paragraph-63 .paragraph}
+● 商品名が「ノート」、単価が300円、数量が3個と表示されている。
+:::
+
+::: {#ch02-22-paragraph-64 .paragraph}
+● 合計金額が **青い太字で900円** と表示されている。
+:::
+
+::: {#ch02-22-paragraph-65 .paragraph}
 画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度確認してください。
 :::
 
-::: {#ch02-values-practice-note-2 .paragraph}
-今回は、ソースコードを編集して保存したことで、Viteの機能によって画面が更新されました。次の節では、ボタン操作などによって実行中にデータを変更し、画面に反映するための `useState` を学習します。
+::: {#ch02-22-paragraph-66 .paragraph}
+ここまでの演習では、ソースコードを編集して保存することで、画面の表示を変更しました。
 :::
 
-::: {#ch02-values-points .section-points}
+::: {#ch02-22-paragraph-67 .paragraph}
+実際のWebアプリケーションでは、ボタンのクリックなどによって、プログラムの実行中にデータを変更し、その結果を画面に反映することも必要になります。
+:::
+
+::: {#ch02-22-paragraph-68 .paragraph}
+次の2.3節では、そのための仕組みとして `useState` を学習します。
+:::
+
+::: {#ch02-22-section-points-01 .section-points}
 この節のポイント
 
-● JSXでは `{ }` を使用して、変数・計算結果・オブジェクトのプロパティを表示できる。
+● JSXでは、波括弧 `{ }` を使用して、変数の値、オブジェクトのプロパティ、計算結果などを表示できる。
 
-● 属性に固定の文字列を設定する場合は引用符を、JavaScriptの値を設定する場合は `{ }` を使用する。
+● JSXの波括弧の中にはJavaScriptの式を記述する。`if` 文や `for` 文をそのまま記述することはできない。
 
-● `src` や `className` などの属性にも変数の値を設定できる。
+● 属性に固定の文字列を指定する場合は引用符、JavaScriptの値を指定する場合は波括弧を使用する。
 
-● Bootstrapのクラスを指定すると、文字色やデザインを簡単に変更できる。
+● `src` や `className` などの属性にも、変数やオブジェクトのプロパティの値を設定できる。
+
+● BootstrapのCSSのクラスを指定することで、文字色や文字の太さなどを簡単に設定できる。
 :::
-
 ::::
 
 :::: {#page-21 .source-page}

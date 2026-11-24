@@ -107,8 +107,21 @@ def read_markdown(path):
                     continue
                 parts = []
                 language = None
+                note_code = None
                 for child in children:
                     if child["t"] == "CodeBlock":
+                        if attrs[1][0] == 'training-note':
+                            code_attrs, code_text = child['c']
+                            code_id = code_attrs[0]
+                            if (note_code or not parts or not code_id or code_id == attrs[0]
+                                    or code_id in nodes or code_id in figures):
+                                raise ValueError(f'補足枠のコードの位置またはIDが不正です: {attrs[0]}')
+                            note_code = (
+                                len(paragraph_parts(parts)) - 1, code_id,
+                                dict(kind='code', parts=[(code_text, None)], text=code_text,
+                                     language=next(iter(code_attrs[1]), None), attrs=dict(code_attrs[2])),
+                            )
+                            continue
                         parts.append((child["c"][1], None))
                         language = next(iter(child["c"][0][1]), None)
                     elif child['t']=='Table':
@@ -129,6 +142,11 @@ def read_markdown(path):
                 if attrs[1][0] in ('table', 'comparison'):
                     nodes[attrs[0]].update(rows=rows, has_header=has_header)
                 entries.append(attrs[0])
+                if note_code:
+                    after, code_id, code_node = note_code
+                    nodes[attrs[0]]['embedded_code'] = (after, code_id)
+                    nodes[code_id] = code_node
+                    entries.append(code_id)
             elif block["t"] == "Para" and len(block["c"]) == 1 and block["c"][0]["t"] == "Image":
                 image = block["c"][0]["c"]
                 if not image[0][0] or image[0][0] in figures or image[0][0] in nodes:
@@ -233,7 +251,7 @@ def typographic_parts(parts, keep_lines=False):
     return result
 
 
-def inline(parts, typography=True, heading=False, keep_lines=False):
+def inline(parts, typography=True, heading=False, keep_lines=False, preserve_punctuation_font=False):
     result = []
     if typography:
         parts = typographic_parts(parts, keep_lines=keep_lines)
@@ -257,7 +275,7 @@ def inline(parts, typography=True, heading=False, keep_lines=False):
                 content = f'#{modifier}[{content}]'
         result.append(content)
     content = ''.join(result)
-    return '#flowing[' + content + ']' if typography else content
+    return '#flowing[' + content + ']' if typography and not preserve_punctuation_font else content
 
 
 def pagination_options(config, layout, nodes, figures, order):
@@ -355,6 +373,7 @@ def paragraph_parts(parts):
 def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
     page_continuations, paragraph_pairs, figure_scales = pagination_options(config, layout, nodes, figures, order)
     heading_spacing = config.get('typography', {}).get('minor_heading_extra_space', {})
+    note_codes = {node['embedded_code'][1] for node in nodes.values() if 'embedded_code' in node}
     if isinstance(heading_spacing, list):
         heading_spacing = dict.fromkeys(heading_spacing, 18)
     if any(ident not in nodes or nodes[ident]['kind'] != 'heading' for ident in heading_spacing):
@@ -684,7 +703,11 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection}, numbered: {numbered_entry})'
         if node['kind'] == 'training-note':
             title, *paragraphs = paragraph_parts(node['parts'])
-            body = '#parbreak()'.join(inline(paragraph) for paragraph in paragraphs)
+            parts = [inline(paragraph) for paragraph in paragraphs]
+            if embedded_code := node.get('embedded_code'):
+                after, code_id = embedded_code
+                parts.insert(after, modern_panel(code_id) if modern else render(code_id))
+            body = '#parbreak()'.join(parts)
             return f'#training-note({q(ident)}, [{inline(title)}], [{body}])'
         if node['kind'] == 'stage-flow':
             paragraphs = iter(paragraph_parts(node['parts']))
@@ -812,7 +835,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             options += ', minor: true'
         # 見出しに分類された説明文の続き（句点終わり）は、原本の通常書体を保つ。
         heading = node['kind'] == 'heading' and not node['text'].rstrip().endswith('。')
-        return f'#{method}({q(ident)}, [{inline(node["parts"], heading=heading)}]{options})'
+        body = inline(node['parts'], heading=heading,
+                      preserve_punctuation_font=node['attrs'].get('punctuation-font') == 'inherit')
+        return f'#{method}({q(ident)}, [{body}]{options})'
 
     entries = []
     for page in order[1:] if has_cover else order:
@@ -879,6 +904,9 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             i+=1
             continue
         if ident in illustration_captions or ident in joined_continuations:
+            i += 1
+            continue
+        if ident in note_codes:
             i += 1
             continue
         # 続き本文の後に節・項が登場した場合は、その見出しから新頁にする。

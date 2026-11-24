@@ -63,8 +63,13 @@ def canonical(value):
     return value.translate(str.maketrans({'“': '"', '”': '"', '‘': "'", '’': "'"}))
 
 
-def highlighted(value, lang, soft_breaks=False):
+def highlighted(value, lang, soft_breaks=False, outlines=()):
     output = []
+    edges = {}
+    for start, end in outlines:
+        edges[start] = edges.get(start, '') + '<span class="code-highlight-text">'
+        edges[end] = '</span>' + edges.get(end, '')
+    position = 0
     # JavaLexerは行末コメントの終端に改行を必要とする。補った1字だけ最後に除く。
     for token, text in lex(value+'\n', get_lexer_by_name(lang, stripnl=False, ensurenl=False)):
         kind = next((name for family, name in ((Token.Comment, 'comment'), (Token.Name.Decorator, 'annotation'), (Token.Keyword, 'keyword'),
@@ -75,15 +80,23 @@ def highlighted(value, lang, soft_breaks=False):
             kind = 'element'
         elif lang == 'html' and token in Token.Name.Attribute and text.startswith('th:'):
             kind = 'thymeleaf'
-        fragments = text.split('\n')
-        for i, fragment in enumerate(fragments):
-            if fragment:
-                safe = escape(fragment)
+        for fragment in re.split(r'(\n)', text):
+            if not fragment:
+                continue
+            limit = position + len(fragment)
+            cuts = sorted(edge for edge in edges if position <= edge < limit)
+            cursor = position
+            for end in [*cuts, limit]:
+                piece = fragment[cursor-position:end-position]
+                safe = escape(piece)
                 if soft_breaks and token in Token.Punctuation:
                     safe = re.sub(r'([.,(])', r'\1<wbr>', safe)
-                output.append(f'<span class="{kind}">{safe}</span>' if kind else safe)
-            if i < len(fragments)-1:
-                output.append('\n')
+                if safe:
+                    output.append(f'<span class="{kind}">{safe}</span>' if kind and piece != '\n' else safe)
+                if end < limit:
+                    output.append(edges[end])
+                cursor = end
+            position = limit
     return ''.join(output).removesuffix('\n')
 
 
@@ -115,10 +128,22 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False):
-    first, last = map(int, highlight_lines.split('-')) if highlight_lines else (0, -1)
+def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False, highlight_tokens=''):
+    ranges = []
+    for segment in filter(None, highlight_lines.split(',')):
+        start, _, end = segment.partition('-')
+        ranges.append((int(start), int(end or start)))
     source = '\n'.join(row['code'] for row in rows)
-    markup = highlighted(source, lang)
+    outlines = []
+    for value in filter(None, highlight_tokens.split('|')):
+        if '\n' in value or source.count(value) != 1:
+            raise ValueError(f'コードの強調箇所を一意に特定できません: {value}')
+        start = source.index(value)
+        outlines.append((start, start + len(value)))
+    outlines.sort()
+    if any(end > start for (_, end), (start, _) in zip(outlines, outlines[1:])):
+        raise ValueError(f'コードの強調箇所が重複しています: {highlight_tokens}')
+    markup = highlighted(source, lang, outlines=outlines)
     if highlight_text:
         if lang != 'text' or source.count(highlight_text) != 1:
             raise ValueError(f'コンソールの強調箇所を特定できません: {highlight_text}')
@@ -134,12 +159,14 @@ def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_te
         classes = ['code-row']
         if example:
             classes.append('code-example')
-        if first <= number <= last:
-            classes.append('code-highlight')
-            if number == first:
-                classes.append('code-highlight-start')
-            if number == last:
-                classes.append('code-highlight-end')
+        for first, last in ranges:
+            if first <= number <= last:
+                classes.append('code-highlight')
+                if number == first:
+                    classes.append('code-highlight-start')
+                if number == last:
+                    classes.append('code-highlight-end')
+                break
         gutter = '' if example else f'<div class="line-number">{number}</div>'
         pieces.append(f'<div class="{" ".join(classes)}" data-break-row' + ids_attr(row['ids']) + '>'
             + gutter + f'<pre class="source-code" spellcheck="false">{content}</pre></div>')
@@ -354,6 +381,7 @@ def explanation_html(record, nodes, layout=None):
 def prepare(folder, config, layout, nodes, figures, order):
     chapter = folder.name
     fixed = set(config.get('native_pages',[]))
+    note_codes = {node['embedded_code'][1] for node in nodes.values() if 'embedded_code' in node}
     pages = {ident:page['source_page'] for page in order for ident in page['entries']}
     numbered_figures = figure_numbers(folder, config, layout, nodes, figures, order)
     explanations = [r for r in json.loads((HERE/'code_explanations.json').read_text(encoding='utf-8')) if r['chapter']==chapter and pages[r['anchor_id']] not in fixed]
@@ -385,6 +413,9 @@ def prepare(folder, config, layout, nodes, figures, order):
         geo = geometries.get(ident)
         width = geo['frame'][2]-geo['frame'][0] if geo else 426.672
         offset = geo['frame'][0]-85.104 if geo else 0
+        if ident in note_codes:
+            # 補足枠の左右12ptの余白を差し引く。
+            width -= 24
         caption_ids = list(dict.fromkeys(i for g in group for i in geometries.get(g,{}).get('caption_ids',[]) if FILE_LABEL.fullmatch(nodes[i]['text'].strip())))
         names = [(nodes[i]['text'].strip(),[i]) for i in caption_ids]
         if nodes[ident].get('attrs',{}).get('filename'):
@@ -416,7 +447,7 @@ def prepare(folder, config, layout, nodes, figures, order):
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
         attrs = nodes[ident]['attrs']
         code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''),
-                         example=attrs.get('example') == 'true')
+                         example=attrs.get('example') == 'true', highlight_tokens=attrs.get('highlight-tokens', ''))
         add(ident,ident,consume,code,width,offset)
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:
