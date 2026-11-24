@@ -49,6 +49,10 @@ html, body {
   overflow-wrap: anywhere;
 }
 
+.code-card.wide-code-label .card-header .language-badge {
+  max-width: none;
+}
+
 .card-header .filename {
   display: flex;
   flex-wrap: wrap;

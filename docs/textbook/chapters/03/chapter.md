@@ -1271,7 +1271,7 @@ pathとelementでURLのパスと画面を対応付ける
 例えば、3.2のサンプルへ接続する設定は、次のようになります。
 :::
 
-::: {#ch03-router-m387 .code example="true" code-label="TSXの記述例（教材メニューとの接続設定・一部）"}
+::: {#ch03-router-m387 .code example="true" code-label="TSXの記述例（教材メニューとの接続設定・一部）" wide-code-label="true"}
 ~~~tsx
 <Route path="/sample-3-2/*" element={<Sample3_2 />} />
 ~~~
