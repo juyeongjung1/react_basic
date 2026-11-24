@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="352" height="224" viewBox="0 0 352 224" font-family="Meiryo, sans-serif">
+  <title>通常のHTMLリンクとReact Routerのリンクによる画面遷移</title>
+  <rect x="3" y="5" width="169" height="214" rx="6" fill="#fcf6ef" stroke="#e4c6a8"/>
+  <rect x="180" y="5" width="169" height="214" rx="6" fill="#f0f7fb" stroke="#b6cfde"/>
+  <g text-anchor="middle">
+    <text x="87.5" y="24" font-size="12" font-weight="700" fill="#754820">従来のHTMLリンク</text>
+    <text x="264.5" y="24" font-size="12" font-weight="700" fill="#174c6a">React Routerのリンク</text>
+    <text x="87.5" y="39" font-size="10.5" fill="#754820">ページ全体を読み込む</text>
+    <text x="264.5" y="39" font-size="10.5" fill="#174c6a">コンテンツ部分を切り替える</text>
+  </g>
+  <g transform="translate(14 48)">
+    <rect width="147" height="60" rx="4" fill="#fff" stroke="#b27949"/>
+    <path d="M1 16h145M1 46h145" stroke="#e4c6a8"/>
+    <g text-anchor="middle" fill="#5b4a3d">
+      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
+      <text x="73.5" y="35" font-size="12" font-weight="700">ホーム</text>
+      <text x="73.5" y="56" font-size="9.6">フッター</text>
+    </g>
+  </g>
+  <path d="M87.5 114v15m-4-4 4 4 4-4" fill="none" stroke="#b27949" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <g transform="translate(14 135)">
+    <rect width="147" height="60" rx="4" fill="#fae9d8" stroke="#b27949"/>
+    <path d="M1 16h145M1 46h145" stroke="#d6ad89"/>
+    <g text-anchor="middle" fill="#754820">
+      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
+      <text x="73.5" y="35" font-size="12" font-weight="700">商品一覧</text>
+      <text x="73.5" y="56" font-size="9.6">フッター</text>
+    </g>
+  </g>
+  <g transform="translate(191 48)">
+    <rect width="147" height="60" rx="4" fill="#dcebf4" stroke="#6f9bb6"/>
+    <rect x="1" y="16" width="145" height="30" fill="#fff" stroke="#b6cfde" stroke-width=".7"/>
+    <g text-anchor="middle" fill="#174c6a">
+      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
+      <text x="73.5" y="35" font-size="12" font-weight="700">ホーム</text>
+      <text x="73.5" y="56" font-size="9.6">フッター</text>
+    </g>
+  </g>
+  <path d="M264.5 114v15m-4-4 4 4 4-4" fill="none" stroke="#3e7fa5" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+  <g transform="translate(191 135)">
+    <rect width="147" height="60" rx="4" fill="#dcebf4" stroke="#6f9bb6"/>
+    <rect x="1" y="16" width="145" height="30" fill="#fef0dd" stroke="#c68a4f" stroke-width=".9"/>
+    <g text-anchor="middle" fill="#174c6a">
+      <text x="73.5" y="12" font-size="9.6">ヘッダー・メニュー</text>
+      <text x="73.5" y="35" font-size="12" font-weight="700" fill="#754820">商品一覧</text>
+      <text x="73.5" y="56" font-size="9.6">フッター</text>
+    </g>
+  </g>
+  <g text-anchor="middle" font-size="10" font-weight="700">
+    <text x="87.5" y="211" fill="#754820">共通部分も読み込み直す</text>
+    <text x="264.5" y="211" fill="#174c6a">共通部分はそのまま維持</text>
+  </g>
+</svg>

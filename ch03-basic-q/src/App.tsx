@@ -1,15 +1,20 @@
 import { Route, Routes, useMatch } from 'react-router'
 import Q3_1 from './components/Q3_1'
 import Q3_2 from './components/Q3_2'
+import Q3_4 from './components/Q3_4'
+import Sample3_1 from './components/reference/Sample3_1'
 
 const propsPath = '/sample-3-1'
+const navigationPath = '/sample-3-4'
 const lessons = [
   { label: '3.1 コンポーネントの分割とProps', path: propsPath },
   { label: '3.2 React Routerによるルーティング', path: '/' },
+  { label: '3.4 SPAの画面遷移（LinkとNavLink）', path: navigationPath },
 ]
 
 export default function App() {
-  const activePath = useMatch(propsPath) ? propsPath : '/'
+  const defaultPath = useMatch(propsPath) ? propsPath : '/'
+  const activePath = useMatch(navigationPath + '/*') ? navigationPath : defaultPath
 
   return (
     <>
@@ -32,6 +37,21 @@ export default function App() {
       </nav>
       <Routes>
         <Route path={propsPath} element={<Q3_1 />} />
+        <Route path={navigationPath} element={<Q3_4 />}>
+          <Route index element={
+            <main className="container mt-4">
+              <h1>ホーム</h1>
+              <p>商品管理システムへようこそ。</p>
+            </main>
+          } />
+          <Route path="products" element={<Sample3_1 />} />
+          <Route path="guide" element={
+            <main className="container mt-4">
+              <h1>ご利用案内</h1>
+              <p>このシステムでは商品情報を確認できます。</p>
+            </main>
+          } />
+        </Route>
         <Route path="/*" element={<Q3_2 />} />
       </Routes>
     </>
