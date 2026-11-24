@@ -3558,3 +3558,51 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 :::
 
 ::::
+
+:::: {#page-18 .source-page}
+
+::: {#ch03-summary-title .heading}
+章のまとめ
+:::
+
+::: {#ch03-summary-slide .slide layout="summary"}
+章のまとめ
+
+■ コンポーネントの分割とProps
+
+■ React Routerによるルーティング
+
+■ 共通レイアウトの作成
+
+■ SPAの画面遷移（LinkとNavLink）
+
+■ URLパラメータの取得
+
+■ プログラムによる画面遷移
+:::
+
+::: {#ch03-summary-1 .paragraph}
+この章では、Reactを使用して複数の画面を持つSPAを作成する方法を学習しました。
+:::
+
+::: {#ch03-summary-2 .paragraph}
+最初に、コンポーネントを分割し、Propsを使用して親コンポーネントから子コンポーネントへデータを渡す方法を学習しました。
+:::
+
+::: {#ch03-summary-3 .paragraph}
+続いて、React Routerを使用してURLに応じた画面表示を実装しました。また、共通レイアウトを作成し、ヘッダーやメニュー、フッターを維持したまま、コンテンツ部分を切り替える方法を確認しました。
+:::
+
+::: {#ch03-summary-4 .paragraph}
+さらに、LinkやNavLinkを使用した画面遷移や、useParams()を使用してURLから商品番号などの値を取得する方法を学習しました。
+:::
+
+::: {#ch03-summary-5 .paragraph}
+最後に、useNavigate()を使用して、プログラムの処理に応じて画面遷移を行う方法を学習しました。
+:::
+
+::: {#ch03-summary-6 .paragraph}
+次の第4章では、Contextを使用して、複数のコンポーネントから共通のデータを参照・更新する方法を学習します。
+:::
+
+::::

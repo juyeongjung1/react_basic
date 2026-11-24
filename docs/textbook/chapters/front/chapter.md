@@ -156,6 +156,10 @@ XXXX-T-01
 3.6. プログラムによる画面遷移
 :::
 
+::: {#contents-ch03-summary .contents-entry target="03:ch03-summary-title"}
+章のまとめ
+:::
+
 ::::
 
 :::: {#page-4 .source-page}
