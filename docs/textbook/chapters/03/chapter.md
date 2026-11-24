@@ -199,7 +199,7 @@ Reactでは、コンポーネントを別のTSXファイルに定義し、ほか
 まずは、商品画像付きカードを表示するコンポーネントを作成してみましょう。
 :::
 
-::: {#ch03-separate-files-3-code .code example="true"}
+::: {#ch03-separate-files-3-code .code example="true" filename="ch03-basic/src/components/ProductCard.tsx"}
 ```tsx
 export default function ProductCard() {
   return (
@@ -223,6 +223,10 @@ export default function ProductCard() {
 `return`の中には、画像・商品名・単価を表示するJSXを記述しています。
 :::
 
+::: {#ch03-place-product-card .heading level="minor" keep-next="2"}
+ProductCardを親コンポーネントに配置する
+:::
+
 ::: {#ch03-separate-files-6 .paragraph}
 この`ProductCard`を別のファイルから使用する場合は、`import`で読み込みます。
 :::
@@ -237,7 +241,7 @@ import ProductCard from './ProductCard'
 そして、JSXの中に次のように記述します。
 :::
 
-::: {#ch03-separate-files-9-code .code example="true"}
+::: {#ch03-separate-files-9-code .code example="true" filename="ch03-basic/src/components/Sample3_1.tsx"}
 ```tsx
 <ProductCard />
 ```
@@ -301,7 +305,7 @@ Props（プロップス）とは、**親コンポーネントから子コンポ�
 その場合は、次のように記述します。
 :::
 
-::: {#ch03-definition-6-code .code example="true"}
+::: {#ch03-definition-6-code .code example="true" filename="ch03-basic/src/components/Sample3_1.tsx"}
 ```tsx
 <ProductCard name="ノート" price={250} imagePath="/images/products/notebook.svg" />
 ```
