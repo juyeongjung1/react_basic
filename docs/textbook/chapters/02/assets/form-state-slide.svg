@@ -1,44 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="352" height="218" viewBox="0 0 352 218">
-  <rect x="5" y="8" width="106" height="110" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="6" y="9" width="104" height="24" rx="6" fill="#205b84" stroke="none" stroke-width="0.8"/>
-  <text x="58" y="25" font-size="10.9" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">フォームへの入力</text>
-  <rect x="123" y="8" width="106" height="110" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="124" y="9" width="104" height="24" rx="6" fill="#226757" stroke="none" stroke-width="0.8"/>
-  <text x="176" y="25" font-size="10.9" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">stateの更新</text>
-  <rect x="241" y="8" width="106" height="110" rx="7" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="242" y="9" width="104" height="24" rx="6" fill="#55498a" stroke="none" stroke-width="0.8"/>
-  <text x="294" y="25" font-size="10.9" fill="#ffffff" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">画面への反映</text>
-  <text x="15" y="49" font-size="10" fill="#205b84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">商品名</text>
-  <rect x="14" y="55" width="88" height="26" rx="4" fill="#ffffff" stroke="#86b7fe" stroke-width="0.8"/>
-  <text x="21" y="72" font-size="12" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">ノート</text>
-  <text x="58" y="102" font-size="9.8" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">onChangeが発生</text>
-  <text x="176" y="49" font-size="10.4" fill="#226757" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">productName</text>
-  <rect x="132" y="55" width="88" height="26" rx="4" fill="#e8f5ed" stroke="#a7cabd" stroke-width="0.8"/>
-  <text x="176" y="72" font-size="12" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">ノート</text>
-  <text x="176" y="96" font-size="10.1" fill="#226757" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">setProductName</text>
-  <text x="176" y="109" font-size="9.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">で保存</text>
-  <text x="294" y="49" font-size="8.7" fill="#55498a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">Reactが再レンダリング</text>
-  <rect x="250" y="55" width="88" height="48" rx="4" fill="#f1edf8" stroke="#ccc2dd" stroke-width="0.8"/>
-  <text x="294" y="71" font-size="9.7" fill="#55498a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力内容の確認</text>
-  <text x="294" y="91" font-size="9.7" fill="#183449" font-weight="400" text-anchor="middle" font-family="Meiryo, sans-serif">商品名：ノート</text>
-  <path d="M 112 69 L 118.70 69.00" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 123 69 L 118.70 66.50 L 118.70 71.50 Z" fill="#205b84"/>
-  <path d="M 230 69 L 236.70 69.00" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 241 69 L 236.70 66.50 L 236.70 71.50 Z" fill="#226757"/>
-  <path d="M 176 118 V 135 H 58 V 123" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 58 123 L 58.00 122.30" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 58 118 L 55.50 122.30 L 60.50 122.30 Z" fill="#226757"/>
-  <text x="117" y="151" font-size="10.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">valueで入力欄にも反映</text>
-  <rect x="5" y="163" width="342" height="48" rx="6" fill="#f7f9fb" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="17" y="178" font-size="10.7" fill="#183449" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">プログラム側からstateを変更する</text>
-  <rect x="13" y="186" width="98" height="18" rx="4" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
-  <text x="62" y="198.5" font-size="9.6" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力をクリア</text>
-  <rect x="127" y="186" width="98" height="18" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="176" y="198.5" font-size="9.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">stateを初期値へ</text>
-  <rect x="241" y="186" width="98" height="18" rx="4" fill="#f1edf8" stroke="none" stroke-width="0.8"/>
-  <text x="290" y="198.5" font-size="9.6" fill="#55498a" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力欄も元に戻る</text>
-  <path d="M 113 195 L 120.70 195.00" fill="none" stroke="#205b84" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 125 195 L 120.70 192.50 L 120.70 197.50 Z" fill="#205b84"/>
-  <path d="M 227 195 L 234.70 195.00" fill="none" stroke="#226757" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 239 195 L 234.70 192.50 L 234.70 197.50 Z" fill="#226757"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="424" viewBox="0 0 760 424">
+  <rect x="7" y="37" width="218" height="135" rx="8" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="8" y="38" width="216" height="32" rx="7" fill="#205b84" stroke="none" stroke-width="1.4"/>
+  <text x="116" y="61" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="700" text-anchor="middle">フォームへの入力</text>
+  <rect x="272" y="37" width="218" height="135" rx="8" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="273" y="38" width="216" height="32" rx="7" fill="#226757" stroke="none" stroke-width="1.4"/>
+  <text x="381" y="61" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="700" text-anchor="middle">stateで管理</text>
+  <rect x="535" y="37" width="218" height="135" rx="8" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="536" y="38" width="216" height="32" rx="7" fill="#55498a" stroke="none" stroke-width="1.4"/>
+  <text x="644" y="61" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="700" text-anchor="middle">画面への反映</text>
+  <text x="23" y="100" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="400" text-anchor="start">商品名</text>
+  <rect x="23" y="110" width="186" height="37" rx="6" fill="white" stroke="#86b7fe" stroke-width="1.4"/>
+  <text x="34" y="136" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#183449" font-weight="400" text-anchor="start">ノート</text>
+  <text x="381" y="107" font-family="Courier New, MS Gothic" font-size="23" fill="#226757" font-weight="700" text-anchor="middle">productName =</text>
+  <text x="381" y="135.75" font-family="Courier New, MS Gothic" font-size="23" fill="#226757" font-weight="700" text-anchor="middle">&#x27;ノート&#x27;</text>
+  <text x="551" y="107" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="700" text-anchor="start">入力内容の確認</text>
+  <text x="551" y="140" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">商品名：ノート</text>
+  <polyline points="116,37 116,25 342,25 342,37" fill="none" stroke="#205b84" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="347,28 342,37 337,28" fill="none" stroke="#205b84" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="229" y="18" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#205b84" font-weight="400" text-anchor="middle">入力値を取得</text>
+  <polyline points="422,37 422,25 644,25 644,37" fill="none" stroke="#55498a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="649,28 644,37 639,28" fill="none" stroke="#55498a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="533" y="18" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#55498a" font-weight="400" text-anchor="middle">画面を更新</text>
+  <polyline points="381,172 381,188 116,188 116,172" fill="none" stroke="#226757" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="111,181 116,172 121,181" fill="none" stroke="#226757" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="247" y="211" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#226757" font-weight="400" text-anchor="middle">stateの値を入力欄に反映</text>
+  <rect x="7" y="231" width="746" height="124" rx="6" fill="#f0f5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="380" y="263" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">プログラム側からstateを変更する</text>
+  <rect x="25" y="281" width="182" height="55" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="116" y="314.8" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#183449" font-weight="400" text-anchor="middle">入力をクリア</text>
+  <rect x="236" y="281" width="222" height="55" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="347" y="314.8" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#183449" font-weight="400" text-anchor="middle">stateを初期値に戻す</text>
+  <rect x="489" y="281" width="246" height="55" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="612" y="303.55" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#183449" font-weight="400" text-anchor="middle">フォームと</text>
+  <text x="612" y="326.05" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#183449" font-weight="400" text-anchor="middle">確認エリアが元に戻る</text>
+  <polyline points="211,309 231,309" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="222,304 231,309 222,314" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="463,309 484,309" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="475,304 484,309 475,314" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="380" y="398" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">入力内容をstateで管理し、フォームや画面の表示に反映する</text>
 </svg>

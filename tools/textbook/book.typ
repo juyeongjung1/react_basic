@@ -30,8 +30,8 @@
   #set par(first-line-indent: (amount: indent, all: true))
   #mark(id, "start")#body#mark(if end-id == none {id} else {end-id}, "end")#parbreak()
 ]
-#let bullet-paragraph(id, marker, body, continuing: false) = block(
-  above: 12.96pt, below: if continuing {6.96pt} else {12.96pt}, inset: (left: 11.04pt))[
+#let bullet-paragraph(id, marker, body, continuing: false, left: 11.04pt) = block(
+  above: 12.96pt, below: if continuing {6.96pt} else {12.96pt}, inset: (left: left))[
   #mark(id, "start")#grid(columns: (12pt, 1fr), column-gutter: 6pt, marker, body)#mark(id, "end")
 ]
 #let numbered-paragraph(id, marker, body) = block(
@@ -70,17 +70,22 @@
   below: 12pt, inset: 8pt, fill: rgb("F5F8FC"), stroke: 0.65pt + rgb("A6B8CE"), radius: 4pt)[
   #body
 ]
-#let training-note(id, title, body) = block(width: 100%, breakable: false,
+#let training-note(id, title, body, breakable: false) = block(width: 100%, breakable: breakable,
   above: 18pt, below: 14pt, inset: (x: 12pt, y: 10pt), radius: 3pt,
   stroke: (left: 3pt + rgb("AD521F"), rest: 0.65pt + rgb("D8A47E")), fill: rgb("FFF4E8"))[
   #mark(id, "start")
-  #stack(spacing: 7pt,
-    text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 0.3pt + rgb("78370F"),
-      fill: rgb("78370F"), title),
-    block(above: 0pt, below: 0pt)[
+  #let note-title = text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 0.3pt + rgb("78370F"),
+    fill: rgb("78370F"), title)
+  #if breakable [
+    #block(sticky: true, above: 0pt, below: 7pt)[#mark(id, "heading")#note-title]
+    #set par(first-line-indent: 0pt)
+    #body
+  ] else {
+    stack(spacing: 7pt, note-title, block(above: 0pt, below: 0pt)[
       #set par(first-line-indent: 0pt)
       #body
     ])
+  }
   #mark(id, "end")
 ]
 #let stage-flow(id, stages) = block(width: 100%, breakable: false, above: 10pt, below: 13pt)[

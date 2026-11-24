@@ -3411,483 +3411,65 @@ map()によって4件の商品データが4行に表示されることを確認�
 ::: {#ch02-form-slide .slide layout="illustration"}
 フォーム入力と状態の連動
 
-![入力値をstateに保存し、フォームと確認エリアに反映する](assets/form-state-slide.svg)
+![入力内容をstateで管理し、フォームや画面の表示に反映する](assets/form-state-slide.svg)
 :::
 
 ::: {#ch02-form-intro .heading level="minor"}
 フォームの入力値をReactで管理するには
 :::
 
-::: {#ch02-form-intro-text-1 .paragraph}
-Webアプリケーションでは、ユーザーがフォームに入力した情報を利用して、さまざまな処理を行います。
+::: {#ch02-form-line-59 .paragraph}
+これまでの学習では、ボタンのクリックなどのイベントに応じてstateを更新し、その結果を画面に反映する方法を確認しました。
 :::
 
-::: {#ch02-form-intro-text-2 .paragraph}
-例えば、商品管理システムでは、商品名の入力やカテゴリの選択、販売状態の設定などが必要になります。
+::: {#ch02-form-line-61 .paragraph}
+実際のWebアプリケーションでは、ユーザーが入力した情報を使用して処理を行う場面が多くあります。例えば、商品管理システムに商品を登録する場合は、次のような情報をフォームから入力する必要があります。
 :::
 
-::: {#ch02-form-intro-text-3 .paragraph}
-通常のHTMLでは、次のように入力欄を作成できます。
+::: {#ch02-form-line-63 .paragraph}
+● 商品名をテキスト入力欄に入力する。
 :::
 
-::: {#ch02-form-html-input .code example="true"}
-```html
-<input type="text">
-```
+::: {#ch02-form-line-64 .paragraph}
+● 商品のカテゴリをセレクトボックスから選択する。
 :::
 
-::: {#ch02-form-intro-text-4 .paragraph}
-この入力欄に文字を入力することはできますが、Reactで入力内容を管理するには、入力値をstateと連動させる仕組みが必要です。
+::: {#ch02-form-line-65 .paragraph}
+● 販売中かどうかをチェックボックスで指定する。
 :::
 
+::: {#ch02-form-line-67 .paragraph}
+HTMLを使用すれば、これらの入力要素を作成できます。しかし、入力された情報を確認画面に表示したり、入力内容に応じて別の処理を行ったりするには、プログラムからその値を扱えるようにする必要があります。
+:::
+
+::: {#ch02-form-line-69 .paragraph}
+Reactでは、その方法の一つとして、**フォームの入力値をstateで管理する** ことができます。
+:::
+
+::: {#ch02-form-line-71 .paragraph}
+例えば、商品名の入力欄に「ノート」と入力したとき、その値をstateに保存すれば、画面の別の場所にも「ノート」と表示できます。また、プログラム側からstateを変更することで、入力欄の表示を変更することもできます。
+:::
+
+::: {#ch02-form-line-73 .paragraph}
+この節では、フォームの入力値とstateを連動させるための記述方法を学習します。
+:::
 ::::
 
 :::: {#page-74 .source-page}
-
-::: {#ch02-form-intro-text-5 .paragraph}
-例えば、商品名の入力欄に「ノート」と入力すると、画面の別の場所にも「ノート」と表示される機能を考えてみましょう。
-:::
-
-::: {#ch02-form-intro-text-6 .paragraph}
-Reactでは、次のような流れで実現できます。
-:::
-
-::: {#ch02-form-intro-flow .paragraph keep-lines="true"}
-① ユーザーが入力欄に「ノート」と入力する<br>　↓<br>② 入力された値をstateに保存する<br>　↓<br>③ Reactがstateの変更を受けて再レンダリングする<br>　↓<br>④ 画面の確認エリアにも「ノート」と表示される
-:::
-
-::: {#ch02-form-intro-text-7 .paragraph}
-このように、フォームの入力値とReactのstateを連動させるために使用するのが、**value属性とonChangeイベント**です。
-:::
-
-::: {#ch02-form-binding .heading level="minor"}
-value属性とonChangeイベント
-:::
-
-::: {#ch02-form-binding-text-1 .paragraph}
-まずは、テキスト入力欄をReactのstateと連動させる基本的な方法を確認しましょう。
-:::
-
-::: {#ch02-form-binding-app .code example="true"}
-```tsx
-import { useState } from 'react'
-
-export default function App() {
-  const [productName, setProductName] = useState('')
-
-  return (
-    <main>
-      <input
-        type="text"
-        value={productName}
-        onChange={(e) => setProductName(e.target.value)}
-      />
-
-      <p>商品名：{productName}</p>
-    </main>
-  )
-}
-```
-:::
-
-::::
-
-:::: {#page-75 .source-page}
-
-::: {#ch02-form-binding-text-2 .paragraph}
-このコードには、3つの重要な部分があります。
-:::
-
-::: {#ch02-form-binding-state .step}
-**① useStateで入力値を管理する**
-:::
-
-::: {#ch02-form-binding-state-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="4"}
-```tsx
-  const [productName, setProductName] = useState('')
-```
-:::
-
-::: {#ch02-form-binding-state-text-1 .paragraph}
-`productName`は、現在入力されている商品名を保持するstateです。
-:::
-
-::: {#ch02-form-binding-state-text-2 .paragraph}
-初期値は空文字列の`''`なので、最初は何も入力されていません。
-:::
-
-::: {#ch02-form-binding-state-text-3 .paragraph}
-`setProductName`は、商品名を更新するための関数です。
-:::
-
-::: {#ch02-form-binding-value .step}
-**② value属性にstateを設定する**
-:::
-
-::: {#ch02-form-binding-value-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="26"}
-```tsx
-          value={productName}
-```
-:::
-
-::: {#ch02-form-binding-value-text-1 .paragraph}
-`value`属性は、入力欄に表示する値を指定するための属性です。
-:::
-
-::: {#ch02-form-binding-value-text-2 .paragraph}
-ここでは`productName`を指定しているため、stateの値が入力欄に表示されます。
-:::
-
-::: {#ch02-form-binding-value-text-3 .paragraph}
-例えば、`productName`の値が「ノート」であれば、入力欄にも「ノート」が表示されます。
-:::
-
-::::
-
-:::: {#page-76 .source-page}
-
-::: {#ch02-form-binding-event .step}
-**③ onChangeで入力値を更新する**
-:::
-
-::: {#ch02-form-binding-event-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="27"}
-```tsx
-          onChange={(e) => setProductName(e.target.value)}
-```
-:::
-
-::: {#ch02-form-binding-event-text-1 .paragraph}
-この部分が、フォーム入力とstateを連動させるための重要な処理です。
-:::
-
-::: {#ch02-form-binding-event-text-2 .paragraph}
-`onChange`は、入力値の変更を検知するイベントです。
-:::
-
-::: {#ch02-form-binding-event-text-3 .paragraph}
-テキスト入力の場合、Reactでは文字を入力したり削除したりするたびに処理が実行されます。
-:::
-
-::: {#ch02-form-binding-event-text-4 .paragraph}
-ここで、`e`にはイベントに関する情報が渡されます。
-:::
-
-::: {#ch02-form-binding-event-text-5 .paragraph}
-そして、`e.target.value`によって、入力欄の現在の値を取得できます。
-:::
-
-::: {#ch02-form-binding-event-table-1 .table column-widths="33 67"}
-| 記述 | 意味 |
-|---|---|
-| `onChange` | 入力値が変更されたときに実行されるイベント |
-| `e` | 発生したイベントの情報 |
-| `e.target` | イベントが発生した入力要素 |
-| `e.target.value` | 入力欄の現在の値 |
-| `setProductName(...)` | 取得した入力値をstateに設定する |
-:::
-
-::: {#ch02-form-binding-event-text-6 .paragraph}
-例えば、入力欄に「ノート」と入力すると、`e.target.value`には「ノート」という文字列が入ります。
-:::
-
-::: {#ch02-form-binding-event-text-7 .paragraph}
-そして、`setProductName('ノート')`に相当する処理が実行され、stateが更新されます。
-:::
-
-![onChangeで入力値を取得し、stateを更新する](assets/form-onchange-parts.svg){#ch02-form-onchange-parts}
-
-::: {#ch02-form-onchange-parts-caption .caption}
-onChangeで入力値を取得し、stateを更新する
-:::
-
-::::
-
-:::: {#page-77 .source-page}
-
-::: {#ch02-form-controlled .heading level="minor"}
-valueとonChangeはセットで使用する
-:::
-
-::: {#ch02-form-controlled-text-1 .paragraph}
-ここで注意したいのが、`value`と`onChange`の関係です。
-:::
-
-::: {#ch02-form-controlled-text-2 .paragraph}
-例えば、次のように`value`だけを指定した場合を考えてみましょう。
-:::
-
-::: {#ch02-form-value-only-code .code example="true"}
-```tsx
-<input type="text" value={productName} />
-```
-:::
-
-::: {#ch02-form-controlled-text-3 .paragraph}
-この場合、入力欄にはstateの値が表示されます。
-:::
-
-::: {#ch02-form-controlled-text-4 .paragraph}
-しかし、`onChange`によるstateの更新処理がないため、ユーザーが文字を入力しても、その変更を保持できません。
-:::
-
-::: {#ch02-form-controlled-text-5 .paragraph}
-その結果、入力欄の値が固定されたような状態になります。
-:::
-
-::: {#ch02-form-controlled-text-6 .paragraph}
-そのため、Reactで入力値をstateによって管理する場合は、通常、次の2つをセットで記述します。
-:::
-
-::: {#ch02-form-controlled-code .code example="true"}
-```tsx
-<input
-  type="text"
-  value={productName}
-  onChange={(e) => setProductName(e.target.value)}
-/>
-```
-:::
-
-::: {#ch02-form-controlled-text-7 .paragraph}
-このように、Reactのstateによって入力値を管理するフォーム要素を、**制御された入力要素（Controlled Input）**と呼びます。
-:::
-
-![「ノート」と表示された入力欄に「ノートPC」と入力した場合](assets/form-controlled-compare.svg){#ch02-form-controlled-compare}
-
-::: {#ch02-form-controlled-compare-caption .caption}
-「ノート」と表示された入力欄に「ノートPC」と入力した場合
-:::
-
-::::
-
-:::: {#page-78 .source-page}
-
-::: {#ch02-form-category .heading level="minor"}
-セレクトボックスの入力値を管理する
-:::
-
-::: {#ch02-form-category-text-1 .paragraph}
-テキスト入力欄だけでなく、セレクトボックスもstateで管理できます。
-:::
-
-::: {#ch02-form-category-text-2 .paragraph}
-例えば、商品のカテゴリを「文房具」「事務用品」「電子機器」から選択する場合を考えてみましょう。
-:::
-
-::: {#ch02-form-category-text-3 .paragraph}
-まず、カテゴリを管理するstateを定義します。
-:::
-
-::: {#ch02-form-category-state-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="5"}
-```tsx
-  const [category, setCategory] = useState('文房具')
-```
-:::
-
-::: {#ch02-form-category-text-4 .paragraph}
-初期値は「文房具」としています。
-:::
-
-::: {#ch02-form-category-text-5 .paragraph}
-そして、セレクトボックスを次のように記述します。
-:::
-
-::: {#ch02-form-category-example .code example="true"}
-```tsx
-<select
-  value={category}
-  onChange={(e) => setCategory(e.target.value)}
->
-  <option value="文房具">文房具</option>
-  <option value="事務用品">事務用品</option>
-  <option value="電子機器">電子機器</option>
-</select>
-```
-:::
-
-::: {#ch02-form-category-text-6 .paragraph}
-基本的な仕組みは、テキスト入力欄と同じです。
-:::
-
-::: {#ch02-form-category-text-7 .paragraph}
-`value={category}`で現在選択されている値を指定し、`onChange`で新しく選択された値をstateに保存します。
-:::
-
-::: {#ch02-form-category-text-8 .paragraph}
-例えば、「電子機器」を選択すると、`category`の値も「電子機器」に更新されます。
-:::
-
-![選択を変えると、確認エリアのカテゴリも変わる](assets/form-category-states.svg){#ch02-form-category-states}
-
-::: {#ch02-form-category-states-caption .caption}
-選択を変えると、確認エリアのカテゴリも変わる
-:::
-
-::::
-
-:::: {#page-79 .source-page}
-
-::: {#ch02-form-checked .heading level="minor"}
-チェックボックスの状態を管理する
-:::
-
-::: {#ch02-form-checked-text-1 .paragraph}
-次に、商品の販売状態をチェックボックスで管理してみましょう。
-:::
-
-::: {#ch02-form-checked-text-2 .paragraph}
-例えば、チェックが付いている場合は「販売中」、チェックを外した場合は「販売停止」と表示する仕組みを考えます。
-:::
-
-::: {#ch02-form-checked-text-3 .paragraph}
-チェックボックスの場合は、trueまたはfalseで状態を管理します。
-:::
-
-::: {#ch02-form-checked-state-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="6"}
-```tsx
-  const [isAvailable, setIsAvailable] = useState(false)
-```
-:::
-
-::: {#ch02-form-checked-text-4 .paragraph}
-初期値がfalseなので、最初はチェックが付いていない状態です。
-:::
-
-::: {#ch02-form-checked-text-5 .paragraph}
-チェックボックスは、次のように記述します。
-:::
-
-::: {#ch02-form-checked-example .code example="true"}
-```tsx
-<input
-  type="checkbox"
-  checked={isAvailable}
-  onChange={(e) => setIsAvailable(e.target.checked)}
-/>
-```
-:::
-
-::: {#ch02-form-checked-text-6 .paragraph}
-ここで注目してほしいのは、テキスト入力欄とは異なり、**valueではなくchecked属性を使用している**ことです。
-:::
-
-::: {#ch02-form-checked-table-1 .table column-widths="36 28 36"}
-| 比較項目 | テキスト入力 | チェックボックス |
-|---|---|---|
-| 表示を制御する属性 | `value` | `checked` |
-| 変更後の値を取得 | `e.target.value` | `e.target.checked` |
-| 主なデータ型 | string | boolean |
-:::
-
-::: {#ch02-form-checked-text-7 .paragraph}
-チェックボックスにチェックを付けると`e.target.checked`はtrue、チェックを外すとfalseになります。
-:::
-
-::: {#ch02-form-checked-text-8 .paragraph}
-そして、`setIsAvailable()`を使ってstateを更新します。
-:::
-
-::::
-
-:::: {#page-80 .source-page}
-
-::: {#ch02-form-checked-text-9 .paragraph}
-画面には、2.5で学習した三項演算子を使用して、次のように表示できます。
-:::
-
-::: {#ch02-form-checked-result-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="69"}
-```tsx
-      <p>販売状態：{isAvailable ? '販売中' : '販売停止'}</p>
-```
-:::
-
-![チェックの有無をcheckedで管理し、販売状態を表示する](assets/form-available-states.svg){#ch02-form-available-states}
-
-::: {#ch02-form-available-states-caption .caption}
-チェックの有無をcheckedで管理し、販売状態を表示する
-:::
-
-::: {#ch02-form-radio-note .training-note}
-【補足】ラジオボタンの場合
-
-ラジオボタンは、**複数の選択肢から1つを選ぶ**ための入力要素です。ここでは、商品の販売方法を「店頭販売」と「オンライン販売」から選びます。
-
-選択中の値は、`useState('店頭販売')` で用意する `salesMethod` に保存します。初期値が「店頭販売」なので、最初は店頭販売が選択されます。
-
-同じ `name` で2つのボタンを1つのグループにまとめ、`value` で選択肢を区別します。次のコードは、`useState` をインポートした関数コンポーネントに記述します。
-:::
-
-::: {#ch02-form-radio-example .code example="true"}
-```tsx
-const [salesMethod, setSalesMethod] = useState('店頭販売')
-
-return (
-  <div>
-    <label>
-      <input
-        type="radio"
-        name="salesMethod"
-        value="店頭販売"
-        checked={salesMethod === '店頭販売'}
-        onChange={(e) => setSalesMethod(e.target.value)}
-      />
-      店頭販売
-    </label>
-
-    <label>
-      <input
-        type="radio"
-        name="salesMethod"
-        value="オンライン販売"
-        checked={salesMethod === 'オンライン販売'}
-        onChange={(e) => setSalesMethod(e.target.value)}
-      />
-      オンライン販売
-    </label>
-
-    <p>選択中の販売方法：{salesMethod}</p>
-  </div>
-)
-```
-:::
-
-::: {#ch02-form-radio-checked .paragraph}
-**`checked` に `true` を指定するとチェックが付き、`false` を指定すると外れます。** `salesMethod` は選択中の文字列なので、`salesMethod === '店頭販売'` のように各ボタンの `value` と比較します。値が一致するボタンの `checked` だけが `true` になります。
-:::
-
-::: {#ch02-form-radio-change .step}
-**「オンライン販売」を選択したときの動作**
-:::
-
-::: {#ch02-form-radio-change-steps .paragraph keep-lines="true"}
-1．「オンライン販売」のボタンで `onChange` イベントが発生します。<br>2．`setSalesMethod('オンライン販売')` に相当する処理を実行します。<br>3．stateが更新され、Reactがコンポーネントを再レンダリングします。<br>4．チェックが移り、下に「選択中の販売方法：オンライン販売」と表示されます。
-:::
-
-::: {#ch02-form-radio-compare .paragraph}
-チェックボックスでは、`e.target.checked` からチェックの有無（`true` または `false`）を取得しました。ここでは、`onChange` の中で `e.target.value` から選択肢の値を文字列として取り出し、`setSalesMethod()` に渡します。
-:::
-
-::::
-
-:::: {#page-81 .source-page}
 
 ::: {#ch02-form-sample .heading level="minor"}
 【サンプル】商品情報の入力フォーム
 :::
 
-::: {#ch02-form-sample-text-1 .paragraph}
-それでは、ここまで学習した内容を組み合わせて、商品情報の入力フォームを作成してみましょう。
+::: {#ch02-form-line-77 .paragraph}
+今回は、商品名・カテゴリ・販売状態を入力するフォームを作成します。入力した内容は、画面下部の「入力内容の確認」に反映されます。
 :::
 
-::: {#ch02-form-sample-text-2 .paragraph}
-今回は、商品名・カテゴリ・販売状態をフォームで設定し、入力内容を画面の下部にリアルタイムで表示します。
+::: {#ch02-form-line-79 .paragraph}
+また、［入力をクリア］ボタンをクリックすると、すべての入力項目と確認エリアの表示が初期状態に戻るようにします。
 :::
 
-::: {#ch02-form-sample-text-3 .paragraph}
-さらに、「入力をクリア」ボタンを押すと、stateを初期値に戻し、フォームの表示も元に戻るようにします。
-:::
-
-::: {#ch02-form-sample-code-p1 .code filename="ch02-basic/src/components/Sample2_7.tsx"}
+::: {#ch02-form-sample-code-1 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="1"}
 ```tsx
 import { useState } from 'react'
 
@@ -3918,16 +3500,15 @@ export default function Sample2_7() {
           onChange={(e) => setProductName(e.target.value)}
         />
       </div>
-
 ```
 :::
-
 ::::
 
-:::: {#page-82 .source-page}
+:::: {#page-75 .source-page}
 
-::: {#ch02-form-sample-code-p2 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="31"}
+::: {#ch02-form-sample-code-2 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="30"}
 ```tsx
+
       <div className="mb-3">
         <label htmlFor="category" className="form-label">
           カテゴリ
@@ -3957,20 +3538,19 @@ export default function Sample2_7() {
           販売中
         </label>
       </div>
+```
+:::
+::::
+
+:::: {#page-76 .source-page}
+
+::: {#ch02-form-sample-code-3 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="60"}
+```tsx
 
       <button className="btn btn-secondary mb-3"
         onClick={clearInputs}>
         入力をクリア
       </button>
-```
-:::
-
-::::
-
-:::: {#page-83 .source-page}
-
-::: {#ch02-form-sample-code-p3 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="65"}
-```tsx
 
       <h2 className="h5">入力内容の確認</h2>
       <p>商品名：{productName || '未入力'}</p>
@@ -3982,45 +3562,32 @@ export default function Sample2_7() {
 ```
 :::
 
-::: {#ch02-form-sample-check .step}
-**動作確認**
+::: {#ch02-form-line-159 .paragraph}
+配布サンプルの `ch02-basic` の開発サーバーを起動し、ブラウザーのメニューから「2.7 フォーム入力と状態の連動」を選択してください。
 :::
 
-::: {#ch02-form-sample-check-text-1 .paragraph}
-`ch02-basic`の開発サーバーを起動し、メニューから「2.7 フォーム入力と状態の連動」を選択してください。
-:::
-
-::: {#ch02-form-sample-check-text-2 .paragraph}
-初期状態では、商品名は空欄、カテゴリは「文房具」、販売中のチェックは外れています。
-:::
-
-::: {#ch02-form-sample-check-text-3 .paragraph}
-フォームを操作すると、入力内容が画面下部の確認エリアへ反映されます。
-:::
-
-![フォームで設定した値が下部の確認エリアに表示される](assets/form-product-browser.svg){#ch02-form-product-browser}
+![フォームで入力・選択した内容が画面下部の確認エリアに表示される](assets/form-product-browser.svg){#ch02-form-product-browser}
 
 ::: {#ch02-form-product-browser-caption .caption}
-フォームで設定した値が下部の確認エリアに表示される
+フォームで入力・選択した内容が画面下部の確認エリアに表示される
 :::
-
 ::::
 
-:::: {#page-84 .source-page}
+:::: {#page-77 .source-page}
 
-::: {#ch02-form-review .heading level="minor"}
+::: {#ch02-form-syntax .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch02-form-review-text-1 .paragraph}
-ここからは、サンプルコードの重要な部分を確認します。
+::: {#ch02-form-syntax-① .step}
+**① フォームの入力値を管理するstateを定義する**
 :::
 
-::: {#ch02-form-review-state .step}
-**① 入力値を管理するstateを定義する**
+::: {#ch02-form-line-182 .paragraph}
+まず、フォームで扱う3つの入力項目に対応するstateを定義します。
 :::
 
-::: {#ch02-form-review-state-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="4"}
+::: {#ch02-form-line-184 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="4"}
 ```tsx
   const [productName, setProductName] = useState('')
   const [category, setCategory] = useState('文房具')
@@ -4028,27 +3595,42 @@ export default function Sample2_7() {
 ```
 :::
 
-::: {#ch02-form-review-state-text-1 .paragraph}
-3つの入力項目に対応するstateを定義しています。
+::: {#ch02-form-line-191 .paragraph}
+今回は、次のように初期値を設定しています。
 :::
 
-::: {#ch02-form-review-state-table-1 .table column-widths="40 26 34"}
-| state | 初期値 | 用途 |
+::: {#ch02-form-line-193 .table column-widths="30 26 44"}
+| state | 初期値 | 管理するデータ |
 |---|---|---|
-| `productName` | `''` | 商品名 |
-| `category` | `'文房具'` | カテゴリ |
-| `isAvailable` | `false` | 販売状態 |
+| `productName` | `''`（空文字列） | 入力された商品名 |
+| `category` | `'文房具'` | 選択されたカテゴリ |
+| `isAvailable` | `false` | 販売中かどうか |
 :::
 
-::: {#ch02-form-review-state-text-2 .paragraph}
-それぞれの入力内容を、対応するstateで管理しています。
+::: {#ch02-form-line-199 .paragraph}
+商品名とカテゴリは文字列で管理します。一方、販売状態は、チェックが付いているかどうかを表す真偽値（`true` または `false`）で管理します。
 :::
 
-::: {#ch02-form-review-text-input .step}
+::: {#ch02-form-line-201 .paragraph}
+`useState()` に初期値を指定することで、最初の画面に表示する内容も決められます。
+:::
+
+::: {#ch02-form-line-203 .paragraph}
+例えば、`productName` の初期値は空文字列なので、商品名の入力欄には何も表示されません。`category` の初期値は「文房具」、`isAvailable` の初期値は `false` なので、最初は「文房具」が選択され、販売中のチェックは外れた状態になります。
+:::
+::::
+
+:::: {#page-78 .source-page}
+
+::: {#ch02-form-syntax-② .step}
 **② テキスト入力欄とstateを連動させる**
 :::
 
-::: {#ch02-form-review-text-input-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="22"}
+::: {#ch02-form-line-207 .paragraph}
+次に、商品名の入力欄に注目しましょう。
+:::
+
+::: {#ch02-form-line-209 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="22"}
 ```tsx
         <input
           id="productName"
@@ -4060,27 +3642,219 @@ export default function Sample2_7() {
 ```
 :::
 
-::: {#ch02-form-review-text-input-text-1 .paragraph}
-`value={productName}`で、stateの値を入力欄に表示しています。
+::: {#ch02-form-line-220 .paragraph}
+このコードでは、`value` 属性と `onChange` 属性を使用して、テキスト入力欄とstateを連動させています。
 :::
 
-::: {#ch02-form-review-text-input-text-2 .paragraph}
-`onChange`では、ユーザーが入力した文字列を取得し、`setProductName()`でstateに設定しています。
+::: {#ch02-form-line-222 .paragraph keep-next="1"}
+**value属性でstateの値を表示する**
 :::
 
-::: {#ch02-form-review-text-input-text-3 .paragraph}
-これにより、テキスト入力とstateの値が連動します。
+::: {#ch02-form-line-224 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="26"}
+```tsx
+          value={productName}
+```
 :::
 
+::: {#ch02-form-line-229 .paragraph}
+`value` 属性は、入力欄の値を指定するための属性です。
+:::
+
+::: {#ch02-form-line-231 .paragraph}
+ここでは、`productName` を指定しているため、そのstateの値が入力欄に表示されます。例えば、`productName` の値が「ノート」であれば、入力欄にも「ノート」と表示されます。
+:::
+
+::: {#ch02-form-line-233 .paragraph}
+ただし、`value` 属性だけでは、ユーザーが入力した値をstateに保存できません。そのための処理を、次の `onChange` で記述します。
+:::
 ::::
 
-:::: {#page-85 .source-page}
+:::: {#page-79 .source-page}
 
-::: {#ch02-form-review-category .step}
-**③ セレクトボックスとstateを連動させる**
+::: {#ch02-form-line-235 .paragraph keep-next="1"}
+**onChangeで入力値を取得し、stateを更新する**
 :::
 
-::: {#ch02-form-review-category-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="35"}
+::: {#ch02-form-line-237 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="27"}
+```tsx
+          onChange={(e) => setProductName(e.target.value)}
+```
+:::
+
+::: {#ch02-form-line-242 .paragraph}
+2.4節では、`onClick` 属性に関数を指定し、ボタンをクリックしたときに処理を実行する方法を学習しました。
+:::
+
+::: {#ch02-form-line-244 .paragraph}
+`onChange` も、イベントが発生したときに実行する関数を指定するための属性です。Reactのテキスト入力欄では、ユーザーが文字を入力したり削除したりして入力内容が変わると、指定したイベントハンドラーが実行されます。
+:::
+
+::: {#ch02-form-line-246 .paragraph}
+ここで、`(e) =>` の `e` に注目してください。
+:::
+
+::: {#ch02-form-line-248 .paragraph}
+Reactはイベントハンドラーを呼び出す際に、発生したイベントに関する情報を持つ **イベントオブジェクト** を引数として渡します。今回のコードでは、そのオブジェクトを `e` という名前の引数で受け取っています。
+:::
+
+::: {#ch02-form-line-250 .paragraph}
+このイベントオブジェクトを使用することで、どの入力要素でイベントが発生したのか、その入力要素にどのような値が入力されているのかを取得できます。
+:::
+
+::: {#ch02-form-line-252 .paragraph}
+今回のコードを分解すると、次のようになります。
+:::
+
+::: {#ch02-form-line-254 .table column-widths="24 76"}
+| 記述 | 役割 |
+|---|---|
+| `onChange` | 入力値が変更されたときに実行するイベントハンドラーを指定する。 |
+| `(e) =>` | イベントオブジェクトを引数として受け取るアロー関数を定義する。 |
+| `e` | 発生したイベントに関する情報を持つオブジェクトを受け取る。 |
+| `e.target` | 今回は、イベントが発生したテキスト入力欄を参照する。 |
+| `e.target.value` | 入力欄の現在の値を文字列として取得する。 |
+| `setProductName(...)` | 取得した入力値で商品名のstateを更新する。 |
+:::
+
+::: {#ch02-form-line-263 .paragraph}
+例えば、入力欄の内容が「ノート」になったときの処理を考えてみましょう。
+:::
+
+::: {#ch02-form-line-265 .paragraph numbered="true"}
+1\. 入力値が変更され、`onChange` に指定したアロー関数が実行されます。
+:::
+
+::: {#ch02-form-line-266 .paragraph numbered="true"}
+2\. `e.target.value` から、入力欄の現在の値である「ノート」を取得します。
+:::
+
+::: {#ch02-form-line-267 .paragraph numbered="true"}
+3\. `setProductName('ノート')` に相当する処理が実行され、商品名のstateが更新されます。
+:::
+
+![onChangeに指定した関数で入力値を取得し、stateを更新する](assets/form-onchange-parts.svg){#ch02-form-onchange-parts}
+
+::: {#ch02-form-onchange-parts-caption .caption}
+onChangeに指定した関数で入力値を取得し、stateを更新する
+:::
+
+::: {#ch02-form-line-284 .paragraph}
+なお、`e` はイベントオブジェクトを受け取る引数の名前です。`event` など、別の名前にすることもできます。
+:::
+
+::: {#ch02-form-line-286 .paragraph}
+この例では、TypeScriptが `onChange` に指定する関数の引数の型を推論できるため、`e` に対して型を明示する必要はありません。
+:::
+
+::: {#ch02-form-label-note .training-note}
+**【補足】label要素と入力要素を関連付ける**
+
+```{#ch02-form-label-code .tsx filename="ch02-basic/src/components/Sample2_7.tsx" start-line="19"}
+        <label htmlFor="productName" className="form-label">
+          商品名
+        </label>
+        <input
+          id="productName"
+```
+
+HTMLでは、`label` 要素の `for` 属性と入力要素の `id` 属性に同じ値を指定すると、ラベルと入力要素を関連付けることができます。
+
+ReactのJSXでは、`for` の代わりに **htmlFor** を使用します。今回のように `htmlFor="productName"` と `id="productName"` を指定すると、［商品名］というラベルをクリックして入力欄にフォーカスを移せるようになります。セレクトボックスやチェックボックスのラベルでも、同じ考え方を使用しています。
+:::
+::::
+
+:::: {#page-80 .source-page}
+
+::: {#ch02-form-syntax-③ .step}
+**③ value属性とonChangeを組み合わせる理由**
+:::
+
+::: {#ch02-form-line-305 .paragraph}
+ここまでで、`value` と `onChange` のそれぞれの役割を確認しました。では、なぜこの2つを組み合わせて記述する必要があるのでしょうか。
+:::
+
+::: {#ch02-form-line-307 .paragraph}
+例えば、商品名のstateに「ノート」という値が格納されているとします。
+:::
+
+::: {#ch02-form-line-309 .paragraph keep-next="1"}
+**value属性だけを指定した場合**
+:::
+
+::: {#ch02-form-line-311 .code example="true"}
+```tsx
+<input type="text" value={productName} />
+```
+:::
+
+::: {#ch02-form-line-316 .paragraph}
+この場合、入力欄にはstateの値である「ノート」が表示されます。
+:::
+
+::: {#ch02-form-line-318 .paragraph}
+しかし、ユーザーが「ノートPC」と入力しようとしても、stateを更新する処理がありません。Reactは `value` に指定されたstateの値を入力欄に反映するため、ユーザーが入力した変更を保持できません。
+:::
+
+::: {#ch02-form-line-320 .paragraph}
+その結果、入力欄は、ユーザーが編集できない状態になります。このように `value` を指定し、入力を更新するための `onChange` がなく、`readOnly` も指定していない場合、開発時にはReactから警告が表示されることがあります。
+:::
+
+::: {#ch02-form-line-322 .paragraph keep-next="1"}
+**value属性とonChangeを指定した場合**
+:::
+
+::: {#ch02-form-line-324 .code example="true"}
+```tsx
+<input
+  type="text"
+  value={productName}
+  onChange={(e) => setProductName(e.target.value)}
+/>
+```
+:::
+
+::: {#ch02-form-line-333 .paragraph}
+`onChange` を追加することで、ユーザーが入力した値をstateに保存できるようになります。そして、更新されたstateの値が `value` 属性を通じて入力欄に反映されます。
+:::
+
+::: {#ch02-form-line-335 .paragraph}
+つまり、2つの記述には次のような役割があります。
+:::
+
+::: {#ch02-form-line-337 .paragraph}
+● **value属性：stateの値を入力欄に反映する。**
+:::
+
+::: {#ch02-form-line-338 .paragraph}
+● **onChange：入力された値を取得し、stateを更新する。**
+:::
+
+![valueとonChangeを組み合わせることで、入力欄とstateを連動させる](assets/form-controlled-compare.svg){#ch02-form-controlled-compare}
+
+::: {#ch02-form-controlled-compare-caption .caption}
+valueとonChangeを組み合わせることで、入力欄とstateを連動させる
+:::
+
+::: {#ch02-form-line-357 .paragraph punctuation-font="inherit"}
+このように、Reactのstateなどによって入力要素の値を制御する方法を、**制御された入力要素（Controlled Input）** と呼びます。
+:::
+
+::: {#ch02-form-line-359 .paragraph}
+なお、Reactのすべてのフォームで、入力値をstateとして管理しなければならないわけではありません。本研修では、入力内容をほかの表示や処理に利用したり、プログラムから入力欄の値を変更したりするために、この方法を使用します。
+:::
+::::
+
+:::: {#page-81 .source-page}
+
+::: {#ch02-form-syntax-④ .step}
+**④ セレクトボックスとstateを連動させる**
+:::
+
+::: {#ch02-form-line-363 .paragraph}
+テキスト入力欄だけでなく、セレクトボックスも同じ考え方でstateと連動させることができます。
+:::
+
+::: {#ch02-form-line-365 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="35"}
 ```tsx
         <select
           id="category"
@@ -4095,19 +3869,55 @@ export default function Sample2_7() {
 ```
 :::
 
-::: {#ch02-form-review-category-text-1 .paragraph}
-`value={category}`で現在のカテゴリを指定し、`onChange`で選択変更時に新しいカテゴリをstateへ設定しています。
+::: {#ch02-form-line-379 .paragraph}
+ここで注目したいのは、`select` 要素と、その中に記述されている `option` 要素の両方に `value` 属性が指定されていることです。
 :::
 
-::: {#ch02-form-review-category-text-2 .paragraph}
-`<option>`の`value`属性には、各選択肢に対応する値が記述されています。
+::: {#ch02-form-line-381 .paragraph}
+それぞれの `value` 属性には、次のような役割があります。
 :::
 
-::: {#ch02-form-review-checked .step}
-**④ チェックボックスの状態を連動させる**
+::: {#ch02-form-line-383 .table column-widths="51 49"}
+| 記述 | 役割 |
+|---|---|
+| `select` 要素の `value={category}` | 現在選択する値を指定する。 |
+| `option` 要素の `value="文房具"` など | 各選択肢に対応する値を指定する。 |
 :::
 
-::: {#ch02-form-review-checked-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="48"}
+::: {#ch02-form-line-388 .paragraph}
+Reactでは、`select` 要素に指定した値と一致する `option` が選択されます。今回の `category` の初期値は「文房具」なので、最初は「文房具」が選択された状態で表示されます。
+:::
+
+::: {#ch02-form-line-390 .paragraph}
+ユーザーが「電子機器」を選択した場合は、`onChange` に指定した関数が実行されます。`e.target.value` で取得できる値は「電子機器」です。その値を `setCategory()` に渡すことで、`category` が「電子機器」に更新されます。
+:::
+
+![セレクトボックスで選択した値をstateに保存し、確認エリアにも反映する](assets/form-category-states.svg){#ch02-form-category-states}
+
+::: {#ch02-form-category-states-caption .caption}
+セレクトボックスで選択した値をstateに保存し、確認エリアにも反映する
+:::
+
+::: {#ch02-form-line-404 .paragraph}
+なお、`option` の開始タグと終了タグの間に記述する文字列は、選択肢として画面に表示される文字列です。`value` 属性の値とは別のものです。
+:::
+
+::: {#ch02-form-line-406 .paragraph}
+今回のサンプルでは、画面に表示する文字列と `value` 属性の値を同じにしていますが、例えばカテゴリ名を画面に表示し、カテゴリ番号を値として扱うこともできます。
+:::
+::::
+
+:::: {#page-82 .source-page}
+
+::: {#ch02-form-syntax-⑤ .step}
+**⑤ チェックボックスとstateを連動させる**
+:::
+
+::: {#ch02-form-line-410 .paragraph}
+チェックボックスでは、文字列ではなく、チェックの有無を管理します。
+:::
+
+::: {#ch02-form-line-412 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="48"}
 ```tsx
         <input
           id="isAvailable"
@@ -4116,30 +3926,130 @@ export default function Sample2_7() {
           checked={isAvailable}
           onChange={(e) => setIsAvailable(e.target.checked)}
         />
-        <label htmlFor="isAvailable"
-          className="form-check-label">
-          販売中
-        </label>
 ```
 :::
 
-::: {#ch02-form-review-checked-text-1 .paragraph}
-`checked={isAvailable}`で、チェックの有無をstateと連動させています。
+::: {#ch02-form-line-423 .paragraph}
+テキスト入力欄やセレクトボックスとは異なり、チェックボックスのチェックの有無を制御する場合は、**value属性ではなくchecked属性を使用します。**
 :::
 
-::: {#ch02-form-review-checked-text-2 .paragraph}
-`onChange`では、チェックが変更されたときに`e.target.checked`からtrueまたはfalseを取得しています。
+::: {#ch02-form-line-425 .paragraph}
+`checked` に `true` を指定するとチェックが付き、`false` を指定するとチェックが外れます。今回のサンプルでは `checked={isAvailable}` と記述しているため、`isAvailable` の値に応じてチェックの状態が決まります。
 :::
 
+::: {#ch02-form-line-427 .paragraph}
+また、ユーザーがチェックを付けたり外したりすると、`onChange` に指定した関数が実行されます。
+:::
+
+::: {#ch02-form-line-429 .paragraph}
+その際、チェックの有無を取得するために使用するのが、`e.target.checked` です。
+:::
+
+::: {#ch02-form-line-431 .paragraph}
+● チェックを付けた場合：`e.target.checked` の値は `true`
+:::
+
+::: {#ch02-form-line-432 .paragraph}
+● チェックを外した場合：`e.target.checked` の値は `false`
+:::
+
+::: {#ch02-form-line-434 .paragraph}
+取得した真偽値を `setIsAvailable()` に渡すことで、販売状態のstateを更新しています。
+:::
+
+::: {#ch02-form-line-436 .paragraph}
+テキスト入力欄、セレクトボックス、チェックボックスの記述方法を比較すると、次のようになります。
+:::
+
+::: {#ch02-form-line-438 .table column-widths="33 37 30"}
+| 比較項目 | テキスト入力欄・セレクトボックス | チェックボックス |
+|---|---|---|
+| 表示を制御する属性 | `value` | `checked` |
+| 変更後の値を取得する方法 | `e.target.value` | `e.target.checked` |
+| 今回管理する値の型 | 文字列（string） | 真偽値（boolean） |
+:::
+
+![チェックの有無を真偽値で管理し、販売状態を表示する](assets/form-available-states.svg){#ch02-form-available-states}
+
+::: {#ch02-form-available-states-caption .caption}
+チェックの有無を真偽値で管理し、販売状態を表示する
+:::
 ::::
 
-:::: {#page-86 .source-page}
+:::: {#page-83 .source-page}
 
-::: {#ch02-form-review-clear .step}
-**⑤ 入力をクリアする**
+::: {#ch02-form-syntax-⑥ .step}
+**⑥ 入力内容を確認エリアに表示する**
 :::
 
-::: {#ch02-form-review-clear-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="8"}
+::: {#ch02-form-line-460 .paragraph}
+これまでの構文によって、フォームに入力・選択された値をstateとして管理できるようになりました。
+:::
+
+::: {#ch02-form-line-462 .paragraph}
+あとは、第2章で学習したJSXによるデータ表示の方法を使用すれば、stateの値を画面の別の場所にも表示できます。
+:::
+
+::: {#ch02-form-line-464 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="66"}
+```tsx
+      <h2 className="h5">入力内容の確認</h2>
+      <p>商品名：{productName || '未入力'}</p>
+      <p>カテゴリ：{category}</p>
+      <p>販売状態：{isAvailable ? '販売中' : '販売停止'}</p>
+```
+:::
+
+::: {#ch02-form-line-472 .paragraph}
+商品名の表示には、論理OR演算子（`||`）を使用しています。
+:::
+
+::: {#ch02-form-line-474 .paragraph}
+JavaScriptの `||` は、左側の値が真として扱われる場合はその値を返し、そうでない場合は右側の値を返します。
+:::
+
+::: {#ch02-form-line-476 .paragraph}
+今回の `productName` は文字列なので、商品名が入力されている場合はその値が使用され、空文字列の場合は右側の「未入力」が使用されます。
+:::
+
+::: {#ch02-form-line-478 .table column-widths="27 42 31"}
+| `productName` の値 | `productName || '未入力'` の結果 | 画面の表示 |
+|---|---|---|
+| `''`（空文字列） | `'未入力'` | 商品名：未入力 |
+| `'ノート'` | `'ノート'` | 商品名：ノート |
+:::
+
+::: {#ch02-form-line-483 .paragraph}
+販売状態については、2.5節で学習した三項演算子を使用して、`isAvailable` が `true` の場合は「販売中」、`false` の場合は「販売停止」と表示しています。
+:::
+
+::: {#ch02-form-line-485 .paragraph}
+ユーザーがフォームを操作するとstateが更新され、Reactがコンポーネントを再レンダリングします。その際、新しいstateの値がフォームと確認エリアの両方に使用されます。
+:::
+
+::: {#ch02-form-line-487 .paragraph}
+**入力欄と確認エリアで同じstateを使用しているため、確認エリアを個別に書き換える処理を記述する必要はありません。**
+:::
+::::
+
+:::: {#page-84 .source-page}
+
+::: {#ch02-form-syntax-⑦ .step}
+**⑦ 入力内容をクリアする**
+:::
+
+::: {#ch02-form-line-491 .paragraph}
+ここまでは、ユーザーが入力した値を使用してstateを更新する方法を確認しました。
+:::
+
+::: {#ch02-form-line-493 .paragraph}
+では、プログラム側からstateを変更した場合は、フォームの表示も変わるのでしょうか。
+:::
+
+::: {#ch02-form-line-495 .paragraph}
+今回のサンプルでは、［入力をクリア］ボタンをクリックすると、`clearInputs` 関数が実行されるようにしています。
+:::
+
+::: {#ch02-form-line-497 .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="8"}
 ```tsx
   const clearInputs = () => {
     setProductName('')
@@ -4149,117 +4059,254 @@ export default function Sample2_7() {
 ```
 :::
 
-::: {#ch02-form-review-clear-text-1 .paragraph}
-「入力をクリア」ボタンをクリックすると、この関数が実行されます。
+::: {#ch02-form-line-506 .paragraph}
+この関数では、3つのstateに、それぞれの初期値と同じ値を設定しています。
 :::
 
-::: {#ch02-form-review-clear-text-2 .paragraph}
-各stateを初期値に戻すことで、フォームの表示も元に戻ります。
+::: {#ch02-form-line-508 .paragraph}
+それぞれのstateが更新されると、`value` 属性や `checked` 属性を通じて、フォームの表示も更新されます。
 :::
 
-::: {#ch02-form-review-clear-text-3 .paragraph}
-つまり、**ユーザーの入力によってstateを更新するだけでなく、プログラム側からstateを変更してフォームの表示を更新することもできます。**
+::: {#ch02-form-line-510 .table column-widths="27 20 53"}
+| 更新するstate | 設定する値 | フォームの表示 |
+|---|---|---|
+| `productName` | `''` | 商品名の入力欄が空欄になる。 |
+| `category` | `'文房具'` | 「文房具」が選択される。 |
+| `isAvailable` | `false` | 「販売中」のチェックが外れる。 |
 :::
 
-::: {#ch02-form-review-preview .step}
-**⑥ 入力内容を画面に表示する**
-:::
-
-::: {#ch02-form-review-preview-code .code filename="ch02-basic/src/components/Sample2_7.tsx" start-line="66"}
-```tsx
-      <h2 className="h5">入力内容の確認</h2>
-      <p>商品名：{productName || '未入力'}</p>
-      <p>カテゴリ：{category}</p>
-      <p>販売状態：{isAvailable ? '販売中' : '販売停止'}</p>
-```
-:::
-
-::: {#ch02-form-review-preview-text-1 .paragraph}
-ここでは、フォームで管理している3つのstateを画面に表示しています。
-:::
-
-::: {#ch02-form-review-preview-text-2 .paragraph}
-商品名には、論理OR演算子の`||`を使用しています。`productName`が空文字列の場合は「未入力」を表示し、それ以外の場合は入力された商品名を表示します。
-:::
-
-::: {#ch02-form-review-preview-text-3 .paragraph}
-また、販売状態は三項演算子を使用し、trueの場合は「販売中」、falseの場合は「販売停止」と表示しています。
-:::
-
-![入力時とクリア時のstateの更新から画面に反映されるまでの流れ](assets/form-render-flow.svg){#ch02-form-render-flow}
+![プログラム側からstateを変更すると、フォームと確認エリアの表示も更新される](assets/form-render-flow.svg){#ch02-form-render-flow}
 
 ::: {#ch02-form-render-flow-caption .caption}
-入力時とクリア時のstateの更新から画面に反映されるまでの流れ
+プログラム側からstateを変更すると、フォームと確認エリアの表示も更新される
 :::
 
+::: {#ch02-form-line-530 .paragraph}
+ここで重要なのは、入力要素を一つずつ取得し、その値を書き換える処理を記述していないことです。
+:::
+
+::: {#ch02-form-line-532 .paragraph}
+**フォームの表示をstateで制御しているため、stateを変更するだけで、入力欄の内容や選択状態を変更できます。**
+:::
+
+::: {#ch02-form-line-534 .paragraph}
+この仕組みは、後続の章でREST APIから取得した商品情報を編集フォームに表示するときにも利用します。
+:::
 ::::
 
-:::: {#page-87 .source-page}
+::::: {#page-85 .source-page}
+
+:::: {#ch02-form-radio-note .training-note breakable="true"}
+【補足】ラジオボタンの場合
+
+ラジオボタンは、複数の選択肢から1つを選ぶための入力要素です。
+
+例えば、商品の販売方法を「店頭販売」と「オンライン販売」から選択する場合を考えてみましょう。
+
+この場合、チェックボックスのようにチェックの有無を個別に管理するのではなく、**現在選択されている値を1つのstateで管理します。**
+
+次のコードは、`useState` をインポートした関数コンポーネント内に記述する例です。
+
+```{#ch02-form-line-546 .tsx example="true"}
+const [salesMethod, setSalesMethod] = useState('店頭販売')
+return (
+  <div>
+    <label>
+      <input
+        type="radio"
+        name="salesMethod"
+        value="店頭販売"
+        checked={salesMethod === '店頭販売'}
+        onChange={(e) => setSalesMethod(e.target.value)}
+      />
+      店頭販売
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="salesMethod"
+        value="オンライン販売"
+        checked={salesMethod === 'オンライン販売'}
+        onChange={(e) => setSalesMethod(e.target.value)}
+      />
+      オンライン販売
+    </label>
+    <p>選択中の販売方法：{salesMethod}</p>
+  </div>
+)
+```
+
+`name` 属性に同じ値を指定することで、2つのラジオボタンを同じグループとして扱います。また、それぞれのラジオボタンの `value` 属性には、選択肢に対応する値を指定します。
+
+**checked属性に条件式を指定する理由**
+
+`checked` 属性は、チェックボックスの場合と同じように、`true` または `false` を指定して選択状態を制御します。
+
+ただし、今回のstateである `salesMethod` には、選択中の販売方法を表す文字列が格納されています。そのため、各ラジオボタンの `checked` 属性には、次のような比較式を指定しています。
+
+```{#ch02-form-line-586 .tsx example="true"}
+checked={salesMethod === '店頭販売'}
+```
+
+現在選択されている値が「店頭販売」であれば、この比較式の結果は `true` になります。一方、「オンライン販売」が選択されている場合は `false` になります。
+
+もう一方のラジオボタンも、同じように `salesMethod` と「オンライン販売」を比較します。
+
+::: {#ch02-form-line-595 .table column-widths="31 29 40"}
+| `salesMethod` の値 | 店頭販売の `checked` | オンライン販売の `checked` |
+|---|---|---|
+| `'店頭販売'` | `true` | `false` |
+| `'オンライン販売'` | `false` | `true` |
+:::
+
+このように、**stateの値と各ラジオボタンの選択肢の値を比較することで、一致するラジオボタンだけを選択された状態にできます。**
+
+**選択された値をstateに保存する**
+
+```{#ch02-form-line-604 .tsx example="true"}
+onChange={(e) => setSalesMethod(e.target.value)}
+```
+
+チェックボックスでは、`e.target.checked` を使用してチェックの有無を取得しました。
+
+一方、今回のラジオボタンでは、どちらの販売方法が選択されたのかを文字列として管理する必要があります。そのため、`e.target.value` を使用して、選択したラジオボタンの `value` 属性に対応する値を取得します。
+
+例えば、初期状態から「オンライン販売」を選択した場合は、次のように処理が行われます。
+
+1. 「オンライン販売」のラジオボタンで `onChange` イベントが発生します。
+
+2. `e.target.value` から「オンライン販売」を取得し、`setSalesMethod('オンライン販売')` に相当する処理を実行します。
+
+3. stateが更新され、Reactがコンポーネントを再レンダリングします。
+
+4. 2つの `checked` の比較式が評価され、選択状態が切り替わります。画面下部の「選択中の販売方法」も更新されます。
+
+::: {#ch02-form-radio-states .note-figure}
+![選択中の値をstateで管理し、一致するラジオボタンに選択状態を反映する](assets/form-radio-states.svg)
+:::
+
+チェックボックスと今回のラジオボタンの使い分けを整理すると、次のようになります。
+
+::: {#ch02-form-line-632 .table column-widths="26 32 42"}
+| 比較項目 | チェックボックス | 今回のラジオボタン |
+|---|---|---|
+| stateで管理する値 | チェックの有無 | 選択中の値 |
+| データ型 | 真偽値（boolean） | 文字列（string） |
+| `checked` 属性 | stateの値を指定する。 | stateと選択肢の値を比較する。 |
+| `onChange` で取得する値 | `e.target.checked` | `e.target.value` |
+:::
+::::
+:::::
+
+:::: {#page-86 .source-page}
 
 ::: {#ch02-form-practice .heading level="minor"}
 【確認演習】商品情報の入力フォームを作成する
 :::
 
-::: {#ch02-form-practice-text-1 .paragraph}
-商品名・カテゴリ・販売状態を入力するフォームを作成します。
+::: {#ch02-form-line-641 .paragraph}
+商品名・カテゴリ・販売状態を入力するフォームを作成します。フォームの基本構成や、入力値を管理するstateは、あらかじめ用意されています。
 :::
 
-::: {#ch02-form-practice-text-2 .paragraph}
-フォームの基本構成やstateは、あらかじめ用意されています。
+::: {#ch02-form-line-643 .paragraph}
+今回は、**value属性・checked属性・onChange** を使用して、フォームの入力値とstateを連動させましょう。
 :::
 
-::: {#ch02-form-practice-text-3 .paragraph}
-今回は、`value`属性・`onChange`イベント・`checked`属性を使用して、入力値とstateを連動させましょう。
+::: {#ch02-form-line-645 .paragraph numbered="true"}
+1\. `ch02-basic-q` プロジェクトの `src/components/Q2_7.tsx` を開いてください。
 :::
 
-::: {#ch02-form-practice-steps .step}
-**作業手順・動作確認**
+::: {#ch02-form-line-647 .paragraph numbered="true"}
+2\. コード内の➀～➅の番号付きコメントを確認し、指示された箇所を実装してください。➀と➄は既存コードの確認、➁～➃と➅は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch02-form-practice-step-1 .paragraph numbered="true"}
-1．　`ch02-basic-q`プロジェクトの`src/components/Q2_7.tsx`を開いてください。
+::: {#ch02-form-line-649 .paragraph numbered="true"}
+3\. 編集したファイルを保存してください。
 :::
 
-::: {#ch02-form-practice-step-2 .paragraph numbered="true"}
-2．　コード内の➀～➅の番号付きコメントを確認し、指示された箇所を実装してください。➀と➄は既存コードの確認、➁～➃と➅は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch02-form-line-651 .paragraph numbered="true"}
+4\. `ch02-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch02-form-practice-step-3 .paragraph numbered="true"}
-3．　編集したファイルを保存してください。
+::: {#ch02-form-line-653 .paragraph numbered="true"}
+5\. メニューから「2.7 フォーム入力と状態の連動」を選んでください。
+:::
+::::
+
+:::: {#page-87 .source-page}
+
+::: {#ch02-form-verify .heading level="minor"}
+動作確認
 :::
 
-::: {#ch02-form-practice-step-4 .paragraph numbered="true"}
-4．　`ch02-basic-q`の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch02-form-line-657 .paragraph numbered="true"}
+6\. 次の操作を行い、フォームの入力内容が確認エリアに正しく反映されることを確認してください。
 :::
 
-::: {#ch02-form-practice-step-5 .paragraph numbered="true"}
-5．　メニューから「2.7 フォーム入力と状態の連動」を選んでください。
+::: {#ch02-form-line-659 .paragraph nested-bullet="true"}
+● 商品名に「ノート」と入力すると、確認エリアにも「商品名：ノート」と表示される。
 :::
 
-::: {#ch02-form-practice-step-6 .paragraph numbered="true" keep-lines="true"}
-6．　次の操作を行い、フォームの入力内容が正しく反映されることを確認してください。<br>● 商品名に「ノート」と入力すると、確認エリアにも「ノート」と表示されます。<br>● カテゴリを「事務用品」に変更すると、確認エリアのカテゴリも「事務用品」に変わります。<br>● 「販売中」にチェックを付けると、販売状態が「販売中」と表示されます。<br>● 「販売中」のチェックを外すと、販売状態が「販売停止」に戻ります。<br>● 「入力をクリア」をクリックすると、商品名が空欄、カテゴリが「文房具」、チェックが外れた状態に戻ります。
+::: {#ch02-form-line-660 .paragraph nested-bullet="true"}
+● カテゴリを「事務用品」に変更すると、確認エリアのカテゴリも「事務用品」に変わる。
 :::
 
-::: {#ch02-form-practice-steps-text-1 .paragraph}
-すべての操作で、フォームと確認エリアが正しく連動すれば演習完了です。
+::: {#ch02-form-line-661 .paragraph nested-bullet="true"}
+● ［販売中］にチェックを付けると、確認エリアに「販売状態：販売中」と表示される。
+:::
+
+::: {#ch02-form-line-662 .paragraph nested-bullet="true"}
+● ［販売中］のチェックを外すと、確認エリアの販売状態が「販売停止」に戻る。
+:::
+
+![フォームの入力・選択・チェックの切り替えが確認エリアに反映されることを確認する](assets/form-exercise-entry.svg){#ch02-form-exercise-entry}
+
+::: {#ch02-form-exercise-entry-caption .caption}
+フォームの入力・選択・チェックの切り替えが確認エリアに反映されることを確認する
+:::
+
+::: {#ch02-form-line-692 .paragraph}
+続いて、［販売中］にもう一度チェックを付けたうえで、［入力をクリア］ボタンをクリックしてください。すべての入力項目が初期状態に戻ることを確認します。
+:::
+
+::: {#ch02-form-line-694 .table column-widths="38 62"}
+| 確認する項目 | クリア後の表示 |
+|---|---|
+| 商品名の入力欄 | 空欄 |
+| カテゴリのセレクトボックス | 文房具 |
+| 販売中のチェックボックス | チェックなし |
+| 入力内容の確認 | 商品名：未入力、カテゴリ：文房具、販売状態：販売停止 |
+:::
+
+![クリア操作によって、すべての入力項目と確認エリアが初期状態に戻ることを確認する](assets/form-exercise-clear.svg){#ch02-form-exercise-clear}
+
+::: {#ch02-form-exercise-clear-caption .caption}
+クリア操作によって、すべての入力項目と確認エリアが初期状態に戻ることを確認する
+:::
+
+::: {#ch02-form-line-722 .paragraph keep-next="2"}
+すべての操作で、フォームと確認エリアの表示が正しく連動すれば、演習完了です。
+:::
+
+::: {#ch02-form-line-724 .paragraph}
+画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
 ::: {#ch02-form-points .section-points}
 この節のポイント
 
-● Reactでは、フォームの入力値を**useState()**で管理できる。
+● フォームの入力値をstateとして管理することで、入力内容を画面の表示やプログラムの処理に利用できる。
 
-● **value属性**は、テキスト入力欄やセレクトボックスの値をstateと連動させるために使用する。
+● テキスト入力欄やセレクトボックスでは、**value属性とonChange** を組み合わせてstateと連動させる。
 
-● **onChangeイベント**は、フォームの値が変更されたときに実行される。
+● `e.target.value` を使用すると、入力・選択された値を取得できる。
 
-● **e.target.value**を使用すると、入力・選択された値を取得できる。
+● チェックボックスのチェックの有無は、**checked属性とe.target.checked** を使用して管理する。
 
-● チェックボックスでは**checked属性**と**e.target.checked**を使用する。
+● ラジオボタンでは、選択中の値と各選択肢の値を比較することで選択状態を制御できる。
 
-● stateの変更に応じて、フォームの表示や入力内容の確認エリアが更新される。
+● フォームの表示をstateで制御すると、プログラムからstateを変更するだけで入力欄の値や選択状態を変更できる。
 :::
-
 ::::
 
 :::: {#page-88 .source-page}

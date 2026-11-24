@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="270" viewBox="0 0 760 270">
+  <text x="148" y="24" font-family="Meiryo, MS Gothic, sans-serif" font-size="23" fill="#205b84" font-weight="700" text-anchor="middle">初期状態</text>
+  <rect x="8" y="36" width="280" height="37" rx="6" fill="#edf6f3" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="148" y="61.045" font-family="Meiryo, MS Gothic, sans-serif" font-size="18.7" fill="#183449" font-weight="400" text-anchor="middle">salesMethod = &#x27;店頭販売&#x27;</text>
+  <rect x="8" y="84" width="280" height="175" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="8" y="84" width="280" height="26" rx="6" fill="#ebf2f6" stroke="#aabfcf" stroke-width="1.4"/>
+  <circle cx="17" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="23" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="29" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="31" cy="141" r="9" fill="white" stroke="#747b83" stroke-width="1.6"/>
+  <circle cx="31" cy="141" r="5.8" fill="#0d6efd" stroke="none" stroke-width="1"/>
+  <text x="49" y="147" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">店頭販売</text>
+  <circle cx="31" cy="175" r="9" fill="white" stroke="#747b83" stroke-width="1.6"/>
+  <text x="49" y="181" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">オンライン販売</text>
+  <rect x="15" y="120" width="193" height="74" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="15" y="198" width="266" height="52" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <text x="25" y="219" font-family="Meiryo, MS Gothic, sans-serif" font-size="16.8" fill="#183449" font-weight="400" text-anchor="start">選択中の販売方法：</text>
+  <text x="25" y="240" font-family="Meiryo, MS Gothic, sans-serif" font-size="16.8" fill="#183449" font-weight="400" text-anchor="start">店頭販売</text>
+  <text x="612" y="24" font-family="Meiryo, MS Gothic, sans-serif" font-size="23" fill="#205b84" font-weight="700" text-anchor="middle">選択後</text>
+  <rect x="472" y="36" width="280" height="37" rx="6" fill="#edf6f3" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="612" y="61.045" font-family="Meiryo, MS Gothic, sans-serif" font-size="18.7" fill="#183449" font-weight="400" text-anchor="middle">salesMethod = &#x27;オンライン販売&#x27;</text>
+  <rect x="472" y="84" width="280" height="175" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="472" y="84" width="280" height="26" rx="6" fill="#ebf2f6" stroke="#aabfcf" stroke-width="1.4"/>
+  <circle cx="481" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="487" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="493" cy="97" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="495" cy="141" r="9" fill="white" stroke="#747b83" stroke-width="1.6"/>
+  <text x="513" y="147" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">店頭販売</text>
+  <circle cx="495" cy="175" r="9" fill="white" stroke="#747b83" stroke-width="1.6"/>
+  <circle cx="495" cy="175" r="5.8" fill="#0d6efd" stroke="none" stroke-width="1"/>
+  <text x="513" y="181" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">オンライン販売</text>
+  <rect x="479" y="120" width="193" height="74" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="479" y="198" width="266" height="52" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <text x="489" y="219" font-family="Meiryo, MS Gothic, sans-serif" font-size="16.8" fill="#183449" font-weight="400" text-anchor="start">選択中の販売方法：</text>
+  <text x="489" y="240" font-family="Meiryo, MS Gothic, sans-serif" font-size="16.8" fill="#183449" font-weight="400" text-anchor="start">オンライン販売</text>
+  <text x="380" y="105" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#932530" font-weight="700" text-anchor="middle">「オンライン販売」</text>
+  <text x="380" y="126.25" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#932530" font-weight="700" text-anchor="middle">を選択</text>
+  <polyline points="303,144 457,144" fill="none" stroke="#b42331" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="448,139 457,144 448,149" fill="none" stroke="#b42331" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="380" y="171" font-family="Meiryo, MS Gothic, sans-serif" font-size="17.5" fill="#932530" font-weight="400" text-anchor="middle">e.target.value →</text>
+  <text x="380" y="192.875" font-family="Meiryo, MS Gothic, sans-serif" font-size="17.5" fill="#932530" font-weight="400" text-anchor="middle">&#x27;オンライン販売&#x27;</text>
+</svg>

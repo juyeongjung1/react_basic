@@ -73,33 +73,33 @@
     "ch02-form-onchange-parts": {
       "caption_id": "ch02-form-onchange-parts-caption",
       "width": 380,
-      "max_height": 142,
+      "max_height": 170,
       "file_path": "ch02-basic/src/components/Sample2_7.tsx"
     },
     "ch02-form-controlled-compare": {
       "caption_id": "ch02-form-controlled-compare-caption",
       "width": 380,
-      "max_height": 136
+      "max_height": 193
     },
     "ch02-form-category-states": {
       "caption_id": "ch02-form-category-states-caption",
       "width": 380,
-      "max_height": 131
+      "max_height": 168
     },
     "ch02-form-available-states": {
       "caption_id": "ch02-form-available-states-caption",
       "width": 380,
-      "max_height": 157
+      "max_height": 148
     },
     "ch02-form-product-browser": {
       "caption_id": "ch02-form-product-browser-caption",
-      "width": 380,
+      "width": 368,
       "max_height": 333
     },
     "ch02-form-render-flow": {
       "caption_id": "ch02-form-render-flow-caption",
       "width": 380,
-      "max_height": 136
+      "max_height": 244
     },
     "ch02-app-exercise-result": {
       "caption_id": "ch02-app-exercise-result-caption",
@@ -175,6 +175,33 @@
       "caption_id": "ch02-list-exercise-result-caption",
       "width": 380,
       "max_height": 252
+    },
+    "ch02-form-radio-states": {
+      "caption_id": "ch02-form-radio-states-caption",
+      "width": 354,
+      "max_height": 132
+    },
+    "ch02-form-exercise-entry": {
+      "caption_id": "ch02-form-exercise-entry-caption",
+      "width": 382,
+      "max_height": 640
+    },
+    "ch02-form-exercise-clear": {
+      "caption_id": "ch02-form-exercise-clear-caption",
+      "width": 382,
+      "max_height": 352
+    }
+  },
+  "pagination": {
+    "continue_before": {
+      "74": "short-minor-heading",
+      "79": "continued-prose",
+      "80": "short-minor-heading",
+      "81": "short-minor-heading",
+      "82": "short-minor-heading",
+      "83": "short-minor-heading",
+      "84": "short-minor-heading",
+      "87": "short-minor-heading"
     }
   }
 }

@@ -1,20 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="380" height="136" viewBox="0 0 380 136">
-  <rect x="4" y="5" width="178" height="126" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="5" y="6" width="176" height="23" rx="5" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
-  <text x="93" y="21.6" font-size="11.6" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">valueのみ</text>
-  <text x="93" y="45" font-size="11.7" fill="#183449" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">value={productName}</text>
-  <rect x="15" y="52" width="156" height="20" rx="4" fill="#fff4d5" stroke="none" stroke-width="0.8"/>
-  <text x="93" y="66" font-size="10.3" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">onChangeがない</text>
-  <rect x="15" y="80" width="156" height="23" rx="4" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="23" y="96" font-size="11.3" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ノート</text>
-  <text x="93" y="120" font-size="10.3" fill="#805900" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力しても変更を保持できない</text>
-  <rect x="198" y="5" width="178" height="126" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="199" y="6" width="176" height="23" rx="5" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="287" y="21.6" font-size="11.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">valueとonChange</text>
-  <text x="287" y="45" font-size="11.7" fill="#183449" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">value={productName}</text>
-  <rect x="209" y="52" width="156" height="20" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="287" y="66" font-size="10.3" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">onChangeでstateを更新</text>
-  <rect x="209" y="80" width="156" height="23" rx="4" fill="#ffffff" stroke="#86b7fe" stroke-width="0.8"/>
-  <text x="217" y="96" font-size="11.3" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">ノートPC</text>
-  <text x="287" y="120" font-size="10.3" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">入力した値がフォームに残る</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="370" viewBox="0 0 760 370">
+  <rect x="7" y="7" width="364" height="247" rx="8" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="8" y="8" width="362" height="32" rx="7" fill="#205b84" stroke="none" stroke-width="1.4"/>
+  <text x="189" y="31" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="700" text-anchor="middle">valueのみ</text>
+  <text x="21" y="63" font-family="Courier New, MS Gothic" font-size="15.5" fill="#183449" font-weight="400" text-anchor="start">productName = &#x27;ノート&#x27;</text>
+  <rect x="251" y="44" width="105" height="24" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="303.5" y="60.725" font-family="Meiryo, MS Gothic, sans-serif" font-size="13.5" fill="#183449" font-weight="400" text-anchor="middle">入力欄：ノート</text>
+  <rect x="19" y="75" width="340" height="71" rx="6" fill="#f0f5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="189" y="116.38" font-family="Courier New, MS Gothic" font-size="16.8" fill="#183449" font-weight="400" text-anchor="middle">value={productName}</text>
+  <text x="189" y="168" font-family="Meiryo, MS Gothic, sans-serif" font-size="17.6" fill="#205b84" font-weight="700" text-anchor="middle">「ノートPC」と入力しようとする</text>
+  <polyline points="189,175 189,184" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="194,175 189,184 184,175" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="20" y="189" width="338" height="31" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <text x="189" y="211" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#932530" font-weight="700" text-anchor="middle">入力欄：ノート　state：ノート</text>
+  <text x="189" y="242" font-family="Meiryo, MS Gothic, sans-serif" font-size="14.7" fill="#425a6b" font-weight="400" text-anchor="middle">stateが更新されず、入力内容の変更を保持できない</text>
+  <rect x="388" y="7" width="364" height="247" rx="8" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="389" y="8" width="362" height="32" rx="7" fill="#226757" stroke="none" stroke-width="1.4"/>
+  <text x="570" y="31" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="700" text-anchor="middle">valueとonChange</text>
+  <text x="402" y="63" font-family="Courier New, MS Gothic" font-size="15.5" fill="#183449" font-weight="400" text-anchor="start">productName = &#x27;ノート&#x27;</text>
+  <rect x="632" y="44" width="105" height="24" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="684.5" y="60.725" font-family="Meiryo, MS Gothic, sans-serif" font-size="13.5" fill="#183449" font-weight="400" text-anchor="middle">入力欄：ノート</text>
+  <rect x="400" y="75" width="340" height="71" rx="6" fill="#f0f5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="570" y="95.38" font-family="Courier New, MS Gothic" font-size="16.8" fill="#183449" font-weight="400" text-anchor="middle">value={productName}</text>
+  <text x="570" y="116.38" font-family="Courier New, MS Gothic" font-size="16.8" fill="#183449" font-weight="400" text-anchor="middle">onChange={(e) =&gt;</text>
+  <text x="570" y="137.38" font-family="Courier New, MS Gothic" font-size="16.8" fill="#183449" font-weight="400" text-anchor="middle">  setProductName(e.target.value)}</text>
+  <text x="570" y="168" font-family="Meiryo, MS Gothic, sans-serif" font-size="17.6" fill="#205b84" font-weight="700" text-anchor="middle">「ノートPC」と入力する</text>
+  <polyline points="570,175 570,184" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="575,175 570,184 565,175" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="401" y="189" width="338" height="31" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <text x="570" y="211" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#932530" font-weight="700" text-anchor="middle">入力欄：ノートPC　state：ノートPC</text>
+  <text x="570" y="242" font-family="Meiryo, MS Gothic, sans-serif" font-size="14.7" fill="#425a6b" font-weight="400" text-anchor="middle">入力された値でstateを更新できる</text>
+  <rect x="11" y="290" width="166" height="46" rx="6" fill="#f0f5fa" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="94" y="319.65" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="400" text-anchor="middle">入力欄</text>
+  <rect x="555" y="290" width="194" height="46" rx="6" fill="#edf6f3" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="652" y="319.3" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#183449" font-weight="400" text-anchor="middle">productName（state）</text>
+  <polyline points="186,300 546,300" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="537,295 546,300 537,305" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="546,324 186,324" fill="none" stroke="#226757" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="195,329 186,324 195,319" fill="none" stroke="#226757" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="366" y="287" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#205b84" font-weight="400" text-anchor="middle">onChangeで値を取得・更新</text>
+  <text x="366" y="350" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#226757" font-weight="400" text-anchor="middle">valueで入力欄に反映</text>
 </svg>

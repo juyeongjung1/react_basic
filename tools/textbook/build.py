@@ -134,8 +134,17 @@ def read_markdown(path):
                             rows, has_header = read_table(value[0]['c'], component['attrs'])
                             component.update(kind='table', rows=rows, has_header=has_header,
                                              text='\n'.join(' '.join(row) for row in rows))
+                        elif classes == ['note-figure'] and len(value) == 1 and value[0]['t'] == 'Para' and len(value[0]['c']) == 1 and value[0]['c'][0]['t'] == 'Image':
+                            _, caption, (path, _) = value[0]['c'][0]['c']
+                            caption_parts = flatten(caption)
+                            figures[component_id] = path
+                            caption_text = ''.join(text for text, _ in caption_parts)
+                            nodes[component_id + '-caption'] = dict(kind='caption', parts=caption_parts,
+                                                                     text=caption_text, attrs={}, language=None)
+                            embedded_components.append((len(paragraph_parts(parts)) - 1, component_id, None))
+                            continue
                         else:
-                            raise ValueError(f'補足枠の部品はコードまたは表にしてください: {component_id}')
+                            raise ValueError(f'補足枠の部品はコード、表または図にしてください: {component_id}')
                         component['parts'] = [(component['text'], None)]
                         embedded_components.append((len(paragraph_parts(parts)) - 1, component_id, component))
                         continue
@@ -145,11 +154,14 @@ def read_markdown(path):
                     elif child['t']=='Table':
                         rows, has_header = read_table(child['c'], dict(attrs[2]))
                         parts=[('\n'.join(' '.join(row) for row in rows),None)]
-                    elif note and child['t'] == 'BulletList':
-                        for item in child['c']:
+                    elif note and child['t'] in ('BulletList', 'OrderedList'):
+                        numbered = child['t'] == 'OrderedList'
+                        start, items = (child['c'][0][0], child['c'][1]) if numbered else (1, child['c'])
+                        for number, item in enumerate(items, start):
                             if len(item) != 1 or item[0]['t'] not in ('Plain', 'Para'):
                                 raise ValueError(f'補足枠の箇条書きは各項目を1段落で記述してください: {attrs[0]}')
-                            parts += [('\n\n', None), ('● ', None), *flatten(item[0]['c'])]
+                            marker = f'{number}. ' if numbered else '● '
+                            parts += [('\n\n', None), (marker, None), *flatten(item[0]['c'])]
                     elif child["t"] in ("Para", "Plain"):
                         if parts:
                             parts.append(("\n\n", None))
@@ -163,8 +175,11 @@ def read_markdown(path):
                 if embedded_components:
                     nodes[attrs[0]]['embedded_components'] = [(after, ident) for after, ident, _ in embedded_components]
                 for _, component_id, component in embedded_components:
-                    nodes[component_id] = component
                     entries.append(component_id)
+                    if component is None:
+                        entries.append(component_id + '-caption')
+                    else:
+                        nodes[component_id] = component
             elif block["t"] == "Para" and len(block["c"]) == 1 and block["c"][0]["t"] == "Image":
                 image = block["c"][0]["c"]
                 if not image[0][0] or image[0][0] in figures or image[0][0] in nodes:
@@ -721,18 +736,27 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             return f'#contents-entry({q(ident)}, [{inline(node["parts"])}], subsection: {subsection}, numbered: {numbered_entry})'
         if node['kind'] == 'training-note':
             title, *paragraphs = paragraph_parts(node['parts'])
+            breakable = node['attrs'].get('breakable') == 'true'
             parts = []
             for index, paragraph in enumerate(paragraphs, 1):
+                marker = paragraph[0][0] if paragraph else ''
+                item = f'{ident}-paragraph-{index}'
+                body = inline(paragraph, preserve_punctuation_font=breakable)
                 if paragraph and paragraph[0] == ('● ', None):
                     item = f'{ident}-bullet-{index}'
                     parts.append(f'#bullet-paragraph({q(item)}, [●], [{inline(paragraph[1:])}])')
+                elif re.fullmatch(r'\d+\. ', marker):
+                    parts.append(f'#numbered-paragraph({q(item)}, [{marker.rstrip()}], [{inline(paragraph[1:])}])')
+                elif breakable:
+                    parts.append(f'#paragraph({q(item)}, [{body}], indent: 0pt)')
                 else:
-                    parts.append(inline(paragraph))
+                    parts.append(body)
             for index, (after, component_id) in enumerate(node.get('embedded_components', ())):
-                component = modern_panel(component_id) if modern else render(component_id)
+                component = modern_panel(component_id) if modern and component_id in modern['anchors'] else render(component_id)
                 parts.insert(after + index, component)
-            body = '#parbreak()'.join(parts)
-            return f'#training-note({q(ident)}, [{inline(title)}], [{body}])'
+            separator = '\n' if breakable else '#parbreak()'
+            options = ', breakable: true' if breakable else ''
+            return f'#training-note({q(ident)}, [{inline(title)}], [{separator.join(parts)}]{options})'
         if node['kind'] == 'stage-flow':
             paragraphs = iter(paragraph_parts(node['parts']))
             stages = (f'([{inline(label)}], [{inline(title, keep_lines=True)}], [{inline(body)}])'
@@ -783,7 +807,10 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 value, style = parts[0]
                 marker = inline([(value[0], style)])
                 parts[0] = (value[1:], style)
-                return f'#bullet-paragraph({q(ident)}, [{marker}], [{inline(parts, keep_lines=keep_lines)}], continuing: {str(ident in list_with_continuation).lower()})'
+                inset = ', left: 29.04pt' if node['attrs'].get('nested-bullet') == 'true' else ''
+                bullet_body = inline(parts, keep_lines=keep_lines,
+                                     preserve_punctuation_font=node['attrs'].get('punctuation-font') == 'inherit')
+                return f'#bullet-paragraph({q(ident)}, [{marker}], [{bullet_body}], continuing: {str(ident in list_with_continuation).lower()}{inset})'
             if ident in list_continuations:
                 return f'#list-continuation({q(ident)}, [{inline(parts)}], continuing: {str(ident in list_with_continuation).lower()})'
             is_time_list = folder.name.startswith('ex') and re.fullmatch(

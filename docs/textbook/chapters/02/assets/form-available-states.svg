@@ -1,24 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="380" height="157" viewBox="0 0 380 157">
-  <rect x="7" y="5" width="164" height="101" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="8" y="6" width="162" height="23" rx="5" fill="#edf5fa" stroke="none" stroke-width="0.8"/>
-  <text x="89" y="21" font-size="11.2" fill="#205b84" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">チェックなし</text>
-  <rect x="20" y="39" width="13" height="13" rx="3" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="39" y="50" font-size="11.1" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">販売中</text>
-  <text x="89" y="72" font-size="10.4" fill="#205b84" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">e.target.checked → false</text>
-  <rect x="17" y="80" width="144" height="19" rx="4" fill="#f0f3f6" stroke="none" stroke-width="0.8"/>
-  <text x="89" y="94" font-size="10.6" fill="#425a6b" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">販売状態：販売停止</text>
-  <rect x="209" y="5" width="164" height="101" rx="6" fill="#ffffff" stroke="#aabfcf" stroke-width="0.8"/>
-  <rect x="210" y="6" width="162" height="23" rx="5" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="291" y="21" font-size="11.2" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">チェックあり</text>
-  <rect x="222" y="39" width="13" height="13" rx="3" fill="#0d6efd" stroke="#0d6efd" stroke-width="0.8"/>
-  <path d="M 225 45.5 l 2.4 2.4 l 4.8 -5" fill="none" stroke="#ffffff" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="241" y="50" font-size="11.1" fill="#183449" font-weight="400" text-anchor="start" font-family="Meiryo, sans-serif">販売中</text>
-  <text x="291" y="72" font-size="10.4" fill="#226757" font-weight="700" text-anchor="middle" font-family="MS Gothic, monospace">e.target.checked → true</text>
-  <rect x="219" y="80" width="144" height="19" rx="4" fill="#e8f5ed" stroke="none" stroke-width="0.8"/>
-  <text x="291" y="94" font-size="10.6" fill="#226757" font-weight="700" text-anchor="middle" font-family="Meiryo, sans-serif">販売状態：販売中</text>
-  <rect x="7" y="116" width="366" height="35" rx="5" fill="#f6f9fb" stroke="#aabfcf" stroke-width="0.8"/>
-  <text x="17" y="130" font-size="10.0" fill="#205b84" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">テキスト入力</text>
-  <text x="113" y="130" font-size="10.5" fill="#205b84" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">value  /  e.target.value</text>
-  <text x="17" y="145" font-size="10.0" fill="#226757" font-weight="700" text-anchor="start" font-family="Meiryo, sans-serif">チェックボックス</text>
-  <text x="113" y="145" font-size="10.5" fill="#226757" font-weight="700" text-anchor="start" font-family="MS Gothic, monospace">checked  /  e.target.checked</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="286" viewBox="0 0 760 286">
+  <text x="127.5" y="27" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#205b84" font-weight="700" text-anchor="middle">チェックなし</text>
+  <rect x="10" y="38" width="235" height="182" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="10" y="38" width="235" height="26" rx="6" fill="#ebf2f6" stroke="#aabfcf" stroke-width="1.4"/>
+  <circle cx="19" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="25" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="31" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <rect x="27" y="83" width="20" height="20" rx="4" fill="white" stroke="#dee2e6" stroke-width="1.4"/>
+  <text x="55" y="100" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">販売中</text>
+  <text x="25" y="148" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="700" text-anchor="start">入力内容の確認</text>
+  <text x="25" y="184" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="400" text-anchor="start">販売状態：販売停止</text>
+  <rect x="23" y="79" width="28" height="28" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="21" y="163" width="188" height="29" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="20" y="230" width="215" height="38" rx="6" fill="#edf6f3" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="127.5" y="255.125" font-family="Courier New, MS Gothic" font-size="17.5" fill="#183449" font-weight="400" text-anchor="middle">isAvailable = false</text>
+  <text x="632.5" y="27" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#205b84" font-weight="700" text-anchor="middle">チェックあり</text>
+  <rect x="515" y="38" width="235" height="182" rx="6" fill="white" stroke="#aabfcf" stroke-width="1.4"/>
+  <rect x="515" y="38" width="235" height="26" rx="6" fill="#ebf2f6" stroke="#aabfcf" stroke-width="1.4"/>
+  <circle cx="524" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="530" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <circle cx="536" cy="51" r="1.8" fill="#91a9b8" stroke="none" stroke-width="1"/>
+  <rect x="532" y="83" width="20" height="20" rx="4" fill="#0d6efd" stroke="#0d6efd" stroke-width="1.4"/>
+  <polyline points="536,93 540,97 548,89" fill="none" stroke="white" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="560" y="100" font-family="Meiryo, MS Gothic, sans-serif" font-size="20" fill="#183449" font-weight="400" text-anchor="start">販売中</text>
+  <text x="530" y="148" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="700" text-anchor="start">入力内容の確認</text>
+  <text x="530" y="184" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#183449" font-weight="400" text-anchor="start">販売状態：販売中</text>
+  <rect x="528" y="79" width="28" height="28" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="526" y="163" width="188" height="29" rx="0" fill="none" stroke="#b42331" stroke-width="2.2"/>
+  <rect x="525" y="230" width="215" height="38" rx="6" fill="#edf6f3" stroke="#aabfcf" stroke-width="1.4"/>
+  <text x="632.5" y="255.125" font-family="Courier New, MS Gothic" font-size="17.5" fill="#183449" font-weight="400" text-anchor="middle">isAvailable = true</text>
+  <text x="380" y="78" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#205b84" font-weight="700" text-anchor="middle">「販売中」にチェックを付ける</text>
+  <polyline points="257,95 503,95" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="494,90 503,95 494,100" fill="none" stroke="#205b84" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="380" y="120" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="400" text-anchor="middle">e.target.checked → true</text>
+  <text x="380" y="158" font-family="Meiryo, MS Gothic, sans-serif" font-size="17" fill="#226757" font-weight="700" text-anchor="middle">「販売中」のチェックを外す</text>
+  <polyline points="503,176 257,176" fill="none" stroke="#226757" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <polyline points="266,181 257,176 266,171" fill="none" stroke="#226757" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="380" y="202" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#226757" font-weight="400" text-anchor="middle">e.target.checked → false</text>
 </svg>
