@@ -838,10 +838,10 @@ Reactは、画面を作成したり、データの変更を画面に反映した
 React Routerは、現在のURLのパスに対応するルートを選択し、そのルートに指定されたコンポーネントを表示します。
 :::
 
-![URLのパスに対応する画面のコンポーネントを表示する（通常構成の例）](assets/router-path.svg){#ch03-router-figure-path}
+![URLのパスに対応する画面のコンポーネントを表示する](assets/router-path.svg){#ch03-router-figure-path}
 
 ::: {#ch03-router-figure-path-caption .caption}
-URLのパスに対応する画面のコンポーネントを表示する（通常構成の例）
+URLのパスに対応する画面のコンポーネントを表示する
 :::
 
 ::: {#ch03-router-r82 .heading level="minor"}
@@ -2090,10 +2090,10 @@ SPAにおける画面遷移
 ● 現在表示している画面に対応するメニューが強調される。
 :::
 
-![商品一覧を表示し、現在の画面に対応するメニューを強調する（通常構成の例）](assets/navigation-browser.svg){#ch03-navigation-browser}
+![商品一覧を表示し、現在の画面に対応するメニューを強調する](assets/navigation-browser.svg){#ch03-navigation-browser}
 
 ::: {#ch03-navigation-browser-caption .caption}
-商品一覧を表示し、現在の画面に対応するメニューを強調する（通常構成の例）
+商品一覧を表示し、現在の画面に対応するメニューを強調する
 :::
 
 ::: {#ch03-navigation-r432 .step punctuation-font="inherit"}

@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="486" viewBox="0 0 760 486" font-family="Meiryo UI, MS PGothic, sans-serif">
 <title>ルーティングに関わるファイルの関係</title>
 <text x="380" y="33" font-size="24" fill="#182f45" font-weight="700" text-anchor="middle">ルーティングに関わるファイルの関係</text>
-<text x="744" y="57" font-size="15" fill="#174e78" font-weight="700" text-anchor="end">通常構成の例</text>
 <rect x="253" y="59" width="254" height="54" rx="7" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="380.0" y="81" font-size="19" fill="#182f45" font-weight="700" text-anchor="middle" font-family="Courier New, Meiryo UI, monospace">main.tsx</text>
 <text x="380.0" y="102" font-size="16" fill="#174e78" font-weight="400" text-anchor="middle">起動処理</text>

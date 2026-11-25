@@ -26,5 +26,4 @@
   <text x="323.5" y="453" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="400" text-anchor="middle">商品一覧</text>
   <text x="435" y="453" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#0d6efd" font-weight="400" text-anchor="middle">ご利用案内</text>
   <text x="380" y="514" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">React Routerが選択状態を判定し、Bootstrapが見た目を変更する</text>
-<text x="737" y="73" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 </svg>

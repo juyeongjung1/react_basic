@@ -54,5 +54,4 @@
 <rect x="416" y="474" width="308" height="54" rx="6" fill="#fff1df" stroke="#d9b893" stroke-width="1.5"/>
 <text x="570" y="508" font-size="20" fill="#18364e" text-anchor="middle" font-weight="700">データベース</text>
 <text x="380" y="598" font-size="19" fill="#28644e" text-anchor="middle" font-weight="700">画面遷移を行う処理と、データを登録する処理は別の処理</text>
-<text x="745" y="49" font-size="15" fill="#255977" text-anchor="end" font-weight="400">通常構成の例</text>
 </svg>

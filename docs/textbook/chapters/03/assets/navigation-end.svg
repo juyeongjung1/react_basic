@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="354" viewBox="0 0 760 354">
 <title>end属性の有無による商品一覧の選択状態の違い</title>
 <text x="380" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="23" fill="#182f45" text-anchor="middle" font-weight="700">end属性の有無による商品一覧の選択状態の違い</text>
-<text x="740" y="57" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 <text x="365" y="60" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" fill="#182f45" text-anchor="middle" font-weight="700">次節で追加する商品詳細画面を想定した例</text>
 <rect x="12" y="78" width="362" height="261" rx="7" fill="#f4f8fb" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="193" y="108" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="19" fill="#174e78" text-anchor="middle" font-weight="700">endなし</text>

@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="442" viewBox="0 0 760 442">
 <title>前節の構成を引き継いで共通レイアウトを変更する</title>
 <text x="380" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="23" fill="#182f45" text-anchor="middle" font-weight="700">前節の構成を引き継いで共通レイアウトを変更する</text>
-<text x="740" y="57" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 <rect x="13" y="64" width="454" height="357" rx="7" fill="#f4f8fb" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="28" y="96" font-family="Courier New, Meiryo UI, monospace" font-size="22" fill="#182f45" text-anchor="start" font-weight="700">src/</text>
 <text x="448" y="130" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" fill="#174e78" text-anchor="end" font-weight="400">変更なし</text>

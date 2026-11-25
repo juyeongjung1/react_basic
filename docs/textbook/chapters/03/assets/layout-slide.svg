@@ -39,5 +39,4 @@
 <polyline points="416,319.5 373,319.5 373,234 332,234" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
 <rect x="50" y="371" width="640" height="40" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
 <text x="370.0" y="396.94" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="18" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">共通部分はMainLayoutで管理し、各画面はOutletの位置に表示する</text>
-<text x="730" y="366" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 </svg>

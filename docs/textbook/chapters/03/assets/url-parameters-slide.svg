@@ -48,5 +48,4 @@
 <rect x="4" y="181" width="344" height="41" rx="4" fill="#e9f5f0" stroke="#a2c8b6" stroke-width="1"/>
 <text x="176" y="197" font-size="13.1" fill="#1a6650" text-anchor="middle" font-weight="700">URLから商品番号を取得する</text>
 <text x="176" y="213" font-size="9.1" fill="#275b4d" text-anchor="middle">取得した商品番号は、後続の章で商品情報を取得するために使用する</text>
-<text x="176" y="174" font-size="9.6" fill="#255977" text-anchor="middle" font-weight="400">通常構成の例</text>
 </svg>

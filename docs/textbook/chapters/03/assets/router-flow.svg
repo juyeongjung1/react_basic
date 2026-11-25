@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="676" viewBox="0 0 760 676" font-family="Meiryo UI, MS PGothic, sans-serif">
 <title>URLへのアクセスから商品一覧が表示されるまで</title>
 <text x="380" y="33" font-size="24" fill="#182f45" font-weight="700" text-anchor="middle">URLへのアクセスから商品一覧が表示されるまで</text>
-<text x="744" y="57" font-size="15" fill="#174e78" font-weight="700" text-anchor="end">通常構成の例</text>
 <rect x="81" y="68" width="598" height="42" rx="7" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <rect x="103" y="74" width="566" height="30" rx="7" fill="#fff" stroke="#a1bdcf" stroke-width="1.5"/>
 <rect x="88" y="87" width="5" height="5" rx="2.5" fill="#a1bdcf" stroke="none" stroke-width="1.5"/>

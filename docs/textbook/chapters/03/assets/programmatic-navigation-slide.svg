@@ -90,5 +90,4 @@
 <rect x="4" y="240" width="502" height="34" rx="4" fill="#e6f4ee" stroke="#a0c6b5" stroke-width="1"/>
 <text x="255" y="261" font-size="15" fill="#1a6650" text-anchor="middle" font-weight="700">useNavigate()で取得した関数を使って画面遷移する</text>
 <text x="498" y="236" font-size="9.5" fill="#255977" text-anchor="end" font-weight="400">画面の一部</text>
-<text x="8" y="19" font-size="11" fill="#255977" text-anchor="start" font-weight="400">通常構成の例</text>
 </svg>

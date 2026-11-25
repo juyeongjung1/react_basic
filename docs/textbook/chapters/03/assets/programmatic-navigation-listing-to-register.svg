@@ -148,5 +148,5 @@
 <rect x="20" y="481" width="42" height="17" rx="3" fill="#0d6efd"/><text x="41.0" y="493.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">登録</text>
 <rect x="68" y="481" width="70" height="17" rx="3" fill="#6c757d"/><text x="103.0" y="493.036" font-size="10.4" fill="#fff" text-anchor="middle" font-weight="700">キャンセル</text>
 <rect x="17" y="430" width="65" height="19" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
-<text x="450" y="39" font-size="10.3" fill="#255977" text-anchor="end" font-weight="400">通常構成の例・URLは一例</text>
+<text x="450" y="39" font-size="10.3" fill="#255977" text-anchor="end" font-weight="400">URLは一例</text>
 </svg>

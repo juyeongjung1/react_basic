@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="344" viewBox="0 0 760 344" font-family="Meiryo UI, MS PGothic, sans-serif">
 <title>Routeのpath属性とelement属性</title>
 <text x="380" y="33" font-size="24" fill="#182f45" font-weight="700" text-anchor="middle">Routeのpath属性とelement属性</text>
-<text x="744" y="57" font-size="15" fill="#174e78" font-weight="700" text-anchor="end">通常構成の例</text>
 <rect x="16" y="69" width="728" height="75" rx="7" fill="#f5f8fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="731" y="90" font-size="15" fill="#182f45" font-weight="400" text-anchor="end" font-family="Courier New, Meiryo UI, monospace">src/routes/AppRoutes.tsx</text>
 <rect x="109.47" y="105" width="173.93" height="26" rx="3" fill="#edf6f0" stroke="none" stroke-width="1.5"/>

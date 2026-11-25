@@ -28,5 +28,4 @@
 <text x="392.5" y="207" font-size="10.2" fill="#18364e" text-anchor="middle">文字列として</text><text x="392.5" y="220" font-size="10.2" fill="#18364e" text-anchor="middle">取得</text>
 <path d="M339 196L350 196M345.00 193.00L350 196L345.00 199.00" fill="none" stroke="#235c78" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="418" y="52" font-size="10" fill="#255977" text-anchor="end" font-weight="400">URLは一例</text>
-<text x="15" y="98" font-size="10" fill="#255977" text-anchor="start" font-weight="400">通常構成の例</text>
 </svg>

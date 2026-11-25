@@ -87,5 +87,5 @@
 <text x="165" y="584.0" font-size="10.5" fill="#18364e" text-anchor="start">商品番号：101</text><text x="165" y="594.7" font-size="10.5" fill="#18364e" text-anchor="start">商品名：ノート</text><text x="165" y="605.4" font-size="10.5" fill="#18364e" text-anchor="start">単価：250円</text>
 <rect x="15" y="508" width="430" height="119" rx="4" fill="none" stroke="#c4a67f" stroke-width="1"/>
 <text x="230" y="644" font-size="11.6" fill="#804b23" text-anchor="middle" font-weight="700">URLパラメータを取得する処理と、商品情報を取得する処理は別の処理</text>
-<text x="443" y="49" font-size="10.5" fill="#255977" text-anchor="end" font-weight="400">通常構成の例・URLは一例</text>
+<text x="443" y="49" font-size="10.5" fill="#255977" text-anchor="end" font-weight="400">URLは一例</text>
 </svg>
