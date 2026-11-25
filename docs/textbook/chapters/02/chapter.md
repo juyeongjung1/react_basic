@@ -1831,7 +1831,7 @@ Reactでは、**`onClick` 属性に、クリック時に実行する関数を指
 次の2つの記述を比較してください。
 :::
 
-::: {#ch02-24-paragraph-24 .paragraph keep-next="1"}
+::: {#ch02-24-paragraph-24 .step keep-next="1"}
 **正しい書き方**
 :::
 
@@ -1845,7 +1845,7 @@ Reactでは、**`onClick` 属性に、クリック時に実行する関数を指
 この記述では、`clearSelection` という関数そのものを `onClick` に渡しています。この時点では、関数の中の処理は実行されません。ボタンがクリックされたときに、Reactが関数を呼び出します。
 :::
 
-::: {#ch02-24-paragraph-26 .paragraph keep-next="1"}
+::: {#ch02-24-paragraph-26 .step keep-next="1"}
 **誤った書き方**
 :::
 
@@ -3064,7 +3064,7 @@ map()の構文と各部分の役割
 ::::
 
 :::: {#page-65 .source-page}
-::: {#ch02-26-paragraph-28 .paragraph punctuation-font="inherit" keep-next="1"}
+::: {#ch02-26-paragraph-28 .step punctuation-font="inherit" keep-next="1"}
 **returnを省略する書き方（今回のサンプルと同じ形式）**
 :::
 
@@ -3080,7 +3080,7 @@ products.map((product) => (
 ~~~
 :::
 
-::: {#ch02-26-paragraph-29 .paragraph keep-next="1"}
+::: {#ch02-26-paragraph-29 .step keep-next="1"}
 **returnを明示する書き方**
 :::
 
@@ -3593,7 +3593,7 @@ export default function Sample2_7() {
 このコードでは、`value` 属性と `onChange` 属性を使用して、テキスト入力欄とstateを連動させています。
 :::
 
-::: {#ch02-form-line-222 .paragraph keep-next="1"}
+::: {#ch02-form-line-222 .step keep-next="1"}
 **value属性でstateの値を表示する**
 :::
 
@@ -3618,7 +3618,7 @@ export default function Sample2_7() {
 
 :::: {#page-79 .source-page}
 
-::: {#ch02-form-line-235 .paragraph keep-next="1"}
+::: {#ch02-form-line-235 .step keep-next="1"}
 **onChangeで入力値を取得し、stateを更新する**
 :::
 
@@ -3724,7 +3724,7 @@ ReactのJSXでは、`for` の代わりに **htmlFor** を使用します。今�
 例えば、商品名のstateに「ノート」という値が格納されているとします。
 :::
 
-::: {#ch02-form-line-309 .paragraph keep-next="1"}
+::: {#ch02-form-line-309 .step keep-next="1"}
 **value属性だけを指定した場合**
 :::
 
@@ -3746,7 +3746,7 @@ ReactのJSXでは、`for` の代わりに **htmlFor** を使用します。今�
 その結果、入力欄は、ユーザーが編集できない状態になります。このように `value` を指定し、入力を更新するための `onChange` がなく、`readOnly` も指定していない場合、開発時にはReactから警告が表示されることがあります。
 :::
 
-::: {#ch02-form-line-322 .paragraph keep-next="1"}
+::: {#ch02-form-line-322 .step keep-next="1"}
 **value属性とonChangeを指定した場合**
 :::
 
@@ -4085,7 +4085,9 @@ return (
 
 `name` 属性に同じ値を指定することで、2つのラジオボタンを同じグループとして扱います。また、それぞれのラジオボタンの `value` 属性には、選択肢に対応する値を指定します。
 
+::: {#ch02-form-radio-state .step}
 **選択された値をstateに保存する**
+:::
 
 ```{#ch02-form-line-604 .tsx example="true"}
 onChange={(e) => setSalesMethod(e.target.value)}

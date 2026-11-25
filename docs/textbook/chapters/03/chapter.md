@@ -1501,7 +1501,7 @@ React Routerには、共通レイアウトの中に、URLに応じた画面を�
 共通レイアウトの中に商品一覧画面を表示する
 :::
 
-::: {#ch03-layout-r59 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r59 .step punctuation-font="inherit"}
 **共通レイアウトを管理するフォルダーを追加する**
 :::
 
@@ -1550,7 +1550,7 @@ src/
 各画面のコンポーネント自体には、ヘッダーやメニューを追加する必要はありません。
 :::
 
-::: {#ch03-layout-r93 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r93 .step punctuation-font="inherit"}
 **共通レイアウトを定義するファイル**
 :::
 
@@ -1591,7 +1591,7 @@ export default function MainLayout() {
 このファイルには、各画面で共通して使用するヘッダー・メニュー・フッターを記述しています。また、メニューとフッターの間に、React Routerが提供する `Outlet` を配置しています。
 :::
 
-::: {#ch03-layout-r127 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r127 .step punctuation-font="inherit"}
 **ルーティングを定義するファイル**
 :::
 
@@ -2096,7 +2096,7 @@ SPAにおける画面遷移
 商品一覧を表示し、現在の画面に対応するメニューを強調する（通常構成の例）
 :::
 
-::: {#ch03-navigation-r432 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r432 .step punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
@@ -2124,7 +2124,7 @@ SPAにおける画面遷移
 3.4では共通レイアウトの変更に集中する
 :::
 
-::: {#ch03-navigation-r452 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r452 .step punctuation-font="inherit"}
 **共通レイアウトのソースコード**
 :::
 
@@ -2258,7 +2258,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 例えば、ホーム画面へ移動するリンクを記述する場合は、次のようになります。
 :::
 
-::: {#ch03-navigation-r547 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r547 .step punctuation-font="inherit"}
 **通常のHTMLのリンク**
 :::
 
@@ -2268,7 +2268,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-navigation-r554 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r554 .step punctuation-font="inherit"}
 **React RouterのLink**
 :::
 
@@ -2473,7 +2473,7 @@ NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
 **`end` が変更するのは、NavLinkが選択中と判断するパスの範囲です。** リンクの移動先や、`Route` によって表示する画面が変わるわけではありません。
 :::
 
-::: {#ch03-navigation-r685 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r685 .step punctuation-font="inherit"}
 **ルートURLを指定する場合**
 :::
 
@@ -2580,7 +2580,9 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
         </NavLink>
 ~~~
 
+::: {#ch03-navigation-distribution-home .step}
 **配布サンプルでは、ホームのNavLinkにendを指定する**
+:::
 
 通常構成のホームは `to="/"` ですが、配布サンプルのホームは `to="/sample-3-4"` です。後者はサイトのルートを指定したリンクではないため、前述したルートURLの特別な扱いは適用されません。
 
@@ -2818,7 +2820,7 @@ React Routerでは、このようにURLのパスに可変部分を定義し、�
 ［詳細］をクリックすると、選択した商品の番号を含むURLへ移動します。商品詳細画面には、URLから取得した商品番号を表示します。また、［商品一覧へ戻る］をクリックすると、商品一覧画面へ戻ります。
 :::
 
-::: {#ch03-params-r67 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r67 .step punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
@@ -2875,7 +2877,7 @@ src/
 商品詳細画面の追加に伴い変更するファイルと、新たに作成するファイル
 :::
 
-::: {#ch03-params-r111 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r111 .step punctuation-font="inherit"}
 **商品カードのソースコード**
 :::
 
@@ -2922,7 +2924,7 @@ export default function ProductCard(
 ~~~
 :::
 
-::: {#ch03-params-r153 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r153 .step punctuation-font="inherit"}
 **商品詳細画面のソースコード**
 :::
 
@@ -2955,7 +2957,7 @@ export default function ProductDetailPage() {
 ~~~
 :::
 
-::: {#ch03-params-r181 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r181 .step punctuation-font="inherit"}
 **ルーティングの設定**
 :::
 
@@ -3312,7 +3314,9 @@ REST APIとデータベースを連携させるアプリケーションでは、
 | ご利用案内 | `/guide` | `/sample-3-5/guide` |
 :::
 
+::: {#ch03-params-distribution-differences .step}
 **配布サンプルで異なる部分**
+:::
 
 `routes/AppRoutes.tsx` のルート定義、商品番号のProps、`useParams()` による値の取得方法は、通常構成と同じです。配布サンプルでは、商品詳細画面へのリンクと、商品一覧へ戻るリンクの移動先が異なります。
 
@@ -3570,7 +3574,7 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 今回は画面遷移の仕組みに集中するため、商品の入力フォームや登録処理は実装しません。［登録］ボタンをクリックしても、商品一覧に新しい商品は追加されません。
 :::
 
-::: {#ch03-programmatic-r615 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r615 .step punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
@@ -3635,7 +3639,7 @@ src/
 今回は新たに作成する商品登録画面と、その画面を表示するためのルーティングを中心に確認します。前節までと同じ処理については、全体ソースコードの掲載を省略します。
 :::
 
-::: {#ch03-programmatic-r663 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r663 .step punctuation-font="inherit"}
 **商品登録画面のソースコード**
 :::
 
@@ -3680,7 +3684,7 @@ export default function ProductRegisterPage() {
 今回のサンプルでは、［登録］に `button` 要素を、［キャンセル］に `Link` を使用しています。どちらの操作でも商品一覧画面へ移動しますが、その目的と実装方法が異なります。
 :::
 
-::: {#ch03-programmatic-r701 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r701 .step punctuation-font="inherit"}
 **商品一覧画面へのリンクの追加**
 :::
 
@@ -3707,7 +3711,7 @@ import { Link } from 'react-router'
 この［商品登録］リンクをクリックすると、`/products/new` へ移動します。
 :::
 
-::: {#ch03-programmatic-r720 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r720 .step punctuation-font="inherit"}
 **ルーティングの設定**
 :::
 
@@ -4037,7 +4041,9 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 | ご利用案内 | `/guide` | `/sample-3-6/guide` |
 :::
 
+::: {#ch03-programmatic-distribution-differences .step}
 **配布サンプルで異なる部分**
+:::
 
 `routes/AppRoutes.tsx` のルート定義と、`useNavigate()` で関数を取得する方法は通常構成と同じです。異なるのは、画面遷移の際に指定するパスです。
 

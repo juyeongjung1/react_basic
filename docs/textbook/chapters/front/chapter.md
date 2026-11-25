@@ -237,7 +237,7 @@ XXXX-T-01
 ■ REST API と連携し、CRUD 機能を備えた SPA を構築できる。
 :::
 
-::: {#front-goal-option-title .heading}
+::: {#front-goal-option-title .heading level="minor"}
 **オプション実施時**
 :::
 

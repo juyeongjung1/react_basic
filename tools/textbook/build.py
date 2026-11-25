@@ -134,6 +134,9 @@ def read_markdown(path):
                             rows, has_header = read_table(value[0]['c'], component['attrs'])
                             component.update(kind='table', rows=rows, has_header=has_header,
                                              text='\n'.join(' '.join(row) for row in rows))
+                        elif classes == ['step'] and len(value) == 1 and value[0]['t'] in ('Para', 'Plain'):
+                            heading_parts = flatten(value[0]['c'])
+                            component.update(kind='step', parts=heading_parts, text=''.join(text for text, _ in heading_parts))
                         elif classes == ['note-figure'] and len(value) == 1 and value[0]['t'] == 'Para' and len(value[0]['c']) == 1 and value[0]['c'][0]['t'] == 'Image':
                             _, caption, (path, _) = value[0]['c'][0]['c']
                             caption_parts = flatten(caption)
@@ -144,8 +147,8 @@ def read_markdown(path):
                             embedded_components.append((len(paragraph_parts(parts)) - 1, component_id, None))
                             continue
                         else:
-                            raise ValueError(f'補足枠の部品はコード、表または図にしてください: {component_id}')
-                        component['parts'] = [(component['text'], None)]
+                            raise ValueError(f'補足枠の部品は小見出し、コード、表または図にしてください: {component_id}')
+                        component.setdefault('parts', [(component['text'], None)])
                         embedded_components.append((len(paragraph_parts(parts)) - 1, component_id, component))
                         continue
                     if child["t"] == "CodeBlock":
@@ -413,7 +416,6 @@ def flow_layout(folder, config, layout, nodes, figures, order, modern=None):
         raise ValueError('小小見出しの余白指定に対応する見出しがありません')
     minor_headings = {ident for ident, node in nodes.items()
                       if node['kind'] == 'heading' and node['attrs'].get('level') == 'minor'}
-    heading_spacing = {**heading_spacing, **dict.fromkeys(minor_headings, 26 - 18)}
     numbered = figure_numbers(folder, config, layout, nodes, figures, order)
     has_cover=config.get('cover_mode','classic')!='none'
     furniture_condition='here().page() > 1' if has_cover else 'true'
@@ -701,6 +703,13 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                 f'overlay: [{chr(10).join(overlay)}], tail: {tail}pt, above: {above}pt, '
                 f'font-size: {font_size}pt, leading: {max(0,pitch-font_size)}pt{content_option})')
 
+    def heading_margin(ident):
+        if ident in slide_body_first:
+            return '0pt'
+        margin = 'subheading-above' if nodes[ident]['kind'] == 'step' or ident in minor_headings else '18pt'
+        extra = heading_spacing.get(ident, 0)
+        return f'{margin} + {extra}pt' if extra else margin
+
     def render(ident):
         if ident in joined_continuations:
             return ''
@@ -879,9 +888,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
                   "step": "step", "paragraph": "paragraph"}.get(node["kind"])
         if method is None:
             raise ValueError(f'未対応のブロック種類: {node["kind"]}')
-        options = ', above: 0pt' if method == 'section-heading' and ident in slide_body_first else ''
-        if ident in heading_spacing and ident not in slide_body_first:
-            options = f', above: {18 + heading_spacing[ident]}pt'
+        options = f', above: {heading_margin(ident)}' if method in ('section-heading', 'step') else ''
         if ident in minor_headings:
             options += ', minor: true'
         # 見出しに分類された説明文の続き（句点終わり）は、原本の通常書体を保つ。
@@ -970,8 +977,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
         if keep_next:
             group = entries[i:i + keep_next + 1]
             body = '\n'.join(modern_panel(e) if modern and e in modern['anchors'] else render(e) for e in group)
-            above = 18 + heading_spacing.get(ident, 0)
-            commands.append(f'#instruction({q("instruction-" + ident)}, above: {above}pt)[{body}]')
+            commands.append(f'#instruction({q("instruction-" + ident)}, above: {heading_margin(ident)})[{body}]')
             i += len(group)
             continue
         if modern and ident in modern['anchors']:
@@ -995,10 +1001,7 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             if end < len(entries) and entries[end] in figures and entries[end] not in compact_figures and entries[end] not in code_members and (not modern or entries[end] not in modern['consume']):
                 body = "\n".join(render(e) for e in entries[i:end + 1])
                 # 枠の先頭にある子見出しの上余白は相殺されるため、外側で確保する。
-                above = '0pt' if ident in slide_body_first else ('18pt' if nodes[ident]['kind'] == 'heading' else 'step-above')
-                if ident not in slide_body_first and ident in heading_spacing:
-                    above += f' + {heading_spacing[ident]}pt'
-                commands.append(f'#instruction({q("instruction-" + ident)}, above: {above})[{body}]')
+                commands.append(f'#instruction({q("instruction-" + ident)}, above: {heading_margin(ident)})[{body}]')
                 i = end + 1
                 continue
         if ident in nodes and i+1<len(entries) and entries[i+1] in nodes and nodes[entries[i+1]]['kind']=='code' and re.search(r'[/\\].*\.(?:java|html|css|xml|properties|yml|yaml)\s*$',nodes[ident]['text']):

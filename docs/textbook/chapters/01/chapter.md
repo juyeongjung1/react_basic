@@ -120,7 +120,7 @@ Webアプリケーションでは、ボタンのクリックやフォームへ�
 
 :::: {#page-4 .source-page}
 
-::: {#ch01-spa-js-example .paragraph}
+::: {#ch01-spa-js-example .step}
 **従来のJavaScriptによる実装例**
 :::
 
@@ -189,7 +189,7 @@ Reactでは、**画面に表示するデータを管理し、そのデータが�
 先ほどの「ノートの数量を1個増やす」処理を、Reactで記述すると次のようになります。
 :::
 
-::: {#ch01-spa-react-example .paragraph}
+::: {#ch01-spa-react-example .step}
 **Reactによる実装例**
 :::
 
@@ -245,7 +245,7 @@ Reactはデータが更新されたことを受けて、画面に必要な変更
 Reactには、画面を「コンポーネント」という部品に分けて作成し、組み合わせたり再利用したりできる特徴もあります。例えば、商品カードや検索フォームを独立した部品として管理できます。この考え方についても、後続の章で扱います。
 :::
 
-::: {#ch01-spa-related-title .paragraph}
+::: {#ch01-spa-related-title .step}
 **【参考】フロントエンド開発で使われる主な技術**
 :::
 
@@ -408,7 +408,7 @@ Reactの開発時に使うツールと画面表示までの流れ
 
 :::: {#page-11 .source-page}
 
-::: {#ch01-folder-title .heading}
+::: {#ch01-folder-title .step}
 **【作業手順①】　親フォルダーと章フォルダーを用意する**
 :::
 
@@ -474,7 +474,7 @@ Windowsのエクスプローラーを開き、Cドライブの直下に `work` �
 
 :::: {#page-12 .source-page}
 
-::: {#ch01-workspace-title .heading}
+::: {#ch01-workspace-title .step}
 **【作業手順②】　VS Codeでワークスペースを作成する**
 :::
 
@@ -586,7 +586,7 @@ VS Codeのメニューから、［ファイル］→［フォルダーをワー�
 
 :::: {#page-14 .source-page}
 
-::: {#ch01-language-title .heading}
+::: {#ch01-language-title .step}
 **【作業手順③】　VS Codeの言語機能を確認する**
 :::
 
@@ -660,7 +660,7 @@ VS Codeに組み込まれたJavaScriptとTypeScriptの言語機能
 
 :::: {#page-15 .source-page}
 
-::: {#ch01-node-title .heading}
+::: {#ch01-node-title .step}
 **【作業手順④】　Node.jsをインストールする**
 :::
 
@@ -941,7 +941,7 @@ Reactプロジェクトのひな形とは
 
 :::: {#page-20 .source-page}
 
-::: {#ch01-vite-body-title .heading}
+::: {#ch01-vite-body-title .step}
 **【作業手順①】　ViteでReactプロジェクトを作成する**
 :::
 
@@ -1239,7 +1239,7 @@ Done. Now run:
 
 :::: {#page-24 .source-page}
 
-::: {#ch01-vite-files-title .heading}
+::: {#ch01-vite-files-title .step}
 **【作業手順②】　生成されたプロジェクトの初期ファイルを確認する**
 :::
 
@@ -1509,7 +1509,7 @@ npm create vite@8.0.0 . -- --template react-ts
 
 :::: {#page-29 .source-page}
 
-::: {#ch01-install-first-title .heading}
+::: {#ch01-install-first-title .step}
 **【作業手順①】　npm installを実行する**
 :::
 
@@ -1561,7 +1561,7 @@ npm install
 npm install が完了したときの表示例（先頭行を抜粋）
 :::
 
-::: {#ch01-install-check-title .heading}
+::: {#ch01-install-check-title .step}
 **【作業手順②】　インストール結果を確認する**
 :::
 
@@ -1752,7 +1752,7 @@ Viteの開発サーバーを起動すると、自分のPC上でReactアプリケ
 
 :::: {#page-33 .source-page}
 
-::: {#ch01-start-sidebar .heading}
+::: {#ch01-start-sidebar .step}
 **【作業手順①】　VS CodeでNPMスクリプトを表示する**
 :::
 
@@ -1816,7 +1816,7 @@ VS Codeの左側にある［エクスプローラー］を開きます。
 
 :::: {#page-34 .source-page}
 
-::: {#ch01-start-run-title .heading}
+::: {#ch01-start-run-title .step}
 **【作業手順②】　開発サーバーを起動する**
 :::
 
@@ -1912,7 +1912,7 @@ NPMスクリプトの実行ボタンを使用せず、ターミナルに直接 `
 実際の開発でもよく使うコマンドなので、覚えておきましょう。
 :::
 
-::: {#ch01-start-verify-title .heading}
+::: {#ch01-start-verify-title .step}
 **【作業手順③】　ブラウザーで初期画面を確認する**
 :::
 
@@ -2095,7 +2095,7 @@ Viteの開発サーバーには、ソースコードの変更を検知し、ブ�
 
 :::: {#page-39 .source-page}
 
-::: {#ch01-edit-title .heading}
+::: {#ch01-edit-title .step}
 **【作業手順④】　変数の値を変更し、画面への反映を確認する**
 :::
 
@@ -2203,7 +2203,7 @@ messageの値を変更して保存すると、ブラウザーの表示に反映�
 
 :::: {#page-41 .source-page}
 
-::: {#ch01-stop-title .heading}
+::: {#ch01-stop-title .step}
 **【作業手順⑤】　開発サーバーを停止する**
 :::
 

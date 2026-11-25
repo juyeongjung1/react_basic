@@ -48,8 +48,8 @@
   #mark(id, "heading")
   #if minor {text(font: "MS PGothic", size: 12pt, weight: "bold", stroke: 12pt / 35, body)} else {body}
 ]
-#let step-above = 17pt
-#let step(id, body) = block(sticky: true, above: step-above, below: 9pt)[
+#let subheading-above = 34pt
+#let step(id, body, above: subheading-above) = block(sticky: true, above: above, below: 9pt)[
   #mark(id, "heading")#body
 ]
 #let list-item(id, body) = block(above: 12.96pt, below: 12.96pt, inset: (left: 11.04pt))[
