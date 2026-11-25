@@ -2122,11 +2122,7 @@ SPAにおける画面遷移
 前節では、ヘッダーのシステム名やメニューを文字として表示していました。今回は、ヘッダーに `Link`、3つのメニューに `NavLink` を使用しています。
 :::
 
-::: {#ch03-navigation-r458 .paragraph}
-以下は、1つの商品管理システムを開発する通常構成での記述例です。実際の配布サンプルで異なる箇所については、構文の解説の後に確認します。
-:::
-
-::: {#ch03-navigation-r461 .code code-label="TSXの記述例（通常構成）" filename="src/layouts/MainLayout.tsx" example="true"}
+::: {#ch03-navigation-r461 .code code-label="TSXの記述例" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Link, NavLink, Outlet } from 'react-router'
 
@@ -2141,10 +2137,9 @@ export default function MainLayout() {
           商品管理システム
         </Link>
       </header>
-
       <nav className="nav nav-pills bg-light p-3 gap-2"
            aria-label="商品管理システムのメニュー">
-        <NavLink to="/" className="nav-link">
+        <NavLink to="/" className="nav-link" end>
           ホーム
         </NavLink>
         <NavLink to="/products" className="nav-link">
@@ -2154,9 +2149,7 @@ export default function MainLayout() {
           ご利用案内
         </NavLink>
       </nav>
-
       <Outlet />
-
       <footer className="bg-light text-center p-3 mt-4">
         商品管理システム
       </footer>
@@ -2167,11 +2160,11 @@ export default function MainLayout() {
 :::
 
 ::: {#ch03-navigation-r499 .paragraph}
-ルーティングの設定は、前節と同じ構成です。`routes/AppRoutes.tsx` には、`MainLayout` を表示する親ルートと、3つの画面を表示する子ルートを定義しています。今回はその全体コードを再掲載しません。
+ルーティングの設定は、前節と同じです。`routes/AppRoutes.tsx` には、`MainLayout` を表示する親ルートと、3つの画面を表示する子ルートを定義しています。今回はその全体コードを再掲載しません。
 :::
 
 ::: {#ch03-navigation-r501 .paragraph}
-通常構成では、前節と同じ3つのURLに対応しています。
+アクセスするURLも、前節と同じです。
 :::
 
 ::: {#ch03-navigation-r503 .table column-widths="42 58"}
@@ -2204,7 +2197,7 @@ export default function MainLayout() {
 `Link` を使用するには、`react-router` からインポートします。今回の記述例では、`Link`、`NavLink`、`Outlet` をまとめてインポートしています。
 :::
 
-::: {#ch03-navigation-r520 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
+::: {#ch03-navigation-r520 .code code-label="TSXの記述例（抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Link, NavLink, Outlet } from 'react-router'
 ~~~
@@ -2214,7 +2207,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 まず、ヘッダーのシステム名をクリックすると、ホーム画面に移動する部分を確認しましょう。
 :::
 
-::: {#ch03-navigation-r527 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
+::: {#ch03-navigation-r527 .code code-label="TSXの記述例（抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
         <Link
           to="/"
@@ -2258,7 +2251,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 **React RouterのLink**
 :::
 
-::: {#ch03-navigation-r557 .code code-label="TSXの記述例（通常構成）" example="true"}
+::: {#ch03-navigation-r557 .code code-label="TSXの記述例" example="true"}
 ~~~tsx
 <Link to="/">商品管理システム</Link>
 ~~~
@@ -2308,7 +2301,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 今回のサンプルでは、商品一覧のメニューを次のように記述しています。
 :::
 
-::: {#ch03-navigation-r584 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
+::: {#ch03-navigation-r584 .code code-label="TSXの記述例（抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
         <NavLink to="/products" className="nav-link">
           商品一覧
@@ -2378,6 +2371,26 @@ NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
 このように、`NavLink` とBootstrapを組み合わせることで、現在表示している画面に対応するメニューを強調できます。自分で現在のURLを取得して条件分岐を記述する必要はありません。
 :::
 
+::: {#ch03-navigation-home-end-intro .paragraph}
+ホームのメニューに注目してください。
+:::
+
+::: {#ch03-navigation-home-end-code .code code-label="TSXの記述例（抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
+~~~tsx
+<NavLink to="/" className="nav-link" end>
+  ホーム
+</NavLink>
+~~~
+:::
+
+::: {#ch03-navigation-home-end-explanation .paragraph punctuation-font="inherit"}
+ホームの `NavLink` には、`end` 属性を指定しています。**`end` を指定すると、リンク先のパスと現在のURLのパスが一致する場合だけ、選択中として扱います。** ホーム画面を表示しているときだけホームのメニューを強調するため、本研修ではこの書き方を使用します。
+:::
+
+::: {#ch03-navigation-home-end-note .paragraph}
+※ `to="/"` の場合は、`end` を省略しても同じ動作になります。
+:::
+
 ::: {#ch03-navigation-r632 .paragraph}
 なお、`Link` と `NavLink` は、次のように用途に応じて使い分けます。
 :::
@@ -2389,102 +2402,8 @@ NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
 | `NavLink` | 共通メニューなど、画面を移動するだけでなく、現在選択中の項目を強調する。 |
 :::
 
-::: {#ch03-navigation-r639 .step}
-**③ end属性で選択中と判断する範囲を指定する**
-:::
-
-::: {#ch03-navigation-r641 .paragraph}
-`NavLink` は、通常、現在のURLのパスがリンク先のパスと一致している場合だけでなく、リンク先のパスに続く別のパスを表示している場合も、選択中のリンクとして扱います。
-:::
-
-::: {#ch03-navigation-r643 .paragraph}
-例えば、次の節では商品ごとの詳細画面を追加します。商品一覧のURLが `/products`、商品番号101の詳細画面のURLが `/products/101` になる場合を考えてみましょう。
-:::
-
-::: {#ch03-navigation-r645 .paragraph}
-商品一覧のメニューは、今回のサンプルで次のように記述しています。
-:::
-
-::: {#ch03-navigation-r648 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
-~~~tsx
-<NavLink to="/products" className="nav-link">
-  商品一覧
-</NavLink>
-~~~
-:::
-
-::: {#ch03-navigation-r654 .paragraph}
-この記述では、`/products` を表示しているときだけでなく、`/products/101` を表示しているときにも、商品一覧のメニューが選択中になります。
-:::
-
-::: {#ch03-navigation-r656 .paragraph}
-一方、商品一覧画面を表示しているときだけメニューを強調したい場合は、次のように `end` 属性を追加します。
-:::
-
-::: {#ch03-navigation-r659 .code code-label="TSXの記述例（比較用）" example="true"}
-~~~tsx
-<NavLink to="/products" className="nav-link" end>
-  商品一覧
-</NavLink>
-~~~
-:::
-
-::: {#ch03-navigation-r665 .paragraph}
-`end` を指定すると、今回のようなリンク先のパスに続く別のパスがある場合は、そのリンクを選択中として扱いません。
-:::
-
-::: {#ch03-navigation-r667 .table column-widths="35 32 33"}
-| 現在のURLのパス | 商品一覧（endなし） | 商品一覧（endあり） |
-|---|---|---|
-| `/products` | 強調される | 強調される |
-| `/products/101` | 強調される | 強調されない |
-| `/guide` | 強調されない | 強調されない |
-:::
-
-![商品一覧に続くパスを表示した場合のend属性の有無による強調表示の違い](assets/navigation-end.svg){#ch03-navigation-end-menu}
-
-::: {#ch03-navigation-end-menu-caption .caption}
-商品一覧に続くパスを表示した場合のend属性の有無による強調表示の違い
-:::
-
-::: {#ch03-navigation-r679 .paragraph}
-今回の商品管理システムでは、商品詳細画面を表示しているときも商品一覧のメニューを強調することを想定しています。そのため、商品一覧の `NavLink` には `end` を指定しません。
-:::
-
-::: {#ch03-navigation-r681 .paragraph}
-なお、`end` は `end={true}` と記述することもできます。真偽値の `true` を指定する場合は、JSXの省略形として `end` だけを記述できます。
-:::
-
-::: {#ch03-navigation-r683 .paragraph punctuation-font="inherit"}
-**`end` が変更するのは、NavLinkが選択中と判断するパスの範囲です。** リンクの移動先や、`Route` によって表示する画面が変わるわけではありません。
-:::
-
-::: {#ch03-navigation-r685 .step punctuation-font="inherit"}
-**ルートURLを指定する場合**
-:::
-
-::: {#ch03-navigation-r687 .paragraph}
-通常構成では、ホームへのリンクを次のように記述しています。
-:::
-
-::: {#ch03-navigation-r690 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
-~~~tsx
-<NavLink to="/" className="nav-link">
-  ホーム
-</NavLink>
-~~~
-:::
-
-::: {#ch03-navigation-r696 .paragraph}
-React Routerでは、サイトのルートを指定した `to="/"` は特別に扱われます。`end` を指定しなくても、ホームのリンクが選択中になるのは、現在のURLのパスが `/` のときだけです。
-:::
-
-::: {#ch03-navigation-r698 .paragraph}
-そのため、通常構成では、商品一覧やご利用案内を表示しているときにホームまで強調されることはありません。
-:::
-
 ::: {#ch03-navigation-r700 .step}
-**④ リンクとルーティングを組み合わせて画面を切り替える**
+**③ リンクとルーティングを組み合わせて画面を切り替える**
 :::
 
 ::: {#ch03-navigation-r702 .paragraph}
@@ -2525,65 +2444,6 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 前節で学習した共通レイアウトとルーティングに、今回の `Link` や `NavLink` を組み合わせることで、複数の画面を持つSPAを構築できます。
 :::
 
-:::: {#ch03-navigation-r728 .training-note breakable="true"}
-【補足】本研修の配布サンプルの構成
-
-3.4の講義用サンプルは、`ch03-basic/src/samples/sample3_4/` に用意しています。前節と同じように、`components`、`pages`、`layouts`、`routes` の各フォルダーでソースコードを管理しています。
-
-3.3の完成コードを基に、`layouts/MainLayout.tsx` のヘッダーとメニューをリンクに変更しています。前節のファイルを直接変更する必要はありません。
-
-配布サンプルでは、`/sample-3-4` が入口として設定されているため、`Link` や `NavLink` の `to` に指定する値が通常構成と異なります。
-
-::: {#ch03-navigation-r736 .table column-widths="39 23 38"}
-| リンク | 通常構成の `to` | 配布サンプルの `to` |
-|---|---|---|
-| ヘッダーのシステム名（Link） | `/` | `/sample-3-4` |
-| ホーム（NavLink） | `/` | `/sample-3-4` |
-| 商品一覧（NavLink） | `/products` | `/sample-3-4/products` |
-| ご利用案内（NavLink） | `/guide` | `/sample-3-4/guide` |
-:::
-
-配布サンプルの `layouts/MainLayout.tsx` では、ヘッダーとメニューを次のように記述しています。
-
-~~~{#ch03-navigation-r746 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="7"}
-        <Link
-          to="/sample-3-4"
-          className="text-white text-decoration-none"
-        >
-          商品管理システム
-        </Link>
-~~~
-
-~~~{#ch03-navigation-r756 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="17"}
-        <NavLink to="/sample-3-4" className="nav-link" end>
-          ホーム
-        </NavLink>
-        <NavLink to="/sample-3-4/products" className="nav-link">
-          商品一覧
-        </NavLink>
-        <NavLink to="/sample-3-4/guide" className="nav-link">
-          ご利用案内
-        </NavLink>
-~~~
-
-::: {#ch03-navigation-distribution-home .step}
-**配布サンプルでは、ホームのNavLinkにendを指定する**
-:::
-
-通常構成のホームは `to="/"` ですが、配布サンプルのホームは `to="/sample-3-4"` です。後者はサイトのルートを指定したリンクではないため、前述したルートURLの特別な扱いは適用されません。
-
-`end` を指定しない場合は、商品一覧やご利用案内のURLも `/sample-3-4` に続くパスなので、ホームのメニューまで強調されます。そのため、配布サンプルではホームの `NavLink` に `end` を指定しています。
-
-::: {#ch03-navigation-r774 .table column-widths="42 29 29"}
-| 配布サンプルで表示している画面 | ホーム（endなし） | ホーム（endあり） |
-|---|---|---|
-| `/sample-3-4` | 強調される | 強調される |
-| `/sample-3-4/products` | 強調される | 強調されない |
-| `/sample-3-4/guide` | 強調される | 強調されない |
-:::
-
-ルートの定義自体は前節と同じです。教材メニューとの接続用ファイルやルーティングの設定を変更する必要はありません。
-::::
 :::::
 
 ::::: {#page-15 .source-page}
@@ -2620,7 +2480,7 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 :::
 
 ::: {#ch03-navigation-r798 .paragraph}
-この確認演習では、上の補足で確認した配布サンプルのリンク先を使用してください。ホームの `NavLink` には `end` を指定します。通常構成の `/`、`/products`、`/guide` をそのまま演習用ファイルに記述しないように注意してください。
+ホームの `NavLink` には、サンプルコードと同様に `end` を指定してください。
 :::
 
 ::: {#ch03-navigation-r800 .paragraph numbered="true"}
@@ -2729,7 +2589,7 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 
 ● 今回は、`NavLink` とBootstrapを組み合わせて、選択中のメニューを強調している。
 
-● `end` 属性は、`NavLink` が選択中と判断するパスの範囲を制御するために使用する。
+● `end` 属性を指定すると、リンク先のパスと現在のURLのパスが一致する場合だけ、選択中として扱う。
 
 ● 共通レイアウト・ルーティング・リンクを組み合わせることで、複数の画面を持つSPAを構築できる。
 :::
@@ -3233,7 +3093,7 @@ URLから取得した `id` の値を、JSXの波括弧内に記述します。�
 :::
 
 ::: {#ch03-params-r377 .paragraph}
-なお、商品詳細画面でも、共通ヘッダーやメニュー、フッターは引き続き表示されます。3.4節で学習したように、商品一覧の `NavLink`（`to="/products"`）には `end` 属性を指定していません。そのため、`/products/101` などの商品詳細画面でも「商品一覧」のメニューが強調されます。
+なお、商品詳細画面でも、共通ヘッダーやメニュー、フッターは引き続き表示されます。商品一覧の `NavLink`（`to="/products"`）には `end` 属性を指定していません。そのため、`/products/101` など、商品一覧のパスに続くURLを表示している場合も、「商品一覧」のメニューが強調されます。
 :::
 
 ::: {#ch03-params-r379 .paragraph}
@@ -3319,7 +3179,7 @@ REST APIとデータベースを連携させるアプリケーションでは、
       </Link>
 ~~~
 
-共通レイアウトのリンク先も、3.5のURLに合わせて設定済みです。ホームの `NavLink` に `end` を指定している点は、3.4節の配布サンプルと同じです。
+共通レイアウトのリンク先も、3.5のURLに合わせて設定済みです。
 
 このような節別のURLは、研修用サンプルを切り替えるために使用しています。**通常のアプリケーションを開発するときは、この節別のパスを追加する必要はありません。**
 ::::

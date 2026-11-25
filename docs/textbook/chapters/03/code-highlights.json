@@ -152,7 +152,7 @@
       "block": true
     },
     {
-      "text": "<NavLink to=\"/\" className=\"nav-link\">\n          ホーム\n        </NavLink>\n        <NavLink to=\"/products\" className=\"nav-link\">\n          商品一覧\n        </NavLink>\n        <NavLink to=\"/guide\" className=\"nav-link\">\n          ご利用案内\n        </NavLink>",
+      "text": "<NavLink to=\"/\" className=\"nav-link\" end>\n          ホーム\n        </NavLink>\n        <NavLink to=\"/products\" className=\"nav-link\">\n          商品一覧\n        </NavLink>\n        <NavLink to=\"/guide\" className=\"nav-link\">\n          ご利用案内\n        </NavLink>",
       "block": true
     }
   ],
@@ -168,38 +168,8 @@
   "ch03-navigation-r584": [
     "<NavLink to=\"/products\" className=\"nav-link\">"
   ],
-  "ch03-navigation-r648": [
-    "<NavLink to=\"/products\" className=\"nav-link\">"
-  ],
-  "ch03-navigation-r659": [
-    "<NavLink to=\"/products\" className=\"nav-link\" end>"
-  ],
-  "ch03-navigation-r690": [
-    "to=\"/\""
-  ],
-  "ch03-navigation-r746": [
-    {
-      "text": "to=\"/sample-3-4\"",
-      "line": 8
-    }
-  ],
-  "ch03-navigation-r756": [
-    {
-      "text": "to=\"/sample-3-4\"",
-      "line": 17
-    },
-    {
-      "text": "end",
-      "line": 17
-    },
-    {
-      "text": "to=\"/sample-3-4/products\"",
-      "line": 20
-    },
-    {
-      "text": "to=\"/sample-3-4/guide\"",
-      "line": 23
-    }
+  "ch03-navigation-home-end-code": [
+    "end"
   ],
   "ch03-params-r116": [
     "import { Link } from 'react-router'",
