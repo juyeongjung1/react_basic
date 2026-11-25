@@ -33,24 +33,10 @@
       "block": true
     }
   ],
-  "ch03-props-line-182": [
-    {
-      "text": "import ProductCard from './ProductCard'",
-      "line": 1,
-      "block": true
-    }
-  ],
   "ch03-props-line-223": [
     "name=\"ノート\"",
     "price={250}",
     "imagePath=\"/images/products/notebook.svg\""
-  ],
-  "ch03-props-line-262": [
-    {
-      "text": "type ProductCardProps = {\n  name: string\n  price: number\n  imagePath: string\n}",
-      "line": 1,
-      "block": true
-    }
   ],
   "ch03-props-line-289": [
     "price={250}",
@@ -94,20 +80,6 @@
     },
     "{props.price}"
   ],
-  "ch03-props-line-397": [
-    {
-      "text": "const products = [\n    { id: 101, name: 'ノート', price: 250, imagePath: '/images/products/notebook.svg' },\n    { id: 102, name: 'ボールペン', price: 120, imagePath: '/images/products/ballpoint-pen.svg' },\n    { id: 103, name: '消しゴム', price: 100, imagePath: '/images/products/eraser.svg' },\n    { id: 104, name: 'ファイル', price: 600, imagePath: '/images/products/file-folder.svg' },\n    { id: 105, name: 'クリップ', price: 180, imagePath: '/images/products/paper-clips.svg' },\n    { id: 106, name: '付箋', price: 240, imagePath: '/images/products/sticky-notes.svg' }\n  ]",
-      "line": 4,
-      "block": true
-    }
-  ],
-  "ch03-props-line-411": [
-    {
-      "text": "{products.map((product) => (\n          <ProductCard\n            key={product.id}\n            name={product.name}\n            price={product.price}\n            imagePath={product.imagePath}\n          />\n        ))}",
-      "line": 18,
-      "block": true
-    }
-  ],
   "ch03-router-r153": [
     "export default function HomePage()",
     "<h1>ホーム</h1>"
@@ -115,9 +87,6 @@
   "ch03-router-r165": [
     "export default function GuidePage()",
     "<h1>ご利用案内</h1>"
-  ],
-  "ch03-router-r179": [
-    "import ProductCard from '../components/ProductCard'"
   ],
   "ch03-router-r190": [
     "import { Routes, Route } from 'react-router'",
@@ -140,30 +109,6 @@
       "text": "<BrowserRouter>\n      <App />\n    </BrowserRouter>",
       "block": true
     }
-  ],
-  "ch03-router-r264": [
-    "import { BrowserRouter } from 'react-router'"
-  ],
-  "ch03-router-r271": [
-    {
-      "text": "<BrowserRouter>\n  <App />\n</BrowserRouter>",
-      "block": true
-    }
-  ],
-  "ch03-router-r288": [
-    "import { Routes, Route } from 'react-router'",
-    {
-      "text": "import HomePage from '../pages/HomePage'\nimport ProductListPage from '../pages/ProductListPage'\nimport GuidePage from '../pages/GuidePage'",
-      "block": true
-    }
-  ],
-  "ch03-router-r312": [
-    "<Routes>",
-    {
-      "text": "<Route path=\"/\" element={<HomePage />} />\n  <Route path=\"/products\" element={<ProductListPage />} />\n  <Route path=\"/guide\" element={<GuidePage />} />",
-      "block": true
-    },
-    "</Routes>"
   ],
   "ch03-router-r327": [
     "path=\"/products\"",
@@ -192,15 +137,6 @@
     },
     "</Route>"
   ],
-  "ch03-layout-r199": [
-    "import { Outlet } from 'react-router'"
-  ],
-  "ch03-layout-r206": [
-    "<Outlet />"
-  ],
-  "ch03-layout-r231": [
-    "<Route element={<MainLayout />}>"
-  ],
   "ch03-layout-r242": [
     "path=\"products\"",
     "path=\"guide\""
@@ -222,12 +158,6 @@
   ],
   "ch03-navigation-r520": [
     "Link, NavLink"
-  ],
-  "ch03-navigation-r527": [
-    {
-      "text": "<Link\n          to=\"/\"\n          className=\"text-white text-decoration-none\"\n        >\n          商品管理システム\n        </Link>",
-      "block": true
-    }
   ],
   "ch03-navigation-r550": [
     "href=\"/\""
@@ -320,20 +250,11 @@
   "ch03-params-r327": [
     "useParams"
   ],
-  "ch03-params-r334": [
-    "const { id } = useParams()"
-  ],
   "ch03-params-r367": [
     "{id}"
   ],
   "ch03-params-r382": [
     "to=\"/products\""
-  ],
-  "ch03-params-r426": [
-    {
-      "text": "// 実際の開発では、idを使ってREST APIから商品情報を取得する。",
-      "block": true
-    }
   ],
   "ch03-params-r452": [
     {
@@ -360,9 +281,6 @@
       "block": true
     }
   ],
-  "ch03-programmatic-r706": [
-    "import { Link } from 'react-router'"
-  ],
   "ch03-programmatic-r711": [
     {
       "text": "<Link to=\"/products/new\" className=\"btn btn-primary mb-3\">\n        商品登録\n      </Link>",
@@ -386,9 +304,6 @@
   "ch03-programmatic-r809": [
     "useNavigate"
   ],
-  "ch03-programmatic-r818": [
-    "const navigate = useNavigate()"
-  ],
   "ch03-programmatic-r847": [
     "navigate('/products')"
   ],
@@ -397,12 +312,6 @@
   ],
   "ch03-programmatic-r902": [
     "<Link to=\"/products\" className=\"btn btn-secondary\">"
-  ],
-  "ch03-programmatic-r929": [
-    {
-      "text": "// 実際の開発では、REST APIで商品を登録し、成功を確認する。",
-      "block": true
-    }
   ],
   "ch03-programmatic-r968": [
     {

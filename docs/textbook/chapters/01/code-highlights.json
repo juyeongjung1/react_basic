@@ -36,13 +36,6 @@
       "block": true
     }
   ],
-  "ch01-app-read-12": [
-    {
-      "text": "const courseName = 'React開発入門'",
-      "line": 3,
-      "block": true
-    }
-  ],
   "ch01-app-read-16": [
     "{courseName}"
   ],
