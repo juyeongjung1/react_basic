@@ -1,0 +1,425 @@
+{
+  "ch03-props-line-109": [
+    {
+      "text": "type ProductCardProps = {\n  name: string\n  price: number\n  imagePath: string\n}",
+      "line": 1,
+      "block": true
+    },
+    {
+      "text": "export default function ProductCard({ name, price, imagePath }: ProductCardProps) {",
+      "line": 7,
+      "block": true
+    },
+    {
+      "text": "src={imagePath}\n          alt={name}",
+      "line": 12,
+      "block": true
+    },
+    {
+      "text": "<h2 className=\"h5 card-title\">{name}</h2>\n          <p className=\"card-text\">単価：{price}円</p>",
+      "line": 18,
+      "block": true
+    }
+  ],
+  "ch03-props-line-139": [
+    {
+      "text": "import ProductCard from './ProductCard'",
+      "line": 1,
+      "block": true
+    },
+    {
+      "text": "{products.map((product) => (\n          <ProductCard\n            key={product.id}\n            name={product.name}\n            price={product.price}\n            imagePath={product.imagePath}\n          />\n        ))}",
+      "line": 18,
+      "block": true
+    }
+  ],
+  "ch03-props-line-182": [
+    {
+      "text": "import ProductCard from './ProductCard'",
+      "line": 1,
+      "block": true
+    }
+  ],
+  "ch03-props-line-223": [
+    "name=\"ノート\"",
+    "price={250}",
+    "imagePath=\"/images/products/notebook.svg\""
+  ],
+  "ch03-props-line-262": [
+    {
+      "text": "type ProductCardProps = {\n  name: string\n  price: number\n  imagePath: string\n}",
+      "line": 1,
+      "block": true
+    }
+  ],
+  "ch03-props-line-289": [
+    "price={250}",
+    "price=\"250\""
+  ],
+  "ch03-props-line-301": [
+    "{ name, price, imagePath }",
+    ": ProductCardProps"
+  ],
+  "ch03-props-line-319": [
+    {
+      "text": "name: 'ノート',\n  price: 250,\n  imagePath: '/images/products/notebook.svg'",
+      "block": true
+    }
+  ],
+  "ch03-props-line-345": [
+    {
+      "text": "src={imagePath}",
+      "line": 12
+    },
+    {
+      "text": "alt={name}",
+      "line": 13
+    },
+    {
+      "text": "{name}",
+      "line": 18
+    },
+    {
+      "text": "{price}",
+      "line": 19
+    }
+  ],
+  "ch03-props-line-373": [
+    "props: ProductCardProps",
+    "src={props.imagePath}",
+    "alt={props.name}",
+    {
+      "text": "{props.name}",
+      "within": "<p>{props.name}"
+    },
+    "{props.price}"
+  ],
+  "ch03-props-line-397": [
+    {
+      "text": "const products = [\n    { id: 101, name: 'ノート', price: 250, imagePath: '/images/products/notebook.svg' },\n    { id: 102, name: 'ボールペン', price: 120, imagePath: '/images/products/ballpoint-pen.svg' },\n    { id: 103, name: '消しゴム', price: 100, imagePath: '/images/products/eraser.svg' },\n    { id: 104, name: 'ファイル', price: 600, imagePath: '/images/products/file-folder.svg' },\n    { id: 105, name: 'クリップ', price: 180, imagePath: '/images/products/paper-clips.svg' },\n    { id: 106, name: '付箋', price: 240, imagePath: '/images/products/sticky-notes.svg' }\n  ]",
+      "line": 4,
+      "block": true
+    }
+  ],
+  "ch03-props-line-411": [
+    {
+      "text": "{products.map((product) => (\n          <ProductCard\n            key={product.id}\n            name={product.name}\n            price={product.price}\n            imagePath={product.imagePath}\n          />\n        ))}",
+      "line": 18,
+      "block": true
+    }
+  ],
+  "ch03-router-r153": [
+    "export default function HomePage()",
+    "<h1>ホーム</h1>"
+  ],
+  "ch03-router-r165": [
+    "export default function GuidePage()",
+    "<h1>ご利用案内</h1>"
+  ],
+  "ch03-router-r179": [
+    "import ProductCard from '../components/ProductCard'"
+  ],
+  "ch03-router-r190": [
+    "import { Routes, Route } from 'react-router'",
+    {
+      "text": "import HomePage from '../pages/HomePage'\nimport ProductListPage from '../pages/ProductListPage'\nimport GuidePage from '../pages/GuidePage'",
+      "block": true
+    },
+    {
+      "text": "<Routes>\n      <Route path=\"/\" element={<HomePage />} />\n      <Route path=\"/products\" element={<ProductListPage />} />\n      <Route path=\"/guide\" element={<GuidePage />} />\n    </Routes>",
+      "block": true
+    }
+  ],
+  "ch03-router-r214": [
+    "import AppRoutes from './routes/AppRoutes'",
+    "return <AppRoutes />"
+  ],
+  "ch03-router-r229": [
+    "import { BrowserRouter } from 'react-router'",
+    {
+      "text": "<BrowserRouter>\n      <App />\n    </BrowserRouter>",
+      "block": true
+    }
+  ],
+  "ch03-router-r264": [
+    "import { BrowserRouter } from 'react-router'"
+  ],
+  "ch03-router-r271": [
+    {
+      "text": "<BrowserRouter>\n  <App />\n</BrowserRouter>",
+      "block": true
+    }
+  ],
+  "ch03-router-r288": [
+    "import { Routes, Route } from 'react-router'",
+    {
+      "text": "import HomePage from '../pages/HomePage'\nimport ProductListPage from '../pages/ProductListPage'\nimport GuidePage from '../pages/GuidePage'",
+      "block": true
+    }
+  ],
+  "ch03-router-r312": [
+    "<Routes>",
+    {
+      "text": "<Route path=\"/\" element={<HomePage />} />\n  <Route path=\"/products\" element={<ProductListPage />} />\n  <Route path=\"/guide\" element={<GuidePage />} />",
+      "block": true
+    },
+    "</Routes>"
+  ],
+  "ch03-router-r327": [
+    "path=\"/products\"",
+    "element={<ProductListPage />}"
+  ],
+  "ch03-router-r355": [
+    "import AppRoutes from './routes/AppRoutes'",
+    "return <AppRoutes />"
+  ],
+  "ch03-layout-r98": [
+    "import { Outlet } from 'react-router'",
+    "<Outlet />"
+  ],
+  "ch03-layout-r132": [
+    "import MainLayout from '../layouts/MainLayout'",
+    {
+      "text": "<Route element={<MainLayout />}>\n        <Route index element={<HomePage />} />\n        <Route path=\"products\" element={<ProductListPage />} />\n        <Route path=\"guide\" element={<GuidePage />} />\n      </Route>",
+      "block": true
+    }
+  ],
+  "ch03-layout-r165": [
+    "<Route element={<MainLayout />}>",
+    {
+      "text": "<Route index element={<HomePage />} />\n        <Route path=\"products\" element={<ProductListPage />} />\n        <Route path=\"guide\" element={<GuidePage />} />",
+      "block": true
+    },
+    "</Route>"
+  ],
+  "ch03-layout-r199": [
+    "import { Outlet } from 'react-router'"
+  ],
+  "ch03-layout-r206": [
+    "<Outlet />"
+  ],
+  "ch03-layout-r231": [
+    "<Route element={<MainLayout />}>"
+  ],
+  "ch03-layout-r242": [
+    "path=\"products\"",
+    "path=\"guide\""
+  ],
+  "ch03-layout-r267": [
+    "index",
+    "element={<HomePage />}"
+  ],
+  "ch03-navigation-r461": [
+    "Link, NavLink",
+    {
+      "text": "<Link\n          to=\"/\"\n          className=\"text-white text-decoration-none\"\n        >\n          商品管理システム\n        </Link>",
+      "block": true
+    },
+    {
+      "text": "<NavLink to=\"/\" className=\"nav-link\">\n          ホーム\n        </NavLink>\n        <NavLink to=\"/products\" className=\"nav-link\">\n          商品一覧\n        </NavLink>\n        <NavLink to=\"/guide\" className=\"nav-link\">\n          ご利用案内\n        </NavLink>",
+      "block": true
+    }
+  ],
+  "ch03-navigation-r520": [
+    "Link, NavLink"
+  ],
+  "ch03-navigation-r527": [
+    {
+      "text": "<Link\n          to=\"/\"\n          className=\"text-white text-decoration-none\"\n        >\n          商品管理システム\n        </Link>",
+      "block": true
+    }
+  ],
+  "ch03-navigation-r550": [
+    "href=\"/\""
+  ],
+  "ch03-navigation-r557": [
+    "to=\"/\""
+  ],
+  "ch03-navigation-r584": [
+    "<NavLink to=\"/products\" className=\"nav-link\">"
+  ],
+  "ch03-navigation-r648": [
+    "<NavLink to=\"/products\" className=\"nav-link\">"
+  ],
+  "ch03-navigation-r659": [
+    "<NavLink to=\"/products\" className=\"nav-link\" end>"
+  ],
+  "ch03-navigation-r690": [
+    "to=\"/\""
+  ],
+  "ch03-navigation-r746": [
+    {
+      "text": "to=\"/sample-3-4\"",
+      "line": 8
+    }
+  ],
+  "ch03-navigation-r756": [
+    {
+      "text": "to=\"/sample-3-4\"",
+      "line": 17
+    },
+    {
+      "text": "end",
+      "line": 17
+    },
+    {
+      "text": "to=\"/sample-3-4/products\"",
+      "line": 20
+    },
+    {
+      "text": "to=\"/sample-3-4/guide\"",
+      "line": 23
+    }
+  ],
+  "ch03-params-r116": [
+    "import { Link } from 'react-router'",
+    "id: number",
+    {
+      "text": "id",
+      "within": "{ id, name, price, imagePath }"
+    },
+    "<p className=\"card-text\">商品番号：{id}</p>",
+    {
+      "text": "<Link to={`/products/${id}`}\n                className=\"btn btn-primary\">\n            詳細\n          </Link>",
+      "block": true
+    }
+  ],
+  "ch03-params-r158": [
+    {
+      "text": "useParams",
+      "within": "import { Link, useParams }"
+    },
+    "const { id } = useParams()",
+    "<p>商品番号：{id}</p>",
+    {
+      "text": "<Link to=\"/products\" className=\"btn btn-secondary\">\n        商品一覧へ戻る\n      </Link>",
+      "block": true
+    }
+  ],
+  "ch03-params-r186": [
+    "import ProductDetailPage from '../pages/ProductDetailPage'",
+    {
+      "text": "<Route path=\"products/:id\" element={<ProductDetailPage />} />",
+      "block": true
+    }
+  ],
+  "ch03-params-r221": [
+    {
+      "text": ":id",
+      "within": "path=\"products/:id\""
+    },
+    "element={<ProductDetailPage />}"
+  ],
+  "ch03-params-r259": [
+    "key={product.id}",
+    "id={product.id}"
+  ],
+  "ch03-params-r287": [
+    "to={`/products/${id}`}"
+  ],
+  "ch03-params-r327": [
+    "useParams"
+  ],
+  "ch03-params-r334": [
+    "const { id } = useParams()"
+  ],
+  "ch03-params-r367": [
+    "{id}"
+  ],
+  "ch03-params-r382": [
+    "to=\"/products\""
+  ],
+  "ch03-params-r426": [
+    {
+      "text": "// 実際の開発では、idを使ってREST APIから商品情報を取得する。",
+      "block": true
+    }
+  ],
+  "ch03-params-r452": [
+    {
+      "text": "to={`/sample-3-5/products/${id}`}",
+      "line": 26
+    }
+  ],
+  "ch03-params-r460": [
+    {
+      "text": "to=\"/sample-3-5/products\"",
+      "line": 15
+    }
+  ],
+  "ch03-programmatic-r668": [
+    {
+      "text": "useNavigate",
+      "within": "import { Link, useNavigate }"
+    },
+    "const navigate = useNavigate()",
+    "navigate('/products')",
+    "onClick={handleRegister}",
+    {
+      "text": "<Link to=\"/products\" className=\"btn btn-secondary\">\n          キャンセル\n        </Link>",
+      "block": true
+    }
+  ],
+  "ch03-programmatic-r706": [
+    "import { Link } from 'react-router'"
+  ],
+  "ch03-programmatic-r711": [
+    {
+      "text": "<Link to=\"/products/new\" className=\"btn btn-primary mb-3\">\n        商品登録\n      </Link>",
+      "block": true
+    }
+  ],
+  "ch03-programmatic-r725": [
+    {
+      "text": "import ProductRegisterPage from '../pages/ProductRegisterPage'",
+      "block": true
+    },
+    {
+      "text": "<Route path=\"products/new\" element={<ProductRegisterPage />} />",
+      "block": true
+    }
+  ],
+  "ch03-programmatic-r777": [
+    "path=\"products/new\"",
+    "path=\"products/:id\""
+  ],
+  "ch03-programmatic-r809": [
+    "useNavigate"
+  ],
+  "ch03-programmatic-r818": [
+    "const navigate = useNavigate()"
+  ],
+  "ch03-programmatic-r847": [
+    "navigate('/products')"
+  ],
+  "ch03-programmatic-r861": [
+    "onClick={handleRegister}"
+  ],
+  "ch03-programmatic-r902": [
+    "<Link to=\"/products\" className=\"btn btn-secondary\">"
+  ],
+  "ch03-programmatic-r929": [
+    {
+      "text": "// 実際の開発では、REST APIで商品を登録し、成功を確認する。",
+      "block": true
+    }
+  ],
+  "ch03-programmatic-r968": [
+    {
+      "text": "to=\"/sample-3-6/products/new\"",
+      "line": 17
+    }
+  ],
+  "ch03-programmatic-r977": [
+    {
+      "text": "navigate('/sample-3-6/products')",
+      "line": 8
+    }
+  ],
+  "ch03-programmatic-r987": [
+    {
+      "text": "to=\"/sample-3-6/products\"",
+      "line": 22
+    }
+  ]
+}

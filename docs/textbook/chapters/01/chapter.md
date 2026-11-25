@@ -2115,7 +2115,7 @@ Viteの開発サーバーには、ソースコードの変更を検知し、ブ�
 変更前：
 :::
 
-::: {#ch01-edit-text-6 .code filename="ch01-setup/src/App.tsx" start-line="4" highlight-lines="4-4"}
+::: {#ch01-edit-text-6 .code filename="ch01-setup/src/App.tsx" start-line="4"}
 ```tsx
 const message = 'Reactの動作確認をしています'
 ```
@@ -2125,7 +2125,7 @@ const message = 'Reactの動作確認をしています'
 変更後：
 :::
 
-::: {#ch01-edit-text-10 .code filename="ch01-setup/src/App.tsx" start-line="4" highlight-lines="4-4"}
+::: {#ch01-edit-text-10 .code filename="ch01-setup/src/App.tsx" start-line="4"}
 ```tsx
 const message = 'ソースコードの変更が反映されました！'
 ```

@@ -130,7 +130,57 @@ def source_rows(node, owner, start=1):
     return rows
 
 
-def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False, highlight_tokens='', label=None, wide_label=False):
+def code_highlight_spans(rows, targets):
+    """掲載コードの照合結果を、各表示行の文字位置へ変換する。"""
+    source = '\n'.join(row['code'] for row in rows)
+    starts, position = [], 0
+    for row in rows:
+        starts.append(position)
+        position += len(row['code']) + 1
+    spans, selected = defaultdict(list), []
+    for index, target in enumerate(targets):
+        if isinstance(target, str):
+            target = {'text': target}
+        value = target['text']
+        first, last = 0, len(source)
+        if 'line' in target:
+            matching = [i for i, row in enumerate(rows) if row['number'] == target['line']]
+            if len(matching) != 1:
+                raise ValueError(f'赤枠の行番号が掲載コードと一致しません: {target}')
+            row_index = matching[0]
+            first = starts[row_index]
+            last = first + len(rows[row_index]['code'])
+        if context := target.get('within'):
+            choices = [m.start() for m in re.finditer(re.escape(context), source)
+                       if first <= m.start() <= last]
+            if len(choices) != 1:
+                raise ValueError(f'赤枠の文脈を一意に特定できません: {target}')
+            first, last = choices[0], choices[0] + len(context) - len(value)
+        choices = [m.start() for m in re.finditer(re.escape(value), source)
+                   if first <= m.start() <= last] if value.strip() else []
+        if len(choices) != 1:
+            raise ValueError(f'赤枠の文字列を一意に特定できません: {target}')
+        left, right = choices[0], choices[0] + len(value)
+        if any(left < stop and right > start for start, stop in selected):
+            raise ValueError(f'コードの赤枠指定が重複しています: {target}')
+        selected.append((left, right))
+        for row_index, (row, start) in enumerate(zip(rows, starts, strict=True)):
+            code = row['code']
+            for line in code.split('\n'):
+                start_of_text = start + len(line) - len(line.lstrip())
+                end_of_text = start + len(line.rstrip())
+                begin, end = max(left, start_of_text), min(right, end_of_text)
+                if begin < end:
+                    def utf16(offset):
+                        return len(code[:offset].encode('utf-16-le')) // 2
+                    row_start = starts[row_index]
+                    spans[row_index].append((index, utf16(begin-row_start), utf16(end-row_start),
+                                             target.get('block', False)))
+                start += len(line) + 1
+    return spans
+
+
+def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_text='', example=False, highlight_tokens='', label=None, wide_label=False, highlight_targets=()):
     ranges = []
     for segment in filter(None, highlight_lines.split(',')):
         start, _, end = segment.partition('-')
@@ -153,7 +203,8 @@ def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_te
         markup = markup.replace(target, f'<span class="code-highlight-text">{target}</span>', 1)
     tokens = markup.split('\n')
     cursor, pieces = 0, []
-    for row in rows:
+    selections = code_highlight_spans(rows, highlight_targets) if highlight_targets else {}
+    for index, row in enumerate(rows):
         count = row['code'].count('\n')+1
         content = '\n'.join(tokens[cursor:cursor+count])
         cursor += count
@@ -170,10 +221,14 @@ def code_html(rows, lang, filenames, footer='', highlight_lines='', highlight_te
                     classes.append('code-highlight-end')
                 break
         gutter = '' if example else f'<div class="line-number">{number}</div>'
+        highlights = (' data-code-highlights="' + escape(json.dumps(selections[index]), quote=True) + '"'
+                      if index in selections else '')
         pieces.append(f'<div class="{" ".join(classes)}" data-break-row' + ids_attr(row['ids']) + '>'
-            + gutter + f'<pre class="source-code" spellcheck="false">{content}</pre></div>')
+            + gutter + f'<pre class="source-code" spellcheck="false"{highlights}>{content}</pre></div>')
     label = label or LABELS[lang] + ('の記述例' if example else '')
     card_class = 'card code-card wide-code-label' if wide_label else 'card code-card'
+    if selections:
+        card_class += ' has-code-highlights'
     return f'<section class="{card_class}">'+header(label, filenames)+'<div class="card-content">'+''.join(pieces)+'</div><footer class="card-footer">'+footer+'</footer></section>'
 
 
@@ -383,6 +438,8 @@ def explanation_html(record, nodes, layout=None):
 
 def prepare(folder, config, layout, nodes, figures, order):
     chapter = folder.name
+    highlight_path = folder/'code-highlights.json'
+    highlights = json.loads(highlight_path.read_text(encoding='utf-8')) if highlight_path.exists() else {}
     fixed = set(config.get('native_pages',[]))
     note_components = {ident for node in nodes.values() for _, ident in node.get('embedded_components', ())}
     pages = {ident:page['source_page'] for page in order for ident in page['entries']}
@@ -448,10 +505,17 @@ def prepare(folder, config, layout, nodes, figures, order):
             footer += '<img alt="実行結果の例" style="width:'+str(f['box'][2]-f['box'][0])+'pt" src="data:image/svg+xml;base64,'+data+'"></figure>'
         consume = group+caption_ids+attached+[r['figure_id'] for r in label_figures]
         attrs = nodes[ident]['attrs']
-        code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''),
-                         example=attrs.get('example') == 'true', highlight_tokens=attrs.get('highlight-tokens', ''),
-                         label=attrs.get('code-label'), wide_label=attrs.get('wide-code-label') == 'true')
+        targets = highlights.pop(ident, ())
+        try:
+            code = code_html(rows, lang, names, footer, attrs.get('highlight-lines', ''), attrs.get('highlight-text', ''),
+                             example=attrs.get('example') == 'true', highlight_tokens=attrs.get('highlight-tokens', ''),
+                             label=attrs.get('code-label'), wide_label=attrs.get('wide-code-label') == 'true',
+                             highlight_targets=targets)
+        except ValueError as exc:
+            raise ValueError(f'{ident}: {exc}') from exc
         add(ident,ident,consume,code,width,offset)
+    if highlights:
+        raise ValueError(f'赤枠の指定に対応するコード枠がありません: {", ".join(highlights)}')
     for ident,node in nodes.items():
         if node['kind']=='table' and pages[ident] not in fixed:
             width,_=table_dimensions(layout,ident,node)
@@ -511,7 +575,8 @@ def _render(specs, chapter):
     cache=ROOT/'tmp/html-components'
     cache.mkdir(parents=True,exist_ok=True)
     filename_fit=(HERE/'fit_filename_labels.js').read_bytes()
-    version=(HERE/'components.css').read_bytes()+(HERE/'render_components.cjs').read_bytes()+filename_fit+Path(__file__).read_bytes()
+    highlight_placement=(HERE/'place_code_highlights.js').read_bytes()
+    version=(HERE/'components.css').read_bytes()+(HERE/'render_components.cjs').read_bytes()+filename_fit+highlight_placement+Path(__file__).read_bytes()
     pending=[]
     for spec in specs:
         key=sha256(version+json.dumps({k:spec[k] for k in ('id','width','html')},ensure_ascii=False).encode()).hexdigest()
@@ -548,7 +613,12 @@ def _render(specs, chapter):
     preview.mkdir(parents=True,exist_ok=True)
     css=(HERE/'components.css').read_text(encoding='utf-8')
     body='\n'.join('<article><p class="preview-id">'+escape(spec['id'])+'</p><div style="width:'+str(spec['width'])+'pt">'+spec['html']+'</div></article>' for spec in specs)
-    script='<script>'+filename_fit.decode('utf-8')+'\ndocument.fonts.ready.then(() => fitFilenameLabels(document));</script>'
+    script='<script>'+filename_fit.decode('utf-8')+highlight_placement.decode('utf-8')+'''
+document.fonts.ready.then(() => {
+  fitFilenameLabels(document);
+  placeCodeHighlights(document);
+});
+</script>'''
     (preview/(chapter+'.html')).write_text('<!doctype html><html lang="ja"><meta charset="utf-8"><title>'+escape(chapter)+' 教材部品プレビュー</title><style>'+css+'body{padding:24px;background:#eef2f6}article{margin:0 auto 28px;width:max-content;max-width:100%}.preview-id{font:12px sans-serif;color:#475569}</style><body>'+body+script+'</body></html>',encoding='utf-8')
 
 

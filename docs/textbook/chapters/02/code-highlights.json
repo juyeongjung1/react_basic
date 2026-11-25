@@ -1,0 +1,524 @@
+{
+  "ch02-21-code-01": [
+    {
+      "text": "export default function App() {",
+      "line": 1,
+      "block": true
+    },
+    {
+      "text": "const courseName = 'React開発入門'\n  const message = 'Reactの動作確認をしています'\n  const lessonNumber = 1",
+      "line": 3,
+      "block": true
+    },
+    {
+      "text": "return (\n    <main>\n      <h1>{courseName}</h1>\n      <p>{message}</p>\n      <p>現在の学習：第{lessonNumber}章</p>\n    </main>\n  )",
+      "line": 7,
+      "block": true
+    }
+  ],
+  "ch02-21-code-02": [
+    "export default function App()"
+  ],
+  "ch02-21-code-03": [
+    {
+      "text": "import App from './App'",
+      "line": 2,
+      "block": true
+    },
+    "render(<App />)"
+  ],
+  "ch02-21-code-04": [
+    {
+      "text": "const courseName = 'React開発入門'\n  const message = 'Reactの動作確認をしています'\n  const lessonNumber = 1",
+      "line": 3,
+      "block": true
+    }
+  ],
+  "ch02-21-code-05": [
+    {
+      "text": "return",
+      "line": 7
+    },
+    {
+      "text": "<main>\n      <h1>{courseName}</h1>\n      <p>{message}</p>\n      <p>現在の学習：第{lessonNumber}章</p>\n    </main>",
+      "line": 8,
+      "block": true
+    }
+  ],
+  "ch02-22-code-01": [
+    {
+      "text": "const product = {\n    name: 'ノート',\n    price: 250,\n    imagePath: '/images/notebook.png'\n  }",
+      "line": 3,
+      "block": true
+    },
+    {
+      "text": "const quantity = 2\n  const totalClass = 'text-primary fw-bold'",
+      "line": 10,
+      "block": true
+    },
+    {
+      "text": "src={product.imagePath}\n        alt={product.name}\n        width={180}",
+      "line": 18,
+      "block": true
+    },
+    {
+      "text": "<p>商品名：{product.name}</p>\n      <p>単価：{product.price}円</p>\n      <p>数量：{quantity}個</p>",
+      "line": 23,
+      "block": true
+    },
+    {
+      "text": "<p className={totalClass}>\n        合計：{product.price * quantity}円",
+      "line": 27,
+      "block": true
+    }
+  ],
+  "ch02-22-code-02": [
+    {
+      "text": "const product = {\n    name: 'ノート',\n    price: 250,\n    imagePath: '/images/notebook.png'\n  }",
+      "line": 3,
+      "block": true
+    },
+    {
+      "text": "const quantity = 2",
+      "line": 10,
+      "block": true
+    }
+  ],
+  "ch02-22-code-03": [
+    "{product.name}",
+    "{product.price}",
+    "{quantity}"
+  ],
+  "ch02-22-code-04": [
+    "{product.price * quantity}"
+  ],
+  "ch02-22-code-05": [
+    "src=\"/images/notebook.png\"",
+    "alt=\"ノート\""
+  ],
+  "ch02-22-code-06": [
+    {
+      "text": "src={product.imagePath}\n        alt={product.name}\n        width={180}",
+      "line": 18,
+      "block": true
+    }
+  ],
+  "ch02-22-code-07": [
+    "src=\"{product.imagePath}\""
+  ],
+  "ch02-22-code-09": [
+    "className=\"text-primary fw-bold\""
+  ],
+  "ch02-22-code-10": [
+    {
+      "text": "const totalClass = 'text-primary fw-bold'",
+      "line": 11,
+      "block": true
+    },
+    "className={totalClass}"
+  ],
+  "ch02-22-code-11": [
+    {
+      "text": "import 'bootstrap/dist/css/bootstrap.min.css'",
+      "line": 3,
+      "block": true
+    }
+  ],
+  "ch02-23-code-01": [
+    {
+      "text": "import { useState } from 'react'",
+      "line": 1,
+      "block": true
+    },
+    {
+      "text": "//let quantity = 1\n  const [quantity, setQuantity] = useState(1)",
+      "line": 6,
+      "block": true
+    },
+    {
+      "text": "const addOne = () => {\n    //quantity = quantity + 1\n    setQuantity(quantity + 1)\n  }",
+      "line": 9,
+      "block": true
+    },
+    {
+      "text": "<p>数量：{quantity}個</p>\n      <p>合計：{price * quantity}円</p>",
+      "line": 19,
+      "block": true
+    },
+    "onClick={addOne}"
+  ],
+  "ch02-23-code-02": [
+    "let quantity = 1"
+  ],
+  "ch02-23-code-03": [
+    "quantity = quantity + 1"
+  ],
+  "ch02-23-code-04": [
+    {
+      "text": "const [quantity, setQuantity] = useState(1)",
+      "line": 7,
+      "block": true
+    },
+    {
+      "text": "setQuantity(quantity + 1)",
+      "line": 11,
+      "block": true
+    }
+  ],
+  "ch02-23-code-05": [
+    {
+      "text": "import { useState } from 'react'",
+      "line": 1,
+      "block": true
+    }
+  ],
+  "ch02-23-code-06": [
+    {
+      "text": "const [quantity, setQuantity] = useState(1)",
+      "line": 7,
+      "block": true
+    }
+  ],
+  "ch02-23-code-07": [
+    "//quantity = quantity + 1",
+    "setQuantity(quantity + 1)"
+  ],
+  "ch02-23-code-08": [
+    {
+      "text": "<p>数量：{quantity}個</p>\n      <p>合計：{price * quantity}円</p>",
+      "line": 19,
+      "block": true
+    },
+    "onClick={addOne}"
+  ],
+  "ch02-23-code-09": [
+    {
+      "text": "0",
+      "within": "useState(0)"
+    },
+    {
+      "text": "'田中'",
+      "within": "useState('田中')"
+    },
+    {
+      "text": "true",
+      "within": "useState(true)"
+    }
+  ],
+  "ch02-24-code-01": [
+    {
+      "text": "const [selectedName, setSelectedName] = useState('未選択')",
+      "line": 4,
+      "block": true
+    },
+    {
+      "text": "const showSelection = (name: string) => {\n    setSelectedName(name)\n  }",
+      "line": 6,
+      "block": true
+    },
+    {
+      "text": "const clearSelection = () => {\n    setSelectedName('未選択')\n  }",
+      "line": 10,
+      "block": true
+    },
+    "{selectedName}",
+    "onClick={() => showSelection('ノート')}",
+    "onClick={() => showSelection('ボールペン')}",
+    "onClick={clearSelection}"
+  ],
+  "ch02-24-code-02": [
+    {
+      "text": "const clearSelection = () => {\n    setSelectedName('未選択')\n  }",
+      "line": 10,
+      "block": true
+    }
+  ],
+  "ch02-24-code-03": [
+    "onClick={clearSelection}"
+  ],
+  "ch02-24-code-04": [
+    "onClick={clearSelection}"
+  ],
+  "ch02-24-code-05": [
+    "onClick={clearSelection()}"
+  ],
+  "ch02-24-code-06": [
+    {
+      "text": "const showSelection = (name: string) => {\n    setSelectedName(name)\n  }",
+      "line": 6,
+      "block": true
+    }
+  ],
+  "ch02-24-code-07": [
+    "onClick={showSelection('ノート')}"
+  ],
+  "ch02-24-code-08": [
+    "onClick={() => showSelection('ノート')}",
+    "onClick={() => showSelection('ボールペン')}"
+  ],
+  "ch02-24-code-09": [
+    "() => showSelection('ノート')"
+  ],
+  "ch02-24-code-10": [
+    {
+      "text": "() => {\n  showSelection('ノート')\n}",
+      "block": true
+    }
+  ],
+  "ch02-24-code-11": [
+    {
+      "text": "const [selectedName, setSelectedName] = useState('未選択')",
+      "line": 4,
+      "block": true
+    },
+    "{selectedName}"
+  ],
+  "ch02-25-code-01": [
+    {
+      "text": "if (stock > 0) {\n      setStock(stock - 1)\n    }",
+      "line": 7,
+      "block": true
+    },
+    "{stock > 0 ? '在庫あり' : '在庫切れ'}",
+    {
+      "text": "className={stock > 0 ? 'text-success fw-bold'\n        : 'text-danger fw-bold'}",
+      "block": false
+    },
+    "{stock > 0 ? '購入できます' : '購入できません'}",
+    {
+      "text": "{stock === 1 && (\n        <p className=\"alert alert-warning\">残り1個です</p>\n      )}",
+      "line": 24,
+      "block": true
+    },
+    "disabled={stock === 0}"
+  ],
+  "ch02-25-code-02": [
+    {
+      "text": "const [stock, setStock] = useState(2)",
+      "line": 4,
+      "block": true
+    }
+  ],
+  "ch02-25-code-03": [
+    {
+      "text": "if (stock > 0) {\n      setStock(stock - 1)\n    }",
+      "line": 7,
+      "block": true
+    }
+  ],
+  "ch02-25-code-04": [
+    {
+      "text": "{if (stock > 0) {\n    '在庫あり'\n  }}",
+      "block": true
+    }
+  ],
+  "ch02-25-code-05": [
+    "条件式 ? 条件がtrueの場合の値 : 条件がfalseの場合の値"
+  ],
+  "ch02-25-code-06": [
+    "{stock > 0 ? '在庫あり' : '在庫切れ'}"
+  ],
+  "ch02-25-code-07": [
+    {
+      "text": "className={stock > 0 ? 'text-success fw-bold'\n        : 'text-danger fw-bold'}",
+      "block": false
+    },
+    "{stock > 0 ? '購入できます' : '購入できません'}"
+  ],
+  "ch02-25-code-08": [
+    "{条件式 && 表示したいJSX}"
+  ],
+  "ch02-25-code-09": [
+    {
+      "text": "{stock === 1 && (\n        <p className=\"alert alert-warning\">残り1個です</p>\n      )}",
+      "line": 24,
+      "block": true
+    }
+  ],
+  "ch02-25-code-12": [
+    "disabled={stock === 0}"
+  ],
+  "ch02-26-code-01": [
+    {
+      "text": "const products = [\n    { id: 101, name: 'ノート', price: 250 },\n    { id: 102, name: 'ボールペン', price: 120 },\n    { id: 103, name: '消しゴム', price: 100 }\n  ]",
+      "line": 2,
+      "block": true
+    },
+    {
+      "text": "{products.map((product) => (\n            <tr key={product.id}>\n              <td>{product.id}</td>\n              <td>{product.name}</td>\n              <td>{product.price}円</td>\n            </tr>\n          ))}",
+      "line": 20,
+      "block": true
+    }
+  ],
+  "ch02-26-code-02": [
+    {
+      "text": "const products = [\n    { id: 101, name: 'ノート', price: 250 },\n    { id: 102, name: 'ボールペン', price: 120 },\n    { id: 103, name: '消しゴム', price: 100 }\n  ]",
+      "line": 2,
+      "block": true
+    }
+  ],
+  "ch02-26-code-03": [
+    {
+      "text": "{products.map((product) => (\n            <tr key={product.id}>\n              <td>{product.id}</td>\n              <td>{product.name}</td>\n              <td>{product.price}円</td>\n            </tr>\n          ))}",
+      "line": 20,
+      "block": true
+    }
+  ],
+  "ch02-26-code-04": [
+    "=> (",
+    {
+      "text": "))",
+      "within": "\n))"
+    }
+  ],
+  "ch02-26-code-05": [
+    "=> {",
+    "return (",
+    {
+      "text": "})",
+      "within": "\n})"
+    }
+  ],
+  "ch02-26-code-06": [
+    {
+      "text": "{ id: 101, name: 'ノート', price: 250 },",
+      "line": 3,
+      "block": true
+    }
+  ],
+  "ch02-26-code-07": [
+    {
+      "text": "<td>{product.id}</td>\n              <td>{product.name}</td>\n              <td>{product.price}円</td>",
+      "line": 22,
+      "block": true
+    }
+  ],
+  "ch02-26-code-08": [
+    "key={product.id}"
+  ],
+  "ch02-form-sample-code-1": [
+    {
+      "text": "const [productName, setProductName] = useState('')\n  const [category, setCategory] = useState('文房具')\n  const [isAvailable, setIsAvailable] = useState(false)",
+      "line": 4,
+      "block": true
+    },
+    {
+      "text": "const clearInputs = () => {\n    setProductName('')\n    setCategory('文房具')\n    setIsAvailable(false)\n  }",
+      "line": 8,
+      "block": true
+    },
+    {
+      "text": "value={productName}\n          onChange={(e) => setProductName(e.target.value)}",
+      "line": 26,
+      "block": true
+    }
+  ],
+  "ch02-form-sample-code-2": [
+    {
+      "text": "value={category}\n          onChange={(e) => setCategory(e.target.value)}",
+      "line": 38,
+      "block": true
+    },
+    {
+      "text": "<option value=\"文房具\">文房具</option>\n          <option value=\"事務用品\">事務用品</option>\n          <option value=\"電子機器\">電子機器</option>",
+      "line": 41,
+      "block": true
+    },
+    "type=\"checkbox\"",
+    {
+      "text": "checked={isAvailable}\n          onChange={(e) => setIsAvailable(e.target.checked)}",
+      "line": 52,
+      "block": true
+    }
+  ],
+  "ch02-form-sample-code-3": [
+    "onClick={clearInputs}",
+    {
+      "text": "<p>商品名：{productName || '未入力'}</p>\n      <p>カテゴリ：{category}</p>\n      <p>販売状態：{isAvailable ? '販売中' : '販売停止'}</p>",
+      "line": 67,
+      "block": true
+    }
+  ],
+  "ch02-form-line-184": [
+    {
+      "text": "const [productName, setProductName] = useState('')\n  const [category, setCategory] = useState('文房具')\n  const [isAvailable, setIsAvailable] = useState(false)",
+      "line": 4,
+      "block": true
+    }
+  ],
+  "ch02-form-line-209": [
+    {
+      "text": "value={productName}\n          onChange={(e) => setProductName(e.target.value)}",
+      "line": 26,
+      "block": true
+    }
+  ],
+  "ch02-form-line-224": [
+    "value={productName}"
+  ],
+  "ch02-form-line-237": [
+    "onChange={(e) => setProductName(e.target.value)}"
+  ],
+  "ch02-form-label-code": [
+    "htmlFor=\"productName\"",
+    "id=\"productName\""
+  ],
+  "ch02-form-line-311": [
+    "value={productName}"
+  ],
+  "ch02-form-line-324": [
+    "value={productName}",
+    "onChange={(e) => setProductName(e.target.value)}"
+  ],
+  "ch02-form-line-365": [
+    {
+      "text": "value={category}\n          onChange={(e) => setCategory(e.target.value)}",
+      "line": 38,
+      "block": true
+    },
+    {
+      "text": "<option value=\"文房具\">文房具</option>\n          <option value=\"事務用品\">事務用品</option>\n          <option value=\"電子機器\">電子機器</option>",
+      "line": 41,
+      "block": true
+    }
+  ],
+  "ch02-form-line-412": [
+    "checked={isAvailable}",
+    "onChange={(e) => setIsAvailable(e.target.checked)}"
+  ],
+  "ch02-form-line-464": [
+    "{productName || '未入力'}",
+    "{category}",
+    "{isAvailable ? '販売中' : '販売停止'}"
+  ],
+  "ch02-form-line-497": [
+    {
+      "text": "setProductName('')\n    setCategory('文房具')\n    setIsAvailable(false)",
+      "line": 9,
+      "block": true
+    }
+  ],
+  "ch02-form-line-546": [
+    "const [salesMethod, setSalesMethod] = useState('店頭販売')",
+    {
+      "text": "name=\"salesMethod\"\n        value=\"店頭販売\"",
+      "block": true
+    },
+    {
+      "text": "checked={salesMethod === '店頭販売'}\n        onChange={(e) => setSalesMethod(e.target.value)}",
+      "block": true
+    },
+    {
+      "text": "name=\"salesMethod\"\n        value=\"オンライン販売\"",
+      "block": true
+    },
+    {
+      "text": "checked={salesMethod === 'オンライン販売'}\n        onChange={(e) => setSalesMethod(e.target.value)}",
+      "block": true
+    },
+    "{salesMethod}"
+  ],
+  "ch02-form-line-604": [
+    "onChange={(e) => setSalesMethod(e.target.value)}"
+  ]
+}

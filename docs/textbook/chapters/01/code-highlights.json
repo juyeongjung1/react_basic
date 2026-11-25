@@ -1,0 +1,58 @@
+{
+  "ch01-spa-counter": [
+    {
+      "text": "const quantityEl = document.getElementById('quantity')\n    const totalEl = document.getElementById('total')",
+      "line": 16,
+      "block": true
+    },
+    {
+      "text": "document.getElementById('add').addEventListener('click', () => {\n      quantity += 1",
+      "line": 19,
+      "block": true
+    }
+  ],
+  "ch01-react-counter": [
+    {
+      "text": "const [quantity, setQuantity] = useState(1)",
+      "line": 5,
+      "block": true
+    },
+    {
+      "text": "<p>数量：{quantity}個</p>\n      <p>合計：{price * quantity}円</p>",
+      "line": 10,
+      "block": true
+    },
+    "onClick={() => setQuantity(quantity + 1)}"
+  ],
+  "ch01-app-read-6": [
+    {
+      "text": "const courseName = 'React開発入門'\n  const message = 'Reactの動作確認をしています'\n  const lessonNumber = 1",
+      "line": 3,
+      "block": true
+    },
+    {
+      "text": "<h1>{courseName}</h1>\n      <p>{message}</p>\n      <p>現在の学習：第{lessonNumber}章</p>",
+      "line": 9,
+      "block": true
+    }
+  ],
+  "ch01-app-read-12": [
+    {
+      "text": "const courseName = 'React開発入門'",
+      "line": 3,
+      "block": true
+    }
+  ],
+  "ch01-app-read-16": [
+    "{courseName}"
+  ],
+  "ch01-edit-text-6": [
+    "'Reactの動作確認をしています'"
+  ],
+  "ch01-edit-text-10": [
+    "'ソースコードの変更が反映されました！'"
+  ],
+  "ch01-edit-text-15": [
+    "{message}"
+  ]
+}

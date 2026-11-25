@@ -144,6 +144,10 @@ async function main() {
         const height = Math.ceil((fragment.height + .75) * 1000) / 1000;
         await page.setContent(documentHtml(fragment.html, css, card.width, height), { waitUntil: 'load' });
         await page.evaluate(() => document.fonts.ready);
+        if (fragment.html.includes('data-code-highlights=')) {
+          await page.addScriptTag({ path: path.join(__dirname, 'place_code_highlights.js') });
+          await page.evaluate(() => window.placeCodeHighlights(document));
+        }
         const measurement = await page.evaluate(({ scale, id }) => {
           const card = document.querySelector('#component-root > .card');
           const origin = card.getBoundingClientRect();
@@ -167,7 +171,14 @@ async function main() {
                 x1: Math.max(old.x1, box.x1), y1: Math.max(old.y1, box.y1) } : box;
             }
           }
-          return { text: card.innerText, anchors };
+          const highlights = Array.from(card.querySelectorAll('.code-highlight-frame'), frame => {
+            const rect = frame.getBoundingClientRect();
+            return { target: Number(frame.dataset.highlightTarget), box: [
+              pt(rect.left - origin.left), pt(rect.top - origin.top),
+              pt(rect.right - origin.left), pt(rect.bottom - origin.top),
+            ] };
+          });
+          return { text: card.innerText, anchors, highlights };
         }, { scale: PX_PER_PT, id: card.id });
         const pdf = path.join(outputDir, `${String(index + 1).padStart(4, '0')}-${slug}-${partIndex + 1}.pdf`);
         await page.pdf({ path: pdf, width: `${card.width / 72}in`, height: `${height / 72}in`,

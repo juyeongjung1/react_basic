@@ -133,6 +133,19 @@ html, body {
   border-radius: 1pt;
 }
 
+.has-code-highlights { position: relative; }
+
+.code-highlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.code-highlight-frame {
+  position: absolute;
+  border: 0.9pt solid #c6292e;
+}
+
 .line-number {
   padding: 0 7pt 0 4pt;
   border-right: 0.6pt solid #e5e9ef;

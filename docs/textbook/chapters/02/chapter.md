@@ -851,7 +851,7 @@ JSXでは、要素の中に表示する内容だけでなく、`src` や `alt` �
 例えば、通常のHTMLでノートの画像を表示する場合は、次のように記述します。
 :::
 
-::: {#ch02-22-code-05 .code example="true" highlight-tokens="\"/images/notebook.png\"|\"ノート\""}
+::: {#ch02-22-code-05 .code example="true"}
 ~~~html
 <img src="/images/notebook.png" alt="ノート">
 ~~~
@@ -914,7 +914,7 @@ JSXでは、要素の中に表示する内容だけでなく、`src` や `alt` �
 **誤った例**
 :::
 
-::: {#ch02-22-code-07 .code example="true" highlight-tokens="\"{product.imagePath}\""}
+::: {#ch02-22-code-07 .code example="true"}
 ~~~tsx
 <img src="{product.imagePath}" alt="ノート" />
 ~~~
@@ -1849,7 +1849,7 @@ Reactでは、**`onClick` 属性に、クリック時に実行する関数を指
 **誤った書き方**
 :::
 
-::: {#ch02-24-code-05 .code example="true" highlight-tokens="clearSelection()"}
+::: {#ch02-24-code-05 .code example="true"}
 ~~~tsx
 <button onClick={clearSelection()}>選択を解除</button>
 ~~~
@@ -1957,7 +1957,7 @@ TypeScriptでは、文脈から引数の型を推論できる場合もありま�
 この関数は商品名を引数として受け取るため、商品名も指定する必要があります。しかし、次のように記述してはいけません。
 :::
 
-::: {#ch02-24-code-07 .code example="true" highlight-tokens="showSelection('ノート')"}
+::: {#ch02-24-code-07 .code example="true"}
 ~~~tsx
 <button onClick={showSelection('ノート')}>
   ノートを選択
