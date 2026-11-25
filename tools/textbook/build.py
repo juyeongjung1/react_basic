@@ -995,10 +995,10 @@ footer: context if {footer_condition} {{align(center, text(font: "Times New Roma
             if end < len(entries) and entries[end] in figures and entries[end] not in compact_figures and entries[end] not in code_members and (not modern or entries[end] not in modern['consume']):
                 body = "\n".join(render(e) for e in entries[i:end + 1])
                 # 枠の先頭にある子見出しの上余白は相殺されるため、外側で確保する。
-                above = 0 if ident in slide_body_first else (18 if nodes[ident]['kind'] == 'heading' else 8)
-                if ident not in slide_body_first:
-                    above += heading_spacing.get(ident, 0)
-                commands.append(f'#instruction({q("instruction-" + ident)}, above: {above}pt)[{body}]')
+                above = '0pt' if ident in slide_body_first else ('18pt' if nodes[ident]['kind'] == 'heading' else 'step-above')
+                if ident not in slide_body_first and ident in heading_spacing:
+                    above += f' + {heading_spacing[ident]}pt'
+                commands.append(f'#instruction({q("instruction-" + ident)}, above: {above})[{body}]')
                 i = end + 1
                 continue
         if ident in nodes and i+1<len(entries) and entries[i+1] in nodes and nodes[entries[i+1]]['kind']=='code' and re.search(r'[/\\].*\.(?:java|html|css|xml|properties|yml|yaml)\s*$',nodes[ident]['text']):

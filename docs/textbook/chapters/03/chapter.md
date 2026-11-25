@@ -950,7 +950,7 @@ src/
 以下のコードは、先ほどの通常のフォルダー構成を使用する場合の記述例です。本研修の配布サンプルで動作を確認する方法については、構文の解説の後に説明します。
 :::
 
-::: {#ch03-router-r148 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r148 .step}
 **画面を定義するファイル**
 :::
 
@@ -998,7 +998,7 @@ import ProductCard from '../components/ProductCard'
 このように、ルーティングの対象となる画面も、これまでに学習したReactのコンポーネントと同じ方法で定義します。各画面にルーティング専用の処理を記述する必要はありません。
 :::
 
-::: {#ch03-router-r185 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r185 .step}
 **ルーティングを定義するファイル**
 :::
 
@@ -1029,7 +1029,7 @@ export default function AppRoutes() {
 このファイルには、各画面で表示する見出しや商品カードのデザインを記述していません。**どのURLにアクセスしたときに、どの画面を表示するのか**を定義しています。
 :::
 
-::: {#ch03-router-r209 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r209 .step}
 **ルーティングの設定を使用するファイル**
 :::
 
@@ -1051,7 +1051,7 @@ export default function App() {
 この構成では、ルーティングの設定を `AppRoutes.tsx` にまとめているため、`App.tsx` に同じルートを記述する必要はありません。
 :::
 
-::: {#ch03-router-r224 .paragraph punctuation-font="inherit"}
+::: {#ch03-router-r224 .step}
 **アプリケーションの起動処理**
 :::
 
@@ -1271,34 +1271,6 @@ export default function App() {
 このように、**画面のコンポーネントとルーティングの設定を役割ごとに分けて管理することで、機能を追加する際に変更する場所が明確になります。**
 :::
 
-::: {#ch03-router-r371 .step}
-**⑤ URLに対応する画面が表示されるまでの流れ**
-:::
-
-::: {#ch03-router-r373 .paragraph}
-ここまでの構成で、ユーザーが `http://localhost:5173/products` にアクセスした場合を考えてみましょう。
-:::
-
-::: {#ch03-router-r375-1 .paragraph numbered="true"}
-1\. `main.tsx` からアプリケーションを起動し、`BrowserRouter` の内側に `App` を表示する。
-:::
-
-::: {#ch03-router-r375-2 .paragraph numbered="true"}
-2\. `App` から `AppRoutes` を使用する。
-:::
-
-::: {#ch03-router-r375-3 .paragraph numbered="true"}
-3\. `Routes` が現在のURLのパス `/products` に対応する `Route` を選択する。
-:::
-
-::: {#ch03-router-r375-4 .paragraph numbered="true"}
-4\. `element` に指定された `ProductListPage` が表示される。
-:::
-
-::: {#ch03-router-r375-5 .paragraph numbered="true"}
-5\. `ProductListPage` が、6件の商品データを使用して商品カードを表示する。
-:::
-
 ![通常のアプリケーションでURLに応じた画面を表示する流れ](assets/router-flow.svg){#ch03-router-figure-flow}
 
 ::: {#ch03-router-figure-flow-caption .caption}
@@ -1332,72 +1304,9 @@ ch03-basic/src/samples/sample3_2/
    └─ AppRoutes.tsx
 ~~~
 
-通常の構成と同じように、画面の部品・各画面・ルーティングの設定を分けています。ただし、3.2で使用するファイルを `sample3_2` フォルダーの中にまとめています。
-
-**3.1で学習したコードの再利用**
-
-`sample3_2/components/ProductCard.tsx` は、3.1節で使用した `src/components/ProductCard.tsx` と同じソースコードです。
-
-また、`sample3_2/pages/ProductListPage.tsx` は、3.1節の `Sample3_1.tsx` を基に、コンポーネント名と商品カードの読み込み先を変更したものです。商品データやPropsの受け渡し、カードの表示処理は同じです。
-
-同名の `ProductCard.tsx` が複数存在しますが、格納されているフォルダーが異なるため、別々のファイルとして管理できます。3.2では `sample3_2` 内のファイルを使用します。
-
-::: {#ch03-router-figure-reuse .note-figure}
-![3.1で学習したコードを3.2のサンプルで再利用する](assets/router-product-reuse.svg)
-:::
-
-**配布サンプルのURLとルートの指定**
-
-3.2の配布サンプルでは、`/sample-3-2` を入口としています。そのため、商品一覧のURLは `/sample-3-2/products` になります。
-
-配布サンプルの `routes/AppRoutes.tsx` では、入口に続く部分を指定しています。
-
-~~~{#ch03-router-r435 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_2/routes/AppRoutes.tsx" start-line="1"}
-import { Routes, Route } from 'react-router'
-import HomePage from '../pages/HomePage'
-import ProductListPage from '../pages/ProductListPage'
-import GuidePage from '../pages/GuidePage'
-
-export default function AppRoutes() {
-  return (
-    <Routes>
-      <Route path="" element={<HomePage />} />
-      <Route path="products" element={<ProductListPage />} />
-      <Route path="guide" element={<GuidePage />} />
-    </Routes>
-  )
-}
-~~~
-
-通常の構成で学習した記述との違いは、`path` に指定する値です。配布サンプルでは、`products` のように先頭の `/` を付けず、基準となるルートに続くパスを指定しています。これを相対パスと呼びます。
-
-::: {#ch03-router-r454 .table column-widths="19 21 24 36"}
-| 画面 | 通常構成の `path` | 配布サンプルの `path` | 配布サンプルでアクセスするパス |
-|---|---|---|---|
-| ホーム | `/` | `""`（空文字列） | `/sample-3-2` |
-| 商品一覧 | `/products` | `products` | `/sample-3-2/products` |
-| ご利用案内 | `/guide` | `guide` | `/sample-3-2/guide` |
-:::
-
-ホーム画面の場合は、入口に続くパスがないため、空文字列を指定しています。いずれも、URLのパスと表示する画面を対応付けるという考え方は同じです。
-
 ::: {#ch03-router-figure-relative-path .note-figure}
 ![配布サンプルでは、節ごとにURLの入口を設けている](assets/router-relative-path.svg)
 :::
-::::
-
-:::: {#ch03-router-r468 .training-note breakable="true"}
-**【参考】教材用の入口を設定するファイル**
-
-配布プロジェクトでは、教材のメニューと各節のサンプルを接続するための設定があらかじめ用意されています。例えば、3.2の入口を設定する記述は、次のような形式になります。
-
-~~~{#ch03-router-r473 .tsx code-label="TSXの記述例（教材専用の接続設定・参考）" example="true" wide-code-label="true"}
-<Route path="/sample-3-2/*" element={<Sample3_2 />} />
-~~~
-
-このような外側のルート設定は `App.tsx` などの教材用の設定に記述します。`Sample3_2.tsx` は、3.2の `AppRoutes.tsx` を教材のメニューから使用するための接続用ファイルです。
-
-これらは、複数のサンプルを1つの配布プロジェクトで利用するための設定です。**通常のアプリケーションのルーティングを学習するうえで、詳しい書き方を覚えたり、これらのファイルを変更したりする必要はありません。**
 ::::
 
 ::: {#ch03-router-r483 .heading level="minor"}
@@ -1409,15 +1318,7 @@ export default function AppRoutes() {
 :::
 
 ::: {#ch03-router-r487 .paragraph}
-ブラウザーのアドレスバーで、次の3つのパスにアクセスしてみましょう。ホスト名とポート番号は、開発サーバーの起動時に表示されたものを使用してください。
-:::
-
-::: {#ch03-router-r489 .table column-widths="44 56"}
-| 配布サンプルのURLのパス | 表示される画面 |
-|---|---|
-| `/sample-3-2` | ホーム |
-| `/sample-3-2/products` | 商品一覧（6件の商品カード） |
-| `/sample-3-2/guide` | ご利用案内 |
+ブラウザーのアドレスバーから、補足の図に示した配布サンプルの3つのパスにアクセスしてみましょう。ホスト名とポート番号は、開発サーバーの起動時に表示されたものを使用してください。
 :::
 
 :::: {#ch03-router-r495 .training-note breakable="true"}
