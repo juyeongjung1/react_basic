@@ -6,7 +6,7 @@ export default function MainLayout() {
       <header className="bg-dark text-white p-3">
         <Link
           to="/sample-3-4"
-          className="text-white text-decoration-none"
+          className="text-reset text-decoration-none"
         >
           商品管理システム
         </Link>

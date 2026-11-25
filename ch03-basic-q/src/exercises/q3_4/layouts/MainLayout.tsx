@@ -5,7 +5,7 @@ export default function MainLayout() {
   return (
     <>
       <header className="bg-dark text-white p-3">
-        {/* ➁ 実装：次のシステム名をLinkに変更してください。toに/sample-3-4、classNameにtext-white text-decoration-noneを指定します。 */}
+        {/* ➁ 実装：次のシステム名をLinkに変更してください。toに/sample-3-4、classNameにtext-reset text-decoration-noneを指定します。 */}
         商品管理システム
       </header>
 

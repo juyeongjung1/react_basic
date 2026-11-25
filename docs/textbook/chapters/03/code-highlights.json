@@ -148,7 +148,7 @@
   "ch03-navigation-r461": [
     "Link, NavLink",
     {
-      "text": "<Link\n          to=\"/\"\n          className=\"text-white text-decoration-none\"\n        >\n          商品管理システム\n        </Link>",
+      "text": "<Link\n          to=\"/\"\n          className=\"text-reset text-decoration-none\"\n        >\n          商品管理システム\n        </Link>",
       "block": true
     },
     {
@@ -159,6 +159,9 @@
   "ch03-navigation-r520": [
     "Link, NavLink"
   ],
+  "ch03-navigation-r527": [
+    "text-reset"
+  ],
   "ch03-navigation-r550": [
     "href=\"/\""
   ],
@@ -166,7 +169,19 @@
     "to=\"/\""
   ],
   "ch03-navigation-r584": [
-    "<NavLink to=\"/products\" className=\"nav-link\">"
+    "nav-pills",
+    {
+      "text": "nav-link",
+      "within": "<NavLink to=\"/\" className=\"nav-link\" end>"
+    },
+    {
+      "text": "nav-link",
+      "within": "<NavLink to=\"/products\" className=\"nav-link\">"
+    },
+    {
+      "text": "nav-link",
+      "within": "<NavLink to=\"/guide\" className=\"nav-link\">"
+    }
   ],
   "ch03-navigation-home-end-code": [
     "end"

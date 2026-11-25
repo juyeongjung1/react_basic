@@ -2132,7 +2132,7 @@ export default function MainLayout() {
       <header className="bg-dark text-white p-3">
         <Link
           to="/"
-          className="text-white text-decoration-none"
+          className="text-reset text-decoration-none"
         >
           商品管理システム
         </Link>
@@ -2211,7 +2211,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 ~~~tsx
         <Link
           to="/"
-          className="text-white text-decoration-none"
+          className="text-reset text-decoration-none"
         >
           商品管理システム
         </Link>
@@ -2274,7 +2274,7 @@ import { Link, NavLink, Outlet } from 'react-router'
 :::
 
 ::: {#ch03-navigation-r569 .paragraph}
-なお、`className` には、ヘッダーに合わせた文字色とデザインを設定するためのBootstrapのクラスを指定しています。
+Bootstrapの `text-reset` でヘッダーの文字色を引き継ぎ、`text-decoration-none` でリンクの下線を外します。
 :::
 
 ::: {#ch03-navigation-r571 .step}
@@ -2298,77 +2298,28 @@ import { Link, NavLink, Outlet } from 'react-router'
 :::
 
 ::: {#ch03-navigation-r581 .paragraph}
-今回のサンプルでは、商品一覧のメニューを次のように記述しています。
+今回のサンプルの共通メニューは、次のように記述しています。
 :::
 
 ::: {#ch03-navigation-r584 .code code-label="TSXの記述例（抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
+      <nav className="nav nav-pills bg-light p-3 gap-2"
+           aria-label="商品管理システムのメニュー">
+        <NavLink to="/" className="nav-link" end>
+          ホーム
+        </NavLink>
         <NavLink to="/products" className="nav-link">
           商品一覧
         </NavLink>
+        <NavLink to="/guide" className="nav-link">
+          ご利用案内
+        </NavLink>
+      </nav>
 ~~~
 :::
 
 ::: {#ch03-navigation-r590 .paragraph}
-`to` 属性には移動先のURL、`className` 属性にはデザインに使用するCSSのクラス名を指定しています。
-:::
-
-::: {#ch03-navigation-r592 .paragraph}
-ここで、商品一覧の画面に移動したときに、メニューの背景色が青色になる仕組みを確認しましょう。
-:::
-
-::: {#ch03-navigation-r594 .paragraph}
-今回のように `className` に固定のクラス名を指定している場合、`NavLink` は、現在のURLがリンク先に対応していると判断すると、指定したクラス名に `active` というクラスを自動的に追加します。
-:::
-
-::: {#ch03-navigation-r596 .paragraph}
-商品一覧のメニューの場合、設定されるCSSのクラスは次のように変化します。
-:::
-
-::: {#ch03-navigation-r598 .table column-widths="39 61"}
-| 現在のURLのパス | 商品一覧のリンクに設定されるクラス |
-|---|---|
-| `/` | `nav-link` |
-| `/products` | `nav-link active` |
-| `/guide` | `nav-link` |
-:::
-
-::: {#ch03-navigation-r604 .paragraph}
-例えば、商品一覧画面を表示している場合、ブラウザーのHTMLでは、主な属性が次のように設定されます。
-:::
-
-::: {#ch03-navigation-r607 .code code-label="HTMLの表示イメージ（主な属性のみ）" example="true" wide-code-label="true"}
-~~~html
-<a href="/products" class="nav-link active">
-  商品一覧
-</a>
-~~~
-:::
-
-::: {#ch03-navigation-r613 .paragraph}
-ここで重要なのは、`active` クラスを付ける処理と、メニューを青い背景で表示する処理は、別の役割だという点です。
-:::
-
-::: {#ch03-navigation-r615 .paragraph}
-今回のサンプルでは、メニュー全体にBootstrapの `nav-pills` クラスを指定しています。これによって、`active` クラスが付いた `nav-link` のデザインが変わります。
-:::
-
-::: {#ch03-navigation-r617-1 .paragraph punctuation-font="inherit"}
-● **React Routerの役割**：現在のURLを確認し、選択中のリンクに `active` クラスを追加する。
-:::
-
-::: {#ch03-navigation-r617-2 .paragraph punctuation-font="inherit"}
-● **Bootstrapの役割**：`active` クラスが付いたメニューに、選択中のデザインを適用する。
-:::
-
-![NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係](assets/navigation-active-flow.svg){#ch03-navigation-active-flow}
-
-::: {#ch03-navigation-active-flow-caption .caption}
-NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
-:::
-
-::: {#ch03-navigation-r630 .paragraph}
-このように、`NavLink` とBootstrapを組み合わせることで、現在表示している画面に対応するメニューを強調できます。自分で現在のURLを取得して条件分岐を記述する必要はありません。
+Bootstrapの `nav-pills` を親の `<nav>` に、`nav-link` を各 `NavLink` に指定すると、現在の画面に対応するメニューが自動で強調表示されます。
 :::
 
 ::: {#ch03-navigation-home-end-intro .paragraph}
@@ -2585,9 +2536,9 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 
 ● 移動先のURLは `to` 属性に指定する。
 
-● `NavLink` は、現在のURLに応じて選択状態を判定し、選択中のリンクに `active` クラスを追加できる。
+● `NavLink` は、現在のURLに応じて選択中のメニューを判定する。
 
-● 今回は、`NavLink` とBootstrapを組み合わせて、選択中のメニューを強調している。
+● 親の `<nav>` に `nav-pills`、各 `NavLink` に `nav-link` を指定すると、選択中のメニューが強調表示される。
 
 ● `end` 属性を指定すると、リンク先のパスと現在のURLのパスが一致する場合だけ、選択中として扱う。
 
@@ -2668,53 +2619,6 @@ React Routerでは、このようにURLのパスに可変部分を定義し、�
 
 ::: {#ch03-params-r67 .step punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
-:::
-
-::: {#ch03-params-r69 .paragraph}
-以下では、前節までに学習した通常のアプリケーション構成を使用する場合の記述例を確認します。実際の配布サンプルのフォルダーとURLについては、構文の解説の後に説明します。
-:::
-
-::: {#ch03-params-r71 .paragraph}
-前節の構成をそのまま使用し、商品詳細画面のコンポーネントを `pages` フォルダーに追加します。
-:::
-
-::: {#ch03-params-r73 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
-~~~text
-src/
-├── components/
-│   └── ProductCard.tsx
-├── pages/
-│   ├── HomePage.tsx
-│   ├── ProductListPage.tsx
-│   ├── ProductDetailPage.tsx
-│   └── GuidePage.tsx
-├── layouts/
-│   └── MainLayout.tsx
-├── routes/
-│   └── AppRoutes.tsx
-├── App.tsx
-└── main.tsx
-~~~
-:::
-
-::: {#ch03-params-r90 .table column-widths="46 54"}
-| ファイル | 前節からの変更 |
-|---|---|
-| `components/ProductCard.tsx` | 商品番号のPropsと表示、商品ごとの［詳細］リンクを追加する。 |
-| `pages/ProductListPage.tsx` | 各商品カードへ商品番号もPropsとして渡す。 |
-| `pages/ProductDetailPage.tsx` | 新規作成。URLから取得した商品番号を表示する。 |
-| `routes/AppRoutes.tsx` | 商品詳細画面をインポートし、対応する子ルートを追加する。 |
-| `layouts/MainLayout.tsx` | 変更なし。 |
-| `pages/HomePage.tsx`・`pages/GuidePage.tsx` | 変更なし。 |
-| `App.tsx`・`main.tsx` | 変更なし。 |
-:::
-
-::: {#ch03-params-r100 .paragraph punctuation-font="inherit"}
-通常のアプリケーションでは、同じプロジェクトに商品詳細画面を追加するため、前節のリンク先を変更する必要はありません。**新しい画面と、その画面を表示するために必要な部分だけを追加・変更します。**
-:::
-
-::: {#ch03-params-r102 .paragraph}
-商品一覧で使用する6件の商品データは、前節と同じように `pages/ProductListPage.tsx` に定義しています。今回は、商品詳細画面で商品データの検索を行わないため、別の画面と商品配列を共有する必要はありません。
 :::
 
 ![商品詳細画面の追加に伴い変更するファイルと、新たに作成するファイル](assets/url-parameters-folder-structure.svg){#ch03-params-folder-structure}
