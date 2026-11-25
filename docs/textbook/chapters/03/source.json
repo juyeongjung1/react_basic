@@ -147,7 +147,7 @@
     "ch03-params-folder-structure": {
       "caption_id": "ch03-params-folder-structure-caption",
       "width": 382,
-      "max_height": 241
+      "max_height": 272
     },
     "ch03-params-figure-1": {
       "caption_id": "ch03-params-figure-1-caption",
@@ -162,17 +162,17 @@
     "ch03-params-figure-3": {
       "caption_id": "ch03-params-figure-3-caption",
       "width": 380,
-      "max_height": 205
+      "max_height": 222
     },
     "ch03-params-figure-4": {
       "caption_id": "ch03-params-figure-4-caption",
-      "width": 380,
-      "max_height": 544
+      "width": 360,
+      "max_height": 499
     },
     "ch03-params-figure-5": {
       "caption_id": "ch03-params-figure-5-caption",
       "width": 380,
-      "max_height": 449
+      "max_height": 455
     },
     "ch03-params-figure-6": {
       "caption_id": "ch03-params-figure-6-caption",
@@ -187,7 +187,7 @@
     "ch03-programmatic-folder-structure": {
       "caption_id": "ch03-programmatic-folder-structure-caption",
       "width": 383,
-      "max_height": 247
+      "max_height": 280
     },
     "ch03-programmatic-figure-2": {
       "caption_id": "ch03-programmatic-figure-2-caption",
@@ -211,18 +211,18 @@
     },
     "ch03-programmatic-api": {
       "caption_id": "ch03-programmatic-api-caption",
-      "width": 383,
+      "width": 360,
       "max_height": 330
     },
     "ch03-programmatic-figure-5": {
       "caption_id": "ch03-programmatic-figure-5-caption",
       "width": 380,
-      "max_height": 465
+      "max_height": 478
     },
     "ch03-programmatic-exercise-cancel": {
       "caption_id": "ch03-programmatic-exercise-cancel-caption",
       "width": 380,
-      "max_height": 365
+      "max_height": 378
     }
   },
   "pagination": {

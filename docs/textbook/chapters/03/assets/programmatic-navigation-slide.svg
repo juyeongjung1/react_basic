@@ -4,7 +4,7 @@
 <rect x="3" y="27" width="148" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="10" cy="37.5" r="1.6" fill="#8ba5b8"/><circle cx="16" cy="37.5" r="1.6" fill="#8ba5b8"/>
 <rect x="21" y="30" width="125" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="25.00 29.88 34.75 39.63 44.51 49.38 54.26 59.13 64.01 68.89 73.76 78.64 83.52 88.39 93.27 98.15 103.02 107.90 112.77 117.65 122.53 127.40 132.28 137.16" y="41.3" font-size="8.83" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products/new</text>
+<text x="25.00 29.88 34.76 39.63 44.51 49.39 54.27 59.14 64.02 68.90 73.78 78.65 83.53" y="41.3" font-size="8.83" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/products/new</text>
 <rect x="3.6" y="48" width="146.8" height="19" rx="0" fill="#212529"/>
 <text x="12" y="61.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="3.6" y="67" width="146.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -25,7 +25,7 @@
 <rect x="356" y="2" width="151" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="363" cy="12.5" r="1.6" fill="#8ba5b8"/><circle cx="369" cy="12.5" r="1.6" fill="#8ba5b8"/>
 <rect x="374" y="5" width="128" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="378.00 384.00 389.99 395.99 401.99 407.99 413.98 419.98 425.98 431.98 437.97 443.97 449.97 455.97 461.96 467.96 473.96 479.96 485.95 491.95" y="16.3" font-size="10.86" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products</text>
+<text x="378.00 384.00 390.00 396.00 402.00 408.00 413.99 419.99 425.99" y="16.3" font-size="10.86" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/products</text>
 <rect x="356.6" y="23" width="149.8" height="19" rx="0" fill="#212529"/>
 <text x="365" y="36.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="356.6" y="42" width="149.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -83,11 +83,12 @@
 <text x="253.5" y="114" font-size="11" fill="#7a4f2c" text-anchor="middle" font-weight="700">（後続の章で実装）</text>
 <text x="253.5" y="132" font-size="9.5" fill="#7a4f2c" text-anchor="middle" font-weight="400">この節では実行しない</text>
 <rect x="176" y="136" width="155" height="43" rx="4" fill="#e8f6ee" stroke="#96bcaa" stroke-width="1"/>
-<text x="253.5" y="152" font-size="11" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">navigate(</text>
-<text x="253.5" y="169" font-size="10.6" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">&#x27;/sample-3-6/products&#x27;)</text>
+
+<text x="253.5" y="161" font-size="10.6" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">navigate(&#x27;/products&#x27;)</text>
 <path d="M152 169L164 163M158.19 162.55L164 163L160.87 167.92" fill="none" stroke="#b42331" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M341 158L353 153M347.23 152.15L353 153L349.54 157.69" fill="none" stroke="#b42331" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="4" y="240" width="502" height="34" rx="4" fill="#e6f4ee" stroke="#a0c6b5" stroke-width="1"/>
 <text x="255" y="261" font-size="15" fill="#1a6650" text-anchor="middle" font-weight="700">useNavigate()で取得した関数を使って画面遷移する</text>
 <text x="498" y="236" font-size="9.5" fill="#255977" text-anchor="end" font-weight="400">画面の一部</text>
+<text x="8" y="19" font-size="11" fill="#255977" text-anchor="start" font-weight="400">通常構成の例</text>
 </svg>

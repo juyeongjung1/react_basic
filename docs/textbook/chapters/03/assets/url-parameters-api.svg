@@ -7,7 +7,7 @@
 <path d="M14 80V65a6 6 0 0 1 6-6h292a6 6 0 0 1 6 6v15Z" fill="#eaf2f7"/>
 <circle cx="22" cy="69.5" r="1.8" fill="#8ba5b8"/><circle cx="29" cy="69.5" r="1.8" fill="#8ba5b8"/>
 <rect x="36" y="62" width="276" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="41.00 46.93 52.86 58.79 64.72 70.66 76.59 82.52 88.45 94.38 100.31 106.24 112.17 118.11 124.04 129.97 135.90 141.83 147.76 153.69 159.62 165.55 171.49 177.42 183.35 189.28 195.21 201.14 207.07 213.00 218.93 224.87 230.80 236.73 242.66 248.59 254.52 260.45 266.38 272.32 278.25 284.18 290.11 296.04 301.97" y="73.2" font-family="Consolas, MS Gothic, monospace" font-size="10.74" fill="#18364e" xml:space="preserve">http://localhost:5173/sample-3-5/products/101</text><rect x="288.61" y="61.46" width="20.79" height="15.24" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
+<text x="41.00 46.93 52.87 58.80 64.73 70.66 76.60 82.53 88.46 94.39 100.33 106.26 112.19 118.13 124.06 129.99 135.92 141.86 147.79 153.72 159.66 165.59 171.52 177.45 183.39 189.32 195.25 201.18 207.12 213.05 218.98 224.92 230.85 236.78" y="73.2" font-family="Consolas, MS Gothic, monospace" font-size="10.74" fill="#18364e" xml:space="preserve">http://localhost:5173/products/101</text><rect x="223.35" y="61.46" width="20.79" height="15.24" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
 <rect x="14.5" y="80" width="303" height="19" rx="0" fill="#212529"/>
 <text x="24" y="93.3" font-size="11.3" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="14.5" y="99" width="303" height="22" rx="0" fill="#f8f9fa"/>
@@ -59,7 +59,7 @@
 <path d="M15 529V514a6 6 0 0 1 6-6h418a6 6 0 0 1 6 6v15Z" fill="#eaf2f7"/>
 <circle cx="23" cy="518.5" r="1.8" fill="#8ba5b8"/><circle cx="30" cy="518.5" r="1.8" fill="#8ba5b8"/>
 <rect x="37" y="511" width="402" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="42" y="522.2" font-size="11.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace">localhost:5173/sample-3-5/products/101</text>
+<text x="42" y="522.2" font-size="11.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace">localhost:5173/products/101</text>
 <rect x="15.5" y="529" width="429" height="19" rx="0" fill="#212529"/>
 <text x="25" y="542.3" font-size="11.3" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="15.5" y="548" width="429" height="22" rx="0" fill="#f8f9fa"/>
@@ -87,4 +87,5 @@
 <text x="165" y="584.0" font-size="10.5" fill="#18364e" text-anchor="start">商品番号：101</text><text x="165" y="594.7" font-size="10.5" fill="#18364e" text-anchor="start">商品名：ノート</text><text x="165" y="605.4" font-size="10.5" fill="#18364e" text-anchor="start">単価：250円</text>
 <rect x="15" y="508" width="430" height="119" rx="4" fill="none" stroke="#c4a67f" stroke-width="1"/>
 <text x="230" y="644" font-size="11.6" fill="#804b23" text-anchor="middle" font-weight="700">URLパラメータを取得する処理と、商品情報を取得する処理は別の処理</text>
+<text x="443" y="49" font-size="10.5" fill="#255977" text-anchor="end" font-weight="400">通常構成の例・URLは一例</text>
 </svg>

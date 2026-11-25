@@ -7,7 +7,7 @@
 <rect x="6" y="73" width="151" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="13" cy="83.5" r="1.6" fill="#8ba5b8"/><circle cx="19" cy="83.5" r="1.6" fill="#8ba5b8"/>
 <rect x="24" y="76" width="128" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="28.00 33.00 38.00 42.99 47.99 52.99 57.99 62.99 67.98 72.98 77.98 82.98 87.97 92.97 97.97 102.97 107.97 112.96 117.96 122.96 127.96 132.96 137.95 142.95" y="87.3" font-size="9.05" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products/new</text>
+<text x="28.00 33.00 38.00 43.00 48.00 53.00 58.00 62.99 67.99 72.99 77.99 82.99 87.99" y="87.3" font-size="9.05" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/products/new</text>
 <rect x="6.6" y="94" width="149.8" height="19" rx="0" fill="#212529"/>
 <text x="15" y="107.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="6.6" y="113" width="149.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -28,7 +28,7 @@
 <rect x="386" y="54" width="156" height="21" rx="4" fill="#eaf2f7"/>
 <circle cx="393" cy="64.5" r="1.6" fill="#8ba5b8"/><circle cx="399" cy="64.5" r="1.6" fill="#8ba5b8"/>
 <rect x="404" y="57" width="133" height="15" rx="3" fill="#fff" stroke="#b2c6d4" stroke-width="0.8"/>
-<text x="408.00 414.19 420.37 426.56 432.74 438.93 445.11 451.30 457.48 463.67 469.85 476.04 482.22 488.41 494.59 500.78 506.96 513.15 519.33 525.52" y="68.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/sample-3-6/products</text>
+<text x="408.00 414.19 420.37 426.56 432.75 438.93 445.12 451.31 457.50" y="68.3" font-size="11.2" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">/products</text>
 <rect x="386.6" y="75" width="154.8" height="19" rx="0" fill="#212529"/>
 <text x="395" y="88.3" font-size="9.5" fill="#fff" text-anchor="start">商品管理システム</text>
 <rect x="386.6" y="94" width="154.8" height="22" rx="0" fill="#f8f9fa"/>
@@ -147,32 +147,33 @@
 <text x="433" y="436" font-size="9.7" fill="#18364e" text-anchor="start">商品番号：106</text>
 <text x="433" y="448" font-size="9.5" fill="#18364e" text-anchor="start">単価：240円</text>
 <rect x="498" y="439" width="30" height="13" rx="3" fill="#0d6efd"/><text x="513.0" y="448.424" font-size="8.6" fill="#fff" text-anchor="middle" font-weight="700">詳細</text>
-<text x="270" y="88" font-size="10" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">pages/ProductRegisterPage.tsx</text>
+<text x="270" y="88" font-size="10" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">src/pages/ProductRegisterPage.tsx</text>
 <rect x="170" y="101" width="200" height="53" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
-<text x="270" y="117" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">① 19行目</text>
+<text x="270" y="117" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">①</text>
 <text x="199.73 205.59 211.45 217.30 223.16 229.01 234.87 240.72 246.58 252.43 258.29 264.14 270.00 275.86 281.71 287.57 293.42 299.28 305.13 310.99 316.84 322.70 328.55 334.41" y="137" font-size="10.6" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">onClick={handleRegister}</text>
 <path d="M270 157L270 169M265.00 161.00L270 169L275.00 161.00" stroke="#255977" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="170" y="174" width="200" height="53" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
-<text x="270" y="190" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">② 6行目</text>
+<text x="270" y="190" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">②</text>
 <text x="270" y="210" font-size="10.6" fill="#18364e" text-anchor="middle" font-weight="700">handleRegister()が実行される</text>
 <path d="M270 230L270 242M265.00 234.00L270 242L275.00 234.00" stroke="#255977" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="170" y="247" width="200" height="53" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
-<text x="270" y="263" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">③ 8行目</text>
-<text x="176.31 182.17 188.02 193.88 199.73 205.59 211.45 217.30 223.16 229.01 234.87 240.72 246.58 252.43 258.29 264.14 270.00 275.86 281.71 287.57 293.42 299.28 305.13 310.99 316.84 322.70 328.55 334.41 340.27 346.12 351.98 357.83" y="283" font-size="10.6" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/sample-3-6/products&#x27;)</text>
+<text x="270" y="263" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">③</text>
+<text x="208.51 214.37 220.23 226.08 231.94 237.79 243.65 249.50 255.36 261.21 267.07 272.92 278.78 284.64 290.49 296.35 302.20 308.06 313.91 319.77 325.62" y="283" font-size="10.6" fill="#18364e" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">navigate(&#x27;/products&#x27;)</text>
 <path d="M270 303L270 315M265.00 307.00L270 315L275.00 307.00" stroke="#255977" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="170" y="320" width="200" height="64" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
 <text x="270" y="336" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">④</text>
 <text x="270" y="356" font-size="10.6" fill="#18364e" text-anchor="middle" font-weight="700">React Routerが対応する</text>
 <text x="270" y="369" font-size="10.6" fill="#18364e" text-anchor="middle" font-weight="700">子ルートを選択する</text>
 <path d="M270 387L270 399M265.00 391.00L270 399L275.00 391.00" stroke="#255977" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="270" y="381" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">routes/AppRoutes.tsx</text>
+<text x="270" y="381" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">src/routes/AppRoutes.tsx</text>
 <rect x="170" y="404" width="200" height="75" rx="4" fill="#edf5f9" stroke="#a4bfd0" stroke-width="1"/>
 <text x="270" y="420" font-size="11" fill="#255977" text-anchor="middle" font-weight="700">⑤</text>
 <text x="270" y="440" font-size="10.6" fill="#18364e" text-anchor="middle" font-weight="700">OutletにProductListPageを表示する</text>
-<text x="270" y="457" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">layouts/MainLayout.tsx</text>
-<text x="270" y="472" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">pages/ProductListPage.tsx</text>
+<text x="270" y="457" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">src/layouts/MainLayout.tsx</text>
+<text x="270" y="472" font-size="9.8" fill="#255977" text-anchor="middle" font-weight="400" font-family="Courier New, MS Gothic, monospace">src/pages/ProductListPage.tsx</text>
 <path d="M159 210L168 131M172.06 139.51L168 131L162.13 138.38" stroke="#b42331" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M373 444L385 435M381.60 443.80L385 435L375.60 435.80" stroke="#b42331" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="405" y="55.1" width="128" height="16" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<rect x="405" y="55.1" width="63" height="16" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
 <rect x="393" y="120" width="60" height="17" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
+<text x="9" y="42" font-size="10.5" fill="#255977" text-anchor="start" font-weight="400">通常構成の例</text>
 </svg>

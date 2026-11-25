@@ -9,7 +9,7 @@
 <rect x="26" y="116" width="328" height="208" rx="6" fill="#ffffff" stroke="#a6bfce" stroke-width="1.5"/>
 <rect x="27" y="117" width="326" height="31" rx="6" fill="#e7f0f7" stroke="none" stroke-width="1.5"/>
 <rect x="35" y="122" width="310" height="20" rx="3" fill="#fff" stroke="#a7bdcd" stroke-width="1"/>
-<text x="40" y="137" font-size="15" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">/sample-3-6/products/new</text>
+<text x="40" y="137" font-size="15" fill="#18364e" text-anchor="start" font-weight="400" font-family="Courier New, MS Gothic, monospace">/products/new</text>
 <rect x="27" y="147" width="326" height="25" rx="0" fill="#212529" stroke="none" stroke-width="1.5"/>
 <text x="38" y="165" font-size="16" fill="#fff" text-anchor="start" font-weight="400">商品管理システム</text>
 <rect x="27" y="172" width="326" height="30" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1.5"/>
@@ -32,7 +32,7 @@
 <text x="190" y="378" font-size="16" fill="#28644e" text-anchor="middle" font-weight="700" font-family="Courier New, MS Gothic, monospace">handleRegister()</text>
 <path d="M190 397L190 416M185.00 408.00L190 416L195.00 408.00" stroke="#28644e" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="26" y="420" width="328" height="40" rx="6" fill="#eaf4ee" stroke="#a4c4b6" stroke-width="1.5"/>
-<text x="190" y="446" font-size="16" fill="#28644e" text-anchor="middle" font-weight="700" font-family="Courier New, MS Gothic, monospace">navigate('/sample-3-6/products')</text>
+<text x="190" y="446" font-size="16" fill="#28644e" text-anchor="middle" font-weight="700" font-family="Courier New, MS Gothic, monospace">navigate(&#x27;/products&#x27;)</text>
 <path d="M190 465L190 484M185.00 476.00L190 484L195.00 476.00" stroke="#28644e" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="26" y="488" width="328" height="40" rx="6" fill="#eaf4ee" stroke="#a4c4b6" stroke-width="1.5"/>
 <text x="190" y="514" font-size="16" fill="#28644e" text-anchor="middle" font-weight="700">商品一覧画面（商品は増えない）</text>
@@ -54,4 +54,5 @@
 <rect x="416" y="474" width="308" height="54" rx="6" fill="#fff1df" stroke="#d9b893" stroke-width="1.5"/>
 <text x="570" y="508" font-size="20" fill="#18364e" text-anchor="middle" font-weight="700">データベース</text>
 <text x="380" y="598" font-size="19" fill="#28644e" text-anchor="middle" font-weight="700">画面遷移を行う処理と、データを登録する処理は別の処理</text>
+<text x="745" y="49" font-size="15" fill="#255977" text-anchor="end" font-weight="400">通常構成の例</text>
 </svg>

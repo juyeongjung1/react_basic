@@ -4,14 +4,14 @@
 <rect x="7" y="30" width="426" height="37" rx="4" fill="#eaf2f7" stroke="#abbfcc" stroke-width="1"/>
 <rect x="35" y="36" width="392" height="24" rx="3" fill="#fff" stroke="#bdcddd" stroke-width="1"/>
 <circle cx="17" cy="48" r="2" fill="#8da7bb"/><circle cx="25" cy="48" r="2" fill="#8da7bb"/>
-<text x="44.00 50.24 56.48 62.72 68.96 75.20 81.44 87.68 93.92 100.16 106.40 112.64 118.89 125.13 131.37 137.61 143.85 150.09 156.33 162.57 168.81 175.05 181.29 187.53 193.77 200.01 206.25 212.49 218.73 224.97 231.21 237.45 243.69 249.93 256.17 262.41 268.66 274.90 281.14 287.38 293.62 299.86 306.10 312.34 318.58" y="52" font-family="Consolas, MS Gothic, monospace" font-size="11.3" fill="#18364e" xml:space="preserve">http://localhost:5173/sample-3-5/products/101</text><rect x="304.6" y="39.7" width="21.72" height="15.8" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
+<text x="44.00 50.24 56.48 62.73 68.97 75.21 81.45 87.69 93.94 100.18 106.42 112.66 118.91 125.15 131.39 137.63 143.87 150.12 156.36 162.60 168.84 175.08 181.33 187.57 193.81 200.05 206.30 212.54 218.78 225.02 231.26 237.51 243.75 249.99" y="52" font-family="Consolas, MS Gothic, monospace" font-size="11.3" fill="#18364e" xml:space="preserve">http://localhost:5173/products/101</text><rect x="235.94" y="39.7" width="21.72" height="15.8" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
 <rect x="7" y="84" width="426" height="43" rx="4" fill="#f1f6fa" stroke="#afc2d1" stroke-width="1"/>
-<text x="423" y="98" font-size="10.4" fill="#18364e" text-anchor="end" font-family="Consolas, MS Gothic, monospace">ch03-basic/src/samples/sample3_5/routes/AppRoutes.tsx</text>
-<text x="21" y="116" font-size="10.5" fill="#52677a" text-anchor="start" font-family="Consolas, MS Gothic, monospace">14</text>
-<text x="212.49 218.73 224.97 231.21 237.45 243.69 249.93 256.17 262.41 268.65 274.89 281.13 287.38 293.62 299.86 306.10 312.34 318.58 324.82" y="115" font-family="Consolas, MS Gothic, monospace" font-size="11.3" fill="#18364e" xml:space="preserve">path=&quot;products/:id&quot;</text><rect x="304.6" y="102.7" width="21.72" height="15.8" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
-<path d="M315.1 63L315.1 101M318.10 96.00L315.1 101L312.10 96.00" fill="none" stroke="#b42331" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="423" y="98" font-size="10.4" fill="#18364e" text-anchor="end" font-family="Consolas, MS Gothic, monospace">src/routes/AppRoutes.tsx</text>
+
+<text x="143.83 150.07 156.31 162.55 168.80 175.04 181.28 187.52 193.76 200.01 206.25 212.49 218.73 224.97 231.22 237.46 243.70 249.94 256.18" y="115" font-family="Consolas, MS Gothic, monospace" font-size="11.3" fill="#18364e" xml:space="preserve">path=&quot;products/:id&quot;</text><rect x="235.94" y="102.7" width="21.72" height="15.8" rx="2" fill="none" stroke="#b42331" stroke-width="1.65"/>
+<path d="M246.44 63V101m3-5l-3 5-3-5" fill="none" stroke="#b42331" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M220 129L220 143M223.00 138.00L220 143L217.00 138.00" fill="none" stroke="#255977" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-<text x="219.5" y="155" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx</text>
+<text x="219.5" y="155" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">src/pages/ProductDetailPage.tsx</text>
 <rect x="7" y="165" width="94" height="64" rx="4" fill="#eef5fa" stroke="#a8c1d0" stroke-width="1"/>
 <text x="54.0" y="183" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">useParams()</text>
 <text x="54.0" y="207" font-size="10.2" fill="#18364e" text-anchor="middle">URLパラメータを</text><text x="54.0" y="220" font-size="10.2" fill="#18364e" text-anchor="middle">取得する</text>
@@ -20,11 +20,13 @@
 <text x="163.0" y="207" font-size="10.2" fill="#18364e" text-anchor="middle">取得結果のうち</text><text x="163.0" y="220" font-size="10.2" fill="#18364e" text-anchor="middle">idを示す</text>
 <path d="M103 196L114 196M109.00 193.00L114 196L109.00 199.00" fill="none" stroke="#235c78" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="225" y="165" width="112" height="64" rx="4" fill="#eef5fa" stroke="#a8c1d0" stroke-width="1"/>
-<text x="281.0" y="177" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">4  const { id }</text><text x="281.0" y="189" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">= useParams()</text>
+<text x="281.0" y="177" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">const { id }</text><text x="281.0" y="189" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">= useParams()</text>
 <text x="281.0" y="207" font-size="10.2" fill="#18364e" text-anchor="middle">分割代入で値を</text><text x="281.0" y="220" font-size="10.2" fill="#18364e" text-anchor="middle">取り出す</text>
 <path d="M212 196L223 196M218.00 193.00L223 196L218.00 199.00" fill="none" stroke="#235c78" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="352" y="165" width="81" height="64" rx="4" fill="#e9f5ef" stroke="#a7c6b8" stroke-width="1"/>
 <text x="392.5" y="183" font-size="10.3" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace">id = &#x27;101&#x27;</text>
 <text x="392.5" y="207" font-size="10.2" fill="#18364e" text-anchor="middle">文字列として</text><text x="392.5" y="220" font-size="10.2" fill="#18364e" text-anchor="middle">取得</text>
 <path d="M339 196L350 196M345.00 193.00L350 196L345.00 199.00" fill="none" stroke="#235c78" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="418" y="52" font-size="10" fill="#255977" text-anchor="end" font-weight="400">URLは一例</text>
+<text x="15" y="98" font-size="10" fill="#255977" text-anchor="start" font-weight="400">通常構成の例</text>
 </svg>

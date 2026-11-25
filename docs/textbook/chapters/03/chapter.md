@@ -2846,7 +2846,7 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 :::
 :::::
 
-:::: {#page-16 .source-page}
+::::: {#page-16 .source-page}
 ::: {#ch03-params-title .heading}
 3.5. URLパラメータの取得
 :::
@@ -2857,77 +2857,81 @@ URLパラメータの取得
 ![URLパラメータの取得](assets/url-parameters-slide.svg)
 :::
 
-::: {#ch03-params-m462 .heading level="minor"}
+::: {#ch03-params-r35 .heading level="minor"}
 商品ごとの詳細画面を表示するには
 :::
 
-::: {#ch03-params-m464 .paragraph}
+::: {#ch03-params-r37 .paragraph}
 前節では、`Link` や `NavLink` を使用して、ページ全体を再読み込みせずに画面を切り替える方法を学習しました。
 :::
 
-::: {#ch03-params-m466 .paragraph}
+::: {#ch03-params-r39 .paragraph}
 今回は、商品一覧から、選択した商品の詳細画面へ移動する方法を学習します。
 :::
 
-::: {#ch03-params-m468 .paragraph}
+::: {#ch03-params-r41 .paragraph}
 例えば、商品一覧でノートの［詳細］をクリックした場合はノートの詳細画面を、ボールペンの［詳細］をクリックした場合はボールペンの詳細画面を表示したいとします。
 :::
 
-::: {#ch03-params-m470 .paragraph}
+::: {#ch03-params-r43 .paragraph}
 商品ごとに異なるコンポーネントやルートを用意することもできます。しかし、商品が追加されるたびにソースコードを修正する必要があるため、実際の開発では適切な方法とはいえません。
 :::
 
-::: {#ch03-params-m472 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r45 .paragraph punctuation-font="inherit"}
 そこで、**商品詳細画面を1つのコンポーネントとして作成し、商品番号によって表示する内容を切り替える** という方法を考えます。
 :::
 
-::: {#ch03-params-m474 .paragraph}
+::: {#ch03-params-r47 .paragraph}
 表示する商品を区別するために、今回はURLの末尾に商品番号を含めます。
 :::
 
-::: {#ch03-params-m476 .table column-widths="63 37"}
+::: {#ch03-params-r49 .table column-widths="49 51"}
 | URLのパス | 対象の商品 |
 |---|---|
-| `/sample-3-5/products/101` | ノート |
-| `/sample-3-5/products/102` | ボールペン |
-| `/sample-3-5/products/103` | 消しゴム |
+| `/products/101` | ノート |
+| `/products/102` | ボールペン |
+| `/products/103` | 消しゴム |
 :::
 
-::: {#ch03-params-m482 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r55 .paragraph punctuation-font="inherit"}
 React Routerでは、このようにURLのパスに可変部分を定義し、その部分の値を取得できます。取得した値を **ルートパラメータ（Route Params）** と呼びます。本研修では、URLパラメータと表記します。
 :::
 
-::: {#ch03-params-m484 .paragraph}
+::: {#ch03-params-r57 .paragraph}
 実際の商品詳細画面では、取得した商品番号を使ってREST APIから商品情報を取得し、画面に表示します。
 :::
 
-::: {#ch03-params-m486 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r59 .paragraph punctuation-font="inherit"}
 ただし、REST APIとの連携については後続の章で学習するため、**この節では、URLから商品番号を取得し、画面に表示するところまで** を実装します。
 :::
 
-::: {#ch03-params-m488 .heading level="minor"}
+::: {#ch03-params-r61 .heading level="minor"}
 【サンプル】URLから商品番号を取得する
 :::
 
-::: {#ch03-params-m490 .paragraph}
+::: {#ch03-params-r63 .paragraph}
 前節の商品管理システムを基に、商品一覧の各カードに［詳細］を追加します。
 :::
 
-::: {#ch03-params-m492 .paragraph}
+::: {#ch03-params-r65 .paragraph}
 ［詳細］をクリックすると、選択した商品の番号を含むURLへ移動します。商品詳細画面には、URLから取得した商品番号を表示します。また、［商品一覧へ戻る］をクリックすると、商品一覧画面へ戻ります。
 :::
 
-::: {#ch03-params-m494 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r67 .paragraph punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
-::: {#ch03-params-m496 .paragraph}
-3.5では、前節の `sample3_4` を基に、`ch03-basic/src/samples/sample3_5` を用意しています。
+::: {#ch03-params-r69 .paragraph}
+以下では、前節までに学習した通常のアプリケーション構成を使用する場合の記述例を確認します。実際の配布サンプルのフォルダーとURLについては、構文の解説の後に説明します。
 :::
 
-::: {#ch03-params-m498 .code example="true" code-label="フォルダー構成"}
+::: {#ch03-params-r71 .paragraph}
+前節の構成をそのまま使用し、商品詳細画面のコンポーネントを `pages` フォルダーに追加します。
+:::
+
+::: {#ch03-params-r73 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
 ~~~text
-src/samples/sample3_5/
+src/
 ├── components/
 │   └── ProductCard.tsx
 ├── pages/
@@ -2937,23 +2941,30 @@ src/samples/sample3_5/
 │   └── GuidePage.tsx
 ├── layouts/
 │   └── MainLayout.tsx
-└── routes/
-    └── AppRoutes.tsx
+├── routes/
+│   └── AppRoutes.tsx
+├── App.tsx
+└── main.tsx
 ~~~
 :::
 
-::: {#ch03-params-m513 .table column-widths="41 59"}
+::: {#ch03-params-r90 .table column-widths="46 54"}
 | ファイル | 前節からの変更 |
 |---|---|
 | `components/ProductCard.tsx` | 商品番号のPropsと表示、商品ごとの［詳細］リンクを追加する。 |
 | `pages/ProductListPage.tsx` | 各商品カードへ商品番号もPropsとして渡す。 |
 | `pages/ProductDetailPage.tsx` | 新規作成。URLから取得した商品番号を表示する。 |
 | `routes/AppRoutes.tsx` | 商品詳細画面をインポートし、対応する子ルートを追加する。 |
-| `layouts/MainLayout.tsx` | 3.5のURLに合わせてリンク先を変更する。 |
+| `layouts/MainLayout.tsx` | 変更なし。 |
 | `pages/HomePage.tsx`・`pages/GuidePage.tsx` | 変更なし。 |
+| `App.tsx`・`main.tsx` | 変更なし。 |
 :::
 
-::: {#ch03-params-m522 .paragraph}
+::: {#ch03-params-r100 .paragraph punctuation-font="inherit"}
+通常のアプリケーションでは、同じプロジェクトに商品詳細画面を追加するため、前節のリンク先を変更する必要はありません。**新しい画面と、その画面を表示するために必要な部分だけを追加・変更します。**
+:::
+
+::: {#ch03-params-r102 .paragraph}
 商品一覧で使用する6件の商品データは、前節と同じように `pages/ProductListPage.tsx` に定義しています。今回は、商品詳細画面で商品データの検索を行わないため、別の画面と商品配列を共有する必要はありません。
 :::
 
@@ -2963,15 +2974,15 @@ src/samples/sample3_5/
 商品詳細画面の追加に伴い変更するファイルと、新たに作成するファイル
 :::
 
-::: {#ch03-params-m530 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r111 .paragraph punctuation-font="inherit"}
 **商品カードのソースコード**
 :::
 
-::: {#ch03-params-m532 .paragraph}
+::: {#ch03-params-r113 .paragraph}
 3.1節から使用してきた商品カードに、商品番号を表示する部分と［詳細］リンクを追加します。
 :::
 
-::: {#ch03-params-m535 .code filename="ch03-basic/src/samples/sample3_5/components/ProductCard.tsx" start-line="1"}
+::: {#ch03-params-r116 .code code-label="TSXの記述例（通常構成）" filename="src/components/ProductCard.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link } from 'react-router'
 
@@ -2998,7 +3009,7 @@ export default function ProductCard(
           <h2 className="h5 card-title">{name}</h2>
           <p className="card-text">商品番号：{id}</p>
           <p className="card-text">単価：{price}円</p>
-          <Link to={`/sample-3-5/products/${id}`}
+          <Link to={`/products/${id}`}
                 className="btn btn-primary">
             詳細
           </Link>
@@ -3010,15 +3021,15 @@ export default function ProductCard(
 ~~~
 :::
 
-::: {#ch03-params-m572 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r153 .paragraph punctuation-font="inherit"}
 **商品詳細画面のソースコード**
 :::
 
-::: {#ch03-params-m574 .paragraph}
+::: {#ch03-params-r155 .paragraph}
 商品詳細画面は、新しく `pages/ProductDetailPage.tsx` として作成します。ここでは、URLから取得した商品番号だけを表示します。商品情報を取得する処理は、後続の章で学習します。
 :::
 
-::: {#ch03-params-m577 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="1"}
+::: {#ch03-params-r158 .code code-label="TSXの記述例（通常構成）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link, useParams } from 'react-router'
 
@@ -3034,7 +3045,7 @@ export default function ProductDetailPage() {
       <p className="alert alert-info">
         実際の開発では、この商品番号を使ってREST APIから商品情報を取得します。
       </p>
-      <Link to="/sample-3-5/products" className="btn btn-secondary">
+      <Link to="/products" className="btn btn-secondary">
         商品一覧へ戻る
       </Link>
     </main>
@@ -3043,15 +3054,15 @@ export default function ProductDetailPage() {
 ~~~
 :::
 
-::: {#ch03-params-m600 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r181 .paragraph punctuation-font="inherit"}
 **ルーティングの設定**
 :::
 
-::: {#ch03-params-m602 .paragraph}
+::: {#ch03-params-r183 .paragraph}
 `routes/AppRoutes.tsx` に、新たに作成した商品詳細画面をインポートし、商品詳細画面のルートを追加します。
 :::
 
-::: {#ch03-params-m605 .code filename="ch03-basic/src/samples/sample3_5/routes/AppRoutes.tsx" start-line="1"}
+::: {#ch03-params-r186 .code code-label="TSXの記述例（通常構成）" filename="src/routes/AppRoutes.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Routes, Route } from 'react-router'
 import HomePage from '../pages/HomePage'
@@ -3075,66 +3086,66 @@ export default function AppRoutes() {
 ~~~
 :::
 
-::: {#ch03-params-m627 .paragraph}
+::: {#ch03-params-r208 .paragraph}
 商品一覧側の `pages/ProductListPage.tsx` については、商品番号をPropsとして渡す変更箇所を、後ほど構文解説で確認します。共通レイアウトも前節と同じ構造のため、全体コードの再掲載は行いません。
 :::
 
-::: {#ch03-params-m629 .paragraph}
-配布サンプルの `ch03-basic` の開発サーバーを起動し、ブラウザーのメニューから「3.5 URLパラメータの取得」を選択してください。共通メニューの［商品一覧］をクリックすると、各商品カードに［詳細］が表示されます。
-:::
-
-::: {#ch03-params-m631 .paragraph}
+::: {#ch03-params-r210 .paragraph}
 今回は、次の3つの記述がどのようにつながっているのかに注目してください。
 :::
 
-::: {#ch03-params-m633-1 .paragraph}
+::: {#ch03-params-r212-1 .paragraph}
 ● 商品詳細画面のルートの定義
 :::
 
-::: {#ch03-params-m633-2 .paragraph}
+::: {#ch03-params-r212-2 .paragraph}
 ● 商品番号を含むリンク先の指定
 :::
 
-::: {#ch03-params-m633-3 .paragraph}
+::: {#ch03-params-r212-3 .paragraph}
 ● 詳細画面でのURLパラメータの取得
 :::
 
-::: {#ch03-params-m637 .heading level="minor"}
+::: {#ch03-params-r216 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-params-m639 .step}
+::: {#ch03-params-r218 .step}
 **① URLのパスに可変部分を定義する**
 :::
 
-::: {#ch03-params-m642 .code filename="ch03-basic/src/samples/sample3_5/routes/AppRoutes.tsx" start-line="14"}
+::: {#ch03-params-r221 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true" wide-code-label="true"}
 ~~~tsx
         <Route path="products/:id" element={<ProductDetailPage />} />
 ~~~
 :::
 
-::: {#ch03-params-m646 .paragraph}
+::: {#ch03-params-r225 .paragraph}
 前節までは、`products` や `guide` のように、あらかじめ決められたパスに対してルートを定義していました。
 :::
 
-::: {#ch03-params-m648 .paragraph}
+::: {#ch03-params-r227 .paragraph}
 一方、商品詳細画面では、選択した商品によってURLの末尾が変わります。このような場合に、商品番号ごとにルートを定義する必要はありません。
 :::
 
-::: {#ch03-params-m650 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r229 .paragraph punctuation-font="inherit"}
 React Routerでは、**パスの一部分をコロン（`:`）から始めることで、その部分をURLパラメータとして扱うことができます。**
 :::
 
-::: {#ch03-params-m652 .paragraph}
+::: {#ch03-params-r231 .paragraph}
 例えば、今回の `path="products/:id"` は、`products` に続く1つのパスの部分を、`id` という名前のURLパラメータとして扱う設定です。
 :::
 
-::: {#ch03-params-m654 .table column-widths="45 21 34"}
+::: {#ch03-params-r233 .paragraph}
+3.3節で学習したように、共通レイアウトを指定する親ルートには `path` を指定していません。そのため、通常構成では `/products/101` などのURLが、この子ルートに対応します。
+:::
+
+::: {#ch03-params-r235 .table column-widths="30 24 46"}
 | URLのパス | 取得する `id` の値 | 表示するコンポーネント |
 |---|---|---|
-| `/sample-3-5/products/101` | `'101'` | `ProductDetailPage` |
-| `/sample-3-5/products/102` | `'102'` | `ProductDetailPage` |
-| `/sample-3-5/products/103` | `'103'` | `ProductDetailPage` |
+| `/products/101` | `'101'` | `ProductDetailPage` |
+| `/products/102` | `'102'` | `ProductDetailPage` |
+| `/products/103` | `'103'` | `ProductDetailPage` |
 :::
 
 ![商品番号が異なるURLでも、同じ商品詳細コンポーネントを表示できる](assets/url-parameters-route.svg){#ch03-params-figure-1}
@@ -3143,23 +3154,23 @@ React Routerでは、**パスの一部分をコロン（`:`）から始めるこ
 商品番号が異なるURLでも、同じ商品詳細コンポーネントを表示できる
 :::
 
-::: {#ch03-params-m668 .paragraph}
+::: {#ch03-params-r250 .paragraph}
 なお、`id` はReact Routerで決められた特別な名前ではありません。例えば、`:productId` と定義することもできます。その場合は、値を取得する際にも `productId` という名前を使用します。
 :::
 
-::: {#ch03-params-m670 .step}
+::: {#ch03-params-r252 .step}
 **② 商品ごとに異なるURLをLinkに指定する**
 :::
 
-::: {#ch03-params-m672 .paragraph}
+::: {#ch03-params-r254 .paragraph}
 商品一覧から詳細画面へ移動する際は、選択した商品の番号をURLに含める必要があります。
 :::
 
-::: {#ch03-params-m674 .paragraph}
+::: {#ch03-params-r256 .paragraph}
 まず、商品一覧側のコードを確認しましょう。
 :::
 
-::: {#ch03-params-m677 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductListPage.tsx" start-line="18"}
+::: {#ch03-params-r259 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductListPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
         {products.map((product) => (
           <ProductCard
@@ -3173,63 +3184,63 @@ React Routerでは、**パスの一部分をコロン（`:`）から始めるこ
 ~~~
 :::
 
-::: {#ch03-params-m689 .paragraph}
-3.1節で学習したPropsを使用して、商品名・単価・画像のパスに加え、商品番号（`id`）を商品カードへ渡しています。
+::: {#ch03-params-r271 .paragraph}
+3.1節で学習したPropsを使用して、商品名・単価・画像のパスに加え、商品番号（`id`）を商品カードへ渡しています。ここで渡した商品番号は、商品カードの中で詳細画面へのリンク先を組み立てるために使用します。
 :::
 
-::: {#ch03-params-m691 .paragraph}
+::: {#ch03-params-r273 .paragraph}
 ここで、同じ `product.id` を2回使用していることに注目してください。それぞれの役割は異なります。
 :::
 
-::: {#ch03-params-m693 .table column-widths="27 73"}
+::: {#ch03-params-r275 .table column-widths="27 73"}
 | 記述 | 役割 |
 |---|---|
 | `key={product.id}` | Reactが繰り返し生成した商品カードを識別するために使用する。 |
 | `id={product.id}` | 商品番号をPropsとして子コンポーネントに渡す。 |
 :::
 
-::: {#ch03-params-m698 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r280 .paragraph punctuation-font="inherit"}
 **`key` は通常のPropsとして子コンポーネントに渡されません。** そのため、子コンポーネントの中で商品番号を使用するには、`id` というPropsを別に指定する必要があります。
 :::
 
-::: {#ch03-params-m700 .paragraph}
+::: {#ch03-params-r282 .paragraph}
 `components/ProductCard.tsx` では、受け取るPropsの型に `id: number` を追加し、関数の引数で `id` も受け取るようにしています。
 :::
 
-::: {#ch03-params-m702 .paragraph}
+::: {#ch03-params-r284 .paragraph}
 次に、`components/ProductCard.tsx` で、受け取った商品番号をリンク先に使用している部分を確認します。
 :::
 
-::: {#ch03-params-m705 .code filename="ch03-basic/src/samples/sample3_5/components/ProductCard.tsx" start-line="26"}
+::: {#ch03-params-r287 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/components/ProductCard.tsx" example="true" wide-code-label="true"}
 ~~~tsx
-          <Link to={`/sample-3-5/products/${id}`}
+          <Link to={`/products/${id}`}
                 className="btn btn-primary">
             詳細
           </Link>
 ~~~
 :::
 
-::: {#ch03-params-m712 .paragraph}
+::: {#ch03-params-r294 .paragraph}
 前節で学習したとおり、`Link` の `to` 属性には、移動先のURLを指定します。
 :::
 
-::: {#ch03-params-m714 .paragraph}
+::: {#ch03-params-r296 .paragraph}
 今回は、商品ごとに異なるURLを指定する必要があるため、Propsで受け取った `id` の値を使用してURLを組み立てます。
 :::
 
-::: {#ch03-params-m716 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r298 .paragraph punctuation-font="inherit"}
 JavaScriptでは、文字列をバッククォート（`` ` ``）で囲み、その中に `${式}` と記述することで、式の値を文字列に埋め込むことができます。この書き方を **テンプレートリテラル** と呼びます。
 :::
 
-::: {#ch03-params-m718 .paragraph}
+::: {#ch03-params-r300 .paragraph}
 例えば、`id` の値が101の場合、次の2つの記述で指定される移動先は同じです。
 :::
 
-::: {#ch03-params-m720 .table column-widths="51 49"}
+::: {#ch03-params-r302 .table column-widths="50 50"}
 | 記述例 | 特徴 |
 |---|---|
-| ``to={`/sample-3-5/products/${id}`} `` | `id` の値に応じて移動先が変わる。 |
-| `to="/sample-3-5/products/101"` | 常に同じURLへ移動する。 |
+| ``to={`/products/${id}`} `` | `id` の値に応じて移動先が変わる。 |
+| `to="/products/101"` | 常に同じURLへ移動する。 |
 :::
 
 ![同じLinkの記述でも、商品番号によって移動先が変わる](assets/url-parameters-links.svg){#ch03-params-figure-2}
@@ -3238,53 +3249,57 @@ JavaScriptでは、文字列をバッククォート（`` ` ``）で囲み、そ
 同じLinkの記述でも、商品番号によって移動先が変わる
 :::
 
-::: {#ch03-params-m733 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r316 .paragraph punctuation-font="inherit"}
 このように、**テンプレートリテラルを使用すると、商品ごとに異なるリンク先を、1つの記述で指定できます。**
 :::
 
-::: {#ch03-params-m735 .step}
+::: {#ch03-params-r318 .paragraph}
+ここでは、商品番号を商品詳細画面へPropsで直接渡しているわけではありません。商品番号を含むURLへ移動し、詳細画面でURLから値を取得します。
+:::
+
+::: {#ch03-params-r320 .step}
 **③ useParams()でURLパラメータを取得する**
 :::
 
-::: {#ch03-params-m737 .paragraph}
+::: {#ch03-params-r322 .paragraph}
 詳細画面に移動した後は、URLから商品番号を取得します。
 :::
 
-::: {#ch03-params-m739 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r324 .paragraph punctuation-font="inherit"}
 そのために使用するのが、React Routerが提供する **useParams()** です。
 :::
 
-::: {#ch03-params-m742 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="1"}
+::: {#ch03-params-r327 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link, useParams } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-params-m746 .paragraph}
+::: {#ch03-params-r331 .paragraph}
 `useParams` はReact Routerが提供するHookです。`react-router` からインポートし、商品詳細を表示する関数コンポーネントのトップレベルで使用します。
 :::
 
-::: {#ch03-params-m749 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="4"}
+::: {#ch03-params-r334 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
   const { id } = useParams()
 ~~~
 :::
 
-::: {#ch03-params-m753 .paragraph}
+::: {#ch03-params-r338 .paragraph}
 `useParams()` は、現在のURLに対応するルートのURLパラメータをオブジェクトとして返します。
 :::
 
-::: {#ch03-params-m755 .paragraph}
-例えば、`/sample-3-5/products/101` にアクセスした場合は、取得したオブジェクトの `id` プロパティに文字列の `'101'` が格納されます。今回使用するプロパティだけを抜き出すと、次のようになります。
+::: {#ch03-params-r340 .paragraph}
+例えば、`/products/101` にアクセスした場合は、取得したオブジェクトの `id` プロパティに文字列の `'101'` が格納されます。今回使用するプロパティだけを抜き出すと、次のようになります。
 :::
 
-::: {#ch03-params-m758 .code example="true" code-label="取得結果の一部（JavaScript）"}
+::: {#ch03-params-r343 .code code-label="取得結果の一部（JavaScript）" example="true"}
 ~~~js
 { id: '101' }
 ~~~
 :::
 
-::: {#ch03-params-m762 .paragraph}
+::: {#ch03-params-r347 .paragraph}
 今回のコードでは、3.1節で学習したオブジェクトの分割代入を使用して、このオブジェクトから `id` の値を取り出しています。
 :::
 
@@ -3294,173 +3309,221 @@ import { Link, useParams } from 'react-router'
 ルートで定義したidの値をuseParams()で取得する
 :::
 
-::: {#ch03-params-m772 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r358 .paragraph punctuation-font="inherit"}
 ここで注意してほしいのは、URLの末尾が101という数字であっても、**useParams()で取得する値は文字列である** という点です。
 :::
 
-::: {#ch03-params-m774 .paragraph}
+::: {#ch03-params-r360 .paragraph}
 また、TypeScriptでは、パラメータが取得できない場合も考慮するため、`id` は `string | undefined` という型で扱われます。これは、文字列または `undefined` のいずれかになる可能性があるという意味です。
 :::
 
-::: {#ch03-params-m776 .paragraph}
-今回の `products/:id` に一致するURLには、商品番号に相当する部分が含まれています。商品番号を指定せずに `/sample-3-5/products` にアクセスした場合は、商品一覧画面が表示されます。
+::: {#ch03-params-r362 .paragraph}
+今回の `products/:id` に一致するURLには、商品番号に相当する部分が含まれています。商品番号を指定せずに `/products` にアクセスした場合は、商品一覧画面が表示されます。
 :::
 
-::: {#ch03-params-m778 .step}
+::: {#ch03-params-r364 .step}
 **④ 取得した商品番号を画面に表示する**
 :::
 
-::: {#ch03-params-m781 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="11"}
+::: {#ch03-params-r367 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
       <p>商品番号：{id}</p>
 ~~~
 :::
 
-::: {#ch03-params-m785 .paragraph}
+::: {#ch03-params-r371 .paragraph}
 URLから取得した `id` の値を、JSXの波括弧内に記述します。これは、2.2節で学習した変数の値を画面に表示する方法と同じです。
 :::
 
-::: {#ch03-params-m787 .paragraph}
+::: {#ch03-params-r373 .paragraph}
 例えば、ノートの［詳細］から移動した場合は「商品番号：101」、ボールペンの［詳細］から移動した場合は「商品番号：102」と表示されます。
 :::
 
-::: {#ch03-params-m789 .paragraph punctuation-font="inherit"}
+::: {#ch03-params-r375 .paragraph punctuation-font="inherit"}
 **商品詳細画面のコンポーネントは同じですが、URLに含まれる商品番号によって表示内容が変わります。**
 :::
 
-::: {#ch03-params-m791 .paragraph}
-なお、商品詳細画面でも、共通ヘッダーやメニュー、フッターは引き続き表示されます。商品一覧の `NavLink` には `end` 属性を指定していないため、商品詳細画面でも「商品一覧」のメニューが強調されます。
+::: {#ch03-params-r377 .paragraph}
+なお、商品詳細画面でも、共通ヘッダーやメニュー、フッターは引き続き表示されます。3.4節で学習したように、商品一覧の `NavLink`（`to="/products"`）には `end` 属性を指定していません。そのため、`/products/101` などの商品詳細画面でも「商品一覧」のメニューが強調されます。
 :::
 
-::: {#ch03-params-m793 .paragraph}
+::: {#ch03-params-r379 .paragraph}
 ［商品一覧へ戻る］の `Link` には、商品一覧に対応する固定のURLを指定しています。
 :::
 
-::: {#ch03-params-m796 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="15"}
+::: {#ch03-params-r382 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
-      <Link to="/sample-3-5/products" className="btn btn-secondary">
+      <Link to="/products" className="btn btn-secondary">
         商品一覧へ戻る
       </Link>
 ~~~
 :::
 
-::: {#ch03-params-m802 .training-note breakable="true"}
+:::: {#ch03-params-r388 .training-note breakable="true"}
 【補足】実際の商品詳細画面では
 
-今回の商品詳細画面には、取得した商品番号だけを表示しています。
+今回の商品詳細画面では、商品情報として、取得した商品番号だけを表示しています。
 
 しかし、実際の商品管理システムでは、商品番号だけでなく、商品名や単価、商品画像なども表示する必要があります。
 
 REST APIとデータベースを連携させるアプリケーションでは、一般的に、**URLから取得した商品番号を使ってREST APIにリクエストを送信し、該当する商品情報を取得します。**
 
 例えば、商品番号101の詳細画面を表示する場合は、次のような流れになります。
-:::
 
-::: {#ch03-params-m812 .paragraph numbered="true"}
 1．Reactで `useParams()` を使用し、URLから商品番号を取得する。
-:::
 
-::: {#ch03-params-m814 .paragraph numbered="true"}
 2．取得した商品番号を使用して、REST APIにリクエストを送信する。
-:::
 
-::: {#ch03-params-m816 .paragraph numbered="true"}
 3．REST API側で商品番号を受け取り、データベースから該当する商品情報を取得する。
-:::
 
-::: {#ch03-params-m818 .paragraph numbered="true"}
 4．REST APIから返された商品情報をReactで受け取り、商品詳細画面に表示する。
+
+::: {#ch03-params-figure-4 .note-figure}
+![取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）](assets/url-parameters-api.svg)
 :::
 
-![取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）](assets/url-parameters-api.svg){#ch03-params-figure-4}
+ここで、ブラウザーに表示される `/products/101` は、React Routerが画面を切り替えるためのURLのパスです。一方、図に示した `/api/products/101` は、商品情報を取得するためにREST APIへ送信するリクエスト先の例です。両者は用途が異なります。
 
-::: {#ch03-params-figure-4-caption .caption}
-取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）
-:::
-
-::: {#ch03-params-m834 .paragraph}
-ここで、ブラウザーに表示されるURLは、React Routerが画面を切り替えるために使用します。一方、図に示した `/api/products/101` は、商品情報を取得するためにREST APIへ送信するリクエスト先の例です。両者は用途が異なります。
-:::
-
-::: {#ch03-params-m836 .paragraph}
 今回のサンプルでは、商品情報を取得する処理をまだ記述していません。ソースコードには、実際の開発でREST APIを利用する箇所をコメントとして記載しています。また、商品詳細画面にも、その旨を表示しています。
-:::
 
-::: {#ch03-params-m839 .code filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="6"}
-~~~tsx
+~~~{#ch03-params-r426 .tsx code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
   // 実際の開発では、idを使ってREST APIから商品情報を取得する。
 ~~~
-:::
 
-::: {#ch03-params-m843 .paragraph}
 なお、URLから商品番号を取得できたとしても、その商品がデータベースに存在するとは限りません。商品の存在確認や、不正な商品番号が指定された場合の処理については、REST APIと連携する際に考慮する必要があります。
-:::
 
-::: {#ch03-params-m845 .paragraph}
 この節では、後続の章で商品情報を取得するための準備として、URLから商品番号を取得する方法を理解しておきましょう。
+::::
+
+:::: {#ch03-params-r434 .training-note breakable="true"}
+【補足】本研修の配布サンプルの構成
+
+3.5の講義用サンプルは、`ch03-basic/src/samples/sample3_5/` に用意しています。前節までの完成サンプルを残すため、3.5で使用するファイルをこのフォルダーにまとめています。
+
+配布サンプルでは、3.2節で説明したように、節ごとにURLの入口を分けています。3.5の入口は `/sample-3-5` です。
+
+::: {#ch03-params-r440 .table column-widths="32 31 37"}
+| 画面 | 通常構成のURLのパス | 配布サンプルのURLのパス |
+|---|---|---|
+| ホーム | `/` | `/sample-3-5` |
+| 商品一覧 | `/products` | `/sample-3-5/products` |
+| 商品詳細（商品番号101） | `/products/101` | `/sample-3-5/products/101` |
+| ご利用案内 | `/guide` | `/sample-3-5/guide` |
 :::
 
-::: {#ch03-params-m847 .heading level="minor"}
+**配布サンプルで異なる部分**
+
+`routes/AppRoutes.tsx` のルート定義、商品番号のProps、`useParams()` による値の取得方法は、通常構成と同じです。配布サンプルでは、商品詳細画面へのリンクと、商品一覧へ戻るリンクの移動先が異なります。
+
+~~~{#ch03-params-r452 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_5/components/ProductCard.tsx" start-line="26"}
+          <Link to={`/sample-3-5/products/${id}`}
+                className="btn btn-primary">
+            詳細
+          </Link>
+~~~
+
+~~~{#ch03-params-r460 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="15"}
+      <Link to="/sample-3-5/products" className="btn btn-secondary">
+        商品一覧へ戻る
+      </Link>
+~~~
+
+共通レイアウトのリンク先も、3.5のURLに合わせて設定済みです。ホームの `NavLink` に `end` を指定している点は、3.4節の配布サンプルと同じです。
+
+このような節別のURLは、研修用サンプルを切り替えるために使用しています。**通常のアプリケーションを開発するときは、この節別のパスを追加する必要はありません。**
+::::
+
+::: {#ch03-params-r470 .heading level="minor"}
+配布サンプルの動作確認
+:::
+
+::: {#ch03-params-r472 .paragraph}
+`ch03-basic` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。ブラウザーのメニューから「3.5 URLパラメータの取得」を選択します。
+:::
+
+::: {#ch03-params-r474 .paragraph}
+共通メニューの［商品一覧］をクリックし、ノートの［詳細］をクリックしてください。URLのパスが `/sample-3-5/products/101` になり、詳細画面に「商品番号：101」と表示されることを確認しましょう。［商品一覧へ戻る］をクリックし、別の商品についても、URLと表示される商品番号の対応を確認してください。
+:::
+
+::: {#ch03-params-r476 .heading level="minor"}
 【確認演習】URLパラメータを取得する
 :::
 
-::: {#ch03-params-m849 .paragraph}
+::: {#ch03-params-r478 .paragraph}
 商品一覧の［詳細］をクリックすると、選択した商品の番号を含むURLへ移動し、詳細画面にその商品番号が表示されるようにしましょう。
 :::
 
-::: {#ch03-params-m851 .paragraph}
+::: {#ch03-params-r480 .paragraph}
 商品データ、共通レイアウト、商品カードのデザイン、商品詳細画面の基本構成は、あらかじめ用意されています。今回は、商品詳細画面のルートの定義、商品番号に応じたリンク先の設定、URLパラメータの取得を実装します。
 :::
 
-::: {#ch03-params-m853 .paragraph}
+::: {#ch03-params-r482 .paragraph}
 演習用の `q3_5` には、前節までの機能を完成済みの状態で用意しています。前節までの確認演習が未完成でも取り組めます。
 :::
 
-::: {#ch03-params-m855 .paragraph numbered="true"}
+::: {#ch03-params-r484 .paragraph}
+この確認演習では、上の補足で確認した配布サンプルのURLを使用してください。商品詳細画面のルートは `products/:id` のまま、［詳細］のリンク先には `/sample-3-5/products/` に商品番号を続けたパスを指定します。
+:::
+
+::: {#ch03-params-r486 .paragraph numbered="true"}
 1．`ch03-basic-q` プロジェクトの次の3つのファイルを開いてください。
 :::
 
-::: {#ch03-params-m857-1 .paragraph}
+::: {#ch03-params-r488-1 .paragraph}
 ● `src/exercises/q3_5/routes/AppRoutes.tsx`
 :::
 
-::: {#ch03-params-m857-2 .paragraph}
+::: {#ch03-params-r488-2 .paragraph}
 ● `src/exercises/q3_5/components/ProductCard.tsx`
 :::
 
-::: {#ch03-params-m857-3 .paragraph}
+::: {#ch03-params-r488-3 .paragraph}
 ● `src/exercises/q3_5/pages/ProductDetailPage.tsx`
 :::
 
-::: {#ch03-params-m861 .paragraph numbered="true"}
-2．3つのファイルに記載された➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。すべて実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch03-params-r492 .paragraph numbered="true"}
+2．3つのファイルに記載された➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。すべて実装問題です。
 :::
 
-::: {#ch03-params-m863 .paragraph numbered="true"}
+::: {#ch03-params-r494 .table column-widths="11 39 50"}
+| 番号 | 編集するファイル | 作業内容 |
+|---|---|---|
+| ➀ | `routes/AppRoutes.tsx` | 商品詳細画面のコンポーネントをインポートする。 |
+| ➁ | `routes/AppRoutes.tsx` | 商品詳細画面の子ルートを追加する。 |
+| ➂ | `components/ProductCard.tsx` | 商品番号を含むリンク先を設定する。 |
+| ➃ | `pages/ProductDetailPage.tsx` | useParamsを追加でインポートする。 |
+| ➄ | `pages/ProductDetailPage.tsx` | useParams()を使用して商品番号を取得する。 |
+:::
+
+::: {#ch03-params-r502 .paragraph}
+コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-params-r504 .paragraph numbered="true"}
 3．編集したファイルを保存してください。
 :::
 
-::: {#ch03-params-m865 .paragraph numbered="true"}
+::: {#ch03-params-r506 .paragraph numbered="true"}
 4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-params-m867 .paragraph numbered="true"}
+::: {#ch03-params-r508 .paragraph numbered="true"}
 5．メニューから「3.5 URLパラメータの取得」を選んでください。
 :::
 
-::: {#ch03-params-m869 .heading level="minor"}
+::: {#ch03-params-r510 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch03-params-m871 .paragraph numbered="true"}
+::: {#ch03-params-r512 .paragraph numbered="true"}
 6．共通メニューの［商品一覧］をクリックしてください。次に、ファイルの［詳細］をクリックし、次の内容を確認します。
 :::
 
-::: {#ch03-params-m873-1 .paragraph}
+::: {#ch03-params-r514-1 .paragraph}
 ● URLのパスが `/sample-3-5/products/201` になっていること。
 :::
 
-::: {#ch03-params-m873-2 .paragraph}
+::: {#ch03-params-r514-2 .paragraph}
 ● 詳細画面に「商品番号：201」と表示されていること。
 :::
 
@@ -3470,11 +3533,11 @@ REST APIとデータベースを連携させるアプリケーションでは、
 ファイルの［詳細］をクリックし、URLと取得した商品番号を確認する
 :::
 
-::: {#ch03-params-m886 .paragraph}
+::: {#ch03-params-r528 .paragraph}
 続いて、［商品一覧へ戻る］をクリックしてください。商品一覧画面に戻ったら、今度はクリップの［詳細］をクリックします。
 :::
 
-::: {#ch03-params-m888 .paragraph}
+::: {#ch03-params-r530 .paragraph}
 URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」と表示されることを確認してください。
 :::
 
@@ -3484,19 +3547,19 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 商品を変更すると、URLパラメータとして取得する商品番号も変わる
 :::
 
-::: {#ch03-params-m898 .paragraph}
+::: {#ch03-params-r541 .paragraph}
 どちらの商品を選択しても、URLに含まれる商品番号と詳細画面に表示される商品番号が一致していれば、演習完了です。
 :::
 
-::: {#ch03-params-m900 .paragraph}
+::: {#ch03-params-r543 .paragraph}
 ※ 今回は商品情報の取得や商品の存在確認は行いません。詳細画面に商品名や単価、商品画像が表示されていないのは、意図した動作です。
 :::
 
-::: {#ch03-params-m902 .paragraph}
-画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+::: {#ch03-params-r545 .paragraph}
+画面に変更が反映されない場合は、`ch03-basic-q` の開発サーバーに接続していることを確認してください。講義用と確認演習用の開発サーバーのURLは異なる場合があります。正しいURLを開いたうえで、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
-::: {#ch03-params-m904 .paragraph}
+::: {#ch03-params-r547 .paragraph}
 次の3.6節では、リンクのクリックだけでなく、プログラムの処理に応じて画面遷移を行う方法を学習します。
 :::
 
@@ -3511,9 +3574,9 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 
 ● 実際の詳細画面では、取得した商品番号をREST APIへのリクエストに使用し、商品情報を取得して表示できる。
 :::
-::::
+:::::
 
-:::: {#page-17 .source-page}
+::::: {#page-17 .source-page}
 ::: {#ch03-programmatic-title .heading}
 3.6. プログラムによる画面遷移
 :::
@@ -3524,35 +3587,35 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 ![プログラムによる画面遷移](assets/programmatic-navigation-slide.svg)
 :::
 
-::: {#ch03-programmatic-m44 .heading level="minor"}
+::: {#ch03-programmatic-r571 .heading level="minor"}
 プログラムの処理に応じて画面を切り替えるには
 :::
 
-::: {#ch03-programmatic-m46 .paragraph}
+::: {#ch03-programmatic-r573 .paragraph}
 3.4節では、`Link` や `NavLink` を使用して、ページ全体を再読み込みせずに画面を切り替える方法を学習しました。また、前節では、商品一覧から商品番号を含むURLへ移動し、詳細画面でその商品番号を取得しました。
 :::
 
-::: {#ch03-programmatic-m48 .paragraph}
+::: {#ch03-programmatic-r575 .paragraph}
 これらの画面遷移は、リンクをクリックすると、あらかじめ指定した移動先へ画面が切り替わる仕組みです。
 :::
 
-::: {#ch03-programmatic-m50 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r577 .paragraph punctuation-font="inherit"}
 しかし、実際のWebアプリケーションでは、**プログラムで何らかの処理を行い、その結果に応じて画面を切り替えたい場合** があります。
 :::
 
-::: {#ch03-programmatic-m52 .paragraph}
+::: {#ch03-programmatic-r579 .paragraph}
 例えば、商品管理システムの商品登録画面で［登録］ボタンをクリックした場合を考えてみましょう。一般的には、次のような処理が必要です。
 :::
 
-::: {#ch03-programmatic-m54-1 .paragraph numbered="true"}
+::: {#ch03-programmatic-r581-1 .paragraph numbered="true"}
 1\. 入力された商品情報をサーバーへ送信し、商品を登録する。
 :::
 
-::: {#ch03-programmatic-m54-2 .paragraph numbered="true"}
+::: {#ch03-programmatic-r581-2 .paragraph numbered="true"}
 2\. 商品が正常に登録されたかどうかを確認する。
 :::
 
-::: {#ch03-programmatic-m54-3 .paragraph numbered="true"}
+::: {#ch03-programmatic-r581-3 .paragraph numbered="true"}
 3\. 登録に成功した場合は商品一覧画面へ移動する。失敗した場合は商品登録画面に留まり、エラーメッセージなどを表示する。
 :::
 
@@ -3562,61 +3625,65 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 実際の開発では、登録処理の結果に応じて画面遷移を行う
 :::
 
-::: {#ch03-programmatic-m68 .paragraph}
+::: {#ch03-programmatic-r595 .paragraph}
 ［登録］に通常のリンクを使用すると、リンクのクリックによって指定した画面へ移動します。しかし、登録の結果を確認してから移動先を決定するには、処理を実行するプログラムの中で画面遷移を行えるようにする必要があります。
 :::
 
-::: {#ch03-programmatic-m70 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r597 .paragraph punctuation-font="inherit"}
 そこで使用するのが、React Routerが提供する **useNavigate()** です。
 :::
 
-::: {#ch03-programmatic-m72 .paragraph}
+::: {#ch03-programmatic-r599 .paragraph}
 `useNavigate()` を使用すると、画面遷移を行うための関数を取得できます。その関数を、画面遷移が必要になったときに呼び出すことで、プログラムから指定した画面へ移動できます。
 :::
 
-::: {#ch03-programmatic-m74 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r601 .paragraph punctuation-font="inherit"}
 商品登録処理やREST APIとの連携は、後続の章で学習します。この節では、登録処理を実装する前の準備として、**ボタンのイベントハンドラーから画面遷移を行う方法** を学習します。
 :::
 
-::: {#ch03-programmatic-m76 .heading level="minor"}
+::: {#ch03-programmatic-r603 .heading level="minor"}
 【サンプル】登録ボタンをクリックして商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-m78 .paragraph}
+::: {#ch03-programmatic-r605 .paragraph}
 前節の商品管理システムを基に、新たに商品登録画面を追加します。
 :::
 
-::: {#ch03-programmatic-m80 .paragraph}
+::: {#ch03-programmatic-r607 .paragraph}
 今回のサンプルでは、次の操作ができるようにします。
 :::
 
-::: {#ch03-programmatic-m82-1 .paragraph}
+::: {#ch03-programmatic-r609-1 .paragraph}
 ● 商品一覧画面の［商品登録］をクリックすると、商品登録画面へ移動する。
 :::
 
-::: {#ch03-programmatic-m82-2 .paragraph}
+::: {#ch03-programmatic-r609-2 .paragraph}
 ● 商品登録画面の［登録］ボタンをクリックすると、イベントハンドラーから商品一覧画面へ移動する。
 :::
 
-::: {#ch03-programmatic-m82-3 .paragraph}
+::: {#ch03-programmatic-r609-3 .paragraph}
 ● 商品登録画面の［キャンセル］をクリックすると、商品一覧画面へ戻る。
 :::
 
-::: {#ch03-programmatic-m86 .paragraph}
+::: {#ch03-programmatic-r613 .paragraph}
 今回は画面遷移の仕組みに集中するため、商品の入力フォームや登録処理は実装しません。［登録］ボタンをクリックしても、商品一覧に新しい商品は追加されません。
 :::
 
-::: {#ch03-programmatic-m88 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r615 .paragraph punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
-::: {#ch03-programmatic-m90 .paragraph}
-前節の `sample3_5` を基に、3.6のサンプルを `ch03-basic/src/samples/sample3_6` に用意しています。
+::: {#ch03-programmatic-r617 .paragraph}
+以下では、前節までに学習した通常のアプリケーション構成を使用する場合の記述例を確認します。実際の配布サンプルのフォルダーとURLについては、構文の解説の後に説明します。
 :::
 
-::: {#ch03-programmatic-m92 .code example="true" code-label="フォルダー構成"}
+::: {#ch03-programmatic-r619 .paragraph}
+前節の構成をそのまま使用し、商品登録画面のコンポーネントを `pages` フォルダーに追加します。
+:::
+
+::: {#ch03-programmatic-r621 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
 ~~~text
-src/samples/sample3_6/
+src/
 ├── components/
 │   └── ProductCard.tsx
 ├── pages/
@@ -3627,23 +3694,30 @@ src/samples/sample3_6/
 │   └── GuidePage.tsx
 ├── layouts/
 │   └── MainLayout.tsx
-└── routes/
-    └── AppRoutes.tsx
+├── routes/
+│   └── AppRoutes.tsx
+├── App.tsx
+└── main.tsx
 ~~~
 :::
 
-::: {#ch03-programmatic-m108 .paragraph}
+::: {#ch03-programmatic-r639 .paragraph}
 前節からの主な変更は、次のとおりです。
 :::
 
-::: {#ch03-programmatic-m110 .table column-widths="43 57"}
+::: {#ch03-programmatic-r641 .table column-widths="46 54"}
 | ファイル | 前節からの変更 |
 |---|---|
 | `pages/ProductRegisterPage.tsx` | 新規作成。商品登録画面を表示し、プログラムから画面遷移を行う。 |
 | `pages/ProductListPage.tsx` | 商品登録画面へ移動するためのリンクを追加する。 |
 | `routes/AppRoutes.tsx` | 商品登録画面をインポートし、対応する子ルートを追加する。 |
-| `components/ProductCard.tsx`、`pages/ProductDetailPage.tsx`、`layouts/MainLayout.tsx` | リンク先のURLを3.6用に変更する。その他の処理は前節と同じ。 |
+| `components/ProductCard.tsx`、`pages/ProductDetailPage.tsx`、`layouts/MainLayout.tsx` | 変更なし。 |
 | `pages/HomePage.tsx`、`pages/GuidePage.tsx` | 変更なし。 |
+| `App.tsx`、`main.tsx` | 変更なし。 |
+:::
+
+::: {#ch03-programmatic-r650 .paragraph}
+通常のアプリケーションでは、これまでの画面やリンク先を変更せずに、商品登録画面を追加できます。
 :::
 
 ![商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル](assets/programmatic-navigation-folder-structure.svg){#ch03-programmatic-folder-structure}
@@ -3652,23 +3726,23 @@ src/samples/sample3_6/
 商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル
 :::
 
-::: {#ch03-programmatic-m124 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r659 .paragraph punctuation-font="inherit"}
 このように、**画面の追加と、その画面へのリンク、ルーティングの設定を、それぞれ役割に応じたファイルで管理できます。**
 :::
 
-::: {#ch03-programmatic-m126 .paragraph}
+::: {#ch03-programmatic-r661 .paragraph}
 今回は新たに作成する商品登録画面と、その画面を表示するためのルーティングを中心に確認します。前節までと同じ処理については、全体ソースコードの掲載を省略します。
 :::
 
-::: {#ch03-programmatic-m128 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r663 .paragraph punctuation-font="inherit"}
 **商品登録画面のソースコード**
 :::
 
-::: {#ch03-programmatic-m130 .paragraph}
+::: {#ch03-programmatic-r665 .paragraph}
 新たに作成する `pages/ProductRegisterPage.tsx` には、画面の表示と［登録］ボタンをクリックしたときの処理を記述します。
 :::
 
-::: {#ch03-programmatic-m133 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="1"}
+::: {#ch03-programmatic-r668 .code code-label="TSXの記述例（通常構成）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link, useNavigate } from 'react-router'
 
@@ -3677,7 +3751,7 @@ export default function ProductRegisterPage() {
 
   function handleRegister() {
     // 実際の開発では、REST APIで商品を登録し、成功を確認する。
-    navigate('/sample-3-6/products')
+    navigate('/products')
   }
 
   return (
@@ -3691,7 +3765,7 @@ export default function ProductRegisterPage() {
                 onClick={handleRegister}>
           登録
         </button>
-        <Link to="/sample-3-6/products" className="btn btn-secondary">
+        <Link to="/products" className="btn btn-secondary">
           キャンセル
         </Link>
       </div>
@@ -3701,46 +3775,46 @@ export default function ProductRegisterPage() {
 ~~~
 :::
 
-::: {#ch03-programmatic-m164 .paragraph}
+::: {#ch03-programmatic-r699 .paragraph}
 今回のサンプルでは、［登録］に `button` 要素を、［キャンセル］に `Link` を使用しています。どちらの操作でも商品一覧画面へ移動しますが、その目的と実装方法が異なります。
 :::
 
-::: {#ch03-programmatic-m166 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r701 .paragraph punctuation-font="inherit"}
 **商品一覧画面へのリンクの追加**
 :::
 
-::: {#ch03-programmatic-m168 .paragraph}
+::: {#ch03-programmatic-r703 .paragraph}
 続いて、`pages/ProductListPage.tsx` を確認します。商品カードや商品データを表示する処理は前節と同じですが、商品登録画面へ移動するための `Link` を追加しています。
 :::
 
-::: {#ch03-programmatic-m171 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="1"}
+::: {#ch03-programmatic-r706 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductListPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-programmatic-m176 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="16"}
+::: {#ch03-programmatic-r711 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductListPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
       <h1>商品一覧</h1>
-      <Link to="/sample-3-6/products/new" className="btn btn-primary mb-3">
+      <Link to="/products/new" className="btn btn-primary mb-3">
         商品登録
       </Link>
 ~~~
 :::
 
-::: {#ch03-programmatic-m183 .paragraph}
-この［商品登録］リンクをクリックすると、`/sample-3-6/products/new` へ移動します。
+::: {#ch03-programmatic-r718 .paragraph}
+この［商品登録］リンクをクリックすると、`/products/new` へ移動します。
 :::
 
-::: {#ch03-programmatic-m185 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r720 .paragraph punctuation-font="inherit"}
 **ルーティングの設定**
 :::
 
-::: {#ch03-programmatic-m187 .paragraph}
+::: {#ch03-programmatic-r722 .paragraph}
 次に、`routes/AppRoutes.tsx` を確認します。前節までのルートの定義に、商品登録画面を表示するためのルートを追加しています。
 :::
 
-::: {#ch03-programmatic-m190 .code filename="ch03-basic/src/samples/sample3_6/routes/AppRoutes.tsx" start-line="1"}
+::: {#ch03-programmatic-r725 .code code-label="TSXの記述例（通常構成）" filename="src/routes/AppRoutes.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Routes, Route } from 'react-router'
 import HomePage from '../pages/HomePage'
@@ -3766,26 +3840,22 @@ export default function AppRoutes() {
 ~~~
 :::
 
-::: {#ch03-programmatic-m214 .paragraph}
+::: {#ch03-programmatic-r749 .paragraph}
 今回は、共通レイアウトの中に次の画面を表示できます。
 :::
 
-::: {#ch03-programmatic-m216 .table column-widths="43 34 23"}
+::: {#ch03-programmatic-r751 .table column-widths="31 47 22"}
 | URLのパス | 表示するコンポーネント | 画面 |
 |---|---|---|
-| `/sample-3-6` | `HomePage` | ホーム |
-| `/sample-3-6/products` | `ProductListPage` | 商品一覧 |
-| `/sample-3-6/products/new` | `ProductRegisterPage` | 商品登録 |
-| `/sample-3-6/products/101` | `ProductDetailPage` | 商品詳細（商品番号101） |
-| `/sample-3-6/guide` | `GuidePage` | ご利用案内 |
+| `/` | `HomePage` | ホーム |
+| `/products` | `ProductListPage` | 商品一覧 |
+| `/products/new` | `ProductRegisterPage` | 商品登録 |
+| `/products/101` | `ProductDetailPage` | 商品詳細（商品番号101） |
+| `/guide` | `GuidePage` | ご利用案内 |
 :::
 
-::: {#ch03-programmatic-m224 .paragraph}
-配布サンプルの `ch03-basic` の開発サーバーを起動し、ブラウザーのメニューから「3.6 プログラムによる画面遷移」を選択してください。
-:::
-
-::: {#ch03-programmatic-m226 .paragraph}
-共通メニューの［商品一覧］から［商品登録］をクリックすると、次のように商品登録画面が表示されます。
+::: {#ch03-programmatic-r759 .paragraph}
+通常構成では、商品一覧画面（`/products`）で［商品登録］をクリックすると、次のように商品登録画面（`/products/new`）が表示されます。
 :::
 
 ![Linkを使用して商品登録画面へ移動する](assets/programmatic-navigation-listing-to-register.svg){#ch03-programmatic-figure-2}
@@ -3794,43 +3864,43 @@ export default function AppRoutes() {
 Linkを使用して商品登録画面へ移動する
 :::
 
-::: {#ch03-programmatic-m236 .paragraph}
+::: {#ch03-programmatic-r770 .paragraph}
 ここからは、商品登録画面を追加したルートと、［登録］ボタンをクリックしたときにプログラムから画面遷移を行う仕組みを確認しましょう。
 :::
 
-::: {#ch03-programmatic-m238 .heading level="minor"}
+::: {#ch03-programmatic-r772 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-programmatic-m240 .step}
+::: {#ch03-programmatic-r774 .step}
 **① 商品登録画面のルートを追加する**
 :::
 
-::: {#ch03-programmatic-m243 .code filename="ch03-basic/src/samples/sample3_6/routes/AppRoutes.tsx" start-line="15"}
+::: {#ch03-programmatic-r777 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true" wide-code-label="true"}
 ~~~tsx
         <Route path="products/new" element={<ProductRegisterPage />} />
         <Route path="products/:id" element={<ProductDetailPage />} />
 ~~~
 :::
 
-::: {#ch03-programmatic-m248 .paragraph}
+::: {#ch03-programmatic-r782 .paragraph}
 商品登録画面へのルートは、3.3節で学習した子ルートと同じように定義しています。`path="products/new"` と指定し、`element` には新たに作成した `ProductRegisterPage` を指定します。
 :::
 
-::: {#ch03-programmatic-m250 .paragraph}
+::: {#ch03-programmatic-r784 .paragraph}
 ここで、前節で学習した商品詳細画面のルート `products/:id` に注目してください。
 :::
 
-::: {#ch03-programmatic-m252 .paragraph}
+::: {#ch03-programmatic-r786 .paragraph}
 `products/:id` は、`products` に続く1つのパスの部分をURLパラメータとして扱う設定です。そのため、`new` という文字列も `id` として取得できるように見えるかもしれません。
 :::
 
-::: {#ch03-programmatic-m254 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r788 .paragraph punctuation-font="inherit"}
 React Routerでは、複数のルートが同じURLに一致する場合、より具体的に一致するルートが選択されます。今回のように、**固定のパスである `products/new` と可変部分を持つ `products/:id` の両方に一致する場合は、固定のパスを指定したルートが優先されます。**
 :::
 
-::: {#ch03-programmatic-m256 .paragraph}
-したがって、商品登録画面のURLである `/sample-3-6/products/new` にアクセスすると、商品詳細画面ではなく商品登録画面が表示されます。一方、`/sample-3-6/products/101` にアクセスすると、商品番号101を表示する詳細画面になります。
+::: {#ch03-programmatic-r790 .paragraph}
+したがって、商品登録画面のURLである `/products/new` にアクセスすると、商品詳細画面ではなく商品登録画面が表示されます。一方、`/products/101` にアクセスすると、商品番号101を表示する詳細画面になります。
 :::
 
 ![商品登録画面と商品詳細画面をURLのパスによって区別する](assets/programmatic-navigation-route-ranking.svg){#ch03-programmatic-route-ranking}
@@ -3839,52 +3909,52 @@ React Routerでは、複数のルートが同じURLに一致する場合、よ�
 商品登録画面と商品詳細画面をURLのパスによって区別する
 :::
 
-::: {#ch03-programmatic-m267 .paragraph}
+::: {#ch03-programmatic-r802 .paragraph}
 この例では、コード上で `products/new` を先に記述していますが、React Routerがより具体的なルートを選択するため、この2つのルートの記述順を入れ替えても、選択される画面は同じです。
 :::
 
-::: {#ch03-programmatic-m269 .step}
+::: {#ch03-programmatic-r804 .step}
 **② useNavigate()で画面遷移用の関数を取得する**
 :::
 
-::: {#ch03-programmatic-m271 .paragraph}
+::: {#ch03-programmatic-r806 .paragraph}
 まず、商品登録画面の `pages/ProductRegisterPage.tsx` で、React Routerから `useNavigate` をインポートします。
 :::
 
-::: {#ch03-programmatic-m274 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="1"}
+::: {#ch03-programmatic-r809 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
 import { Link, useNavigate } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-programmatic-m278 .paragraph}
+::: {#ch03-programmatic-r813 .paragraph}
 `useNavigate()` は、前節で学習した `useParams()` と同じように、React Routerが提供するHookです。
 :::
 
-::: {#ch03-programmatic-m280 .paragraph}
+::: {#ch03-programmatic-r815 .paragraph}
 続いて、関数コンポーネントの中で次のように記述します。
 :::
 
-::: {#ch03-programmatic-m283 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="4"}
+::: {#ch03-programmatic-r818 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
   const navigate = useNavigate()
 ~~~
 :::
 
-::: {#ch03-programmatic-m287 .paragraph}
+::: {#ch03-programmatic-r822 .paragraph}
 `useNavigate()` を呼び出すと、画面遷移を行うための関数が返されます。今回のサンプルでは、その関数を `navigate` という変数に格納しています。
 :::
 
-::: {#ch03-programmatic-m289 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r824 .paragraph punctuation-font="inherit"}
 ここで注意したいのは、**useNavigate()を呼び出しただけでは、画面遷移は行われない** という点です。実際に画面を切り替えるには、取得した関数を呼び出す必要があります。
 :::
 
-::: {#ch03-programmatic-m291 .table column-widths="45 55"}
+::: {#ch03-programmatic-r826 .table column-widths="47 53"}
 | 記述 | 役割 |
 |---|---|
 | `useNavigate()` | 画面遷移を行うための関数を取得する。 |
 | `navigate` | 取得した関数を格納している変数。 |
-| `navigate('/sample-3-6/products')` | 取得した関数を呼び出し、指定したパスへ移動する。 |
+| `navigate('/products')` | 取得した関数を呼び出し、指定したパスへ移動する。 |
 :::
 
 ![useNavigate()で関数を取得し、navigate()で画面遷移を実行する](assets/programmatic-navigation-hook.svg){#ch03-programmatic-figure-3}
@@ -3893,40 +3963,40 @@ import { Link, useNavigate } from 'react-router'
 useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 :::
 
-::: {#ch03-programmatic-m305 .paragraph}
+::: {#ch03-programmatic-r840 .paragraph}
 なお、`navigate` はReact Routerで決められた特別な名前ではありません。`useNavigate()` から返された関数を格納するために、自分で付けた変数名です。本研修では、画面遷移を行う関数であることが分かりやすいように、この名前を使用します。
 :::
 
-::: {#ch03-programmatic-m307 .step}
+::: {#ch03-programmatic-r842 .step}
 **③ イベントハンドラーから画面遷移を行う**
 :::
 
-::: {#ch03-programmatic-m309 .paragraph}
+::: {#ch03-programmatic-r844 .paragraph}
 取得した `navigate` を使用して、［登録］ボタンがクリックされたときに商品一覧画面へ移動する処理を記述します。
 :::
 
-::: {#ch03-programmatic-m312 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="6"}
+::: {#ch03-programmatic-r847 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
   function handleRegister() {
     // 実際の開発では、REST APIで商品を登録し、成功を確認する。
-    navigate('/sample-3-6/products')
+    navigate('/products')
   }
 ~~~
 :::
 
-::: {#ch03-programmatic-m319 .paragraph}
+::: {#ch03-programmatic-r854 .paragraph}
 `handleRegister` は、［登録］ボタンがクリックされたときに実行する関数です。
 :::
 
-::: {#ch03-programmatic-m321 .paragraph}
-`navigate()` の引数には、移動先のURLのパスを指定します。今回は商品一覧画面へ移動したいため、`'/sample-3-6/products'` を指定しています。
+::: {#ch03-programmatic-r856 .paragraph}
+`navigate()` の引数には、移動先のURLのパスを指定します。今回は商品一覧画面へ移動したいため、`'/products'` を指定しています。
 :::
 
-::: {#ch03-programmatic-m323 .paragraph}
+::: {#ch03-programmatic-r858 .paragraph}
 次に、この関数をボタンのクリックイベントと結び付けます。
 :::
 
-::: {#ch03-programmatic-m326 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="18"}
+::: {#ch03-programmatic-r861 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
         <button type="button" className="btn btn-primary"
                 onClick={handleRegister}>
@@ -3935,27 +4005,27 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 ~~~
 :::
 
-::: {#ch03-programmatic-m333 .paragraph}
+::: {#ch03-programmatic-r868 .paragraph}
 2.4節で学習したように、`onClick` に関数を指定すると、ボタンをクリックしたときにその関数が実行されます。
 :::
 
-::: {#ch03-programmatic-m335 .paragraph}
+::: {#ch03-programmatic-r870 .paragraph}
 今回のサンプルでは、［登録］ボタンをクリックすると、次のように処理が行われます。
 :::
 
-::: {#ch03-programmatic-m337-1 .paragraph numbered="true"}
+::: {#ch03-programmatic-r872-1 .paragraph numbered="true"}
 1\. `onClick` に指定した `handleRegister` が実行される。
 :::
 
-::: {#ch03-programmatic-m337-2 .paragraph numbered="true"}
-2\. `handleRegister` の中で `navigate('/sample-3-6/products')` が呼び出される。
+::: {#ch03-programmatic-r872-2 .paragraph numbered="true"}
+2\. `handleRegister` の中で `navigate('/products')` が呼び出される。
 :::
 
-::: {#ch03-programmatic-m337-3 .paragraph numbered="true"}
+::: {#ch03-programmatic-r872-3 .paragraph numbered="true"}
 3\. React RouterがURLを変更し、そのパスに対応する子ルートを選択する。
 :::
 
-::: {#ch03-programmatic-m337-4 .paragraph numbered="true"}
+::: {#ch03-programmatic-r872-4 .paragraph numbered="true"}
 4\. 共通レイアウトの `Outlet` の位置に `ProductListPage` が表示される。
 :::
 
@@ -3965,59 +4035,59 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 イベントハンドラー内でnavigate()を呼び出すと、商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-m351 .paragraph}
+::: {#ch03-programmatic-r886 .paragraph}
 このように、`Link` による画面遷移と同様に、ページ全体を再読み込みせずに画面を切り替えられます。
 :::
 
-::: {#ch03-programmatic-m353 .paragraph}
+::: {#ch03-programmatic-r888 .paragraph}
 ここで、`useNavigate()` と `navigate()` を記述する場所の違いも確認しておきましょう。
 :::
 
-::: {#ch03-programmatic-m355-1 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r890-1 .paragraph punctuation-font="inherit"}
 ● **useNavigate()**：関数コンポーネントのトップレベルで呼び出す。
 :::
 
-::: {#ch03-programmatic-m355-2 .paragraph punctuation-font="inherit"}
+::: {#ch03-programmatic-r890-2 .paragraph punctuation-font="inherit"}
 ● **navigate()**：取得した関数を、イベントハンドラーなど、画面遷移を行いたい処理の中で呼び出す。
 :::
 
-::: {#ch03-programmatic-m358 .paragraph}
+::: {#ch03-programmatic-r893 .paragraph}
 `useNavigate()` はHookなので、2.3節で学習した `useState()` と同じように、イベントハンドラーやif文の中では呼び出さないようにしてください。
 :::
 
-::: {#ch03-programmatic-m360 .step}
+::: {#ch03-programmatic-r895 .step}
 **④ LinkとuseNavigate()の使い分け**
 :::
 
-::: {#ch03-programmatic-m362 .paragraph}
+::: {#ch03-programmatic-r897 .paragraph}
 今回の商品登録画面では、［登録］と［キャンセル］のどちらを操作しても、商品一覧画面へ戻ります。
 :::
 
-::: {#ch03-programmatic-m364 .paragraph}
+::: {#ch03-programmatic-r899 .paragraph}
 ただし、［キャンセル］には `navigate()` ではなく、次のように `Link` を使用しています。
 :::
 
-::: {#ch03-programmatic-m367 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="22"}
+::: {#ch03-programmatic-r902 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
 ~~~tsx
-        <Link to="/sample-3-6/products" className="btn btn-secondary">
+        <Link to="/products" className="btn btn-secondary">
           キャンセル
         </Link>
 ~~~
 :::
 
-::: {#ch03-programmatic-m373 .paragraph}
+::: {#ch03-programmatic-r908 .paragraph}
 ［キャンセル］の目的は、商品登録を行わずに商品一覧画面へ戻ることです。移動するだけでよいので、これまでに学習した `Link` を使用できます。
 :::
 
-::: {#ch03-programmatic-m375 .paragraph}
+::: {#ch03-programmatic-r910 .paragraph}
 一方、［登録］の目的は、実際の開発では商品を登録することです。登録処理の結果に応じて画面遷移を行う必要があるため、今回はイベントハンドラーの中から `navigate()` を呼び出す構成としています。
 :::
 
-::: {#ch03-programmatic-m377 .paragraph}
+::: {#ch03-programmatic-r912 .paragraph}
 それぞれの使い分けを整理すると、次のようになります。
 :::
 
-::: {#ch03-programmatic-m379 .table column-widths="23 51 26"}
+::: {#ch03-programmatic-r914 .table column-widths="25 39 36"}
 | 使用する機能 | 適している場面 | 使用例 |
 |---|---|---|
 | `Link` | リンクをクリックして、指定した画面へ移動する。 | 商品詳細へ移動する、キャンセルして一覧へ戻る。 |
@@ -4025,83 +4095,156 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 | `useNavigate()` で取得した関数 | プログラムの処理に応じて画面遷移を行う。 | 商品の登録や更新に成功した後で一覧へ移動する。 |
 :::
 
-::: {#ch03-programmatic-m385 .paragraph}
+::: {#ch03-programmatic-r920 .paragraph}
 通常のリンクによる画面遷移には `Link` や `NavLink` を使用し、処理を実行した結果に応じて移動する場合には `useNavigate()` で取得した関数を使用する、という考え方を押さえておきましょう。
 :::
 
-::: {#ch03-programmatic-m387 .training-note breakable="true"}
+:::: {#ch03-programmatic-r922 .training-note breakable="true"}
 【補足】実際の商品登録画面では
 
 今回のサンプルでは、［登録］ボタンをクリックしても、商品を登録する処理は実行されません。商品一覧画面へ移動する処理だけを記述しているためです。
 
 `handleRegister` に記述している次のコメントは、実際の商品登録処理を追加する位置を示しています。
-:::
 
-::: {#ch03-programmatic-m394 .code filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="7"}
-~~~tsx
+~~~{#ch03-programmatic-r929 .tsx code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
     // 実際の開発では、REST APIで商品を登録し、成功を確認する。
 ~~~
-:::
 
-::: {#ch03-programmatic-m398 .paragraph}
 実際の商品登録画面では、フォームで入力された商品情報をREST APIへ送信します。そして、REST APIから返された結果を確認し、登録が成功した場合に商品一覧画面へ移動するようにします。
+
+::: {#ch03-programmatic-api .note-figure}
+![画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる](assets/programmatic-navigation-api.svg)
 :::
 
-![画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる](assets/programmatic-navigation-api.svg){#ch03-programmatic-api}
+**商品を登録する処理と、登録後に画面を切り替える処理は、別の処理です。** `POST /api/products` は商品を登録するためのREST APIへのリクエスト例であり、`navigate('/products')` はReact側の商品一覧画面への移動を指示する記述です。後続の章では、商品を正常に登録できた場合にのみ `navigate()` を呼び出すように実装します。
+::::
 
-::: {#ch03-programmatic-api-caption .caption}
-画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる
+:::: {#ch03-programmatic-r947 .training-note breakable="true"}
+【補足】本研修の配布サンプルの構成
+
+3.6の講義用サンプルは、`ch03-basic/src/samples/sample3_6/` に用意しています。3.5の完成コードを基に、商品登録画面と画面遷移の処理を追加しています。前節のファイルを直接変更する必要はありません。
+
+配布サンプルでは、3.6のURLの入口が `/sample-3-6` となります。
+
+::: {#ch03-programmatic-r953 .table column-widths="30 31 39"}
+| 画面 | 通常構成のURLのパス | 配布サンプルのURLのパス |
+|---|---|---|
+| ホーム | `/` | `/sample-3-6` |
+| 商品一覧 | `/products` | `/sample-3-6/products` |
+| 商品登録 | `/products/new` | `/sample-3-6/products/new` |
+| 商品詳細（商品番号101） | `/products/101` | `/sample-3-6/products/101` |
+| ご利用案内 | `/guide` | `/sample-3-6/guide` |
 :::
 
-::: {#ch03-programmatic-m409 .paragraph punctuation-font="inherit"}
-**商品を登録する処理と、登録後に画面を切り替える処理は、別の処理です。** 後続の章では、商品を正常に登録できた場合にのみ `navigate()` を呼び出すように実装します。
+**配布サンプルで異なる部分**
+
+`routes/AppRoutes.tsx` のルート定義と、`useNavigate()` で関数を取得する方法は通常構成と同じです。異なるのは、画面遷移の際に指定するパスです。
+
+商品一覧から商品登録画面へのリンクは、次のように記述しています。
+
+~~~{#ch03-programmatic-r968 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="17"}
+      <Link to="/sample-3-6/products/new" className="btn btn-primary mb-3">
+        商品登録
+      </Link>
+~~~
+
+商品登録画面の［登録］ボタンから商品一覧画面へ移動する処理では、`navigate()` の引数に `/sample-3-6/products` を指定しています。
+
+~~~{#ch03-programmatic-r977 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="6"}
+  function handleRegister() {
+    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
+    navigate('/sample-3-6/products')
+  }
+~~~
+
+［キャンセル］のリンクも同じパスを指定しています。
+
+~~~{#ch03-programmatic-r987 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="22"}
+        <Link to="/sample-3-6/products" className="btn btn-secondary">
+          キャンセル
+        </Link>
+~~~
+
+共通レイアウト、商品カードの詳細リンク、商品詳細画面から一覧へ戻るリンクについても、3.6のURLに合わせて設定済みです。通常のアプリケーションを開発する場合は、前節のリンク先を変更する必要はありません。
+::::
+
+::: {#ch03-programmatic-r995 .heading level="minor"}
+配布サンプルの動作確認
 :::
 
-::: {#ch03-programmatic-m411 .heading level="minor"}
+::: {#ch03-programmatic-r997 .paragraph}
+`ch03-basic` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。ブラウザーのメニューから「3.6 プログラムによる画面遷移」を選択します。
+:::
+
+::: {#ch03-programmatic-r999 .paragraph}
+共通メニューの［商品一覧］から［商品登録］をクリックし、URLのパスが `/sample-3-6/products/new` になることを確認してください。［登録］ボタンをクリックすると `/sample-3-6/products` に移動し、商品一覧画面が表示されます。もう一度商品登録画面に移動し、［キャンセル］からも商品一覧画面へ戻れることを確認しましょう。
+:::
+
+::: {#ch03-programmatic-r1001 .heading level="minor"}
 【確認演習】プログラムから画面遷移を行う
 :::
 
-::: {#ch03-programmatic-m413 .paragraph}
+::: {#ch03-programmatic-r1003 .paragraph}
 商品登録画面の［登録］ボタンをクリックすると、プログラムから商品一覧画面へ移動できるようにしましょう。
 :::
 
-::: {#ch03-programmatic-m415 .paragraph}
+::: {#ch03-programmatic-r1005 .paragraph}
 今回の演習では、商品一覧画面、商品登録画面の基本構成、共通レイアウト、ルーティング、ボタンのクリックイベントなどをあらかじめ用意しています。前節までに学習した構文を使用する部分は実装済みです。
 :::
 
-::: {#ch03-programmatic-m417 .paragraph}
+::: {#ch03-programmatic-r1007 .paragraph}
 編集するファイルは、`pages` フォルダー内の商品登録画面だけです。
 :::
 
-::: {#ch03-programmatic-m419-1 .paragraph numbered="true"}
+::: {#ch03-programmatic-r1009 .paragraph}
+演習用の `q3_6` には、前節までの機能を完成済みの状態で用意しています。前節までの確認演習が未完成でも取り組めます。
+:::
+
+::: {#ch03-programmatic-r1011 .paragraph}
+この確認演習では、商品一覧への移動先として `/sample-3-6/products` を使用してください。通常構成の `/products` をそのまま指定しないように注意しましょう。
+:::
+
+::: {#ch03-programmatic-r1013-1 .paragraph numbered="true"}
 1\. `ch03-basic-q` プロジェクトの `src/exercises/q3_6/pages/ProductRegisterPage.tsx` を開いてください。
 :::
 
-::: {#ch03-programmatic-m419-2 .paragraph numbered="true"}
-2\. コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。3つとも実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch03-programmatic-r1013-2 .paragraph numbered="true"}
+2\. コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。3つとも実装問題です。
 :::
 
-::: {#ch03-programmatic-m419-3 .paragraph numbered="true"}
+::: {#ch03-programmatic-r1016 .table column-widths="12 88"}
+| 番号 | 作業内容 |
+|---|---|
+| ➀ | useNavigateを追加でインポートする。 |
+| ➁ | useNavigate()で画面遷移用の関数を取得する。 |
+| ➂ | 登録ボタンのイベントハンドラーから商品一覧画面へ移動する。 |
+:::
+
+::: {#ch03-programmatic-r1022-1 .paragraph}
+コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-programmatic-r1022-2 .paragraph numbered="true"}
 3\. 編集したファイルを保存してください。
 :::
 
-::: {#ch03-programmatic-m419-4 .paragraph numbered="true"}
+::: {#ch03-programmatic-r1022-3 .paragraph numbered="true"}
 4\. `ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-programmatic-m419-5 .paragraph numbered="true"}
+::: {#ch03-programmatic-r1022-4 .paragraph numbered="true"}
 5\. メニューから「3.6 プログラムによる画面遷移」を選択してください。
 :::
 
-::: {#ch03-programmatic-m425 .heading level="minor"}
+::: {#ch03-programmatic-r1027 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch03-programmatic-m427-1 .paragraph numbered="true"}
+::: {#ch03-programmatic-r1029-1 .paragraph numbered="true"}
 6\. 共通メニューの［商品一覧］をクリックしてください。次に、［商品登録］をクリックして商品登録画面を表示し、［登録］ボタンをクリックします。
 :::
 
-::: {#ch03-programmatic-m429 .paragraph}
+::: {#ch03-programmatic-r1031 .paragraph}
 次の図と見比べながら、商品一覧画面へ戻ったことを確認してください。
 :::
 
@@ -4111,7 +4254,7 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 登録ボタンのイベント処理から商品一覧画面へ移動する
 :::
 
-::: {#ch03-programmatic-m440 .paragraph}
+::: {#ch03-programmatic-r1043 .paragraph}
 商品一覧画面へ戻ったら、もう一度［商品登録］をクリックしてください。今度は［キャンセル］をクリックし、商品一覧画面へ戻ることを確認してください。
 :::
 
@@ -4121,28 +4264,28 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 キャンセルのLinkからも商品一覧画面へ戻ることを確認する
 :::
 
-::: {#ch03-programmatic-m448 .paragraph}
+::: {#ch03-programmatic-r1052 .paragraph}
 次の内容を確認できれば、演習完了です。
 :::
 
-::: {#ch03-programmatic-m450-1 .paragraph}
+::: {#ch03-programmatic-r1054-1 .paragraph}
 ● ［登録］ボタンと［キャンセル］リンクのどちらを操作しても、URLのパスが `/sample-3-6/products` に変わり、商品一覧画面が表示される。
 :::
 
-::: {#ch03-programmatic-m450-2 .paragraph}
+::: {#ch03-programmatic-r1054-2 .paragraph}
 ● 共通ヘッダー、メニュー、フッターが引き続き表示される。
 :::
 
-::: {#ch03-programmatic-m450-3 .paragraph}
+::: {#ch03-programmatic-r1054-3 .paragraph}
 ● 商品一覧に表示されている商品の件数や内容は変わらない。
 :::
 
-::: {#ch03-programmatic-m454 .paragraph}
+::: {#ch03-programmatic-r1058 .paragraph}
 なお、［キャンセル］はあらかじめ実装されています。［登録］ボタンをクリックした場合にも商品一覧画面へ戻れることを必ず確認してください。
 :::
 
-::: {#ch03-programmatic-m456 .paragraph}
-画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+::: {#ch03-programmatic-r1060 .paragraph}
+画面に変更が反映されない場合は、`ch03-basic-q` の開発サーバーに接続していることを確認してください。講義用と確認演習用の開発サーバーのURLは異なる場合があります。正しいURLを開いたうえで、ブラウザーの画面を再読み込みして、もう一度操作してください。
 :::
 
 ::: {#ch03-programmatic-points .section-points}
@@ -4156,7 +4299,7 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 
 ● `Link` や `NavLink` と、`useNavigate()` で取得した関数は、画面遷移を行う場面に応じて使い分ける。
 :::
-::::
+:::::
 
 :::: {#page-18 .source-page}
 ::: {#ch03-summary-title .heading}
