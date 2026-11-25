@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "ch01-setup"
+		},
+		{
+			"path": "ch02-basic"
+		},
+		{
+			"path": "ch02-basic-q"
+		},
+		{
+			"path": "ch03-basic"
+		},
+		{
+			"path": "ch03-basic-q"
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Light Modern",
+		"workbench.tips.enabled": false,
+		"workbench.activityBar.location": "top",
+		"workbench.tree.indent": 20,
+		"breadcrumbs.enabled": true,
+		"explorer.compactFolders": false,
+		"terminal.integrated.fontSize": 20,
+		"terminal.integrated.lineHeight": 1.15,
+		"terminal.integrated.tabs.enabled": false,
+		"terminal.integrated.enablePersistentSessions": false,
+		"workbench.secondarySideBar.defaultVisibility": "hidden",
+"[typescriptreact]": {
+      "editor.autoClosingBrackets": "never",
+      "js/ts.autoClosingTags.enabled": false,
+      "editor.bracketPairColorization.enabled": true,
+      "editor.guides.bracketPairs": true
+    }
+	}
+}
