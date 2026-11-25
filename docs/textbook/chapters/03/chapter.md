@@ -1533,7 +1533,7 @@ SPAの特徴である、ページ全体を再読み込みせずに画面を切�
 :::
 :::::
 
-:::: {#page-8 .source-page}
+::::: {#page-8 .source-page}
 ::: {#ch03-layout-title .heading}
 3.3. 共通レイアウトの作成
 :::
@@ -1544,48 +1544,54 @@ SPAの特徴である、ページ全体を再読み込みせずに画面を切�
 ![共通レイアウトの作成](assets/layout-slide.svg)
 :::
 
-::: {#ch03-layout-m503 .heading level="minor"}
+::: {#ch03-layout-r30 .heading level="minor"}
 共通レイアウトとは
 :::
 
-::: {#ch03-layout-m505 .paragraph}
+::: {#ch03-layout-r32 .paragraph}
 前節では、各画面のコンポーネントとルーティングの設定を別々のファイルに分けて管理し、URLに応じて画面を表示する方法を学習しました。
 :::
 
-::: {#ch03-layout-m507 .paragraph}
+::: {#ch03-layout-r34 .paragraph}
 実際のWebアプリケーションでは、表示する画面が変わっても、ヘッダーやメニュー、フッターなどは共通していることが一般的です。
 :::
 
-::: {#ch03-layout-m509 .paragraph}
+::: {#ch03-layout-r36 .paragraph}
 例えば、商品管理システムのホーム画面と商品一覧画面では、中央に表示する内容は異なりますが、上部には同じシステム名とメニューを表示します。
 :::
 
-::: {#ch03-layout-m511 .paragraph}
+::: {#ch03-layout-r38 .paragraph}
 これらの共通部分を各画面のコンポーネントに個別に記述すると、次のような問題が発生します。
 :::
 
-::: {#ch03-layout-m513-1 .paragraph}
+::: {#ch03-layout-r40-1 .paragraph}
 ● メニューの項目を追加する際に、すべての画面を修正する必要がある。
 :::
 
-::: {#ch03-layout-m513-2 .paragraph}
+::: {#ch03-layout-r40-2 .paragraph}
 ● ヘッダーやフッターのデザインを変更する際に、同じ修正を繰り返す必要がある。
 :::
 
-::: {#ch03-layout-m516 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r43 .paragraph punctuation-font="inherit"}
 そこで、**複数の画面で使用する共通部分を1つのコンポーネントにまとめて管理する**方法を考えます。このような画面の共通構成を、共通レイアウトと呼びます。
 :::
 
-::: {#ch03-layout-m518 .paragraph}
+::: {#ch03-layout-r45 .paragraph}
 React Routerには、共通レイアウトの中に、URLに応じた画面を表示する仕組みがあります。この節では、その仕組みを利用して、複数の画面を持つアプリケーションに共通レイアウトを適用します。
 :::
+:::::
 
-::: {#ch03-layout-m520 .heading level="minor"}
+::::: {#page-9 .source-page}
+::: {#ch03-layout-r47 .heading level="minor"}
 【サンプル】共通レイアウトを作成する
 :::
 
-::: {#ch03-layout-m522 .paragraph}
-前節の商品管理システムに、共通のヘッダー・メニュー・フッターを追加します。ホーム・商品一覧・ご利用案内の各画面は、共通レイアウトの中央に表示します。
+::: {#ch03-layout-r49 .paragraph}
+前節で学習した通常のアプリケーション構成に、共通のヘッダー・メニュー・フッターを追加します。ホーム・商品一覧・ご利用案内の各画面は、共通レイアウトの中央に表示します。
+:::
+
+::: {#ch03-layout-r51 .paragraph}
+以下では、1つの商品管理システムを開発する場合の記述例を使用します。実際の配布サンプルのフォルダーとURLについては、構文の解説の後に確認します。
 :::
 
 ![共通レイアウトの中に商品一覧画面を表示する](assets/layout-product-screen.svg){#ch03-layout-product-screen}
@@ -1594,19 +1600,17 @@ React Routerには、共通レイアウトの中に、URLに応じた画面を�
 共通レイアウトの中に商品一覧画面を表示する
 :::
 
-::: {#ch03-layout-m530 .step}
-**3.3で使用するフォルダー構成**
-:::
-::::
-
-:::: {#page-9 .source-page}
-::: {#ch03-layout-m532 .paragraph}
-今回は、`sample3_2` を基にした `sample3_3` フォルダーを使用します。前節までのフォルダーに加え、共通レイアウトを格納する `layouts` フォルダーを用意しています。
+::: {#ch03-layout-r59 .paragraph punctuation-font="inherit"}
+**共通レイアウトを管理するフォルダーを追加する**
 :::
 
-::: {#ch03-layout-m535 .code example="true" code-label="フォルダー構成"}
+::: {#ch03-layout-r61 .paragraph}
+前節の通常構成に、共通レイアウトを格納する `layouts` フォルダーを追加します。その中に `MainLayout.tsx` を作成します。
+:::
+
+::: {#ch03-layout-r64 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
 ~~~text
-ch03-basic/src/samples/sample3_3/
+src/
 ├─ components/
 │  └─ ProductCard.tsx
 ├─ pages/
@@ -1615,39 +1619,45 @@ ch03-basic/src/samples/sample3_3/
 │  └─ GuidePage.tsx
 ├─ layouts/
 │  └─ MainLayout.tsx
-└─ routes/
-   └─ AppRoutes.tsx
+├─ routes/
+│  └─ AppRoutes.tsx
+├─ App.tsx
+└─ main.tsx
 ~~~
 :::
 
-::: {#ch03-layout-m549 .paragraph}
-`components` と `pages` の各ファイルは、前節の `sample3_2` と同じ内容です。3.3のサンプルを独立して利用するため、それぞれのファイルを `sample3_3` に用意しています。
+::: {#ch03-layout-r80 .paragraph}
+`layouts` に格納する共通レイアウトも、`pages` に格納する各画面や `components` に格納する画面部品と同じReactのコンポーネントです。役割を明確にするため、別のフォルダーで管理します。
 :::
 
-::: {#ch03-layout-m551 .paragraph}
+::: {#ch03-layout-r82 .paragraph}
+`components` と `pages` の各ファイルには、前節と同じコードを使用します。`App.tsx` と `main.tsx` の起動処理も前節から変更する必要はありません。
+:::
+
+::: {#ch03-layout-r84 .paragraph}
 今回、新しく作成するファイルと、変更するファイルは次の2つです。
 :::
 
-::: {#ch03-layout-m553 .table column-widths="34 66"}
+::: {#ch03-layout-r86 .table column-widths="43 57"}
 | ファイル | 役割 |
 |---|---|
-| `layouts/MainLayout.tsx` | 共通のヘッダー・メニュー・フッターと、各画面を表示する位置を定義する。 |
-| `routes/AppRoutes.tsx` | 共通レイアウトの中に、URLに応じて各画面が表示されるようにルートを定義する。 |
+| `layouts/MainLayout.tsx`（新規作成） | 共通のヘッダー・メニュー・フッターと、各画面を表示する位置を定義する。 |
+| `routes/AppRoutes.tsx`（変更） | 共通レイアウトの中に、URLに応じて各画面が表示されるようにルートを定義する。 |
 :::
 
-::: {#ch03-layout-m558 .paragraph}
+::: {#ch03-layout-r91 .paragraph}
 各画面のコンポーネント自体には、ヘッダーやメニューを追加する必要はありません。
 :::
 
-::: {#ch03-layout-m560 .step}
+::: {#ch03-layout-r93 .paragraph punctuation-font="inherit"}
 **共通レイアウトを定義するファイル**
 :::
 
-::: {#ch03-layout-m562 .paragraph}
+::: {#ch03-layout-r95 .paragraph}
 まず、`MainLayout.tsx` を確認してください。
 :::
 
-::: {#ch03-layout-m565 .code filename="ch03-basic/src/samples/sample3_3/layouts/MainLayout.tsx" start-line="1"}
+::: {#ch03-layout-r98 .code code-label="TSXの記述例（通常構成）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Outlet } from 'react-router'
 
@@ -1676,19 +1686,19 @@ export default function MainLayout() {
 ~~~
 :::
 
-::: {#ch03-layout-m592 .paragraph}
+::: {#ch03-layout-r125 .paragraph}
 このファイルには、各画面で共通して使用するヘッダー・メニュー・フッターを記述しています。また、メニューとフッターの間に、React Routerが提供する `Outlet` を配置しています。
 :::
 
-::: {#ch03-layout-m594 .step}
+::: {#ch03-layout-r127 .paragraph punctuation-font="inherit"}
 **ルーティングを定義するファイル**
 :::
 
-::: {#ch03-layout-m596 .paragraph}
+::: {#ch03-layout-r129 .paragraph}
 次に、`AppRoutes.tsx` を確認してください。
 :::
 
-::: {#ch03-layout-m599 .code filename="ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx" start-line="1"}
+::: {#ch03-layout-r132 .code code-label="TSXの記述例（通常構成）" filename="src/routes/AppRoutes.tsx" example="true"}
 ~~~tsx
 import { Routes, Route } from 'react-router'
 import HomePage from '../pages/HomePage'
@@ -1710,33 +1720,33 @@ export default function AppRoutes() {
 ~~~
 :::
 
-::: {#ch03-layout-m619 .paragraph}
+::: {#ch03-layout-r152 .paragraph}
 前節との主な違いは、3つの画面の `Route` を、`MainLayout` を表示する `Route` で囲んでいることです。また、ホーム画面のルートの指定方法も変更しています。
 :::
 
-::: {#ch03-layout-m621 .paragraph}
-配布サンプルの `ch03-basic` の開発サーバーを起動し、メニューから「3.3 共通レイアウトの作成」を選択してください。
+::: {#ch03-layout-r154 .paragraph}
+この例でも、前節と同じように `App.tsx` から `AppRoutes` を使用します。共通レイアウトの指定は `AppRoutes.tsx` にまとめているため、`App.tsx` に `MainLayout` を直接記述する必要はありません。
 :::
 
-::: {#ch03-layout-m623 .paragraph}
-今回のサンプルでは、共通メニューの項目は文字として表示しています。メニューをクリックして画面を切り替える機能は、次の3.4節で追加します。
+::: {#ch03-layout-r156 .paragraph}
+今回は、共通メニューの項目を文字として表示しています。メニューをクリックして画面を切り替える機能は、次の3.4節で追加します。
 :::
+:::::
 
-::: {#ch03-layout-m625 .heading level="minor"}
+::::: {#page-10 .source-page}
+::: {#ch03-layout-r158 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-layout-m627 .step}
+::: {#ch03-layout-r160 .step}
 **① 親ルートと子ルートを定義する**
 :::
-::::
 
-:::: {#page-10 .source-page}
-::: {#ch03-layout-m629 .paragraph}
+::: {#ch03-layout-r162 .paragraph}
 まず、`AppRoutes.tsx` のルートの定義を確認します。
 :::
 
-::: {#ch03-layout-m632 .code filename="ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx" start-line="9"}
+::: {#ch03-layout-r165 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true"}
 ~~~tsx
     <Routes>
       <Route element={<MainLayout />}>
@@ -1748,79 +1758,79 @@ export default function AppRoutes() {
 ~~~
 :::
 
-::: {#ch03-layout-m642 .paragraph}
-前節では、`Routes` の中に3つの `Route` を並べて記述し、URLごとに表示する画面を指定しました。
+::: {#ch03-layout-r175 .paragraph}
+前節では、`Routes` の中に3つの `Route` を並べて記述し、`/`、`/products`、`/guide` に対応する画面を指定しました。
 :::
 
-::: {#ch03-layout-m644 .paragraph}
+::: {#ch03-layout-r177 .paragraph}
 今回は、複数の画面で共通レイアウトを使用するため、`Route` の中に別の `Route` を記述しています。
 :::
 
-::: {#ch03-layout-m646 .paragraph}
+::: {#ch03-layout-r179 .paragraph}
 このようにルートを階層構造にすると、それぞれのルートに異なる役割を持たせることができます。
 :::
 
-::: {#ch03-layout-m648-1 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r181-1 .paragraph punctuation-font="inherit"}
 ● **親ルート**：複数の画面で使用する共通レイアウトを指定する。
 :::
 
-::: {#ch03-layout-m648-2 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r181-2 .paragraph punctuation-font="inherit"}
 ● **子ルート**：共通レイアウトの中に表示する各画面を指定する。
 :::
 
-::: {#ch03-layout-m651 .paragraph}
+::: {#ch03-layout-r184 .paragraph}
 今回の親ルートは、`element={<MainLayout />}` を指定した `Route` です。この `Route` の内側に、ホーム・商品一覧・ご利用案内の子ルートを記述しています。
 :::
 
-::: {#ch03-layout-m653 .paragraph}
+::: {#ch03-layout-r186 .paragraph}
 このように、ルートを階層構造にすることを、ネストされたルーティング（Nested Routing）と呼びます。
 :::
 
-::: {#ch03-layout-m655 .step}
+::: {#ch03-layout-r188 .step}
 **② Outletで子ルートの画面を表示する**
 :::
 
-::: {#ch03-layout-m657 .paragraph}
+::: {#ch03-layout-r190 .paragraph}
 親ルートと子ルートを定義しただけでは、共通レイアウトのどこに子ルートの画面を表示するのかが決まりません。
 :::
 
-::: {#ch03-layout-m659 .paragraph}
+::: {#ch03-layout-r192 .paragraph}
 例えば、ヘッダーとメニューを画面上部に、フッターを画面下部に配置する場合は、その間に各画面の内容を表示する必要があります。
 :::
 
-::: {#ch03-layout-m661 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r194 .paragraph punctuation-font="inherit"}
 そこで使用するのが、**Outlet（アウトレット）** です。
 :::
 
-::: {#ch03-layout-m663 .paragraph}
+::: {#ch03-layout-r196 .paragraph}
 `MainLayout.tsx` では、React Routerから `Outlet` を読み込んでいます。
 :::
 
-::: {#ch03-layout-m666 .code filename="ch03-basic/src/samples/sample3_3/layouts/MainLayout.tsx" start-line="1"}
+::: {#ch03-layout-r199 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Outlet } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-layout-m670 .paragraph}
+::: {#ch03-layout-r203 .paragraph}
 続いて、メニューとフッターの間に配置しています。
 :::
 
-::: {#ch03-layout-m673 .code filename="ch03-basic/src/samples/sample3_3/layouts/MainLayout.tsx" start-line="17"}
+::: {#ch03-layout-r206 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
       <Outlet />
 ~~~
 :::
 
-::: {#ch03-layout-m677 .paragraph}
+::: {#ch03-layout-r210 .paragraph}
 `Outlet` は、親ルートのコンポーネント内で、現在のURLに対応する子ルートのReact要素を表示するためのコンポーネントです。
 :::
 
-::: {#ch03-layout-m679 .paragraph}
-例えば、商品一覧のURLにアクセスすると、親ルートの `MainLayout` が表示され、その `Outlet` の位置に子ルートの `ProductListPage` が表示されます。
+::: {#ch03-layout-r212 .paragraph}
+例えば、`/products` にアクセスすると、親ルートの `MainLayout` が表示され、その `Outlet` の位置に子ルートの `ProductListPage` が表示されます。
 :::
 
-::: {#ch03-layout-m681 .paragraph}
+::: {#ch03-layout-r214 .paragraph}
 ご利用案内のURLにアクセスした場合も、共通レイアウトには同じ `MainLayout` を使用します。ただし、`Outlet` の位置には `GuidePage` が表示されます。
 :::
 
@@ -1830,95 +1840,114 @@ import { Outlet } from 'react-router'
 親ルートに指定した共通レイアウトのOutletに子ルートの画面を表示する
 :::
 
-::: {#ch03-layout-m689 .paragraph}
+::: {#ch03-layout-r222 .paragraph}
 なお、`MainLayout` に `Outlet` を配置しなかった場合は、対応する子ルートが選択されても、その画面を共通レイアウト内に表示できません。
 :::
 
-::: {#ch03-layout-m691 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r224 .paragraph punctuation-font="inherit"}
 **親ルートに共通レイアウトを指定することと、共通レイアウトの中にOutletを配置することの両方が必要です。**
 :::
 
-::: {#ch03-layout-m693 .step}
+::: {#ch03-layout-r226 .step}
 **③ 共通レイアウトを使用するルートのパスを指定する**
 :::
 
-::: {#ch03-layout-m695 .paragraph}
+::: {#ch03-layout-r228 .paragraph}
 今回の親ルートには、`path` 属性を指定していません。
 :::
 
-::: {#ch03-layout-m698 .code filename="ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx" start-line="10"}
+::: {#ch03-layout-r231 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true"}
 ~~~tsx
       <Route element={<MainLayout />}>
 ~~~
 :::
 
-::: {#ch03-layout-m702 .paragraph}
+::: {#ch03-layout-r235 .paragraph}
 通常、`Route` には `path` を指定します。しかし、共通レイアウトを適用することだけが目的の場合には、パスを指定しないルートを使用できます。
 :::
 
-::: {#ch03-layout-m704 .paragraph punctuation-font="inherit"}
+::: {#ch03-layout-r237 .paragraph punctuation-font="inherit"}
 このようなルートは、子ルートをまとめて共通レイアウトを適用しますが、**URLに新しいパスの部分を追加しません。**
 :::
 
-::: {#ch03-layout-m706 .paragraph}
-一方、商品一覧とご利用案内の子ルートには、前節と同じように `products` や `guide` という相対パスを指定しています。
+::: {#ch03-layout-r239 .paragraph}
+一方、商品一覧とご利用案内の子ルートには、`products` や `guide` という相対パスを指定しています。
 :::
 
-::: {#ch03-layout-m709 .code filename="ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx" start-line="12"}
+::: {#ch03-layout-r242 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true"}
 ~~~tsx
         <Route path="products" element={<ProductListPage />} />
         <Route path="guide" element={<GuidePage />} />
 ~~~
 :::
 
-::: {#ch03-layout-m714 .paragraph}
-3.3のサンプルには、配布プロジェクト側で `/sample-3-3` という入口が設定されています。
+::: {#ch03-layout-r247 .paragraph}
+前節の通常構成では、商品一覧のルートを `path="/products"` と記述していました。今回は、子ルートのパスを `path="products"` と記述しています。
 :::
 
-::: {#ch03-layout-m716 .paragraph}
-親ルートに `path` を指定していないため、商品一覧のURLには、共通レイアウトを表す名前などが追加されることはありません。商品一覧のパスは `/sample-3-3/products`、ご利用案内のパスは `/sample-3-3/guide` になります。
+::: {#ch03-layout-r249 .paragraph punctuation-font="inherit"}
+先頭の `/` を付けずに、親のルートを基準としてパスを指定する方法を、**相対パス**と呼びます。ルートを階層構造にする際は、このように親のパスに続く部分を指定できます。
 :::
 
-::: {#ch03-layout-m718 .step}
+::: {#ch03-layout-r251 .paragraph}
+今回の親ルートには `path` を指定していません。また、前節の通常構成では、`App.tsx` から `AppRoutes` を直接使用しています。そのため、子ルートのパスの基準はサイトのルート（`/`）です。
+:::
+
+::: {#ch03-layout-r253 .paragraph}
+商品一覧のURLのパスは `/products`、ご利用案内のURLのパスは `/guide` になります。共通レイアウトを追加しても、前節の通常構成で使用していたURLは変わりません。
+:::
+
+::: {#ch03-layout-r255 .table column-widths="16 30 31 23"}
+| 画面 | 前節のルートの指定 | 今回の子ルートの指定 | 実際のURLのパス |
+|---|---|---|---|
+| 商品一覧 | `path="/products"` | `path="products"` | `/products` |
+| ご利用案内 | `path="/guide"` | `path="guide"` | `/guide` |
+:::
+
+::: {#ch03-layout-r260 .paragraph}
+なお、`layouts` や `pages` などのフォルダー名が、そのままブラウザーのURLに追加されるわけではありません。URLのパスは、ルーティングの設定によって決まります。
+:::
+
+::: {#ch03-layout-r262 .step}
 **④ indexで親ルートのURLに対応する画面を指定する**
 :::
 
-::: {#ch03-layout-m720 .paragraph}
+::: {#ch03-layout-r264 .paragraph}
 ホーム画面のルートには、前節とは異なる記述を使用しています。
 :::
 
-::: {#ch03-layout-m723 .code filename="ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx" start-line="11"}
+::: {#ch03-layout-r267 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/routes/AppRoutes.tsx" example="true"}
 ~~~tsx
         <Route index element={<HomePage />} />
 ~~~
 :::
 
-::: {#ch03-layout-m727 .paragraph}
+::: {#ch03-layout-r271 .paragraph}
 `index` は、親ルートに対応するURLにアクセスした場合に表示する、デフォルトの子ルートを指定するための属性です。
 :::
 
-::: {#ch03-layout-m729 .paragraph}
-今回の場合は、子ルートのパスを追加せずに `/sample-3-3` にアクセスすると、`MainLayout` の `Outlet` の位置に `HomePage` が表示されます。
+::: {#ch03-layout-r273 .paragraph}
+今回の場合は、サイトのルートである `/` にアクセスすると、`MainLayout` の `Outlet` の位置に `HomePage` が表示されます。
 :::
 
-::: {#ch03-layout-m731 .paragraph}
-前節では、入口に対応するホーム画面を `path=""` で指定していました。今回は、共通レイアウトの子ルートとしてホーム画面を指定するため、`index` を使用しています。
+::: {#ch03-layout-r275 .paragraph}
+前節の通常構成では、ホーム画面のルートを `path="/"` で指定していました。今回は、共通レイアウトのデフォルトの子ルートとしてホーム画面を指定するため、`index` を使用しています。
 :::
 
-::: {#ch03-layout-m733 .paragraph}
+::: {#ch03-layout-r277 .paragraph}
 `index` を指定するルートには、`path` を指定しません。
 :::
 
-::: {#ch03-layout-m735 .paragraph}
+::: {#ch03-layout-r279 .paragraph}
 ここまでのルートの設定と、実際に表示される画面との対応関係を整理しましょう。
 :::
 
-::: {#ch03-layout-m737 .table column-widths="29 24 47"}
+::: {#ch03-layout-r281 .table column-widths="26 26 48"}
 | URLのパス | 共通レイアウト | Outletに表示するコンポーネント |
 |---|---|---|
-| `/sample-3-3` | `MainLayout` | `HomePage`（index） |
-| `/sample-3-3/products` | `MainLayout` | `ProductListPage` |
-| `/sample-3-3/guide` | `MainLayout` | `GuidePage` |
+| `/` | `MainLayout` | `HomePage`（index） |
+| `/products` | `MainLayout` | `ProductListPage` |
+| `/guide` | `MainLayout` | `GuidePage` |
 :::
 
 ![親ルートで共通レイアウトを指定し、子ルートで中央に表示する画面を決定する](assets/layout-relative-path.svg){#ch03-layout-relative-path}
@@ -1927,41 +1956,85 @@ import { Outlet } from 'react-router'
 親ルートで共通レイアウトを指定し、子ルートで中央に表示する画面を決定する
 :::
 
-::: {#ch03-layout-m749 .paragraph}
+::: {#ch03-layout-r293 .paragraph}
 このように、共通レイアウトとルーティングの設定を分けて管理すれば、共通部分を変更する際は `layouts/MainLayout.tsx`、表示する画面の対応関係を変更する際は `routes/AppRoutes.tsx` を編集することができます。
 :::
-::::
 
-:::: {#page-11 .source-page}
-::: {#ch03-layout-m751 .heading level="minor"}
+:::: {#ch03-layout-r295 .training-note breakable="true"}
+【補足】本研修の配布サンプルの構成
+
+3.2節で説明したように、配布プロジェクトでは、各節のサンプルを独立して確認できるようにフォルダーを分けています。
+
+3.3の講義用サンプルは、`ch03-basic/src/samples/sample3_3/` に用意しています。この中に、`components`、`pages`、`layouts`、`routes` の各フォルダーがあります。`components` と `pages` の各ファイルは、3.2の講義用サンプルと同じ内容です。
+
+今回学習した `layouts/MainLayout.tsx` と `routes/AppRoutes.tsx` は、通常構成と配布サンプルで同じコードを使用しています。異なるのは、アクセスするURLです。
+
+::: {#ch03-layout-r303 .table column-widths="20 36 44"}
+| 画面 | 通常構成のURLのパス | 配布サンプルのURLのパス |
+|---|---|---|
+| ホーム | `/` | `/sample-3-3` |
+| 商品一覧 | `/products` | `/sample-3-3/products` |
+| ご利用案内 | `/guide` | `/sample-3-3/guide` |
+:::
+
+配布サンプルでは、`/sample-3-3` があらかじめ入口として設定されています。相対パスを指定しているため、通常構成と同じルート定義で、上の表のようなURLに対応できます。
+
+教材メニューとの接続に使用するファイルや設定は、変更する必要はありません。
+::::
+:::::
+
+::::: {#page-11 .source-page}
+::: {#ch03-layout-r313 .heading level="minor"}
+配布サンプルの動作確認
+:::
+
+::: {#ch03-layout-r315 .paragraph}
+配布サンプルの `ch03-basic` の開発サーバーを起動し、メニューから「3.3 共通レイアウトの作成」を選択してください。
+:::
+
+::: {#ch03-layout-r317 .paragraph}
+ブラウザーのアドレスバーで、上の表の「配布サンプルのURLのパス」に示した3つのパスにアクセスし、各画面に共通レイアウトが適用されていることを確認しましょう。ホスト名とポート番号には、開発サーバーの起動時にターミナルに表示されたURLのものを使用してください。
+:::
+
+::: {#ch03-layout-r319 .paragraph}
+この操作では、ページの読み込みが発生します。共通メニューはまだ文字表示なので、クリックしても画面は切り替わりません。次の節で、ページ全体を再読み込みせずにメニューから画面を切り替える方法を学習します。
+:::
+:::::
+
+::::: {#page-12 .source-page}
+::: {#ch03-layout-r321 .heading level="minor"}
 【確認演習】共通レイアウトを作成する
 :::
 
-::: {#ch03-layout-m753 .paragraph}
+::: {#ch03-layout-r323 .paragraph}
 ホーム・商品一覧・ご利用案内の3画面に、共通のヘッダー・メニュー・フッターを適用します。
 :::
 
-::: {#ch03-layout-m755 .paragraph}
+::: {#ch03-layout-r325 .paragraph}
 確認演習用のフォルダーには、前節と同じ3つの画面と、共通レイアウトの基本構成が用意されています。前節の確認演習が未完成でも、今回の演習に取り組むことができます。
 :::
 
-::: {#ch03-layout-m757 .paragraph numbered="true"}
+::: {#ch03-layout-r327 .paragraph}
+この確認演習では、上の補足で確認した研修用のフォルダーとURLを使用します。既存の相対パスを維持し、共通レイアウトを適用しましょう。
+:::
+
+::: {#ch03-layout-r329 .paragraph numbered="true"}
 1．`ch03-basic-q` プロジェクトの次の2つのファイルを開いてください。
 :::
 
-::: {#ch03-layout-m759-1 .paragraph}
+::: {#ch03-layout-r331-1 .paragraph}
 ● `src/exercises/q3_3/layouts/MainLayout.tsx`
 :::
 
-::: {#ch03-layout-m759-2 .paragraph}
+::: {#ch03-layout-r331-2 .paragraph}
 ● `src/exercises/q3_3/routes/AppRoutes.tsx`
 :::
 
-::: {#ch03-layout-m762 .paragraph numbered="true"}
+::: {#ch03-layout-r334 .paragraph numbered="true"}
 2．2つのファイルに記載された➀～➅の番号付きコメントを確認し、指示された箇所を実装してください。➁は既存コードの確認、それ以外は実装問題です。
 :::
 
-::: {#ch03-layout-m764 .table column-widths="12 25 63"}
+::: {#ch03-layout-r336 .table column-widths="11 28 61"}
 | 番号 | 編集するファイル | 作業内容 |
 |---|---|---|
 | ➀ | `MainLayout.tsx` | Outletを読み込む。 |
@@ -1972,33 +2045,31 @@ import { Outlet } from 'react-router'
 | ➅ | `AppRoutes.tsx` | ホームのRouteを、indexを使用する記述に変更する。 |
 :::
 
-::: {#ch03-layout-m773 .paragraph}
+::: {#ch03-layout-r345 .paragraph}
 コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch03-layout-m775 .paragraph numbered="true"}
+::: {#ch03-layout-r347 .paragraph numbered="true"}
 3．編集した2つのファイルを保存してください。
 :::
 
-::: {#ch03-layout-m777 .paragraph numbered="true"}
+::: {#ch03-layout-r349 .paragraph numbered="true"}
 4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、開いているブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-layout-m779 .paragraph numbered="true"}
+::: {#ch03-layout-r351 .paragraph numbered="true"}
 5．メニューから「3.3 共通レイアウトの作成」を選択してください。
 :::
 
-::: {#ch03-layout-m781 .heading level="minor"}
+::: {#ch03-layout-r353 .heading level="minor"}
 動作確認
 :::
-::::
 
-:::: {#page-12 .source-page}
-::: {#ch03-layout-m783 .paragraph numbered="true"}
-6．ブラウザーのアドレスバーから、次の3つのURLにアクセスしてください。
+::: {#ch03-layout-r355 .paragraph numbered="true"}
+6．ブラウザーのアドレスバーから、次の3つのパスにアクセスしてください。ホスト名とポート番号には、手順4で開いた確認演習用の開発サーバーのURLのものを使用してください。
 :::
 
-::: {#ch03-layout-m785 .table column-widths="33 67"}
+::: {#ch03-layout-r357 .table column-widths="45 55"}
 | URLのパス | 画面の中央に表示される内容 |
 |---|---|
 | `/sample-3-3` | ホーム画面 |
@@ -2006,7 +2077,7 @@ import { Outlet } from 'react-router'
 | `/sample-3-3/guide` | ご利用案内画面 |
 :::
 
-::: {#ch03-layout-m791 .paragraph}
+::: {#ch03-layout-r363 .paragraph}
 次の図と見比べながら、すべての画面に同じヘッダー・メニュー・フッターが表示されていることを確認しましょう。
 :::
 
@@ -2016,23 +2087,23 @@ import { Outlet } from 'react-router'
 3つの画面で共通部分が同じであり、中央に異なる画面が表示されることを確認する
 :::
 
-::: {#ch03-layout-m799 .paragraph}
+::: {#ch03-layout-r371 .paragraph}
 次の2点を確認できれば、演習完了です。
 :::
 
-::: {#ch03-layout-m801-1 .paragraph}
+::: {#ch03-layout-r373-1 .paragraph}
 ● 3つのURLにアクセスしたとき、同じ共通レイアウトが表示される。
 :::
 
-::: {#ch03-layout-m801-2 .paragraph}
+::: {#ch03-layout-r373-2 .paragraph}
 ● 中央には、それぞれのURLに対応する画面が表示される。
 :::
 
-::: {#ch03-layout-m804 .paragraph}
-画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+::: {#ch03-layout-r376 .paragraph}
+画面に変更が反映されない場合は、`ch03-basic-q` の開発サーバーのURLを開いていることを確認したうえで、ブラウザーの画面を再読み込みし、もう一度操作してください。
 :::
 
-::: {#ch03-layout-m806 .paragraph}
+::: {#ch03-layout-r378 .paragraph}
 今回は、アドレスバーからURLを変更して画面を表示しました。次の3.4節では、共通レイアウトのメニューにリンクを配置し、ページ全体を再読み込みせずに画面を切り替える方法を学習します。
 :::
 
@@ -2049,9 +2120,9 @@ import { Outlet } from 'react-router'
 
 ● `index` は、親ルートのURLに対応するデフォルトの子ルートを指定する。
 :::
-::::
+:::::
 
-:::: {#page-13 .source-page}
+::::: {#page-13 .source-page}
 ::: {#ch03-navigation-title .heading}
 3.4. SPAの画面遷移（LinkとNavLink）
 :::
@@ -2062,107 +2133,88 @@ SPAの画面遷移（LinkとNavLink）
 ![SPAの画面遷移（LinkとNavLink）](assets/navigation-slide.svg)
 :::
 
-::: {#ch03-navigation-m42 .heading level="minor"}
+::: {#ch03-navigation-r399 .heading level="minor"}
 SPAにおける画面遷移
 :::
 
-::: {#ch03-navigation-m44 .paragraph}
+::: {#ch03-navigation-r401 .paragraph}
 前節では、親ルートと子ルートを定義し、`Outlet` を使用して、共通レイアウトの中に各画面を表示する方法を学習しました。
 :::
 
-::: {#ch03-navigation-m46 .paragraph}
+::: {#ch03-navigation-r403 .paragraph}
 ただし、前節で作成した共通メニューは、文字を表示しているだけのものでした。別の画面を表示するには、ブラウザーのアドレスバーからURLを変更する必要がありました。
 :::
 
-::: {#ch03-navigation-m48 .paragraph}
+::: {#ch03-navigation-r405 .paragraph}
 実際のWebアプリケーションでは、メニューやリンクをクリックするだけで、目的の画面に移動できるようにする必要があります。
 :::
 
-::: {#ch03-navigation-m50 .paragraph}
+::: {#ch03-navigation-r407 .paragraph}
 通常のHTMLでは、別のページへ移動するために `<a>` タグを使用します。この方法で別のパスへ移動する場合、通常はブラウザーによるページの読み込みが発生します。
 :::
 
-::: {#ch03-navigation-m52 .paragraph}
+::: {#ch03-navigation-r409 .paragraph}
 一方、React Routerでは、画面遷移のために `Link`（リンク）や `NavLink`（ナビリンク）というコンポーネントを使用できます。
 :::
 
-::: {#ch03-navigation-m54 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r411 .paragraph punctuation-font="inherit"}
 これらを使用すると、**ページ全体を再読み込みせずにURLを変更し、対応するコンポーネントを表示できます。**
 :::
 
-::: {#ch03-navigation-m56 .paragraph}
+::: {#ch03-navigation-r413 .paragraph}
 これが、第1章で学習したSPAにおける画面遷移です。
 :::
 
-::: {#ch03-navigation-m58 .paragraph}
+::: {#ch03-navigation-r415 .paragraph}
 この節では、前節の共通レイアウトを使用しながら、メニューをクリックして画面を切り替える方法と、現在表示している画面に対応するメニューを強調する方法を学習します。
 :::
 
-::: {#ch03-navigation-m60 .heading level="minor"}
+::: {#ch03-navigation-r417 .heading level="minor"}
 【サンプル】共通メニューから画面を切り替える
 :::
 
-::: {#ch03-navigation-m62 .paragraph}
-前節で作成した共通レイアウトを基に、次の機能を追加します。
+::: {#ch03-navigation-r419 .paragraph}
+前節で学習した通常のアプリケーション構成を基に、共通レイアウトに次の機能を追加します。
 :::
 
-::: {#ch03-navigation-m64-1 .paragraph}
+::: {#ch03-navigation-r421-1 .paragraph}
 ● ヘッダーのシステム名をクリックすると、ホーム画面に戻る。
 :::
 
-::: {#ch03-navigation-m64-2 .paragraph}
+::: {#ch03-navigation-r421-2 .paragraph}
 ● 共通メニューをクリックすると、対応する画面が表示される。
 :::
 
-::: {#ch03-navigation-m64-3 .paragraph}
+::: {#ch03-navigation-r421-3 .paragraph}
 ● 現在表示している画面に対応するメニューが強調される。
 :::
 
-![商品一覧を表示し、現在の画面に対応するメニューを強調する完成サンプル](assets/navigation-browser.svg){#ch03-navigation-browser}
+![商品一覧を表示し、現在の画面に対応するメニューを強調する（通常構成の例）](assets/navigation-browser.svg){#ch03-navigation-browser}
 
 ::: {#ch03-navigation-browser-caption .caption}
-商品一覧を表示し、現在の画面に対応するメニューを強調する完成サンプル
+商品一覧を表示し、現在の画面に対応するメニューを強調する（通常構成の例）
 :::
 
-::: {#ch03-navigation-m75 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r432 .paragraph punctuation-font="inherit"}
 **前節のフォルダー構成を引き継ぐ**
 :::
 
-::: {#ch03-navigation-m77 .paragraph}
-前節で使用した `sample3_3` を基に、3.4のサンプルを `ch03-basic/src/samples/sample3_4` に用意しています。
+::: {#ch03-navigation-r434 .paragraph}
+前節で学習した通常のアプリケーションのフォルダー構成を、そのまま使用します。
 :::
 
-::: {#ch03-navigation-m79 .code example="true" code-label="フォルダー構成"}
-~~~text
-src/samples/sample3_4/
-├── components/
-│   └── ProductCard.tsx
-├── pages/
-│   ├── HomePage.tsx
-│   ├── ProductListPage.tsx
-│   └── GuidePage.tsx
-├── layouts/
-│   └── MainLayout.tsx
-└── routes/
-    └── AppRoutes.tsx
-~~~
-:::
-
-::: {#ch03-navigation-m93 .table column-widths="42 58"}
+::: {#ch03-navigation-r436 .table column-widths="45 55"}
 | ファイル・フォルダー | 前節からの変更 |
 |---|---|
-| `components/ProductCard.tsx` | 変更なし。3.1の完成コードと同じ商品カードを使用する。 |
+| `components/ProductCard.tsx` | 変更なし。3.1で学習した商品カードを使用する。 |
 | `pages/` の3ファイル | 変更なし。ホーム・商品一覧・ご利用案内を表示する。 |
 | `layouts/MainLayout.tsx` | ヘッダーのシステム名と共通メニューをリンクに変更する。 |
 | `routes/AppRoutes.tsx` | 変更なし。親ルート・子ルートの定義を使用する。 |
+| `App.tsx`・`main.tsx` | 変更なし。前節と同じ起動処理を使用する。 |
 :::
 
-::: {#ch03-navigation-m100 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r444 .paragraph punctuation-font="inherit"}
 この節では、**共通レイアウトのファイルを変更するだけで、すべての画面で使用するメニューに画面遷移の機能を追加できます。**
-:::
-
-::: {#ch03-navigation-m102 .paragraph}
-なお、研修用の入口は `/sample-3-4` です。3.3のファイルを直接変更するのではなく、3.4用に複製したファイルを使用します。
 :::
 
 ![3.4では共通レイアウトの変更に集中する](assets/navigation-folder-structure.svg){#ch03-navigation-folder-structure}
@@ -2171,19 +2223,23 @@ src/samples/sample3_4/
 3.4では共通レイアウトの変更に集中する
 :::
 
-::: {#ch03-navigation-m110 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r452 .paragraph punctuation-font="inherit"}
 **共通レイアウトのソースコード**
 :::
 
-::: {#ch03-navigation-m112 .paragraph}
+::: {#ch03-navigation-r454 .paragraph}
 まず、今回の学習対象となる `layouts/MainLayout.tsx` を確認してください。
 :::
 
-::: {#ch03-navigation-m114 .paragraph}
+::: {#ch03-navigation-r456 .paragraph}
 前節では、ヘッダーのシステム名やメニューを文字として表示していました。今回は、ヘッダーに `Link`、3つのメニューに `NavLink` を使用しています。
 :::
 
-::: {#ch03-navigation-m117 .code filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="1"}
+::: {#ch03-navigation-r458 .paragraph}
+以下は、1つの商品管理システムを開発する通常構成での記述例です。実際の配布サンプルで異なる箇所については、構文の解説の後に確認します。
+:::
+
+::: {#ch03-navigation-r461 .code code-label="TSXの記述例（通常構成）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Link, NavLink, Outlet } from 'react-router'
 
@@ -2192,7 +2248,7 @@ export default function MainLayout() {
     <>
       <header className="bg-dark text-white p-3">
         <Link
-          to="/sample-3-4"
+          to="/"
           className="text-white text-decoration-none"
         >
           商品管理システム
@@ -2201,13 +2257,13 @@ export default function MainLayout() {
 
       <nav className="nav nav-pills bg-light p-3 gap-2"
            aria-label="商品管理システムのメニュー">
-        <NavLink to="/sample-3-4" className="nav-link" end>
+        <NavLink to="/" className="nav-link">
           ホーム
         </NavLink>
-        <NavLink to="/sample-3-4/products" className="nav-link">
+        <NavLink to="/products" className="nav-link">
           商品一覧
         </NavLink>
-        <NavLink to="/sample-3-4/guide" className="nav-link">
+        <NavLink to="/guide" className="nav-link">
           ご利用案内
         </NavLink>
       </nav>
@@ -2223,66 +2279,58 @@ export default function MainLayout() {
 ~~~
 :::
 
-::: {#ch03-navigation-m155 .paragraph}
+::: {#ch03-navigation-r499 .paragraph}
 ルーティングの設定は、前節と同じ構成です。`routes/AppRoutes.tsx` には、`MainLayout` を表示する親ルートと、3つの画面を表示する子ルートを定義しています。今回はその全体コードを再掲載しません。
 :::
 
-::: {#ch03-navigation-m157 .paragraph}
-3.4のサンプルの入口は `/sample-3-4` です。前節で学習した相対パスとindexルートの設定により、次の3つのURLに対応しています。
+::: {#ch03-navigation-r501 .paragraph}
+通常構成では、前節と同じ3つのURLに対応しています。
 :::
 
-::: {#ch03-navigation-m159 .table column-widths="48 52"}
+::: {#ch03-navigation-r503 .table column-widths="42 58"}
 | URLのパス | 表示する画面 |
 |---|---|
-| `/sample-3-4` | ホーム画面 |
-| `/sample-3-4/products` | 商品一覧画面 |
-| `/sample-3-4/guide` | ご利用案内画面 |
+| `/` | ホーム画面 |
+| `/products` | 商品一覧画面 |
+| `/guide` | ご利用案内画面 |
 :::
 
-::: {#ch03-navigation-m165 .paragraph}
-配布サンプルの `ch03-basic` の開発サーバーを起動し、ブラウザーのメニューから「3.4 SPAの画面遷移（LinkとNavLink）」を選択してください。
+::: {#ch03-navigation-r509 .paragraph}
+それぞれのリンクをどのように記述するのか、順番に確認していきましょう。
 :::
+:::::
 
-::: {#ch03-navigation-m167 .paragraph}
-今回は、共通メニューの項目をクリックすると、アドレスバーのURLと画面の表示が変わります。
-:::
-
-::: {#ch03-navigation-m169 .paragraph}
-それぞれのリンクをどのように記述しているのか、順番に確認していきましょう。
-:::
-::::
-
-:::: {#page-14 .source-page}
-::: {#ch03-navigation-m171 .heading level="minor"}
+::::: {#page-14 .source-page}
+::: {#ch03-navigation-r511 .heading level="minor"}
 構文の解説
 :::
 
-::: {#ch03-navigation-m173 .step}
+::: {#ch03-navigation-r513 .step}
 **① Linkを使用して画面を切り替える**
 :::
 
-::: {#ch03-navigation-m175 .paragraph}
+::: {#ch03-navigation-r515 .paragraph}
 `Link` は、React Routerが提供する画面遷移用のコンポーネントです。
 :::
 
-::: {#ch03-navigation-m177 .paragraph}
-`Link` を使用するには、`react-router` からインポートします。今回のサンプルでは、1行目で `Link`、`NavLink`、`Outlet` をまとめてインポートしています。
+::: {#ch03-navigation-r517 .paragraph}
+`Link` を使用するには、`react-router` からインポートします。今回の記述例では、`Link`、`NavLink`、`Outlet` をまとめてインポートしています。
 :::
 
-::: {#ch03-navigation-m180 .code filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="1"}
+::: {#ch03-navigation-r520 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
 import { Link, NavLink, Outlet } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-navigation-m184 .paragraph}
+::: {#ch03-navigation-r524 .paragraph}
 まず、ヘッダーのシステム名をクリックすると、ホーム画面に移動する部分を確認しましょう。
 :::
 
-::: {#ch03-navigation-m187 .code filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="7"}
+::: {#ch03-navigation-r527 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
         <Link
-          to="/sample-3-4"
+          to="/"
           className="text-white text-decoration-none"
         >
           商品管理システム
@@ -2290,146 +2338,146 @@ import { Link, NavLink, Outlet } from 'react-router'
 ~~~
 :::
 
-::: {#ch03-navigation-m196 .paragraph}
+::: {#ch03-navigation-r536 .paragraph}
 `Link` では、HTMLの `<a>` タグと同じように、開始タグと終了タグの間にリンクとして表示する文字などを記述できます。
 :::
 
-::: {#ch03-navigation-m198 .paragraph}
+::: {#ch03-navigation-r538 .paragraph}
 ただし、移動先の指定方法が異なります。
 :::
 
-::: {#ch03-navigation-m200 .table column-widths="51 49"}
+::: {#ch03-navigation-r540 .table column-widths="53 47"}
 | 記述する要素・コンポーネント | 移動先を指定する属性 |
 |---|---|
 | HTMLの `<a>` | `href` |
 | React Routerの `Link` | `to` |
 :::
 
-::: {#ch03-navigation-m205 .paragraph}
+::: {#ch03-navigation-r545 .paragraph}
 例えば、ホーム画面へ移動するリンクを記述する場合は、次のようになります。
 :::
 
-::: {#ch03-navigation-m207 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r547 .paragraph punctuation-font="inherit"}
 **通常のHTMLのリンク**
 :::
 
-::: {#ch03-navigation-m210 .code example="true" code-label="HTMLの記述例"}
+::: {#ch03-navigation-r550 .code code-label="HTMLの記述例" example="true"}
 ~~~html
-<a href="/sample-3-4">商品管理システム</a>
+<a href="/">商品管理システム</a>
 ~~~
 :::
 
-::: {#ch03-navigation-m214 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r554 .paragraph punctuation-font="inherit"}
 **React RouterのLink**
 :::
 
-::: {#ch03-navigation-m217 .code example="true" code-label="TSXの記述例"}
+::: {#ch03-navigation-r557 .code code-label="TSXの記述例（通常構成）" example="true"}
 ~~~tsx
-<Link to="/sample-3-4">商品管理システム</Link>
+<Link to="/">商品管理システム</Link>
 ~~~
 :::
 
-::: {#ch03-navigation-m221 .paragraph}
+::: {#ch03-navigation-r561 .paragraph}
 どちらも画面にはリンクとして表示されます。React Routerの `Link` も、ブラウザーには `<a>` 要素として反映されます。
 :::
 
-::: {#ch03-navigation-m223 .paragraph}
+::: {#ch03-navigation-r563 .paragraph}
 ただし、アプリケーション内の別の画面へ通常のクリック操作で移動する場合、`Link` ではReact Routerが画面遷移を処理します。
 :::
 
-::: {#ch03-navigation-m225 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r565 .paragraph punctuation-font="inherit"}
 そのため、**ページ全体を読み込み直すことなく、移動先のURLに対応する画面を表示できます。**
 :::
 
-::: {#ch03-navigation-m227 .paragraph}
-今回のサンプルでは、`to="/sample-3-4"` と記述しているため、ヘッダーの「商品管理システム」をクリックすると、3.4のホーム画面へ移動します。
+::: {#ch03-navigation-r567 .paragraph}
+今回のサンプルでは、`to="/"` と記述しているため、ヘッダーの「商品管理システム」をクリックすると、ホーム画面へ移動します。
 :::
 
-::: {#ch03-navigation-m229 .paragraph}
+::: {#ch03-navigation-r569 .paragraph}
 なお、`className` には、ヘッダーに合わせた文字色とデザインを設定するためのBootstrapのクラスを指定しています。
 :::
 
-::: {#ch03-navigation-m231 .step}
+::: {#ch03-navigation-r571 .step}
 **② NavLinkを使用して現在の画面に対応するメニューを強調する**
 :::
 
-::: {#ch03-navigation-m233 .paragraph}
+::: {#ch03-navigation-r573 .paragraph}
 共通メニューにも `Link` を使用すれば、クリックして各画面へ移動できます。
 :::
 
-::: {#ch03-navigation-m235 .paragraph}
+::: {#ch03-navigation-r575 .paragraph}
 しかし、実際のWebアプリケーションでは、ホーム、商品一覧、ご利用案内のうち、現在どの画面を表示しているのかが一目で分かると便利です。
 :::
 
-::: {#ch03-navigation-m237 .paragraph}
+::: {#ch03-navigation-r577 .paragraph}
 そのような場合に使用するのが、`NavLink` です。
 :::
 
-::: {#ch03-navigation-m239 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r579 .paragraph punctuation-font="inherit"}
 `NavLink` は、`Link` と同様に画面遷移を行うコンポーネントです。さらに、**現在のURLに応じて、リンクが選択中かどうかを判定する機能** が用意されています。
 :::
 
-::: {#ch03-navigation-m241 .paragraph}
+::: {#ch03-navigation-r581 .paragraph}
 今回のサンプルでは、商品一覧のメニューを次のように記述しています。
 :::
 
-::: {#ch03-navigation-m244 .code filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="20"}
+::: {#ch03-navigation-r584 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
-        <NavLink to="/sample-3-4/products" className="nav-link">
+        <NavLink to="/products" className="nav-link">
           商品一覧
         </NavLink>
 ~~~
 :::
 
-::: {#ch03-navigation-m250 .paragraph}
+::: {#ch03-navigation-r590 .paragraph}
 `to` 属性には移動先のURL、`className` 属性にはデザインに使用するCSSのクラス名を指定しています。
 :::
 
-::: {#ch03-navigation-m252 .paragraph}
+::: {#ch03-navigation-r592 .paragraph}
 ここで、商品一覧の画面に移動したときに、メニューの背景色が青色になる仕組みを確認しましょう。
 :::
 
-::: {#ch03-navigation-m254 .paragraph}
+::: {#ch03-navigation-r594 .paragraph}
 今回のように `className` に固定のクラス名を指定している場合、`NavLink` は、現在のURLがリンク先に対応していると判断すると、指定したクラス名に `active` というクラスを自動的に追加します。
 :::
 
-::: {#ch03-navigation-m256 .paragraph}
+::: {#ch03-navigation-r596 .paragraph}
 商品一覧のメニューの場合、設定されるCSSのクラスは次のように変化します。
 :::
 
-::: {#ch03-navigation-m258 .table column-widths="45 55"}
+::: {#ch03-navigation-r598 .table column-widths="39 61"}
 | 現在のURLのパス | 商品一覧のリンクに設定されるクラス |
 |---|---|
-| `/sample-3-4` | `nav-link` |
-| `/sample-3-4/products` | `nav-link active` |
-| `/sample-3-4/guide` | `nav-link` |
+| `/` | `nav-link` |
+| `/products` | `nav-link active` |
+| `/guide` | `nav-link` |
 :::
 
-::: {#ch03-navigation-m264 .paragraph}
+::: {#ch03-navigation-r604 .paragraph}
 例えば、商品一覧画面を表示している場合、ブラウザーのHTMLでは、主な属性が次のように設定されます。
 :::
 
-::: {#ch03-navigation-m267 .code example="true" code-label="HTMLの表示イメージ（主な属性のみ）"}
+::: {#ch03-navigation-r607 .code code-label="HTMLの表示イメージ（主な属性のみ）" example="true" wide-code-label="true"}
 ~~~html
-<a href="/sample-3-4/products" class="nav-link active">
+<a href="/products" class="nav-link active">
   商品一覧
 </a>
 ~~~
 :::
 
-::: {#ch03-navigation-m273 .paragraph}
+::: {#ch03-navigation-r613 .paragraph}
 ここで重要なのは、`active` クラスを付ける処理と、メニューを青い背景で表示する処理は、別の役割だという点です。
 :::
 
-::: {#ch03-navigation-m275 .paragraph}
+::: {#ch03-navigation-r615 .paragraph}
 今回のサンプルでは、メニュー全体にBootstrapの `nav-pills` クラスを指定しています。これによって、`active` クラスが付いた `nav-link` のデザインが変わります。
 :::
 
-::: {#ch03-navigation-m277-1 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r617-1 .paragraph punctuation-font="inherit"}
 ● **React Routerの役割**：現在のURLを確認し、選択中のリンクに `active` クラスを追加する。
 :::
 
-::: {#ch03-navigation-m277-2 .paragraph punctuation-font="inherit"}
+::: {#ch03-navigation-r617-2 .paragraph punctuation-font="inherit"}
 ● **Bootstrapの役割**：`active` クラスが付いたメニューに、選択中のデザインを適用する。
 :::
 
@@ -2439,120 +2487,140 @@ import { Link, NavLink, Outlet } from 'react-router'
 NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
 :::
 
-::: {#ch03-navigation-m290 .paragraph}
+::: {#ch03-navigation-r630 .paragraph}
 このように、`NavLink` とBootstrapを組み合わせることで、現在表示している画面に対応するメニューを強調できます。自分で現在のURLを取得して条件分岐を記述する必要はありません。
 :::
 
-::: {#ch03-navigation-m292 .paragraph}
+::: {#ch03-navigation-r632 .paragraph}
 なお、`Link` と `NavLink` は、次のように用途に応じて使い分けます。
 :::
 
-::: {#ch03-navigation-m294 .table column-widths="28 72"}
+::: {#ch03-navigation-r634 .table column-widths="32 68"}
 | コンポーネント | 使用する場面 |
 |---|---|
 | `Link` | ヘッダーのシステム名や「商品一覧へ戻る」など、別の画面へ移動するリンクを配置する。 |
 | `NavLink` | 共通メニューなど、画面を移動するだけでなく、現在選択中の項目を強調する。 |
 :::
 
-::: {#ch03-navigation-m299 .step}
+::: {#ch03-navigation-r639 .step}
 **③ end属性で選択中と判断する範囲を指定する**
 :::
 
-::: {#ch03-navigation-m301 .paragraph}
-次に、ホームのメニューを確認しましょう。
+::: {#ch03-navigation-r641 .paragraph}
+`NavLink` は、通常、現在のURLのパスがリンク先のパスと一致している場合だけでなく、リンク先のパスに続く別のパスを表示している場合も、選択中のリンクとして扱います。
 :::
 
-::: {#ch03-navigation-m304 .code filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="17"}
+::: {#ch03-navigation-r643 .paragraph}
+例えば、次の節では商品ごとの詳細画面を追加します。商品一覧のURLが `/products`、商品番号101の詳細画面のURLが `/products/101` になる場合を考えてみましょう。
+:::
+
+::: {#ch03-navigation-r645 .paragraph}
+商品一覧のメニューは、今回のサンプルで次のように記述しています。
+:::
+
+::: {#ch03-navigation-r648 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
 ~~~tsx
-        <NavLink to="/sample-3-4" className="nav-link" end>
-          ホーム
-        </NavLink>
+<NavLink to="/products" className="nav-link">
+  商品一覧
+</NavLink>
 ~~~
 :::
 
-::: {#ch03-navigation-m310 .paragraph}
-ホームの `NavLink` には、ほかのメニューにはない `end` という属性が指定されています。
+::: {#ch03-navigation-r654 .paragraph}
+この記述では、`/products` を表示しているときだけでなく、`/products/101` を表示しているときにも、商品一覧のメニューが選択中になります。
 :::
 
-::: {#ch03-navigation-m312 .paragraph}
-なぜ、ホームだけに `end` を指定しているのでしょうか。
+::: {#ch03-navigation-r656 .paragraph}
+一方、商品一覧画面を表示しているときだけメニューを強調したい場合は、次のように `end` 属性を追加します。
 :::
 
-::: {#ch03-navigation-m314 .paragraph}
-`NavLink` は、通常、現在のURLのパスがリンク先のパスと一致している場合だけでなく、リンク先のパスに続く子のパスを表示している場合も、選択中のリンクとして扱います。
+::: {#ch03-navigation-r659 .code code-label="TSXの記述例（比較用）" example="true"}
+~~~tsx
+<NavLink to="/products" className="nav-link" end>
+  商品一覧
+</NavLink>
+~~~
 :::
 
-::: {#ch03-navigation-m316 .paragraph}
-例えば、ホームの `to` に `/sample-3-4` を指定し、`end` を指定しなかった場合を考えてみましょう。
+::: {#ch03-navigation-r665 .paragraph}
+`end` を指定すると、今回のようなリンク先のパスに続く別のパスがある場合は、そのリンクを選択中として扱いません。
 :::
 
-::: {#ch03-navigation-m318 .paragraph}
-現在のパスが `/sample-3-4/products` であっても、ホームのリンク先である `/sample-3-4` に続くパスなので、ホームのリンクにも `active` クラスが追加されます。
+::: {#ch03-navigation-r667 .table column-widths="35 32 33"}
+| 現在のURLのパス | 商品一覧（endなし） | 商品一覧（endあり） |
+|---|---|---|
+| `/products` | 強調される | 強調される |
+| `/products/101` | 強調される | 強調されない |
+| `/guide` | 強調されない | 強調されない |
 :::
 
-::: {#ch03-navigation-m320 .paragraph}
-その結果、商品一覧を表示しているときに、ホームと商品一覧の両方が強調されてしまいます。
-:::
-
-![商品一覧画面を表示した場合の、ホームのend属性の有無による強調表示の違い](assets/navigation-end.svg){#ch03-navigation-end-menu}
+![商品一覧に続くパスを表示した場合のend属性の有無による強調表示の違い](assets/navigation-end.svg){#ch03-navigation-end-menu}
 
 ::: {#ch03-navigation-end-menu-caption .caption}
-商品一覧画面を表示した場合の、ホームのend属性の有無による強調表示の違い
+商品一覧に続くパスを表示した場合のend属性の有無による強調表示の違い
 :::
 
-::: {#ch03-navigation-m331 .paragraph}
-このような場合に使用するのが、`end` 属性です。
+::: {#ch03-navigation-r679 .paragraph}
+今回の商品管理システムでは、商品詳細画面を表示しているときも商品一覧のメニューを強調することを想定しています。そのため、商品一覧の `NavLink` には `end` を指定しません。
 :::
 
-::: {#ch03-navigation-m333 .paragraph}
-今回のホームのように `end` を指定すると、リンク先のパスの先に別のパスが続く場合は、そのリンクを選択中として扱いません。
+::: {#ch03-navigation-r681 .paragraph}
+なお、`end` は `end={true}` と記述することもできます。真偽値の `true` を指定する場合は、JSXの省略形として `end` だけを記述できます。
 :::
 
-::: {#ch03-navigation-m335 .table column-widths="39 31 30"}
-| 現在のURLのパス | ホーム（endなし） | ホーム（endあり） |
-|---|---|---|
-| `/sample-3-4` | 強調される | 強調される |
-| `/sample-3-4/products` | 強調される | 強調されない |
-| `/sample-3-4/guide` | 強調される | 強調されない |
+::: {#ch03-navigation-r683 .paragraph punctuation-font="inherit"}
+**`end` が変更するのは、NavLinkが選択中と判断するパスの範囲です。** リンクの移動先や、`Route` によって表示する画面が変わるわけではありません。
 :::
 
-::: {#ch03-navigation-m341 .paragraph}
-これにより、ホームのパスに対応する画面を表示している場合だけ、ホームのメニューが強調されます。
+::: {#ch03-navigation-r685 .paragraph punctuation-font="inherit"}
+**ルートURLを指定する場合**
 :::
 
-::: {#ch03-navigation-m343 .paragraph}
-なお、`end` は、`end={true}` と記述することもできます。今回は、真偽値の `true` を指定するためのJSXの省略形を使用しています。
+::: {#ch03-navigation-r687 .paragraph}
+通常構成では、ホームへのリンクを次のように記述しています。
 :::
 
-::: {#ch03-navigation-m345 .paragraph punctuation-font="inherit"}
-**`end` が変更するのは、NavLinkが選択中と判断する範囲です。** リンクの移動先や、`Route` によって表示する画面が変わるわけではありません。
+::: {#ch03-navigation-r690 .code code-label="TSXの記述例（通常構成・抜粋）" filename="src/layouts/MainLayout.tsx" example="true"}
+~~~tsx
+<NavLink to="/" className="nav-link">
+  ホーム
+</NavLink>
+~~~
 :::
 
-::: {#ch03-navigation-m347 .step}
+::: {#ch03-navigation-r696 .paragraph}
+React Routerでは、サイトのルートを指定した `to="/"` は特別に扱われます。`end` を指定しなくても、ホームのリンクが選択中になるのは、現在のURLのパスが `/` のときだけです。
+:::
+
+::: {#ch03-navigation-r698 .paragraph}
+そのため、通常構成では、商品一覧やご利用案内を表示しているときにホームまで強調されることはありません。
+:::
+
+::: {#ch03-navigation-r700 .step}
 **④ リンクとルーティングを組み合わせて画面を切り替える**
 :::
 
-::: {#ch03-navigation-m349 .paragraph}
+::: {#ch03-navigation-r702 .paragraph}
 ここまでに学習した内容を組み合わせて、商品一覧のメニューをクリックしたときの処理の流れを確認しましょう。
 :::
 
-::: {#ch03-navigation-m351-1 .paragraph numbered="true"}
+::: {#ch03-navigation-r704-1 .paragraph numbered="true"}
 1\. `layouts/MainLayout.tsx` の［商品一覧］をクリックする。
 :::
 
-::: {#ch03-navigation-m351-2 .paragraph numbered="true"}
-2\. `NavLink` の `to` に指定された `/sample-3-4/products` にURLが変更される。
+::: {#ch03-navigation-r704-2 .paragraph numbered="true"}
+2\. `NavLink` の `to` に指定された `/products` にURLが変更される。
 :::
 
-::: {#ch03-navigation-m351-3 .paragraph numbered="true"}
+::: {#ch03-navigation-r704-3 .paragraph numbered="true"}
 3\. React Routerが、`routes/AppRoutes.tsx` で定義されている商品一覧の子ルートに対応することを判断する。
 :::
 
-::: {#ch03-navigation-m351-4 .paragraph numbered="true"}
+::: {#ch03-navigation-r704-4 .paragraph numbered="true"}
 4\. `layouts/MainLayout.tsx` の `Outlet` の位置に `ProductListPage` が表示される。
 :::
 
-::: {#ch03-navigation-m356 .paragraph}
+::: {#ch03-navigation-r709 .paragraph}
 また、現在のURLに応じて `NavLink` の選択状態も更新されるため、商品一覧のメニューが強調されます。
 :::
 
@@ -2562,69 +2630,157 @@ NavLinkが追加するactiveクラスとBootstrapによる強調表示の関係
 LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面表示の関係
 :::
 
-::: {#ch03-navigation-m371 .paragraph}
+::: {#ch03-navigation-r724 .paragraph}
 このとき、ページ全体を再読み込みする必要はありません。共通レイアウトを維持したまま、中央のコンテンツ部分を切り替えられます。
 :::
 
-::: {#ch03-navigation-m373 .paragraph}
+::: {#ch03-navigation-r726 .paragraph}
 前節で学習した共通レイアウトとルーティングに、今回の `Link` や `NavLink` を組み合わせることで、複数の画面を持つSPAを構築できます。
 :::
-::::
 
-:::: {#page-15 .source-page}
-::: {#ch03-navigation-m375 .heading level="minor"}
+:::: {#ch03-navigation-r728 .training-note breakable="true"}
+【補足】本研修の配布サンプルの構成
+
+3.4の講義用サンプルは、`ch03-basic/src/samples/sample3_4/` に用意しています。前節と同じように、`components`、`pages`、`layouts`、`routes` の各フォルダーでソースコードを管理しています。
+
+3.3の完成コードを基に、`layouts/MainLayout.tsx` のヘッダーとメニューをリンクに変更しています。前節のファイルを直接変更する必要はありません。
+
+配布サンプルでは、`/sample-3-4` が入口として設定されているため、`Link` や `NavLink` の `to` に指定する値が通常構成と異なります。
+
+::: {#ch03-navigation-r736 .table column-widths="39 23 38"}
+| リンク | 通常構成の `to` | 配布サンプルの `to` |
+|---|---|---|
+| ヘッダーのシステム名（Link） | `/` | `/sample-3-4` |
+| ホーム（NavLink） | `/` | `/sample-3-4` |
+| 商品一覧（NavLink） | `/products` | `/sample-3-4/products` |
+| ご利用案内（NavLink） | `/guide` | `/sample-3-4/guide` |
+:::
+
+配布サンプルの `layouts/MainLayout.tsx` では、ヘッダーとメニューを次のように記述しています。
+
+~~~{#ch03-navigation-r746 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="7"}
+        <Link
+          to="/sample-3-4"
+          className="text-white text-decoration-none"
+        >
+          商品管理システム
+        </Link>
+~~~
+
+~~~{#ch03-navigation-r756 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_4/layouts/MainLayout.tsx" start-line="17"}
+        <NavLink to="/sample-3-4" className="nav-link" end>
+          ホーム
+        </NavLink>
+        <NavLink to="/sample-3-4/products" className="nav-link">
+          商品一覧
+        </NavLink>
+        <NavLink to="/sample-3-4/guide" className="nav-link">
+          ご利用案内
+        </NavLink>
+~~~
+
+**配布サンプルでは、ホームのNavLinkにendを指定する**
+
+通常構成のホームは `to="/"` ですが、配布サンプルのホームは `to="/sample-3-4"` です。後者はサイトのルートを指定したリンクではないため、前述したルートURLの特別な扱いは適用されません。
+
+`end` を指定しない場合は、商品一覧やご利用案内のURLも `/sample-3-4` に続くパスなので、ホームのメニューまで強調されます。そのため、配布サンプルではホームの `NavLink` に `end` を指定しています。
+
+::: {#ch03-navigation-r774 .table column-widths="42 29 29"}
+| 配布サンプルで表示している画面 | ホーム（endなし） | ホーム（endあり） |
+|---|---|---|
+| `/sample-3-4` | 強調される | 強調される |
+| `/sample-3-4/products` | 強調される | 強調されない |
+| `/sample-3-4/guide` | 強調される | 強調されない |
+:::
+
+ルートの定義自体は前節と同じです。教材メニューとの接続用ファイルやルーティングの設定を変更する必要はありません。
+::::
+:::::
+
+::::: {#page-15 .source-page}
+::: {#ch03-navigation-r782 .heading level="minor"}
+配布サンプルの動作確認
+:::
+
+::: {#ch03-navigation-r784 .paragraph}
+`ch03-basic` の開発サーバーを起動し、ブラウザーのメニューから「3.4 SPAの画面遷移（LinkとNavLink）」を選択してください。
+:::
+
+::: {#ch03-navigation-r786 .paragraph}
+共通メニューからホーム・商品一覧・ご利用案内に移動し、URLのパスと画面の表示、選択中のメニューが切り替わることを確認しましょう。ヘッダーの「商品管理システム」をクリックするとホーム画面に戻ります。
+:::
+
+::: {#ch03-navigation-r788 .heading level="minor"}
 【確認演習】共通メニューから画面遷移する
 :::
 
-::: {#ch03-navigation-m377 .paragraph}
+::: {#ch03-navigation-r790 .paragraph}
 共通レイアウトのヘッダーやメニューをクリックすると、対応する画面へ移動できるようにします。
 :::
 
-::: {#ch03-navigation-m379 .paragraph}
+::: {#ch03-navigation-r792 .paragraph}
 ルーティングの設定や `Outlet`、各画面のコンポーネント、共通レイアウトの基本構成は、あらかじめ用意されています。
 :::
 
-::: {#ch03-navigation-m381 .paragraph}
+::: {#ch03-navigation-r794 .paragraph}
 今回は、ヘッダーのシステム名に `Link` を、3つのメニューに `NavLink` を使用して、画面遷移とメニューの強調表示を実装しましょう。
 :::
 
-::: {#ch03-navigation-m383 .paragraph}
+::: {#ch03-navigation-r796 .paragraph}
 演習用の `q3_4` には、前節までの完成済みのルーティングや画面のコードを用意しています。3.3の確認演習が未完成でも取り組めます。編集するのは、次の1ファイルだけです。
 :::
 
-::: {#ch03-navigation-m385 .paragraph numbered="true"}
+::: {#ch03-navigation-r798 .paragraph}
+この確認演習では、上の補足で確認した配布サンプルのリンク先を使用してください。ホームの `NavLink` には `end` を指定します。通常構成の `/`、`/products`、`/guide` をそのまま演習用ファイルに記述しないように注意してください。
+:::
+
+::: {#ch03-navigation-r800 .paragraph numbered="true"}
 1．`ch03-basic-q` プロジェクトの `src/exercises/q3_4/layouts/MainLayout.tsx` を開いてください。
 :::
 
-::: {#ch03-navigation-m387 .paragraph numbered="true"}
-2．コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。すべて実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+::: {#ch03-navigation-r802 .paragraph numbered="true"}
+2．コード内の➀～➄の番号付きコメントを確認し、指示された箇所を実装してください。すべて実装問題です。
 :::
 
-::: {#ch03-navigation-m389 .paragraph numbered="true"}
+::: {#ch03-navigation-r804 .table column-widths="13 87"}
+| 番号 | 作業内容 |
+|---|---|
+| ➀ | LinkとNavLinkを追加で読み込む。 |
+| ➁ | ヘッダーのシステム名をLinkに変更する。 |
+| ➂ | ホームのメニューをNavLinkに変更し、endを指定する。 |
+| ➃ | 商品一覧のメニューをNavLinkに変更する。 |
+| ➄ | ご利用案内のメニューをNavLinkに変更する。 |
+:::
+
+::: {#ch03-navigation-r812 .paragraph}
+コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch03-navigation-r814 .paragraph numbered="true"}
 3．編集したファイルを保存してください。
 :::
 
-::: {#ch03-navigation-m391 .paragraph numbered="true"}
+::: {#ch03-navigation-r816 .paragraph numbered="true"}
 4．`ch03-basic-q` の開発サーバーを起動し、ターミナルに表示されたURLを開いてください。起動済みの場合は、ブラウザーの画面に戻ってください。
 :::
 
-::: {#ch03-navigation-m393 .paragraph numbered="true"}
+::: {#ch03-navigation-r818 .paragraph numbered="true"}
 5．メニューから「3.4 SPAの画面遷移（LinkとNavLink）」を選択してください。
 :::
 
-::: {#ch03-navigation-m395 .heading level="minor"}
+::: {#ch03-navigation-r820 .heading level="minor"}
 動作確認
 :::
 
-::: {#ch03-navigation-m397 .paragraph numbered="true"}
+::: {#ch03-navigation-r822 .paragraph numbered="true"}
 6．共通メニューの［ホーム］をクリックし、ホーム画面が表示されていることを確認してください。
 :::
 
-::: {#ch03-navigation-m399 .paragraph}
+::: {#ch03-navigation-r824 .paragraph}
 続いて、［商品一覧］、［ご利用案内］、ヘッダーの［商品管理システム］の順にクリックし、URLと表示する画面が次のように変わることを確認してください。
 :::
 
-::: {#ch03-navigation-m401 .table column-widths="34 40 26"}
+::: {#ch03-navigation-r826 .table column-widths="38 37 25"}
 | クリックする項目 | URLのパス | 表示される画面 |
 |---|---|---|
 | ホーム | `/sample-3-4` | ホーム画面 |
@@ -2645,31 +2801,31 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 ご利用案内へ移動し、ヘッダーのリンクからホーム画面へ戻ることを確認する
 :::
 
-::: {#ch03-navigation-m429 .paragraph}
+::: {#ch03-navigation-r854 .paragraph}
 次の3点を確認できれば、演習完了です。
 :::
 
-::: {#ch03-navigation-m431-1 .paragraph}
+::: {#ch03-navigation-r856-1 .paragraph}
 ● メニューをクリックすると、URLと表示する画面が正しく切り替わる。
 :::
 
-::: {#ch03-navigation-m431-2 .paragraph}
+::: {#ch03-navigation-r856-2 .paragraph}
 ● 現在表示している画面に対応するメニューだけが、青い背景で強調される。
 :::
 
-::: {#ch03-navigation-m431-3 .paragraph}
+::: {#ch03-navigation-r856-3 .paragraph}
 ● ヘッダーのシステム名をクリックすると、ホーム画面に戻る。
 :::
 
-::: {#ch03-navigation-m435 .paragraph}
+::: {#ch03-navigation-r860 .paragraph}
 また、どの画面にも同じ共通レイアウトが適用されていることを確認してください。
 :::
 
-::: {#ch03-navigation-m437 .paragraph}
-画面に変更が反映されない場合は、ブラウザーの画面を再読み込みして、もう一度操作してください。
+::: {#ch03-navigation-r862 .paragraph}
+画面に変更が反映されない場合は、`ch03-basic-q` の開発サーバーのURLを開いていることを確認したうえで、ブラウザーの画面を再読み込みし、もう一度操作してください。
 :::
 
-::: {#ch03-navigation-m439 .paragraph}
+::: {#ch03-navigation-r864 .paragraph}
 次の3.5節では、商品一覧から選択した商品の詳細画面へ移動するために、URLに商品番号を含める方法を学習します。
 :::
 
@@ -2688,7 +2844,7 @@ LinkやNavLinkによるURLの変更と、ルートの選択・Outletへの画面
 
 ● 共通レイアウト・ルーティング・リンクを組み合わせることで、複数の画面を持つSPAを構築できる。
 :::
-::::
+:::::
 
 :::: {#page-16 .source-page}
 ::: {#ch03-params-title .heading}

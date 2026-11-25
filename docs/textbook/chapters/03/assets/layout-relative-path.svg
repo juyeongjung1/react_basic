@@ -1,42 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="780" height="426" viewBox="0 0 780 426">
-<defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
-<text x="390.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">共通レイアウトと子ルートのURLの関係</text>
-<text x="24" y="62" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="18" font-weight="bold" fill="#174e78" text-anchor="start" xml:space="preserve">教材用の入口</text>
-<rect x="16" y="74" width="180" height="51" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="106.0" y="105.11" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-3/*</text>
-<polyline points="200,99 228,99" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
-<rect x="231" y="74" width="205" height="51" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="333.5" y="95" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">Sample3_3.tsx</text>
-<text x="333.5" y="114" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="14" font-weight="normal" fill="#182f45" text-anchor="middle" xml:space="preserve">教材メニューとの接続用</text>
-<polyline points="440,99 468,99" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
-<rect x="471" y="74" width="293" height="51" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="617.5" y="94" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="normal" fill="#182f45" text-anchor="middle" xml:space="preserve">samples/sample3_3/</text>
-<text x="617.5" y="115" font-family="Courier New, Meiryo UI, monospace" font-size="17" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">routes/AppRoutes.tsx</text>
-<polyline points="625,129 625,148" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
-<rect x="14" y="152" width="752" height="260" rx="10" fill="#f5f8fa" stroke="#a1bdcf" stroke-width="1.7"/>
-<text x="30" y="178" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="19" font-weight="bold" fill="#174e78" text-anchor="start" xml:space="preserve">親Route</text>
-<text x="758" y="178" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">ch03-basic/src/samples/sample3_3/routes/AppRoutes.tsx  10行目</text>
-<text x="30" y="207" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#182f45" text-anchor="start" xml:space="preserve">&lt;Route element={&lt;MainLayout /&gt;}&gt;</text>
-<text x="747" y="206" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="normal" fill="#174e78" text-anchor="end" xml:space="preserve">pathなし／URLにパスを追加しない</text>
-<text x="31" y="238" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="bold" fill="#1a6657" text-anchor="start" xml:space="preserve">子ルート</text>
-<rect x="29" y="247" width="234" height="51" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
-<text x="146" y="268" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="normal" fill="#1a6657" text-anchor="middle" xml:space="preserve">index</text>
-<text x="146" y="288" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">HomePage</text>
-<polyline points="146,301 146,317" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
-<rect x="29" y="320" width="234" height="34" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="146.0" y="342.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-3</text>
-<rect x="273" y="247" width="234" height="51" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
-<text x="390" y="268" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="normal" fill="#1a6657" text-anchor="middle" xml:space="preserve">path=&quot;products&quot;</text>
-<text x="390" y="288" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">ProductListPage</text>
-<polyline points="390,301 390,317" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
-<rect x="273" y="320" width="234" height="34" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="390.0" y="342.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-3/products</text>
-<rect x="517" y="247" width="234" height="51" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
-<text x="634" y="268" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="normal" fill="#1a6657" text-anchor="middle" xml:space="preserve">path=&quot;guide&quot;</text>
-<text x="634" y="288" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">GuidePage</text>
-<polyline points="634,301 634,317" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
-<rect x="517" y="320" width="234" height="34" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="634.0" y="342.28" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-3/guide</text>
-<rect x="29" y="368" width="722" height="30" rx="8" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
-<text x="390.0" y="388.61" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" font-weight="bold" fill="#1a6657" text-anchor="middle" xml:space="preserve">同じMainLayoutのOutletへ、各子ルートの画面を表示する</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="760" height="482" viewBox="0 0 760 482">
+<title>共通レイアウトと子ルートのURLの関係</title>
+<text x="380" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="23" fill="#182f45" text-anchor="middle" font-weight="700">共通レイアウトと子ルートのURLの関係</text>
+<text x="740" y="57" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
+<rect x="223" y="64" width="314" height="57" rx="7" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="380" y="86" font-family="Courier New, Meiryo UI, monospace" font-size="19" fill="#182f45" text-anchor="middle" font-weight="700">App.tsx</text>
+<text x="380" y="109" font-family="Courier New, Meiryo UI, monospace" font-size="16" fill="#182f45" text-anchor="middle" font-weight="400">return &lt;AppRoutes /&gt;</text>
+<polyline points="380.00,125.00 380.00,142.00 376.00,134.00 380.00,142.00 384.00,134.00" stroke="#174e78" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="20" y="146" width="720" height="227" rx="7" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="36" y="171" font-family="Courier New, Meiryo UI, monospace" font-size="18" fill="#182f45" text-anchor="start" font-weight="700">src/routes/AppRoutes.tsx</text>
+<text x="37" y="205" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" fill="#174e78" text-anchor="start" font-weight="700">親Route</text>
+<text x="130.00 139.94 149.89 159.83 169.77 179.72 189.66 199.60 209.55 219.49 229.43 239.38 249.32 259.26 269.20 279.15 289.09 299.03 308.98 318.92 328.86 338.81 348.75 358.69 368.64 378.58 388.52 398.47 408.41 418.35 428.30 438.24" y="205" font-family="Consolas, MS Gothic, monospace" font-size="18" fill="#182f45" xml:space="preserve">&lt;Route element={&lt;MainLayout /&gt;}&gt;</text>
+<text x="724" y="204" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" fill="#174e78" text-anchor="end" font-weight="400">pathなし／URLにパスを追加しない</text>
+<text x="37" y="238" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="17" fill="#174e78" text-anchor="start" font-weight="700">子ルート</text>
+<rect x="35" y="247" width="226" height="61" rx="7" fill="#fff" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="148" y="271" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="700">index</text>
+<text x="148" y="295" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="400">HomePage</text>
+<polyline points="148.00,312.00 148.00,326.00 144.00,318.00 148.00,326.00 152.00,318.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="35" y="329" width="226" height="34" rx="7" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="148" y="352" font-family="Courier New, Meiryo UI, monospace" font-size="18" fill="#1a6657" text-anchor="middle" font-weight="700">/</text>
+<polyline points="148.00,375.00 148.00,390.00 380.00,390.00 372.00,394.00 380.00,390.00 372.00,386.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="267" y="247" width="226" height="61" rx="7" fill="#fff" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="380" y="271" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="700">path=&quot;products&quot;</text>
+<text x="380" y="295" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="400">ProductListPage</text>
+<polyline points="380.00,312.00 380.00,326.00 376.00,318.00 380.00,326.00 384.00,318.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="267" y="329" width="226" height="34" rx="7" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="380" y="352" font-family="Courier New, Meiryo UI, monospace" font-size="18" fill="#1a6657" text-anchor="middle" font-weight="700">/products</text>
+<rect x="499" y="247" width="226" height="61" rx="7" fill="#fff" stroke="#a1bdcf" stroke-width="1.5"/>
+<text x="612" y="271" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="700">path=&quot;guide&quot;</text>
+<text x="612" y="295" font-family="Courier New, Meiryo UI, monospace" font-size="17" fill="#182f45" text-anchor="middle" font-weight="400">GuidePage</text>
+<polyline points="612.00,312.00 612.00,326.00 608.00,318.00 612.00,326.00 616.00,318.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="499" y="329" width="226" height="34" rx="7" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="612" y="352" font-family="Courier New, Meiryo UI, monospace" font-size="18" fill="#1a6657" text-anchor="middle" font-weight="700">/guide</text>
+<polyline points="612.00,375.00 612.00,390.00 380.00,390.00 388.00,386.00 380.00,390.00 388.00,394.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<polyline points="380.00,376.00 380.00,411.00 376.00,403.00 380.00,411.00 384.00,403.00" stroke="#1a6657" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="103" y="414" width="554" height="44" rx="7" fill="#edf6f0" stroke="#87b4a4" stroke-width="1.5"/>
+<text x="380" y="442" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="18" fill="#1a6657" text-anchor="middle" font-weight="700">同じMainLayoutのOutletへ、各子ルートの画面を表示する</text>
 </svg>

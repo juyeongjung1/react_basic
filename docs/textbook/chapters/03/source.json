@@ -91,58 +91,58 @@
     },
     "ch03-layout-product-screen": {
       "caption_id": "ch03-layout-product-screen-caption",
-      "width": 390,
-      "max_height": 305
+      "width": 383,
+      "max_height": 245
     },
     "ch03-layout-route-flow": {
       "caption_id": "ch03-layout-route-flow-caption",
       "width": 383,
-      "max_height": 255
+      "max_height": 247
     },
     "ch03-layout-relative-path": {
       "caption_id": "ch03-layout-relative-path-caption",
       "width": 383,
-      "max_height": 224
+      "max_height": 258
     },
     "ch03-layout-check-browser": {
       "caption_id": "ch03-layout-check-browser-caption",
-      "width": 390,
-      "max_height": 523
+      "width": 383,
+      "max_height": 456
     },
     "ch03-navigation-browser": {
       "caption_id": "ch03-navigation-browser-caption",
-      "width": 380,
-      "max_height": 300
+      "width": 383,
+      "max_height": 255
     },
     "ch03-navigation-folder-structure": {
       "caption_id": "ch03-navigation-folder-structure-caption",
       "width": 383,
-      "max_height": 234
+      "max_height": 237
     },
     "ch03-navigation-active-flow": {
       "caption_id": "ch03-navigation-active-flow-caption",
-      "width": 380,
-      "max_height": 285
+      "width": 383,
+      "max_height": 270
     },
     "ch03-navigation-end-menu": {
       "caption_id": "ch03-navigation-end-menu-caption",
-      "width": 380,
-      "max_height": 165
+      "width": 383,
+      "max_height": 185
     },
     "ch03-navigation-route-flow": {
       "caption_id": "ch03-navigation-route-flow-caption",
-      "width": 380,
-      "max_height": 435
+      "width": 383,
+      "max_height": 396
     },
     "ch03-navigation-check-browser": {
       "caption_id": "ch03-navigation-check-browser-caption",
-      "width": 382,
-      "max_height": 324
+      "width": 383,
+      "max_height": 273
     },
     "ch03-navigation-return": {
       "caption_id": "ch03-navigation-return-caption",
-      "width": 382,
-      "max_height": 490
+      "width": 383,
+      "max_height": 460
     },
     "ch03-params-folder-structure": {
       "caption_id": "ch03-params-folder-structure-caption",
@@ -230,10 +230,10 @@
       "4": "short-minor-heading",
       "6": "short-minor-heading",
       "7": "short-minor-heading",
-      "9": "continued-prose",
-      "10": "continued-prose",
+      "9": "short-minor-heading",
+      "10": "short-minor-heading",
       "11": "short-minor-heading",
-      "12": "continued-prose",
+      "12": "short-minor-heading",
       "14": "short-minor-heading",
       "15": "short-minor-heading"
     }

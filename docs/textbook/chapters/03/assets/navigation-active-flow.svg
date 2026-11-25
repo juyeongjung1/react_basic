@@ -2,14 +2,14 @@
   <text x="380" y="30" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">NavLinkとBootstrapによって選択中のメニューを強調する仕組み</text>
   <rect x="10" y="48" width="740" height="111" rx="6" fill="#edf5fa" stroke="#aabfcf" stroke-width="1.3"/>
   <text x="380" y="78" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#205b84" font-weight="700" text-anchor="middle">① React Router（NavLink）</text>
-  <text x="380" y="110" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#205b84" font-weight="400" text-anchor="middle">/sample-3-4/products  ⇄  to=&quot;/sample-3-4/products&quot;</text>
+  <text x="380" y="110" font-family="Courier New, MS Gothic, monospace" font-size="18" fill="#205b84" font-weight="400" text-anchor="middle">/products  ⇄  to=&quot;/products&quot;</text>
   <text x="380" y="139" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#205b84" font-weight="400" text-anchor="middle">商品一覧のリンクが選択中と判定される</text>
   <polyline points="380,163 380,196" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <polyline points="385,187 380,196 375,187" fill="none" stroke="#205b84" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="395" y="185" font-family="Meiryo, MS Gothic, sans-serif" font-size="18" fill="#205b84" font-weight="700" text-anchor="start">activeクラスを追加</text>
   <rect x="10" y="201" width="740" height="103" rx="6" fill="#f4f7fa" stroke="#aabfcf" stroke-width="1.3"/>
   <text x="380" y="230" font-family="Meiryo, MS Gothic, sans-serif" font-size="22" fill="#55498a" font-weight="700" text-anchor="middle">② ブラウザーのHTML（主な属性のみ）</text>
-  <text x="32" y="255" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">&lt;a href=&quot;/sample-3-4/products&quot;</text>
+  <text x="32" y="255" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">&lt;a href=&quot;/products&quot;</text>
   <text x="58" y="282" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">class=&quot;nav-link </text>
   <text x="240.4" y="282" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#932530" font-weight="400" text-anchor="start">active</text>
   <text x="308.8" y="282" font-family="Courier New, MS Gothic, monospace" font-size="19" fill="#183449" font-weight="400" text-anchor="start">&quot;&gt;商品一覧&lt;/a&gt;</text>
@@ -26,4 +26,5 @@
   <text x="323.5" y="453" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="white" font-weight="400" text-anchor="middle">商品一覧</text>
   <text x="435" y="453" font-family="Meiryo, MS Gothic, sans-serif" font-size="19" fill="#0d6efd" font-weight="400" text-anchor="middle">ご利用案内</text>
   <text x="380" y="514" font-family="Meiryo, MS Gothic, sans-serif" font-size="21" fill="#205b84" font-weight="700" text-anchor="middle">React Routerが選択状態を判定し、Bootstrapが見た目を変更する</text>
+<text x="737" y="73" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 </svg>

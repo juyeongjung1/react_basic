@@ -2,23 +2,20 @@
 <defs><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#174e78"/></marker><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#1a6657"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L8 4 L0 8 Z" fill="#a32431"/></marker></defs>
 <text x="400.0" y="32" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="24" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">親ルート・子ルートとOutletの関係</text>
 <rect x="205" y="52" width="390" height="37" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="400.0" y="76.44" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/sample-3-3/products</text>
+<text x="400.0" y="76.44" font-family="Courier New, Meiryo UI, monospace" font-size="18" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">/products</text>
 <text x="16" y="119" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="19" font-weight="bold" fill="#174e78" text-anchor="start" xml:space="preserve">親ルートと商品一覧の子ルート</text>
 <rect x="14" y="130" width="368" height="126" rx="8" fill="#ffffff" stroke="#b3c5d2" stroke-width="1.5"/>
 <rect x="15" y="131" width="366" height="48" rx="7" fill="#f5f8fa" stroke="none" stroke-width="1.5"/>
-<text x="374" y="148" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">ch03-basic/src/samples/sample3_3/</text>
-<text x="374" y="169" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">routes/AppRoutes.tsx</text>
+<text x="374" y="169" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#182f45" text-anchor="end" xml:space="preserve">src/routes/AppRoutes.tsx</text>
 <rect x="20" y="186" width="356" height="21" rx="3" fill="#eaf3fa" stroke="none" stroke-width="1.5"/>
-<text x="42" y="200" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">10</text>
-<text x="61" y="200" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#174e78" text-anchor="start" xml:space="preserve">&lt;Route element={&lt;MainLayout /&gt;}&gt;</text>
-<text x="42" y="222" font-family="Courier New, Meiryo UI, monospace" font-size="14" font-weight="normal" fill="#4b6176" text-anchor="end" xml:space="preserve">12</text>
-<text x="61" y="222" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">&lt;Route path=&quot;products&quot;</text>
-<text x="72" y="244" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">element={&lt;ProductListPage /&gt;} /&gt;</text>
+<text x="28" y="200" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#174e78" text-anchor="start" xml:space="preserve">&lt;Route element={&lt;MainLayout /&gt;}&gt;</text>
+<text x="28" y="222" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">&lt;Route path=&quot;products&quot;</text>
+<text x="39" y="244" font-family="Courier New, Meiryo UI, monospace" font-size="15" font-weight="normal" fill="#182f45" text-anchor="start" xml:space="preserve">element={&lt;ProductListPage /&gt;} /&gt;</text>
 <text x="14" y="306" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="normal" fill="#174e78" text-anchor="start" xml:space="preserve">ヘッダー・メニュー・フッターは共通部分</text>
 <polyline points="386,198 409,198 409,139 444,139" fill="none" stroke="#174e78" stroke-width="2.5" marker-end="url(#blue)"/>
 <polyline points="386,241 424,241 424,259 444,259" fill="none" stroke="#1a6657" stroke-width="2.5" marker-end="url(#green)"/>
 <rect x="447" y="103" width="338" height="316" rx="8" fill="#f5f8fa" stroke="#a1bdcf" stroke-width="1.5"/>
-<text x="616" y="126" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">sample3_3/layouts/MainLayout.tsx</text>
+<text x="616" y="126" font-family="Courier New, Meiryo UI, monospace" font-size="16" font-weight="bold" fill="#182f45" text-anchor="middle" xml:space="preserve">src/layouts/MainLayout.tsx</text>
 <rect x="458" y="140" width="316" height="31" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="616.0" y="160.78" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">header　商品管理システム</text>
 <rect x="458" y="178" width="316" height="31" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
@@ -40,4 +37,5 @@
 <image x="696.8333333333333" y="325" width="33" height="36" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjggMTIwIiB3aWR0aD0iMTY4IiBoZWlnaHQ9IjEyMCIgcm9sZT0iaW1nIj4NCiAgPHRpdGxlPuS7mOeuizwvdGl0bGU+DQogIDxlbGxpcHNlIGN4PSI4NiIgY3k9IjEwMCIgcng9IjUxIiByeT0iNiIgZmlsbD0iIzZiNTUxZCIgb3BhY2l0eT0iLjEyIi8+DQogIDxnIHRyYW5zZm9ybT0icm90YXRlKDExIDgzIDYxKSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+DQogICAgPHJlY3QgeD0iMzgiIHk9IjIyIiB3aWR0aD0iOTEiIGhlaWdodD0iNzYiIHJ4PSIzIiBmaWxsPSIjZGJhODM4IiBzdHJva2U9IiNhODgyMzIiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTQwIDg4aDg3bS04NyA0aDg3bS04NyAzaDg3IiBzdHJva2U9IiNmNGQ3N2UiIHN0cm9rZS13aWR0aD0iMS4yIi8+DQogICAgPHBhdGggZD0iTTM3IDE4aDg4djUycS0xMCA0LTE2IDE4SDM3WiIgZmlsbD0iI2Y3ZDM1YyIgc3Ryb2tlPSIjYWQ4OTM5IiBzdHJva2Utd2lkdGg9IjEuNCIvPg0KICAgIDxwYXRoIGQ9Ik0zNyAxN2g4OHY1MGwtMjAgMjBIMzdaIiBmaWxsPSIjZmZkZjcyIiBzdHJva2U9IiNhZDg5MzkiIHN0cm9rZS13aWR0aD0iMS40Ii8+DQogICAgPHBhdGggZD0iTTEwNSA4N2MxLTEyIDUtMjAgMjAtMjBsLTIwIDIwWiIgZmlsbD0iI2ZmZjFhZSIgc3Ryb2tlPSIjYzJhMTRiIiBzdHJva2Utd2lkdGg9IjEuMSIvPg0KICAgIDxwYXRoIGQ9Ik00MCAyMGg4MXY2SDQwWiIgZmlsbD0iI2Y1Yzk1MCIvPg0KICAgIDxwYXRoIGQ9Ik00OSAzOGg0NW0tNDUgOWgzN20tMzcgOWgzMSIgc3Ryb2tlPSIjZDlhOTQxIiBzdHJva2Utd2lkdGg9IjEuNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+DQogIDwvZz4NCjwvc3ZnPg0K"/>
 <rect x="458" y="381" width="316" height="29" rx="8" fill="#eaf3fa" stroke="#a1bdcf" stroke-width="1.5"/>
 <text x="616.0" y="400.78" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="16" font-weight="bold" fill="#174e78" text-anchor="middle" xml:space="preserve">footer　商品管理システム</text>
+<text x="785" y="77" font-family="Meiryo UI, MS PGothic, sans-serif" font-size="15" fill="#174e78" text-anchor="end" font-weight="700">通常構成の例</text>
 </svg>
