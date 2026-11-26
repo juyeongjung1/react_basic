@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="442" viewBox="0 0 744 442" font-family="Meiryo, sans-serif" role="img">
+<title>第4章の確認演習の商品一覧</title>
+<text x="372" y="23" font-size="18" fill="#b42331" text-anchor="middle" font-weight="700">［商品一覧を取得］をクリック</text>
+<path d="M180 35H564M557 31L564 35L557 39" fill="none" stroke="#b42331" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="184" y="58" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">操作前</text>
+<text x="560" y="58" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">操作後</text>
+<rect x="8" y="70" width="352" height="363" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="8" y="70" width="352" height="29" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="1"/>
+<circle cx="19" cy="84.5" r="2.1" fill="#8ba6ba"/><circle cx="28" cy="84.5" r="2.1" fill="#8ba6ba"/>
+<rect x="37" y="75" width="314" height="19" rx="4" fill="#fff" stroke="#b2c5d3" stroke-width="1"/>
+<text x="44" y="89.5" font-size="14.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5175/sample-4-3</text>
+<text x="23" y="120" font-size="16" fill="#18364e" text-anchor="start" font-weight="700">第4章の確認演習</text>
+<text x="31" y="142" font-size="15.2" fill="#0d6efd" text-anchor="start">4.2 AxiosによるHTTP通信</text>
+<rect x="23" y="152" width="262" height="22" rx="5" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="31" y="168" font-size="15.2" fill="#fff" text-anchor="start">4.3 取得したデータの画面表示</text>
+<path d="M23 180H345" fill="none" stroke="#dee2e6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="23" y="211" font-size="23" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="23" y="219" width="156" height="29" rx="5" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="101" y="239" font-size="16" fill="#fff" text-anchor="middle" font-weight="700">商品一覧を取得</text>
+<rect x="23" y="260" width="287" height="23" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<path d="M23 260V283" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M107 260V283" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M228 260V283" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M310 260V283" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M23 260H310" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M23 283H310" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="30" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">商品番号</text>
+<text x="114" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">商品名</text>
+<text x="235" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">単価</text>
+<rect x="20" y="216" width="162" height="35" rx="0" fill="none" stroke="#b42331" stroke-width="2"/>
+<rect x="384" y="70" width="352" height="363" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="384" y="70" width="352" height="29" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="1"/>
+<circle cx="395" cy="84.5" r="2.1" fill="#8ba6ba"/><circle cx="404" cy="84.5" r="2.1" fill="#8ba6ba"/>
+<rect x="413" y="75" width="314" height="19" rx="4" fill="#fff" stroke="#b2c5d3" stroke-width="1"/>
+<text x="420" y="89.5" font-size="14.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5175/sample-4-3</text>
+<text x="399" y="120" font-size="16" fill="#18364e" text-anchor="start" font-weight="700">第4章の確認演習</text>
+<text x="407" y="142" font-size="15.2" fill="#0d6efd" text-anchor="start">4.2 AxiosによるHTTP通信</text>
+<rect x="399" y="152" width="262" height="22" rx="5" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="407" y="168" font-size="15.2" fill="#fff" text-anchor="start">4.3 取得したデータの画面表示</text>
+<path d="M399 180H721" fill="none" stroke="#dee2e6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="399" y="211" font-size="23" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="399" y="219" width="156" height="29" rx="5" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="477" y="239" font-size="16" fill="#fff" text-anchor="middle" font-weight="700">商品一覧を取得</text>
+<rect x="399" y="260" width="287" height="23" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<path d="M399 260V421" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M483 260V421" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M604 260V421" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M686 260V421" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 260H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 283H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 306H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 329H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 352H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 375H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 398H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M399 421H686" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="406" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">商品番号</text>
+<text x="490" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">商品名</text>
+<text x="611" y="277.2" font-size="16.4" fill="#18364e" text-anchor="start" font-weight="700">単価</text>
+<text x="406" y="300.2" font-size="16.4" fill="#18364e" text-anchor="start">101</text>
+<text x="490" y="300.2" font-size="16.4" fill="#18364e" text-anchor="start">ノート</text>
+<text x="611" y="300.2" font-size="16.4" fill="#18364e" text-anchor="start">250円</text>
+<text x="406" y="323.2" font-size="16.4" fill="#18364e" text-anchor="start">102</text>
+<text x="490" y="323.2" font-size="16.4" fill="#18364e" text-anchor="start">ボールペン</text>
+<text x="611" y="323.2" font-size="16.4" fill="#18364e" text-anchor="start">120円</text>
+<text x="406" y="346.2" font-size="16.4" fill="#18364e" text-anchor="start">103</text>
+<text x="490" y="346.2" font-size="16.4" fill="#18364e" text-anchor="start">消しゴム</text>
+<text x="611" y="346.2" font-size="16.4" fill="#18364e" text-anchor="start">100円</text>
+<text x="406" y="369.2" font-size="16.4" fill="#18364e" text-anchor="start">104</text>
+<text x="490" y="369.2" font-size="16.4" fill="#18364e" text-anchor="start">ファイル</text>
+<text x="611" y="369.2" font-size="16.4" fill="#18364e" text-anchor="start">600円</text>
+<text x="406" y="392.2" font-size="16.4" fill="#18364e" text-anchor="start">105</text>
+<text x="490" y="392.2" font-size="16.4" fill="#18364e" text-anchor="start">クリップ</text>
+<text x="611" y="392.2" font-size="16.4" fill="#18364e" text-anchor="start">180円</text>
+<text x="406" y="415.2" font-size="16.4" fill="#18364e" text-anchor="start">106</text>
+<text x="490" y="415.2" font-size="16.4" fill="#18364e" text-anchor="start">付箋</text>
+<text x="611" y="415.2" font-size="16.4" fill="#18364e" text-anchor="start">240円</text>
+<rect x="397" y="283" width="291" height="139" rx="0" fill="none" stroke="#b42331" stroke-width="2"/>
+</svg>

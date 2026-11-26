@@ -32,5 +32,42 @@
       "text": "response.data",
       "line": 6
     }
+  ],
+  "ch04-43-full": [
+    {
+      "text": "useState<Product[]>([])",
+      "line": 12
+    },
+    {
+      "text": "setProducts(response.data)",
+      "line": 16
+    }
+  ],
+  "ch04-43-state": [
+    {
+      "text": "<Product[]>",
+      "line": 12
+    },
+    {
+      "text": "([])",
+      "line": 12
+    }
+  ],
+  "ch04-43-load": [
+    {
+      "text": "axios.get<Product[]>",
+      "line": 15
+    },
+    {
+      "text": "setProducts(response.data)",
+      "line": 16
+    }
+  ],
+  "ch04-43-map": [
+    {
+      "text": "products",
+      "within": "products.map((product) => (",
+      "line": 35
+    }
   ]
 }

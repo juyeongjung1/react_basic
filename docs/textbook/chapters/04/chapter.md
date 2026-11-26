@@ -756,3 +756,311 @@ response.dataから商品情報を取り出す
 <!-- CODE id="ch04-42-api-start" type="コンソールの記述例" highlight="none" reason="コマンド全体が操作対象" -->
 <!-- CODE id="ch04-42-axios-install" type="コンソールの記述例" highlight="none" reason="コマンド全体が操作対象" -->
 <!-- CODE id="ch04-42-import" path="ch04-basic/src/components/Sample4_2.tsx" lines="1" type="TSX" highlight="none" reason="1行全体が説明対象" -->
+
+:::: {#page-6 .source-page}
+
+::: {#ch04-43-title .heading}
+4.3. 取得したデータの画面表示
+:::
+
+::: {#ch04-43-slide .slide layout="illustration"}
+取得したデータの画面表示
+
+![取得したデータの画面表示](assets/axios-state-slide.svg)
+:::
+
+::: {#ch04-43-background .heading level="minor"}
+REST APIから取得したデータを画面に表示するには
+:::
+
+::: {#ch04-43-par-04 .paragraph}
+前節では、Axiosを使用してREST APIから商品情報を取得し、ブラウザーのコンソールに出力しました。
+:::
+
+::: {#ch04-43-par-05 .paragraph}
+実際の商品管理システムでは、取得した商品情報をコンソールではなく、利用者が操作する画面に表示する必要があります。
+:::
+
+::: {#ch04-43-par-06 .paragraph}
+2.6節では、ソースコード内に商品データを配列として定義し、`map()` を使用してテーブル形式で一覧表示しました。
+:::
+
+::: {#ch04-43-par-07 .paragraph}
+今回は、この配列をstateで管理し、REST APIから取得した商品データで更新します。**取得したデータをstateに格納することで、Reactが新しいデータを使用して画面を更新します。**
+:::
+
+::: {#ch04-43-sample .heading level="minor"}
+【サンプル】REST APIから取得した商品を一覧表示する
+:::
+
+::: {#ch04-43-par-09 .paragraph}
+［商品一覧を取得］ボタンをクリックすると、REST APIから取得した6件の商品情報をテーブル形式で表示します。
+:::
+
+::: {#ch04-43-par-10 .paragraph}
+`ch04-basic` プロジェクトの `src/components/Sample4_3.tsx` を確認してください。
+:::
+
+::: {#ch04-43-full .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="1"}
+```tsx
+import { useState } from 'react'
+import axios from 'axios'
+
+type Product = {
+  id: number
+  name: string
+  price: number
+  imagePath: string
+}
+
+export default function Sample4_3() {
+  const [products, setProducts] = useState<Product[]>([])
+
+  async function handleGetProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
+
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      <button type="button" className="btn btn-primary mb-3"
+              onClick={handleGetProducts}>
+        商品一覧を取得
+      </button>
+      <table className="table table-bordered w-auto">
+        <thead className="table-light">
+          <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+```
+:::
+
+::: {#ch04-43-full-cont .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="34" code-label="TSX（続き）"}
+```tsx
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch04-43-par-13 .paragraph}
+前節のサンプルと同様に、練習用REST APIと `ch04-basic` の開発サーバーを起動してください。既に起動している場合は、起動し直す必要はありません。
+:::
+
+::: {#ch04-43-par-14 .paragraph}
+ブラウザーのメニューから［4.3 取得したデータの画面表示］を選択してください。
+:::
+
+::: {#ch04-43-par-15 .paragraph}
+初期状態では、テーブルの見出しだけが表示されます。［商品一覧を取得］ボタンをクリックすると、6件の商品情報が表示されます。
+:::
+
+![ボタンをクリックすると、取得した商品情報が一覧表示される](assets/axios-state-sample.svg){#ch04-43-figure-1}
+
+::: {#ch04-43-figure-1-caption .caption}
+ボタンをクリックすると、取得した商品情報が一覧表示される
+:::
+
+::: {#ch04-43-syntax .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch04-43-type-heading .step keep-next="2"}
+**① 商品データを管理するstateを定義する**
+:::
+
+::: {#ch04-43-par-19 .paragraph}
+今回は、REST APIから取得する商品データの型を、次のように定義しています。
+:::
+
+::: {#ch04-43-type .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="4"}
+```tsx
+type Product = {
+  id: number
+  name: string
+  price: number
+  imagePath: string
+}
+```
+:::
+
+::: {#ch04-43-par-22 .paragraph}
+3.1節でPropsの型を定義したときと同じように、`type` を使用して、商品1件分のデータの型を `Product` として定義しています。
+:::
+
+::: {#ch04-43-par-23 .paragraph}
+今回のAPIからは複数の商品が配列として返されるため、stateには次のように配列の型を指定します。
+:::
+
+::: {#ch04-43-state .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="12"}
+```tsx
+  const [products, setProducts] = useState<Product[]>([])
+```
+:::
+
+::: {#ch04-43-par-26 .paragraph}
+`Product[]` は、`Product` 型のデータを格納する配列の型を表します。`useState()` に対して `<Product[]>` を指定することで、商品データの配列を管理するstateとして定義できます。
+:::
+
+::: {#ch04-43-par-27 .paragraph}
+引数の `[]` は空の配列です。画面の初期表示時にはまだ商品情報を取得していないため、初期値に空の配列を指定しています。
+:::
+
+::: {#ch04-43-state-table .table column-widths="25 75"}
+| 記述 | 役割 |
+|---|---|
+| `<Product[]>` | stateで管理するデータの型を指定する。 |
+| `[]` | stateの初期値として空の配列を指定する。 |
+:::
+
+::: {#ch04-43-par-29 .paragraph}
+このように、空配列を初期値として使用する場合は、どの型のデータを格納する配列なのかを明示しておきます。
+:::
+
+::: {#ch04-43-load-heading .step keep-next="1"}
+**② REST APIから取得したデータでstateを更新する**
+:::
+
+::: {#ch04-43-load .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="14"}
+```tsx
+  async function handleGetProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
+```
+:::
+
+::: {#ch04-43-par-33 .paragraph}
+`axios.get()` を使用して商品情報を取得する処理は、前節と同じです。今回は `axios.get<Product[]>()` と記述することで、取得する `response.data` の型をTypeScriptに伝えています。
+:::
+
+::: {#ch04-43-par-34 .paragraph}
+前節では、取得したデータを `console.log(response.data)` でコンソールに出力していました。今回は、コンソールへの出力の代わりに、次の処理を実行します。
+:::
+
+::: {#ch04-43-set .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="16"}
+```tsx
+    setProducts(response.data)
+```
+:::
+
+::: {#ch04-43-par-37 .paragraph}
+`response.data` に格納されている商品データの配列を `setProducts()` に渡します。これにより、productsのstateが取得した6件の商品データに更新され、Reactがコンポーネントを再レンダリングします。
+:::
+
+::: {#ch04-43-map-heading .step keep-next="1"}
+**③ stateに格納された商品データを一覧表示する**
+:::
+
+::: {#ch04-43-map .code filename="ch04-basic/src/components/Sample4_3.tsx" start-line="35"}
+```tsx
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+```
+:::
+
+::: {#ch04-43-par-41 .paragraph}
+`map()` を使用した一覧表示の方法は、2.6節で学習した内容と同じです。
+:::
+
+::: {#ch04-43-par-42 .paragraph}
+初期状態では、productsは空配列なので、`map()` によって商品データの行は生成されません。商品情報を取得し、stateが更新されると、Reactは新しいproductsの値を使用して6行分のJSXを生成します。
+:::
+
+![REST APIから取得したデータをstateに格納すると、一覧の表示が更新される](assets/axios-state-flow.svg){#ch04-43-figure-2}
+
+::: {#ch04-43-figure-2-caption .caption}
+REST APIから取得したデータをstateに格納すると、一覧の表示が更新される
+:::
+
+::: {#ch04-43-par-44 .paragraph}
+このように、取得したデータをstateに格納すれば、テーブルに行を追加する処理を個別に記述する必要はありません。画面に表示するデータを更新するだけで、Reactが必要な表示の変更を反映します。
+:::
+
+::: {#ch04-43-exercise .heading level="minor" keep-next="7"}
+【確認演習】取得した商品データをstateに格納し、一覧表示する
+:::
+
+::: {#ch04-43-par-46 .paragraph}
+前節で学習したAxiosによる商品一覧の取得と、今回学習したstateによる画面更新を組み合わせて、商品一覧画面を完成させます。
+:::
+
+::: {#ch04-43-par-47 .paragraph}
+商品データの型、REST APIからデータを取得する処理、テーブルの基本構成と `map()` による一覧表示は、あらかじめ用意されています。通常の変数として定義されている空配列をstateに変更し、取得した商品データが画面に反映されるようにしましょう。
+:::
+
+::: {#ch04-43-par-48 .paragraph numbered="true"}
+1．`ch04-basic-q` プロジェクトの `src/components/Q4_3.tsx` を開いてください。
+:::
+
+::: {#ch04-43-par-49 .paragraph numbered="true"}
+2．コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。➁は既存コードの確認、➀・➂・➃は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch04-43-par-50 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
+:::
+
+::: {#ch04-43-par-51 .paragraph numbered="true"}
+4．練習用REST APIと `ch04-basic-q` の開発サーバーを起動してください。起動済みの場合は、演習用のブラウザーの画面に戻ってください。
+:::
+
+::: {#ch04-43-par-52 .paragraph numbered="true"}
+5．メニューから［4.3 取得したデータの画面表示］を選択してください。
+:::
+
+::: {#ch04-43-check .heading level="minor"}
+動作確認
+:::
+
+::: {#ch04-43-par-54 .paragraph numbered="true"}
+6．初期状態では、テーブルの見出しのみが表示されていることを確認してください。［商品一覧を取得］ボタンをクリックし、次の6件の商品情報が表示されることを確認してください。
+:::
+
+![取得した商品データをstateに格納し、6件の商品を一覧表示する](assets/axios-state-exercise.svg){#ch04-43-figure-3}
+
+::: {#ch04-43-figure-3-caption .caption}
+取得した商品データをstateに格納し、6件の商品を一覧表示する
+:::
+
+::: {#ch04-43-par-56 .paragraph}
+商品番号101～106の6件が表示され、各商品の商品名と単価が正しければ、演習完了です。
+:::
+
+::: {#ch04-43-par-57 .paragraph}
+なお、今回はボタンをクリックして商品情報を取得しています。次の4.4節では、画面が表示されたときに自動的に商品情報を取得する方法を学習します。
+:::
+
+::: {#ch04-43-points .section-points}
+この節のポイント
+
+● `useState<Product[]>([])` のように型を指定することで、商品データの配列をstateとして管理できる。
+
+● REST APIから取得したデータを更新用の関数に渡すことで、stateを更新できる。
+
+● stateの値を `map()` で使用することで、取得したデータの件数に応じた一覧を表示できる。
+:::
+
+::::
+
+<!-- CODE id="ch04-43-type" path="ch04-basic/src/components/Sample4_3.tsx" lines="4-9" type="TSX" highlight="none" reason="掲載した型定義全体が説明対象であるため" -->
+<!-- CODE id="ch04-43-set" path="ch04-basic/src/components/Sample4_3.tsx" lines="16" type="TSX" highlight="none" reason="1行全体が説明対象であるため" -->

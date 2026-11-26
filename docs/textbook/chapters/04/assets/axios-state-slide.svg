@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="359" viewBox="0 0 780 359" font-family="Meiryo, sans-serif" role="img">
+<title>取得したデータの画面表示</title>
+<rect x="8" y="71" width="171" height="187" rx="5" fill="#f1f7fc" stroke="#a7bdce" stroke-width="1"/>
+<text x="93.5" y="99" font-size="20" fill="#18364e" text-anchor="middle" font-weight="700">REST APIから</text>
+<text x="93.5" y="125" font-size="18" fill="#18364e" text-anchor="middle" font-weight="700">取得した商品データ</text>
+<text x="93.5" y="152" font-size="18" fill="#2b648d" text-anchor="middle" font-weight="700">配列</text>
+<rect x="19" y="165" width="149" height="42" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="93.5" y="192" font-size="17" fill="#18364e" text-anchor="middle">101 ノート 250円</text>
+<text x="93.5" y="232" font-size="17" fill="#18364e" text-anchor="middle">ほか5件</text>
+<text x="235" y="109" font-size="16" fill="#2b648d" text-anchor="middle" font-weight="700">取得した</text>
+<text x="235" y="129" font-size="16" fill="#2b648d" text-anchor="middle" font-weight="700">データを</text>
+<text x="235" y="151" font-size="16" fill="#2b648d" text-anchor="middle" font-weight="700">stateに格納</text>
+<path d="M185 166H284M277 162L284 166L277 170" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="291" y="71" width="184" height="187" rx="5" fill="#e9f5ef" stroke="#a6caba" stroke-width="1"/>
+<text x="383" y="103" font-size="18.5" fill="#24664e" text-anchor="middle" font-weight="700">products（state）</text>
+<rect x="303" y="125" width="160" height="82" rx="5" fill="#fff" stroke="#a6caba" stroke-width="1"/>
+<text x="383" y="155" font-size="18" fill="#24664e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">setProducts(</text>
+<text x="383" y="179" font-size="18" fill="#24664e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response.data)</text>
+<text x="383" y="233" font-size="17" fill="#18364e" text-anchor="middle">6件の商品データ</text>
+<text x="525" y="129" font-size="17" fill="#24664e" text-anchor="middle" font-weight="700">Reactが</text>
+<text x="525" y="151" font-size="16" fill="#24664e" text-anchor="middle" font-weight="700">画面を更新</text>
+<path d="M481 166H568M561 162L568 166L561 170" fill="none" stroke="#24664e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="574" y="38" width="198" height="247" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="574" y="38" width="198" height="24" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="1"/>
+<circle cx="586" cy="50" r="2.1" fill="#8ba6ba"/><circle cx="596" cy="50" r="2.1" fill="#8ba6ba"/>
+<rect x="605" y="44" width="156" height="12" rx="3" fill="#fff" stroke="#b7c7d4" stroke-width="1"/>
+<text x="585" y="91" font-size="21" fill="#18364e" text-anchor="start" font-weight="700">商品一覧</text>
+<rect x="585" y="101" width="120" height="22" rx="5" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="645" y="117" font-size="12.6" fill="#fff" text-anchor="middle" font-weight="700">商品一覧を取得</text>
+<rect x="583" y="133" width="180" height="19.7" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<path d="M583 133V270.9" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M645 133V270.9" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M717 133V270.9" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M763 133V270.9" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 133.0H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 152.7H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 172.4H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 192.1H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 211.8H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 231.5H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 251.2H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M583 270.9H763" fill="none" stroke="#c8d3db" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="586" y="147.05" font-size="13.4" fill="#18364e" text-anchor="start" font-weight="700">商品番号</text>
+<text x="648" y="147.05" font-size="13.4" fill="#18364e" text-anchor="start" font-weight="700">商品名</text>
+<text x="720" y="147.05" font-size="13.4" fill="#18364e" text-anchor="start" font-weight="700">単価</text>
+<text x="586" y="166.75" font-size="13.4" fill="#18364e" text-anchor="start">101</text>
+<text x="648" y="166.75" font-size="13.4" fill="#18364e" text-anchor="start">ノート</text>
+<text x="720" y="166.75" font-size="13.4" fill="#18364e" text-anchor="start">250円</text>
+<text x="586" y="186.45000000000002" font-size="13.4" fill="#18364e" text-anchor="start">102</text>
+<text x="648" y="186.45000000000002" font-size="13.4" fill="#18364e" text-anchor="start">ボールペン</text>
+<text x="720" y="186.45000000000002" font-size="13.4" fill="#18364e" text-anchor="start">120円</text>
+<text x="586" y="206.15" font-size="13.4" fill="#18364e" text-anchor="start">103</text>
+<text x="648" y="206.15" font-size="13.4" fill="#18364e" text-anchor="start">消しゴム</text>
+<text x="720" y="206.15" font-size="13.4" fill="#18364e" text-anchor="start">100円</text>
+<text x="586" y="225.85000000000002" font-size="13.4" fill="#18364e" text-anchor="start">104</text>
+<text x="648" y="225.85000000000002" font-size="13.4" fill="#18364e" text-anchor="start">ファイル</text>
+<text x="720" y="225.85000000000002" font-size="13.4" fill="#18364e" text-anchor="start">600円</text>
+<text x="586" y="245.55" font-size="13.4" fill="#18364e" text-anchor="start">105</text>
+<text x="648" y="245.55" font-size="13.4" fill="#18364e" text-anchor="start">クリップ</text>
+<text x="720" y="245.55" font-size="13.4" fill="#18364e" text-anchor="start">180円</text>
+<text x="586" y="265.25" font-size="13.4" fill="#18364e" text-anchor="start">106</text>
+<text x="648" y="265.25" font-size="13.4" fill="#18364e" text-anchor="start">付箋</text>
+<text x="720" y="265.25" font-size="13.4" fill="#18364e" text-anchor="start">240円</text>
+<rect x="8" y="306" width="764" height="44" rx="5" fill="#e9f5ef" stroke="#a6caba" stroke-width="1"/>
+<text x="390" y="335" font-size="22" fill="#24664e" text-anchor="middle" font-weight="700">REST APIから取得したデータをstateに格納し、画面に表示する</text>
+</svg>

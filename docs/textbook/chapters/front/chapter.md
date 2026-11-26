@@ -180,6 +180,10 @@ XXXX-T-01
 4.2. AxiosによるHTTP通信
 :::
 
+::: {#contents-ch04-section-3 .contents-entry target="04:ch04-43-title"}
+4.3. 取得したデータの画面表示
+:::
+
 ::::
 
 :::: {#page-5 .source-page}
