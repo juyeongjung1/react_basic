@@ -69,5 +69,49 @@
       "within": "products.map((product) => (",
       "line": 35
     }
+  ],
+  "ch04-44-full": [
+    {
+      "text": "useEffect",
+      "line": 1
+    },
+    {
+      "text": "useEffect(() => {",
+      "line": 14
+    },
+    {
+      "text": "loadProducts()",
+      "line": 20
+    },
+    {
+      "text": "[]",
+      "line": 21
+    }
+  ],
+  "ch04-44-import": [
+    {
+      "text": "useEffect",
+      "line": 1
+    }
+  ],
+  "ch04-44-effect": [
+    {
+      "text": "useEffect",
+      "line": 14
+    },
+    {
+      "text": "[]",
+      "line": 21
+    }
+  ],
+  "ch04-44-load": [
+    {
+      "text": "async function loadProducts()",
+      "line": 15
+    },
+    {
+      "text": "loadProducts()",
+      "line": 20
+    }
   ]
 }

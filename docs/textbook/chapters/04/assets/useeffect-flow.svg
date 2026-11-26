@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="702" height="451" viewBox="0 0 702 451" font-family="Meiryo, sans-serif" role="img">
+<title>useEffectによるデータ取得から一覧表示までの流れ</title>
+<rect x="12" y="8" width="444" height="68" rx="6" fill="#eaf3fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="29" y="35" font-size="20.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">① コンポーネントの初期表示</text>
+<text x="31" y="60" font-size="16.0" fill="#4d6475" text-anchor="start" xml:space="preserve">12行目</text>
+<text x="117" y="60" font-size="19.0" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">products = []</text>
+<rect x="471" y="8" width="219" height="68" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="580.5" y="31" font-size="15.3" fill="#4d6475" text-anchor="middle" xml:space="preserve">テーブル見出しのみ（模式図）</text>
+<rect x="482" y="40" width="194" height="23" rx="0" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="482" y="40" width="194" height="23" rx="0" fill="#f4f6f8" stroke="#a7bdce" stroke-width="1"/>
+<text x="489" y="56.33" font-size="14.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品番号</text>
+<path d="M550 40v23" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="557" y="56.33" font-size="14.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品名</text>
+<path d="M622 40v23" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="629" y="56.33" font-size="14.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">単価</text>
+<path d="M46 79V93M42 87L46 93L50 87" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="12" y="96" width="444" height="61" rx="6" fill="#eaf3fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="29" y="121" font-size="20.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">② useEffectに渡した関数が実行される</text>
+<text x="31" y="145" font-size="16.0" fill="#4d6475" text-anchor="start" xml:space="preserve">14～21行目</text>
+<path d="M46 161V189M42 183L46 189L50 183" fill="none" stroke="#b42331" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="70" y="162" width="214" height="25" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<text x="80" y="179.5" font-size="15.9" fill="#b42331" text-anchor="start" xml:space="preserve">20行目</text>
+<text x="152" y="179.5" font-size="17.4" fill="#b42331" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">loadProducts()</text>
+<rect x="12" y="193" width="444" height="74" rx="6" fill="#eaf3fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="29" y="220" font-size="20.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">③ loadProducts()が呼び出される</text>
+<text x="31" y="248" font-size="16.0" fill="#4d6475" text-anchor="start" xml:space="preserve">16行目</text>
+<text x="117" y="248" font-size="17.4" fill="#18364e" text-anchor="start" xml:space="preserve">REST APIから6件のデータを取得する</text>
+<path d="M46 271V289M42 283L46 289L50 283" fill="none" stroke="#b42331" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="12" y="293" width="444" height="59" rx="6" fill="#e8f4ed" stroke="#a6caba" stroke-width="1"/>
+<rect x="12" y="293" width="444" height="59" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<text x="29" y="318" font-size="20.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">④ stateを更新する</text>
+<text x="31" y="341" font-size="16.0" fill="#4d6475" text-anchor="start" xml:space="preserve">17行目</text>
+<text x="117" y="341" font-size="19.0" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">setProducts(response.data)</text>
+<path d="M46 356V371M42 365L46 371L50 365" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="12" y="375" width="444" height="66" rx="6" fill="#e8f4ed" stroke="#a6caba" stroke-width="1"/>
+<text x="29" y="401" font-size="20.3" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">⑤ Reactが再レンダリングし、</text>
+<text x="31" y="426" font-size="16.0" fill="#4d6475" text-anchor="start" xml:space="preserve">35行目以降</text>
+<text x="141" y="426" font-size="17.2" fill="#18364e" text-anchor="start" xml:space="preserve">products.map()で6行を表示する</text>
+<rect x="471" y="375" width="219" height="66" rx="6" fill="#e8f4ed" stroke="#a6caba" stroke-width="1"/>
+<text x="580.5" y="395" font-size="16.8" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">依存配列が空のため、</text>
+<text x="580.5" y="414" font-size="16.8" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">stateの更新だけでは</text>
+<text x="580.5" y="433" font-size="16.8" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">再取得しない</text>
+</svg>

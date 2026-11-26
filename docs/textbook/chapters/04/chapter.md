@@ -1053,3 +1053,327 @@ REST APIから取得したデータをstateに格納すると、一覧の表示�
 
 <!-- CODE id="ch04-43-type" path="ch04-basic/src/components/Sample4_3.tsx" lines="4-9" type="TSX" highlight="none" reason="掲載した型定義全体が説明対象であるため" -->
 <!-- CODE id="ch04-43-set" path="ch04-basic/src/components/Sample4_3.tsx" lines="16" type="TSX" highlight="none" reason="1行全体が説明対象であるため" -->
+
+:::: {#page-7 .source-page}
+
+::: {#ch04-44-title .heading}
+4.4. useEffectによる処理の実行
+:::
+
+::: {#ch04-44-slide .slide layout="illustration"}
+useEffectによる処理の実行
+
+![useEffectによる処理の実行](assets/useeffect-slide.svg)
+:::
+
+::: {#ch04-44-background .heading level="minor"}
+画面が表示されたときに処理を実行するには
+:::
+
+::: {#ch04-44-par-04 .paragraph}
+前節では、［商品一覧を取得］ボタンをクリックすると、REST APIから取得した商品情報が一覧表示されるようにしました。
+:::
+
+::: {#ch04-44-par-05 .paragraph}
+しかし、実際の商品管理システムでは、商品一覧画面を開いたときに、ボタンをクリックしなくても商品一覧が表示されることが一般的です。
+:::
+
+::: {#ch04-44-par-06 .paragraph}
+では、商品一覧を取得する関数を、コンポーネントの中で直接呼び出せばよいのでしょうか。
+:::
+
+::: {#ch04-44-par-07 .paragraph}
+コンポーネントの関数の中で直接通信処理を実行すると、データを取得してstateを更新した際に、Reactがコンポーネントを再レンダリングします。そのたびに通信処理が再び実行され、通信が繰り返される原因になります。
+:::
+
+::: {#ch04-44-par-08 .paragraph}
+そこで使用するのが、Reactが提供する **useEffect()** です。
+:::
+
+::: {#ch04-44-par-09 .paragraph}
+useEffect()は、コンポーネントのレンダリング結果が反映された後に、外部システムとの同期などの処理を実行するためのHookです。この節では、画面が最初に表示されるときにREST APIからデータを取得するために使用します。
+:::
+
+::: {#ch04-44-sample .heading level="minor"}
+【サンプル】画面の表示時に商品一覧を取得する
+:::
+
+::: {#ch04-44-par-11 .paragraph}
+前節の商品一覧画面から［商品一覧を取得］ボタンを取り除きます。その代わりに、useEffect()を使用して、商品一覧画面が表示されたときに商品情報を取得します。
+:::
+
+::: {#ch04-44-par-12 .paragraph}
+`ch04-basic` プロジェクトの `src/components/Sample4_4.tsx` を確認してください。
+:::
+
+::: {#ch04-44-full .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="1"}
+```tsx
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+type Product = {
+  id: number
+  name: string
+  price: number
+  imagePath: string
+}
+
+export default function Sample4_4() {
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    }
+
+    loadProducts()
+  }, [])
+
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      <table className="table table-bordered w-auto">
+        <thead className="table-light">
+          <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+```
+:::
+
+::: {#ch04-44-full-cont .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="34" code-label="TSX（続き）"}
+```tsx
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch04-44-par-15 .paragraph}
+練習用REST APIと `ch04-basic` の開発サーバーが起動していることを確認してください。ブラウザーのメニューから［4.4 useEffectによる処理の実行］を選択します。
+:::
+
+::: {#ch04-44-par-16 .paragraph}
+今回はボタンをクリックする必要はありません。通信が正常に完了すると、6件の商品情報が一覧表示されます。
+:::
+
+![画面を表示すると、商品情報が自動的に取得・表示される](assets/useeffect-sample.svg){#ch04-44-figure-1}
+
+::: {#ch04-44-figure-1-caption .caption}
+画面を表示すると、商品情報が自動的に取得・表示される
+:::
+
+::: {#ch04-44-syntax .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch04-44-import-heading .step keep-next="1"}
+**① useEffectを使用する**
+:::
+
+::: {#ch04-44-import .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="1"}
+```tsx
+import { useEffect, useState } from 'react'
+```
+:::
+
+::: {#ch04-44-par-22 .paragraph}
+useState()と同様に、ReactからuseEffectをインポートします。
+:::
+
+::: {#ch04-44-par-23 .paragraph}
+今回のサンプルでは、次のようにuseEffect()を呼び出しています。
+:::
+
+::: {#ch04-44-effect .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="14"}
+```tsx
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    }
+
+    loadProducts()
+  }, [])
+```
+:::
+
+::: {#ch04-44-par-26 .paragraph}
+useEffect()には、実行する処理を関数として指定します。また、その処理を実行するタイミングを制御するために、第2引数に配列を指定できます。この配列を **依存配列** と呼びます。
+:::
+
+::: {#ch04-44-par-27 .paragraph}
+今回のコードでは、第1引数にアロー関数を、第2引数に空配列 `[]` を指定しています。
+:::
+
+![useEffectの第1引数と第2引数](assets/useeffect-arguments.svg){#ch04-44-figure-2}
+
+::: {#ch04-44-figure-2-caption .caption}
+useEffectの第1引数と第2引数
+:::
+
+::: {#ch04-44-dependencies-heading .step keep-next="1"}
+**② 依存配列で処理を実行するタイミングを指定する**
+:::
+
+::: {#ch04-44-par-30 .paragraph}
+依存配列の指定方法によって、useEffect()に渡した関数が実行されるタイミングが異なります。
+:::
+
+::: {#ch04-44-dependencies-table .table column-widths="26 74"}
+| 依存配列 | 実行されるタイミング |
+|---|---|
+| `[]` | コンポーネントが最初に表示された後（マウント時）。 |
+| `[id]` など | マウント時と、指定した値が変化した後。 |
+| 指定しない | レンダリングが反映されるたび。 |
+:::
+
+::: {#ch04-44-par-32 .paragraph}
+今回は、画面が最初に表示された後に商品情報を取得したいため、空配列 `[]` を指定しています。
+:::
+
+::: {#ch04-44-par-33 .paragraph}
+そのため、商品情報を取得してproductsのstateが更新され、コンポーネントが再レンダリングされても、その更新だけを理由としてuseEffect()に渡した関数が再び実行されることはありません。
+:::
+
+::: {#ch04-44-par-34 .paragraph}
+例えば、3.5節で学習したURLパラメータの商品番号 `id` に応じて商品情報を取得したい場合には、依存配列に `[id]` を指定することで、idが変化したときにもデータを取得するようにできます。
+:::
+
+::: {#ch04-44-par-35 .paragraph}
+※ 開発環境では、ReactのStrictModeの動作確認によって、マウント時の処理が追加で実行されることがあります。また、別の画面へ移動した後に商品一覧画面を改めて表示し、コンポーネントが再びマウントされた場合にも、処理は実行されます。
+:::
+
+::: {#ch04-44-load-heading .step keep-next="1"}
+**③ useEffectの中で非同期処理を実行する**
+:::
+
+::: {#ch04-44-load .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="15"}
+```tsx
+    async function loadProducts() {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    }
+
+    loadProducts()
+```
+:::
+
+::: {#ch04-44-par-39 .paragraph}
+useEffect()に渡した関数の中で、非同期関数 `loadProducts()` を定義しています。商品情報を取得し、取得したデータでstateを更新する処理は、前節と同じです。
+:::
+
+::: {#ch04-44-par-40 .paragraph}
+その下に `loadProducts()` と記述することで、定義した非同期関数を呼び出します。
+:::
+
+::: {#ch04-44-par-41 .paragraph}
+なお、useEffect()の第1引数に指定する関数そのものは、asyncで定義しないようにしてください。asyncで定義した関数はPromiseを返しますが、useEffect()に渡す関数はPromiseを戻り値として返すことができないためです。そのため、今回のようにuseEffect()に渡した関数の中で非同期関数を定義し、呼び出します。
+:::
+
+::: {#ch04-44-display-heading .step keep-next="1"}
+**④ 取得したデータを画面に反映する**
+:::
+
+::: {#ch04-44-par-43 .paragraph}
+今回のサンプルでは、コンポーネントの表示から商品一覧の表示まで、次のように処理が行われます。
+:::
+
+![useEffectによるデータ取得から一覧表示までの流れ](assets/useeffect-flow.svg){#ch04-44-figure-3}
+
+::: {#ch04-44-figure-3-caption .caption}
+useEffectによるデータ取得から一覧表示までの流れ
+:::
+
+::: {#ch04-44-par-45 .paragraph}
+前節と今回のサンプルでは、取得するデータや画面を更新する仕組みは同じです。異なるのは、データを取得する処理を実行するきっかけです。
+:::
+
+::: {#ch04-44-par-46 .paragraph}
+ボタンをクリックしたときに処理を実行する場合はイベントハンドラーを、今回のように画面の表示に伴ってデータを取得する場合はuseEffect()を使用します。
+:::
+
+::: {#ch04-44-exercise .heading level="minor" keep-next="7"}
+【確認演習】useEffectを使用して商品一覧を自動的に表示する
+:::
+
+::: {#ch04-44-par-48 .paragraph}
+講義サンプルと同様に、商品一覧画面を表示すると、REST APIから取得した6件の商品情報が一覧表示されるようにしましょう。
+:::
+
+::: {#ch04-44-par-49 .paragraph}
+商品データの型、state、商品情報を取得する非同期関数、テーブルの表示処理は、あらかじめ用意されています。useEffect()を使用して、画面の表示時に非同期関数が呼び出されるように実装します。
+:::
+
+::: {#ch04-44-par-50 .paragraph numbered="true"}
+1．`ch04-basic-q` プロジェクトの `src/components/Q4_4.tsx` を開いてください。
+:::
+
+::: {#ch04-44-par-51 .paragraph numbered="true"}
+2．コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。4つとも実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch04-44-par-52 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
+:::
+
+::: {#ch04-44-par-53 .paragraph numbered="true"}
+4．練習用REST APIと `ch04-basic-q` の開発サーバーが起動していることを確認してください。起動済みの場合は、演習用のブラウザーの画面に戻ってください。
+:::
+
+::: {#ch04-44-par-54 .paragraph numbered="true"}
+5．メニューから［4.4 useEffectによる処理の実行］を選択してください。
+:::
+
+::: {#ch04-44-check .heading level="minor"}
+動作確認
+:::
+
+::: {#ch04-44-par-56 .paragraph numbered="true"}
+6．商品一覧画面を表示しただけで、商品番号101～106の6件の商品情報が一覧表示されることを確認してください。
+:::
+
+![商品一覧画面を表示すると、6件の商品情報が自動的に表示されることを確認する](assets/useeffect-exercise.svg){#ch04-44-figure-4}
+
+::: {#ch04-44-figure-4-caption .caption}
+商品一覧画面を表示すると、6件の商品情報が自動的に表示されることを確認する
+:::
+
+::: {#ch04-44-par-58 .paragraph}
+各商品の商品名と単価が正しく表示されていれば、演習完了です。
+:::
+
+::: {#ch04-44-par-59 .paragraph}
+商品情報が表示されない場合は、演習用の開発サーバーに接続していること、練習用REST APIが起動していること、useEffect()の中で非同期関数を呼び出していることを確認してください。
+:::
+
+::: {#ch04-44-par-60 .paragraph}
+次の4.5節では、REST APIとの通信に失敗した場合の処理を学習します。
+:::
+
+::: {#ch04-44-points .section-points}
+この節のポイント
+
+● useEffect()を使用すると、コンポーネントのレンダリング結果が反映された後に処理を実行できる。
+
+● 依存配列に空配列 `[]` を指定すると、マウント時に処理を実行できる。
+
+● 依存配列に値を指定すると、その値が変化したときにも処理を実行できる。
+
+● useEffect()の中で非同期関数を定義して呼び出すことで、REST APIからデータを取得できる。
+:::
+
+::::

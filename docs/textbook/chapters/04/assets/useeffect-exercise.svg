@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="371" viewBox="0 0 600 371" font-family="Meiryo, sans-serif" role="img">
+<title>商品一覧画面を表示すると、6件の商品情報が自動的に表示されることを確認する</title>
+<rect x="10" y="6" width="580" height="69" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="22" y="29" font-size="17.4" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">第4章の確認演習</text>
+<text x="101.0" y="54" font-size="12.9" fill="#0d6efd" text-anchor="middle" xml:space="preserve">4.2 AxiosによるHTTP通信</text>
+<rect x="186" y="37" width="194" height="24" rx="4" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="283.0" y="54" font-size="12.9" fill="#fff" text-anchor="middle" font-weight="700" xml:space="preserve">4.3 取得したデータの画面表示</text>
+<text x="485.0" y="54" font-size="12.9" fill="#0d6efd" text-anchor="middle" xml:space="preserve">4.4 useEffectによる処理の実行</text>
+<rect x="387" y="35" width="196" height="28" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<path d="M300 79V109M296 103L300 109L304 103" fill="none" stroke="#b42331" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="315" y="97" font-size="13.2" fill="#b42331" text-anchor="start" font-weight="700" xml:space="preserve">［4.4 useEffectによる処理の実行］を選択</text>
+<rect x="10" y="114" width="580" height="249" rx="7" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="10.7" y="114.7" width="578.6" height="29.3" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="0.7"/>
+<circle cx="22" cy="129" r="1.9" fill="#8ba6ba"/><circle cx="30" cy="129" r="1.9" fill="#8ba6ba"/>
+<rect x="40" y="119.5" width="540" height="19" rx="3" fill="#fff" stroke="#a7bdce" stroke-width="0.7"/>
+<text x="48" y="133.9" font-size="14.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5175/sample-4-4</text>
+<text x="28" y="174" font-size="23" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品一覧</text>
+<rect x="28" y="189" width="343" height="161" rx="0" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="28" y="189" width="343" height="23" rx="0" fill="#f4f6f8" stroke="#a7bdce" stroke-width="1"/>
+<text x="35" y="205.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品番号</text>
+<text x="35" y="228.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">101</text>
+<text x="35" y="251.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">102</text>
+<text x="35" y="274.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">103</text>
+<text x="35" y="297.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">104</text>
+<text x="35" y="320.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">105</text>
+<text x="35" y="343.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">106</text>
+<path d="M124 189v161" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="131" y="205.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品名</text>
+<text x="131" y="228.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">ノート</text>
+<text x="131" y="251.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">ボールペン</text>
+<text x="131" y="274.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">消しゴム</text>
+<text x="131" y="297.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">ファイル</text>
+<text x="131" y="320.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">クリップ</text>
+<text x="131" y="343.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">付箋</text>
+<path d="M278 189v161" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="285" y="205.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">単価</text>
+<text x="285" y="228.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">250円</text>
+<text x="285" y="251.32999999999998" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">120円</text>
+<text x="285" y="274.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">100円</text>
+<text x="285" y="297.33" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">600円</text>
+<text x="285" y="320.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">180円</text>
+<text x="285" y="343.33000000000004" font-size="16.6" fill="#18364e" text-anchor="start" xml:space="preserve">240円</text>
+<path d="M28 235h343" fill="none" stroke="#a7bdce" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 258h343" fill="none" stroke="#a7bdce" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 281h343" fill="none" stroke="#a7bdce" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 304h343" fill="none" stroke="#a7bdce" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28 327h343" fill="none" stroke="#a7bdce" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="27" y="211" width="345" height="140" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+</svg>

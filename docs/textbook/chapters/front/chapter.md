@@ -184,6 +184,10 @@ XXXX-T-01
 4.3. 取得したデータの画面表示
 :::
 
+::: {#contents-ch04-section-4 .contents-entry target="04:ch04-44-title"}
+4.4. useEffectによる処理の実行
+:::
+
 ::::
 
 :::: {#page-5 .source-page}
