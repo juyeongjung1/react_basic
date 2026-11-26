@@ -3035,17 +3035,10 @@ REST APIとデータベースを連携させるアプリケーションでは、
 ![取得した商品番号を使ってREST APIから商品情報を取得する流れ（後続の章で実装）](assets/url-parameters-api.svg)
 :::
 
-ここで、ブラウザーに表示される `/products/101` は、React Routerが画面を切り替えるためのURLのパスです。一方、図に示した `/api/products/101` は、商品情報を取得するためにREST APIへ送信するリクエスト先の例です。両者は用途が異なります。
-
-今回のサンプルでは、商品情報を取得する処理をまだ記述していません。ソースコードには、実際の開発でREST APIを利用する箇所をコメントとして記載しています。また、商品詳細画面にも、その旨を表示しています。
-
 ~~~{#ch03-params-r426 .tsx code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductDetailPage.tsx" example="true" wide-code-label="true"}
   // 実際の開発では、idを使ってREST APIから商品情報を取得する。
 ~~~
 
-なお、URLから商品番号を取得できたとしても、その商品がデータベースに存在するとは限りません。商品の存在確認や、不正な商品番号が指定された場合の処理については、REST APIと連携する際に考慮する必要があります。
-
-この節では、後続の章で商品情報を取得するための準備として、URLから商品番号を取得する方法を理解しておきましょう。
 ::::
 
 :::: {#ch03-params-r434 .training-note breakable="true"}
@@ -3064,28 +3057,6 @@ REST APIとデータベースを連携させるアプリケーションでは、
 | ご利用案内 | `/guide` | `/sample-3-5/guide` |
 :::
 
-::: {#ch03-params-distribution-differences .step}
-**配布サンプルで異なる部分**
-:::
-
-`routes/AppRoutes.tsx` のルート定義、商品番号のProps、`useParams()` による値の取得方法は、通常構成と同じです。配布サンプルでは、商品詳細画面へのリンクと、商品一覧へ戻るリンクの移動先が異なります。
-
-~~~{#ch03-params-r452 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_5/components/ProductCard.tsx" start-line="26"}
-          <Link to={`/sample-3-5/products/${id}`}
-                className="btn btn-primary">
-            詳細
-          </Link>
-~~~
-
-~~~{#ch03-params-r460 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_5/pages/ProductDetailPage.tsx" start-line="15"}
-      <Link to="/sample-3-5/products" className="btn btn-secondary">
-        商品一覧へ戻る
-      </Link>
-~~~
-
-共通レイアウトのリンク先も、3.5のURLに合わせて設定済みです。
-
-このような節別のURLは、研修用サンプルを切り替えるために使用しています。**通常のアプリケーションを開発するときは、この節別のパスを追加する必要はありません。**
 ::::
 
 ::: {#ch03-params-r470 .heading level="minor"}
@@ -3194,12 +3165,6 @@ REST APIとデータベースを連携させるアプリケーションでは、
 
 ::: {#ch03-params-r530 .paragraph}
 URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」と表示されることを確認してください。
-:::
-
-![商品を変更すると、URLパラメータとして取得する商品番号も変わる](assets/url-parameters-check-202.svg){#ch03-params-figure-6}
-
-::: {#ch03-params-figure-6-caption .caption}
-商品を変更すると、URLパラメータとして取得する商品番号も変わる
 :::
 
 ::: {#ch03-params-r541 .paragraph}

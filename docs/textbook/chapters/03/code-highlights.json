@@ -241,18 +241,6 @@
   "ch03-params-r382": [
     "to=\"/products\""
   ],
-  "ch03-params-r452": [
-    {
-      "text": "to={`/sample-3-5/products/${id}`}",
-      "line": 26
-    }
-  ],
-  "ch03-params-r460": [
-    {
-      "text": "to=\"/sample-3-5/products\"",
-      "line": 15
-    }
-  ],
   "ch03-programmatic-r668": [
     {
       "text": "useNavigate",
