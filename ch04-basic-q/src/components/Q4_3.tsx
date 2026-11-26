@@ -1,7 +1,6 @@
-// ➀ 実装：reactからuseStateをインポートしてください。
+import { useState } from 'react'
 import axios from 'axios'
 
-// ➁ 確認：REST APIから取得する商品1件分のデータの型を確認してください。
 type Product = {
   id: number
   name: string
@@ -10,14 +9,13 @@ type Product = {
 }
 
 export default function Q4_3() {
-  // ➂ 実装：次の通常の変数を、useState<Product[]>([]) を使用した
-  // productsとsetProductsの定義に変更してください。
-  const products: Product[] = []
+  // ➀ 確認：Product型の配列をstateで管理し、初期値に空配列を指定していることを確認してください。
+  const [products, setProducts] = useState<Product[]>([])
 
   async function handleGetProducts() {
-    const response = await axios.get<Product[]>('/api/products')
-    // ➃ 実装：次のコンソールへの出力を、取得したデータで
-    // productsのstateを更新する処理に変更してください。
+    // ➁ 実装：axios.get()の空欄に、商品一覧を取得するURLのパスを指定してください。
+    const response = await axios.get<Product[]>('')
+    // ➂ 実装：次のコンソールへの出力を、取得したデータでstateを更新する処理に変更してください。
     console.log(response.data)
   }
 
@@ -37,6 +35,8 @@ export default function Q4_3() {
           </tr>
         </thead>
         <tbody>
+          {/* ➃ 確認：アロー関数の引数 product に、
+              どの配列の要素が1件ずつ渡されるか確認してください。 */}
           {products.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
