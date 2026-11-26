@@ -3293,61 +3293,10 @@ URLのパスが `/sample-3-5/products/202` となり、「商品番号：202」�
 **前節のフォルダー構成を引き継ぐ**
 :::
 
-::: {#ch03-programmatic-r617 .paragraph}
-以下では、前節までに学習した通常のアプリケーション構成を使用する場合の記述例を確認します。実際の配布サンプルのフォルダーとURLについては、構文の解説の後に説明します。
-:::
-
-::: {#ch03-programmatic-r619 .paragraph}
-前節の構成をそのまま使用し、商品登録画面のコンポーネントを `pages` フォルダーに追加します。
-:::
-
-::: {#ch03-programmatic-r621 .code code-label="通常のアプリケーションのフォルダー構成例" example="true" wide-code-label="true"}
-~~~text
-src/
-├── components/
-│   └── ProductCard.tsx
-├── pages/
-│   ├── HomePage.tsx
-│   ├── ProductListPage.tsx
-│   ├── ProductDetailPage.tsx
-│   ├── ProductRegisterPage.tsx
-│   └── GuidePage.tsx
-├── layouts/
-│   └── MainLayout.tsx
-├── routes/
-│   └── AppRoutes.tsx
-├── App.tsx
-└── main.tsx
-~~~
-:::
-
-::: {#ch03-programmatic-r639 .paragraph}
-前節からの主な変更は、次のとおりです。
-:::
-
-::: {#ch03-programmatic-r641 .table column-widths="46 54"}
-| ファイル | 前節からの変更 |
-|---|---|
-| `pages/ProductRegisterPage.tsx` | 新規作成。商品登録画面を表示し、プログラムから画面遷移を行う。 |
-| `pages/ProductListPage.tsx` | 商品登録画面へ移動するためのリンクを追加する。 |
-| `routes/AppRoutes.tsx` | 商品登録画面をインポートし、対応する子ルートを追加する。 |
-| `components/ProductCard.tsx`、`pages/ProductDetailPage.tsx`、`layouts/MainLayout.tsx` | 変更なし。 |
-| `pages/HomePage.tsx`、`pages/GuidePage.tsx` | 変更なし。 |
-| `App.tsx`、`main.tsx` | 変更なし。 |
-:::
-
-::: {#ch03-programmatic-r650 .paragraph}
-通常のアプリケーションでは、これまでの画面やリンク先を変更せずに、商品登録画面を追加できます。
-:::
-
 ![商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル](assets/programmatic-navigation-folder-structure.svg){#ch03-programmatic-folder-structure}
 
 ::: {#ch03-programmatic-folder-structure-caption .caption}
 商品登録画面の追加に伴い変更するファイルと、新たに作成するファイル
-:::
-
-::: {#ch03-programmatic-r659 .paragraph punctuation-font="inherit"}
-このように、**画面の追加と、その画面へのリンク、ルーティングの設定を、それぞれ役割に応じたファイルで管理できます。**
 :::
 
 ::: {#ch03-programmatic-r661 .paragraph}
@@ -3505,32 +3454,6 @@ Linkを使用して商品登録画面へ移動する
 
 ::: {#ch03-programmatic-r782 .paragraph}
 商品登録画面へのルートは、3.3節で学習した子ルートと同じように定義しています。`path="products/new"` と指定し、`element` には新たに作成した `ProductRegisterPage` を指定します。
-:::
-
-::: {#ch03-programmatic-r784 .paragraph}
-ここで、前節で学習した商品詳細画面のルート `products/:id` に注目してください。
-:::
-
-::: {#ch03-programmatic-r786 .paragraph}
-`products/:id` は、`products` に続く1つのパスの部分をURLパラメータとして扱う設定です。そのため、`new` という文字列も `id` として取得できるように見えるかもしれません。
-:::
-
-::: {#ch03-programmatic-r788 .paragraph punctuation-font="inherit"}
-React Routerでは、複数のルートが同じURLに一致する場合、より具体的に一致するルートが選択されます。今回のように、**固定のパスである `products/new` と可変部分を持つ `products/:id` の両方に一致する場合は、固定のパスを指定したルートが優先されます。**
-:::
-
-::: {#ch03-programmatic-r790 .paragraph}
-したがって、商品登録画面のURLである `/products/new` にアクセスすると、商品詳細画面ではなく商品登録画面が表示されます。一方、`/products/101` にアクセスすると、商品番号101を表示する詳細画面になります。
-:::
-
-![商品登録画面と商品詳細画面をURLのパスによって区別する](assets/programmatic-navigation-route-ranking.svg){#ch03-programmatic-route-ranking}
-
-::: {#ch03-programmatic-route-ranking-caption .caption}
-商品登録画面と商品詳細画面をURLのパスによって区別する
-:::
-
-::: {#ch03-programmatic-r802 .paragraph}
-この例では、コード上で `products/new` を先に記述していますが、React Routerがより具体的なルートを選択するため、この2つのルートの記述順を入れ替えても、選択される画面は同じです。
 :::
 
 ::: {#ch03-programmatic-r804 .step}
