@@ -285,23 +285,5 @@
   ],
   "ch03-programmatic-r902": [
     "<Link to=\"/products\" className=\"btn btn-secondary\">"
-  ],
-  "ch03-programmatic-r968": [
-    {
-      "text": "to=\"/sample-3-6/products/new\"",
-      "line": 17
-    }
-  ],
-  "ch03-programmatic-r977": [
-    {
-      "text": "navigate('/sample-3-6/products')",
-      "line": 8
-    }
-  ],
-  "ch03-programmatic-r987": [
-    {
-      "text": "to=\"/sample-3-6/products\"",
-      "line": 22
-    }
   ]
 }

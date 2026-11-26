@@ -3492,24 +3492,6 @@ import { Link, useNavigate } from 'react-router'
 ここで注意したいのは、**useNavigate()を呼び出しただけでは、画面遷移は行われない** という点です。実際に画面を切り替えるには、取得した関数を呼び出す必要があります。
 :::
 
-::: {#ch03-programmatic-r826 .table column-widths="47 53"}
-| 記述 | 役割 |
-|---|---|
-| `useNavigate()` | 画面遷移を行うための関数を取得する。 |
-| `navigate` | 取得した関数を格納している変数。 |
-| `navigate('/products')` | 取得した関数を呼び出し、指定したパスへ移動する。 |
-:::
-
-![useNavigate()で関数を取得し、navigate()で画面遷移を実行する](assets/programmatic-navigation-hook.svg){#ch03-programmatic-figure-3}
-
-::: {#ch03-programmatic-figure-3-caption .caption}
-useNavigate()で関数を取得し、navigate()で画面遷移を実行する
-:::
-
-::: {#ch03-programmatic-r840 .paragraph}
-なお、`navigate` はReact Routerで決められた特別な名前ではありません。`useNavigate()` から返された関数を格納するために、自分で付けた変数名です。本研修では、画面遷移を行う関数であることが分かりやすいように、この名前を使用します。
-:::
-
 ::: {#ch03-programmatic-r842 .step}
 **③ イベントハンドラーから画面遷移を行う**
 :::
@@ -3533,6 +3515,24 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 
 ::: {#ch03-programmatic-r856 .paragraph}
 `navigate()` の引数には、移動先のURLのパスを指定します。今回は商品一覧画面へ移動したいため、`'/products'` を指定しています。
+:::
+
+::: {#ch03-programmatic-r826 .table column-widths="47 53"}
+| 記述 | 役割 |
+|---|---|
+| `useNavigate()` | 画面遷移を行うための関数を取得する。 |
+| `navigate` | 取得した関数を格納している変数。 |
+| `navigate('/products')` | 取得した関数を呼び出し、指定したパスへ移動する。 |
+:::
+
+![useNavigate()で関数を取得し、navigate()で画面遷移を実行する](assets/programmatic-navigation-hook.svg){#ch03-programmatic-figure-3}
+
+::: {#ch03-programmatic-figure-3-caption .caption}
+useNavigate()で関数を取得し、navigate()で画面遷移を実行する
+:::
+
+::: {#ch03-programmatic-r840 .paragraph}
+なお、`navigate` はReact Routerで決められた特別な名前ではありません。`useNavigate()` から返された関数を格納するために、自分で付けた変数名です。本研修では、画面遷移を行う関数であることが分かりやすいように、この名前を使用します。
 :::
 
 ::: {#ch03-programmatic-r858 .paragraph}
@@ -3641,77 +3641,6 @@ useNavigate()で関数を取得し、navigate()で画面遷移を実行する
 ::: {#ch03-programmatic-r920 .paragraph}
 通常のリンクによる画面遷移には `Link` や `NavLink` を使用し、処理を実行した結果に応じて移動する場合には `useNavigate()` で取得した関数を使用する、という考え方を押さえておきましょう。
 :::
-
-:::: {#ch03-programmatic-r922 .training-note breakable="true"}
-【補足】実際の商品登録画面では
-
-今回のサンプルでは、［登録］ボタンをクリックしても、商品を登録する処理は実行されません。商品一覧画面へ移動する処理だけを記述しているためです。
-
-`handleRegister` に記述している次のコメントは、実際の商品登録処理を追加する位置を示しています。
-
-~~~{#ch03-programmatic-r929 .tsx code-label="TSXの記述例（通常構成・抜粋）" filename="src/pages/ProductRegisterPage.tsx" example="true" wide-code-label="true"}
-    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
-~~~
-
-実際の商品登録画面では、フォームで入力された商品情報をREST APIへ送信します。そして、REST APIから返された結果を確認し、登録が成功した場合に商品一覧画面へ移動するようにします。
-
-::: {#ch03-programmatic-api .note-figure}
-![画面遷移の処理は、REST APIによる登録処理と組み合わせて使用できる](assets/programmatic-navigation-api.svg)
-:::
-
-**商品を登録する処理と、登録後に画面を切り替える処理は、別の処理です。** `POST /api/products` は商品を登録するためのREST APIへのリクエスト例であり、`navigate('/products')` はReact側の商品一覧画面への移動を指示する記述です。後続の章では、商品を正常に登録できた場合にのみ `navigate()` を呼び出すように実装します。
-::::
-
-:::: {#ch03-programmatic-r947 .training-note breakable="true"}
-【補足】本研修の配布サンプルの構成
-
-3.6の講義用サンプルは、`ch03-basic/src/samples/sample3_6/` に用意しています。3.5の完成コードを基に、商品登録画面と画面遷移の処理を追加しています。前節のファイルを直接変更する必要はありません。
-
-配布サンプルでは、3.6のURLの入口が `/sample-3-6` となります。
-
-::: {#ch03-programmatic-r953 .table column-widths="30 31 39"}
-| 画面 | 通常構成のURLのパス | 配布サンプルのURLのパス |
-|---|---|---|
-| ホーム | `/` | `/sample-3-6` |
-| 商品一覧 | `/products` | `/sample-3-6/products` |
-| 商品登録 | `/products/new` | `/sample-3-6/products/new` |
-| 商品詳細（商品番号101） | `/products/101` | `/sample-3-6/products/101` |
-| ご利用案内 | `/guide` | `/sample-3-6/guide` |
-:::
-
-::: {#ch03-programmatic-distribution-differences .step}
-**配布サンプルで異なる部分**
-:::
-
-`routes/AppRoutes.tsx` のルート定義と、`useNavigate()` で関数を取得する方法は通常構成と同じです。異なるのは、画面遷移の際に指定するパスです。
-
-商品一覧から商品登録画面へのリンクは、次のように記述しています。
-
-~~~{#ch03-programmatic-r968 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductListPage.tsx" start-line="17"}
-      <Link to="/sample-3-6/products/new" className="btn btn-primary mb-3">
-        商品登録
-      </Link>
-~~~
-
-商品登録画面の［登録］ボタンから商品一覧画面へ移動する処理では、`navigate()` の引数に `/sample-3-6/products` を指定しています。
-
-~~~{#ch03-programmatic-r977 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="6"}
-  function handleRegister() {
-    // 実際の開発では、REST APIで商品を登録し、成功を確認する。
-    navigate('/sample-3-6/products')
-  }
-~~~
-
-［キャンセル］のリンクも同じパスを指定しています。
-
-~~~{#ch03-programmatic-r987 .tsx code-label="TSX" filename="ch03-basic/src/samples/sample3_6/pages/ProductRegisterPage.tsx" start-line="22"}
-        <Link to="/sample-3-6/products" className="btn btn-secondary">
-          キャンセル
-        </Link>
-~~~
-
-共通レイアウト、商品カードの詳細リンク、商品詳細画面から一覧へ戻るリンクについても、3.6のURLに合わせて設定済みです。通常のアプリケーションを開発する場合は、前節のリンク先を変更する必要はありません。
-::::
 
 ::: {#ch03-programmatic-r995 .heading level="minor"}
 配布サンプルの動作確認
