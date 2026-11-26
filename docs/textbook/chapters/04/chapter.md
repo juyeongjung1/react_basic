@@ -149,7 +149,11 @@ API（Application Programming Interface）とは、別のプログラムが機�
 :::
 
 ::: {#ch04-rest-17 .paragraph}
-このように、画面を担当するフロントエンドと、データの取得や更新などの処理を担当するバックエンドを分けることで、次のようなメリットがあります。
+このように、Reactとデータベースを連携させる際には、画面を担当するフロントエンドと、データの取得や更新などの処理を担当するバックエンドに分ける必要があります。
+:::
+
+::: {#ch04-rest-17-benefits .paragraph}
+このような構成には、次のようなメリットがあります。
 :::
 
 ::: {#ch04-rest-18-1 .paragraph}
@@ -173,11 +177,36 @@ REST APIとは
 :::
 
 ::: {#ch04-rest-20 .paragraph}
-Web APIの設計方法の1つに、REST API（レストAPI）があります。
+Web APIを設計する際には、どのURLに対してリクエストを送信すると、どの処理が実行されるのかを決める必要があります。
+:::
+
+::: {#ch04-rest-20-example .paragraph}
+例えば、処理の内容をURLに含める設計方法では、商品情報の検索・登録・更新・削除に対して、それぞれ次のようなURLを定義します。
+:::
+
+::: {#ch04-rest-20-paths .table column-widths="38 62"}
+| 処理内容 | URLのパス |
+|---|---|
+| 商品情報の検索 | `/api/searchByProduct` |
+| 商品情報の登録 | `/api/insertProduct` |
+| 商品情報の更新 | `/api/updateProduct` |
+| 商品情報の削除 | `/api/deleteProduct` |
+:::
+
+::: {#ch04-rest-20-management .paragraph}
+このような設計では、機能ごとに異なるURLを定義するため、機能が増えれば増えるほど、管理するURLの種類も増えていきます。また、開発者によってURLの命名方法が異なり、APIの設計に統一性を持たせることが難しくなる場合もあります。
+:::
+
+::: {#ch04-rest-20-rest .paragraph}
+そこで、このような課題に対応する設計方法として広く利用されているのが、**REST API（レストAPI）**です。
 :::
 
 ::: {#ch04-rest-21 .paragraph}
 REST APIでは、商品などの操作対象となるデータをリソースと呼び、URLを使用してリソースを指定します。また、HTTPメソッドを使用して、そのリソースに対してどのような操作を行うのかを指定します。
+:::
+
+::: {#ch04-rest-21-roles .paragraph}
+つまり、URLに処理内容を含めるのではなく、**URLで操作対象を、HTTPメソッドで操作内容を表現する**という考え方です。
 :::
 
 ::: {#ch04-rest-22 .step}
@@ -296,13 +325,13 @@ JSONでは、JavaScriptのオブジェクトと似た形式でデータを表現
 | SQLite | 商品情報などのデータを管理する。 |
 :::
 
-::: {#ch04-rest-45 .paragraph}
-Node.jsは第1章で開発環境の構築にも使用しました。第5章以降では、REST APIを動作させるための実行環境としても使用します。ExpressはJavaScriptでAPIを作成でき、SQLiteは専用のデータベースサーバーを別途起動する必要がないため、学習用の環境を用意しやすいという特徴があります。
-:::
-
 ::::
 
 :::: {#page-4 .source-page}
+
+::: {#ch04-rest-45 .paragraph}
+Node.jsは第1章で開発環境の構築にも使用しました。第5章以降では、REST APIを動作させるための実行環境としても使用します。ExpressはJavaScriptでAPIを作成でき、SQLiteは専用のデータベースサーバーを別途起動する必要がないため、学習用の環境を用意しやすいという特徴があります。
+:::
 
 ![本研修で学習するシステムの構成](assets/rest-technology-stack.svg){#ch04-rest-figure-3}
 
