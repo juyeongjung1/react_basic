@@ -5,7 +5,7 @@
 :::
 
 ::: {#ch04-title .heading}
-第4章 非同期通信と画面更新
+第4章 REST APIとの連携
 :::
 
 ::: {#ch04-goals .heading}
@@ -13,11 +13,11 @@
 :::
 
 ::: {#ch04-goal-1 .paragraph}
-◼ Axiosを使用してREST APIと通信できる
+◼ REST APIの役割と、HTTPメソッドとURLの関係を説明できる
 :::
 
 ::: {#ch04-goal-2 .paragraph}
-◼ useEffectを使用して、画面の表示に伴う処理を実行できる
+◼ Axiosを使用してREST APIからデータを取得できる
 :::
 
 ::: {#ch04-goal-3 .paragraph}
@@ -25,7 +25,11 @@
 :::
 
 ::: {#ch04-goal-4 .paragraph}
-◼ 通信エラーが発生した場合の処理を実装できる
+◼ useEffectを使用して、画面の表示に伴うデータ取得を実装できる
+:::
+
+::: {#ch04-goal-5 .paragraph}
+◼ 通信に失敗した場合の処理を実装できる
 :::
 
 ::::
@@ -39,37 +43,299 @@
 ::: {#ch04-overview-slide .slide layout="summary"}
 章の概要
 
+■ REST APIの役割と仕組み
+
 ■ AxiosによるHTTP通信
 
-■ useEffectによる処理の実行
+■ 取得したデータの画面表示
 
-■ REST APIから取得したデータの画面表示
+■ useEffectによる処理の実行
 
 ■ 通信エラーへの対応
 :::
 
 ::: {#ch04-overview-1 .paragraph}
-第3章までは、あらかじめ用意した商品データを使用して、Reactで画面を作成する方法や、画面を切り替える方法を学習しました。
+第3章までは、あらかじめ用意した商品データを使用して、Reactで画面を作成する方法や、複数の画面を切り替える方法を学習しました。
 :::
 
 ::: {#ch04-overview-2 .paragraph}
-実際のWebアプリケーションでは、REST APIと通信し、サーバーからデータを取得したり、サーバーへデータを送信したりする必要があります。
+実際の商品管理システムでは、サーバーから商品情報を取得したり、入力した商品情報をサーバーへ送信したりする必要があります。
 :::
 
 ::: {#ch04-overview-3 .paragraph}
-この章では、まずAxiosを使用してREST APIと通信する方法を学習します。続いて、useEffectを使用して画面の表示に伴う処理を実行する方法を学び、取得したデータを画面に反映する処理を実装します。最後に、通信に失敗した場合の処理を学習します。
+この章では、まずREST APIの役割と仕組みを学習します。続いて、Axiosを使用してREST APIからデータを取得し、取得したデータを画面に表示する方法を学習します。
 :::
 
 ::: {#ch04-overview-4 .paragraph}
-この章では、あらかじめ用意したREST APIを使用し、React側の実装に集中します。次の第5章では、Expressとデータベースを使用して、REST APIを作成する方法を学習します。
+さらに、useEffectを使用して画面の表示時にデータを取得する方法や、通信に失敗した場合の処理についても学習します。
+:::
+
+::: {#ch04-overview-5 .paragraph}
+本章では、あらかじめ用意したREST APIを使用し、React側の実装に集中します。REST APIの作成とデータベースとの連携については、第5章以降で学習します。
 :::
 
 ::::
 
+<!-- CODE id="ch04-rest-json-example" type="JSONの記述例" example="true" highlight="none" reason="JSON例全体が説明対象であり、実ファイルの掲載コードではない" -->
+
 :::: {#page-3 .source-page}
 
+::: {#ch04-rest-title .heading}
+4.1. REST APIの役割と仕組み
+:::
+
+::: {#ch04-rest-slide .slide layout="illustration"}
+REST APIの役割と仕組み
+
+![REST APIの役割と仕組み](assets/rest-api-slide.svg)
+:::
+
+::: {#ch04-rest-03 .heading level="minor"}
+Reactとデータベースをつなぐには
+:::
+
+::: {#ch04-rest-04 .paragraph}
+第3章までは、商品名や単価などの商品データをReactのソースコードに記述し、それらの情報を画面に表示してきました。
+:::
+
+::: {#ch04-rest-05 .paragraph}
+しかし、実際の商品管理システムでは、商品の登録・更新・削除によって、商品情報が変化します。また、複数の利用者が同じ商品情報を参照・操作できるようにする必要があります。
+:::
+
+::: {#ch04-rest-06 .paragraph}
+そのため、商品情報をソースコードに直接記述するのではなく、データベースで管理する方法が一般的です。
+:::
+
+::: {#ch04-rest-07 .paragraph}
+ここで、1つの疑問が生まれます。
+:::
+
+::: {#ch04-rest-08 .paragraph}
+**Reactから直接データベースを操作することはできないのでしょうか。**
+:::
+
+::: {#ch04-rest-09 .paragraph}
+Reactは、主にWebブラウザー上で動作します。一般的な業務システムで使用するデータベースに、ブラウザーから直接接続して操作する構成は適していません。
+:::
+
+::: {#ch04-rest-10 .paragraph}
+例えば、ブラウザー側のプログラムにデータベースへの接続情報を記述すると、その情報が利用者に知られるおそれがあります。また、利用者に直接データベースを操作させると、実行できる処理やアクセスできるデータを適切に制御することが難しくなります。
+:::
+
+::: {#ch04-rest-11 .paragraph}
+そこで、**Reactとデータベースの間に、データベースを操作するサーバー側のプログラムを用意します。** Reactはそのプログラムに対して処理を依頼し、結果を受け取ります。
+:::
+
+![Reactとデータベースの接続方法](assets/rest-database-access.svg){#ch04-rest-figure-1}
+
+::: {#ch04-rest-figure-1-caption .caption}
+データベースを操作する処理をサーバー側に用意する
+:::
+
+::: {#ch04-rest-13 .heading level="minor"}
+APIが必要な理由
+:::
+
+::: {#ch04-rest-14 .paragraph}
+API（Application Programming Interface）とは、別のプログラムが機能を利用するための窓口です。
+:::
+
+::: {#ch04-rest-15 .paragraph}
+今回の商品管理システムでは、サーバー側に商品情報を取得・登録・更新・削除する機能を用意し、それらの機能をReactから利用できるようにします。このような、HTTP通信によって利用できるAPIをWeb APIと呼びます。
+:::
+
+::: {#ch04-rest-16 .paragraph}
+例えば、商品一覧を表示する場合、ReactからAPIに商品情報の取得を依頼します。APIはその依頼を受けてデータベースから商品情報を取得し、Reactに返します。
+:::
+
+::: {#ch04-rest-17 .paragraph}
+このように、画面を担当するフロントエンドと、データの取得や更新などの処理を担当するバックエンドを分けることで、次のようなメリットがあります。
+:::
+
+::: {#ch04-rest-18-1 .paragraph}
+● データベースの接続情報をサーバー側で管理できる。
+:::
+
+::: {#ch04-rest-18-2 .paragraph}
+● データベースに対して実行できる操作や、利用者のアクセス権限をサーバー側で制御できる。
+:::
+
+::: {#ch04-rest-18-3 .paragraph}
+● Webアプリケーションだけでなく、スマートフォンアプリなどからも同じAPIを利用できる。
+:::
+
+::: {#ch04-rest-18-4 .paragraph}
+● 画面を作成する処理とデータを操作する処理を分けて開発・管理できる。
+:::
+
+::: {#ch04-rest-19 .heading level="minor" keep-next="2"}
+REST APIとは
+:::
+
+::: {#ch04-rest-20 .paragraph}
+Web APIの設計方法の1つに、REST API（レストAPI）があります。
+:::
+
+::: {#ch04-rest-21 .paragraph}
+REST APIでは、商品などの操作対象となるデータをリソースと呼び、URLを使用してリソースを指定します。また、HTTPメソッドを使用して、そのリソースに対してどのような操作を行うのかを指定します。
+:::
+
+::: {#ch04-rest-22 .step}
+**① URLで操作対象を指定する**
+:::
+
+::: {#ch04-rest-23 .paragraph}
+例えば、商品情報を操作するためのREST APIでは、次のようなURLを使用します。
+:::
+
+::: {#ch04-rest-24 .table column-widths="38 62"}
+| URLのパス | 操作対象 |
+|---|---|
+| `/api/products` | 商品の一覧 |
+| `/api/products/101` | 商品番号101の商品 |
+:::
+
+::: {#ch04-rest-25 .paragraph}
+第3章では、`/products/101` というURLを商品詳細画面の表示に使用しました。一方、`/api/products/101` は商品番号101の情報を操作するためのAPIのURLです。
+:::
+
+::: {#ch04-rest-26 .paragraph}
+本研修では、画面を表示するためのURLとAPIのURLを区別しやすいように、APIのURLのパスを `/api` から始めます。
+:::
+
+::: {#ch04-rest-27 .step}
+**② HTTPメソッドで操作内容を指定する**
+:::
+
+::: {#ch04-rest-28 .paragraph}
+商品番号101の商品を操作する場合でも、商品情報を取得するのか、更新するのか、削除するのかによって処理は異なります。
+:::
+
+::: {#ch04-rest-29 .paragraph}
+REST APIでは、操作の種類に応じてGET、POST、PUT、DELETEなどのHTTPメソッドを使い分けます。
+:::
+
+::: {#ch04-rest-30 .table column-widths="26 34 40"}
+| HTTPメソッド | URLのパス | 処理内容 |
+|---|---|---|
+| GET | `/api/products` | 商品一覧を取得する。 |
+| GET | `/api/products/101` | 商品番号101の情報を取得する。 |
+| POST | `/api/products` | 新しい商品を登録する。 |
+| PUT | `/api/products/101` | 商品番号101の情報を更新する。 |
+| DELETE | `/api/products/101` | 商品番号101の商品を削除する。 |
+:::
+
+::: {#ch04-rest-31 .paragraph}
+ここで、商品番号101の取得・更新・削除では、同じURLのパスが使用されていることに注目してください。
+:::
+
+![URLとHTTPメソッドの組み合わせ](assets/rest-url-methods.svg){#ch04-rest-figure-2}
+
+::: {#ch04-rest-figure-2-caption .caption}
+同じURLでも、HTTPメソッドによって操作内容を区別する
+:::
+
+::: {#ch04-rest-33 .paragraph}
+**REST APIでは、URLとHTTPメソッドの組み合わせによって操作対象と操作内容を表現できます。**
+:::
+
+::: {#ch04-rest-34 .paragraph}
+このように設計することで、操作のたびに異なるURLを用意する必要が減り、APIの構成が分かりやすくなります。また、共通したルールでAPIを設計できるため、APIを利用する側も、その役割を理解しやすくなります。
+:::
+
+::: {#ch04-rest-35 .step}
+**③ JSON形式でデータを受け渡す**
+:::
+
+::: {#ch04-rest-36 .paragraph}
+ReactとREST APIの間で商品情報をやり取りする際には、データの形式を決めておく必要があります。
+:::
+
+::: {#ch04-rest-37 .paragraph}
+REST APIでは、データの受け渡しにJSON（JavaScript Object Notation）という形式が広く利用されています。
+:::
+
+::: {#ch04-rest-38 .paragraph}
+例えば、商品番号101の情報を取得した場合、次のようなJSON形式のデータが返されます。
+:::
+
+::: {#ch04-rest-json-example .code example="true" code-label="JSONの記述例"}
+```json
+{
+  "id": 101,
+  "name": "ノート",
+  "price": 250,
+  "imagePath": "/images/products/notebook.svg"
+}
+```
+:::
+
+::: {#ch04-rest-40 .paragraph}
+JSONでは、JavaScriptのオブジェクトと似た形式でデータを表現できます。また、JavaScriptだけでなく、JavaやPythonなど、さまざまなプログラミング言語で扱えます。
+:::
+
+::: {#ch04-rest-41 .paragraph}
+そのため、Reactと異なるプログラミング言語で作成したAPIであっても、JSON形式でデータをやり取りできます。
+:::
+
+::: {#ch04-rest-42 .heading level="minor"}
+本研修で使用する技術
+:::
+
+::: {#ch04-rest-43 .paragraph}
+本研修では、フロントエンドにReact、REST APIを作成するための環境にNode.jsとExpress、データベースにSQLiteを使用します。
+:::
+
+::: {#ch04-rest-44 .table column-widths="21 79"}
+| 技術 | 本研修での役割 |
+|---|---|
+| React | フロントエンドの画面表示や入力処理を実装する。 |
+| Axios | ReactからREST APIにHTTPリクエストを送信し、レスポンスを受け取る。 |
+| Node.js | サーバー側でJavaScriptを実行する。 |
+| Express | Node.js上でREST APIを作成する。 |
+| SQLite | 商品情報などのデータを管理する。 |
+:::
+
+::: {#ch04-rest-45 .paragraph}
+Node.jsは第1章で開発環境の構築にも使用しました。第5章以降では、REST APIを動作させるための実行環境としても使用します。ExpressはJavaScriptでAPIを作成でき、SQLiteは専用のデータベースサーバーを別途起動する必要がないため、学習用の環境を用意しやすいという特徴があります。
+:::
+
+::::
+
+:::: {#page-4 .source-page}
+
+![本研修で学習するシステムの構成](assets/rest-technology-stack.svg){#ch04-rest-figure-3}
+
+::: {#ch04-rest-figure-3-caption .caption}
+REST APIを利用する側と作成する側に分けて学習する
+:::
+
+::: {#ch04-rest-47 .paragraph}
+なお、第4章では、データベースに接続せず、あらかじめ用意した商品データを返す練習用REST APIを使用します。REST APIを作成する方法やデータベースと連携する方法については、第5章で学習します。
+:::
+
+::: {#ch04-rest-48 .paragraph}
+次の4.2節では、Axiosを使用してREST APIから商品情報を取得する方法を学習します。
+:::
+
+::: {#ch04-rest-points .section-points}
+この節のポイント
+
+● Reactとデータベースを連携させる際には、一般的にサーバー側のAPIを経由してデータを取得・操作する。
+
+● REST APIでは、URLで操作対象を指定し、HTTPメソッドで操作内容を指定する。
+
+● REST APIでは、データの受け渡しにJSON形式が広く利用されている。
+
+● 本研修では、第4章でREST APIを利用する方法を、第5章以降でREST APIを作成してデータベースと連携する方法を学習する。
+:::
+
+::::
+
+:::: {#page-5 .source-page}
+
 ::: {#ch04-axios-title .heading}
-4.1. AxiosによるHTTP通信
+4.2. AxiosによるHTTP通信
 :::
 
 ::: {#ch04-axios-slide .slide layout="illustration"}
@@ -79,44 +345,27 @@ AxiosによるHTTP通信
 :::
 
 ::: {#ch04-axios-background .heading level="minor"}
-REST APIと通信するには
-:::
-
-::: {#ch04-axios-004 .paragraph}
-第3章では、Reactのプロジェクト内に商品データを用意し、そのデータを商品一覧画面に表示しました。
+Axiosとは
 :::
 
 ::: {#ch04-axios-005 .paragraph}
-しかし、実際の商品管理システムでは、商品の登録や更新などによって商品情報が変化します。そのため、サーバーが管理している最新の商品情報を取得する必要があります。
+前節では、REST APIの役割と仕組みについて学習しました。今回は、ReactからREST APIにリクエストを送信し、商品情報を取得する方法を学習します。
 :::
 
 ::: {#ch04-axios-006 .paragraph}
-そこで、ReactからREST APIに対してHTTPリクエストを送信し、返されたデータを使用します。
+Webブラウザーには、JavaScriptからHTTP通信を行うための標準機能として `fetch()` が用意されています。
 :::
 
 ::: {#ch04-axios-007 .paragraph}
-SPA開発入門では、JavaScriptの `fetch()` を使用してREST APIと通信する方法を学習しました。本研修では、HTTP通信をより簡潔に記述するために **Axios（アクシオス）** というライブラリを使用します。
+本研修では、HTTP通信や取得したデータの取り扱いをより簡潔に記述できるように、**Axios（アクシオス）** というライブラリを使用します。
 :::
 
 ::: {#ch04-axios-008 .paragraph}
-Axiosは、HTTPリクエストの送信やレスポンスの受け取りを行うJavaScriptのライブラリです。React専用のライブラリではありませんが、ReactからREST APIと通信する際にも使用できます。
+Axiosは、HTTPリクエストの送信やレスポンスの受け取りを行うJavaScriptのライブラリです。React専用のライブラリではなく、JavaScriptからHTTP通信を行うさまざまな場面で使用できます。
 :::
 
 ::: {#ch04-axios-009 .paragraph}
-Axiosでは、HTTPメソッドに対応する次のようなメソッドが用意されています。
-:::
-
-::: {#ch04-axios-010 .table column-widths="21 31 48"}
-| HTTPメソッド | Axiosのメソッド | 用途の例 |
-|---|---|---|
-| GET | `axios.get()` | 商品情報を取得する。 |
-| POST | `axios.post()` | 商品情報を登録する。 |
-| PUT | `axios.put()` | 商品情報を更新する。 |
-| DELETE | `axios.delete()` | 商品情報を削除する。 |
-:::
-
-::: {#ch04-axios-011 .paragraph}
-この節では、GETリクエストを送信して商品情報を取得する方法を学習します。登録・更新・削除は後続の章で学習します。
+この節では、Axiosの `axios.get()` を使用してGETリクエストを送信し、商品情報を取得します。データの登録・更新・削除に使用するメソッドは後続の章で学習します。
 :::
 
 ::: {#ch04-axios-sample .heading level="minor"}
@@ -136,7 +385,7 @@ Axiosでは、HTTPメソッドに対応する次のようなメソッドが用�
 :::
 
 ::: {#ch04-axios-016 .paragraph numbered="true"}
-1．Visual Studio Codeで `ch04-api` フォルダーを開き、ターミナルを起動してください。
+1．Visual Studio Codeで `react-basic.code-workspace` を開き、`ch04-api` フォルダーのターミナルを起動してください。
 :::
 
 ::: {#ch04-axios-017 .paragraph numbered="true" keep-next="1"}
@@ -174,10 +423,6 @@ npm start
 | GET | `/api/products/104` | 商品番号104（ファイル）の商品情報 |
 :::
 
-::: {#ch04-axios-024 .paragraph}
-今回のREST APIは、あらかじめ用意したデータを返します。データベースには接続していません。REST APIを作成する方法については、第5章で学習します。
-:::
-
 ::: {#ch04-axios-install .step}
 **② Axiosのインストール**
 :::
@@ -201,14 +446,14 @@ npm install axios
 :::
 
 ::: {#ch04-axios-030 .paragraph}
-完成版の `ch04-basic` を別のVisual Studio Codeのウィンドウで開き、`src/components/Sample4_1.tsx` を確認してください。
+ワークスペースの `ch04-basic` フォルダーにある `src/components/Sample4_2.tsx` を確認してください。
 :::
 
-::: {#ch04-axios-031 .code filename="ch04-basic/src/components/Sample4_1.tsx" start-line="1"}
+::: {#ch04-axios-031 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
 ```tsx
 import axios from 'axios'
 
-export default function Sample4_1() {
+export default function Sample4_2() {
   async function handleGetProducts() {
     const response = await axios.get('/api/products')
     console.log(response.data)
@@ -233,7 +478,7 @@ export default function Sample4_1() {
 :::
 
 ::: {#ch04-axios-033 .paragraph}
-`ch04-basic` のターミナルで、初回のみ `npm install` を実行し、`npm run dev` で開発サーバーを起動してください。ターミナルに表示されたURLをブラウザーで開き、メニューから「4.1 AxiosによるHTTP通信」を選択します。
+`ch04-basic` のターミナルで、初回のみ `npm install` を実行し、`npm run dev` で開発サーバーを起動してください。ターミナルに表示されたURLをブラウザーで開き、メニューから「4.2 AxiosによるHTTP通信」を選択します。
 :::
 
 ::: {#ch04-axios-034 .paragraph}
@@ -254,7 +499,7 @@ export default function Sample4_1() {
 **① Axiosのインポート**
 :::
 
-::: {#ch04-axios-038 .code filename="ch04-basic/src/components/Sample4_1.tsx" start-line="1"}
+::: {#ch04-axios-038 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
 ```tsx
 import axios from 'axios'
 ```
@@ -268,7 +513,7 @@ Axiosを使用するために、`axios` パッケージから `axios` をイン�
 **② GETリクエストの送信とレスポンスの受け取り**
 :::
 
-::: {#ch04-axios-041 .code filename="ch04-basic/src/components/Sample4_1.tsx" start-line="4"}
+::: {#ch04-axios-041 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="4"}
 ```tsx
   async function handleGetProducts() {
     const response = await axios.get('/api/products')
@@ -280,11 +525,11 @@ Axiosを使用するために、`axios` パッケージから `axios` をイン�
 :::
 
 ::: {#ch04-axios-043 .paragraph}
-HTTP通信では、リクエストを送信してからレスポンスを受け取るまでに時間がかかります。`axios.get()` は通信結果を表すPromiseを返します。
+HTTP通信では、リクエストを送信してからレスポンスを受け取るまでに時間がかかります。`axios.get()` はPromise（非同期処理の結果を表すオブジェクト）を返します。
 :::
 
 ::: {#ch04-axios-044 .paragraph}
-JavaScriptで学習した `async` と `await` を使用すると、レスポンスが返されるのを待ってから、次の処理を実行できます。今回のコードでは、通信が正常に完了したときにレスポンスを定数 `response` に格納します。
+`async` は非同期関数を定義するための記述です。`await` を使用すると、通信の結果が得られるのを待ってから、その関数内の後続の処理を実行できます。今回のコードでは、通信が正常に完了したときにレスポンスを定数 `response` に格納します。
 :::
 
 ::: {#ch04-axios-045 .paragraph}
@@ -292,20 +537,14 @@ JavaScriptで学習した `async` と `await` を使用すると、レスポン�
 :::
 
 ::: {#ch04-axios-046 .paragraph}
-なお、今回のプロジェクトでは、`/api` から始まるリクエストが練習用REST APIへ転送されるように、あらかじめ設定しています。そのため、React側ではホスト名やポート番号を記述せずに通信できます。
-:::
-
-![画面表示用のURLとは別のURLに対してHTTPリクエストを送信する](assets/axios-proxy.svg){#ch04-axios-figure-2}
-
-::: {#ch04-axios-figure-2-caption .caption}
-画面表示用のURLとは別のURLに対してHTTPリクエストを送信する
+なお、配布プロジェクトでは、Viteのプロキシ設定により、`/api` から始まるリクエストを練習用REST API（`http://127.0.0.1:3000`）へ転送します。そのため、React側ではホスト名やポート番号を記述せずに通信できます。
 :::
 
 ::: {#ch04-axios-data .step keep-next="1"}
 **③ レスポンスから商品データを取得する**
 :::
 
-::: {#ch04-axios-049 .code filename="ch04-basic/src/components/Sample4_1.tsx" start-line="6"}
+::: {#ch04-axios-049 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="6"}
 ```tsx
     console.log(response.data)
 ```
@@ -337,14 +576,14 @@ response.dataを使用してREST APIから返されたデータを取り出す
 :::
 
 ::: {#ch04-axios-055 .paragraph}
-今回はコンソールに出力するだけですが、取得したデータをstateに格納すれば、画面に表示することもできます。この方法については4.3節で学習します。
+今回はコンソールに出力するだけですが、取得したデータをstateに格納すれば、画面に表示することもできます。この方法は次の4.3節で学習します。
 :::
 
 ::: {#ch04-axios-click .step keep-next="1"}
 **④ ボタンのクリックによって通信する**
 :::
 
-::: {#ch04-axios-057 .code filename="ch04-basic/src/components/Sample4_1.tsx" start-line="13"}
+::: {#ch04-axios-057 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="13"}
 ```tsx
       <button type="button" className="btn btn-primary"
               onClick={handleGetProducts}>
@@ -362,7 +601,7 @@ response.dataを使用してREST APIから返されたデータを取り出す
 :::
 
 ::: {#ch04-axios-060 .paragraph}
-画面の表示に伴って自動的にデータを取得する方法については、次の4.2節で学習します。また、通信に失敗した場合の処理については4.4節で学習します。
+画面の表示に伴って自動的にデータを取得する方法については4.4節で学習します。また、通信に失敗した場合の処理については4.5節で学習します。
 :::
 
 ::: {#ch04-axios-practice .heading level="minor"}
@@ -382,7 +621,7 @@ response.dataを使用してREST APIから返されたデータを取り出す
 :::
 
 ::: {#ch04-axios-065 .paragraph}
-● `src/components/Q4_1.tsx`
+● `src/components/Q4_2.tsx`
 :::
 
 ::: {#ch04-axios-066 .paragraph numbered="true"}
@@ -398,7 +637,7 @@ response.dataを使用してREST APIから返されたデータを取り出す
 :::
 
 ::: {#ch04-axios-069 .paragraph numbered="true"}
-5．メニューから「4.1 AxiosによるHTTP通信」を選んでください。
+5．メニューから「4.2 AxiosによるHTTP通信」を選んでください。
 :::
 
 ::: {#ch04-axios-check .heading level="minor"}

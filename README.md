@@ -6,7 +6,7 @@
 
 ## 正式教材PDFを Markdown から組版する
 
-[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md)、[第3章の原稿](docs/textbook/chapters/03/chapter.md)、[第4章の原稿](docs/textbook/chapters/04/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow 4章.pdf` を生成します。
+[表紙・前付の原稿](docs/textbook/chapters/front/chapter.md)、[第1章の原稿](docs/textbook/chapters/01/chapter.md)、[第2章の原稿](docs/textbook/chapters/02/chapter.md)、[第3章の原稿](docs/textbook/chapters/03/chapter.md)、[第4章の原稿](docs/textbook/chapters/04/chapter.md) を合冊します。下記の「見本を生成する」と同じ環境を用意し、次のコマンドで `output/pdf/textbook/textbook/flow.pdf` を生成します。
 
 ```powershell
 .\.venv\Scripts\python.exe tools/textbook/build_all.py --collection textbook --mode flow

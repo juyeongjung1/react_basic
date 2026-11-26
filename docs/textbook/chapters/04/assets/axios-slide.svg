@@ -4,7 +4,7 @@
 <rect x="7.6" y="20.6" width="176.8" height="22" rx="4" fill="#e9f2f8"/>
 <circle cx="14" cy="31" r="1.7" fill="#8ba6ba"/><circle cx="21" cy="31" r="1.7" fill="#8ba6ba"/>
 <rect x="27" y="24" width="152" height="14.9" rx="3" fill="#fff" stroke="#b2c5d3" stroke-width="0.75"/>
-<text x="32" y="34.7" font-size="10.430058850158442" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">localhost:5173/sample-4-1</text>
+<text x="32" y="34.7" font-size="10.430058850158442" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">localhost:5174/sample-4-2</text>
 <text x="18" y="62" font-size="14" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品情報の取得</text>
 <rect x="18" y="72" width="110" height="20" rx="3" fill="#0d6efd"/>
 <text x="73.0" y="85.7" font-size="10.8" fill="#fff" text-anchor="middle" font-weight="700" xml:space="preserve">商品一覧を取得</text>

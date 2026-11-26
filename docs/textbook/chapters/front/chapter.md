@@ -165,15 +165,19 @@ XXXX-T-01
 :::: {#page-4 .source-page}
 
 ::: {#contents-ch04 .contents-entry target="04"}
-第4章 非同期通信と画面更新
+第4章 REST APIとの連携
 :::
 
 ::: {#contents-ch04-overview .contents-entry target="04:ch04-overview-title"}
 章の概要
 :::
 
-::: {#contents-ch04-section-1 .contents-entry target="04:ch04-axios-title"}
-4.1. AxiosによるHTTP通信
+::: {#contents-ch04-section-1 .contents-entry target="04:ch04-rest-title"}
+4.1. REST APIの役割と仕組み
+:::
+
+::: {#contents-ch04-section-2 .contents-entry target="04:ch04-axios-title"}
+4.2. AxiosによるHTTP通信
 :::
 
 ::::
@@ -262,7 +266,7 @@ XXXX-T-01
 
 第3章　ルーティングと画面構成
 
-第4章　非同期通信と画面更新
+第4章　REST APIとの連携
 
 第5章　REST APIとデータベース連携
 

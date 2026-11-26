@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="373" viewBox="0 0 780 373"
+     font-family="Meiryo, MS Gothic, sans-serif" role="img">
+  <title>Reactとデータベースの接続方法</title>
+  <text x="390" y="30" font-size="26" fill="#18364e" text-anchor="middle" font-weight="700">Reactとデータベースの接続方法</text>
+  <rect x="8" y="46" width="764" height="128" rx="6" fill="#fbf4f3" stroke="#dcc1bc" stroke-width="1.6"/>
+  <text x="390" y="73" font-size="22" fill="#18364e" text-anchor="middle" font-weight="700">ブラウザーから直接データベースへ接続する構成</text>
+  <rect x="26" y="86" width="174" height="53" rx="6" fill="#fff" stroke="#dcc1bc" stroke-width="1.6"/>
+  <text x="113" y="118" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">React（ブラウザー）</text>
+  <path d="M594 96v33a78.0 10 0 0 0 156 0v-33" fill="#fff" stroke="#dcc1bc" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="672.0" cy="96" rx="78.0" ry="10" fill="#fff" stroke="#dcc1bc" stroke-width="1.6"/>
+  <text x="672" y="122" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">データベース</text>
+  <path d="M206 112H585" fill="none" stroke="#aa7772" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6"/><path d="M577 108L585 112L577 116" fill="none" stroke="#aa7772" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="371" y="94" width="38" height="36" rx="0" fill="#fbf4f3" stroke="none" stroke-width="1.6"/>
+  <path d="M382 103l16 18m0-18l-16 18" fill="none" stroke="#b42331" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="390" y="160" font-size="19" fill="#922b35" text-anchor="middle">接続情報の公開やアクセス制御に問題がある</text>
+  <rect x="8" y="185" width="764" height="177" rx="6" fill="#f1f8fa" stroke="#a7bdce" stroke-width="1.6"/>
+  <text x="390" y="214" font-size="22" fill="#18364e" text-anchor="middle" font-weight="700">サーバー側のプログラムを経由する構成</text>
+  <rect x="26" y="245" width="174" height="80" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1.6"/>
+  <text x="113" y="291" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">React（ブラウザー）</text>
+  <rect x="293" y="233" width="194" height="111" rx="6" fill="#e9f5ef" stroke="#a6caba" stroke-width="1.6"/>
+  <text x="390" y="261" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">サーバー側の</text>
+  <text x="390" y="284" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">プログラム（API）</text>
+  <rect x="302" y="298" width="176" height="34" rx="4" fill="#fff" stroke="#a6caba" stroke-width="1.6"/>
+  <text x="390" y="321" font-size="14.5" fill="#24664e" text-anchor="middle">データベースの接続情報</text>
+  <path d="M594 255v60a78.0 10 0 0 0 156 0v-60" fill="#e9f5ef" stroke="#a6caba" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="672.0" cy="255" rx="78.0" ry="10" fill="#e9f5ef" stroke="#a6caba" stroke-width="1.6"/>
+  <text x="672" y="292" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">データベース</text>
+  <text x="246.5" y="266" font-size="16" fill="#2b648d" text-anchor="middle" font-weight="700">処理を依頼</text>
+  <path d="M206 276H287" fill="none" stroke="#2b648d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M279 272L287 276L279 280" fill="none" stroke="#2b648d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M287 296H206" fill="none" stroke="#24664e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M214 292L206 296L214 300" fill="none" stroke="#24664e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="246.5" y="319" font-size="16" fill="#24664e" text-anchor="middle" font-weight="700">処理結果</text>
+  <text x="540.5" y="266" font-size="16" fill="#2b648d" text-anchor="middle" font-weight="700">データを操作</text>
+  <path d="M493 276H588" fill="none" stroke="#2b648d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M580 272L588 276L580 280" fill="none" stroke="#2b648d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M588 296H493" fill="none" stroke="#24664e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M501 292L493 296L501 300" fill="none" stroke="#24664e" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="540.5" y="319" font-size="17" fill="#24664e" text-anchor="middle" font-weight="700">結果</text>
+</svg>

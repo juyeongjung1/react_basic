@@ -1,7 +1,7 @@
 import { Route, Routes, useMatch } from 'react-router'
-import Sample4_1 from './components/Sample4_1'
+import Sample4_2 from './components/Sample4_2'
 
-const samplePath = '/sample-4-1'
+const samplePath = '/sample-4-2'
 
 export default function App() {
   const active = Boolean(useMatch(samplePath))
@@ -18,14 +18,14 @@ export default function App() {
               aria-pressed={active}
               onClick={() => window.location.assign(samplePath)}
             >
-              4.1 AxiosによるHTTP通信
+              4.2 AxiosによるHTTP通信
             </button>
           </li>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={null} />
-        <Route path={samplePath} element={<Sample4_1 />} />
+        <Route path={samplePath} element={<Sample4_2 />} />
       </Routes>
     </>
   )

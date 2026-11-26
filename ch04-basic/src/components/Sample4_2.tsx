@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function Sample4_1() {
+export default function Sample4_2() {
   async function handleGetProducts() {
     const response = await axios.get('/api/products')
     console.log(response.data)

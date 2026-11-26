@@ -1,6 +1,6 @@
 // ➀ 実装：axiosパッケージからaxiosをインポートしてください。
 
-export default function Q4_1() {
+export default function Q4_2() {
   async function handleGetProduct() {
     // ➁ 実装：awaitとaxios.get()を使用して、/api/products/104 へ
     // GETリクエストを送信し、レスポンスを定数responseに格納してください。

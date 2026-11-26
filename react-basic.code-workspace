@@ -14,6 +14,15 @@
 		},
 		{
 			"path": "ch03-basic-q"
+		},
+		{
+			"path": "ch04-api"
+		},
+		{
+			"path": "ch04-basic"
+		},
+		{
+			"path": "ch04-basic-q"
 		}
 	],
 	"settings": {

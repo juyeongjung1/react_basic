@@ -1,0 +1,39 @@
+{
+  "ch04-axios-031": [
+    {
+      "text": "import axios from 'axios'",
+      "line": 1
+    },
+    {
+      "text": "async function handleGetProducts() {\n    const response = await axios.get('/api/products')\n    console.log(response.data)\n  }",
+      "line": 4,
+      "block": true
+    },
+    {
+      "text": "onClick={handleGetProducts}",
+      "line": 14
+    }
+  ],
+  "ch04-axios-041": [
+    {
+      "text": "async",
+      "line": 4
+    },
+    {
+      "text": "await axios.get('/api/products')",
+      "line": 5
+    }
+  ],
+  "ch04-axios-049": [
+    {
+      "text": "response.data",
+      "line": 6
+    }
+  ],
+  "ch04-axios-057": [
+    {
+      "text": "onClick={handleGetProducts}",
+      "line": 14
+    }
+  ]
+}

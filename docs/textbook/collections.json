@@ -1,7 +1,6 @@
 {
   "textbook": {
     "title": "React 開発入門",
-    "parts": ["front", "01", "02", "03", "04"],
-    "flow_filename": "flow 4章.pdf"
+    "parts": ["front", "01", "02", "03", "04"]
   }
 }
