@@ -1377,3 +1377,348 @@ useEffectによるデータ取得から一覧表示までの流れ
 :::
 
 ::::
+
+:::: {#page-8 .source-page}
+
+::: {#ch04-45-title .heading}
+4.5. 通信エラーへの対応
+:::
+
+::: {#ch04-45-slide .slide layout="illustration"}
+通信エラーへの対応
+
+![通信エラーへの対応](assets/axios-error-slide.svg)
+:::
+
+::: {#ch04-45-background .heading level="minor"}
+通信に失敗した場合の処理
+:::
+
+::: {#ch04-45-par-04 .paragraph}
+前節では、useEffect()を使用して、商品一覧画面が表示されたときにREST APIから商品情報を取得しました。
+:::
+
+::: {#ch04-45-par-05 .paragraph}
+しかし、実際のWebアプリケーションでは、サーバーが停止していたり、ネットワークに問題が発生したりすることで、REST APIとの通信に失敗する場合があります。
+:::
+
+::: {#ch04-45-par-06 .paragraph}
+このような場合、商品一覧が表示されないだけでは、利用者は商品が登録されていないのか、通信に失敗したのかを判断できません。
+:::
+
+::: {#ch04-45-par-07 .paragraph}
+そこで、**通信に失敗した場合は、そのことが利用者に伝わるようにエラーメッセージを表示する処理を実装します。**
+:::
+
+::: {#ch04-45-par-08 .paragraph}
+JavaScriptでは、例外が発生した場合の処理を記述するために、`try` と `catch` を使用できます。Axiosによる通信で例外が発生した場合も、この仕組みを利用できます。
+:::
+
+::: {#ch04-45-sample .heading level="minor"}
+【サンプル】通信に失敗した場合にエラーメッセージを表示する
+:::
+
+::: {#ch04-45-par-10 .paragraph}
+前節の商品一覧画面に、通信に失敗した場合の処理を追加します。
+:::
+
+::: {#ch04-45-par-11 .paragraph}
+`ch04-basic` プロジェクトの `src/components/Sample4_5.tsx` を確認してください。
+:::
+
+::: {#ch04-45-full .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="1"}
+```tsx
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+type Product = {
+  id: number
+  name: string
+  price: number
+  imagePath: string
+}
+
+export default function Sample4_5() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const response = await axios.get<Product[]>('/api/products')
+        setProducts(response.data)
+      } catch (error) {
+        console.error(error)
+        setErrorMessage('商品情報の取得に失敗しました。')
+      }
+    }
+
+    loadProducts()
+  }, [])
+
+  return (
+    <main className="container mt-4">
+      <h1>商品一覧</h1>
+      {errorMessage !== '' && (
+        <p className="alert alert-danger" role="alert">{errorMessage}</p>
+      )}
+```
+:::
+
+::: {#ch04-45-full-cont .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="35" code-label="TSX（続き）"}
+```tsx
+      <table className="table table-bordered w-auto">
+        <thead className="table-light">
+          <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>単価</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}円</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
+  )
+}
+```
+:::
+
+::: {#ch04-45-par-14 .paragraph}
+練習用REST APIと `ch04-basic` の開発サーバーが起動していることを確認し、ブラウザーのメニューから［4.5 通信エラーへの対応］を選択してください。通信が正常に完了すると、前節と同じように6件の商品情報が表示されます。
+:::
+
+::: {#ch04-45-par-15 .paragraph}
+次に、通信に失敗した場合の動作を確認します。
+:::
+
+::: {#ch04-45-par-16 .paragraph numbered="true"}
+1．VS Codeで `ch04-api` のREST APIを起動しているターミナルを選択し、［Ctrl］＋［C］キーを押してREST APIを停止してください。Reactの開発サーバーは起動したままにしてください。
+:::
+
+::: {#ch04-45-par-17 .paragraph numbered="true"}
+2．ブラウザーで4.5の商品一覧画面を再読み込みしてください。
+:::
+
+::: {#ch04-45-par-18 .paragraph}
+REST APIから商品情報を取得できず、「商品情報の取得に失敗しました。」というエラーメッセージが表示されます。
+:::
+
+![通信の成否に応じて商品一覧またはエラーメッセージを表示する](assets/axios-error-comparison.svg){#ch04-45-figure-1}
+
+::: {#ch04-45-figure-1-caption .caption}
+通信の成否に応じて商品一覧またはエラーメッセージを表示する
+:::
+
+::: {#ch04-45-par-20 .paragraph numbered="true"}
+3．`ch04-api` のターミナルで `npm start` を実行してREST APIを再び起動し、商品一覧画面を再読み込みしてください。エラーメッセージが表示されず、6件の商品情報が表示されることを確認します。
+:::
+
+::: {#ch04-45-syntax .heading level="minor"}
+構文の解説
+:::
+
+::: {#ch04-45-state-heading .step keep-next="1"}
+**① エラーメッセージを管理するstateを定義する**
+:::
+
+::: {#ch04-45-state .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="13"}
+```tsx
+  const [errorMessage, setErrorMessage] = useState('')
+```
+:::
+
+::: {#ch04-45-par-25 .paragraph}
+今回は、商品情報を管理するproductsのstateとは別に、エラーメッセージを管理するerrorMessageのstateを定義しています。
+:::
+
+::: {#ch04-45-par-26 .paragraph}
+初期値は空文字列 `''` です。通信に失敗した場合に、表示するメッセージを `setErrorMessage()` で設定します。
+:::
+
+::: {#ch04-45-catch-heading .step keep-next="1"}
+**② tryとcatchで例外が発生した場合の処理を記述する**
+:::
+
+::: {#ch04-45-catch .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="17"}
+```tsx
+      try {
+        const response = await axios.get<Product[]>('/api/products')
+        setProducts(response.data)
+      } catch (error) {
+        console.error(error)
+        setErrorMessage('商品情報の取得に失敗しました。')
+      }
+```
+:::
+
+::: {#ch04-45-par-30 .paragraph}
+`try` ブロックには、通常実行する処理を記述します。`catch` ブロックには、tryブロック内で例外が発生した場合に実行する処理を記述します。
+:::
+
+::: {#ch04-45-par-31 .paragraph}
+今回のコードでは、tryブロック内でREST APIから商品情報を取得し、取得したデータをstateに格納しています。
+:::
+
+::: {#ch04-45-par-32 .paragraph}
+Axiosでは、ネットワークエラーが発生した場合や、通常はHTTPステータスコードが400番台・500番台で返された場合、通信結果を表すPromiseが拒否されます。`await` を使用しているため、この失敗は例外として扱われます。
+:::
+
+::: {#ch04-45-par-33 .paragraph}
+通信が正常に完了すれば、`setProducts(response.data)` が実行されます。一方、`await axios.get()` の実行によって例外が発生すると、tryブロック内の後続の処理は実行されず、catchブロックに処理が移ります。
+:::
+
+![tryブロック内で例外が発生した場合はcatchブロックの処理を実行する](assets/axios-error-flow.svg){#ch04-45-figure-2}
+
+::: {#ch04-45-figure-2-caption .caption}
+tryブロック内で例外が発生した場合はcatchブロックの処理を実行する
+:::
+
+::: {#ch04-45-par-35 .paragraph}
+catchブロックでは、`error` に受け取った例外の情報を `console.error(error)` で開発者ツールに出力します。また、`setErrorMessage()` を使用して、利用者に表示するエラーメッセージを設定します。
+:::
+
+::: {#ch04-45-par-36 .paragraph}
+開発者が原因を調査するための情報と、利用者に伝えるメッセージは分けて扱います。
+:::
+
+::: {#ch04-45-display-heading .step keep-next="1"}
+**③ エラーメッセージを画面に表示する**
+:::
+
+::: {#ch04-45-display .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="32"}
+```tsx
+      {errorMessage !== '' && (
+        <p className="alert alert-danger" role="alert">{errorMessage}</p>
+      )}
+```
+:::
+
+::: {#ch04-45-par-40 .paragraph}
+2.5節で学習した条件に応じた表示を使用しています。errorMessageが空文字列でない場合に、エラーメッセージを表示します。
+:::
+
+::: {#ch04-45-par-41 .paragraph}
+初期状態ではerrorMessageは空文字列なので、エラーメッセージは表示されません。通信に失敗した場合は、catchブロックでerrorMessageのstateが更新され、Reactが画面を更新してエラーメッセージを表示します。
+:::
+
+::: {#ch04-45-par-42 .paragraph}
+なお、`alert alert-danger` は、Bootstrapでエラーメッセージなどを目立たせるためのクラスです。
+:::
+
+::: {#ch04-45-exercise .heading level="minor" keep-next="6"}
+【確認演習】通信に失敗した場合にエラーメッセージを表示する
+:::
+
+::: {#ch04-45-par-44 .paragraph}
+講義サンプルと同様に、商品一覧画面を表示したときに商品情報を取得し、通信に失敗した場合はエラーメッセージを表示するようにしましょう。
+:::
+
+::: {#ch04-45-par-45 .paragraph}
+商品データの型、state、useEffect()による商品情報の取得処理、テーブルとエラーメッセージの表示処理は、あらかじめ用意されています。tryとcatchを使用した例外処理を実装します。
+:::
+
+::: {#ch04-45-par-46 .paragraph numbered="true"}
+1．`ch04-basic-q` プロジェクトの `src/components/Q4_5.tsx` を開いてください。
+:::
+
+::: {#ch04-45-par-47 .paragraph numbered="true"}
+2．コード内の➀～➅の番号付きコメントを確認し、指示された箇所を実装してください。➀・➅は既存コードの確認、➁～➄は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+:::
+
+::: {#ch04-45-par-48 .paragraph numbered="true"}
+3．編集したファイルを保存してください。
+:::
+
+::: {#ch04-45-par-49 .paragraph numbered="true"}
+4．練習用REST APIと `ch04-basic-q` の開発サーバーが起動していることを確認してください。ブラウザーのメニューから［4.5 通信エラーへの対応］を選択してください。
+:::
+
+::: {#ch04-45-check .heading level="minor" keep-next="3"}
+動作確認
+:::
+
+::: {#ch04-45-par-51 .paragraph numbered="true"}
+5．商品番号101～106の6件の商品情報が一覧表示され、エラーメッセージが表示されていないことを確認してください。
+:::
+
+::: {#ch04-45-par-52 .paragraph numbered="true"}
+6．`ch04-api` のターミナルで［Ctrl］＋［C］キーを押してREST APIを停止し、演習用の商品一覧画面を再読み込みしてください。
+:::
+
+::: {#ch04-45-par-53 .paragraph}
+次の図と見比べながら、「商品情報の取得に失敗しました。」というエラーメッセージが表示され、商品情報の行が表示されないことを確認してください。
+:::
+
+![REST APIを停止した状態で画面を再読み込みすると、エラーメッセージが表示される](assets/axios-error-exercise.svg){#ch04-45-figure-3}
+
+::: {#ch04-45-figure-3-caption .caption}
+REST APIを停止した状態で画面を再読み込みすると、エラーメッセージが表示される
+:::
+
+::: {#ch04-45-par-55 .paragraph numbered="true"}
+7．`ch04-api` のターミナルで `npm start` を実行してREST APIを起動し、商品一覧画面を再読み込みしてください。エラーメッセージが表示されず、6件の商品情報が表示されれば、演習完了です。
+:::
+
+::: {#ch04-45-points .section-points}
+この節のポイント
+
+● `try` と `catch` を使用すると、例外が発生した場合の処理を記述できる。
+
+● 通信に失敗した場合は、catchブロック内でエラーメッセージを設定できる。
+
+● エラーメッセージをstateで管理し、条件に応じて表示することで、利用者に通信の失敗を伝えられる。
+:::
+
+::::
+
+:::: {#page-9 .source-page}
+
+::: {#ch04-summary-title .heading}
+章のまとめ
+:::
+
+::: {#ch04-summary-slide .slide layout="summary"}
+章のまとめ
+
+■ REST APIの役割と仕組み
+
+■ AxiosによるHTTP通信
+
+■ 取得したデータの画面表示
+
+■ useEffectによる処理の実行
+
+■ 通信エラーへの対応
+:::
+
+::: {#ch04-summary-par-61 .paragraph}
+この章では、ReactからREST APIと通信し、取得したデータを画面に表示する方法を学習しました。
+:::
+
+::: {#ch04-summary-par-62 .paragraph}
+最初に、フロントエンドとバックエンドを分ける理由を確認し、REST APIではURLで操作対象を指定し、HTTPメソッドで操作内容を指定することを学びました。
+:::
+
+::: {#ch04-summary-par-63 .paragraph}
+続いて、Axiosを使用してREST APIと通信し、asyncとawaitで通信結果を待ってから、取得したデータを取り出す方法を学習しました。また、取得したデータをstateに格納することで、商品一覧を表示しました。
+:::
+
+::: {#ch04-summary-par-64 .paragraph}
+さらに、useEffect()を使用して画面の表示時に商品情報を自動的に取得し、最後にtryとcatchを使用して、通信に失敗した場合にエラーメッセージを表示する処理を実装しました。
+:::
+
+::: {#ch04-summary-par-65 .paragraph}
+ここまでの学習では、あらかじめ用意されたREST APIを利用してきました。次の第5章では、Node.jsとExpressを使用してREST APIを作成し、データベースに保存された商品情報をReactから取得する方法を学習します。
+:::
+
+::::
+
+<!-- CODE id="ch04-45-state" path="ch04-basic/src/components/Sample4_5.tsx" lines="13" type="TSX" highlight="none" reason="1行全体が説明対象" -->

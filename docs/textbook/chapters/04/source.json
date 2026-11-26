@@ -2,7 +2,7 @@
   "title": "第4章 REST APIとの連携",
   "chapter": 4,
   "first_page": 1,
-  "last_page": 7,
+  "last_page": 9,
   "cover_mode": "classic",
   "cover_wrap_goals": true,
   "illustrations": {
@@ -85,6 +85,22 @@
       "caption_id": "ch04-44-figure-4-caption",
       "width": 380,
       "max_height": 285
+    },
+    "ch04-45-figure-1": {
+      "caption_id": "ch04-45-figure-1-caption",
+      "width": 380,
+      "max_height": 215
+    },
+    "ch04-45-figure-2": {
+      "caption_id": "ch04-45-figure-2-caption",
+      "width": 380,
+      "max_height": 240,
+      "file_path": "ch04-basic/src/components/Sample4_5.tsx"
+    },
+    "ch04-45-figure-3": {
+      "caption_id": "ch04-45-figure-3-caption",
+      "width": 380,
+      "max_height": 250
     }
   }
 }

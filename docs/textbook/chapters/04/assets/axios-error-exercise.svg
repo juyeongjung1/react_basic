@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="347" viewBox="0 0 740 347" font-family="Meiryo, sans-serif" role="img">
+<title>REST APIを停止した状態で画面を再読み込みすると、エラーメッセージが表示される</title>
+<rect x="12" y="7" width="347" height="100" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="25" y="29" font-size="19.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">① ch04-api のターミナル</text>
+<rect x="24" y="38" width="323" height="56" rx="4" fill="#163042" stroke="none" stroke-width="1"/>
+<text x="33" y="59" font-size="14" fill="#fff" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">npm start</text>
+<text x="33" y="81" font-size="13.6" fill="#fff" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">REST API: http://127.0.0.1:3000</text>
+<rect x="272" y="53" width="64" height="29" rx="3" fill="#fff" stroke="none" stroke-width="1"/>
+<text x="304" y="73" font-size="16" fill="#b42331" text-anchor="middle" font-weight="700" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">Ctrl+C</text>
+<rect x="270" y="51" width="68" height="33" rx="0" fill="none" stroke="#b42331" stroke-width="1.8"/>
+<rect x="371" y="7" width="357" height="100" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="384" y="29" font-size="19.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">② ブラウザーで再読み込み</text>
+<rect x="383" y="47" width="333" height="36" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="1"/>
+<rect x="421" y="53" width="285" height="24" rx="4" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="430" y="70" font-size="13.6" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5175/sample-4-5</text>
+<path d="M406 61a7 7 0 1 0 1 6m0 -11v6h-6" fill="none" stroke="#2b648d" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="390" y="51" width="25" height="27" rx="0" fill="none" stroke="#b42331" stroke-width="1.8"/>
+<path d="M550 112V136m-4 -6 4 6 4 -6" fill="none" stroke="#b42331" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="12" y="141" width="716" height="198" rx="6" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="12.7" y="141.7" width="714.6" height="28" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="0.7"/>
+<circle cx="23" cy="155.5" r="1.8" fill="#8ba6ba"/><circle cx="31" cy="155.5" r="1.8" fill="#8ba6ba"/>
+<rect x="40" y="146" width="680" height="19" rx="3" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="47" y="160" font-size="13.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://localhost:5175/sample-4-5</text>
+<text x="30" y="193" font-size="16.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">第4章の確認演習</text>
+<rect x="30" y="202" width="209" height="23" rx="4" fill="#0d6efd" stroke="none" stroke-width="1"/>
+<text x="134.5" y="218.5" font-size="16.2" fill="#fff" text-anchor="middle" font-weight="700" xml:space="preserve">4.5 通信エラーへの対応</text>
+<text x="30" y="253" font-size="23.4" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品一覧</text>
+<rect x="30" y="266" width="674" height="36" rx="5" fill="#f8d7da" stroke="#f1aeb5" stroke-width="1"/>
+<text x="40" y="289.874" font-size="17.8" fill="#58151c" text-anchor="start" xml:space="preserve">商品情報の取得に失敗しました。</text>
+<rect x="28" y="264" width="678" height="40" rx="0" fill="none" stroke="#b42331" stroke-width="1.8"/>
+<rect x="30" y="312" width="315" height="21" rx="0" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="30" y="312" width="315" height="21" rx="0" fill="#f4f6f8" stroke="#a7bdce" stroke-width="1"/>
+<text x="38" y="327.12" font-size="15.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品番号</text>
+<path d="M122 312v21" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="130" y="327.12" font-size="15.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">商品名</text>
+<path d="M258 312v21" fill="none" stroke="#a7bdce" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="266" y="327.12" font-size="15.7" fill="#18364e" text-anchor="start" font-weight="700" xml:space="preserve">単価</text>
+</svg>

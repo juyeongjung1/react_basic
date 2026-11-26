@@ -113,5 +113,49 @@
       "text": "loadProducts()",
       "line": 20
     }
+  ],
+  "ch04-45-full": [
+    {
+      "text": "const [errorMessage, setErrorMessage] = useState('')",
+      "line": 13
+    },
+    {
+      "text": "try {",
+      "line": 17
+    },
+    {
+      "text": "} catch (error) {\n        console.error(error)\n        setErrorMessage('商品情報の取得に失敗しました。')\n      }",
+      "line": 20,
+      "block": true
+    },
+    {
+      "text": "{errorMessage !== '' && (\n        <p className=\"alert alert-danger\" role=\"alert\">{errorMessage}</p>\n      )}",
+      "line": 32,
+      "block": true
+    }
+  ],
+  "ch04-45-catch": [
+    {
+      "text": "try",
+      "line": 17
+    },
+    {
+      "text": "catch (error)",
+      "line": 20
+    },
+    {
+      "text": "setErrorMessage('商品情報の取得に失敗しました。')",
+      "line": 22
+    }
+  ],
+  "ch04-45-display": [
+    {
+      "text": "errorMessage !== ''",
+      "line": 32
+    },
+    {
+      "text": "{errorMessage}",
+      "line": 33
+    }
   ]
 }

@@ -188,6 +188,14 @@ XXXX-T-01
 4.4. useEffectによる処理の実行
 :::
 
+::: {#contents-ch04-section-5 .contents-entry target="04:ch04-45-title"}
+4.5. 通信エラーへの対応
+:::
+
+::: {#contents-ch04-summary .contents-entry target="04:ch04-summary-title"}
+章のまとめ
+:::
+
 ::::
 
 :::: {#page-5 .source-page}
