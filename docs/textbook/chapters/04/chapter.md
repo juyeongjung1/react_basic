@@ -377,108 +377,138 @@ AxiosによるHTTP通信
 Axiosとは
 :::
 
-::: {#ch04-axios-005 .paragraph}
-前節では、REST APIの役割と仕組みについて学習しました。今回は、ReactからREST APIにリクエストを送信し、商品情報を取得する方法を学習します。
+::: {#ch04-42-par-04 .paragraph}
+前節では、REST APIではURLで操作対象を指定し、HTTPメソッドで操作内容を指定することを学習しました。
 :::
 
-::: {#ch04-axios-006 .paragraph}
+::: {#ch04-42-par-05 .paragraph}
+例えば、商品一覧を取得する場合は、`/api/products` にGETリクエストを送信します。この節では、このリクエストをReactのプログラムから送信する方法を学習します。
+:::
+
+::: {#ch04-42-par-06 .paragraph}
 Webブラウザーには、JavaScriptからHTTP通信を行うための標準機能として `fetch()` が用意されています。
 :::
 
-::: {#ch04-axios-007 .paragraph}
+::: {#ch04-42-par-07 .paragraph}
 本研修では、HTTP通信や取得したデータの取り扱いをより簡潔に記述できるように、**Axios（アクシオス）** というライブラリを使用します。
 :::
 
-::: {#ch04-axios-008 .paragraph}
-Axiosは、HTTPリクエストの送信やレスポンスの受け取りを行うJavaScriptのライブラリです。React専用のライブラリではなく、JavaScriptからHTTP通信を行うさまざまな場面で使用できます。
+::: {#ch04-42-par-08 .paragraph}
+Axiosは、HTTPリクエストの送信やレスポンスの受け取りを行うJavaScriptのライブラリです。React専用のライブラリではなく、JavaScriptからHTTP通信を行う際に使用できます。
 :::
 
-::: {#ch04-axios-009 .paragraph}
-この節では、Axiosの `axios.get()` を使用してGETリクエストを送信し、商品情報を取得します。データの登録・更新・削除に使用するメソッドは後続の章で学習します。
+::: {#ch04-42-par-09 .paragraph}
+今回は、Axiosの `axios.get()` を使用して商品情報を取得し、ブラウザーのコンソールで取得結果を確認します。
 :::
 
 ::: {#ch04-axios-sample .heading level="minor"}
 【サンプル】REST APIから商品情報を取得する
 :::
 
-::: {#ch04-axios-013 .paragraph}
-［商品一覧を取得］ボタンをクリックすると、REST APIから商品一覧を取得し、ブラウザーのコンソールに出力するプログラムを作成します。
+::: {#ch04-42-par-11 .paragraph}
+［商品一覧を取得］ボタンをクリックすると、REST APIから6件の商品情報を取得し、ブラウザーのコンソールに出力するプログラムを確認します。
 :::
 
 ::: {#ch04-axios-api .step}
 **① 練習用REST APIの起動**
 :::
 
-::: {#ch04-axios-015 .paragraph}
-第4章で使用するREST APIは、`ch04-api` フォルダーに用意されています。まず、REST APIを起動します。
+::: {#ch04-42-par-13 .paragraph}
+第4章で使用する練習用REST APIは、`ch04-api` フォルダーに用意されています。データベースには接続せず、あらかじめ用意された商品データを返すAPIです。
 :::
 
-::: {#ch04-axios-016 .paragraph numbered="true"}
-1．Visual Studio Codeで `react-basic.code-workspace` を開き、`ch04-api` フォルダーのターミナルを起動してください。
+::: {#ch04-42-par-14 .paragraph}
+まず、Reactの開発サーバーとは別に、練習用REST APIを起動します。
 :::
 
-::: {#ch04-axios-017 .paragraph numbered="true" keep-next="1"}
-2．初回のみ、次のコマンドを実行して依存ライブラリをインストールしてください。
+::: {#ch04-42-par-15 .paragraph numbered="true"}
+1．VS Codeで `react-basic.code-workspace` を開き、`ch04-api` フォルダーのターミナルを起動してください。
 :::
 
-::: {#ch04-axios-018 .code example="true" code-label="コンソールの記述例"}
+::: {#ch04-42-par-16 .paragraph numbered="true" keep-next="1"}
+2．初回のみ、次のコマンドを実行してください。
+:::
+
+::: {#ch04-42-api-install .code example="true" code-label="コンソールの記述例"}
 ```powershell
 npm install
 ```
 :::
 
-::: {#ch04-axios-019 .paragraph numbered="true" keep-next="1"}
-3．次のコマンドを実行してください。
+::: {#ch04-42-par-19 .paragraph numbered="true" keep-next="1"}
+3．次のコマンドを実行して、REST APIを起動してください。
 :::
 
-::: {#ch04-axios-020 .code example="true" code-label="コンソールの記述例"}
+::: {#ch04-42-api-start .code example="true" code-label="コンソールの記述例"}
 ```powershell
 npm start
 ```
 :::
 
-::: {#ch04-axios-021 .paragraph}
-ターミナルに「REST API: http://127.0.0.1:3000」と表示されれば、REST APIの起動は完了です。第4章の学習中は、このターミナルを終了せず、REST APIを起動したままにしてください。
+::: {#ch04-42-par-22 .paragraph}
+ターミナルに「REST API: http://127.0.0.1:3000」と表示されれば、起動は完了です。第4章の学習中は、REST APIを起動したままにしてください。
 :::
 
-::: {#ch04-axios-022 .paragraph}
-今回のREST APIには、次のリクエスト先が用意されています。
+::: {#ch04-42-par-23 .paragraph numbered="true" keep-next="1"}
+4．Webブラウザーの新しいタブを開き、アドレスバーに次のURLを入力してください。
 :::
 
-::: {#ch04-axios-023 .table column-widths="20 33 47"}
-| HTTPメソッド | リクエスト先 | 取得できるデータ |
-|---|---|---|
-| GET | `/api/products` | 6件の商品情報の配列 |
-| GET | `/api/products/104` | 商品番号104（ファイル）の商品情報 |
+::: {#ch04-42-par-24 .paragraph}
+`http://127.0.0.1:3000/api/products`
 :::
 
-::: {#ch04-axios-install .step}
-**② Axiosのインストール**
+::: {#ch04-42-par-25 .paragraph}
+ブラウザーのアドレスバーからこのURLにアクセスすると、GETリクエストが送信され、6件の商品情報がJSON形式で表示されます。
 :::
 
-::: {#ch04-axios-026 .paragraph}
-Axiosは、Reactとは別のライブラリです。通常は、Reactのプロジェクトで次のコマンドを実行して導入します。
+::: {#ch04-42-par-26 .paragraph}
+このように、Reactを起動しなくても、REST APIが返すデータを確認できます。
 :::
 
-::: {#ch04-axios-027 .code example="true" code-label="コンソールの記述例"}
+![練習用REST APIから返された商品情報をブラウザーで確認する](assets/axios-api-browser.svg){#ch04-42-figure-1}
+
+::: {#ch04-42-figure-1-caption .caption}
+練習用REST APIから返された商品情報をブラウザーで確認する
+:::
+
+::: {#ch04-42-par-28 .paragraph}
+この節のサンプルと確認演習では、次の2つのGETリクエストを使用します。
+:::
+
+::: {#ch04-42-par-29 .table column-widths="36 64"}
+| URLのパス | 取得できるデータ |
+|---|---|
+| `/api/products` | 6件の商品情報（配列） |
+| `/api/products/104` | 商品番号104（ファイル）の商品情報（オブジェクト） |
+:::
+
+::: {#ch04-axios-install .step keep-next="2"}
+**② Axiosの導入**
+:::
+
+::: {#ch04-42-par-31 .paragraph}
+Axiosを使用する場合は、Reactのプロジェクトで次のコマンドを実行してインストールします。
+:::
+
+::: {#ch04-42-axios-install .code example="true" code-label="コンソールの記述例"}
 ```powershell
 npm install axios
 ```
 :::
 
-::: {#ch04-axios-028 .paragraph}
-なお、今回配布している `ch04-basic` と `ch04-basic-q` には、Axiosが依存ライブラリとして登録されています。そのため、初回はそれぞれのプロジェクトで `npm install` を実行すれば、Axiosもインストールされます。上記の `npm install axios` を別途実行する必要はありません。
+::: {#ch04-42-par-34 .paragraph}
+本研修の `ch04-basic` と `ch04-basic-q` では、Axiosがあらかじめ `package.json` に登録されています。そのため、通常どおり `npm install` を実行すれば、Axiosもインストールされます。個別に `npm install axios` を実行する必要はありません。
 :::
 
 ::: {#ch04-axios-sample-code .step keep-next="2"}
 **③ React側のプログラムの確認**
 :::
 
-::: {#ch04-axios-030 .paragraph}
+::: {#ch04-42-par-36 .paragraph}
 ワークスペースの `ch04-basic` フォルダーにある `src/components/Sample4_2.tsx` を確認してください。
 :::
 
-::: {#ch04-axios-031 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
+::: {#ch04-42-full .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
 ```tsx
 import axios from 'axios'
 
@@ -502,22 +532,18 @@ export default function Sample4_2() {
 ```
 :::
 
-::: {#ch04-axios-032 .paragraph}
-このプログラムでは、ボタンがクリックされると、Axiosを使用して商品情報を取得し、`console.log()` で取得結果を確認します。
+::: {#ch04-42-par-39 .paragraph}
+`ch04-basic` のフォルダーで、初回のみ `npm install` を実行してください。1.5節と同じ手順で開発サーバーを起動し、ブラウザーのメニューから［4.2 AxiosによるHTTP通信］を選択してください。
 :::
 
-::: {#ch04-axios-033 .paragraph}
-`ch04-basic` のターミナルで、初回のみ `npm install` を実行し、`npm run dev` で開発サーバーを起動してください。ターミナルに表示されたURLをブラウザーで開き、メニューから「4.2 AxiosによるHTTP通信」を選択します。
+::: {#ch04-42-par-40 .paragraph}
+［F12］キーを押してブラウザーの開発者ツールを開き、［コンソール］（Console）を選択してください。［商品一覧を取得］ボタンをクリックすると、取得した商品情報が配列として出力されます。
 :::
 
-::: {#ch04-axios-034 .paragraph}
-ブラウザーでF12キーを押して開発者ツールを開き、［コンソール］（Console）を選択します。［商品一覧を取得］ボタンをクリックすると、6件の商品情報が配列としてコンソールに出力されます。
-:::
-
-![ボタンのクリックによって取得した商品情報をコンソールに表示する](assets/axios-list-result.svg){#ch04-axios-figure-1}
+![ボタンをクリックすると、取得した6件の商品情報がコンソールに出力される](assets/axios-list-result.svg){#ch04-axios-figure-1}
 
 ::: {#ch04-axios-figure-1-caption .caption}
-ボタンのクリックによって取得した商品情報をコンソールに表示する
+ボタンをクリックすると、取得した6件の商品情報がコンソールに出力される
 :::
 
 ::: {#ch04-axios-syntax .heading level="minor"}
@@ -525,198 +551,208 @@ export default function Sample4_2() {
 :::
 
 ::: {#ch04-axios-import .step keep-next="1"}
-**① Axiosのインポート**
+**① Axiosをインポートする**
 :::
 
-::: {#ch04-axios-038 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
+::: {#ch04-42-import .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="1"}
 ```tsx
 import axios from 'axios'
 ```
 :::
 
-::: {#ch04-axios-039 .paragraph}
-Axiosを使用するために、`axios` パッケージから `axios` をインポートします。これにより、`axios.get()` などのメソッドを使用できるようになります。
+::: {#ch04-42-par-46 .paragraph}
+`axios` パッケージから `axios` をインポートします。これにより、`axios.get()` などのメソッドを使用できるようになります。
 :::
 
 ::: {#ch04-axios-get .step keep-next="1"}
-**② GETリクエストの送信とレスポンスの受け取り**
+**② GETリクエストを送信し、レスポンスを受け取る**
 :::
 
-::: {#ch04-axios-041 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="4"}
+::: {#ch04-42-get .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="5"}
 ```tsx
-  async function handleGetProducts() {
     const response = await axios.get('/api/products')
 ```
 :::
 
-::: {#ch04-axios-042 .paragraph}
-`axios.get()` の引数には、GETリクエストの送信先を指定します。今回の送信先は `/api/products` です。
+::: {#ch04-42-par-50 .paragraph}
+`axios.get()` は、引数に指定したURLへGETリクエストを送信するためのメソッドです。
 :::
 
-::: {#ch04-axios-043 .paragraph}
-HTTP通信では、リクエストを送信してからレスポンスを受け取るまでに時間がかかります。`axios.get()` はPromise（非同期処理の結果を表すオブジェクト）を返します。
+::: {#ch04-42-par-51 .paragraph}
+前節で学習したURLとHTTPメソッドの組み合わせを、今回のコードでは `axios.get('/api/products')` と記述しています。`get` がHTTPメソッドのGETに対応し、引数の `/api/products` が操作対象を示します。
 :::
 
-::: {#ch04-axios-044 .paragraph}
-`async` は非同期関数を定義するための記述です。`await` を使用すると、通信の結果が得られるのを待ってから、その関数内の後続の処理を実行できます。今回のコードでは、通信が正常に完了したときにレスポンスを定数 `response` に格納します。
+::: {#ch04-42-async-heading .step keep-next="1"}
+**③ asyncとawaitで通信結果を待つ**
 :::
 
-::: {#ch04-axios-045 .paragraph}
-`await` によって待機するのは、この非同期関数内の後続の処理です。ブラウザー全体の動作が停止するわけではありません。
+::: {#ch04-42-async .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="4"}
+```tsx
+  async function handleGetProducts() {
+    const response = await axios.get('/api/products')
+    console.log(response.data)
+  }
+```
 :::
 
-::: {#ch04-axios-046 .paragraph}
-なお、配布プロジェクトでは、Viteのプロキシ設定により、`/api` から始まるリクエストを練習用REST API（`http://127.0.0.1:3000`）へ転送します。そのため、React側ではホスト名やポート番号を記述せずに通信できます。
+::: {#ch04-42-par-55 .paragraph}
+HTTP通信では、リクエストを送信してからレスポンスが返されるまでに時間がかかります。
+:::
+
+::: {#ch04-42-par-56 .paragraph}
+`axios.get()` は、非同期処理の結果を後から受け取るためのPromise（プロミス）というオブジェクトを返します。`await` を付けずに戻り値を `response` に格納すると、レスポンスではなくPromiseが格納されるため、`response.data` で商品情報を取得することはできません。
+:::
+
+::: {#ch04-42-par-57 .paragraph}
+そこで使用するのが、JavaScriptの `async` と `await` です。
+:::
+
+::: {#ch04-42-par-58 .table column-widths="21 79"}
+| 記述 | 役割 |
+|---|---|
+| `async` | 非同期関数を定義する。今回のように関数内で `await` を使用するために指定する。 |
+| `await` | 非同期処理の結果を待ってから、その関数内の後続の処理を実行する。 |
+:::
+
+::: {#ch04-42-par-59 .paragraph}
+今回のコードでは、`await` を使用することで、通信が正常に完了した後にレスポンスを `response` に格納し、その次の行の `console.log()` を実行します。
+:::
+
+![awaitによって通信結果を受け取ってから後続の処理を実行する](assets/axios-async-flow.svg){#ch04-42-figure-3}
+
+::: {#ch04-42-figure-3-caption .caption}
+awaitによって通信結果を受け取ってから後続の処理を実行する
+:::
+
+::: {#ch04-42-par-61 .paragraph}
+`await` によって待機するのは、この関数内の後続の処理です。ブラウザー全体の動作が停止するわけではありません。
 :::
 
 ::: {#ch04-axios-data .step keep-next="1"}
-**③ レスポンスから商品データを取得する**
+**④ レスポンスから商品データを取り出す**
 :::
 
-::: {#ch04-axios-049 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="6"}
+::: {#ch04-42-data .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="6"}
 ```tsx
     console.log(response.data)
 ```
 :::
 
-::: {#ch04-axios-050 .paragraph}
-Axiosが返すレスポンスオブジェクトには、サーバーから返されたデータだけでなく、HTTPステータスコードなどの情報も含まれています。
+::: {#ch04-42-par-65 .paragraph}
+Axiosで通信した結果を受け取る `response` は、商品データそのものではなく、HTTPステータスコードなどの情報も含むレスポンスオブジェクトです。
 :::
 
-::: {#ch04-axios-051 .table column-widths="33 67"}
-| プロパティ | 内容 |
-|---|---|
-| `response.data` | サーバーから返されたレスポンスのデータ |
-| `response.status` | HTTPステータスコード（正常に取得できた場合の例：200） |
+::: {#ch04-42-par-66 .paragraph}
+今回必要なのは商品データです。そのため、`response.data` を使用して、レスポンスから商品データを取り出します。
 :::
 
-::: {#ch04-axios-052 .paragraph}
-今回取得したいのは、REST APIから返された商品情報です。そのため、`response.data` を使用します。
+::: {#ch04-42-par-67 .paragraph}
+JSON形式で返された商品データは、AxiosによってJavaScriptで扱えるデータに変換されます。今回の `/api/products` に対するリクエストでは、6件の商品オブジェクトを格納した配列を取得できます。
 :::
 
-::: {#ch04-axios-053 .paragraph}
-REST APIからJSON形式で返された商品情報は、AxiosによってJavaScriptで扱えるデータに変換されます。今回のコードでは、商品情報を格納した配列を取得できます。
-:::
-
-![response.dataを使用してREST APIから返されたデータを取り出す](assets/axios-response.svg){#ch04-axios-figure-3}
+![response.dataから商品情報を取り出す](assets/axios-response.svg){#ch04-axios-figure-3}
 
 ::: {#ch04-axios-figure-3-caption .caption}
-response.dataを使用してREST APIから返されたデータを取り出す
+response.dataから商品情報を取り出す
 :::
 
-::: {#ch04-axios-055 .paragraph}
-今回はコンソールに出力するだけですが、取得したデータをstateに格納すれば、画面に表示することもできます。この方法は次の4.3節で学習します。
+::: {#ch04-42-par-69 .paragraph}
+ボタンのクリック時に `handleGetProducts` が呼び出される仕組みは、2.4節で学習した `onClick` と同じです。
 :::
 
-::: {#ch04-axios-click .step keep-next="1"}
-**④ ボタンのクリックによって通信する**
+::: {#ch04-42-proxy .training-note}
+【補足】APIの接続先について
+
+今回、REST APIは `http://127.0.0.1:3000` で動作していますが、サンプルのコードには `/api/products` とだけ記述しています。
+
+本研修の配布プロジェクトでは、Viteの開発サーバーが `/api` から始まるリクエストを `http://127.0.0.1:3000` へ転送するように、プロキシの設定を用意しています。そのため、今回のようにホスト名やポート番号を省略して記述できます。
 :::
 
-::: {#ch04-axios-057 .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="13"}
-```tsx
-      <button type="button" className="btn btn-primary"
-              onClick={handleGetProducts}>
-        商品一覧を取得
-      </button>
-```
-:::
-
-::: {#ch04-axios-058 .paragraph}
-2.4節で学習したイベント処理を使用して、ボタンのクリック時に `handleGetProducts` を実行します。
-:::
-
-::: {#ch04-axios-059 .paragraph}
-今回のサンプルでは、画面を表示しただけではREST APIと通信しません。［商品一覧を取得］ボタンをクリックしたときにリクエストを送信します。
-:::
-
-::: {#ch04-axios-060 .paragraph}
-画面の表示に伴って自動的にデータを取得する方法については4.4節で学習します。また、通信に失敗した場合の処理については4.5節で学習します。
-:::
-
-::: {#ch04-axios-practice .heading level="minor"}
+::: {#ch04-axios-practice .heading level="minor" keep-next="7"}
 【確認演習】Axiosを使用して商品情報を取得する
 :::
 
-::: {#ch04-axios-062 .paragraph}
+::: {#ch04-42-par-74 .paragraph}
 ［商品情報を取得］ボタンをクリックすると、商品番号104（ファイル）の商品情報をREST APIから取得し、ブラウザーのコンソールに出力するようにしましょう。
 :::
 
-::: {#ch04-axios-063 .paragraph}
-画面の基本構成、ボタンのイベント処理、練習用REST APIは、あらかじめ用意されています。
+::: {#ch04-42-par-75 .paragraph}
+画面の基本構成とボタンのイベント処理は、あらかじめ用意されています。
 :::
 
-::: {#ch04-axios-064 .paragraph numbered="true"}
-1．`ch04-basic-q` プロジェクトの次のファイルを開いてください。
+::: {#ch04-42-par-76 .paragraph numbered="true"}
+1．`ch04-basic-q` プロジェクトの `src/components/Q4_2.tsx` を開いてください。
 :::
 
-::: {#ch04-axios-065 .paragraph}
-● `src/components/Q4_2.tsx`
+::: {#ch04-42-par-77 .paragraph numbered="true"}
+2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。3つとも実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
-::: {#ch04-axios-066 .paragraph numbered="true"}
-2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
-:::
-
-::: {#ch04-axios-067 .paragraph numbered="true"}
+::: {#ch04-42-par-78 .paragraph numbered="true"}
 3．編集したファイルを保存してください。
 :::
 
-::: {#ch04-axios-068 .paragraph numbered="true"}
-4．`ch04-api` のREST APIが起動していることを確認してください。起動していない場合は、サンプルの起動手順に従って起動してください。`ch04-basic-q` で初回のみ `npm install` を実行し、`npm run dev` で開発サーバーを起動してください。ターミナルに表示されたURLをブラウザーで開きます。起動済みの場合は、開いているブラウザーの画面に戻ってください。
+::: {#ch04-42-par-79 .paragraph numbered="true"}
+4．練習用REST APIが起動していることを確認してください。`ch04-basic-q` フォルダーで初回のみ `npm install` を実行し、開発サーバーを起動してください。起動済みの場合は、演習用のブラウザーの画面に戻ってください。
 :::
 
-::: {#ch04-axios-069 .paragraph numbered="true"}
-5．メニューから「4.2 AxiosによるHTTP通信」を選んでください。
+::: {#ch04-42-par-80 .paragraph numbered="true"}
+5．メニューから［4.2 AxiosによるHTTP通信］を選択してください。
 :::
 
 ::: {#ch04-axios-check .heading level="minor"}
 動作確認
 :::
 
-::: {#ch04-axios-071 .paragraph numbered="true"}
-6．ブラウザーでF12キーを押して開発者ツールを開き、［コンソール］（Console）を選択してください。コンソールの既存の出力を消去し、［商品情報を取得］ボタンをクリックしてください。
+::: {#ch04-42-par-82 .paragraph numbered="true"}
+6．ブラウザーの開発者ツールから［コンソール］（Console）を開き、［商品情報を取得］ボタンをクリックしてください。次の内容を確認します。
 :::
 
-::: {#ch04-axios-072 .paragraph}
-次の内容を確認します。
-:::
-
-::: {#ch04-axios-073 .paragraph}
-● コンソールに商品情報が出力されていること。
-:::
-
-::: {#ch04-axios-074 .paragraph}
+::: {#ch04-42-par-83-1 .paragraph}
 ● 商品番号（`id`）が104であること。
 :::
 
-::: {#ch04-axios-075 .paragraph}
-● 商品名（`name`）が「ファイル」、単価（`price`）が600であること。
+::: {#ch04-42-par-83-2 .paragraph}
+● 商品名（`name`）が「ファイル」であること。
 :::
 
-![取得した商品情報がコンソールに表示されることを確認する](assets/axios-exercise-result.svg){#ch04-axios-figure-4}
+::: {#ch04-42-par-83-3 .paragraph}
+● 単価（`price`）が600であること。
+:::
+
+![商品番号104の商品情報がコンソールに出力されることを確認する](assets/axios-exercise-result.svg){#ch04-axios-figure-4}
 
 ::: {#ch04-axios-figure-4-caption .caption}
-取得した商品情報がコンソールに表示されることを確認する
+商品番号104の商品情報がコンソールに出力されることを確認する
 :::
 
-::: {#ch04-axios-077 .paragraph}
-今回取得するデータは1件の商品情報なので、配列ではなくオブジェクトが返されます。指定した商品番号に対応する商品情報が取得できていれば、演習完了です。
+::: {#ch04-42-par-85 .paragraph}
+今回は1件の商品情報を取得するため、配列ではなく、1つの商品オブジェクトが出力されます。指定した商品番号の商品情報が取得できていれば、演習完了です。
 :::
 
-::: {#ch04-axios-078 .paragraph}
-商品情報が画面内に表示されていないのは、意図した動作です。取得結果はコンソールで確認してください。エラーが発生した場合は、まず練習用REST APIが起動していること、リクエスト先の記述が正しいことを確認してください。
+::: {#ch04-42-par-86 .paragraph}
+結果が出力されない場合は、練習用REST APIが起動していること、演習用の開発サーバーに接続していること、リクエスト先が正しく指定されていることを確認してください。
+:::
+
+::: {#ch04-42-par-87 .paragraph}
+次の4.3節では、取得した商品情報をstateで管理し、画面に表示する方法を学習します。
 :::
 
 ::: {#ch04-axios-points .section-points}
 この節のポイント
 
-● Axiosは、HTTPリクエストを送信し、レスポンスを受け取るためのライブラリである。
+● Axiosは、JavaScriptからHTTP通信を行うためのライブラリである。
 
 ● `axios.get()` を使用すると、指定したURLへGETリクエストを送信できる。
 
-● `async` と `await` を使用して、通信の結果を待ってから後続の処理を実行できる。
+● `async` と `await` を使用すると、通信の結果を待ってから関数内の後続の処理を実行できる。
 
 ● `response.data` を使用すると、REST APIから返されたデータを取り出せる。
 :::
 
 ::::
+
+<!-- CODE id="ch04-42-api-install" type="コンソールの記述例" highlight="none" reason="コマンド全体が操作対象" -->
+<!-- CODE id="ch04-42-api-start" type="コンソールの記述例" highlight="none" reason="コマンド全体が操作対象" -->
+<!-- CODE id="ch04-42-axios-install" type="コンソールの記述例" highlight="none" reason="コマンド全体が操作対象" -->
+<!-- CODE id="ch04-42-import" path="ch04-basic/src/components/Sample4_2.tsx" lines="1" type="TSX" highlight="none" reason="1行全体が説明対象" -->

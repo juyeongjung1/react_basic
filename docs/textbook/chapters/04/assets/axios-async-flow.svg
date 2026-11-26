@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="351" viewBox="0 0 680 351" font-family="Meiryo, sans-serif" role="img">
+<title>asyncとawaitによるHTTP通信の処理の流れ</title>
+<rect x="12" y="8" width="374" height="31" rx="5" fill="#eaf2fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="199" y="29" font-size="19" fill="#18364e" text-anchor="middle" font-weight="700">React（ブラウザー）</text>
+<rect x="512" y="8" width="156" height="31" rx="5" fill="#e9f5ef" stroke="#a6caba" stroke-width="1"/>
+<text x="590" y="29" font-size="19" fill="#24664e" text-anchor="middle" font-weight="700">REST API</text>
+<rect x="12" y="49" width="374" height="42" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="25" y="75" font-size="13.5" fill="#536d80" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">4</text>
+<text x="51" y="75" font-size="16" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">async function handleGetProducts() {</text>
+<rect x="49.6" y="59" width="42.8" height="20" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<path d="M199 92V109M195 103L199 109L203 103" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="12" y="113" width="374" height="111" rx="5" fill="#f1f7fc" stroke="#a7bdce" stroke-width="1"/>
+<rect x="23" y="122" width="352" height="61" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="31" y="146" font-size="13.5" fill="#536d80" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">5</text>
+<text x="51" y="146" font-size="16" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">const response = await</text>
+<rect x="185.6" y="130" width="42.8" height="20" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<text x="66" y="171" font-size="16" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">axios.get(&#x27;/api/products&#x27;)</text>
+<text x="199" y="208" font-size="17.5" fill="#2b648d" text-anchor="middle" font-weight="700">この関数内の後続処理は待機する</text>
+<text x="449" y="151" font-size="14.8" fill="#2b648d" text-anchor="middle" font-weight="700">GETリクエスト</text>
+<path d="M390 166H507M501 162L507 166L501 170" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="512" y="143" width="156" height="78" rx="5" fill="#e9f5ef" stroke="#a6caba" stroke-width="1"/>
+<text x="590" y="187" font-size="17" fill="#24664e" text-anchor="middle" font-weight="700">商品情報を返す</text>
+<path d="M590 223V262H508" fill="none" stroke="#24664e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="449" y="248" font-size="15" fill="#24664e" text-anchor="middle" font-weight="700">レスポンス</text>
+<path d="M508 262H391M397 258L391 262L397 266" fill="none" stroke="#24664e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="12" y="241" width="374" height="41" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="25" y="267" font-size="13.5" fill="#536d80" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">5</text>
+<text x="51" y="267" font-size="16" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response</text>
+<text x="129" y="267" font-size="16" fill="#18364e" text-anchor="start" font-weight="700">に格納</text>
+<path d="M199 284V301M195 295L199 301L203 295" fill="none" stroke="#24664e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="12" y="303" width="374" height="41" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="25" y="329" font-size="13.5" fill="#536d80" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">6</text>
+<text x="51" y="329" font-size="16" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">console.log(response.data)</text>
+</svg>

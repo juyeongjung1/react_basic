@@ -1,45 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="550" height="332" viewBox="0 0 550 332" font-family="Meiryo, sans-serif" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="322" viewBox="0 0 660 322" font-family="Meiryo, sans-serif" role="img">
 <title>Axiosのレスポンスからデータを取り出す</title>
-<text x="275" y="22" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700" xml:space="preserve">Axiosのレスポンスからデータを取り出す</text>
-<rect x="9" y="43" width="181" height="224" rx="4" fill="#f3f7fa" stroke="#a7bdce" stroke-width="1"/>
-<text x="99.5" y="64" font-size="13" fill="#18364e" text-anchor="middle" font-weight="700" xml:space="preserve">練習用REST API</text>
-<text x="99.5" y="83" font-size="10.4" fill="#4f687b" text-anchor="middle" font-weight="700" xml:space="preserve">JSONデータの抜粋</text>
-<rect x="17" y="92" width="165" height="162" rx="3" fill="#fff" stroke="#c1d0db" stroke-width="1"/>
-<rect x="212" y="43" width="144" height="224" rx="4" fill="#f3f7fa" stroke="#a7bdce" stroke-width="1"/>
-<text x="284" y="65" font-size="13.0" fill="#18364e" text-anchor="middle" font-weight="700" xml:space="preserve">レスポンス</text>
-<text x="284" y="83" font-size="12" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response</text>
-<rect x="223" y="96" width="122" height="51" rx="4" fill="#e6f5ed" stroke="#a8c9b8" stroke-width="1"/>
-<text x="236" y="117" font-size="12" fill="#24664e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">data</text>
-<text x="236" y="135" font-size="11.5" fill="#24664e" text-anchor="start" font-weight="700" xml:space="preserve">6件の配列</text>
-<rect x="222" y="95" width="124" height="53" rx="2" fill="none" stroke="#b42331" stroke-width="1.6"/>
-<rect x="223" y="157" width="122" height="32" rx="4" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
-<text x="236" y="177" font-size="11.65" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">status: 200</text>
-<rect x="223" y="199" width="122" height="31" rx="4" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
-<text x="236" y="219" font-size="11.2" fill="#18364e" text-anchor="start" xml:space="preserve">その他の情報</text>
-<text x="284" y="249" font-size="9.75" fill="#536d80" text-anchor="middle" font-weight="700" xml:space="preserve">オブジェクトの一部抜粋</text>
-<path d="M192 127L210 127M205.00 124.00L210 127L205.00 130.00" fill="none" stroke="#2d688a" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M358 122L376 122M371.00 119.00L376 122L371.00 125.00" fill="none" stroke="#24664e" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
-<rect x="378" y="43" width="163" height="224" rx="4" fill="#edf7f1" stroke="#a5c9b6" stroke-width="1"/>
-<text x="459.5" y="67" font-size="13" fill="#24664e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response.data</text>
-<text x="459.5" y="87" font-size="13" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">商品情報の配列</text>
-<rect x="390" y="98" width="139" height="150" rx="4" fill="#fff" stroke="#b4cdbf" stroke-width="1"/>
-<text x="459.5" y="122" font-size="11.8" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">商品番号101～106</text>
-<text x="406" y="150" font-size="11.8" fill="#24664e" text-anchor="start" xml:space="preserve">■ 商品名</text>
-<text x="406" y="174" font-size="11.8" fill="#24664e" text-anchor="start" xml:space="preserve">■ 単価</text>
-<text x="406" y="198" font-size="11.8" fill="#24664e" text-anchor="start" xml:space="preserve">■ 画像パス</text>
-<rect x="9" y="279" width="532" height="45" rx="4" fill="#f0f7f3" stroke="#afcbba" stroke-width="1"/>
-<text x="275" y="296" font-size="11.7" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">JSON形式のレスポンスをJavaScriptで扱えるデータに変換</text>
-<text x="275" y="314" font-size="11.9" fill="#24664e" text-anchor="middle" font-weight="700" xml:space="preserve">response全体ではなく、response.dataを使用する</text>
-<text x="24" y="105.0" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">[</text>
-<text x="24" y="117.4" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  {</text>
-<text x="24" y="129.8" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;id&quot;: 101,</text>
-<text x="24" y="142.2" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;name&quot;: &quot;ノート&quot;,</text>
-<text x="24" y="154.6" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;price&quot;: 250,</text>
-<text x="24" y="167.0" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;imagePath&quot;:</text>
-<text x="24" y="179.4" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">&quot;/images/products/notebook.svg&quot;</text>
-<text x="24" y="191.8" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  },</text>
-<text x="24" y="204.2" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  {&quot;id&quot;: 102,</text>
-<text x="24" y="216.60000000000002" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">   &quot;name&quot;: &quot;ボールペン&quot;, …},</text>
-<text x="24" y="229.0" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  …</text>
-<text x="24" y="241.4" font-size="8.92" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">]</text>
+<rect x="8" y="10" width="196" height="242" rx="5" fill="#f3f7fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="106" y="34" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">練習用REST API</text>
+<text x="106" y="57" font-size="13.5" fill="#18364e" text-anchor="middle" font-weight="700">JSONレスポンス本文</text>
+<rect x="17" y="67" width="178" height="139" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="23" y="89" font-size="13.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">[</text>
+<text x="23" y="108" font-size="13.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  {</text>
+<text x="23" y="127" font-size="13.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;id&quot;: 101,</text>
+<text x="23" y="146" font-size="13.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;name&quot;: &quot;ノート&quot;,</text>
+<text x="23" y="165" font-size="13.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;price&quot;: 250,</text>
+<text x="106" y="187" font-size="12.5" fill="#536d80" text-anchor="middle">…（以下省略）</text>
+<text x="106" y="235" font-size="13.5" fill="#536d80" text-anchor="middle">6件の配列の一部</text>
+<path d="M208 122H226M220 118L226 122L220 126" fill="none" stroke="#2b648d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="231" y="10" width="129" height="242" rx="5" fill="#f3f7fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="295.5" y="34" font-size="16" fill="#18364e" text-anchor="middle" font-weight="700">レスポンス</text>
+<text x="295.5" y="57" font-size="14" fill="#18364e" text-anchor="middle" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response</text>
+<rect x="242" y="73" width="107" height="64" rx="5" fill="#e9f5ef" stroke="#a6caba" stroke-width="1"/>
+<rect x="241" y="72" width="109" height="66" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<text x="253" y="98" font-size="15" fill="#24664e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">data</text>
+<text x="253" y="122" font-size="14" fill="#24664e" text-anchor="start" font-weight="700">6件の配列</text>
+<rect x="242" y="151" width="107" height="37" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="253" y="174" font-size="13.7" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">status: 200</text>
+<rect x="242" y="199" width="107" height="36" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="295.5" y="222" font-size="13" fill="#18364e" text-anchor="middle">その他の情報</text>
+<path d="M364 106H382M376 102L382 106L376 110" fill="none" stroke="#24664e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="387" y="10" width="265" height="242" rx="5" fill="#edf7f1" stroke="#a6caba" stroke-width="1"/>
+<text x="519.5" y="34" font-size="16" fill="#24664e" text-anchor="middle" font-weight="700" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">response.data</text>
+<text x="519.5" y="57" font-size="14" fill="#24664e" text-anchor="middle" font-weight="700">商品オブジェクトの配列</text>
+<rect x="395" y="67" width="249" height="174" rx="5" fill="#fff" stroke="#a6caba" stroke-width="1"/>
+<text x="402" y="85" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">[</text>
+<text x="415" y="102" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">{</text>
+<text x="427" y="119" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">id: 101,</text>
+<text x="427" y="136" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">name: &#x27;ノート&#x27;,</text>
+<text x="427" y="153" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">price: 250,</text>
+<text x="427" y="170" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">imagePath:</text>
+<text x="415" y="187" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">&#x27;/images/products/notebook.svg&#x27;</text>
+<text x="415" y="204" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">},</text>
+<text x="439" y="221" font-size="12.8" fill="#536d80" text-anchor="start">…（残り5件を省略）</text>
+<text x="402" y="232" font-size="14.1" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">]</text>
+<rect x="8" y="265" width="644" height="46" rx="5" fill="#f3f7fa" stroke="#a7bdce" stroke-width="1"/>
+<text x="24" y="294" font-size="13.5" fill="#536d80" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">6</text>
+<text x="52" y="294" font-size="17.5" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">console.log(response.data)</text>
+<rect x="155.6" y="276.5" width="116.55" height="21.5" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
 </svg>

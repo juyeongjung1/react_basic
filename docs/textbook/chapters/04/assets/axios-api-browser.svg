@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="321" viewBox="0 0 540 321" font-family="Meiryo, sans-serif" role="img">
+<title>練習用REST APIのブラウザー表示</title>
+<rect x="9" y="7" width="522" height="283" rx="5" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<rect x="9" y="7" width="522" height="37" rx="5" fill="#e9f2f8" stroke="#a7bdce" stroke-width="1"/>
+<circle cx="20" cy="26" r="2.3" fill="#8ba6ba"/><circle cx="28" cy="26" r="2.3" fill="#8ba6ba"/>
+<rect x="37" y="14" width="484" height="23" rx="4" fill="#fff" stroke="#a7bdce" stroke-width="1"/>
+<text x="46" y="31" font-size="14.2" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">http://127.0.0.1:3000/api/products</text>
+<rect x="42" y="15" width="249.4" height="21" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<rect x="23" y="68" width="396" height="104" rx="0" fill="none" stroke="#b42331" stroke-width="1.7"/>
+<text x="30" y="63" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">[</text>
+<text x="30" y="80" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  {</text>
+<text x="30" y="97" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;id&quot;: 101,</text>
+<text x="30" y="114" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;name&quot;: &quot;ノート&quot;,</text>
+<text x="30" y="131" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;price&quot;: 250,</text>
+<text x="30" y="148" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;imagePath&quot;: &quot;/images/products/notebook.svg&quot;</text>
+<text x="30" y="165" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  },</text>
+<text x="30" y="190" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  {</text>
+<text x="30" y="207" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;id&quot;: 102,</text>
+<text x="30" y="224" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;name&quot;: &quot;ボールペン&quot;,</text>
+<text x="30" y="241" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;price&quot;: 120,</text>
+<text x="30" y="258" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">    &quot;imagePath&quot;: &quot;/images/products/ballpoint-pen.svg&quot;</text>
+<text x="30" y="275" font-size="14.3" fill="#18364e" text-anchor="start" font-family="Consolas, MS Gothic, monospace" xml:space="preserve">  },</text>
+<text x="270" y="311" font-size="14" fill="#40596c" text-anchor="middle">画面の一部（全6件の配列・整形表示）</text>
+</svg>

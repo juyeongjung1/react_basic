@@ -1,39 +1,36 @@
 {
-  "ch04-axios-031": [
+  "ch04-42-full": [
     {
       "text": "import axios from 'axios'",
-      "line": 1
+      "line": 1,
+      "block": true
     },
     {
       "text": "async function handleGetProducts() {\n    const response = await axios.get('/api/products')\n    console.log(response.data)\n  }",
       "line": 4,
       "block": true
-    },
-    {
-      "text": "onClick={handleGetProducts}",
-      "line": 14
     }
   ],
-  "ch04-axios-041": [
+  "ch04-42-get": [
+    {
+      "text": "axios.get('/api/products')",
+      "line": 5
+    }
+  ],
+  "ch04-42-async": [
     {
       "text": "async",
       "line": 4
     },
     {
-      "text": "await axios.get('/api/products')",
+      "text": "await",
       "line": 5
     }
   ],
-  "ch04-axios-049": [
+  "ch04-42-data": [
     {
       "text": "response.data",
       "line": 6
-    }
-  ],
-  "ch04-axios-057": [
-    {
-      "text": "onClick={handleGetProducts}",
-      "line": 14
     }
   ]
 }
