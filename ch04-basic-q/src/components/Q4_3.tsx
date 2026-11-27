@@ -13,7 +13,7 @@ export default function Q4_3() {
   const [products, setProducts] = useState<Product[]>([])
 
   async function handleGetProducts() {
-    // ➁ 実装：axios.get()の空欄に、商品一覧を取得するURLのパスを指定してください。
+    // ➁ 実装：axios.get()の空欄に、商品一覧を取得するURLのパス /api/products を指定してください。
     const response = await axios.get<Product[]>('')
     // ➂ 実装：次のコンソールへの出力を、取得したデータでstateを更新する処理に変更してください。
     console.log(response.data)
