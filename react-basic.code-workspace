@@ -38,7 +38,7 @@
 		"terminal.integrated.enablePersistentSessions": false,
 		"workbench.secondarySideBar.defaultVisibility": "hidden",
 "[typescriptreact]": {
-      "editor.autoClosingBrackets": "never",
+      "editor.autoClosingBrackets": "languageDefined",
       "js/ts.autoClosingTags.enabled": false,
       "editor.bracketPairColorization.enabled": true,
       "editor.guides.bracketPairs": true

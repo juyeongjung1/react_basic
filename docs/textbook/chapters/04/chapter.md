@@ -1340,14 +1340,6 @@ useEffectの第1引数と第2引数
 asyncを付けた関数を呼び出すと、4.2節で学習したPromiseが返されます。
 :::
 
-::: {#ch04-44-par-new-24 .paragraph}
-一方、useEffect()の第1引数に指定する関数は、何も返さない（戻り値はundefined）か、コンポーネントが取り除かれたときなどに実行する後片付けの関数を返します。今回のサンプルでは後片付けの処理が不要なため、何も返しません。Promiseを戻り値として返すことはできません。
-:::
-
-::: {#ch04-44-par-new-25 .paragraph}
-そのため、useEffect()に渡す関数そのものにはasyncを付けず、その中で別に定義した非同期関数loadProducts()を呼び出します。loadProducts()はPromiseを返しますが、今回のアロー関数はそのPromiseを戻り値として返していません。
-:::
-
 ::: {#ch04-44-display-heading .step keep-next="1"}
 **④ 取得したデータを画面に反映する**
 :::
