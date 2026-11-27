@@ -13,17 +13,17 @@ export default function Q4_5() {
   // ➀ 確認：エラーメッセージを管理するstateの定義を確認してください。
   const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect(() => {
-    async function loadProducts() {
-      // ➁ 実装：tryブロックの開始部分を記述してください。
-        const response = await axios.get<Product[]>('/api/products')
-        setProducts(response.data)
-      // ➂ 実装：tryブロックを閉じ、例外をerrorで受け取るcatchブロックの開始部分を記述してください。
-        // ➃ 実装：console.error()でerrorを出力し、setErrorMessage()で
-        // 「商品情報の取得に失敗しました。」というメッセージを設定してください。
-      // ➄ 実装：catchブロックを閉じてください。
-    }
+  async function loadProducts() {
+    // ➁ 実装：tryブロックの開始部分を記述してください。
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    // ➂ 実装：tryブロックを閉じ、例外をerrorで受け取るcatchブロックの開始部分を記述してください。
+      // ➃ 実装：console.error()でerrorを出力し、setErrorMessage()で
+      // 「商品情報の取得に失敗しました。」というメッセージを設定してください。
+    // ➄ 実装：catchブロックを閉じてください。
+  }
 
+  useEffect(() => {
     loadProducts()
   }, [])
 

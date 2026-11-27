@@ -31,12 +31,6 @@
       "width": 380,
       "max_height": 390
     },
-    "ch04-42-figure-3": {
-      "caption_id": "ch04-42-figure-3-caption",
-      "width": 380,
-      "max_height": 231,
-      "file_path": "ch04-basic/src/components/Sample4_2.tsx"
-    },
     "ch04-axios-figure-3": {
       "caption_id": "ch04-axios-figure-3-caption",
       "width": 380,
@@ -72,7 +66,7 @@
     "ch04-44-figure-2": {
       "caption_id": "ch04-44-figure-2-caption",
       "width": 380,
-      "max_height": 170,
+      "max_height": 105,
       "file_path": "ch04-basic/src/components/Sample4_4.tsx"
     },
     "ch04-44-figure-3": {

@@ -11,12 +11,12 @@ type Product = {
 export default function Sample4_4() {
   const [products, setProducts] = useState<Product[]>([])
 
-  useEffect(() => {
-    async function loadProducts() {
-      const response = await axios.get<Product[]>('/api/products')
-      setProducts(response.data)
-    }
+  async function loadProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
 
+  useEffect(() => {
     loadProducts()
   }, [])
 

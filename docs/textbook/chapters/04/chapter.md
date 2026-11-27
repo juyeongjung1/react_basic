@@ -575,50 +575,107 @@ import axios from 'axios'
 前節で学習したURLとHTTPメソッドの組み合わせを、今回のコードでは `axios.get('/api/products')` と記述しています。`get` がHTTPメソッドのGETに対応し、引数の `/api/products` が操作対象を示します。
 :::
 
-::: {#ch04-42-async-heading .step keep-next="1"}
-**③ asyncとawaitで通信結果を待つ**
+::: {#ch04-42-async-heading .step keep-next="2"}
+**③ Promiseとasync・await**
 :::
 
-::: {#ch04-42-async .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="4"}
-```tsx
-  async function handleGetProducts() {
-    const response = await axios.get('/api/products')
-    console.log(response.data)
-  }
+::: {#ch04-42-async-overview .step keep-next="1"}
+**非同期処理とは**
+:::
+
+::: {#ch04-42-promise-par-03 .paragraph}
+通常、関数を呼び出して戻り値を受け取る場合は、その関数の処理が終わってから、次の処理へ進みます。このような処理の進め方を同期処理と呼びます。
+:::
+
+::: {#ch04-42-promise-par-04 .paragraph}
+しかし、REST APIとのHTTP通信では、リクエストを送信してからレスポンスが返されるまでに時間がかかります。その間、ほかの処理まで停止してしまうと、利用者の画面操作にも影響します。
+:::
+
+::: {#ch04-42-promise-par-05 .paragraph}
+そこでJavaScriptでは、通信などの時間がかかる処理を開始し、その結果を待っている間にも、ほかの処理を進められるようにしています。このような処理を非同期処理と呼びます。
+:::
+
+::: {#ch04-42-promise-definition .step keep-next="1"}
+**Promiseとは**
+:::
+
+::: {#ch04-42-promise-par-07 .paragraph}
+例えば、次のようにAxiosで商品一覧を取得するGETリクエストを送信した場合を考えてみましょう。
+:::
+
+::: {#ch04-42-promise-example .code example="true" code-label="TypeScriptの記述例"}
+```ts
+const promise = axios.get('/api/products')
 ```
 :::
 
-::: {#ch04-42-par-55 .paragraph}
-HTTP通信では、リクエストを送信してからレスポンスが返されるまでに時間がかかります。
+::: {#ch04-42-promise-par-09 .paragraph}
+axios.get()を呼び出すと通信が開始されますが、通信が完了するまで戻り値が返されないわけではありません。**axios.get()は、通信結果が得られる前にPromise（プロミス）というオブジェクトを返します。**
 :::
 
-::: {#ch04-42-par-56 .paragraph}
-`axios.get()` は、非同期処理の結果を後から受け取るためのPromise（プロミス）というオブジェクトを返します。`await` を付けずに戻り値を `response` に格納すると、レスポンスではなくPromiseが格納されるため、`response.data` で商品情報を取得することはできません。
+::: {#ch04-42-promise-par-10 .paragraph}
+Promiseとは、非同期処理の状態を表し、処理が完了したときに、その結果または失敗した理由を受け取るためのJavaScriptのオブジェクトです。今回は、REST APIとの通信結果を表すPromiseが、定数promiseに格納されます。
 :::
 
-::: {#ch04-42-par-57 .paragraph}
-そこで使用するのが、JavaScriptの `async` と `await` です。
+::: {#ch04-42-promise-par-11 .paragraph}
+Promiseは、次の3つの状態のいずれかになります。
 :::
 
-::: {#ch04-42-par-58 .table column-widths="21 79"}
-| 記述 | 役割 |
+::: {#ch04-42-promise-states .table column-widths="29 33 38"}
+| 状態 | 意味 | 今回のHTTP通信の場合 |
+|---|---|---|
+| pending（処理中） | 処理の結果がまだ確定していない。 | レスポンスを待っている。 |
+| fulfilled（成功） | 処理が正常に完了した。 | レスポンスを取得できた。 |
+| rejected（失敗） | 処理が失敗した。 | 通信エラーなどが発生した。 |
+:::
+
+::: {#ch04-42-promise-par-13 .paragraph}
+通信が成功した場合、Promiseからレスポンスを受け取ることができます。通信が失敗した場合は、エラーの情報を受け取ることができます。
+:::
+
+::: {#ch04-42-promise-par-14 .paragraph}
+重要なのは、**Promiseはレスポンスそのものではない**という点です。定数promiseが参照しているのは、レスポンスオブジェクトではなくPromiseです。そのため、promise.dataと記述しても商品情報を取得することはできません。
+:::
+
+::: {#ch04-42-await-overview .step keep-next="1"}
+**awaitによる通信結果の取得**
+:::
+
+::: {#ch04-42-promise-par-16 .paragraph}
+そこで、非同期処理の結果を受け取るためにawaitを使用します。今回のサンプルでは、次のように記述しています。
+:::
+
+::: {#ch04-42-await-result .code filename="ch04-basic/src/components/Sample4_2.tsx" start-line="5"}
+```tsx
+    const response = await axios.get('/api/products')
+```
+:::
+
+::: {#ch04-42-promise-par-18 .paragraph}
+awaitを使用すると、Promiseの結果が確定するまで、その関数内の後続の処理を待機させることができます。
+:::
+
+::: {#ch04-42-promise-par-19 .paragraph}
+通信が成功した場合（fulfilled）は、awaitによってPromiseからレスポンスを受け取り、定数responseに格納します。通信が失敗した場合（rejected）は、awaitの箇所で例外が発生します。例外が発生した場合の処理は、4.5節で学習します。
+:::
+
+::: {#ch04-42-promise-par-20 .paragraph}
+awaitを使用する場合と使用しない場合では、定数に格納されるものが異なります。
+:::
+
+::: {#ch04-42-await-comparison .table column-widths="58 42"}
+| 記述 | 定数に格納されるもの |
 |---|---|
-| `async` | 非同期関数を定義する。今回のように関数内で `await` を使用するために指定する。 |
-| `await` | 非同期処理の結果を待ってから、その関数内の後続の処理を実行する。 |
+| `const promise = axios.get('/api/products')` | 通信結果を表すPromise |
+| `const response = await axios.get('/api/products')` | 通信が成功した場合のレスポンスオブジェクト |
 :::
 
-::: {#ch04-42-par-59 .paragraph}
-今回のコードでは、`await` を使用することで、通信が正常に完了した後にレスポンスを `response` に格納し、その次の行の `console.log()` を実行します。
+::: {#ch04-42-promise-par-22 .paragraph}
+なお、今回のように関数内でawaitを使用するには、その関数にasyncを付けて定義します。
 :::
 
-![awaitによって通信結果を受け取ってから後続の処理を実行する](assets/axios-async-flow.svg){#ch04-42-figure-3}
-
-::: {#ch04-42-figure-3-caption .caption}
-awaitによって通信結果を受け取ってから後続の処理を実行する
-:::
-
-::: {#ch04-42-par-61 .paragraph}
-`await` によって待機するのは、この関数内の後続の処理です。ブラウザー全体の動作が停止するわけではありません。
+::: {#ch04-42-promise-par-23 .paragraph}
+awaitによって待機するのは、その関数内の後続の処理です。ブラウザー全体の動作が停止するわけではありません。
 :::
 
 ::: {#ch04-axios-data .step keep-next="1"}
@@ -733,6 +790,8 @@ response.dataから商品情報を取り出す
 ● Axiosは、JavaScriptからHTTP通信を行うためのライブラリである。
 
 ● `axios.get()` を使用すると、指定したURLへGETリクエストを送信できる。
+
+● Promiseは、非同期処理の状態と、正常に完了した場合の結果や失敗した場合の情報を扱うためのオブジェクトである。
 
 ● `async` と `await` を使用すると、通信の結果を待ってから関数内の後続の処理を実行できる。
 
@@ -1083,7 +1142,7 @@ useEffectによる処理の実行
 :::
 
 ::: {#ch04-44-par-07 .paragraph}
-コンポーネントの関数の中で直接通信処理を実行すると、データを取得してstateを更新した際に、Reactがコンポーネントを再レンダリングします。そのたびに通信処理が再び実行され、通信が繰り返される原因になります。
+コンポーネントの関数本体で商品情報を取得する関数を直接呼び出すと、データを取得してstateを更新した際に、Reactがコンポーネントを再レンダリングします。そのたびに通信処理が再び実行され、通信が繰り返される原因になります。
 :::
 
 ::: {#ch04-44-par-08 .paragraph}
@@ -1099,7 +1158,7 @@ useEffect()は、コンポーネントのレンダリング結果が反映され
 :::
 
 ::: {#ch04-44-par-11 .paragraph}
-前節の商品一覧画面から［商品一覧を取得］ボタンを取り除きます。その代わりに、useEffect()を使用して、商品一覧画面が表示されたときに商品情報を取得します。
+前節の商品一覧画面から［商品一覧を取得］ボタンを取り除きます。商品情報を取得する処理は非同期関数 `loadProducts()` として定義し、useEffect()を使用して、商品一覧画面が表示されたときに呼び出します。
 :::
 
 ::: {#ch04-44-par-12 .paragraph}
@@ -1121,12 +1180,12 @@ type Product = {
 export default function Sample4_4() {
   const [products, setProducts] = useState<Product[]>([])
 
-  useEffect(() => {
-    async function loadProducts() {
-      const response = await axios.get<Product[]>('/api/products')
-      setProducts(response.data)
-    }
+  async function loadProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
 
+  useEffect(() => {
     loadProducts()
   }, [])
 
@@ -1198,14 +1257,9 @@ useState()と同様に、ReactからuseEffectをインポートします。
 今回のサンプルでは、次のようにuseEffect()を呼び出しています。
 :::
 
-::: {#ch04-44-effect .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="14"}
+::: {#ch04-44-effect .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="19"}
 ```tsx
   useEffect(() => {
-    async function loadProducts() {
-      const response = await axios.get<Product[]>('/api/products')
-      setProducts(response.data)
-    }
-
     loadProducts()
   }, [])
 ```
@@ -1216,7 +1270,7 @@ useEffect()には、実行する処理を関数として指定します。また
 :::
 
 ::: {#ch04-44-par-27 .paragraph}
-今回のコードでは、第1引数にアロー関数を、第2引数に空配列 `[]` を指定しています。
+今回のコードでは、第1引数に `loadProducts()` を呼び出すアロー関数を、第2引数に空配列 `[]` を指定しています。
 :::
 
 ![useEffectの第1引数と第2引数](assets/useeffect-arguments.svg){#ch04-44-figure-2}
@@ -1242,7 +1296,7 @@ useEffectの第1引数と第2引数
 :::
 
 ::: {#ch04-44-par-32 .paragraph}
-今回は、画面が最初に表示された後に商品情報を取得したいため、空配列 `[]` を指定しています。
+今回は、固定のURLから商品情報を取得し、stateを更新する処理を、画面が最初に表示された後に実行したいため、空配列 `[]` を指定しています。
 :::
 
 ::: {#ch04-44-par-33 .paragraph}
@@ -1258,30 +1312,40 @@ useEffectの第1引数と第2引数
 :::
 
 ::: {#ch04-44-load-heading .step keep-next="1"}
-**③ useEffectの中で非同期処理を実行する**
+**③ データ取得処理の定義と実行タイミングを分ける**
 :::
 
-::: {#ch04-44-load .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="15"}
+::: {#ch04-44-load .code filename="ch04-basic/src/components/Sample4_4.tsx" start-line="14"}
 ```tsx
-    async function loadProducts() {
-      const response = await axios.get<Product[]>('/api/products')
-      setProducts(response.data)
-    }
-
-    loadProducts()
+  async function loadProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
 ```
 :::
 
 ::: {#ch04-44-par-39 .paragraph}
-useEffect()に渡した関数の中で、非同期関数 `loadProducts()` を定義しています。商品情報を取得し、取得したデータでstateを更新する処理は、前節と同じです。
+商品情報を取得する非同期関数 `loadProducts()` は、useEffect()の外側に定義しています。商品情報を取得し、取得したデータでstateを更新する処理は、前節と同じです。
 :::
 
 ::: {#ch04-44-par-40 .paragraph}
-その下に `loadProducts()` と記述することで、定義した非同期関数を呼び出します。
+この関数を定義しただけでは通信処理は実行されません。useEffect()に渡した関数の中で `loadProducts()` を呼び出すことで、画面の表示に伴って通信処理を実行できます。
 :::
 
 ::: {#ch04-44-par-41 .paragraph}
-なお、useEffect()の第1引数に指定する関数そのものは、asyncで定義しないようにしてください。asyncで定義した関数はPromiseを返しますが、useEffect()に渡す関数はPromiseを戻り値として返すことができないためです。そのため、今回のようにuseEffect()に渡した関数の中で非同期関数を定義し、呼び出します。
+このように、**データを取得する処理と、その処理を実行するタイミングを分けて記述します。**
+:::
+
+::: {#ch04-44-par-new-23 .paragraph}
+asyncを付けた関数を呼び出すと、4.2節で学習したPromiseが返されます。
+:::
+
+::: {#ch04-44-par-new-24 .paragraph}
+一方、useEffect()の第1引数に指定する関数は、何も返さない（戻り値はundefined）か、コンポーネントが取り除かれたときなどに実行する後片付けの関数を返します。今回のサンプルでは後片付けの処理が不要なため、何も返しません。Promiseを戻り値として返すことはできません。
+:::
+
+::: {#ch04-44-par-new-25 .paragraph}
+そのため、useEffect()に渡す関数そのものにはasyncを付けず、その中で別に定義した非同期関数loadProducts()を呼び出します。loadProducts()はPromiseを返しますが、今回のアロー関数はそのPromiseを戻り値として返していません。
 :::
 
 ::: {#ch04-44-display-heading .step keep-next="1"}
@@ -1315,7 +1379,7 @@ useEffectによるデータ取得から一覧表示までの流れ
 :::
 
 ::: {#ch04-44-par-49 .paragraph}
-商品データの型、state、商品情報を取得する非同期関数、テーブルの表示処理は、あらかじめ用意されています。useEffect()を使用して、画面の表示時に非同期関数が呼び出されるように実装します。
+商品データの型、state、商品情報を取得する非同期関数、テーブルの表示処理は、あらかじめ用意されています。非同期関数の定義を確認し、useEffect()を使用して、画面の表示時にその関数が呼び出されるように実装します。
 :::
 
 ::: {#ch04-44-par-50 .paragraph numbered="true"}
@@ -1323,7 +1387,7 @@ useEffectによるデータ取得から一覧表示までの流れ
 :::
 
 ::: {#ch04-44-par-51 .paragraph numbered="true"}
-2．コード内の➀～➃の番号付きコメントを確認し、指示された箇所を実装してください。4つとも実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
+2．コード内の➀～➂の番号付きコメントを確認し、指示された箇所を実装してください。➁は既存コードの確認、➀・➂は実装問題です。コメントに指定されていないコードや、ほかのファイルは変更する必要はありません。
 :::
 
 ::: {#ch04-44-par-52 .paragraph numbered="true"}
@@ -1373,7 +1437,7 @@ useEffectによるデータ取得から一覧表示までの流れ
 
 ● 依存配列に値を指定すると、その値が変化したときにも処理を実行できる。
 
-● useEffect()の中で非同期関数を定義して呼び出すことで、REST APIからデータを取得できる。
+● データ取得処理を非同期関数として定義し、useEffect()の中で呼び出すことで、画面の表示に伴ってREST APIからデータを取得できる。
 :::
 
 ::::
@@ -1419,7 +1483,7 @@ JavaScriptでは、例外が発生した場合の処理を記述するために�
 :::
 
 ::: {#ch04-45-par-10 .paragraph}
-前節の商品一覧画面に、通信に失敗した場合の処理を追加します。
+前節の商品一覧画面に、通信に失敗した場合の処理を追加します。商品情報を取得する非同期関数 `loadProducts()` の中にtryとcatchを記述します。useEffect()から関数を呼び出す処理は、前節と同じです。
 :::
 
 ::: {#ch04-45-par-11 .paragraph}
@@ -1442,17 +1506,17 @@ export default function Sample4_5() {
   const [products, setProducts] = useState<Product[]>([])
   const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        const response = await axios.get<Product[]>('/api/products')
-        setProducts(response.data)
-      } catch (error) {
-        console.error(error)
-        setErrorMessage('商品情報の取得に失敗しました。')
-      }
+  async function loadProducts() {
+    try {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    } catch (error) {
+      console.error(error)
+      setErrorMessage('商品情報の取得に失敗しました。')
     }
+  }
 
+  useEffect(() => {
     loadProducts()
   }, [])
 
@@ -1547,15 +1611,15 @@ REST APIから商品情報を取得できず、「商品情報の取得に失敗
 **② tryとcatchで例外が発生した場合の処理を記述する**
 :::
 
-::: {#ch04-45-catch .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="17"}
+::: {#ch04-45-catch .code filename="ch04-basic/src/components/Sample4_5.tsx" start-line="16"}
 ```tsx
-      try {
-        const response = await axios.get<Product[]>('/api/products')
-        setProducts(response.data)
-      } catch (error) {
-        console.error(error)
-        setErrorMessage('商品情報の取得に失敗しました。')
-      }
+    try {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    } catch (error) {
+      console.error(error)
+      setErrorMessage('商品情報の取得に失敗しました。')
+    }
 ```
 :::
 
@@ -1568,7 +1632,15 @@ REST APIから商品情報を取得できず、「商品情報の取得に失敗
 :::
 
 ::: {#ch04-45-par-32 .paragraph}
-Axiosでは、ネットワークエラーが発生した場合や、通常はHTTPステータスコードが400番台・500番台で返された場合、通信結果を表すPromiseが拒否されます。`await` を使用しているため、この失敗は例外として扱われます。
+4.2節では、Promiseには処理中（pending）、成功（fulfilled）、失敗（rejected）の3つの状態があることを学習しました。
+:::
+
+::: {#ch04-45-par-new-19 .paragraph}
+Axiosでは、ネットワークエラーが発生した場合や、初期設定ではHTTPステータスコードが成功を表す200番台（200～299）以外のレスポンスが返された場合、通信結果を表すPromiseは失敗（rejected）の状態になります。
+:::
+
+::: {#ch04-45-par-new-20 .paragraph}
+awaitでPromiseの結果を受け取ろうとしたときに、そのPromiseが失敗の状態になった場合は、awaitの箇所で例外が発生します。この例外が発生した場合の処理をcatchブロックに記述します。
 :::
 
 ::: {#ch04-45-par-33 .paragraph}
@@ -1708,11 +1780,11 @@ REST APIを停止した状態で画面を再読み込みすると、エラーメ
 :::
 
 ::: {#ch04-summary-par-63 .paragraph}
-続いて、Axiosを使用してREST APIと通信し、asyncとawaitで通信結果を待ってから、取得したデータを取り出す方法を学習しました。また、取得したデータをstateに格納することで、商品一覧を表示しました。
+続いて、Axiosを使用してREST APIと通信し、非同期処理の結果を表すPromiseと、async・awaitによる結果の受け取り方を学習しました。また、取得したデータをstateに格納することで、商品一覧を表示しました。
 :::
 
 ::: {#ch04-summary-par-64 .paragraph}
-さらに、useEffect()を使用して画面の表示時に商品情報を自動的に取得し、最後にtryとcatchを使用して、通信に失敗した場合にエラーメッセージを表示する処理を実装しました。
+さらに、商品情報を取得する処理を非同期関数として定義し、useEffect()を使用して画面の表示時に呼び出す方法を学習しました。最後に、非同期関数の中でtryとcatchを使用して、通信に失敗した場合にエラーメッセージを表示する処理を実装しました。
 :::
 
 ::: {#ch04-summary-par-65 .paragraph}
@@ -1721,4 +1793,6 @@ REST APIを停止した状態で画面を再読み込みすると、エラーメ
 
 ::::
 
+<!-- CODE id="ch04-42-promise-example" type="TypeScriptの記述例" example="true" highlight="none" reason="1行全体が説明対象。Sample4_2.tsxの掲載コードではなく、awaitを使用しない比較用の記述例。" -->
+<!-- CODE id="ch04-44-load" path="ch04-basic/src/components/Sample4_4.tsx" lines="14-17" type="TSX" highlight="none" reason="非同期関数の定義全体が説明対象。通信構文は既習。" -->
 <!-- CODE id="ch04-45-state" path="ch04-basic/src/components/Sample4_5.tsx" lines="13" type="TSX" highlight="none" reason="1行全体が説明対象" -->

@@ -12,15 +12,14 @@ type Product = {
 export default function Q4_4() {
   const [products, setProducts] = useState<Product[]>([])
 
-  // ➁ 実装：ここにuseEffectの開始部分を記述してください。
-  //     次の非同期関数の定義と呼び出しを、useEffectに渡す関数の中に記述するようにしてください。
-    async function loadProducts() {
-      const response = await axios.get<Product[]>('/api/products')
-      setProducts(response.data)
-    }
+  // ➁ 確認：商品一覧を取得する非同期関数の処理を確認してください。
+  async function loadProducts() {
+    const response = await axios.get<Product[]>('/api/products')
+    setProducts(response.data)
+  }
 
-    // ➂ 実装：loadProducts()を呼び出してください。
-  // ➃ 実装：依存配列に空配列を指定して、useEffectの呼び出しを閉じてください。
+  // ➂ 実装：useEffect()を使用し、画面の表示時にloadProducts()を呼び出してください。
+  //     依存配列には空配列を指定してください。
 
   return (
     <main className="container mt-4">

@@ -12,17 +12,17 @@ export default function Sample4_5() {
   const [products, setProducts] = useState<Product[]>([])
   const [errorMessage, setErrorMessage] = useState('')
 
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        const response = await axios.get<Product[]>('/api/products')
-        setProducts(response.data)
-      } catch (error) {
-        console.error(error)
-        setErrorMessage('商品情報の取得に失敗しました。')
-      }
+  async function loadProducts() {
+    try {
+      const response = await axios.get<Product[]>('/api/products')
+      setProducts(response.data)
+    } catch (error) {
+      console.error(error)
+      setErrorMessage('商品情報の取得に失敗しました。')
     }
+  }
 
+  useEffect(() => {
     loadProducts()
   }, [])
 
